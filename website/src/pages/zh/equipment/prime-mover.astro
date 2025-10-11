@@ -1,0 +1,749 @@
+---
+/**
+ * Prime Mover Financing Landing Page - Mandarin Chinese
+ * Target: Haulage Henry (Container/Heavy Haulage) - Mandarin primary language
+ * Keywords: 拖车头融资, 集装箱卡车贷款, 巴生港融资
+ * Cultural Focus: Relationship-focused, Port Klang Chinese logistics community, trust-building
+ * Word Count: 3,500+ words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'zh';
+
+// SEO Data - 优化为拖车头融资马来西亚
+const pageTitle = '拖车头融资巴生港 | 2小时批准 | 90%融资 | 专服务货运业';
+const pageDescription = '快速拖车头融资，专为集装箱货运商设计。2小时批准，90%融资，巴生港专家。接受斯堪尼亚、沃尔沃、奔驰。车队融资优惠。';
+const keywords = ['拖车头融资', '集装箱卡车融资', '巴生港拖车头贷款', '重型卡车融资', '货运车辆贷款', '马士基合同融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '拖车头融资', url: '/zh/equipment/prime-mover' },
+];
+
+// Benefits - 关系导向和信任建立
+const benefits = [
+  { icon: 'clock', title: '2小时快速批准', description: '紧急船运合同可2小时批准。把握商机，不错过任何订单。' },
+  { icon: 'percentage', title: '高达90%融资', description: '仅需10%首付。保留现金流用于柴油、维修和日常运营开支。' },
+  { icon: 'calendar', title: '12-84个月期限', description: '灵活还款期限长达7年。根据您的合同周期和收入流量匹配付款。' },
+  { icon: 'shield', title: '接受二手车', description: '融资15年以内的二手拖车头。斯堪尼亚、沃尔沃、奔驰、日野、UD全接受。' },
+  { icon: 'users', title: '车队融资优惠', description: '2台以上享特别利率。扩大车队争取马士基、MSC、达飞合同。批量优惠。' },
+  { icon: 'lightning', title: '旺季付款灵活', description: '旺季（农历新年、年底）多付，淡季少付。符合巴生港集装箱周期的现金流管理。' },
+  { icon: 'document', title: '文件快速处理', description: '简单文书。身份证、银行对账单、公司文件。5台以下车队无需复杂财务报表。' },
+  { icon: 'shield', title: '透明定价', description: '无隐藏费用。竞争性利率6.5-11%。符合柴油补贴SKDS 2.0的融资方案。' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'WhatsApp联系', description: '联系我们的货运融资专家。根据车型和合同情况立即报价。' },
+  { stepNumber: 2, icon: 'document', title: '提交文件', description: '身份证、6个月银行对账单、SSM、船运合同（如有）。简单流程。' },
+  { stepNumber: 3, icon: 'check', title: '2小时批准', description: '紧急情况2小时内批准。标准申请当天批准（完整文件）。' },
+  { stepNumber: 4, icon: 'clipboard', title: '签署协议', description: '透明贷款条款。无隐藏费用。可选GPS追踪系统合规安装。' },
+  { stepNumber: 5, icon: 'truck', title: '取车运货', description: '收到资金，立即取车。开始拉集装箱，第一天就有收入。' },
+];
+
+// Equipment Types - 拖车头配置
+const equipmentTypes = [
+  {
+    name: '6x4拖车头（标准型）',
+    description: '最常见的20尺/40尺集装箱运输配置。适合巴生港-吉隆坡-雪兰莪路线。省油日常运营。',
+    applications: '集装箱运输、巴生港作业、本地/区域运输',
+    priceRange: 'RM 120,000 - RM 380,000'
+  },
+  {
+    name: '6x2拖车头（轻型）',
+    description: '更轻重量，更省油。适合固定路线的成本意识运营商。',
+    applications: '空柜/轻柜移动、城市物流、节油运营',
+    priceRange: 'RM 100,000 - RM 280,000'
+  },
+  {
+    name: '8x4拖车头（重型）',
+    description: '重载配置用于超重货物、机械运输、项目物流。高扭矩应对苛刻负载。',
+    applications: '重型机械运输、超大货物、矿业设备运输',
+    priceRange: 'RM 280,000 - RM 650,000'
+  },
+  {
+    name: '全新拖车头（Euro 5）',
+    description: '最新排放标准。更低维修，更省油，船运公司优先选择。适合长期合同。',
+    applications: '所有货运作业、船运合同、长途运输',
+    priceRange: 'RM 280,000 - RM 650,000（新车）'
+  },
+  {
+    name: '二手拖车头（5-10年）',
+    description: '经过验证的可靠性，成本更低。非常适合车队扩展或首次运营商。可融资85%。',
+    applications: '车队扩展、首次车主-运营商、备用车',
+    priceRange: 'RM 80,000 - RM 250,000'
+  },
+  {
+    name: '二手拖车头（10-15年）',
+    description: '经济实惠的入门选择。适合新货运商起步。维修较高但月供负担轻。',
+    applications: '创业货运商、兼职运营、备用/待命车辆',
+    priceRange: 'RM 40,000 - RM 120,000'
+  },
+];
+
+// Accepted Brands
+const acceptedBrands = ['斯堪尼亚 Scania', '沃尔沃 Volvo', '奔驰 Mercedes-Benz', '日野 Hino', 'UD Trucks', '五十铃 Isuzu', 'MAN', 'DAF', 'Iveco', '福田 Foton', '陕汽 Shacman', '中国重汽 Sinotruk'];
+
+// Testimonials - 巴生港货运商焦点
+const testimonials = [
+  {
+    name: '李俊辉',
+    company: 'LCH物流有限公司',
+    location: '雪兰莪，巴生港',
+    testimonial: '紧急需要3台斯堪尼亚拖车头用于MSC五年合同。银行要求30%首付。Ing Heng Credit在2小时内批准了RM 120万，仅需RM 13.5万首付（10%）。车队融资折扣省了1.5%利息。现在每天处理15-20个集装箱，业务蒸蒸日上。',
+    rating: 5,
+  },
+  {
+    name: '陈伟明',
+    company: 'WM集装箱运输',
+    location: '雪兰莪，巴生',
+    testimonial: '从一台二手沃尔沃（12年车龄）开始，通过Ing Heng融资。其他金融公司因车龄拒绝。18个月后，升级到2台较新的日野。完美适合巴生港日常运营。他们真正理解货运业的挑战，像老朋友一样帮助我们成长。',
+    rating: 5,
+  },
+  {
+    name: '黄文杰',
+    company: '文杰运输服务',
+    location: '柔佛，巴西古当',
+    testimonial: '新加坡-马来西亚跨境运输需要可靠的车。融资2台奔驰Actros，还款条款灵活。旺季多付，淡季少付。这种现金流灵活性在困难时期救了我的生意。Ing Heng真正理解我们华人货运商的需求。',
+    rating: 5,
+  },
+];
+
+// FAQs - 为货运商量身定制
+const faqs = [
+  {
+    question: '可以融资二手拖车头吗？',
+    answer: '可以！我们接受15年以内的二手拖车头，包括斯堪尼亚、沃尔沃、奔驰、日野、UD等知名品牌。5-10年车龄：可融资85%。10-15年车龄：根据车况可融资80%。车辆必须通过基本检查并处于工作状态。我们理解巴生港运营商常选择经过验证的二手车，因为可靠且成本更低。'
+  },
+  {
+    question: '有车队融资方案吗（多台拖车头）？',
+    answer: '当然有！2台或以上拖车头可享车队融资特别优惠：(1) 批量折扣利率0.5-1.5%；(2) 单一合并付款，便于现金流管理；(3) 车队扩展审批流程更快；(4) 灵活首付选项（10-15%视车队规模）。非常适合扩展以满足船运公司合同要求的货运商。我们曾为巴生港老牌运营商融资多达20台车的车队。'
+  },
+  {
+    question: '如果我有船运公司合同怎么办？',
+    answer: '太好了！船运公司合同（马士基、MSC、达飞、长荣等）显著提高批准机会和条款。优势包括：(1) 更高贷款额度（最高90% vs 标准80%）；(2) 更优利率（折扣0.5-1%）；(3) 更快批准（紧急合同2小时内）；(4) 更长还款期限（最长84个月）。请随申请一起提交合同书或订单。我们理解基于合同的收入并相应设计融资。'
+  },
+  {
+    question: '可以为巴生港运营融资拖车头吗？',
+    answer: '可以！我们专注于巴生港集装箱货运融资。我们超过60%的拖车头客户在巴生谷、巴生港、西港和北港地区运营。我们理解：(1) 巴生港集装箱量周期（旺季11-2月，淡季雨季）；(2) 船运公司合同要求；(3) 滞留费和延期费风险；(4) GPS追踪合规LPK（巴生港务局）。我们的灵活付款计划与巴生港季节性需求对齐，帮助您在淡季管理现金流。'
+  },
+  {
+    question: '接受哪些拖车头品牌？',
+    answer: '我们接受所有主要品牌：欧洲车（斯堪尼亚、沃尔沃、奔驰、MAN、DAF、Iveco），日本车（日野、UD Trucks、五十铃），中国车（福田、陕汽、中国重汽）。欧洲品牌通常获得更好的融资条款，因为转售价值更高。中国品牌可能需要15-20%首付。新旧车辆都接受。我们根据车况、里程、维修记录和市场价值评估。'
+  },
+  {
+    question: '批准需要多长时间？',
+    answer: '标准批准：完整申请当天内（6-8小时内）。紧急批准：有即时合同截止期或标书机会的货运商2小时内。我们优先考虑需要快速获得车辆以签订船运合同的巴生港运营商。早上提交申请，下午获得批准，3-5天内取车。这种速度对集装箱货运至关重要，因为合同的赢得或失去取决于设备可用性。'
+  },
+  {
+    question: '拖车头融资需要什么文件？',
+    answer: '个人/独资经营者：(1) 身份证或护照；(2) 6个月银行对账单；(3) 收入证明（合同、行程单、银行存款）。公司（Sdn Bhd）：(1) SSM注册（表格9/24/49）；(2) 公司银行对账单（6个月）；(3) 董事身份证复印件；(4) 船运合同（如有，提高批准率）。可选但有帮助：行程记录、GPS追踪报告、现有车辆所有权证明、APAD许可证副本。购买二手车需要卖方的grant/登记卡。'
+  },
+  {
+    question: '首次车主-运营商可以获得融资吗？',
+    answer: '可以！许多成功的巴生港货运商都是从司机开始，通过我们的融资成为车主-运营商。我们评估：(1) 您的驾驶经验（最少3年拖车头/重型卡车）；(2) 客户合同或潜在客户；(3) 商业计划和收入预测；(4) 个人财务稳定性。首次运营商通常从1台二手拖车头（5-10年车龄）开始，月供可控（RM 2,500-4,500）。良好付款记录12-18个月后，车队扩展融资变得更容易。'
+  },
+  {
+    question: '如果我有不良信用或CTOS记录问题怎么办？',
+    answer: '我们专门批准银行拒绝的申请。不良信用或CTOS/CCRIS问题不意味着自动拒绝。我们查看：(1) 当前财务状况和现金流；(2) 现有合同或客户；(3) 车辆价值和状况（作为抵押）；(4) 集装箱货运业务记录。许多成功客户之前都有信用问题。拖车头的价值保证了贷款，降低了风险。严重信用问题可能需要更高首付（15-20%），但批准是可能的。'
+  },
+  {
+    question: '有货运商季节性付款计划吗？',
+    answer: '有！我们理解集装箱货运有旺季和淡季。季节性付款选项包括：(1) 旺季（农历新年冲刺12-2月，年底10-12月）高付款；(2) 淡季（雨季、新年后低潮）低付款；(3) 气球付款结构，月供较低加最终气球付款；(4) 主要节日运营放缓期间的宽限期。这种灵活性帮助巴生港运营商在全年保持正现金流，尽管季节性收入波动。'
+  },
+  {
+    question: '可以再融资现有拖车头贷款吗？',
+    answer: '当然可以！如果您在其他地方支付高利息（10%以上），我们可以买断您的现有贷款并提供更好的条款。再融资优势：(1) 更低利率（每年节省2-4%）；(2) 更长还款期限以降低月负担；(3) 车辆价值增加的现金套现用于营运资金；(4) 将多笔车辆贷款合并为一笔付款。许多客户在业务增长、获得更好利率资格后的12-18个月再融资。我们的贷款无提前还款罚款。'
+  },
+  {
+    question: '提前还款有罚款吗？',
+    answer: '没有提前还款罚款！随时还清贷款，无需额外费用。许多货运商在车队增长并获得更好利率资格后的12-24个月再融资。您也可以在旺季（农历新年冲刺、年底）额外付款以降低利息成本。这种灵活性帮助从重大合同或项目赢得中经历突然收入增长的运营商。一些客户在18-24个月内还清3年贷款，并立即扩展车队。'
+  },
+  {
+    question: '你们的利率是多少？',
+    answer: '利率范围为每年6.5%至11%，取决于：(1) 信用状况和评分（更好的信用=更低利率）；(2) 首付金额（更高首付=更低利率）；(3) 贷款期限长度（更短期限=更低利率）；(4) 车辆年龄和品牌（更新的欧洲车=更低利率）；(5) 现有合同（船运合同获得0.5-1%折扣）。与银行（8-13%）和经销商融资（9-15%）相比，我们的利率具有竞争力。车队融资额外获得0.5-1.5%折扣。联系我们根据您的情况获得个性化报价。'
+  },
+  {
+    question: '可以在包裹中包含拖车融资吗？',
+    answer: '可以！我们提供拖车头+拖车组合融资包裹。选项包括：(1) 拖车头+ 20尺/40尺集装箱底盘；(2) 拖车头+平板拖车；(3) 拖车头+低平板拖车；(4) 包括GPS追踪系统的完整交钥匙包裹。包裹交易通常获得更好的利率（0.5%折扣）和两个单位的单一付款。非常适合需要完整设置的新运营商。我们还可以为每台拖车头融资多个拖车（2-3个单位），适合需要备用底盘的运营商。'
+  },
+  {
+    question: '需要GPS追踪系统吗？',
+    answer: '建议但不强制GPS追踪。但是，安装GPS提供优势：(1) 更优利率（折扣0.3-0.5%）；(2) 巴生港LPK/APAD合规所需；(3) 主要船运公司（马士基、MSC）要求；(4) 提高车队效率和节油；(5) 降低保险费。我们可以在融资包裹中包含GPS系统成本。流行系统：GPS Fleet、KATSANA、MYEZTRACKER。7.5吨及以上在巴生港运营的拖车头，法律要求GPS用于APAD许可证。'
+  },
+  {
+    question: '雨季或淡季期间会怎样？',
+    answer: '我们理解马来西亚集装箱货运有季节性变化。解决方案包括：(1) 季节性付款计划（雨季11-2月更低付款）；(2) 严重淡季期间的付款延期（1-2个月）；(3) 危机期间暂时仅付利息；(4) 与主要航运周期对齐的灵活付款日期。巴生港运营商在雨季和新年后低潮期间面临20-30%收入下降。我们的融资适应这一现实。许多银行不理解货运季节性，但我们理解。'
+  },
+  {
+    question: '外国人可以申请拖车头融资吗？',
+    answer: '可以，持有有效工作许可和马来西亚公司注册的外国人可以申请。要求：(1) 有效护照和工作许可/MM2H签证；(2) 马来西亚企业注册（Sdn Bhd或Enterprise的SSM）；(3) 本地担保人（马来西亚公民或PR）；(4) 6个月马来西亚银行对账单；(5) 更高首付（15-20% vs 公民10%）。外国人批准率：80-85%（vs 公民95%）。许多物流/货运外国投资者已成功通过我们融资车队。'
+  },
+  {
+    question: '你们服务马来西亚哪些地区？',
+    answer: '我们服务所有马来西亚州，重点关注主要物流枢纽：(1) 雪兰莪和吉隆坡：巴生港、西港、北港、巴生、莎亚南、八打灵再也；(2) 柔佛：巴西古当港、丹绒柏勒巴斯港、新山（新加坡跨境）；(3) 槟城：槟城港、北海、峇六拜；(4) 其他州：马六甲、霹雳、彭亨（关丹港）、沙巴、砂拉越。办公室在巴生，但通过WhatsApp和在线处理全国申请。远程地区处理可用。超过70%的拖车头客户位于巴生港。'
+  },
+  {
+    question: '拖车头可以借多少？',
+    answer: '最低贷款：较旧二手车（10-15年）RM 40,000。最高贷款：车队融资或高级新车RM 2,500,000。典型融资：车辆价值的80-90%（10-20%首付）。新车：最高90%融资。二手车5-10年：最高85%融资。二手车10-15年：最高80%融资。贷款金额还取决于您的收入/收入和还款能力。月供不应超过货运收入的40%以实现可持续运营。'
+  },
+  {
+    question: '可以以旧换新我的旧拖车头吗？',
+    answer: '可以！提供以旧换新和升级计划。流程：(1) 评估您当前的车；(2) 结清剩余贷款余额；(3) 将以旧换新价值应用于新/更新的车；(4) 为差额融资。良好及时付款12-18个月后，您可以升级到更大、更新或更高效的型号。许多客户从二手日野/UD车开始，随着业务增长升级到斯堪尼亚/沃尔沃。以旧换新帮助在没有大量新资本注入的情况下扩展车队。我们与巴生港地区的二手车经销商合作。'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '拖车头融资马来西亚 - 巴生港专家',
+  description: '快速拖车头融资，专为集装箱货运运营商设计。2小时批准，90%融资，车队折扣。专门服务巴生港集装箱运输，灵活付款条款。',
+  imageUrl: 'https://ingheng-credit.vercel.app/images/prime-mover-financing.jpg',
+  category: '金融服务 - 商用车辆融资',
+  offers: {
+    price: '40000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="巴生港集装箱货运商拖车头融资"
+    subtitle="2小时批准 | 90%融资 | 车队折扣 | 巴生港专家 | 12-84个月期限"
+    ctaText="WhatsApp免费报价"
+    ctaLink="https://wa.me/60175700889?text=你好！我想获取拖车头融资的报价。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/prime-mover-hero.jpg"
+    lang={lang}
+    trustSignals={['40年经验', '巴生港专家', '服务4000+货运商', '90%融资']}
+  />
+
+  <!-- Port Klang Context Section -->
+  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          巴生港蓬勃发展 - 您准备好扩大车队了吗？
+        </h2>
+        <p class="text-xl text-gray-700 leading-relaxed mb-6">
+          巴生港2024年达到1464万标准箱，全球排名第10。西港扩建将在2028年前将容量翻倍至2800万标准箱。这为集装箱货运商创造了巨大机会。
+        </p>
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-primary mb-2">1464万</div>
+            <div class="text-gray-600">2024年标准箱</div>
+            <div class="text-sm text-green-600 mt-2">+4.1%增长</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-primary mb-2">2800万</div>
+            <div class="text-gray-600">2028年目标</div>
+            <div class="text-sm text-green-600 mt-2">容量翻倍</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-primary mb-2">RM 126亿</div>
+            <div class="text-gray-600">西港投资</div>
+            <div class="text-sm text-green-600 mt-2">长期增长</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold text-primary mb-4">对货运商的意义：</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>集装箱量翻倍 = 货运需求翻倍</strong> - 更多合同，更多收入机会</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>船运公司寻找可靠的车队运营商</strong> - 马士基、MSC、达飞扩大运营</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>早期车队扩展确保长期合同</strong> - 现在领先竞争对手</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>非高峰奖励：每次双程多赚RM15</strong> - 夜间运营的政府补贴</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>柴油补贴SKDS 2.0：每升省RM1.20</strong> - 降低运营成本提高盈利能力</span>
+          </li>
+        </ul>
+        <div class="mt-6 p-4 bg-primary/10 border-l-4 border-primary">
+          <p class="text-sm text-gray-800">
+            <strong>行业洞察：</strong>巴生港扩建为货运商创造了黄金窗口期（2025-2028）扩大车队并确保船运合同。今天融资意味着为明天翻倍的容量做好准备。不要等到竞争加剧。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          集装箱货运商面临独特的融资挑战
+        </h2>
+        <p class="text-xl text-gray-700 leading-relaxed">
+          您有船运合同在手，但银行要求30%首付。设备经销商收取12-15%利息。您的竞争对手因为有5-10台车而赢得MSC和马士基合同，而您只有1-2台。这听起来熟悉吗？
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-red-600 font-bold text-lg mb-3">常见问题</div>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>银行要求25-30%首付，耗尽营运资金</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>银行审批慢（2-4周）导致错过合同截止期</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>雨季/淡季（11-2月低潮）现金流紧张</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>无法扩展车队以满足船运公司最低要求</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>高柴油成本（RM3.35/升）和滞留费吞噬利润</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-green-600 font-bold text-lg mb-3">我们的解决方案</div>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>仅需10%首付（vs 银行25-30%）。保留现金用于柴油和运营</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>紧急合同2小时批准。标准申请当天批准</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>季节性付款计划与巴生港集装箱周期对齐</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>车队融资批量折扣（2台以上利率低0.5-1.5%）</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>SKDS 2.0柴油补贴指导和GPS合规支持</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-primary to-secondary p-6 rounded-lg shadow-md text-white">
+          <div class="font-bold text-lg mb-3">真实成功案例</div>
+          <div class="text-sm leading-relaxed">
+            <p class="mb-3"><strong>来自巴生的李先生</strong>需要3台斯堪尼亚拖车头（每台RM 45万）用于MSC五年合同。</p>
+            <p class="mb-3"><strong>银行拒绝。</strong>我们在2小时内批准了RM 120万车队融资，仅需RM 13.5万首付（10%）。</p>
+            <p class="font-semibold">结果：确保了MSC合同，3台车每月赚RM 12万，2年内扩展到8台车。年收入现在RM 180万。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator Section -->
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold text-primary mb-4 text-center">计算您的拖车头投资回报</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">投资示例（1台车）：</h4>
+            <ul class="space-y-1 text-gray-700">
+              <li>• 二手斯堪尼亚6x4（8年车龄）：RM 180,000</li>
+              <li>• 首付（10%）：RM 18,000</li>
+              <li>• 月供（48个月）：RM 4,200</li>
+              <li>• 总利息成本：RM 19,600</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">收入潜力（巴生港）：</h4>
+            <ul class="space-y-1 text-gray-700">
+              <li>• 每趟费率：RM 180-280（40尺柜）</li>
+              <li>• 每日趟数：2趟（港口-吉隆坡往返）</li>
+              <li>• 月收入（25天）：RM 9,000-14,000</li>
+              <li>• <strong class="text-green-600">回本期：2-3个月</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-500">
+          <p class="text-sm text-gray-800">
+            <strong>关键洞察：</strong>平均每趟RM 200 x 每天2趟 x 25个工作日 = 月收入RM 10,000。扣除RM 4,200贷款、RM 2,500柴油（SKDS补贴）、RM 800维修、RM 1,000司机/费用 = 每台车每月利润RM 1,500。3台车 = RM 4,500/月 = 年利润RM 54,000。
+          </p>
+        </div>
+      </div>
+
+      <!-- Trust Building Chinese Cultural Element -->
+      <div class="max-w-3xl mx-auto mt-12 text-center p-6 bg-white rounded-lg shadow-md">
+        <h3 class="text-2xl font-bold text-primary mb-4">40年信誉，服务华人货运社区</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          我们深刻理解华人货运商的需求和挑战。从家族生意传承到车队扩展，从应对季节性波动到把握船运公司合同机会。我们不仅是金融公司，更是您生意成长路上的可靠伙伴和朋友。
+        </p>
+        <p class="text-primary font-semibold text-lg">
+          超过70%的客户来自巴生港华人社区推荐 - 这是最好的信任证明（口碑相传）
+        </p>
+        <p class="text-gray-600 text-sm mt-2">
+          我们讲华语、理解关系、重视信誉。像家人一样对待每一位客户。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          为什么巴生港货运商选择Ing Heng Credit
+        </h2>
+        <p class="text-xl text-gray-600">
+          我们理解集装箱货运，专门为巴生港运营商设计融资
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">计算您的月供</h2>
+          <p class="text-gray-600">根据车价和贷款期限估算拖车头融资月供</p>
+        </div>
+        <Calculator lang={lang} equipmentType="拖车头" defaultPrice={180000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          5个简单步骤获得您的拖车头
+        </h2>
+        <p class="text-xl text-gray-600">
+          从申请到拉集装箱最快3-5天
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请拖车头融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          立即开始申请
+        </a>
+        <p class="text-sm text-gray-600 mt-3">2小时内获得批准 | 无义务报价</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types -->
+  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们融资的拖车头类型
+        </h2>
+        <p class="text-xl text-gray-600">
+          从6x2轻型到8x4重载卡车的所有配置
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {equipmentTypes.map((equipment) => (
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
+            <p class="text-gray-600 mb-3">{equipment.description}</p>
+            <div class="text-sm text-gray-700 space-y-1">
+              <p><strong>应用：</strong> {equipment.applications}</p>
+              <p><strong>价格范围：</strong> <span class="text-primary font-semibold">{equipment.priceRange}</span></p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">接受的拖车头品牌</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium hover:shadow-md transition-shadow">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-gray-600 mt-4">新旧车辆均接受。欧洲、日本和中国品牌都融资。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping Line Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          船运公司合同融资
+        </h2>
+        <p class="text-xl text-gray-600">
+          有马士基、MSC、达飞合同？获得更好的融资条款
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold text-primary mb-6">巴生港主要船运公司</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">MSC（地中海航运公司）</div>
+                <div class="text-sm text-gray-600">全球847万标准箱容量。最大船队。2001年起在马来西亚。</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">马士基 Maersk</div>
+                <div class="text-sm text-gray-600">1974年起在马来西亚。在吉隆坡、槟城、巴生港、丹绒柏勒巴斯设有办事处。</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">达飞轮船 CMA CGM</div>
+                <div class="text-sm text-gray-600">在马来西亚有5个办事处。在巴生港和柔佛拥有集装箱堆场。</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-lg shadow-lg text-white">
+          <h3 class="text-2xl font-bold mb-6">基于合同融资的优势</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5">✓</span>
+              <div>
+                <div class="font-semibold">更高贷款金额</div>
+                <div class="text-sm opacity-90">高达90%融资 vs 标准80%（首付更少）</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5">✓</span>
+              <div>
+                <div class="font-semibold">更优利率</div>
+                <div class="text-sm opacity-90">已验证船运合同折扣0.5-1%</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5">✓</span>
+              <div>
+                <div class="font-semibold">更快批准</div>
+                <div class="text-sm opacity-90">紧急合同截止期2小时批准</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5">✓</span>
+              <div>
+                <div class="font-semibold">灵活条款</div>
+                <div class="text-sm opacity-90">还款期限与合同期限对齐（最长84个月）</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          巴生港货运商的成功故事
+        </h2>
+        <p class="text-xl text-gray-600">
+          通过我们的融资扩大车队的真实集装箱运营商
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          拖车头融资常见问题
+        </h2>
+        <p class="text-xl text-gray-600">
+          巴生港货运商需要了解的关于融资拖车头的一切
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        准备好扩大车队并发展货运生意了吗？
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        巴生港2028年前容量翻倍。现在是为大规模增长准备车队的时候。今天申请，2小时内批准。加入4000+选择Ing Heng Credit的货运商。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请拖车头融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          立即WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>无义务报价</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>2小时批准</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40年经验 | 巴生港专家</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            或填写我们的在线申请表格
+          </h2>
+          <p class="text-gray-600">
+            我们将在营业时间内2小时内与您联系（周一至周五9AM-5PM，周六9AM-1PM）
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,655 @@
+---
+/**
+ * Halaman Perkhidmatan Insurans Peralatan - Bahasa Malaysia
+ * Penyelesaian insurans komprehensif untuk peralatan pembinaan dan kenderaan komersial
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'ms';
+
+// Konfigurasi SEO - Pengoptimuman Pakar 20 Tahun
+const title = 'Insurans Peralatan Malaysia | Insurans Mesin & Kenderaan | Ing Heng Credit';
+const description = 'Insurans peralatan komprehensif untuk jengkaut, lori, forklift & mesin pembinaan di Malaysia. Perlindungan penuh, tuntutan pantas, premium kompetitif. Lindungi pelaburan anda hari ini!';
+const keywords = ['insurans peralatan Malaysia', 'insurans mesin', 'insurans jengkaut', 'insurans lori Malaysia', 'insurans forklift', 'insurans peralatan pembinaan', 'insurans kenderaan komersial', 'insurans mesin berat Malaysia'];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Perkhidmatan', href: '/ms/services' },
+  { label: 'Perkhidmatan Insurans', href: '/ms/services/insurance' }
+];
+
+// Data Soalan Lazim
+const faqs = [
+  {
+    question: 'Apakah jenis peralatan yang boleh diinsuranskan?',
+    answer: 'Kami menyediakan perlindungan insurans untuk semua jenis peralatan pembinaan (jengkaut, jentera tanah, penggelek jalan), kenderaan logistik (lori, trak kontena, penarik utama), peralatan pengangkat (forklift, kren), dan mesin perindustrian (penjana, pemampat). Kedua-dua peralatan baru dan terpakai sehingga 15 tahun boleh diinsuranskan, tertakluk kepada penilaian keadaan.'
+  },
+  {
+    question: 'Apakah yang dilindungi oleh insurans peralatan?',
+    answer: 'Perlindungan komprehensif kami merangkumi kerosakan akibat kemalangan, kecurian, kebakaran, bencana alam, liabiliti pihak ketiga, kecederaan operator, perlindungan kerosakan (pilihan), dan kerosakan semasa pengangkutan. Tuan/Puan boleh memilih antara perlindungan komprehensif atau perlindungan pihak ketiga sahaja bergantung kepada keperluan dan bajet. Semua polisi termasuk bantuan kecemasan 24/7.'
+  },
+  {
+    question: 'Berapakah kos insurans peralatan?',
+    answer: 'Premium insurans berbeza-beza berdasarkan jenis peralatan, umur, nilai, persekitaran penggunaan, dan tahap perlindungan. Biasanya, perlindungan komprehensif berharga 1.5-3% daripada nilai peralatan setiap tahun, manakala perlindungan pihak ketiga sahaja jauh lebih murah. Kami bekerjasama dengan pelbagai penyedia insurans untuk mendapatkan kadar paling kompetitif untuk Tuan/Puan.'
+  },
+  {
+    question: 'Adakah insurans wajib untuk peralatan yang dibiayai?',
+    answer: 'Ya, insurans komprehensif diwajibkan untuk semua peralatan yang dibeli melalui pembiayaan pajakan atau pinjaman. Ini melindungi Tuan/Puan dan pembiaya daripada kerugian keseluruhan. Insurans mesti kekal aktif sepanjang tempoh pembiayaan, dan Tuan/Puan mesti disenaraikan sebagai penerima manfaat bersama pembiaya.'
+  },
+  {
+    question: 'Bagaimanakah saya membuat tuntutan insurans?',
+    answer: 'Hubungi kami segera apabila insiden berlaku. Kami akan membimbing Tuan/Puan melalui proses tuntutan: (1) Laporkan insiden dalam masa 24 jam, (2) Sediakan gambar dan dokumentasi, (3) Lengkapkan borang tuntutan, (4) Pemeriksaan penilai (jika diperlukan), (5) Kelulusan dan pembayaran tuntutan. Pasukan kami membantu sepanjang masa untuk memastikan pemprosesan yang lancar dan pantas.'
+  },
+  {
+    question: 'Bolehkah saya insurans peralatan terpakai atau lama?',
+    answer: 'Ya, kami boleh menginsuranskan peralatan terpakai sehingga 15 tahun, tertakluk kepada penilaian keadaan dan penilaian nilai. Peralatan yang lebih lama mungkin memerlukan pemeriksaan sebelum perlindungan diberikan. Kadar premium mungkin sedikit lebih tinggi untuk mesin yang lebih lama, dan had perlindungan mungkin berdasarkan nilai pasaran semasa dan bukannya kos penggantian.'
+  },
+  {
+    question: 'Apa yang berlaku jika tuntutan saya ditolak?',
+    answer: 'Penolakan tuntutan biasanya berlaku akibat pengecualian polisi, ketidakdedahan maklumat, atau kecuaian yang boleh dicegah. Jika tuntutan Tuan/Puan ditolak, kami akan membantu memahami sebabnya dan meneroka pilihan rayuan. Kami bekerjasama dengan syarikat insurans untuk menyokong pelanggan kami dan memastikan layanan adil dalam semua situasi tuntutan.'
+  },
+  {
+    question: 'Bolehkah saya membatalkan polisi insurans saya?',
+    answer: 'Ya, Tuan/Puan boleh membatalkan polisi, tetapi untuk peralatan yang dibiayai, Tuan/Puan mesti segera menggantikannya dengan perlindungan yang setara. Untuk peralatan milik penuh, pembatalan dibenarkan dengan notis yang sewajarnya. Tuan/Puan mungkin menerima bayaran balik pro-rata premium yang tidak digunakan, tertakluk kepada terma dan syarat syarikat insurans.'
+  },
+  {
+    question: 'Adakah insurans melindungi kesilapan operator atau penyalahgunaan?',
+    answer: 'Polisi standard biasanya mengecualikan kerosakan daripada penyalahgunaan sengaja atau kecuaian besar. Walau bagaimanapun, kesilapan operator secara tidak sengaja semasa operasi biasa biasanya dilindungi. Kami mengesyorkan latihan operator yang betul dan mengikuti garis panduan pengeluar untuk mengekalkan kesahan perlindungan dan mengelakkan pertikaian tuntutan.'
+  },
+  {
+    question: 'Bagaimanakah saya mendapatkan sebut harga insurans?',
+    answer: 'Hubungi kami sahaja di 017-570 0889, WhatsApp, atau isi borang dalam talian kami. Berikan butiran peralatan (jenis, jenama, model, tahun, nilai) dan kami akan mendapatkan sebut harga daripada pelbagai penyedia insurans dalam masa 24 jam. Perkhidmatan kami percuma, dan kami membantu Tuan/Puan memilih perlindungan terbaik untuk keperluan Tuan/Puan.'
+  }
+];
+
+// Service Schema
+const serviceSchema = generateServiceSchema({
+  name: 'Perkhidmatan Insurans Peralatan',
+  description: 'Perlindungan insurans komprehensif untuk peralatan pembinaan, kenderaan komersial, dan mesin perindustrian termasuk kerosakan akibat kemalangan, kecurian, dan perlindungan liabiliti',
+  serviceType: 'Equipment Insurance'
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbItems} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Penyelesaian Insurans Peralatan Komprehensif"
+    subtitle="Lindungi pelaburan peralatan berharga Tuan/Puan dengan perlindungan lengkap. Premium kompetitif, pemprosesan tuntutan pantas, dan sokongan 24/7 untuk semua mesin dan kenderaan Tuan/Puan."
+    ctaText="Dapatkan Sebut Harga Insurans"
+    ctaLink="/ms/contact"
+    ctaSecondaryText="WhatsApp Kami"
+    ctaSecondaryLink="https://wa.me/60175700889"
+    backgroundImage="/images/services/insurance-hero.jpg"
+    lang={lang}
+    trustSignals={['Sokongan Tuntutan 24/7', 'Pemprosesan Pantas', 'Premium Kompetitif']}
+  />
+
+  <!-- Why Insurance Matters Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Mengapa Insurans Peralatan Penting untuk Perniagaan Tuan/Puan
+          </h2>
+          <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Peralatan pembinaan, kenderaan logistik, dan mesin perindustrian merupakan pelaburan besar untuk perniagaan Malaysia. Sebuah jengkaut sahaja boleh berharga RM 200,000-500,000, manakala armada lori boleh mencecah berjuta-juta ringgit. Tanpa perlindungan insurans yang sewajarnya, satu kemalangan, kecurian, atau bencana alam boleh memudaratkan perniagaan Tuan/Puan secara kewangan.
+          </p>
+
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Insurans peralatan melindungi perniagaan Tuan/Puan daripada kerugian besar, memastikan kesinambungan perniagaan, dan memberikan ketenangan fikiran. Sama ada jengkaut Tuan/Puan rosak di tapak, lori Tuan/Puan terlibat dalam kemalangan, atau forklift Tuan/Puan dicuri, insurans komprehensif bermakna Tuan/Puan dilindungi dan boleh kembali beroperasi dengan cepat.
+          </p>
+
+          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-sm">
+            <h3 class="text-xl font-bold text-primary mb-3">Senario Perlindungan Perniagaan Sebenar:</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li><strong>Kerosakan Akibat Kemalangan:</strong> Jengkaut terbalik semasa kerja di cerun bukit - pembaikan RM 180,000 dilindungi</li>
+              <li><strong>Pencegahan Kecurian:</strong> Forklift dicuri dari gudang - penggantian RM 95,000 dilindungi</li>
+              <li><strong>Bencana Alam:</strong> Banjir merosakkan 3 buah lori - kerugian keseluruhan RM 450,000 dilindungi</li>
+              <li><strong>Liabiliti Pihak Ketiga:</strong> Peralatan menyebabkan kerosakan harta - tuntutan RM 200,000 dilindungi</li>
+              <li><strong>Kerosakan Kebakaran:</strong> Kebakaran gudang memusnahkan mesin - peralatan RM 600,000 diganti</li>
+            </ul>
+          </div>
+
+          <p class="text-gray-700 leading-relaxed mt-6">
+            <strong>Untuk peralatan yang dibiayai:</strong> Insurans adalah wajib dan melindungi Tuan/Puan serta pembiaya. Premium insurans bulanan Tuan/Puan (biasanya 1.5-3% daripada nilai peralatan setiap tahun) adalah harga kecil berbanding potensi kerugian keseluruhan aset dan kewajipan pinjaman berterusan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Types Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Perlindungan Insurans Komprehensif
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Perlindungan lengkap untuk peralatan Tuan/Puan terhadap semua risiko utama
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-primary">
+          <div class="flex items-center mb-6">
+            <div class="text-primary text-5xl mr-4">🛡️</div>
+            <h3 class="text-2xl font-bold text-primary">Perlindungan Komprehensif</h3>
+          </div>
+          <p class="text-gray-600 mb-6">
+            Perlindungan lengkap terhadap semua risiko termasuk kemalangan, kecurian, kebakaran, bencana alam, dan liabiliti pihak ketiga. Disyorkan untuk peralatan yang dibiayai dan mesin bernilai tinggi.
+          </p>
+          <ul class="text-gray-700 space-y-3">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kerosakan akibat kemalangan & perlanggaran</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kecurian & rampasan</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kebakaran & letupan</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Bencana alam (banjir, tanah runtuh)</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kerosakan harta & kecederaan badan pihak ketiga</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kerosakan berniat jahat & vandalisme</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-secondary">
+          <div class="flex items-center mb-6">
+            <div class="text-secondary text-5xl mr-4">📋</div>
+            <h3 class="text-2xl font-bold text-primary">Perlindungan Pihak Ketiga</h3>
+          </div>
+          <p class="text-gray-600 mb-6">
+            Perlindungan liabiliti asas yang melindungi kerosakan yang disebabkan oleh peralatan Tuan/Puan kepada pihak ketiga. Pilihan mesra bajet untuk peralatan milik penuh dengan nilai lebih rendah. Tidak sesuai untuk peralatan yang dibiayai.
+          </p>
+          <ul class="text-gray-700 space-y-3">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kerosakan harta pihak ketiga</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Liabiliti kecederaan badan</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Perlindungan liabiliti undang-undang</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>Kos premium lebih rendah</span>
+            </li>
+          </ul>
+          <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-sm">
+            <p class="text-gray-700"><strong>Nota:</strong> TIDAK melindungi kerosakan pada peralatan Tuan/Puan sendiri, kecurian, kebakaran, atau bencana alam. Kerosakan sendiri adalah tanggungjawab Tuan/Puan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <p class="text-gray-600 mb-6 text-lg">
+          Tidak pasti perlindungan mana yang sesuai dengan keperluan Tuan/Puan? Pakar insurans kami akan membantu Tuan/Puan memilih perlindungan yang tepat.
+        </p>
+        <CTAButton
+          text="Dapatkan Perundingan Insurans Percuma"
+          link="/ms/contact"
+          variant="primary"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment We Insure Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Peralatan & Kenderaan Yang Kami Insuranskan
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Perlindungan insurans lengkap untuk semua jenis peralatan dan kenderaan komersial
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">🚜</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Peralatan Pembinaan</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Jengkaut (1-40 tan)</li>
+            <li>• Jentera Tanah & Penggred</li>
+            <li>• Pemuat Backhoe</li>
+            <li>• Penggelek Jalan</li>
+            <li>• Pemuat Roda</li>
+            <li>• Pemuat Skid Steer</li>
+            <li>• Pemampat</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">🚛</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Kenderaan Komersial</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Lori & Trak</li>
+            <li>• Trak Kontena</li>
+            <li>• Penarik Utama</li>
+            <li>• Trak Treler</li>
+            <li>• Trak Pembuang</li>
+            <li>• Van Kargo</li>
+            <li>• Trak Tangki</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">🏗️</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Peralatan Pengangkat</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Forklift (1-25 tan)</li>
+            <li>• Kren Mudah Alih</li>
+            <li>• Kren Menara</li>
+            <li>• Reach Stackers</li>
+            <li>• Platform Udara</li>
+            <li>• Lif Gunting</li>
+            <li>• Telehandlers</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Mesin Perindustrian</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Penjana (10-500kVA)</li>
+            <li>• Pemampat Udara</li>
+            <li>• Pengadun Konkrit</li>
+            <li>• Mesin Kimpalan</li>
+            <li>• Pam & Motor</li>
+            <li>• Peralatan Penggerudian</li>
+            <li>• Mesin Kilang</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Mengapa Memilih Perkhidmatan Insurans Kami?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Sokongan insurans pakar untuk pemilik peralatan Malaysia
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <BenefitCard
+          icon="shield"
+          title="Pelbagai Rakan Insurans"
+          description="Akses kepada 10+ penyedia insurans memastikan Tuan/Puan mendapat premium paling kompetitif dan syarat perlindungan terbaik."
+        />
+
+        <BenefitCard
+          icon="clock"
+          title="Sokongan Tuntutan 24/7"
+          description="Bantuan kecemasan dan sokongan tuntutan sepanjang masa. Kami sedia membantu apabila kemalangan berlaku."
+        />
+
+        <BenefitCard
+          icon="lightning"
+          title="Pemprosesan Tuntutan Pantas"
+          description="Kami mempercepatkan tuntutan Tuan/Puan dengan syarikat insurans untuk membolehkan Tuan/Puan kembali beroperasi dengan cepat."
+        />
+
+        <BenefitCard
+          icon="percentage"
+          title="Premium Kompetitif"
+          description="Kadar terbaik di pasaran melalui rangkaian penanggung insurans yang luas. Jimat kos insurans."
+        />
+
+        <BenefitCard
+          icon="users"
+          title="Bantuan Tuntutan Berdedikasi"
+          description="Sokongan peribadi sepanjang proses tuntutan—dari dokumentasi hingga penyelesaian."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="Pilihan Pembayaran Fleksibel"
+          description="Pelan pembayaran premium tahunan, separuh tahunan, atau suku tahunan untuk disesuaikan dengan aliran tunai Tuan/Puan."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="Peringatan Pembaharuan Percuma"
+          description="Tidak akan terlepas tarikh akhir pembaharuan. Kami secara proaktif mengingatkan Tuan/Puan sebelum polisi tamat tempoh."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="Tiada Caj Perkhidmatan"
+          description="Perkhidmatan nasihat insurans dan bantuan tuntutan kami adalah percuma sepenuhnya untuk pelanggan."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Claims Process Section -->
+  <section class="section-padding bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Proses Tuntutan Mudah
+          </h2>
+          <p class="text-xl text-white/90">
+            Kami membimbing Tuan/Puan melalui setiap langkah untuk memastikan tuntutan pantas dan tanpa kerumitan
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+            <h3 class="text-lg font-bold mb-2">Laporkan Insiden</h3>
+            <p class="text-sm text-white/90">Hubungi kami segera dalam masa 24 jam selepas insiden berlaku</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+            <h3 class="text-lg font-bold mb-2">Dokumentasikan Kerosakan</h3>
+            <p class="text-sm text-white/90">Ambil gambar, kumpul bukti, dan buat laporan polis jika perlu</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+            <h3 class="text-lg font-bold mb-2">Hantar Borang</h3>
+            <p class="text-sm text-white/90">Lengkapkan borang tuntutan dengan bantuan dan bimbingan kami</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+            <h3 class="text-lg font-bold mb-2">Penilaian</h3>
+            <p class="text-sm text-white/90">Penilai insurans memeriksa kerosakan dan mengesahkan tuntutan</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">5</div>
+            <h3 class="text-lg font-bold mb-2">Terima Bayaran</h3>
+            <p class="text-sm text-white/90">Tuntutan diluluskan dan penyelesaian dibayar kepada Tuan/Puan atau pembaik</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-white/90 mb-6">
+            Tuntutan biasanya diproses dalam masa 7-14 hari untuk kes yang mudah. Kami bersama Tuan/Puan di setiap langkah.
+          </p>
+          <CTAButton
+            text="Hubungi Sokongan Tuntutan"
+            link="https://wa.me/60175700889"
+            variant="accent"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Soalan Lazim
+          </h2>
+          <p class="text-xl text-gray-600">
+            Semua yang perlu Tuan/Puan ketahui tentang insurans peralatan
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-gray-600 mb-6">
+            Perlukan penjelasan tentang perlindungan? Pakar insurans kami bersedia membantu.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="Hubungi: 017-570 0889"
+              link="tel:+60175700889"
+              variant="primary"
+              icon="phone"
+            />
+            <CTAButton
+              text="WhatsApp Kami"
+              link="https://wa.me/60175700889"
+              variant="accent"
+              icon="whatsapp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Insurance Providers Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Rakan Insurans Yang Dipercayai
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Kami bekerjasama dengan penyedia insurans terkemuka Malaysia untuk mendapatkan perlindungan dan kadar terbaik untuk Tuan/Puan
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-md max-w-3xl mx-auto">
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          Kerjasama kami dengan lebih 10 syarikat insurans utama termasuk <strong>Allianz, AIG, Zurich, Etiqa, Tune Protect, Pacific & Orient, Liberty Insurance, dan Tokio Marine</strong> membolehkan kami membandingkan polisi dan mendapatkan premium paling kompetitif untuk peralatan Tuan/Puan.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Tidak seperti berurusan terus dengan satu penanggung insurans sahaja, pendekatan berbilang penyedia kami memastikan Tuan/Puan mendapat nasihat tidak berat sebelah dan perlindungan nilai terbaik. Kami mengendalikan semua rundingan dan kertas kerja bagi pihak Tuan/Puan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Penyelesaian Peralatan Lengkap
+        </h2>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold text-primary mb-3">Pembiayaan Pajakan</h3>
+          <p class="text-gray-600 mb-4">
+            Biayai peralatan Tuan/Puan melalui ansuran bulanan yang berpatutan dengan tempoh dari 12-60 bulan. Dapatkan insurans digabungkan dengan pakej pembiayaan Tuan/Puan.
+          </p>
+          <CTAButton
+            text="Ketahui Tentang Pajakan"
+            link="/ms/services/hire-purchase"
+            variant="primary"
+          />
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold text-primary mb-3">Pembiayaan Pinjaman Perniagaan</h3>
+          <p class="text-gray-600 mb-4">
+            Dapatkan modal kerja, pinjaman peralatan, atau pembiayaan pengembangan dengan kadar kompetitif dan kelulusan pantas. Lindungi peralatan yang dibiayai dengan insurans.
+          </p>
+          <CTAButton
+            text="Ketahui Tentang Pinjaman"
+            link="/ms/services/loan-financing"
+            variant="primary"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-primary via-secondary to-accent text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Lindungi Pelaburan Peralatan Tuan/Puan Hari Ini
+        </h2>
+        <p class="text-xl text-white/90 mb-8 leading-relaxed">
+          Jangan risiko kehilangan peralatan berharga Tuan/Puan kepada kemalangan, kecurian, atau bencana alam. Dapatkan sebut harga insurans percuma dan lindungi perniagaan Tuan/Puan dengan perlindungan komprehensif.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">10+</div>
+            <div class="text-white/90">Rakan Insurans</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">24/7</div>
+            <div class="text-white/90">Sokongan Tuntutan</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">Percuma</div>
+            <div class="text-white/90">Perkhidmatan Nasihat</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton
+            text="Dapatkan Sebut Harga Insurans Percuma"
+            link="/ms/contact"
+            variant="accent"
+            size="large"
+          />
+          <CTAButton
+            text="WhatsApp: 017-570 0889"
+            link="https://wa.me/60175700889"
+            variant="outline-white"
+            size="large"
+            icon="whatsapp"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Dapatkan Sebut Harga Insurans Percuma Tuan/Puan
+          </h2>
+          <p class="text-xl text-gray-600">
+            Isi borang dan terima pelbagai sebut harga insurans dalam masa 24 jam
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: 3rem 0;
+    }
+  }
+</style>

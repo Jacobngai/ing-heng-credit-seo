@@ -1,0 +1,656 @@
+---
+/**
+ * Equipment Insurance Service Page - Mandarin Chinese
+ * 工程设备保险服务 - 华语
+ * Culturally adapted for Chinese market - focus on trust, protection, business continuity
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'zh';
+
+// SEO Configuration - Chinese market keywords
+const title = '工程设备保险马来西亚 | 机械设备保险 | 英兴信贷';
+const description = '提供挖掘机、罗里、叉车等工程设备全面保险。保障您的投资，快速理赔服务，保费合理。24小时索赔支持，让您安心经营。';
+const keywords = ['工程设备保险', '机械保险', '挖掘机保险', '罗里保险', '叉车保险', '建筑设备保险', '商用车辆保险', '重型机械保险'];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '服务', href: '/zh/services' },
+  { label: '保险服务', href: '/zh/services/insurance' }
+];
+
+// FAQ Data - Culturally adapted for Chinese market
+const faqs = [
+  {
+    question: '哪些设备可以投保？',
+    answer: '我们为所有类型的工程设备提供保险，包括建筑设备（挖掘机、推土机、压路机）、物流车辆（罗里、货柜车、拖车头）、起重设备（叉车、吊车）和工业机械（发电机、压缩机）。新旧设备（不超过15年）都可以投保，但需要评估设备状况。'
+  },
+  {
+    question: '保险涵盖哪些保障？',
+    answer: '我们的全面保险包括意外损坏、失窃、火灾、自然灾害（水灾、山泥倾泻）、第三方责任险、操作员受伤、机械故障保障（可选）和运输损坏。您可以根据需要和预算选择全险或第三方责任险。所有保单都包括24小时紧急援助服务。'
+  },
+  {
+    question: '保险费用是多少？',
+    answer: '保险费用根据设备类型、年限、价值、使用环境和保障范围而定。通常，全险费用为设备价值的1.5-3%（每年），第三方责任险费用则更低。我们与多家保险公司合作，为您争取最优惠的保费。'
+  },
+  {
+    question: '融资购买的设备必须投保吗？',
+    answer: '是的，通过分期付款或贷款融资购买的所有设备都必须购买全险。这保障了您和金融机构的利益，避免全损风险。保险必须在整个融资期间保持有效，受益人必须包括您和金融机构。'
+  },
+  {
+    question: '如何申请保险理赔？',
+    answer: '事故发生时请立即联系我们。我们将指导您完成理赔流程：（1）24小时内报告事故，（2）提供照片和文件证明，（3）填写理赔表格，（4）评估员检查（如需要），（5）批准理赔并支付赔偿。我们的团队全程协助，确保快速顺利的理赔处理。'
+  },
+  {
+    question: '二手或旧设备可以投保吗？',
+    answer: '可以，我们可以为使用年限不超过15年的二手设备投保，但需要评估状况和估价。较旧的设备可能需要检查才能获得保障。保费可能稍高，保障额度将根据当前市场价值而非重置成本计算。'
+  },
+  {
+    question: '如果理赔被拒绝怎么办？',
+    answer: '理赔被拒通常是因为保单排除事项、未如实告知或可预防的疏忽。如果您的理赔被拒，我们会帮助您了解原因并探讨上诉选项。我们与保险公司合作，为客户争取权益，确保在所有理赔情况下得到公平对待。'
+  },
+  {
+    question: '可以取消保险保单吗？',
+    answer: '可以取消保单，但对于融资设备，您必须立即更换同等保障。对于全额付清的设备，可以在适当通知后取消。您可能会获得未使用保费的按比例退款，具体取决于保险公司的条款和条件。'
+  },
+  {
+    question: '保险是否涵盖操作员错误或不当使用？',
+    answer: '标准保单通常排除故意不当使用或严重疏忽造成的损坏。但是，正常操作期间的意外操作员错误通常会得到保障。我们建议进行适当的操作员培训并遵守制造商指南，以保持保障有效并避免理赔纠纷。'
+  },
+  {
+    question: '如何获取保险报价？',
+    answer: '只需致电 017-570 0889、WhatsApp 或填写我们的在线表格。提供设备详情（类型、品牌、型号、年份、价值），我们将在24小时内为您获取多家保险公司的报价。我们的服务是免费的，我们帮助您选择最适合您需求的保障。'
+  }
+];
+
+// Service Schema
+const serviceSchema = generateServiceSchema({
+  name: '工程设备保险服务',
+  description: '为建筑设备、商用车辆和工业机械提供全面保险，包括意外损坏、失窃和责任保护',
+  serviceType: 'Equipment Insurance'
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbItems} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="工程设备全面保险保障"
+    subtitle="为您的宝贵设备投资提供完整保障。保费合理，理赔快速，24小时全天候支持，涵盖所有机械和车辆。"
+    ctaText="获取保险报价"
+    ctaLink="/zh/contact"
+    ctaSecondaryText="WhatsApp 联系"
+    ctaSecondaryLink="https://wa.me/60175700889"
+    backgroundImage="/images/services/insurance-hero.jpg"
+    lang={lang}
+    trustSignals={['24小时理赔支持', '快速处理', '合理保费']}
+  />
+
+  <!-- Why Insurance Matters Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            为什么工程设备保险对您的生意至关重要
+          </h2>
+          <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 leading-relaxed mb-6">
+            建筑设备、物流车辆和工业机械是马来西亚企业的重大投资。一台挖掘机可能价值 RM 200,000-500,000，罗里车队价值可达数百万令吉。如果没有适当的保险保障，一次事故、失窃或自然灾害就可能对您的生意造成毁灭性的财务打击。
+          </p>
+
+          <p class="text-gray-700 leading-relaxed mb-6">
+            设备保险保护您的生意免受灾难性损失，确保业务连续性，让您安心经营。无论是您的挖掘机在工地受损、罗里发生交通事故，还是叉车被盗，全面保险意味着您得到保障，可以快速恢复业务运作。
+          </p>
+
+          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-sm">
+            <h3 class="text-xl font-bold text-primary mb-3">真实业务保障案例：</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li><strong>意外损坏：</strong> 挖掘机在山坡施工时翻覆 - RM 180,000 维修费用获得赔偿</li>
+              <li><strong>防止失窃：</strong> 叉车从仓库被盗 - RM 95,000 更换费用获得赔偿</li>
+              <li><strong>自然灾害：</strong> 水灾损坏3辆罗里 - RM 450,000 全损获得赔偿</li>
+              <li><strong>第三方责任：</strong> 设备造成财产损坏 - RM 200,000 索赔获得赔偿</li>
+              <li><strong>火灾损坏：</strong> 仓库火灾烧毁机械 - RM 600,000 设备获得更换</li>
+            </ul>
+          </div>
+
+          <p class="text-gray-700 leading-relaxed mt-6">
+            <strong>对于融资设备：</strong> 保险是强制性的，保障您和金融机构的利益。您的月度保险费（通常为设备价值的1.5-3%每年）与可能的全损和持续贷款义务相比，是一个小小的代价。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Types Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          全面保险保障范围
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          为您的设备提供全方位保护，抵御所有主要风险
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-primary">
+          <div class="flex items-center mb-6">
+            <div class="text-primary text-5xl mr-4">🛡️</div>
+            <h3 class="text-2xl font-bold text-primary">全面综合保险</h3>
+          </div>
+          <p class="text-gray-600 mb-6">
+            全方位保护，涵盖所有风险，包括事故、失窃、火灾、自然灾害和第三方责任。推荐用于融资设备和高价值机械。
+          </p>
+          <ul class="text-gray-700 space-y-3">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>意外损坏和碰撞</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>失窃和劫持</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>火灾和爆炸</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>自然灾害（水灾、山泥倾泻）</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>第三方财产损坏和人身伤害</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>恶意损坏和破坏</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-secondary">
+          <div class="flex items-center mb-6">
+            <div class="text-secondary text-5xl mr-4">📋</div>
+            <h3 class="text-2xl font-bold text-primary">第三方责任保险</h3>
+          </div>
+          <p class="text-gray-600 mb-6">
+            基本责任保护，涵盖您的设备对第三方造成的损害。适合全额付清的低价值设备，经济实惠的选择。不适用于融资设备。
+          </p>
+          <ul class="text-gray-700 space-y-3">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>第三方财产损坏</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>人身伤害责任</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>法律责任保障</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>保费较低</span>
+            </li>
+          </ul>
+          <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-sm">
+            <p class="text-gray-700"><strong>注意：</strong> 不涵盖您自己的设备损坏、失窃、火灾或自然灾害。自有损坏由您自己承担责任。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <p class="text-gray-600 mb-6 text-lg">
+          不确定哪种保障适合您的需求？我们的保险专员将帮助您选择合适的保护方案。
+        </p>
+        <CTAButton
+          text="获取免费保险咨询"
+          link="/zh/contact"
+          variant="primary"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment We Insure Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们承保的设备和车辆
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          为所有类型的商用设备和车辆提供全面保险保障
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">🚜</div>
+          <h3 class="text-xl font-bold text-primary mb-3">建筑设备</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• 挖掘机（1-40吨）</li>
+            <li>• 推土机和平地机</li>
+            <li>• 反铲装载机</li>
+            <li>• 压路机</li>
+            <li>• 轮式装载机</li>
+            <li>• 滑移装载机</li>
+            <li>• 压实机</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">🚛</div>
+          <h3 class="text-xl font-bold text-primary mb-3">商用车辆</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• 罗里和卡车</li>
+            <li>• 货柜车</li>
+            <li>• 拖车头</li>
+            <li>• 拖车</li>
+            <li>• 自卸车</li>
+            <li>• 货运厢型车</li>
+            <li>• 油罐车</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">🏗️</div>
+          <h3 class="text-xl font-bold text-primary mb-3">起重设备</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• 叉车（1-25吨）</li>
+            <li>• 移动式吊车</li>
+            <li>• 塔式吊车</li>
+            <li>• 正面吊</li>
+            <li>• 高空作业平台</li>
+            <li>• 剪刀升降机</li>
+            <li>• 伸缩臂叉车</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <div class="text-primary text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold text-primary mb-3">工业机械</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• 发电机（10-500kVA）</li>
+            <li>• 空气压缩机</li>
+            <li>• 混凝土搅拌机</li>
+            <li>• 焊接机</li>
+            <li>• 泵和马达</li>
+            <li>• 钻孔设备</li>
+            <li>• 工厂机械</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          为什么选择我们的保险服务？
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          专业保险支持，服务马来西亚设备业主
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <BenefitCard
+          icon="shield"
+          title="多家保险合作伙伴"
+          description="与超过10家保险公司合作，确保您获得最优惠的保费和最佳的保障条款。"
+        />
+
+        <BenefitCard
+          icon="clock"
+          title="24小时理赔支持"
+          description="全天候紧急援助和理赔支持。事故发生时，我们随时在您身边。"
+        />
+
+        <BenefitCard
+          icon="lightning"
+          title="快速理赔处理"
+          description="我们与保险公司加快您的理赔处理，让您快速恢复业务运作。"
+        />
+
+        <BenefitCard
+          icon="percentage"
+          title="合理保费"
+          description="通过我们广泛的保险公司网络，获得市场最优惠的保费。节省保险成本。"
+        />
+
+        <BenefitCard
+          icon="users"
+          title="专属理赔协助"
+          description="从文件准备到理赔结算，全程提供个人化支持。"
+        />
+
+        <BenefitCard
+          icon="default"
+          title="灵活付款方式"
+          description="年度、半年度或季度保费付款计划，配合您的现金流。"
+        />
+
+        <BenefitCard
+          icon="default"
+          title="免费续保提醒"
+          description="永不错过续保期限。我们在保单到期前主动提醒您。"
+        />
+
+        <BenefitCard
+          icon="default"
+          title="无服务费"
+          description="我们的保险咨询和理赔协助服务对客户完全免费。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Claims Process Section -->
+  <section class="section-padding bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            简单理赔流程
+          </h2>
+          <p class="text-xl text-white/90">
+            我们指导您完成每一步，确保快速、无忧的理赔
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+            <h3 class="text-lg font-bold mb-2">报告事故</h3>
+            <p class="text-sm text-white/90">事故发生后24小时内立即联系我们</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+            <h3 class="text-lg font-bold mb-2">记录损坏</h3>
+            <p class="text-sm text-white/90">拍照、收集证据，如需要则提交警察报告</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+            <h3 class="text-lg font-bold mb-2">提交表格</h3>
+            <p class="text-sm text-white/90">在我们的协助和指导下填写理赔表格</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+            <h3 class="text-lg font-bold mb-2">评估</h3>
+            <p class="text-sm text-white/90">保险评估员检查损坏并核实理赔</p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg text-center">
+            <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">5</div>
+            <h3 class="text-lg font-bold mb-2">获得赔偿</h3>
+            <p class="text-sm text-white/90">理赔批准并支付给您或维修商</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-white/90 mb-6">
+            简单案件的理赔通常在7-14天内处理完毕。我们全程陪伴您。
+          </p>
+          <CTAButton
+            text="联系理赔支持"
+            link="https://wa.me/60175700889"
+            variant="accent"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            常见问题解答
+          </h2>
+          <p class="text-xl text-gray-600">
+            关于设备保险您需要了解的一切
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-gray-600 mb-6">
+            需要了解保障详情？我们的保险专员随时准备为您服务。
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="致电：017-570 0889"
+              link="tel:+60175700889"
+              variant="primary"
+              icon="phone"
+            />
+            <CTAButton
+              text="WhatsApp 联系"
+              link="https://wa.me/60175700889"
+              variant="accent"
+              icon="whatsapp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Insurance Providers Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          信赖的保险合作伙伴
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          我们与马来西亚领先的保险公司合作，为您争取最佳保障和保费
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-md max-w-3xl mx-auto">
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          我们与超过10家主要保险公司建立合作关系，包括 <strong>Allianz（安联）、AIG（美国国际集团）、Zurich（苏黎世）、Etiqa、Tune Protect、Pacific & Orient、Liberty Insurance 和 Tokio Marine（东京海上）</strong>，让我们能够比较保单并为您的设备争取最优惠的保费。
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          与直接找单一保险公司不同，我们的多家保险公司合作方式确保您获得公正的建议和最超值的保障。我们代表您处理所有谈判和文件工作。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          完整设备解决方案
+        </h2>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold text-primary mb-3">分期付款融资</h3>
+          <p class="text-gray-600 mb-4">
+            通过实惠的月度分期付款为您的设备融资，期限从12-60个月。将保险与您的融资配套捆绑在一起。
+          </p>
+          <CTAButton
+            text="了解分期付款"
+            link="/zh/services/hire-purchase"
+            variant="primary"
+          />
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold text-primary mb-3">商业贷款融资</h3>
+          <p class="text-gray-600 mb-4">
+            获取营运资金、设备贷款或扩展资金，利率优惠，批准快速。为融资设备提供保险保障。
+          </p>
+          <CTAButton
+            text="了解贷款服务"
+            link="/zh/services/loan-financing"
+            variant="primary"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-primary via-secondary to-accent text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          立即保护您的设备投资
+        </h2>
+        <p class="text-xl text-white/90 mb-8 leading-relaxed">
+          不要冒险让您宝贵的设备遭受事故、失窃或自然灾害的损失。获取免费保险报价，用全面保障保护您的生意。
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">10+</div>
+            <div class="text-white/90">保险合作伙伴</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">24/7</div>
+            <div class="text-white/90">理赔支持</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">免费</div>
+            <div class="text-white/90">咨询服务</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton
+            text="获取免费保险报价"
+            link="/zh/contact"
+            variant="accent"
+            size="large"
+          />
+          <CTAButton
+            text="WhatsApp：017-570 0889"
+            link="https://wa.me/60175700889"
+            variant="outline-white"
+            size="large"
+            icon="whatsapp"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            获取免费保险报价
+          </h2>
+          <p class="text-xl text-gray-600">
+            填写表格，24小时内收到多家保险公司的报价
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: 3rem 0;
+    }
+  }
+</style>
