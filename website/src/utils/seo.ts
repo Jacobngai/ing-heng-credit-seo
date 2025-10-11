@@ -13,7 +13,7 @@ export interface SEOProps {
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
-  keywords?: string[];
+  keywords?: string[] | string;
 }
 
 /**
@@ -37,6 +37,13 @@ export function generateSEOTags(props: SEOProps) {
   const fullCanonical = canonical || `${siteUrl}/${locale}/`;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
+  // Handle keywords as either string or array
+  const keywordsString = typeof keywords === 'string'
+    ? keywords
+    : Array.isArray(keywords)
+      ? keywords.join(', ')
+      : '';
+
   return {
     title,
     description,
@@ -53,7 +60,7 @@ export function generateSEOTags(props: SEOProps) {
     publishedTime,
     modifiedTime,
     author,
-    keywords: keywords.join(', '),
+    keywords: keywordsString,
   };
 }
 

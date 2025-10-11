@@ -189,6 +189,73 @@ export function generateProductSchema(props: ProductSchemaProps) {
 }
 
 /**
+ * HowTo Schema for Step-by-Step Guides
+ */
+export interface HowToStep {
+  name: string;
+  text: string;
+  url?: string;
+}
+
+export interface HowToSchemaProps {
+  name: string;
+  description: string;
+  totalTime?: string;
+  estimatedCost?: {
+    value: string;
+    currency: string;
+  };
+  supply?: string[];
+  tool?: string[];
+  steps: HowToStep[];
+  image?: string;
+}
+
+export function generateHowToSchema(props: HowToSchemaProps) {
+  const {
+    name,
+    description,
+    totalTime,
+    estimatedCost,
+    supply,
+    tool,
+    steps,
+    image,
+  } = props;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description,
+    image: image || 'https://ingheng-credit.vercel.app/images/og-default.jpg',
+    totalTime: totalTime || 'PT30M',
+    estimatedCost: estimatedCost
+      ? {
+          '@type': 'MonetaryAmount',
+          currency: estimatedCost.currency,
+          value: estimatedCost.value,
+        }
+      : undefined,
+    supply: supply?.map((item) => ({
+      '@type': 'HowToSupply',
+      name: item,
+    })),
+    tool: tool?.map((item) => ({
+      '@type': 'HowToTool',
+      name: item,
+    })),
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      name: step.name,
+      text: step.text,
+      url: step.url,
+      position: index + 1,
+    })),
+  };
+}
+
+/**
  * Service Schema for Financial Services
  */
 export interface ServiceSchemaProps {
