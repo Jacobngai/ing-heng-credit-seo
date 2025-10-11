@@ -6,8 +6,10 @@
 
 import type { Locale } from '../utils/i18n';
 import { t } from '../utils/i18n';
-import { NAV_LINKS, COMPANY_INFO } from '../utils/constants';
+import { NAV_LINKS, COMPANY_INFO, EQUIPMENT_NAV_ITEMS, BLOG_NAV_ITEMS } from '../utils/constants';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import EquipmentDropdown from './EquipmentDropdown.astro';
+import BlogDropdown from './BlogDropdown.astro';
 
 interface Props {
   lang: Locale;
@@ -50,6 +52,15 @@ function isActive(href: string): boolean {
         {NAV_LINKS.map((link) => {
           const href = link.href === '/' ? `/${lang}/` : `/${lang}${link.href}`;
           const active = isActive(link.href);
+
+          // Use dropdowns for equipment and blog
+          if (link.hasDropdown && link.href === '/equipment') {
+            return <EquipmentDropdown lang={lang} currentPath={currentPath} />;
+          }
+
+          if (link.hasDropdown && link.href === '/blog') {
+            return <BlogDropdown lang={lang} currentPath={currentPath} />;
+          }
 
           return (
             <a
@@ -107,6 +118,108 @@ function isActive(href: string): boolean {
           const href = link.href === '/' ? `/${lang}/` : `/${lang}${link.href}`;
           const active = isActive(link.href);
 
+          // Equipment menu with submenu
+          if (link.hasDropdown && link.href === '/equipment') {
+            return (
+              <div class="mobile-submenu-wrapper">
+                <button
+                  type="button"
+                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    active
+                      ? 'bg-primary text-white'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+                  }`}
+                  aria-expanded="false"
+                  aria-controls="mobile-equipment-submenu"
+                  data-menu="equipment"
+                >
+                  <span>{t(link.label, lang)}</span>
+                  <svg
+                    class="w-5 h-5 transition-transform duration-200 submenu-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="mobile-equipment-submenu" class="hidden pl-4 mt-1 space-y-1">
+                  {EQUIPMENT_NAV_ITEMS.map((item) => {
+                    const existingPages = ['/equipment', '/equipment/excavator'];
+                    const pageExists = existingPages.includes(item.href);
+                    const equipHref = item.href === '/equipment' ? `/${lang}/equipment` :
+                                    pageExists ? `/${lang}${item.href}` :
+                                    `/${lang}/equipment#construction-equipment`;
+                    const equipActive = currentPath.includes(item.href) && item.href !== '/equipment';
+
+                    return (
+                      <a
+                        href={equipHref}
+                        class={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                          equipActive
+                            ? 'bg-blue-50 text-primary'
+                            : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+                        }`}
+                      >
+                        <span class="mr-2">{item.icon}</span>
+                        {t(item.label, lang)}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
+          // Blog menu with submenu
+          if (link.hasDropdown && link.href === '/blog') {
+            return (
+              <div class="mobile-submenu-wrapper">
+                <button
+                  type="button"
+                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    active
+                      ? 'bg-primary text-white'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+                  }`}
+                  aria-expanded="false"
+                  aria-controls="mobile-blog-submenu"
+                  data-menu="blog"
+                >
+                  <span>{t(link.label, lang)}</span>
+                  <svg
+                    class="w-5 h-5 transition-transform duration-200 submenu-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="mobile-blog-submenu" class="hidden pl-4 mt-1 space-y-1">
+                  {BLOG_NAV_ITEMS.map((item) => {
+                    const blogHref = item.href === '/blog' ? `/${lang}/blog` : `/${lang}${item.href}`;
+                    const blogActive = currentPath.includes(item.href) && item.href !== '/blog';
+
+                    return (
+                      <a
+                        href={blogHref}
+                        class={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                          blogActive
+                            ? 'bg-yellow-50 text-primary'
+                            : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+                        }`}
+                      >
+                        <span class="mr-2">{item.icon}</span>
+                        {t(item.label, lang)}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
           return (
             <a
               href={href}
@@ -145,3 +258,44 @@ function isActive(href: string): boolean {
     </div>
   </nav>
 </header>
+
+<script>
+  // Mobile Menu Toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Mobile Submenu Toggles (Equipment & Blog)
+    const submenuTriggers = document.querySelectorAll('.mobile-submenu-trigger');
+
+    submenuTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const menuType = trigger.getAttribute('data-menu');
+        const submenu = document.getElementById(`mobile-${menuType}-submenu`);
+        const arrow = trigger.querySelector('.submenu-arrow');
+
+        if (submenu && arrow) {
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+          trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+          submenu.classList.toggle('hidden');
+          arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .submenu-arrow {
+    transition: transform 0.2s ease;
+  }
+</style>

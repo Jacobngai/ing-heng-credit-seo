@@ -274,14 +274,107 @@ export const PERSONAS = {
 };
 
 /**
+ * Equipment Navigation Menu
+ */
+export const EQUIPMENT_NAV_ITEMS = [
+  {
+    label: 'equipment.allEquipment',
+    href: '/equipment',
+    description: 'equipment.allEquipmentDesc',
+    icon: '🏗️',
+  },
+  {
+    label: 'equipment.excavator',
+    href: '/equipment/excavator',
+    description: 'equipment.excavatorDesc',
+    icon: '🚜',
+    badge: 'popular',
+  },
+  {
+    label: 'equipment.lorry',
+    href: '/equipment/lorry',
+    description: 'equipment.lorryDesc',
+    icon: '🚛',
+    badge: 'fastApproval',
+  },
+  {
+    label: 'equipment.forklift',
+    href: '/equipment/forklift',
+    description: 'equipment.forkliftDesc',
+    icon: '🏭',
+  },
+  {
+    label: 'equipment.crane',
+    href: '/equipment/crane',
+    description: 'equipment.craneDesc',
+    icon: '🏗️',
+  },
+  {
+    label: 'equipment.primeMover',
+    href: '/equipment/prime-mover',
+    description: 'equipment.primeMoverDesc',
+    icon: '🚚',
+  },
+  {
+    label: 'equipment.bulldozer',
+    href: '/equipment/bulldozer',
+    description: 'equipment.bulldozerDesc',
+    icon: '🚜',
+  },
+];
+
+/**
+ * Blog Navigation Menu (Categories)
+ */
+export const BLOG_NAV_ITEMS = [
+  {
+    label: 'blog.allArticles',
+    href: '/blog',
+    description: 'blog.allArticlesDesc',
+    icon: '📚',
+  },
+  {
+    label: 'blog.equipmentFinancing',
+    href: '/blog/category/equipment-financing',
+    description: 'blog.equipmentFinancingDesc',
+    icon: '🏗️',
+    badge: 'popular',
+  },
+  {
+    label: 'blog.industryGuides',
+    href: '/blog/category/industry-guides',
+    description: 'blog.industryGuidesDesc',
+    icon: '📖',
+  },
+  {
+    label: 'blog.cashFlowManagement',
+    href: '/blog/category/cash-flow',
+    description: 'blog.cashFlowDesc',
+    icon: '💰',
+  },
+  {
+    label: 'blog.taxLegal',
+    href: '/blog/category/tax-legal',
+    description: 'blog.taxLegalDesc',
+    icon: '📋',
+  },
+  {
+    label: 'blog.successStories',
+    href: '/blog/category/success-stories',
+    description: 'blog.successStoriesDesc',
+    icon: '⭐',
+  },
+];
+
+/**
  * Navigation Links
  */
 export const NAV_LINKS = [
   { href: '/', label: 'nav.home' },
   { href: '/about', label: 'nav.about' },
   { href: '/services', label: 'nav.services' },
-  { href: '/equipment', label: 'nav.equipment' },
-  { href: '/blog', label: 'nav.blog' },
+  { href: '/equipment', label: 'nav.equipment', hasDropdown: true },
+  { href: '/blog', label: 'nav.blog', hasDropdown: true },
   { href: '/contact', label: 'nav.contact' },
 ];
 

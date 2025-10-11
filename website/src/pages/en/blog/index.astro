@@ -1,0 +1,232 @@
+---
+/**
+ * Blog Index Page - English
+ * Catalog page showcasing all blog articles and categories
+ * SEO: Equipment financing blog, construction financing guides
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Equipment Financing Blog | Expert Guides & Industry Insights';
+const pageDescription = 'Expert advice on equipment financing, cash flow management, and business growth for construction, logistics, and industrial businesses in Malaysia.';
+const keywords = ['equipment financing blog', 'construction financing guides', 'cash flow management tips', 'business financing advice Malaysia'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Blog', url: '/en/blog' },
+];
+
+// Blog Categories
+const categories = [
+  {
+    name: 'Equipment Financing',
+    slug: 'equipment-financing',
+    description: 'Comprehensive guides on financing excavators, lorries, forklifts, and construction equipment',
+    icon: '🏗️',
+    articleCount: 12,
+  },
+  {
+    name: 'Industry Guides',
+    slug: 'industry-guides',
+    description: 'Expert tips and strategies for construction, logistics, and manufacturing industries',
+    icon: '📖',
+    articleCount: 8,
+  },
+  {
+    name: 'Cash Flow Management',
+    slug: 'cash-flow',
+    description: 'Practical advice on managing seasonal cash flow and business finances',
+    icon: '💰',
+    articleCount: 10,
+  },
+  {
+    name: 'Tax & Legal',
+    slug: 'tax-legal',
+    description: 'Tax benefits, compliance requirements, and legal considerations for equipment financing',
+    icon: '📋',
+    articleCount: 6,
+  },
+  {
+    name: 'Success Stories',
+    slug: 'success-stories',
+    description: 'Real case studies from Malaysian contractors and business owners',
+    icon: '⭐',
+    articleCount: 15,
+  },
+];
+
+// Featured Articles (sample data - will be dynamic later)
+const featuredArticles = [
+  {
+    title: 'How Equipment Financing Helps Construction Companies Manage Seasonal Cash Flow',
+    slug: 'equipment-financing-seasonal-cash-flow',
+    category: 'Equipment Financing',
+    excerpt: 'Learn how equipment financing seasonal cash flow strategies help construction contractors manage monsoon slowdowns, maintain operations, and grow during peak seasons.',
+    image: '/images/blog/construction-seasonal-cash-flow.jpg',
+    date: '2025-10-10',
+    readTime: '9 min read',
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Equipment Financing Insights & Expert Guides"
+    subtitle="Practical advice on financing, cash flow management, and business growth for Malaysian contractors and entrepreneurs"
+    ctaText="Get Free Financing Quote"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20equipment%20financing."
+    ctaSecondaryText="View All Categories"
+    ctaSecondaryLink="#categories"
+    backgroundImage="/images/blog-hero.jpg"
+    lang={lang}
+    trustSignals={['40+ Expert Articles', '5,000+ Readers', 'Updated Weekly', 'Industry-Specific Tips']}
+  />
+
+  <!-- Blog Categories -->
+  <section class="section bg-gray-50" id="categories">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Browse by Category
+        </h2>
+        <p class="text-xl text-gray-600">
+          Find the insights most relevant to your business
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map((category) => (
+          <a
+            href={`/en/blog/category/${category.slug}`}
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group"
+          >
+            <div class="text-4xl mb-4">{category.icon}</div>
+            <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
+              {category.name}
+            </h3>
+            <p class="text-gray-600 mb-4 text-sm">{category.description}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-500">{category.articleCount} articles</span>
+              <svg class="w-5 h-5 text-primary group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Articles -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Latest Articles
+        </h2>
+        <p class="text-xl text-gray-600">
+          Fresh insights and practical guides for your business
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredArticles.map((article) => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="h-48 bg-gray-200">
+              <!-- Article image will go here -->
+            </div>
+            <div class="p-6">
+              <div class="text-sm text-secondary font-semibold mb-2">{article.category}</div>
+              <h3 class="text-xl font-bold text-primary mb-3 line-clamp-2">
+                <a href={`/en/blog/${article.slug}`} class="hover:text-secondary transition-colors">
+                  {article.title}
+                </a>
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">{article.excerpt}</p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>{article.date}</span>
+                <span>{article.readTime}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- View All Button -->
+      <div class="text-center mt-12">
+        <p class="text-gray-600 mb-6">More articles coming soon! We're constantly adding new content to help your business grow.</p>
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20financing%20advice."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary inline-block"
+        >
+          Contact Us for Personalized Advice
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+        Stay Updated with Equipment Financing Insights
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+        Get weekly tips on equipment financing, cash flow management, and business growth strategies delivered to your inbox.
+      </p>
+
+      <div class="max-w-md mx-auto">
+        <p class="text-gray-600 mb-4">
+          For now, connect with us on WhatsApp to get personalized financing advice:
+        </p>
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20receive%20equipment%20financing%20updates."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent w-full flex items-center justify-center space-x-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span>Connect on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

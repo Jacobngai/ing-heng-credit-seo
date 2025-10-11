@@ -1,0 +1,350 @@
+---
+/**
+ * Equipment Dropdown Component
+ * Mega-menu style dropdown for equipment navigation
+ * Shows all equipment types with icons, descriptions, and badges
+ */
+
+import type { Locale } from '../utils/i18n';
+import { t } from '../utils/i18n';
+import { EQUIPMENT_NAV_ITEMS } from '../utils/constants';
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+// Check if equipment section is active
+const isEquipmentActive = currentPath.includes('/equipment');
+---
+
+<div class="equipment-dropdown-wrapper">
+  <!-- Desktop Dropdown Trigger -->
+  <button
+    type="button"
+    class={`equipment-dropdown-trigger nav-link ${isEquipmentActive ? 'nav-link-active' : ''}`}
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Equipment navigation menu"
+  >
+    {t('nav.equipment', lang)}
+    <svg
+      class="w-4 h-4 ml-1 transition-transform duration-200 dropdown-arrow"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div class="equipment-dropdown-menu">
+    <div class="equipment-dropdown-content">
+      <div class="equipment-grid">
+        {EQUIPMENT_NAV_ITEMS.map((item) => {
+          // Temporary: link non-existent pages to equipment catalog
+          const existingPages = ['/equipment', '/equipment/excavator'];
+          const pageExists = existingPages.includes(item.href);
+          const href = item.href === '/equipment' ? `/${lang}/equipment` :
+                      pageExists ? `/${lang}${item.href}` :
+                      `/${lang}/equipment#construction-equipment`;
+          const isActive = currentPath.includes(item.href) && item.href !== '/equipment';
+
+          return (
+            <a
+              href={href}
+              class={`equipment-dropdown-item ${isActive ? 'active' : ''}`}
+            >
+              <div class="equipment-item-content">
+                <div class="equipment-item-header">
+                  <span class="equipment-icon">{item.icon}</span>
+                  <span class="equipment-name">{t(item.label, lang)}</span>
+                  {item.badge && (
+                    <span class={`equipment-badge badge-${item.badge}`}>
+                      {t(`equipment.${item.badge}`, lang)}
+                    </span>
+                  )}
+                </div>
+                <p class="equipment-description">
+                  {t(item.description, lang)}
+                </p>
+              </div>
+              <svg
+                class="equipment-arrow"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Call-to-Action Footer -->
+      <div class="equipment-dropdown-footer">
+        <p class="footer-text">{t('equipment.allEquipmentDesc', lang)}</p>
+        <a
+          href={`/${lang}/contact`}
+          class="footer-cta"
+        >
+          {t('common.contactUs', lang)} →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .equipment-dropdown-wrapper {
+    position: relative;
+  }
+
+  .equipment-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+  }
+
+  .equipment-dropdown-trigger:hover .dropdown-arrow {
+    transform: translateY(2px);
+  }
+
+  .equipment-dropdown-trigger[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .equipment-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0.75rem; /* Creates invisible bridge for mouse movement */
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 50;
+    width: max-content;
+    min-width: 600px;
+    max-width: 800px;
+  }
+
+  .equipment-dropdown-wrapper:hover .equipment-dropdown-menu,
+  .equipment-dropdown-trigger[aria-expanded="true"] + .equipment-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Keep dropdown open when hovering over the gap */
+  .equipment-dropdown-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 0.75rem; /* Bridge area */
+    background: transparent;
+    pointer-events: auto;
+  }
+
+  .equipment-dropdown-content {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+
+  /* Equipment Grid */
+  .equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .equipment-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .equipment-dropdown-item:hover {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-color: #0ea5e9;
+    transform: translateX(4px);
+  }
+
+  .equipment-dropdown-item.active {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-color: #2563eb;
+  }
+
+  .equipment-item-content {
+    flex: 1;
+  }
+
+  .equipment-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .equipment-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .equipment-name {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9375rem;
+  }
+
+  .equipment-badge {
+    font-size: 0.6875rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .badge-popular {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde047 100%);
+    color: #92400e;
+  }
+
+  .badge-fastApproval {
+    background: linear-gradient(135deg, #d1fae5 0%, #6ee7b7 100%);
+    color: #065f46;
+  }
+
+  .equipment-description {
+    font-size: 0.8125rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .equipment-arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #94a3b8;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .equipment-dropdown-item:hover .equipment-arrow {
+    color: #0ea5e9;
+    transform: translateX(4px);
+  }
+
+  /* Footer */
+  .equipment-dropdown-footer {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .footer-cta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0ea5e9;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-cta:hover {
+    color: #0284c7;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .equipment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .equipment-dropdown-menu {
+      min-width: 320px;
+      max-width: 90vw;
+    }
+  }
+</style>
+
+<script>
+  // Handle dropdown toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.querySelector('.equipment-dropdown-trigger');
+    const menu = document.querySelector('.equipment-dropdown-menu');
+    const wrapper = document.querySelector('.equipment-dropdown-wrapper');
+
+    if (trigger && menu && wrapper) {
+      // Toggle on click
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!wrapper.contains(e.target as Node)) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          trigger.setAttribute('aria-expanded', 'false');
+          trigger.focus();
+        }
+      });
+
+      // Keep open on hover (desktop)
+      wrapper.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 1024) {
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 1024) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  });
+</script>
