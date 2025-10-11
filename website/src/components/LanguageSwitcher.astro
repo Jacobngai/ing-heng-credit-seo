@@ -1,0 +1,109 @@
+---
+/**
+ * LanguageSwitcher Component
+ * Dropdown language selector with flags
+ */
+
+import type { Locale } from '../utils/i18n';
+import { getLocaleInfo, getAlternateUrl, locales } from '../utils/i18n';
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+const currentLocale = getLocaleInfo(lang);
+const availableLocales = locales.map((locale) => ({
+  ...getLocaleInfo(locale),
+  url: getAlternateUrl(currentPath, locale),
+  isCurrent: locale === lang,
+}));
+---
+
+<div class="relative inline-block text-left" data-language-switcher>
+  <!-- Selected Language Button -->
+  <button
+    type="button"
+    class="lang-switcher inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+    id="language-menu-button"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    <span class="mr-2 text-xl" aria-hidden="true">{currentLocale.flag}</span>
+    <span class="mr-2">{currentLocale.code.toUpperCase()}</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="language-menu-button"
+    id="language-menu"
+    tabindex="-1"
+  >
+    <div class="py-1" role="none">
+      {availableLocales.map((locale) => (
+        <a
+          href={locale.url}
+          class={`flex items-center px-4 py-2 text-sm transition-colors ${
+            locale.isCurrent
+              ? 'bg-primary text-white font-semibold'
+              : 'text-gray-700 hover:bg-gray-100'
+          }`}
+          role="menuitem"
+          tabindex={locale.isCurrent ? -1 : 0}
+          aria-current={locale.isCurrent ? 'true' : undefined}
+        >
+          <span class="mr-3 text-xl" aria-hidden="true">{locale.flag}</span>
+          <span>{locale.name}</span>
+          {locale.isCurrent && (
+            <svg class="ml-auto w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  // Language switcher dropdown functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const switcher = document.querySelector('[data-language-switcher]');
+    const button = document.getElementById('language-menu-button');
+    const menu = document.getElementById('language-menu');
+
+    if (!button || !menu) return;
+
+    // Toggle dropdown
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', (!isExpanded).toString());
+      menu.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (switcher && !switcher.contains(e.target as Node)) {
+        button.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+      }
+    });
+
+    // Close dropdown on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        button.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+        button.focus();
+      }
+    });
+  });
+</script>

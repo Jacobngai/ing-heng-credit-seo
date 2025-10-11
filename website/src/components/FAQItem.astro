@@ -1,0 +1,94 @@
+---
+/**
+ * FAQItem Component
+ * Collapsible accordion-style FAQ item with Schema.org markup
+ */
+
+interface Props {
+  question: string;
+  answer: string;
+  id?: string;
+  isOpen?: boolean;
+}
+
+const {
+  question,
+  answer,
+  id = `faq-${Math.random().toString(36).substr(2, 9)}`,
+  isOpen = false,
+} = Astro.props;
+---
+
+<div class="border border-gray-200 rounded-lg overflow-hidden" data-faq-item>
+  <!-- Question Button -->
+  <button
+    type="button"
+    class="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset transition-colors"
+    aria-expanded={isOpen}
+    aria-controls={id}
+    data-faq-button
+  >
+    <div class="flex items-center justify-between">
+      <h3 class="text-lg font-semibold text-primary pr-8">
+        {question}
+      </h3>
+      <svg
+        class="w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-300"
+        data-faq-icon
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </button>
+
+  <!-- Answer Content -->
+  <div
+    id={id}
+    class={`px-6 overflow-hidden transition-all duration-300 ${isOpen ? 'py-4 max-h-screen' : 'max-h-0'}`}
+    data-faq-content
+    role="region"
+    aria-labelledby={`${id}-button`}
+  >
+    <div class="prose prose-sm max-w-none text-gray-600">
+      <p set:html={answer} />
+    </div>
+  </div>
+</div>
+
+<script>
+  // FAQ accordion functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('[data-faq-item]');
+
+    faqItems.forEach((item) => {
+      const button = item.querySelector('[data-faq-button]') as HTMLButtonElement;
+      const content = item.querySelector('[data-faq-content]') as HTMLDivElement;
+      const icon = item.querySelector('[data-faq-icon]') as SVGElement;
+
+      if (!button || !content || !icon) return;
+
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Toggle current item
+        button.setAttribute('aria-expanded', (!isExpanded).toString());
+
+        if (!isExpanded) {
+          // Expand
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.classList.add('py-4');
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          // Collapse
+          content.style.maxHeight = '0';
+          content.classList.remove('py-4');
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  });
+</script>
