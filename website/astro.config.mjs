@@ -17,7 +17,7 @@ export default defineConfig({
     },
     imageService: true,
   }),
-  trailingSlash: 'always', // Enforce consistent URLs for SEO
+  trailingSlash: 'ignore', // Let Vercel handle trailing slashes
   build: {
     format: 'directory',
   },
