@@ -40,7 +40,7 @@ export default defineConfig({
     locales: ['en', 'zh', 'ms'],
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true, // Let Astro handle root redirect
+      redirectToDefaultLocale: false, // Disable to prevent redirect loops
     },
     fallback: {
       zh: 'en', // If Chinese page missing, show English
