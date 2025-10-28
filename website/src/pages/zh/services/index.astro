@@ -1,0 +1,508 @@
+---
+/**
+ * Services Index Page - Mandarin Chinese
+ * Ing Heng Credit 融资服务目录页面
+ * SEO: 马来西亚设备融资，租赁购买，贷款融资
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '设备融资服务 | 租购、贷款与保险 | 英兴信贷 Ing Heng Credit';
+const pageDescription = '马来西亚建筑与物流设备全套融资方案。租购、设备贷款和保险，24小时快速批准。立即联系我们！';
+const keywords = ['马来西亚设备融资服务', '租赁购买马来西亚', '设备贷款融资', '设备保险', '建筑设备融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '服务', url: '/zh/services' },
+];
+
+// Services Data
+const services = [
+  {
+    name: '租购融资 (Hire Purchase)',
+    description: '通过灵活的月付方式拥有您的设备。快速批准、竞争性利率、还款期长达60个月。',
+    icon: '🤝',
+    features: [
+      '24小时批准流程',
+      '95% 批准率',
+      '12-60个月还款期',
+      '首付低至10%'
+    ],
+    benefits: [
+      '最后一期付款后拥有设备',
+      '可享税务扣除',
+      '固定月付金额',
+      '接受新旧设备'
+    ],
+    link: '/zh/services/hire-purchase',
+    badge: '最受欢迎'
+  },
+  {
+    name: '贷款融资',
+    description: '灵活的设备贷款满足您的业务需求。快速获得资金购买或升级您的设备车队。',
+    icon: '💰',
+    features: [
+      '贷款额度 RM 30,000 - RM 5,000,000',
+      '2小时初步批准',
+      '竞争性利率从2.88%起',
+      '所需文件最少'
+    ],
+    benefits: [
+      '快速处理周期',
+      '提前结清无罚款',
+      '提供再融资选项',
+      '全国服务覆盖'
+    ],
+    link: '/zh/services/loan-financing',
+    badge: '快速批准'
+  },
+  {
+    name: '设备保险',
+    description: '为所有类型的建筑和物流设备提供全面的保险保障，保护您的投资。',
+    icon: '🛡️',
+    features: [
+      '全面保障',
+      '实惠保费',
+      '轻松续保',
+      '24/7理赔支持'
+    ],
+    benefits: [
+      '意外与盗窃保障',
+      '第三方责任险',
+      '设备更换选项',
+      '快速理赔处理'
+    ],
+    link: '/zh/services/insurance',
+    badge: null
+  }
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: '24小时快速批准', description: '紧急设备需求可在24小时内获得批准。' },
+  { icon: 'percentage', title: '95% 批准率', description: '行业领先的批准率。我们批准其他公司拒绝的申请。' },
+  { icon: 'calendar', title: '灵活的12-60个月期限', description: '选择符合您业务现金流的还款期限。' },
+  { icon: 'shield', title: '所有设备类型', description: '为任何设备提供融资，从挖掘机到叉车，新旧皆可。' },
+  { icon: 'users', title: '多语言支持', description: '我们的团队用中文、英文和马来文为您服务。' },
+  { icon: 'lightning', title: '低首付', description: '首付低至10%。为运营保留营运资金。' },
+];
+
+// How It Works Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: '联系我们', description: '通过WhatsApp、电话或在线表格联系。' },
+  { stepNumber: 2, icon: 'document', title: '提交文件', description: '提供基本商业文件和设备报价。' },
+  { stepNumber: 3, icon: 'check', title: '获得批准', description: '24小时内批准，享受最佳融资条件。' },
+  { stepNumber: 4, icon: 'truck', title: '接收设备', description: '签署协议并接收您的设备。立即开始运营！' },
+];
+
+// Industries We Serve
+const industries = [
+  { name: '建筑与土木工程', icon: 'building', equipment: '挖掘机、推土机、起重机、混凝土搅拌机' },
+  { name: '物流与运输', icon: 'truck', equipment: '货车、牵引车、拖车、配送车' },
+  { name: '制造与生产', icon: 'factory', equipment: 'CNC机床、工业工具、生产线' },
+  { name: '仓储与配送', icon: 'warehouse', equipment: '叉车、托盘搬运车、物料搬运设备' },
+  { name: '农业与种植园', icon: 'leaf', equipment: '拖拉机、收割机、棕榈油设备' },
+  { name: '采矿与采石', icon: 'mountain', equipment: '自卸车、挖掘机、破碎设备' },
+];
+
+// FAQs
+const faqs = [
+  {
+    question: '你们提供哪些融资服务？',
+    answer: '我们提供3项主要服务：设备所有权的租购、设备资本的贷款融资，以及资产保护的设备保险。所有服务适用于建筑、物流和工业设备。'
+  },
+  {
+    question: '批准需要多长时间？',
+    answer: '初步批准：2-24小时。最终批准：从完整文件提交后24-48小时。紧急情况可通过高级服务加快处理，满足关键项目截止日期。'
+  },
+  {
+    question: '可以融资二手设备吗？',
+    answer: '可以！我们为任何知名品牌的10年以下二手设备提供融资。设备必须状况良好并通过我们的检验。二手设备通常可享受与新设备相同的利率。'
+  },
+  {
+    question: '最低和最高贷款额是多少？',
+    answer: '最低：RM 30,000。最高：RM 5,000,000，取决于设备类型和您的财务状况。我们可以融资设备价值的90%，首付10%。'
+  },
+  {
+    question: '申请需要哪些文件？',
+    answer: '个人：身份证、6个月银行对账单、收入证明。公司：SSM注册、公司银行对账单、董事身份证、财务报表（如有）。流程简单直接。'
+  },
+  {
+    question: '你们服务马来西亚所有州吗？',
+    answer: '是的！我们服务所有州：雪兰莪、吉隆坡、柔佛、槟城、霹雳、彭亨、沙巴、砂拉越等。偏远地区申请可通过在线和WhatsApp处理。全国覆盖，本地专业。'
+  },
+  {
+    question: '提前还款有罚款吗？',
+    answer: '没有提前还款罚款！随时还清贷款，无需额外费用。许多客户在12-18个月后，当业务增长并符合更好利率时进行再融资。'
+  },
+  {
+    question: '租购与普通贷款的优势是什么？',
+    answer: '租购允许最后一期付款后拥有设备，享有税务扣除和固定月付便于规划。贷款融资则提供更多灵活性，可提前结清和再融资机会。'
+  }
+];
+
+// Service Schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: '马来西亚设备融资服务',
+  description: '为建筑、物流和工业设备提供全面融资服务，快速批准和灵活条款',
+  provider: {
+    '@type': 'Organization',
+    name: 'Ing Heng Credit & Leasing'
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Malaysia'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: '融资服务选项',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.name,
+        description: service.description
+      }
+    }))
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚最全面的设备融资服务"
+    subtitle="租购、贷款与保险 | 95% 批准率 | 灵活的12-60个月期限 | 多语言支持"
+    ctaText="获取免费报价"
+    ctaLink="https://wa.me/60175700889?text=您好！我想获取设备融资的报价。"
+    ctaSecondaryText="致电：017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/services-hero.jpg"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT持牌', '95% 批准率', '24小时快速批准']}
+  />
+
+  <!-- Services Overview -->
+  <section class="section bg-primary-light">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">
+          我们的服务
+        </h2>
+        <p class="text-xl text-gray-600">
+          满足您所有设备需求的完整融资解决方案
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <!-- Service Header -->
+            <div class="bg-secondary text-white p-6">
+              <div class="text-5xl mb-3">{service.icon}</div>
+              <h3 class="text-2xl font-bold mb-2">{service.name}</h3>
+              {service.badge && (
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold">
+                  {service.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Service Content -->
+            <div class="p-6">
+              <p class="text-gray-600 mb-6">{service.description}</p>
+
+              <!-- Features -->
+              <div class="mb-6">
+                <h4 class="font-bold text-primary mb-3">主要特点：</h4>
+                <ul class="space-y-2">
+                  {service.features.map((feature) => (
+                    <li class="text-sm text-gray-700 flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Benefits -->
+              <div class="mb-6">
+                <h4 class="font-bold text-primary mb-3">优势：</h4>
+                <ul class="space-y-2">
+                  {service.benefits.map((benefit) => (
+                    <li class="text-sm text-gray-700 flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- CTA Button -->
+              <a
+                href={service.link}
+                class="block w-full text-center bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              >
+                了解更多 →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-primary-ultralight">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">
+          为什么选择英兴信贷？
+        </h2>
+        <p class="text-xl text-gray-600">
+          快速批准、灵活条款和所有设备类型的竞争性利率
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">
+          融资如何运作
+        </h2>
+        <p class="text-xl text-gray-600">
+          从申请到设备交付的简单4步流程
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=您好！我想申请设备融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          立即开始申请
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section bg-primary-light">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">
+          我们服务的行业
+        </h2>
+        <p class="text-xl text-gray-600">
+          为每个商业领域提供专业融资解决方案
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {industries.map((industry) => (
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="text-3xl mb-3">
+              {industry.icon === 'building' && '🏗️'}
+              {industry.icon === 'truck' && '🚛'}
+              {industry.icon === 'factory' && '🏭'}
+              {industry.icon === 'warehouse' && '📦'}
+              {industry.icon === 'leaf' && '🌾'}
+              {industry.icon === 'mountain' && '⛏️'}
+            </div>
+            <h3 class="text-xl font-bold text-primary mb-2">{industry.name}</h3>
+            <p class="text-sm text-gray-600">{industry.equipment}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals & Stats -->
+  <section class="section bg-secondary text-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          受到4,000多家马来西亚企业的信赖
+        </h2>
+        <p class="text-xl opacity-90">
+          40年设备融资卓越服务
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-5xl font-bold mb-2">95%</div>
+          <div class="text-lg opacity-90">批准率</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">24小时</div>
+          <div class="text-lg opacity-90">批准时间</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">4,000+</div>
+          <div class="text-lg opacity-90">已融资公司</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">40年</div>
+          <div class="text-lg opacity-90">行业经验</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">
+          常见问题
+        </h2>
+        <p class="text-xl text-gray-600">
+          关于我们融资服务您需要了解的一切
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-primary-light">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-black mb-6">
+        准备好融资您的设备了吗？
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+        24小时内快速批准。加入选择英兴信贷满足设备融资需求的4,000多家企业。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=您好！我想申请设备融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn btn-secondary text-lg px-8 py-4"
+        >
+          致电：017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 mt-8">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>无义务报价</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>24小时快速批准</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>KPKT持牌</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+  }
+</style>

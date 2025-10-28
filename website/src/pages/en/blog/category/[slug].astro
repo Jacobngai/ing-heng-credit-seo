@@ -1,0 +1,222 @@
+---
+/**
+ * Dynamic Blog Category Page - English
+ * Shows blog posts filtered by category
+ * SEO: Category-specific content hub
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+// Generate static paths for all category pages
+export function getStaticPaths() {
+  // Category definitions (should match blog index page)
+  const categories = {
+    'equipment-financing': {
+      name: 'Equipment Financing Tips',
+      icon: '🏗️',
+      description: 'Expert tips and strategies for financing construction equipment, machinery, and commercial vehicles.'
+    },
+    'industry-news': {
+      name: 'Industry News & Trends',
+      icon: '📰',
+      description: 'Latest news, trends, and developments in the construction and logistics industries in Malaysia.'
+    },
+    'contractor-guides': {
+      name: 'Contractor Guides',
+      icon: '👷',
+      description: 'Practical guides for contractors on equipment acquisition, financing, and business management.'
+    },
+    'business-growth': {
+      name: 'Business Growth',
+      icon: '📈',
+      description: 'Strategies for growing your construction, logistics, or manufacturing business sustainably.'
+    },
+    'tax-compliance': {
+      name: 'Tax & Compliance',
+      icon: '📋',
+      description: 'Tax benefits, compliance requirements, and financial regulations for equipment financing in Malaysia.'
+    },
+    'equipment-maintenance': {
+      name: 'Equipment Maintenance',
+      icon: '🔧',
+      description: 'Maintenance tips and best practices to protect your equipment investment and maximize ROI.'
+    },
+  };
+
+  return Object.keys(categories).map(slug => ({
+    params: { slug }
+  }));
+}
+
+// Category definitions (should match blog index page)
+const categories = {
+  'equipment-financing': {
+    name: 'Equipment Financing Tips',
+    icon: '🏗️',
+    description: 'Expert tips and strategies for financing construction equipment, machinery, and commercial vehicles.'
+  },
+  'industry-news': {
+    name: 'Industry News & Trends',
+    icon: '📰',
+    description: 'Latest news, trends, and developments in the construction and logistics industries in Malaysia.'
+  },
+  'contractor-guides': {
+    name: 'Contractor Guides',
+    icon: '👷',
+    description: 'Practical guides for contractors on equipment acquisition, financing, and business management.'
+  },
+  'business-growth': {
+    name: 'Business Growth',
+    icon: '📈',
+    description: 'Strategies for growing your construction, logistics, or manufacturing business sustainably.'
+  },
+  'tax-compliance': {
+    name: 'Tax & Compliance',
+    icon: '📋',
+    description: 'Tax benefits, compliance requirements, and financial regulations for equipment financing in Malaysia.'
+  },
+  'equipment-maintenance': {
+    name: 'Equipment Maintenance',
+    icon: '🔧',
+    description: 'Maintenance tips and best practices to protect your equipment investment and maximize ROI.'
+  },
+};
+
+const { slug } = Astro.params;
+const lang = 'en';
+
+const category = categories[slug as keyof typeof categories];
+
+// If category doesn't exist, return 404
+if (!category) {
+  return Astro.redirect('/en/blog');
+}
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: category.name, href: `/en/blog/category/${slug}` },
+];
+
+// TODO: In future, fetch actual blog posts filtered by this category
+// For now, we'll show a coming soon message
+const categoryPosts = [];
+---
+
+<BaseLayout
+  title={`${category.name} | Equipment Financing Blog | Ing Heng Credit`}
+  description={category.description}
+  lang={lang}
+  keywords={[
+    category.name.toLowerCase(),
+    'equipment financing',
+    'Malaysia',
+    'blog',
+    'tips',
+    'guides'
+  ]}
+>
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Category Header -->
+  <section class="section bg-primary-ultralight">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <div class="text-6xl mb-6">{category.icon}</div>
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+        {category.name}
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        {category.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Coming Soon Message -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="card p-12">
+          <div class="text-5xl mb-6">📝</div>
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Content Coming Soon
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            We're currently developing in-depth articles for this category. In the meantime, explore our other blog posts or get in touch with our financing experts for personalized advice.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <CTAButton
+              text="View All Blog Posts"
+              link="/en/blog"
+              variant="primary"
+              size="large"
+            />
+            <CTAButton
+              text="Contact Us"
+              link="/en/contact"
+              variant="secondary"
+              size="large"
+            />
+          </div>
+
+          <!-- Quick Links to Other Categories -->
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <h3 class="text-xl font-bold text-primary mb-6">Browse Other Categories</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {Object.entries(categories).filter(([key]) => key !== slug).map(([key, cat]) => (
+                <a
+                  href={`/en/blog/category/${key}`}
+                  class="flex items-center gap-2 p-4 bg-gray-50 hover:bg-primary hover:text-white rounded-lg transition-all duration-200"
+                >
+                  <span class="text-2xl">{cat.icon}</span>
+                  <span class="font-semibold text-sm">{cat.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="card bg-secondary text-white p-8 mt-8">
+          <h3 class="text-2xl font-bold mb-3">Need Equipment Financing Advice?</h3>
+          <p class="mb-6 opacity-90">
+            Our experts are ready to help you find the perfect financing solution for your business.
+          </p>
+          <CTAButton
+            text="WhatsApp Us Now"
+            link={COMPANY_INFO.whatsapp.link}
+            variant="accent"
+            size="large"
+            icon="whatsapp"
+          />
+          <p class="mt-4 text-sm opacity-75">
+            Or call: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-accent">{COMPANY_INFO.phone.display}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+</style>

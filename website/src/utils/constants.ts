@@ -324,7 +324,7 @@ export const EQUIPMENT_NAV_ITEMS = [
 ];
 
 /**
- * Blog Navigation Menu (Categories)
+ * Blog Navigation Menu (Featured Articles)
  */
 export const BLOG_NAV_ITEMS = [
   {
@@ -334,35 +334,53 @@ export const BLOG_NAV_ITEMS = [
     icon: '📚',
   },
   {
-    label: 'blog.equipmentFinancing',
-    href: '/blog/category/equipment-financing',
-    description: 'blog.equipmentFinancingDesc',
-    icon: '🏗️',
+    label: 'blog.bulldozerG7',
+    href: '/blog/bulldozer-heavy-equipment-financing-g7-contractors',
+    description: 'blog.bulldozerG7Desc',
+    icon: '🚜',
     badge: 'popular',
   },
   {
-    label: 'blog.industryGuides',
-    href: '/blog/category/industry-guides',
-    description: 'blog.industryGuidesDesc',
-    icon: '📖',
+    label: 'blog.excavatorGuide',
+    href: '/blog/excavator-financing-complete-contractor-guide-2025',
+    description: 'blog.excavatorGuideDesc',
+    icon: '⚒️',
   },
   {
-    label: 'blog.cashFlowManagement',
-    href: '/blog/category/cash-flow',
-    description: 'blog.cashFlowDesc',
-    icon: '💰',
+    label: 'blog.lorryFleet',
+    href: '/blog/lorry-financing-fleet-expansion-logistics-complete-guide',
+    description: 'blog.lorryFleetDesc',
+    icon: '🚛',
   },
   {
-    label: 'blog.taxLegal',
-    href: '/blog/category/tax-legal',
-    description: 'blog.taxLegalDesc',
-    icon: '📋',
+    label: 'blog.forkliftGuide',
+    href: '/blog/forklift-financing-lease-vs-buy-warehouse-guide',
+    description: 'blog.forkliftGuideDesc',
+    icon: '🏭',
   },
   {
-    label: 'blog.successStories',
-    href: '/blog/category/success-stories',
-    description: 'blog.successStoriesDesc',
-    icon: '⭐',
+    label: 'blog.primeMover',
+    href: '/blog/prime-mover-financing-long-haul-logistics-investment-guide',
+    description: 'blog.primeMoverDesc',
+    icon: '🚚',
+  },
+  {
+    label: 'blog.craneGuide',
+    href: '/blog/crane-financing-vs-rental-construction-projects',
+    description: 'blog.craneGuideDesc',
+    icon: '🏗️',
+  },
+  {
+    label: 'blog.coldChain',
+    href: '/blog/cold-chain-refrigerated-truck-financing-guide',
+    description: 'blog.coldChainDesc',
+    icon: '🧊',
+  },
+  {
+    label: 'blog.manufacturing',
+    href: '/blog/manufacturing-equipment-financing-factory-expansion-guide',
+    description: 'blog.manufacturingDesc',
+    icon: '🏭',
   },
 ];
 

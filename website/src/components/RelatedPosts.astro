@@ -72,7 +72,7 @@ const t = translations[locale];
 ---
 
 {relatedPosts.length > 0 && (
-  <section class="bg-gray-50 py-12 lg:py-16">
+  <section class="bg-primary-ultralight py-12 lg:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-bold text-gray-900 mb-8">
         {t.heading}
@@ -82,14 +82,13 @@ const t = translations[locale];
         {relatedPosts.map(post => (
           <BlogCard
             title={post.data.title}
-            description={post.data.description}
-            slug={`/${locale}/blog/${post.slug}`}
+            excerpt={post.data.description}
+            slug={post.slug}
             image={post.data.ogImage}
-            publishDate={post.data.publishDate}
+            date={post.data.publishDate.toString()}
             category={post.data.category}
-            readingTime={post.data.readingTime}
             author={post.data.author}
-            locale={locale}
+            lang={locale}
           />
         ))}
       </div>

@@ -88,7 +88,7 @@ const t = translations[locale];
 
       <button
         type="submit"
-        class="newsletter-submit-btn px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        class="newsletter-submit-btn px-6 py-3 bg-secondary text-white rounded-lg font-semibold hover:bg-secondary-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
       >
         <span class="submit-text">{t.buttonText}</span>
         <span class="loading-spinner hidden">
@@ -100,7 +100,7 @@ const t = translations[locale];
       </button>
     </div>
 
-    <p class="text-xs text-gray-500 mt-3">
+    <p class="text-xs text-gray-600 mt-3">
       {t.privacy}
     </p>
 
@@ -117,7 +117,7 @@ const t = translations[locale];
 
 <style>
   .newsletter-boxed {
-    @apply bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-8 border border-primary/20;
+    @apply bg-primary-light rounded-xl p-8 border border-primary-dark/20;
   }
 
   .newsletter-inline {
@@ -174,16 +174,29 @@ const t = translations[locale];
         loadingSpinner?.classList.remove('hidden');
 
         try {
-          // TODO: Integrate with your email service (Mailchimp, ConvertKit, etc.)
-          // Example:
-          // const response = await fetch('/api/newsletter-subscribe', {
-          //   method: 'POST',
-          //   headers: { 'Content-Type': 'application/json' },
-          //   body: JSON.stringify({ email, locale: form.dataset.locale })
-          // });
+          // Formspree integration
+          // SETUP: Create account at formspree.io and replace YOUR_FORM_ID with your actual form ID
+          const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
-          // Simulate API call
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          // For now, use a simple email forward to company email
+          // Alternative: Set up Mailchimp, ConvertKit, or custom API endpoint
+          const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              locale: form.dataset.locale,
+              subject: `Newsletter Subscription - ${form.dataset.locale?.toUpperCase()}`,
+              message: `New newsletter subscription from ${email} (Language: ${form.dataset.locale})`
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error('Subscription failed');
+          }
 
           // Show success
           successElement?.classList.remove('hidden');

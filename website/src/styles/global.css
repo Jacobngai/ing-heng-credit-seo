@@ -10,11 +10,11 @@
 /* Custom Fonts */
 @layer base {
   body {
-    @apply font-sans antialiased text-gray-900 bg-white;
+    @apply font-sans antialiased text-text-primary bg-background-primary;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-primary;
+    @apply font-bold text-text-primary;
   }
 
   h1 {
@@ -46,36 +46,36 @@
   }
 
   a {
-    @apply text-secondary hover:text-accent transition-colors duration-300;
+    @apply text-secondary hover:text-secondary-dark transition-colors duration-300;
   }
 }
 
 /* Custom Components */
 @layer components {
-  /* Buttons */
+  /* Buttons - Updated with better contrast and focus states */
   .btn {
-    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 inline-block text-center;
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 inline-block text-center min-h-[44px] focus-visible:ring-2 focus-visible:ring-offset-2;
   }
 
   .btn-primary {
-    @apply bg-primary text-white hover:bg-secondary hover:shadow-lg;
+    @apply bg-secondary text-white hover:bg-secondary-dark hover:shadow-lg focus-visible:ring-secondary;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-primary hover:shadow-lg;
+    @apply bg-primary-darker text-text-primary hover:bg-primary-dark hover:shadow-lg focus-visible:ring-primary;
   }
 
   .btn-accent {
-    @apply bg-accent text-white hover:bg-orange-700 hover:shadow-lg;
+    @apply bg-accent text-white hover:bg-accent-dark hover:shadow-lg focus-visible:ring-accent;
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+    @apply border-2 border-secondary text-secondary hover:bg-secondary hover:text-white focus-visible:ring-secondary;
   }
 
   /* Cards */
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl;
+    @apply bg-background-card rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl;
   }
 
   .card-body {
@@ -92,48 +92,56 @@
     @apply py-12 md:py-16 lg:py-20;
   }
 
-  /* Hero */
+  /* Hero - Solid maroon background, no gradient */
   .hero {
-    @apply bg-gradient-to-r from-primary to-secondary text-white py-20 md:py-28 lg:py-36;
+    @apply bg-secondary text-white py-20 md:py-28 lg:py-36;
   }
 
-  /* Navigation */
+  /* Navigation - Improved contrast */
   .nav-link {
-    @apply text-gray-700 hover:text-primary transition-colors duration-300 font-medium;
+    @apply text-text-primary hover:text-secondary transition-colors duration-300 font-medium focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary rounded-md px-2 py-1;
   }
 
   .nav-link-active {
-    @apply text-primary font-bold;
+    @apply text-secondary font-bold;
   }
 
-  /* Form Elements */
+  /* Form Elements - Better accessibility */
   .form-input {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply w-full px-4 py-3 border border-primary-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary min-h-[44px] bg-background-white;
   }
 
   .form-label {
-    @apply block text-sm font-semibold text-gray-700 mb-2;
+    @apply block text-sm font-semibold text-text-primary mb-2;
   }
 
   .form-error {
-    @apply text-red-600 text-sm mt-1;
+    @apply text-error text-sm mt-1;
   }
 
-  /* Badge */
+  /* Badge - Improved size and contrast */
   .badge {
-    @apply inline-block px-3 py-1 text-xs font-semibold rounded-full;
+    @apply inline-block px-3 py-1.5 text-sm font-semibold rounded-full min-h-[24px];
   }
 
   .badge-primary {
-    @apply bg-primary text-white;
+    @apply bg-secondary text-white;
   }
 
   .badge-secondary {
-    @apply bg-secondary text-white;
+    @apply bg-primary-darker text-text-primary;
   }
 
   .badge-accent {
     @apply bg-accent text-white;
+  }
+
+  .badge-success {
+    @apply bg-success text-white;
+  }
+
+  .badge-warning {
+    @apply bg-warning text-white;
   }
 
   /* Blog Post Styles */
@@ -142,15 +150,15 @@
   }
 
   .blog-content h2 {
-    @apply text-2xl font-bold text-primary mt-8 mb-4;
+    @apply text-2xl font-bold text-text-primary mt-8 mb-4;
   }
 
   .blog-content h3 {
-    @apply text-xl font-bold text-primary mt-6 mb-3;
+    @apply text-xl font-bold text-text-primary mt-6 mb-3;
   }
 
   .blog-content p {
-    @apply mb-4 leading-relaxed;
+    @apply mb-4 leading-relaxed text-text-secondary;
   }
 
   .blog-content ul, .blog-content ol {
@@ -162,7 +170,7 @@
   }
 
   .blog-content a {
-    @apply text-secondary underline hover:text-accent;
+    @apply text-secondary underline hover:text-secondary-dark;
   }
 
   .blog-content img {
@@ -170,7 +178,7 @@
   }
 
   .blog-content blockquote {
-    @apply border-l-4 border-primary pl-4 italic my-6 text-gray-700;
+    @apply border-l-4 border-secondary pl-4 italic my-6 text-text-secondary;
   }
 
   /* WhatsApp CTA */
@@ -180,7 +188,7 @@
 
   /* Language Switcher */
   .lang-switcher {
-    @apply flex items-center space-x-2 bg-gray-100 rounded-lg p-2;
+    @apply flex items-center space-x-2 bg-primary-light rounded-lg p-2;
   }
 
   .lang-option {
@@ -188,19 +196,19 @@
   }
 
   .lang-option-active {
-    @apply bg-primary text-white;
+    @apply bg-secondary text-white;
   }
 
   .lang-option-inactive {
-    @apply text-gray-700 hover:bg-gray-200;
+    @apply text-text-primary hover:bg-primary-medium;
   }
 }
 
 /* Custom Utilities */
 @layer utilities {
-  /* Text gradients */
+  /* Text solid maroon color - gradient removed for professional look */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply text-secondary;
   }
 
   /* Smooth scroll */
@@ -251,11 +259,11 @@
   }
 
   body {
-    @apply text-black bg-white;
+    @apply text-text-primary bg-white;
   }
 
   a {
-    @apply text-black no-underline;
+    @apply text-text-primary no-underline;
   }
 }
 
@@ -272,7 +280,60 @@
   border-width: 0;
 }
 
-/* Focus visible for keyboard navigation */
+/* Focus visible for keyboard navigation - Enhanced */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-primary;
+  @apply outline-2 outline-offset-2 outline-secondary rounded-md;
+}
+
+/* Improved focus states for different elements */
+button:focus-visible,
+a:focus-visible {
+  @apply ring-2 ring-secondary ring-offset-2 outline-none;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply ring-2 ring-secondary border-secondary outline-none;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  @apply absolute top-0 left-0 bg-secondary text-white px-4 py-2 z-[100] transform -translate-y-full focus:translate-y-0 transition-transform;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary, .btn-secondary, .btn-accent {
+    @apply border-2 border-current;
+  }
+
+  .card {
+    @apply border-2 border-text-primary;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure minimum touch target sizes */
+button, a, input, select, textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Better text selection colors */
+::selection {
+  @apply bg-secondary text-white;
+}
+
+::-moz-selection {
+  @apply bg-secondary text-white;
 }

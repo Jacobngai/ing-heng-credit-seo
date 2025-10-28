@@ -1,0 +1,511 @@
+---
+/**
+ * Services Index Page - Bahasa Malaysia
+ * Halaman katalog perkhidmatan pembiayaan Ing Heng Credit
+ * SEO: Pembiayaan peralatan Malaysia, pinjaman peralatan
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Perkhidmatan Pembiayaan Peralatan | Sewa Beli, Pinjaman & Insurans | Ing Heng Credit';
+const pageDescription = 'Perkhidmatan pembiayaan lengkap untuk peralatan pembinaan & logistik di Malaysia. Sewa beli, pinjaman peralatan, dan insurans dengan kelulusan pantas dalam 24 jam. Hubungi kami hari ini!';
+const keywords = ['pembiayaan peralatan Malaysia', 'sewa beli peralatan', 'pinjaman peralatan', 'insurans peralatan', 'pembiayaan jentera pembinaan'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Perkhidmatan', url: '/ms/services' },
+];
+
+// Services Data
+const services = [
+  {
+    name: 'Sewa Beli (Hire Purchase)',
+    description: 'Miliki peralatan anda melalui bayaran bulanan yang fleksibel. Kelulusan pantas, kadar kompetitif, dan tempoh sehingga 60 bulan.',
+    icon: '🤝',
+    features: [
+      'Kelulusan dalam 24 jam',
+      'Kadar kelulusan 95%',
+      'Tempoh bayaran 12-60 bulan',
+      'Bayaran pendahuluan dari 10%'
+    ],
+    benefits: [
+      'Pemilikan peralatan selepas bayaran terakhir',
+      'Potongan cukai tersedia',
+      'Bayaran bulanan tetap',
+      'Peralatan baru dan terpakai diterima'
+    ],
+    link: '/ms/services/hire-purchase',
+    badge: 'Paling Popular',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    name: 'Pembiayaan Pinjaman',
+    description: 'Pinjaman peralatan fleksibel untuk keperluan perniagaan anda. Dapatkan dana dengan cepat untuk membeli atau menaik taraf peralatan anda.',
+    icon: '💰',
+    features: [
+      'Pinjaman RM 30,000 - RM 5,000,000',
+      'Kelulusan dalam 2 jam',
+      'Kadar faedah kompetitif dari 2.88% p.a.',
+      'Dokumentasi minima'
+    ],
+    benefits: [
+      'Pemprosesan cepat',
+      'Penyelesaian awal tanpa penalti',
+      'Pilihan pembiayaan semula tersedia',
+      'Perkhidmatan seluruh Malaysia'
+    ],
+    link: '/ms/services/loan-financing',
+    badge: 'Kelulusan Pantas',
+    color: 'from-green-500 to-green-600'
+  },
+  {
+    name: 'Insurans Peralatan',
+    description: 'Lindungi pelaburan anda dengan perlindungan insurans komprehensif untuk semua jenis peralatan pembinaan dan logistik.',
+    icon: '🛡️',
+    features: [
+      'Perlindungan komprehensif',
+      'Premium berpatutan',
+      'Pembaharuan mudah',
+      'Tuntutan 24/7'
+    ],
+    benefits: [
+      'Perlindungan kemalangan & kecurian',
+      'Perlindungan pihak ketiga',
+      'Penggantian peralatan',
+      'Sokongan tuntutan pantas'
+    ],
+    link: '/ms/services/insurance',
+    badge: null,
+    color: 'from-purple-500 to-purple-600'
+  }
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Kelulusan Pantas 24 Jam', description: 'Dapatkan kelulusan dalam masa 24 jam untuk keperluan peralatan yang mendesak.' },
+  { icon: 'percentage', title: 'Kadar Kelulusan 95%', description: 'Kadar kelulusan tertinggi dalam industri. Kami luluskan permohonan yang ditolak oleh pihak lain.' },
+  { icon: 'calendar', title: 'Tempoh Fleksibel 12-60 Bulan', description: 'Pilih tempoh bayaran yang sesuai dengan aliran tunai perniagaan anda.' },
+  { icon: 'shield', title: 'Semua Jenis Peralatan', description: 'Pembiayaan untuk semua jenis peralatan dari jengkaut hingga forklift, baru atau terpakai.' },
+  { icon: 'users', title: 'Sokongan Berbilang Bahasa', description: 'Pasukan kami melayan anda dalam Bahasa Malaysia, English dan Mandarin.' },
+  { icon: 'lightning', title: 'Bayaran Pendahuluan Rendah', description: 'Bermula dari 10% sahaja. Jimat modal kerja untuk operasi perniagaan.' },
+];
+
+// How It Works Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Hubungi Kami', description: 'Hubungi kami melalui WhatsApp, telefon atau borang online.' },
+  { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen', description: 'Sediakan dokumen asas perniagaan dan sebut harga peralatan.' },
+  { stepNumber: 3, icon: 'check', title: 'Terima Kelulusan', description: 'Kelulusan dalam 24 jam dengan syarat pembiayaan terbaik.' },
+  { stepNumber: 4, icon: 'truck', title: 'Terima Peralatan', description: 'Tandatangan perjanjian dan terima peralatan anda. Mulakan operasi segera!' },
+];
+
+// Industries We Serve
+const industries = [
+  { name: 'Pembinaan & Kerja Awam', icon: 'building', equipment: 'Jengkaut, jentera berat, kren, pembancuh konkrit' },
+  { name: 'Logistik & Pengangkutan', icon: 'truck', equipment: 'Lori, trak kontena, kenderaan penghantaran' },
+  { name: 'Pembuatan & Pengeluaran', icon: 'factory', equipment: 'Mesin CNC, peralatan industri, barisan pengeluaran' },
+  { name: 'Pergudangan & Pengedaran', icon: 'warehouse', equipment: 'Forklift, pengangkat palet, peralatan pengendalian bahan' },
+  { name: 'Pertanian & Ladang', icon: 'leaf', equipment: 'Traktor, penuai, peralatan kelapa sawit' },
+  { name: 'Perlombongan & Kuari', icon: 'mountain', equipment: 'Trak pembuang, jengkaut, peralatan penghancur' },
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Apakah jenis perkhidmatan pembiayaan yang ditawarkan?',
+    answer: 'Kami menawarkan 3 perkhidmatan utama: Sewa Beli (Hire Purchase) untuk pemilikan peralatan, Pembiayaan Pinjaman untuk modal peralatan, dan Insurans Peralatan untuk perlindungan aset anda. Semua perkhidmatan tersedia untuk peralatan pembinaan, logistik, dan industri.'
+  },
+  {
+    question: 'Berapa lama masa kelulusan diperlukan?',
+    answer: 'Kelulusan awal: 2-24 jam. Kelulusan muktamad: 24-48 jam dari penyerahan dokumen lengkap. Kes-kes mendesak boleh dipercepatkan dengan perkhidmatan premium untuk tarikh akhir projek kritikal.'
+  },
+  {
+    question: 'Bolehkah saya membiayai peralatan terpakai?',
+    answer: 'Ya! Kami membiayai peralatan terpakai sehingga 10 tahun dari mana-mana jenama terkenal. Peralatan mesti dalam keadaan baik dan lulus pemeriksaan kami. Peralatan terpakai sering layak mendapat kadar yang sama seperti baru.'
+  },
+  {
+    question: 'Apakah jumlah pinjaman minimum dan maksimum?',
+    answer: 'Minimum: RM 30,000. Maksimum: RM 5,000,000 bergantung kepada jenis peralatan dan profil kewangan anda. Kami boleh membiayai 90% daripada nilai peralatan dengan bayaran pendahuluan 10%.'
+  },
+  {
+    question: 'Apakah dokumen yang diperlukan untuk permohonan?',
+    answer: 'Untuk individu: IC, 6 bulan penyata bank, bukti pendapatan. Untuk syarikat: Pendaftaran SSM, penyata bank syarikat, IC pengarah, penyata kewangan (jika ada). Proses yang mudah dan ringkas.'
+  },
+  {
+    question: 'Adakah anda berkhidmat di seluruh Malaysia?',
+    answer: 'Ya! Kami berkhidmat di semua negeri: Selangor, KL, Johor, Pulau Pinang, Perak, Pahang, Sabah, Sarawak, dan lain-lain. Permohonan kawasan terpencil diproses secara online dan melalui WhatsApp. Liputan nasional dengan kepakaran tempatan.'
+  },
+  {
+    question: 'Adakah penalti untuk bayaran awal?',
+    answer: 'Tiada penalti bayaran awal! Bayar pinjaman anda bila-bila masa tanpa caj tambahan. Ramai pelanggan membiayai semula selepas 12-18 bulan apabila perniagaan mereka berkembang dan mereka layak mendapat kadar yang lebih baik.'
+  },
+  {
+    question: 'Apakah kelebihan sewa beli berbanding pinjaman biasa?',
+    answer: 'Sewa beli membolehkan anda memiliki peralatan setelah bayaran terakhir, dengan potongan cukai tersedia dan bayaran bulanan tetap yang mudah dirancang. Pembiayaan pinjaman pula lebih fleksibel dengan pilihan penyelesaian awal tanpa penalti dan pilihan pembiayaan semula.'
+  }
+];
+
+// Service Schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: 'Perkhidmatan Pembiayaan Peralatan Malaysia',
+  description: 'Perkhidmatan pembiayaan komprehensif untuk peralatan pembinaan, logistik, dan industri dengan kelulusan pantas dan syarat fleksibel',
+  provider: {
+    '@type': 'Organization',
+    name: 'Ing Heng Credit & Leasing'
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Malaysia'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Pilihan Perkhidmatan Pembiayaan',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.name,
+        description: service.description
+      }
+    }))
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Perkhidmatan Pembiayaan Peralatan Terlengkap di Malaysia"
+    subtitle="Sewa Beli, Pinjaman & Insurans | Kelulusan 95% | Tempoh Fleksibel 12-60 Bulan | Sokongan Berbilang Bahasa"
+    ctaText="Dapatkan Sebut Harga Percuma"
+    ctaLink="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20dapatkan%20sebut%20harga%20untuk%20pembiayaan%20peralatan."
+    ctaSecondaryText="Hubungi: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/services-hero.jpg"
+    lang={lang}
+    trustSignals={['40 Tahun Pengalaman', 'Berlesen KPKT', 'Kadar Kelulusan 95%', 'Kelulusan Pantas 24 Jam']}
+  />
+
+  <!-- Services Overview -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Perkhidmatan Kami
+        </h2>
+        <p class="text-xl text-gray-600">
+          Penyelesaian pembiayaan lengkap untuk semua keperluan peralatan anda
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <!-- Service Header -->
+            <div class="bg-secondary text-white p-6">
+              <div class="text-5xl mb-3">{service.icon}</div>
+              <h3 class="text-2xl font-bold mb-2">{service.name}</h3>
+              {service.badge && (
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold">
+                  {service.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Service Content -->
+            <div class="p-6">
+              <p class="text-gray-600 mb-6">{service.description}</p>
+
+              <!-- Features -->
+              <div class="mb-6">
+                <h4 class="font-bold text-primary mb-3">Ciri-ciri Utama:</h4>
+                <ul class="space-y-2">
+                  {service.features.map((feature) => (
+                    <li class="text-sm text-gray-700 flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Benefits -->
+              <div class="mb-6">
+                <h4 class="font-bold text-primary mb-3">Kelebihan:</h4>
+                <ul class="space-y-2">
+                  {service.benefits.map((benefit) => (
+                    <li class="text-sm text-gray-700 flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- CTA Button -->
+              <a
+                href={service.link}
+                class="block w-full text-center bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              >
+                Ketahui Lebih Lanjut →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-background-secondary">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Mengapa Pilih Ing Heng Credit?
+        </h2>
+        <p class="text-xl text-gray-600">
+          Kelulusan pantas, syarat fleksibel, dan kadar kompetitif untuk semua jenis peralatan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Cara Pembiayaan Berfungsi
+        </h2>
+        <p class="text-xl text-gray-600">
+          Proses mudah 4 langkah dari permohonan hingga penghantaran peralatan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20mohon%20pembiayaan%20peralatan."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Mulakan Permohonan Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Industri Yang Kami Berkhidmat
+        </h2>
+        <p class="text-xl text-gray-600">
+          Penyelesaian pembiayaan khusus untuk setiap sektor perniagaan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {industries.map((industry) => (
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="text-3xl mb-3">
+              {industry.icon === 'building' && '🏗️'}
+              {industry.icon === 'truck' && '🚛'}
+              {industry.icon === 'factory' && '🏭'}
+              {industry.icon === 'warehouse' && '📦'}
+              {industry.icon === 'leaf' && '🌾'}
+              {industry.icon === 'mountain' && '⛏️'}
+            </div>
+            <h3 class="text-xl font-bold text-primary mb-2">{industry.name}</h3>
+            <p class="text-sm text-gray-600">{industry.equipment}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals & Stats -->
+  <section class="section bg-secondary text-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Dipercayai oleh 4,000+ Perniagaan Malaysia
+        </h2>
+        <p class="text-xl opacity-90">
+          40 tahun kecemerlangan pembiayaan peralatan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-5xl font-bold mb-2">95%</div>
+          <div class="text-lg opacity-90">Kadar Kelulusan</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">24 Jam</div>
+          <div class="text-lg opacity-90">Masa Kelulusan</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">4,000+</div>
+          <div class="text-lg opacity-90">Syarikat Dibiayai</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">40 Tahun</div>
+          <div class="text-lg opacity-90">Pengalaman Industri</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Soalan Lazim
+        </h2>
+        <p class="text-xl text-gray-600">
+          Semua yang anda perlu tahu tentang perkhidmatan pembiayaan kami
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-background-secondary">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+        Bersedia untuk Membiayai Peralatan Anda?
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+        Dapatkan kelulusan pantas dalam 24 jam. Sertai 4,000+ perniagaan yang memilih Ing Heng Credit untuk keperluan pembiayaan peralatan mereka.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20mohon%20pembiayaan%20peralatan."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary text-lg px-8 py-4"
+        >
+          Mohon Melalui WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn btn-secondary text-lg px-8 py-4"
+        >
+          Hubungi: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 mt-8">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Sebut Harga Tanpa Obligasi</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Kelulusan Pantas 24 Jam</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Berlesen KPKT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+  }
+</style>

@@ -1,0 +1,511 @@
+---
+/**
+ * Services Index Page - English
+ * Comprehensive catalog of Ing Heng Credit financing services
+ * SEO: Equipment financing services Malaysia, hire purchase, loan financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Equipment Financing Services Malaysia | Hire Purchase, Loans & Insurance | Ing Heng Credit';
+const pageDescription = 'Complete financing solutions for construction & logistics equipment in Malaysia. Hire purchase, equipment loans, and insurance with fast 24-hour approval. Contact us today!';
+const keywords = ['equipment financing services Malaysia', 'hire purchase Malaysia', 'equipment loan financing', 'equipment insurance', 'construction equipment financing'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Services', url: '/en/services' },
+];
+
+// Services Data
+const services = [
+  {
+    name: 'Hire Purchase Financing',
+    description: 'Own your equipment through flexible monthly payments. Fast approval, competitive rates, and terms up to 60 months.',
+    icon: '🤝',
+    features: [
+      '24-hour approval process',
+      '95% approval rate',
+      '12-60 month payment terms',
+      'Down payment from 10%'
+    ],
+    benefits: [
+      'Equipment ownership after final payment',
+      'Tax deductions available',
+      'Fixed monthly payments',
+      'New and used equipment accepted'
+    ],
+    link: '/en/services/hire-purchase',
+    badge: 'Most Popular',
+    color: 'bg-secondary'
+  },
+  {
+    name: 'Loan Financing',
+    description: 'Flexible equipment loans for your business needs. Get funds quickly to purchase or upgrade your equipment fleet.',
+    icon: '💰',
+    features: [
+      'Loans from RM 30,000 - RM 5,000,000',
+      '2-hour preliminary approval',
+      'Competitive rates from 2.88% p.a.',
+      'Minimal documentation required'
+    ],
+    benefits: [
+      'Fast processing turnaround',
+      'Early settlement without penalty',
+      'Refinancing options available',
+      'Nationwide service coverage'
+    ],
+    link: '/en/services/loan-financing',
+    badge: 'Fast Approval',
+    color: 'bg-secondary-dark'
+  },
+  {
+    name: 'Equipment Insurance',
+    description: 'Protect your investment with comprehensive insurance coverage for all types of construction and logistics equipment.',
+    icon: '🛡️',
+    features: [
+      'Comprehensive coverage',
+      'Affordable premiums',
+      'Easy renewal process',
+      '24/7 claims support'
+    ],
+    benefits: [
+      'Accident & theft protection',
+      'Third-party liability coverage',
+      'Equipment replacement options',
+      'Fast claims processing'
+    ],
+    link: '/en/services/insurance',
+    badge: null,
+    color: 'bg-secondary'
+  }
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Fast 24-Hour Approval', description: 'Get approval within 24 hours for urgent equipment needs.' },
+  { icon: 'percentage', title: '95% Approval Rate', description: 'Industry-leading approval rate. We approve applications others reject.' },
+  { icon: 'calendar', title: 'Flexible 12-60 Month Terms', description: 'Choose payment terms that match your business cash flow.' },
+  { icon: 'shield', title: 'All Equipment Types', description: 'Finance any equipment from excavators to forklifts, new or used.' },
+  { icon: 'users', title: 'Multilingual Support', description: 'Our team serves you in English, Mandarin, and Bahasa Malaysia.' },
+  { icon: 'lightning', title: 'Low Down Payment', description: 'Starting from just 10%. Preserve working capital for operations.' },
+];
+
+// How It Works Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Contact Us', description: 'Reach out via WhatsApp, phone, or online form.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'Provide basic business documents and equipment quotation.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved', description: 'Approval within 24 hours with best financing terms.' },
+  { stepNumber: 4, icon: 'truck', title: 'Receive Equipment', description: 'Sign agreement and receive your equipment. Start operations immediately!' },
+];
+
+// Industries We Serve
+const industries = [
+  { name: 'Construction & Civil Works', icon: 'building', equipment: 'Excavators, bulldozers, cranes, concrete mixers' },
+  { name: 'Logistics & Transportation', icon: 'truck', equipment: 'Lorries, prime movers, trailers, delivery vans' },
+  { name: 'Manufacturing & Production', icon: 'factory', equipment: 'CNC machines, industrial tools, production lines' },
+  { name: 'Warehousing & Distribution', icon: 'warehouse', equipment: 'Forklifts, pallet jacks, material handling' },
+  { name: 'Agriculture & Plantation', icon: 'leaf', equipment: 'Tractors, harvesters, palm oil equipment' },
+  { name: 'Mining & Quarry', icon: 'mountain', equipment: 'Dump trucks, excavators, crushing equipment' },
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'What financing services do you offer?',
+    answer: 'We offer 3 main services: Hire Purchase for equipment ownership, Loan Financing for equipment capital, and Equipment Insurance for asset protection. All services are available for construction, logistics, and industrial equipment.'
+  },
+  {
+    question: 'How long does approval take?',
+    answer: 'Preliminary approval: 2-24 hours. Final approval: 24-48 hours from complete document submission. Urgent cases can be expedited with premium service for critical project deadlines.'
+  },
+  {
+    question: 'Can I finance used equipment?',
+    answer: 'Yes! We finance used equipment up to 10 years old from any reputable brand. Equipment must be in good working condition and pass our inspection. Used equipment often qualifies for the same rates as new.'
+  },
+  {
+    question: 'What is the minimum and maximum loan amount?',
+    answer: 'Minimum: RM 30,000. Maximum: RM 5,000,000 depending on equipment type and your financial profile. We can finance 90% of equipment value with a 10% down payment.'
+  },
+  {
+    question: 'What documents are required for application?',
+    answer: 'For individuals: IC, 6 months bank statements, income proof. For companies: SSM registration, company bank statements, directors\' IC, financial statements (if available). Simple and straightforward process.'
+  },
+  {
+    question: 'Do you serve all Malaysian states?',
+    answer: 'Yes! We serve all states: Selangor, KL, Johor, Penang, Perak, Pahang, Sabah, Sarawak, and more. Remote area applications processed online and via WhatsApp. National coverage with local expertise.'
+  },
+  {
+    question: 'Is there an early repayment penalty?',
+    answer: 'No early repayment penalty! Pay off your loan anytime without extra charges. Many clients refinance after 12-18 months when their business grows and they qualify for better rates.'
+  },
+  {
+    question: 'What are the advantages of hire purchase vs regular loans?',
+    answer: 'Hire purchase allows equipment ownership after final payment, with tax deductions and fixed monthly payments for easy planning. Loan financing offers more flexibility with early settlement options and refinancing opportunities.'
+  }
+];
+
+// Service Schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: 'Equipment Financing Services Malaysia',
+  description: 'Comprehensive financing services for construction, logistics, and industrial equipment with fast approval and flexible terms',
+  provider: {
+    '@type': 'Organization',
+    name: 'Ing Heng Credit & Leasing'
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Malaysia'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Financing Service Options',
+    itemListElement: services.map((service) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: service.name,
+        description: service.description
+      }
+    }))
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Complete Equipment Financing Services in Malaysia"
+    subtitle="Hire Purchase, Loans & Insurance | 95% Approval Rate | Flexible 12-60 Month Terms | Multilingual Support"
+    ctaText="Get Free Quote"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20equipment%20financing."
+    ctaSecondaryText="Call: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/services-hero.jpg"
+    lang={lang}
+    trustSignals={['40 Years Experience', 'KPKT Licensed', '95% Approval Rate', 'Fast 24-Hour Approval']}
+  />
+
+  <!-- Services Overview -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Our Services
+        </h2>
+        <p class="text-xl text-gray-600">
+          Complete financing solutions for all your equipment needs
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <!-- Service Header with Gradient -->
+            <div class={`${service.color} text-white p-6`}>
+              <div class="text-5xl mb-3">{service.icon}</div>
+              <h3 class="text-2xl font-bold mb-2">{service.name}</h3>
+              {service.badge && (
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold">
+                  {service.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Service Content -->
+            <div class="p-6">
+              <p class="text-gray-600 mb-6">{service.description}</p>
+
+              <!-- Features -->
+              <div class="mb-6">
+                <h4 class="font-bold text-primary mb-3">Key Features:</h4>
+                <ul class="space-y-2">
+                  {service.features.map((feature) => (
+                    <li class="text-sm text-gray-700 flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Benefits -->
+              <div class="mb-6">
+                <h4 class="font-bold text-primary mb-3">Benefits:</h4>
+                <ul class="space-y-2">
+                  {service.benefits.map((benefit) => (
+                    <li class="text-sm text-gray-700 flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- CTA Button -->
+              <a
+                href={service.link}
+                class="block w-full text-center bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              >
+                Learn More →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-primary-ultralight">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Ing Heng Credit?
+        </h2>
+        <p class="text-xl text-gray-600">
+          Fast approval, flexible terms, and competitive rates for all equipment types
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          How Financing Works
+        </h2>
+        <p class="text-xl text-gray-600">
+          Simple 4-step process from application to equipment delivery
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Start Your Application Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Industries We Serve
+        </h2>
+        <p class="text-xl text-gray-600">
+          Specialized financing solutions for every business sector
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {industries.map((industry) => (
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="text-3xl mb-3">
+              {industry.icon === 'building' && '🏗️'}
+              {industry.icon === 'truck' && '🚛'}
+              {industry.icon === 'factory' && '🏭'}
+              {industry.icon === 'warehouse' && '📦'}
+              {industry.icon === 'leaf' && '🌾'}
+              {industry.icon === 'mountain' && '⛏️'}
+            </div>
+            <h3 class="text-xl font-bold text-primary mb-2">{industry.name}</h3>
+            <p class="text-sm text-gray-600">{industry.equipment}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals & Stats -->
+  <section class="section bg-secondary text-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Trusted by 4,000+ Malaysian Businesses
+        </h2>
+        <p class="text-xl opacity-90">
+          40 years of equipment financing excellence
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-5xl font-bold mb-2">95%</div>
+          <div class="text-lg opacity-90">Approval Rate</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">24 Hours</div>
+          <div class="text-lg opacity-90">Approval Time</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">4,000+</div>
+          <div class="text-lg opacity-90">Companies Financed</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold mb-2">40 Years</div>
+          <div class="text-lg opacity-90">Industry Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xl text-gray-600">
+          Everything you need to know about our financing services
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-primary-ultralight">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+        Ready to Finance Your Equipment?
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+        Get fast approval in 24 hours. Join 4,000+ businesses who chose Ing Heng Credit for their equipment financing needs.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary text-lg px-8 py-4"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn btn-secondary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 mt-8">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>No Obligation Quote</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Fast 24-Hour Approval</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>KPKT Licensed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+  }
+</style>

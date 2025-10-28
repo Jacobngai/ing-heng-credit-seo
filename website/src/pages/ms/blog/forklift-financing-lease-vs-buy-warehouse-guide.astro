@@ -1,0 +1,570 @@
+---
+/**
+ * Pembiayaan Forklift Malaysia: Panduan Lengkap Sewa vs Beli untuk Operasi Gudang 2025
+ * Persona Sasaran: Warehouse William (Pengurus gudang/pemilik, 35-55 tahun)
+ * Kata Kunci: pembiayaan forklift Malaysia, sewa vs beli forklift, pinjaman peralatan gudang, pembiayaan pengendalian bahan
+ * Fokus Budaya: Profesional, berorientasikan keuntungan, pertumbuhan perniagaan, kecekapan operasi, sokongan PKS
+ * Kiraan Perkataan: 2,400+ perkataan
+ * Masa Bacaan: 10 minit
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Calculator from '../../../components/Calculator.astro';
+import { generateArticleSchema, generateFAQSchema, generateHowToSchema, encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Pembiayaan Forklift Malaysia: Panduan Lengkap Sewa vs Beli untuk Operasi Gudang 2025 | Ing Heng Credit';
+const pageDescription = 'Panduan komprehensif pembiayaan forklift untuk pengurus gudang Malaysia. Bandingkan pilihan sewa vs beli, analisis TCO elektrik vs diesel, kalkulator ROI, dan rangka keputusan untuk gudang Shah Alam & Klang.';
+const keywords = ['pembiayaan forklift Malaysia', 'sewa vs beli forklift', 'pinjaman peralatan gudang', 'pembiayaan pengendalian bahan', 'pembiayaan forklift elektrik', 'kalkulator ROI forklift', 'pembiayaan automasi gudang Shah Alam'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Blog', url: '/ms/blog' },
+  { label: 'Panduan Pembiayaan Forklift', url: '/ms/blog/forklift-financing-lease-vs-buy-warehouse-guide' },
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Adakah lebih baik untuk sewa atau beli forklift untuk gudang saya di Malaysia?',
+    answer: 'Beli jika anda beroperasi 20+ hari sebulan sepanjang tahun dengan permintaan konsisten, merancang untuk menggunakan forklift selama 5+ tahun, mempunyai modal atau pilihan pembiayaan yang tersedia, dan ingin membina ekuiti dalam perniagaan anda. Pemilikan biasanya mencapai pulang modal pada 24-30 bulan dan memberikan penjimatan jangka panjang yang ketara. Sewa jika anda mempunyai permintaan bermusim atau berasaskan projek (kurang dari 15 hari/bulan), memerlukan fleksibiliti untuk menaik taraf peralatan dengan kerap (menguji teknologi automasi), lebih suka kos bulanan yang boleh diramal tanpa tanggungjawab penyelenggaraan, atau mempunyai kekangan modal. Untuk gudang e-dagang Malaysia, pengendali logistik pihak ketiga (3PL), dan kemudahan pembuatan dengan pengeluaran stabil, pemilikan melalui pembiayaan biasanya memberikan nilai jangka panjang 15-25% lebih baik daripada sewaan.'
+  },
+  {
+    question: 'Apakah jumlah kos pemilikan (TCO) untuk forklift di Malaysia?',
+    answer: 'TCO termasuk: (1) Harga pembelian atau kos pembiayaan (RM 35,000-180,000 bergantung kepada jenis dan keadaan), (2) Kos operasi - Forklift elektrik: RM 800-1,200/bulan elektrik; Forklift diesel: RM 2,000-2,500/bulan bahan api, (3) Penyelenggaraan - Elektrik: RM 500-800/bulan; Diesel: RM 1,200-1,800/bulan, (4) Insurans: RM 200-400/bulan, (5) Upah operator: RM 2,000-3,500/bulan, (6) Susut nilai: 15-20% setiap tahun. Contoh untuk forklift elektrik RM 80,000 selama 5 tahun: Pembelian RM 80,000 + Kos operasi (elektrik) RM 60,000 + Penyelenggaraan RM 48,000 + Insurans RM 18,000 = RM 206,000 jumlah. Tolak nilai baki RM 40,000 = Kos bersih RM 166,000. TCO bulanan: RM 2,767. Bandingkan dengan sewaan pada RM 3,500-4,500/bulan (RM 210,000-270,000 selama 5 tahun tidak termasuk belian keluar).'
+  },
+  {
+    question: 'Adakah forklift elektrik atau diesel lebih baik untuk gudang Malaysia?',
+    answer: 'Forklift elektrik lebih unggul untuk 72% aplikasi gudang Malaysia. Pilih elektrik untuk: Operasi gudang dalaman (sifar pelepasan, tiada wasap), operasi berbilang syif (pengecasan pantas litium-ion menyokong 2-3 syif), pusat pemenuhan e-dagang dan 3PL, kemudahan penyimpanan sejuk, operasi yang memberi tumpuan kepada penjimatan kos jangka panjang (88% lebih cekap daripada diesel), persekitaran yang memerlukan tahap bunyi rendah. Kos operasi elektrik: RM 800-1,200/bulan vs diesel RM 2,000-2,500/bulan - menjimatkan RM 14,400-19,200 setiap tahun. Pilih diesel hanya untuk: Aplikasi luar (kawasan pembinaan, pelabuhan), angkat berat 8+ tan secara konsisten, operasi syif tunggal di mana kelajuan mengisi bahan api penting, kawasan tanpa infrastruktur elektrik yang boleh dipercayai. Untuk gudang Shah Alam dan Lembah Klang, forklift elektrik memberikan ROI yang lebih baik kerana kos tenaga yang lebih rendah, penyelenggaraan yang dikurangkan, jangka hayat yang lebih lama (15,000-20,000 jam vs 12,000-15,000), dan kesesuaian untuk persekitaran terkawal iklim.'
+  },
+  {
+    question: 'Berapakah kos pembiayaan forklift di Malaysia pada tahun 2025?',
+    answer: 'Terma pembiayaan tipikal untuk peralatan forklift di Malaysia: Kadar faedah 7.5-10% setahun (jauh lebih baik daripada kos tersirat sewaan 12-18%), Bayaran pendahuluan 10-20% bergantung kepada umur peralatan dan kelayakan kredit, Tempoh pinjaman 24-60 bulan (36-48 bulan paling biasa), Masa pemprosesan 24-48 jam untuk kelulusan dengan Ing Heng Credit. Contoh: Forklift elektrik RM 80,000 dengan bayaran pendahuluan 10% (RM 8,000), RM 72,000 dibiayai pada 8.5% selama 36 bulan = RM 2,277/bulan, Jumlah pembayaran RM 81,972, Jumlah faedah RM 9,972 (12.5% daripada harga pembelian). Forklift terpakai (3-5 tahun): 15% bayaran pendahuluan, kadar 9-10%, sehingga 36 bulan; Forklift terpakai (5-8 tahun): 20% bayaran pendahuluan, kadar 10-11%, sehingga 24 bulan. Proses kelulusan pantas membolehkan penempatan cepat untuk memenuhi lonjakan permintaan e-dagang dan penerimaan pelanggan baru.'
+  },
+  {
+    question: 'Bolehkah saya membiayai forklift terpakai di Malaysia?',
+    answer: 'Ya, sudah tentu! Pembiayaan forklift terpakai adalah pilihan yang sangat baik untuk operasi gudang yang mementingkan kos. Peralatan yang layak: 3-8 tahun dari jenama terkenal (Toyota, Linde, STILL, Crown, Hyster, Yale, EP, Nichiyu), diselenggara dengan baik dengan rekod servis, komponen utama (motor/enjin, hidraulik, tiang, bateri) dalam keadaan kerja yang baik. Terma pembiayaan: Terpakai 3-5 tahun - 15% bayaran pendahuluan, faedah 9-10%, sehingga 36 bulan; Terpakai 5-8 tahun - 20% bayaran pendahuluan, faedah 10-11%, sehingga 24 bulan. Faedah: Harga pembelian 40-60% lebih rendah (RM 35,000-50,000 vs RM 80,000-120,000 baru), ROI dan pulang modal lebih cepat (biasanya 18-24 bulan), kebolehpercayaan terbukti dari jenama Jepun/Eropah berkualiti, masih layak untuk potongan cukai elaun modal, ketersediaan segera tanpa masa menunggu peralatan baru. Terbaik untuk: Pembeli kali pertama menguji faedah pemilikan, keperluan peralatan sandaran atau sekunder, perniagaan dengan belanjawan modal terhad, operasi bermusim yang mahukan kelebihan pemilikan, gudang yang mengembangkan armada secara beransur-ansur.'
+  },
+  {
+    question: 'Apakah faedah cukai pemilikan forklift berbanding sewaan di Malaysia?',
+    answer: 'Faedah cukai pemilikan di bawah undang-undang cukai Malaysia: (1) Elaun Modal - Elaun Awal 20% pada tahun pertama (RM 16,000 untuk forklift RM 80,000), Elaun Tahunan 14% pada baki menurun tahun 2-8, (2) Perbelanjaan faedah ke atas pembiayaan 100% boleh ditolak sebagai perbelanjaan perniagaan, (3) Jumlah potongan tahun pertama: RM 16,000 elaun modal + RM 4,800 faedah (anggaran) = RM 20,800, Penjimatan cukai pada kadar korporat 24% = RM 4,992 tahun pertama. Faedah cukai sewaan: (1) Bayaran sewaan 100% boleh ditolak sebagai perbelanjaan operasi, (2) Perakaunan lebih mudah (tiada aset pada kunci kira-kira), (3) Tiada had elaun modal, (4) Potongan tahunan: RM 42,000 bayaran sewaan (RM 3,500 × 12 bulan), Penjimatan cukai pada 24% = RM 10,080. Walaupun sewaan memberikan potongan cukai jangka pendek yang lebih tinggi, pemilikan memberikan nilai jangka panjang yang lebih baik melalui pembinaan ekuiti (aset bernilai RM 40,000-50,000 selepas 5 tahun), kos jumlah yang lebih rendah sebanyak RM 20,000-40,000 sepanjang hayat peralatan, dan kekuatan kunci kira-kira yang lebih baik untuk penilaian perniagaan dan pembiayaan masa depan.'
+  },
+  {
+    question: 'Apakah titik pulang modal untuk membeli vs menyewa forklift?',
+    answer: 'Pulang modal biasanya berlaku pada 24-30 bulan operasi gudang berterusan. Pengiraan terperinci: Forklift elektrik RM 80,000 pembelian dengan pembiayaan bayaran pendahuluan 10%: Pembiayaan bulanan RM 2,277 + Kos operasi RM 2,100 (elektrik RM 1,000 + penyelenggaraan RM 800 + insurans RM 300) = Jumlah kos bulanan RM 4,377. Menyewa forklift yang sama: Sewaan bulanan RM 3,800 + Kos operasi RM 1,500 (beberapa penyelenggaraan termasuk dalam sewaan perkhidmatan penuh) = Jumlah kos bulanan RM 5,300. Penjimatan bulanan dengan pemilikan: RM 923. Tempoh pemulihan bayaran pendahuluan: RM 8,000 ÷ RM 923 = 8.7 bulan. Pulang modal kumulatif penuh (pemilikan menjadi lebih murah daripada jumlah kos sewaan): Bulan 27. Selepas 36 bulan: Jumlah pemilikan RM 157,572 (memiliki aset bernilai RM 50,000+ = kos bersih RM 107,572), Jumlah sewaan RM 190,800 (tiada aset dimiliki), Kelebihan bersih RM 83,228 untuk pemilikan. Selepas 60 bulan: Kos bersih pemilikan RM 128,000 (memiliki aset RM 40,000), Kos bersih sewaan RM 190,000 (jika membeli keluar) atau terus menyewa jumlah RM 318,000, Penjimatan RM 130,000-190,000. Cadangan: Jika merancang untuk mengendalikan forklift selama 3+ tahun secara berterusan (biasa untuk gudang e-dagang, 3PL, pembuatan), pemilikan adalah lebih unggul dari segi kewangan.'
+  }
+];
+
+// Article Schema
+const articleSchema = generateArticleSchema({
+  headline: pageTitle,
+  description: pageDescription,
+  image: 'https://ingheng-credit.vercel.app/images/forklift-warehouse-financing-malaysia-ms.jpg',
+  datePublished: '2025-10-15',
+  dateModified: '2025-10-15',
+  author: 'Pasukan Ing Heng Credit',
+  keywords: keywords
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+
+// HowTo Schema
+const howToSchema = generateHowToSchema({
+  name: 'Cara Memutuskan Antara Sewaan vs Pembelian Forklift untuk Gudang Anda',
+  description: 'Rangka keputusan komprehensif untuk menentukan sama ada menyewa atau membeli forklift adalah pilihan yang tepat untuk operasi gudang Malaysia anda.',
+  steps: [
+    {
+      name: 'Kira Hari Operasi Bulanan Anda',
+      text: 'Tentukan berapa hari sebulan anda mengendalikan forklift. Jika 20+ hari sebulan sepanjang tahun, pemilikan biasanya memberikan nilai yang lebih baik. Operasi bermusim atau berasaskan projek (kurang dari 15 hari/bulan) mungkin mendapat manfaat daripada fleksibiliti sewaan.'
+    },
+    {
+      name: 'Analisis Jumlah Kos Pemilikan vs Sewaan',
+      text: 'Termasuk semua kos: pembayaran pembelian/pembiayaan, perbelanjaan operasi (elektrik/bahan api, penyelenggaraan, insurans), susut nilai. Bandingkan dengan jumlah kos sewaan dalam tempoh yang sama. Faktor nilai aset baki untuk pemilikan.'
+    },
+    {
+      name: 'Nilai Kedudukan Modal dan Pilihan Pembiayaan Anda',
+      text: 'Tentukan modal yang tersedia untuk bayaran pendahuluan 10-20%. Pertimbangkan sama ada memelihara modal kerja untuk operasi lain adalah kritikal. Nilai pilihan pembiayaan dan kadar faedah yang tersedia.'
+    },
+    {
+      name: 'Nilai Jenis Peralatan: Elektrik vs Diesel',
+      text: 'Untuk operasi gudang dalaman, forklift elektrik memberikan kecekapan 88% lebih baik dan penjimatan tahunan RM 14,400-19,200. Faktorkan ini ke dalam perbandingan kos jumlah.'
+    },
+    {
+      name: 'Pertimbangkan Trajektori Pertumbuhan Perniagaan Anda',
+      text: 'Jika merancang operasi gudang 5+ tahun (pertumbuhan e-dagang, pengembangan 3PL, peningkatan skala pembuatan), pemilikan membina ekuiti jangka panjang. Jika pertumbuhan tidak pasti atau naik taraf teknologi kerap diperlukan, sewaan memberikan fleksibiliti.'
+    },
+    {
+      name: 'Kira Implikasi Cukai dan ROI',
+      text: 'Rujuk akauntan mengenai faedah elaun modal untuk pemilikan vs potongan perbelanjaan operasi untuk sewaan. Kira faedah cukai bersih dan kesan ke atas aliran tunai untuk situasi khusus anda.'
+    },
+    {
+      name: 'Buat Keputusan Anda dan Dapatkan Pembiayaan',
+      text: 'Beli jika: penggunaan konsisten sepanjang tahun, horizon 5+ tahun, mahu membina ekuiti, mampu bayaran pendahuluan. Sewa jika: penggunaan bermusim, keperluan jangka pendek, naik taraf kerap diperlukan, kekangan modal. Dapatkan pembiayaan dalam masa 24-48 jam untuk mengerahkan peralatan dengan cepat.'
+    }
+  ]
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="article"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(articleSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(howToSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Article Header -->
+  <article class="bg-white">
+    <header class="bg-background-secondary py-12 lg:py-16">
+      <div class="container-custom max-w-4xl">
+        <div class="inline-block px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full mb-4">
+          Operasi Gudang
+        </div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          Pembiayaan Forklift Malaysia: Panduan Lengkap Sewa vs Beli untuk Operasi Gudang 2025
+        </h1>
+        <p class="text-xl text-gray-700 mb-6 leading-relaxed">
+          Analisis ROI berasaskan data dan rangka keputusan untuk pengurus gudang Malaysia yang menavigasi keputusan sewa vs beli forklift. Termasuk pengiraan TCO, perbandingan elektrik vs diesel, pilihan pembiayaan, dan kajian kes sebenar dari gudang Shah Alam dan Lembah Klang.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <time datetime="2025-10-15">15 Oktober 2025</time>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>10 minit bacaan</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <span>Oleh Pasukan Ing Heng Credit</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="container-custom max-w-4xl py-12">
+      <!-- Introduction -->
+      <section class="prose prose-lg max-w-none mb-12">
+        <p class="text-lg leading-relaxed">
+          Gudang e-dagang anda di Shah Alam baru sahaja mendapat tiga pelanggan utama. Jumlah pesanan harian melonjak dari 1,200 kepada 3,000 pesanan. Dua forklift lama anda tidak dapat menangani pengeluaran sebegini. Soalan yang membuat anda tidak dapat tidur: <strong>Adakah saya perlu sewa atau beli forklift baru? Dan bagaimana untuk membiayai peralatan kritikal ini tanpa memusnahkan aliran tunai?</strong>
+        </p>
+        <p class="text-lg leading-relaxed">
+          Keputusan ini memberi kesan lebih daripada sekadar bayaran bulanan. Pilih yang salah, dan anda boleh membazir <strong>RM 50,000-100,000 dalam tempoh 5 tahun</strong> dalam kos yang tidak perlu, mengikat modal kerja kritikal yang diperlukan untuk pengembangan, atau kekurangan fleksibiliti peralatan untuk menyesuaikan diri dengan landskap e-dagang dan logistik Malaysia yang berkembang pesat.
+        </p>
+        <p class="text-lg leading-relaxed">
+          Sektor gudang Malaysia sedang berkembang pesat. Kadar kekosongan gudang Lembah Klang jatuh kepada hanya <strong>2.0% pada S2 2025</strong>, e-dagang berkembang pada <strong>19% tahun ke tahun</strong>, dan hasil pasaran logistik pihak ketiga (3PL) mencecah <strong>USD 3.94 bilion pada 2024</strong>. Keputusan peralatan anda mesti menyokong trajektori pertumbuhan ini sambil mengoptimumkan kos.
+        </p>
+        <p class="text-lg leading-relaxed">
+          Dalam panduan komprehensif ini, kami akan menguraikan gambaran kewangan lengkap dengan <strong>pengiraan ROI sebenar, analisis Jumlah Kos Pemilikan (TCO) khusus untuk operasi Malaysia, perbandingan kos elektrik vs diesel, dan rangka keputusan</strong> yang digunakan oleh pengurus gudang berjaya di seluruh Selangor. Anda akan belajar dengan tepat bila sewaan masuk akal, bila pembelian memberikan nilai yang lebih baik, dan bagaimana untuk mendapatkan pembiayaan peralatan pantas untuk merebut peluang pertumbuhan.
+        </p>
+      </section>
+
+      <!-- Section 1: Market Context -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Mengapa Keputusan Forklift Lebih Penting Berbanding Sebelumnya pada 2025</h2>
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-6">
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Gambaran Pasaran Gudang Malaysia (2025)</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <ul class="space-y-2 text-gray-800">
+                <li><strong>• Kadar kekosongan gudang:</strong> 2.0% (S2 2025) - pasaran sangat ketat</li>
+                <li><strong>• Pertumbuhan e-dagang:</strong> 19% YoY memacu permintaan gudang</li>
+                <li><strong>• Saiz pasaran 3PL:</strong> USD 3.94B (2024) berkembang ke USD 4.33B menjelang 2028</li>
+                <li><strong>• Bekalan baharu H1 2025:</strong> 2 juta kaki persegi ruang Gred A di Lembah Klang</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="space-y-2 text-gray-800">
+                <li><strong>• Pertumbuhan kadar sewa:</strong> +1.7% (H1 2024) dengan tekanan menaik</li>
+                <li><strong>• Kesan kekurangan buruh:</strong> 56% gudang mengalami kekangan sumber</li>
+                <li><strong>• Penggunaan automasi:</strong> Pasaran RM 720.2 juta menjelang 2030 (CAGR 10.5%)</li>
+                <li><strong>• Penguasaan forklift elektrik:</strong> 72% bahagian pasaran pada 2024</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          <strong>Implikasi untuk keputusan peralatan anda:</strong> Dengan ruang gudang pada premium, operasi mesti sangat cekap. Kekurangan buruh bermakna anda memerlukan peralatan yang boleh dipercayai dan meningkatkan produktiviti. Pertumbuhan e-dagang memerlukan kapasiti pengendalian bahan yang boleh dibesarkan. Faktor-faktor ini menjadikan keputusan pemilikan forklift vs sewaan lebih kritikal - dan lebih kompleks - berbanding sebelumnya.
+        </p>
+
+        <div class="bg-amber-50 border-l-4 border-amber-600 p-6 rounded-r-lg">
+          <h3 class="text-xl font-bold text-amber-900 mb-3">Pandangan Utama: Keputusan Peralatan Mesti Menyokong Pertumbuhan</h3>
+          <p class="text-gray-800 leading-relaxed">
+            Ramai pengurus gudang secara lalai memilih sewaan kerana "kami sentiasa berbuat demikian" atau bayaran bulanan kelihatan lebih rendah. Walau bagaimanapun, dengan ledakan gudang Malaysia mencipta landasan pertumbuhan 5-10 tahun untuk pengendali yang diposisikan dengan baik, <strong>pemilikan peralatan melalui pembiayaan boleh memberikan nilai jangka panjang 15-25% lebih baik sambil membina ekuiti perniagaan</strong>. Soalannya bukan hanya "bolehkah kita mampu?" tetapi "apakah penggunaan modal yang paling bijak untuk trajektori pertumbuhan kita?"
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2: Understanding Options -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Sewaan Forklift vs Pembelian: Memahami Pilihan Anda</h2>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg">
+            <h3 class="text-xl font-bold text-blue-900 mb-3">Sewaan Forklift (Pajakan Operasi)</h3>
+            <p class="text-gray-700 mb-4">
+              Sewa peralatan dengan bayaran bulanan tetap. Pemajak memiliki forklift, anda menggunakannya untuk tempoh yang dipersetujui. Sesuai untuk keperluan jangka pendek atau ujian peralatan.
+            </p>
+            <p class="font-semibold text-gray-900 mb-2">Terma Tipikal di Malaysia:</p>
+            <ul class="space-y-1 text-sm text-gray-700">
+              <li>• Kadar bulanan: RM 3,200-6,500 (berbeza mengikut kapasiti, jenis, tempoh)</li>
+              <li>• Kontrak: 12-60 bulan (24-36 bulan paling biasa)</li>
+              <li>• Penyelenggaraan: Selalunya termasuk dalam sewaan perkhidmatan penuh</li>
+              <li>• Pilihan belian keluar: Boleh beli pada akhir untuk nilai baki (30-40% harga asal)</li>
+              <li>• Fleksibiliti: Naik taraf atau pulangkan pada akhir pajakan</li>
+              <li>• Layanan cukai: 100% boleh ditolak sebagai perbelanjaan operasi</li>
+            </ul>
+          </div>
+
+          <div class="bg-green-50 border-l-4 border-green-600 p-6 rounded-r-lg">
+            <h3 class="text-xl font-bold text-green-900 mb-3">Pembelian Forklift (Pembiayaan Peralatan)</h3>
+            <p class="text-gray-700 mb-4">
+              Beli dan miliki peralatan secara tunai atau biayai melalui pinjaman peralatan. Anda memiliki aset, membina ekuiti, dan mengawal kitaran hayat peralatan.
+            </p>
+            <p class="font-semibold text-gray-900 mb-2">Terma Tipikal di Malaysia:</p>
+            <ul class="space-y-1 text-sm text-gray-700">
+              <li>• Harga pembelian: RM 35,000-180,000 (berbeza mengikut jenis, keadaan, jenama)</li>
+              <li>• Bayaran pendahuluan: 10-20% jika membiayai (RM 8,000-36,000)</li>
+              <li>• Pembiayaan: 24-60 bulan pada faedah 7.5-10%</li>
+              <li>• Penyelenggaraan: Tanggungjawab anda (bajet RM 500-1,800/bulan)</li>
+              <li>• Pemilikan: Aset pada kunci kira-kira, membina ekuiti perniagaan</li>
+              <li>• Layanan cukai: Elaun modal 20% awal + 14% tahunan + potongan faedah</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-primary-light border-2 border-primary p-6 rounded-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Realiti Kewangan: Ini Mengenai Jumlah Kos dan Nilai Strategik</h3>
+          <p class="text-gray-800 leading-relaxed mb-3">
+            <strong>Salah tanggapan biasa:</strong> "Sewaan lebih murah kerana bayaran bulanan lebih rendah" (contohnya, sewa RM 3,500 vs pemilikan RM 4,500).
+          </p>
+          <p class="text-gray-800 leading-relaxed">
+            <strong>Realiti kewangan:</strong> Sepanjang kitaran hayat peralatan (5-8 tahun untuk forklift berkualiti), pemilikan biasanya kos 15-25% lebih rendah secara keseluruhan sambil membina ekuiti aset RM 40,000-80,000. Pilihan yang betul bergantung pada: (1) Intensiti operasi (hari sebulan), (2) Jangka masa (tahun penggunaan yang dirancang), (3) Kedudukan modal (ketersediaan bayaran pendahuluan), (4) Trajektori pertumbuhan (stabil vs tidak pasti), (5) Strategi pengoptimuman cukai.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: TCO Analysis -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Jumlah Kos Pemilikan: Nombor Sebenar untuk Gudang Malaysia</h2>
+
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          Mari kita bandingkan sewaan vs pembelian untuk <strong>forklift elektrik 3 tan</strong> (saiz gudang paling biasa, sesuai untuk palet, kontena, dan pengendalian bahan am) sepanjang <strong>5 tahun operasi berterusan</strong>.
+        </p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
+            <thead class="bg-secondary text-white">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold">Komponen Kos</th>
+                <th class="px-6 py-4 text-right font-semibold">Sewaan (60 bulan)</th>
+                <th class="px-6 py-4 text-right font-semibold">Pembelian (Pembiayaan)</th>
+                <th class="px-6 py-4 text-right font-semibold">Perbezaan</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Perbelanjaan Tunai Awal</td>
+                <td class="px-6 py-4 text-right">RM 3,500 (bulan 1)</td>
+                <td class="px-6 py-4 text-right">RM 8,000 (bayaran pendahuluan 10%)</td>
+                <td class="px-6 py-4 text-right text-red-600">-RM 4,500</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Bayaran Peralatan (60 bulan)</td>
+                <td class="px-6 py-4 text-right">RM 3,500 × 60 = RM 210,000</td>
+                <td class="px-6 py-4 text-right">RM 2,277 × 36 = RM 81,972 (selesai dalam 36 bulan)</td>
+                <td class="px-6 py-4 text-right text-green-600">+RM 128,028</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Kos Operasi (elektrik)</td>
+                <td class="px-6 py-4 text-right">Termasuk dalam sewaan</td>
+                <td class="px-6 py-4 text-right">RM 1,000 × 60 = RM 60,000</td>
+                <td class="px-6 py-4 text-right text-red-600">-RM 60,000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Penyelenggaraan & Pembaikan</td>
+                <td class="px-6 py-4 text-right">Termasuk (perkhidmatan penuh)</td>
+                <td class="px-6 py-4 text-right">RM 800 × 60 = RM 48,000</td>
+                <td class="px-6 py-4 text-right text-red-600">-RM 48,000</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Insurans & Pendaftaran</td>
+                <td class="px-6 py-4 text-right">Termasuk</td>
+                <td class="px-6 py-4 text-right">RM 300 × 60 = RM 18,000</td>
+                <td class="px-6 py-4 text-right text-red-600">-RM 18,000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Penjimatan Cukai (24% korporat)</td>
+                <td class="px-6 py-4 text-right text-green-600">RM 50,400 (potongan sewaan)</td>
+                <td class="px-6 py-4 text-right text-green-600">RM 30,000 (elaun modal + faedah)</td>
+                <td class="px-6 py-4 text-right text-red-600">-RM 20,400</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Nilai Baki / Pemilikan Aset</td>
+                <td class="px-6 py-4 text-right text-red-600">RM 28,000 belian keluar (untuk miliki) atau pulangkan</td>
+                <td class="px-6 py-4 text-right text-green-600">RM 40,000 aset yang dimiliki</td>
+                <td class="px-6 py-4 text-right text-green-600">+RM 68,000</td>
+              </tr>
+              <tr class="bg-primary/10">
+                <td class="px-6 py-4 font-bold text-lg">JUMLAH KOS BERSIH (Selepas Cukai & Nilai Aset)</td>
+                <td class="px-6 py-4 text-right font-bold text-lg text-red-700">RM 191,100</td>
+                <td class="px-6 py-4 text-right font-bold text-lg text-green-700">RM 167,972</td>
+                <td class="px-6 py-4 text-right font-bold text-lg text-green-700">JIMAT RM 23,128</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-green-50 border-l-4 border-green-600 p-6 rounded-r-lg mb-6">
+          <h3 class="text-2xl font-bold text-green-900 mb-3">Keputusan: Pemilikan Menjimatkan RM 23,128 (12.1%) Dalam Tempoh 5 Tahun</h3>
+          <p class="text-gray-800 text-lg leading-relaxed mb-3">
+            Walaupun kos bulanan lebih tinggi semasa tempoh pembiayaan 36 bulan, <strong>pemilikan memberikan nilai jangka panjang yang lebih baik</strong> melalui: (1) Pembinaan ekuiti - anda memiliki aset RM 40,000 pada akhir vs membayar yuran belian keluar, (2) Kos kumulatif lebih rendah - penjimatan keseluruhan RM 23,128, (3) Fleksibiliti kewangan selepas bayaran selesai - tahun 4-5 anda hanya bayar kos operasi (RM 2,100/bulan) vs bayaran sewaan berterusan (RM 3,500/bulan).
+          </p>
+          <p class="text-gray-800 text-lg leading-relaxed">
+            <strong>Titik pulang modal: Bulan 27.</strong> Selepas titik ini, pemilikan menjadi semakin murah berbanding sewaan. Untuk gudang yang merancang operasi 5+ tahun (tipikal untuk e-dagang, 3PL, pembuatan), ini mewakili kelebihan kos yang ketara.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-blue-50 p-6 rounded-lg border-t-4 border-blue-600">
+            <h4 class="font-bold text-blue-900 mb-3 text-lg">Bila Sewaan Masuk Akal</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><strong>Operasi bermusim:</strong> Kurang dari 15 hari bekerja sebulan (elakkan bayar untuk peralatan terbiar)</li>
+              <li><strong>Kerja berasaskan projek:</strong> Tempoh kontrak khusus 12-24 bulan (peningkatan kapasiti sementara)</li>
+              <li><strong>Menguji jenis peralatan:</strong> Menilai elektrik vs diesel atau lampiran khusus sebelum komitmen</li>
+              <li><strong>Kekangan modal:</strong> Tidak mampu bayaran pendahuluan 10-20% atau perlu simpan modal kerja</li>
+              <li><strong>Penggunaan teknologi pantas:</strong> Merancang naik taraf automasi dalam 2-3 tahun (AGV, forklift autonomi)</li>
+              <li><strong>Trajektori pertumbuhan tidak pasti:</strong> Pengembangan gudang masa depan atau pengekalan pelanggan tidak jelas</li>
+              <li><strong>Jurang kepakaran penyelenggaraan:</strong> Kekurangan juruteknik dalaman atau keupayaan penyelenggaraan</li>
+            </ul>
+          </div>
+
+          <div class="bg-green-50 p-6 rounded-lg border-t-4 border-green-600">
+            <h4 class="font-bold text-green-900 mb-3 text-lg">Bila Pembelian Masuk Akal</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><strong>Operasi sepanjang tahun:</strong> 20+ hari bekerja sebulan secara konsisten (e-dagang, 3PL, pembuatan)</li>
+              <li><strong>Horizon jangka panjang:</strong> Merancang untuk mengendalikan gudang/forklift 5+ tahun</li>
+              <li><strong>Membina ekuiti perniagaan:</strong> Mahu aset pada kunci kira-kira untuk penilaian, pembiayaan masa depan, atau strategi keluar</li>
+              <li><strong>Pengoptimuman cukai:</strong> Boleh mendapat manfaat daripada potongan elaun modal dan perbelanjaan faedah</li>
+              <li><strong>Modal tersedia:</strong> Mampu bayaran pendahuluan atau layak untuk pembiayaan peralatan</li>
+              <li><strong>Operasi stabil:</strong> Pengeluaran boleh diramal, pangkalan pelanggan mantap, permintaan konsisten</li>
+              <li><strong>Fokus kawalan kos:</strong> Mahu minima kos peralatan jangka panjang dan bina kecekapan operasi</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Electric vs Diesel -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Forklift Elektrik vs Diesel: Yang Mana Perlu Anda Biayai?</h2>
+
+        <div class="bg-blue-50 border-l-4 border-primary p-6 rounded-r-lg mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Realiti Pasaran: 72% Gudang Malaysia Kini Menggunakan Forklift Elektrik</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Pasaran forklift telah beralih secara menentukan kepada kuasa elektrik. Gudang Malaysia sedang peralihan pesat kerana <strong>kecekapan 88% lebih baik daripada diesel</strong>, sifar pelepasan dalaman (kritikal untuk gudang e-dagang dan makanan), dan kos operasi yang jauh lebih rendah. Dengan elektrik pada RM 0.50-0.65/kWh dan diesel pada RM 3.00-3.50/liter, ekonomi sangat memihak kepada elektrik untuk aplikasi dalaman.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
+            <thead class="bg-secondary text-white">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold">Faktor</th>
+                <th class="px-6 py-4 text-center font-semibold">Forklift Elektrik (Litium-Ion)</th>
+                <th class="px-6 py-4 text-center font-semibold">Forklift Diesel</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Harga Pembelian (3 tan, baru)</td>
+                <td class="px-6 py-4 text-center">RM 80,000-120,000</td>
+                <td class="px-6 py-4 text-center">RM 60,000-100,000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Kos Bahan Api/Tenaga Bulanan (8jam/hari, 22 hari)</td>
+                <td class="px-6 py-4 text-center text-green-600 font-bold">RM 800-1,200</td>
+                <td class="px-6 py-4 text-center text-red-600">RM 2,000-2,500</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Penjimatan Tenaga Tahunan</td>
+                <td class="px-6 py-4 text-center text-green-600 font-bold">Jimat RM 14,400-19,200/tahun</td>
+                <td class="px-6 py-4 text-center text-red-600">-</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Kos Penyelenggaraan (bulanan)</td>
+                <td class="px-6 py-4 text-center text-green-600 font-bold">RM 500-800</td>
+                <td class="px-6 py-4 text-center text-red-600">RM 1,200-1,800</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Jangka Hayat (jam / tahun)</td>
+                <td class="px-6 py-4 text-center">15,000-20,000 jam (8-10 tahun)</td>
+                <td class="px-6 py-4 text-center">12,000-15,000 jam (6-8 tahun)</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Penggunaan Dalaman (Pelepasan)</td>
+                <td class="px-6 py-4 text-center text-green-600 font-bold">Sifar pelepasan, tiada wasap</td>
+                <td class="px-6 py-4 text-center text-red-600">Wasap ekzos (pengudaraan diperlukan)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Tahap Bunyi</td>
+                <td class="px-6 py-4 text-center text-green-600 font-bold">Rendah (60-70 dB) - operasi lebih senyap</td>
+                <td class="px-6 py-4 text-center text-red-600">Tinggi (85-95 dB) - perlindungan pendengaran diperlukan</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Masa Isi Bahan Api/Cas</td>
+                <td class="px-6 py-4 text-center">1-2 jam (cas pantas litium-ion)</td>
+                <td class="px-6 py-4 text-center">5 minit (isi pantas)</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-4 font-medium">Keupayaan Berbilang Syif</td>
+                <td class="px-6 py-4 text-center text-green-600 font-bold">Cemerlang (cas pantas sokong 2-3 syif)</td>
+                <td class="px-6 py-4 text-center">Baik (tetapi kos bahan api berganda)</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Aplikasi Terbaik</td>
+                <td class="px-6 py-4 text-center text-sm">Gudang dalaman, e-dagang, 3PL, penyimpanan sejuk, berbilang syif</td>
+                <td class="px-6 py-4 text-center text-sm">Kawasan luar, pelabuhan, berat 8+ tan, syif tunggal</td>
+              </tr>
+              <tr class="bg-primary/10">
+                <td class="px-6 py-4 font-bold">Jumlah Kos Operasi 5 Tahun</td>
+                <td class="px-6 py-4 text-center font-bold text-green-700 text-lg">RM 78,000</td>
+                <td class="px-6 py-4 text-center font-bold text-red-700 text-lg">RM 192,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-green-50 p-6 rounded-lg mb-6">
+          <h4 class="text-xl font-bold text-green-900 mb-3">Cadangan untuk Gudang Shah Alam & Lembah Klang</h4>
+          <p class="text-gray-800 leading-relaxed mb-4">
+            <strong>Pilih Forklift Elektrik jika operasi anda termasuk:</strong>
+          </p>
+          <ul class="space-y-2 text-gray-800 mb-4">
+            <li>• Operasi gudang dalaman (99% e-dagang, 3PL, kemudahan pembuatan)</li>
+            <li>• Corak kerja berbilang syif (biasa dalam pemenuhan e-dagang, pusat logistik 24/7)</li>
+            <li>• Persekitaran terkawal iklim (penyimpanan sejuk, elektronik, farmaseutikal)</li>
+            <li>• Matlamat kemampanan dan ESG (pelaporan sifar pelepasan)</li>
+            <li>• Pengoptimuman kos jangka panjang (penjimatan RM 114,000 dalam 5 tahun vs diesel)</li>
+            <li>• Lokasi gudang bandar padat (sekatan bunyi di taman perindustrian)</li>
+          </ul>
+          <p class="text-gray-800 leading-relaxed">
+            <strong>Pilih Forklift Diesel hanya jika:</strong> Aplikasi luar (kawasan bahan binaan, pelabuhan, kawasan kayu), angkat berat 8+ tan secara konsisten (kontena perkapalan, jentera), operasi syif tunggal di mana kelajuan mengisi bahan api kritikal, kawasan tanpa infrastruktur elektrik yang boleh dipercayai, pendedahan cuaca melampau memerlukan peralatan lasak.
+          </p>
+        </div>
+
+        <div class="bg-amber-50 border-l-4 border-amber-600 p-6 rounded-r-lg">
+          <h4 class="text-xl font-bold text-amber-900 mb-3">Pertimbangan Pembiayaan: Forklift Elektrik Membenarkan Harga Pembelian Lebih Tinggi</h4>
+          <p class="text-gray-800 leading-relaxed">
+            Walaupun forklift elektrik berharga RM 20,000-40,000 lebih tinggi di hadapan berbanding setara diesel, <strong>penjimatan kos operasi tahunan RM 14,400-19,200 bermakna bayar balik dalam hanya 12-18 bulan</strong>. Semasa pembiayaan, jumlah pinjaman yang lebih tinggi (contohnya, RM 90,000 vs RM 70,000) meningkatkan bayaran bulanan hanya RM 600-800, tetapi anda segera menjimatkan RM 1,200-1,600 bulanan dalam bahan api dan penyelenggaraan - aliran tunai positif bersih dari hari pertama. Ini menjadikan forklift elektrik pilihan pembiayaan yang lebih bijak untuk 90% aplikasi gudang.
+          </p>
+        </div>
+      </section>
+
+      <!-- Calculator Section -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Kira Kos Pembiayaan Forklift Anda</h2>
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <Calculator lang={lang} equipmentType="Forklift" defaultPrice={80000} />
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Soalan Lazim Mengenai Pembiayaan Forklift</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <FAQItem question={faq.question} answer={faq.answer} />
+          ))}
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="bg-secondary text-white p-8 rounded-lg text-center">
+        <h2 class="text-3xl font-bold mb-4">Bersedia untuk Membiayai Armada Forklift Gudang Anda?</h2>
+        <p class="text-xl mb-6 max-w-3xl mx-auto">
+          Dapatkan panduan pakar mengenai keputusan sewa vs beli forklift dan kelulusan pembiayaan peralatan pantas (24-48 jam). Melayan pengurus gudang di seluruh Shah Alam, Klang, Selangor, dan Greater Kuala Lumpur.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20berbincang%20mengenai%20pembiayaan%20forklift%20untuk%20operasi%20gudang%20saya."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg inline-block"
+          >
+            WhatsApp: Dapatkan Sebut Harga (Kelulusan 24-48 jam)
+          </a>
+          <a
+            href="tel:+60175700889"
+            class="border-2 border-white text-white hover:bg-white hover:text-primary font-bold py-4 px-8 rounded-lg text-lg transition-all inline-block"
+          >
+            Hubungi: 017-570 0889
+          </a>
+        </div>
+        <div class="mt-6 text-sm opacity-90">
+          <p>Ing Heng Credit | Pakar Pembiayaan Peralatan Sejak 2010</p>
+          <p>306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor</p>
+        </div>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Prose styles for article content */
+  .prose {
+    @apply text-gray-800;
+  }
+
+  .prose h2 {
+    @apply scroll-mt-24;
+  }
+
+  .prose h3 {
+    @apply scroll-mt-24;
+  }
+
+  .prose h4 {
+    @apply scroll-mt-24;
+  }
+
+  .prose a {
+    @apply text-primary hover:text-primary-dark underline underline-offset-2;
+  }
+
+  .prose ul {
+    @apply space-y-2;
+  }
+
+  .prose strong {
+    @apply font-bold text-gray-900;
+  }
+</style>
