@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code SEO Platform - Employee Workflow Swimlane</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .highlight-box.warning {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+
+        .highlight-box.danger {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-card .label {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .workflow-steps {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .workflow-step {
+            margin: 20px 0;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .workflow-step.employee {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-left: 0;
+            border-radius: 5px;
+        }
+
+        .workflow-step.claude {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin-left: 0;
+            border-radius: 5px;
+        }
+
+        .workflow-step h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .command {
+            background: #2d3748;
+            color: #63b3ed;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .diagram-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        .mermaid {
+            min-height: 600px;
+        }
+
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .folder-structure {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .employee-touchpoint {
+            background: linear-gradient(135deg, #2196f3 0%, #21cbf3 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 10px 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);
+        }
+
+        .automation-point {
+            background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 10px 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .cta h2 {
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Claude Code SEO Platform - Employee Workflow</h1>
+            <p class="subtitle">Complete Swimlane Diagram Showing Every Employee Touchpoint</p>
+        </div>
+
+        <div class="content">
+            <!-- Executive Summary -->
+            <div class="section">
+                <h2>📊 Executive Summary</h2>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="number">7</span>
+                        <span class="label">Employee Touchpoints Daily</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">3</span>
+                        <span class="label">Commands to Run</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">~30</span>
+                        <span class="label">Minutes Daily Time</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">90%</span>
+                        <span class="label">Automation Level</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <h3>🎯 The System Design</h3>
+                    <p><strong>Multi-repo architecture</strong> with 2 initial clients (Ing Heng Credit & Result Marketing)</p>
+                    <p><strong>Draft MD system</strong> for content review - everything starts as draft</p>
+                    <p><strong>10 parallel agents max</strong> to avoid API rate limits</p>
+                    <p><strong>Configurable languages</strong> based on client brief</p>
+                    <p><strong>All quality checks automated</strong> with 3rd grader readability</p>
+                </div>
+            </div>
+
+            <!-- Main Workflow Swimlane -->
+            <div class="section">
+                <h2>🏊 Complete Daily Workflow Swimlane</h2>
+
+                <div class="diagram-container">
+                    <div class="mermaid">
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#e3f2fd','primaryBorderColor':'#2196f3','secondaryColor':'#fff3e0','tertiaryColor':'#f3e5f5'}}}%%
+
+graph TB
+    subgraph "LANE 1: EMPLOYEE 👤"
+        E1[9:00 AM - Open Claude Code]
+        E2[Type: /run-daily-workflow]
+        E3[☕ Coffee Break - 15 mins]
+        E4[9:20 AM - Review Draft MD Files]
+        E5[Read Each Draft]
+        E6{Quality OK?}
+        E7[Rename: D/title → A/title]
+        E8[Edit Content If Needed]
+        E9[Rename: D/title → F/title]
+        E10[10:00 AM - Type: /publish-approved]
+        E11[Done! Close Claude]
+    end
+
+    subgraph "LANE 2: CLAUDE CODE AGENTS 🤖"
+        C1[Read All Client Briefs]
+        C2[Launch 10 Parallel Agents]
+        C3[Keyword Research Per Client]
+        C4[Generate Content]
+        C5[Run Quality Checks]
+        C6{Pass All Checks?}
+        C7[Save as D/slug.md in /drafts/]
+        C8[Save as F/slug.md in /drafts/ + Error Log]
+        C9[Wait for Employee]
+        C10[Read Approved A/*.md Files]
+        C11[Generate Final Blog Posts]
+        C12[Move to /website/]
+        C13[Git Commit & Push]
+    end
+
+    subgraph "LANE 3: QUALITY CONTROL AGENT 🔍"
+        Q1[Check Word Count 1500+]
+        Q2[Check Keyword Density]
+        Q3[Check Readability Grade 3]
+        Q4[Check Grammar]
+        Q5[Check Cultural Fit]
+        Q6[Check Plagiarism]
+        Q7[Generate Quality Report]
+    end
+
+    subgraph "LANE 4: FILE SYSTEM 📁"
+        F1[/clients/ing-heng/drafts/]
+        F2[D/excavator-financing.md]
+        F3[A/excavator-financing.md]
+        F4[F/excavator-financing.md]
+        F5[/clients/ing-heng/website/]
+        F6[Published Content]
+    end
+
+    subgraph "LANE 5: DEPLOYMENT ☁️"
+        D1[GitHub Repository]
+        D2[Vercel Auto-Deploy]
+        D3[Live Website]
+    end
+
+    %% Workflow connections
+    E1 --> E2
+    E2 --> C1
+    C1 --> C2
+    C2 --> C3
+    C3 --> C4
+    C4 --> C5
+    C5 --> Q1
+    Q1 --> Q2 --> Q3 --> Q4 --> Q5 --> Q6 --> Q7
+    Q7 --> C6
+    C6 -->|Pass| C7
+    C6 -->|Fail| C8
+    C7 --> F2
+    C8 --> F4
+    C7 --> C9
+    C8 --> C9
+    C9 --> E3
+    E3 --> E4
+    E4 --> F1
+    F1 --> E5
+    E5 --> E6
+    E6 -->|Good| E7
+    E6 -->|Needs Edit| E8
+    E6 -->|Bad| E9
+    E7 --> F3
+    E8 --> E7
+    E9 --> F4
+    E7 --> E10
+    E10 --> C10
+    C10 --> C11
+    C11 --> C12
+    C12 --> F5
+    C12 --> C13
+    C13 --> D1
+    D1 --> D2
+    D2 --> D3
+    C13 --> E11
+    D3 --> F6
+
+    style E1 fill:#2196f3,stroke:#1976d2,color:#fff
+    style E2 fill:#2196f3,stroke:#1976d2,color:#fff
+    style E4 fill:#2196f3,stroke:#1976d2,color:#fff
+    style E5 fill:#2196f3,stroke:#1976d2,color:#fff
+    style E7 fill:#2196f3,stroke:#1976d2,color:#fff
+    style E8 fill:#2196f3,stroke:#1976d2,color:#fff
+    style E10 fill:#2196f3,stroke:#1976d2,color:#fff
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employee Touchpoints -->
+            <div class="section">
+                <h2>👤 Employee Touchpoints Breakdown</h2>
+
+                <h3>Daily Workflow (30 minutes total)</h3>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step employee">
+                        <h4>🕘 9:00 AM - Start Daily Workflow (2 minutes)</h4>
+                        <span class="command">/run-daily-workflow</span>
+                        <ul>
+                            <li>Opens Claude Code</li>
+                            <li>Types one command</li>
+                            <li>Claude generates content for all clients</li>
+                            <li>Can go for coffee ☕</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step claude">
+                        <h4>🤖 9:02-9:20 AM - Claude Works (18 minutes)</h4>
+                        <ul>
+                            <li>Reads client briefs</li>
+                            <li>Runs keyword research</li>
+                            <li>Generates content in configured languages</li>
+                            <li>Runs ALL quality checks automatically</li>
+                            <li>Saves drafts with D/ prefix for good, F/ for flagged</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step employee">
+                        <h4>📝 9:20-9:50 AM - Review Drafts (20-30 minutes)</h4>
+                        <p>Navigate to each client's draft folder and:</p>
+                        <ul>
+                            <li><strong>D/title.md</strong> = Draft ready for review</li>
+                            <li><strong>If good:</strong> Rename to A/title.md (Approved)</li>
+                            <li><strong>If needs edit:</strong> Edit, then rename to A/title.md</li>
+                            <li><strong>If bad:</strong> Rename to F/title.md (Failed)</li>
+                        </ul>
+                        <div class="highlight-box warning">
+                            <strong>Note:</strong> Claude already flagged quality issues. F/ files have problems noted at top of file.
+                        </div>
+                    </div>
+
+                    <div class="workflow-step employee">
+                        <h4>🚀 9:50 AM - Publish All (2 minutes)</h4>
+                        <span class="command">/publish-approved</span>
+                        <ul>
+                            <li>Claude finds all A/*.md files</li>
+                            <li>Generates final blog posts</li>
+                            <li>Commits to Git</li>
+                            <li>Auto-deploys via Vercel</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step employee">
+                        <h4>✅ 10:00 AM - Done!</h4>
+                        <p>Close Claude Code. Content is live on all client websites.</p>
+                    </div>
+                </div>
+
+                <h3>Weekly Tasks (Additional 30 minutes)</h3>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step employee">
+                        <h4>📊 Friday - Generate Reports (10 minutes)</h4>
+                        <span class="command">/generate-report --all-clients weekly</span>
+                        <ul>
+                            <li>Performance metrics</li>
+                            <li>Content published count</li>
+                            <li>Quality scores</li>
+                            <li>Keyword rankings (when implemented)</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step employee">
+                        <h4>🔍 Monday - Competitor Analysis (20 minutes)</h4>
+                        <span class="command">/analyze-competitor [client]</span>
+                        <ul>
+                            <li>If no URL provided, Claude finds top 5 competitors</li>
+                            <li>Generates keyword gap report</li>
+                            <li>Creates new draft content based on gaps</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>As-Needed Tasks</h3>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step employee">
+                        <h4>🆕 New Client Onboarding (15 minutes)</h4>
+                        <span class="command">/onboard-client [name]</span>
+                        <ul>
+                            <li>Paste client questionnaire answers</li>
+                            <li>Claude generates 5-8 persona ideas → saves to <strong>/persona-idea/</strong> folder</li>
+                            <li>Review personas in <strong>/clients/[name]/persona-idea/D/*.md</strong></li>
+                            <li>Select best 3-5 personas by renaming D/ → A/</li>
+                            <li>Approved personas automatically moved to <strong>/personas/</strong> folder as JSON</li>
+                            <li>Claude generates first batch of draft content based on approved personas</li>
+                        </ul>
+                        <div class="highlight-box warning" style="margin-top: 15px;">
+                            <strong>Important:</strong> Persona ideas go to <strong>/persona-idea/</strong> folder first, NOT directly to /personas/
+                        </div>
+                    </div>
+
+                    <div class="workflow-step employee">
+                        <h4>🔎 Keyword Research (5 minutes)</h4>
+                        <span class="command">/keyword-research [client]</span>
+                        <ul>
+                            <li>If no topic specified, Claude uses client brief</li>
+                            <li>Generates keyword opportunities</li>
+                            <li>Creates content calendar suggestions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Draft MD System -->
+            <div class="section">
+                <h2>📝 Draft MD File System Explained</h2>
+
+                <div class="highlight-box">
+                    <h3>File Naming Convention</h3>
+                    <p>Every piece of content starts as a draft with a prefix showing its status:</p>
+                </div>
+
+                <div class="folder-structure">
+/clients/ing-heng-credit/
+├── /persona-idea/                       # PERSONA IDEAS GO HERE
+│   ├── D/contractor-ahmad-idea.md       # Draft persona idea
+│   ├── D/logistics-lee-idea.md          # Draft persona idea
+│   ├── D/warehouse-william-idea.md      # Draft persona idea
+│   ├── A/contractor-ahmad-idea.md       # Approved persona
+│   └── F/rejected-persona-idea.md       # Rejected persona
+│
+├── /drafts/                              # Content drafts
+│   ├── D/how-to-get-excavator-loan.md   # Draft - needs review
+│   ├── D/excavator-vs-buying-guide.md   # Draft - needs review
+│   ├── A/lorry-financing-malaysia.md    # Approved - ready to publish
+│   ├── F/bad-credit-equipment-loan.md   # Failed - quality issues
+│   │   └── (Contains error notes at top)
+│   ├── E/seasonal-payment-guide.md      # Edited - employee modified
+│   └── P/published-content-log.md       # Published - tracking file
+│
+├── /personas/                            # FINAL approved personas
+│   ├── contractor-ahmad.json            # Active persona
+│   ├── logistics-lee.json               # Active persona
+│   └── warehouse-william.json           # Active persona
+│
+└── brief.json                            # Client configuration
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="number">D/</span>
+                        <span class="label">Draft - Awaiting Review</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">A/</span>
+                        <span class="label">Approved - Ready to Publish</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">F/</span>
+                        <span class="label">Failed - Has Issues</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">E/</span>
+                        <span class="label">Edited - Modified by Employee</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <h3>Why This System Works</h3>
+                    <ul>
+                        <li>✅ <strong>Visual at a glance</strong> - Instantly see status by prefix</li>
+                        <li>✅ <strong>No database needed</strong> - File system IS the database</li>
+                        <li>✅ <strong>Git tracks everything</strong> - Full history of approvals</li>
+                        <li>✅ <strong>Works offline</strong> - Can review without internet</li>
+                        <li>✅ <strong>Bulk operations easy</strong> - Select all A/* to publish</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Onboarding Workflow Detail -->
+            <div class="section">
+                <h2>🆕 Client Onboarding Workflow Detail</h2>
+
+                <div class="highlight-box">
+                    <h3>The Persona Approval Process</h3>
+                    <p><strong>Key Point:</strong> All persona ideas go to <strong>/persona-idea/</strong> folder first for review!</p>
+                </div>
+
+                <div class="diagram-container">
+                    <div class="mermaid">
+%%{init: {'theme':'base'}}%%
+graph TB
+    subgraph "ONBOARDING PROCESS"
+        START[Client fills questionnaire]
+        CMD[Employee: /onboard-client acme-corp]
+        PASTE[Employee pastes answers]
+
+        subgraph "CLAUDE GENERATES"
+            GEN1[Generate 5-8 persona ideas]
+            SAVE1[Save to /persona-idea/ folder]
+            CREATE[Create D/persona-name.md files]
+        end
+
+        subgraph "EMPLOYEE REVIEWS"
+            REVIEW[Open /persona-idea/ folder]
+            READ[Read each D/*.md persona]
+            DECIDE{Good persona?}
+            APPROVE[Rename: D/ → A/]
+            REJECT[Rename: D/ → F/]
+        end
+
+        subgraph "CLAUDE FINALIZES"
+            CONVERT[Convert A/*.md to JSON]
+            MOVE[Move to /personas/ folder]
+            GENERATE[Generate first content batch]
+        end
+    end
+
+    START --> CMD
+    CMD --> PASTE
+    PASTE --> GEN1
+    GEN1 --> SAVE1
+    SAVE1 --> CREATE
+    CREATE --> REVIEW
+    REVIEW --> READ
+    READ --> DECIDE
+    DECIDE -->|Yes| APPROVE
+    DECIDE -->|No| REJECT
+    APPROVE --> CONVERT
+    CONVERT --> MOVE
+    MOVE --> GENERATE
+
+    style START fill:#2196f3,color:#fff
+    style CMD fill:#2196f3,color:#fff
+    style PASTE fill:#2196f3,color:#fff
+    style REVIEW fill:#2196f3,color:#fff
+    style READ fill:#2196f3,color:#fff
+    style APPROVE fill:#2196f3,color:#fff
+    style REJECT fill:#2196f3,color:#fff
+                    </div>
+                </div>
+
+                <div class="folder-structure">
+ONBOARDING FOLDER STRUCTURE:
+
+/clients/acme-corp/                      # New client folder
+├── /persona-idea/                       # STEP 1: Ideas go here
+│   ├── D/contractor-bob.md              # Draft persona idea
+│   ├── D/fleet-manager-sarah.md         # Draft persona idea
+│   ├── D/warehouse-ops-team.md          # Draft persona idea
+│   ├── D/small-business-owner.md        # Draft persona idea
+│   ├── D/startup-ceo.md                 # Draft persona idea
+│   ├── A/contractor-bob.md              # ✅ Employee approved this
+│   ├── A/fleet-manager-sarah.md         # ✅ Employee approved this
+│   └── F/startup-ceo.md                 # ❌ Employee rejected this
+│
+├── /personas/                            # STEP 2: Approved personas moved here
+│   ├── contractor-bob.json              # Final active persona
+│   └── fleet-manager-sarah.json         # Final active persona
+│
+├── /drafts/                              # STEP 3: Content based on personas
+│   ├── D/excavator-guide-for-bob.md     # Generated for Bob persona
+│   └── D/fleet-financing-sarah.md       # Generated for Sarah persona
+│
+└── brief.json                            # Client configuration
+                </div>
+
+                <div class="workflow-steps">
+                    <h3>Why This Two-Step Process?</h3>
+
+                    <div class="workflow-step">
+                        <h4>1️⃣ /persona-idea/ Folder (Review Stage)</h4>
+                        <ul>
+                            <li>Contains ALL generated persona ideas</li>
+                            <li>Uses Draft MD system (D/, A/, F/ prefixes)</li>
+                            <li>Employee can review and select best ones</li>
+                            <li>Keeps history of all considered personas</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>2️⃣ /personas/ Folder (Active Stage)</h4>
+                        <ul>
+                            <li>Contains ONLY approved personas</li>
+                            <li>Stored as JSON for agent processing</li>
+                            <li>These drive all content generation</li>
+                            <li>Clean, no clutter from rejected ideas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent Usage Map -->
+            <div class="section">
+                <h2>🤖 Agent Usage Throughout Workflow</h2>
+
+                <div class="diagram-container">
+                    <div class="mermaid">
+%%{init: {'theme':'base'}}%%
+graph LR
+    subgraph "Commands & Their Agents"
+        CMD1["/run-daily-workflow"]
+        CMD2["/onboard-client"]
+        CMD3["/analyze-competitor"]
+        CMD4["/keyword-research"]
+        CMD5["/publish-approved"]
+        CMD6["/generate-report"]
+    end
+
+    subgraph "Your Agents"
+        A1["keyword-researcher.md"]
+        A2["multilingual-seo-specialist.md"]
+        A3["content-optimizer.md"]
+        A4["competitor-analyzer.md"]
+        A5["keyword-gap-analyzer.md"]
+        A6["ui-ux-designer.md"]
+    end
+
+    subgraph "When Used"
+        U1["Daily: Content Generation"]
+        U2["Daily: Multilingual Adaptation"]
+        U3["Daily: Quality Checks"]
+        U4["Weekly: Competition Analysis"]
+        U5["Weekly: Keyword Gaps"]
+        U6["Onboarding: Website Design"]
+    end
+
+    CMD1 --> A1
+    CMD1 --> A2
+    CMD1 --> A3
+    CMD2 --> A5
+    CMD2 --> A6
+    CMD3 --> A4
+    CMD4 --> A1
+    CMD4 --> A5
+    CMD5 --> A3
+    CMD6 --> A4
+
+    A1 --> U1
+    A2 --> U2
+    A3 --> U3
+    A4 --> U4
+    A5 --> U5
+    A6 --> U6
+
+    style CMD1 fill:#2196f3,color:#fff
+    style CMD2 fill:#2196f3,color:#fff
+    style CMD3 fill:#2196f3,color:#fff
+    style CMD4 fill:#2196f3,color:#fff
+    style CMD5 fill:#2196f3,color:#fff
+    style CMD6 fill:#2196f3,color:#fff
+                    </div>
+                </div>
+
+                <h3>Agent Responsibilities</h3>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <h4>📚 keyword-researcher.md</h4>
+                        <ul>
+                            <li>Runs during /run-daily-workflow</li>
+                            <li>Finds new keyword opportunities daily</li>
+                            <li>Identifies trending topics</li>
+                            <li>Suggests content based on search volume</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>🌍 multilingual-seo-specialist.md</h4>
+                        <ul>
+                            <li>Creates culturally adapted content (not translations)</li>
+                            <li>Handles EN/ZH/MS based on client brief</li>
+                            <li>Ensures proper hreflang implementation</li>
+                            <li>Localizes CTAs and conversion messaging</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>✨ content-optimizer.md</h4>
+                        <ul>
+                            <li>Runs ALL quality checks automatically</li>
+                            <li>Ensures 1500+ word count</li>
+                            <li>Checks 3rd grader readability</li>
+                            <li>Validates keyword density</li>
+                            <li>Flags issues for F/ folder</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>🔍 competitor-analyzer.md</h4>
+                        <ul>
+                            <li>Finds competitors if URLs not provided</li>
+                            <li>Analyzes their content strategy</li>
+                            <li>Identifies keyword gaps</li>
+                            <li>Suggests content to outrank them</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>🎯 keyword-gap-analyzer.md</h4>
+                        <ul>
+                            <li>Creates 50 headlines per awareness stage</li>
+                            <li>Explains everything in simple language</li>
+                            <li>Maps keywords to customer journey</li>
+                            <li>Prioritizes quick wins</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>🎨 ui-ux-designer.md</h4>
+                        <ul>
+                            <li>Creates Astro websites during onboarding</li>
+                            <li>Designs conversion-optimized layouts</li>
+                            <li>Implements responsive design</li>
+                            <li>Sets up proper SEO structure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Control Process -->
+            <div class="section">
+                <h2>✅ Automated Quality Control Process</h2>
+
+                <div class="highlight-box danger">
+                    <h3>🚨 Automatic Checks (No Employee Needed)</h3>
+                    <p>Claude runs ALL these checks before employee even sees the content:</p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="number">1,500+</span>
+                        <span class="label">Minimum Word Count</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">1-2%</span>
+                        <span class="label">Keyword Density</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">Grade 3</span>
+                        <span class="label">Reading Level</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">0%</span>
+                        <span class="label">Plagiarism Tolerance</span>
+                    </div>
+                </div>
+
+                <div class="workflow-steps">
+                    <h3>What Happens When Content Fails Checks</h3>
+
+                    <div class="workflow-step">
+                        <h4>📝 Failed Draft Structure</h4>
+                        <pre>
+F/excavator-financing-guide.md
+
+=== QUALITY ISSUES DETECTED ===
+❌ Word count: 1,247 (needs 1,500+)
+❌ Reading level: Grade 8 (needs Grade 3)
+⚠️ Keyword density: 0.5% (needs 1-2%)
+✅ Grammar: Passed
+✅ Cultural fit: Appropriate
+=== END ISSUES ===
+
+[Original content below...]
+                        </pre>
+                    </div>
+
+                    <div class="workflow-step employee">
+                        <h4>👤 Employee Decision Tree</h4>
+                        <ul>
+                            <li><strong>Minor issues (word count):</strong> Quick edit, then approve</li>
+                            <li><strong>Reading level too high:</strong> Simplify language, then approve</li>
+                            <li><strong>Multiple major issues:</strong> Keep as F/, will regenerate tomorrow</li>
+                            <li><strong>Wrong topic/direction:</strong> Delete file, adjust brief</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Command Reference -->
+            <div class="section">
+                <h2>📜 Complete Command Reference</h2>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <h4>Daily Commands</h4>
+                        <div class="command">/run-daily-workflow</div>
+                        <p>Generates content for all clients based on their briefs and awareness stages</p>
+
+                        <div class="command">/publish-approved</div>
+                        <p>Publishes all A/*.md files to client websites</p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>Weekly Commands</h4>
+                        <div class="command">/generate-report [client] [type]</div>
+                        <p>Creates performance reports (weekly/monthly)</p>
+
+                        <div class="command">/analyze-competitor [client] [url?]</div>
+                        <p>Finds competitors and analyzes gaps</p>
+
+                        <div class="command">/keyword-research [client] [topic?]</div>
+                        <p>Discovers new keyword opportunities</p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>As-Needed Commands</h4>
+                        <div class="command">/onboard-client [name]</div>
+                        <p>Sets up new client with folder structure and website</p>
+
+                        <div class="command">/generate-content [client] [count]</div>
+                        <p>Manual content generation for specific client</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Investment Summary -->
+            <div class="section">
+                <h2>⏱️ Total Time Investment</h2>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="number">30</span>
+                        <span class="label">Minutes Daily</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">3.5</span>
+                        <span class="label">Hours Weekly</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">15</span>
+                        <span class="label">Hours Monthly</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">2-50</span>
+                        <span class="label">Clients Manageable</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <h3>📈 Scalability Analysis</h3>
+                    <ul>
+                        <li><strong>2 clients:</strong> 30 mins/day (current plan)</li>
+                        <li><strong>10 clients:</strong> 45 mins/day (review time increases)</li>
+                        <li><strong>25 clients:</strong> 1.5 hours/day</li>
+                        <li><strong>50 clients:</strong> 2.5 hours/day (hire assistant for review)</li>
+                    </ul>
+                    <p><strong>Note:</strong> Generation time stays same (parallel agents), only review time scales linearly.</p>
+                </div>
+            </div>
+
+            <!-- Implementation Timeline -->
+            <div class="section">
+                <h2>📅 Implementation Timeline</h2>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <h4>Week 1: Foundation</h4>
+                        <ul>
+                            <li>✅ Create folder structure for 2 clients</li>
+                            <li>✅ Set up Draft MD system</li>
+                            <li>✅ Build /run-daily-workflow command</li>
+                            <li>✅ Test with Ing Heng Credit</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>Week 2: Automation</h4>
+                        <ul>
+                            <li>✅ Implement quality control agent</li>
+                            <li>✅ Build /publish-approved command</li>
+                            <li>✅ Set up Git automation</li>
+                            <li>✅ Test with Result Marketing</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>Week 3: Enhancement</h4>
+                        <ul>
+                            <li>✅ Add competitor analysis</li>
+                            <li>✅ Build reporting system</li>
+                            <li>✅ Implement keyword gap finder</li>
+                            <li>✅ Optimize agent performance</li>
+                        </ul>
+                    </div>
+
+                    <div class="workflow-step">
+                        <h4>Week 4: Scale</h4>
+                        <ul>
+                            <li>✅ Onboard 3rd client for testing</li>
+                            <li>✅ Fine-tune parallel execution</li>
+                            <li>✅ Document employee SOP</li>
+                            <li>✅ Create training materials</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta">
+                <h2>🚀 Ready to Revolutionize Your SEO Workflow?</h2>
+                <p style="font-size: 1.3em; margin: 20px 0;">From 8 hours daily to just 30 minutes!</p>
+                <p style="font-size: 1.1em;">This system enables ONE employee to manage 50+ client SEO campaigns</p>
+
+                <div style="margin-top: 30px;">
+                    <span class="employee-touchpoint">👤 7 Daily Touchpoints</span>
+                    <span class="automation-point">🤖 90% Automated</span>
+                    <span class="employee-touchpoint">📝 Simple Review Process</span>
+                    <span class="automation-point">✅ Quality Guaranteed</span>
+                </div>
+
+                <div class="highlight-box" style="background: rgba(255,255,255,0.2); border-color: white; margin-top: 30px;">
+                    <h3 style="color: white;">Next Steps</h3>
+                    <ol style="text-align: left; color: white;">
+                        <li>Review this swimlane diagram</li>
+                        <li>Confirm the workflow matches your vision</li>
+                        <li>We'll implement Week 1 foundation</li>
+                        <li>Test with your 2 initial clients</li>
+                        <li>Scale to 50+ clients!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>
