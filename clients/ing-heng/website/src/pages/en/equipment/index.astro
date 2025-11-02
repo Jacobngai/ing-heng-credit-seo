@@ -204,7 +204,7 @@ const faqs = [
   { question: 'What equipment types can you finance?', answer: 'We finance ALL types of commercial and industrial equipment including construction machinery (excavators, bulldozers, cranes), logistics vehicles (lorries, prime movers, trucks), industrial equipment (forklifts, CNC machines, manufacturing tools), and specialized equipment. If it generates income for your business, we can finance it.' },
   { question: 'How long does approval take?', answer: 'Preliminary approval: 2 hours. Final approval: 24 hours from complete document submission. Urgent cases can be expedited with premium service for critical project deadlines.' },
   { question: 'Can I finance used equipment?', answer: 'Yes! We finance used equipment up to 10 years old from any reputable brand. Equipment must be in good working condition and pass our inspection. Used equipment often qualifies for same rates as new.' },
-  { question: 'What is the minimum and maximum loan amount?', answer: 'Minimum: RM 30,000. Maximum: RM 5,000,000 depending on equipment type and your financial profile. We can finance 90% of equipment value with 10% down payment.' },
+  { question: 'What is the minimum and maximum loan amount?', answer: 'Minimum: RM 30,000. Maximum: RM 2,000,000 depending on equipment type and your financial profile. We can finance 90% of equipment value with 10% down payment.' },
   { question: 'Do you finance multiple equipment units?', answer: 'Yes! Fleet financing available with discount rates for 2+ units. Simplified documentation for bulk purchases. Perfect for contractors and logistics companies expanding operations.' },
   { question: 'What if I have bad credit or loan defaults?', answer: 'We consider each application individually. Bad credit doesn\'t mean automatic rejection. We focus on your current business performance, project contracts, and equipment value. 95% approval rate includes many clients with credit issues.' },
   { question: 'Can I trade in my old equipment?', answer: 'Absolutely! Trade-in and upgrade programs available. We can refinance your existing equipment and provide additional funds for newer/larger machines. Free equipment valuation service included.' },
@@ -330,7 +330,7 @@ const faqSchema = {
   <!-- Hero Section -->
   <Hero
     title="Finance Any Equipment - Fast Approval in 2 Hours"
-    subtitle="Construction, Logistics & Industrial Equipment | 95% Approval Rate | Flexible 12-60 Month Terms | RM 30,000 - RM 5,000,000"
+    subtitle="Construction, Logistics & Industrial Equipment | 95% Approval Rate | Flexible 12-60 Month Terms | RM 30,000 - RM 2,000,000"
     ctaText="Get Free Quote via WhatsApp"
     ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20equipment%20financing."
     ctaSecondaryText="Call: 017-570 0889"
@@ -343,38 +343,41 @@ const faqSchema = {
   <!-- Equipment Categories Overview -->
   <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
           Equipment Categories We Finance
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           From construction machinery to logistics vehicles and industrial equipment
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         {equipmentCategories.map((category) => (
-          <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <div class="text-4xl mb-4">
-              {category.icon === 'construction' && '🏗️'}
-              {category.icon === 'truck' && '🚛'}
-              {category.icon === 'warehouse' && '🏭'}
+          <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+            <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+              <div class="text-5xl mb-3">
+                {category.icon === 'construction' && '🏗️'}
+                {category.icon === 'truck' && '🚛'}
+                {category.icon === 'warehouse' && '🏭'}
+              </div>
+              <h3 class="text-2xl font-display uppercase text-white">{category.name}</h3>
             </div>
-            <h3 class="text-2xl font-bold text-primary mb-3">{category.name}</h3>
-            <p class="text-gray-600 mb-4">{category.description}</p>
-            <ul class="space-y-2 mb-6">
-              {category.items.map((item) => (
-                <li class="text-sm text-gray-700 flex items-center space-x-2">
-                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <a href={category.link} class="text-secondary font-semibold hover:text-primary transition-colors">
-              View Equipment →
-            </a>
+            <div class="p-8">
+              <p class="text-gray-700 leading-relaxed mb-6">{category.description}</p>
+              <ul class="space-y-3 mb-8">
+                {category.items.map((item) => (
+                  <li class="text-sm text-gray-700 flex items-start space-x-3">
+                    <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900 flex-shrink-0 mt-0.5"></div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={category.link} class="btn btn-outline w-full block text-center">
+                View Equipment
+              </a>
+            </div>
           </div>
         ))}
       </div>
@@ -382,13 +385,14 @@ const faqSchema = {
   </section>
 
   <!-- Featured Equipment -->
-  <section class="section" id="construction-equipment">
+  <section class="section bg-white" id="construction-equipment">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Featured Equipment for Financing
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Featured Equipment <span class="text-secondary">for Financing</span>
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Popular equipment choices with competitive monthly rates
         </p>
       </div>
@@ -409,14 +413,14 @@ const faqSchema = {
       </div>
 
       <!-- Additional Equipment Note -->
-      <div class="mt-12 text-center p-6 bg-blue-50 rounded-lg">
-        <h3 class="text-xl font-bold text-primary mb-3">Don't See Your Equipment?</h3>
-        <p class="text-gray-700 mb-4">
+      <div class="mt-12 bg-gray-50 border-3 border-navy-900 shadow-brutal-lg p-8 text-center">
+        <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Don't See Your Equipment?</h3>
+        <p class="text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto">
           We finance ALL types of commercial and industrial equipment. Contact us for custom quotes on specialized machinery, agricultural equipment, mining tools, and more.
         </p>
         <a
           href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20equipment%20financing."
-          class="btn btn-primary inline-block"
+          class="btn btn-secondary inline-block"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -427,13 +431,14 @@ const faqSchema = {
   </section>
 
   <!-- Benefits Section -->
-  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+  <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Why Choose Ing Heng Credit for Equipment Financing?
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Why Choose <span class="text-secondary">Ing Heng Credit</span>?
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Fast approval, flexible terms, and competitive rates for all equipment types
         </p>
       </div>
@@ -451,13 +456,14 @@ const faqSchema = {
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-white">
     <div class="container-custom">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Calculate Your Monthly Payment
+      <div class="text-center mb-12">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Calculate Your <span class="text-secondary">Monthly Payment</span>
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           See how affordable equipment financing can be for your business
         </p>
       </div>
@@ -468,13 +474,14 @@ const faqSchema = {
   </section>
 
   <!-- How It Works -->
-  <section class="section">
+  <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          How Equipment Financing Works
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          How Equipment <span class="text-secondary">Financing Works</span>
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Simple 4-step process from application to equipment delivery
         </p>
       </div>
@@ -495,7 +502,7 @@ const faqSchema = {
           href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-primary btn-lg inline-block"
+          class="btn btn-secondary btn-lg inline-block"
         >
           Start Your Application Now
         </a>
@@ -504,21 +511,22 @@ const faqSchema = {
   </section>
 
   <!-- Industries We Serve -->
-  <section class="section bg-gray-50" id="logistics-equipment">
+  <section class="section bg-white" id="logistics-equipment">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Industries We Serve
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Industries <span class="text-secondary">We Serve</span>
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Specialized financing solutions for every business sector
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {industries.map((industry) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <div class="text-3xl mb-3">
+          <div class="bg-gray-50 border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1 p-6 text-center">
+            <div class="w-16 h-16 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl">
               {industry.icon === 'building' && '🏗️'}
               {industry.icon === 'truck' && '🚛'}
               {industry.icon === 'factory' && '🏭'}
@@ -526,8 +534,8 @@ const faqSchema = {
               {industry.icon === 'leaf' && '🌾'}
               {industry.icon === 'mountain' && '⛏️'}
             </div>
-            <h3 class="text-xl font-bold text-primary mb-2">{industry.name}</h3>
-            <p class="text-sm text-gray-600">{industry.equipment}</p>
+            <h3 class="text-lg font-display uppercase text-navy-900 mb-2">{industry.name}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{industry.equipment}</p>
           </div>
         ))}
       </div>
@@ -535,46 +543,48 @@ const faqSchema = {
   </section>
 
   <!-- Trust Signals & Stats -->
-  <section class="section bg-gradient-to-r from-primary to-secondary text-white" id="industrial-equipment">
+  <section class="section bg-secondary text-white" id="industrial-equipment">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
-          Trusted by 4,000+ Malaysian Businesses
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-4">
+          Trusted by 4,000+ <span class="text-yellow-400">Malaysian Businesses</span>
         </h2>
-        <p class="text-xl opacity-90">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-blue-100">
           40 years of equipment financing excellence
         </p>
       </div>
 
       <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="text-5xl font-bold mb-2">95%</div>
-          <div class="text-lg opacity-90">Approval Rate</div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">95%</div>
+          <div class="text-lg text-blue-100">Approval Rate</div>
         </div>
-        <div>
-          <div class="text-5xl font-bold mb-2">2-24h</div>
-          <div class="text-lg opacity-90">Approval Time</div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">2-24h</div>
+          <div class="text-lg text-blue-100">Approval Time</div>
         </div>
-        <div>
-          <div class="text-5xl font-bold mb-2">4,000+</div>
-          <div class="text-lg opacity-90">Companies Financed</div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">4,000+</div>
+          <div class="text-lg text-blue-100">Companies Financed</div>
         </div>
-        <div>
-          <div class="text-5xl font-bold mb-2">40 Years</div>
-          <div class="text-lg opacity-90">Industry Experience</div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">40</div>
+          <div class="text-lg text-blue-100">Years Experience</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="section">
+  <section class="section bg-white">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Frequently Asked Questions
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked <span class="text-secondary">Questions</span>
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Everything you need to know about equipment financing
         </p>
       </div>
@@ -588,50 +598,44 @@ const faqSchema = {
   </section>
 
   <!-- Final CTA -->
-  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+  <section class="section bg-gray-50">
     <div class="container-custom text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
-        Ready to Finance Your Equipment?
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+        Ready to Finance Your <span class="text-secondary">Equipment</span>?
       </h2>
-      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
         Get fast approval in 2 hours. Join 4,000+ businesses who chose Ing Heng Credit for their equipment financing needs.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
         <a
           href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-primary text-lg px-8 py-4"
+          class="btn btn-secondary text-lg px-8 py-4"
         >
           Apply via WhatsApp
         </a>
         <a
           href="tel:+60175700889"
-          class="btn btn-secondary text-lg px-8 py-4"
+          class="btn btn-outline text-lg px-8 py-4"
         >
           Call: 017-570 0889
         </a>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 mt-8">
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-700 mt-8">
         <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>No Obligation Quote</span>
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">No Obligation Quote</span>
         </div>
         <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>Fast 2-Hour Approval</span>
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">Fast 2-Hour Approval</span>
         </div>
         <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>KPKT Licensed</span>
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">KPKT Licensed</span>
         </div>
       </div>
     </div>

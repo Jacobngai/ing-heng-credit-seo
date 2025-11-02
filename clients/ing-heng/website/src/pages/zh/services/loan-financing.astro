@@ -14,7 +14,8 @@ import CTAButton from '../../../components/CTAButton.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Calculator from '../../../components/Calculator.astro';
 import StepCard from '../../../components/StepCard.astro';
-import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
 
 const lang = 'zh';
 
@@ -74,11 +75,14 @@ const faqs = [
   }
 ];
 
-// Service Schema
-const serviceSchema = generateServiceSchema({
-  name: '商业贷款融资服务',
+// Service Schema (Enhanced)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: '商业贷款融资服务',
   description: '为马来西亚中小企业提供全面的商业贷款解决方案，包括设备融资、营运资金贷款和业务扩展融资',
-  serviceType: '商业贷款融资'
+  serviceType: '商业贷款融资',
+  minRate: '2.88',
+  maxRate: '15.00',
+  locale: 'zh',
 });
 
 // FAQ Schema
@@ -92,11 +96,11 @@ const faqSchema = generateFAQSchema(faqs);
   keywords={keywords}
   ogType="website"
 >
-  <!-- Service Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+  <!-- Service Page Schema (Enhanced) -->
+  <StructuredData schema={servicePageSchema} />
 
   <!-- FAQ Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  <StructuredData schema={faqSchema} />
 
   <!-- Breadcrumbs -->
   <div class="container-custom py-4">

@@ -12,7 +12,8 @@ import FAQItem from '../../../components/FAQItem.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
 
 const lang = 'en';
 
@@ -72,11 +73,14 @@ const faqs = [
   }
 ];
 
-// Service Schema
-const serviceSchema = generateServiceSchema({
-  name: 'Hire Purchase Equipment Financing',
-  description: 'Asset financing solutions for construction equipment, logistics vehicles, and industrial machinery through hire purchase agreements',
-  serviceType: 'Equipment Hire Purchase Financing'
+// Service Schema (Enhanced)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: 'Equipment Hire Purchase Financing',
+  description: 'Flexible hire purchase financing for excavators, lorries, forklifts, and construction equipment with 95% approval rate and 24-hour processing',
+  serviceType: 'Equipment Hire Purchase',
+  minRate: '2.88',
+  maxRate: '12.00',
+  locale: 'en',
 });
 
 // FAQ Schema
@@ -90,11 +94,11 @@ const faqSchema = generateFAQSchema(faqs);
   keywords={keywords}
   ogType="website"
 >
-  <!-- Service Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+  <!-- Service Page Schema (Enhanced) -->
+  <StructuredData schema={servicePageSchema} />
 
   <!-- FAQ Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  <StructuredData schema={faqSchema} />
 
   <!-- Breadcrumbs -->
   <div class="container-custom py-4">

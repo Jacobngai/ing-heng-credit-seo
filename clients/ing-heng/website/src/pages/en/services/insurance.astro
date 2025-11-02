@@ -12,7 +12,8 @@ import FAQItem from '../../../components/FAQItem.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
 
 const lang = 'en';
 
@@ -72,11 +73,14 @@ const faqs = [
   }
 ];
 
-// Service Schema
-const serviceSchema = generateServiceSchema({
-  name: 'Equipment Insurance Services',
+// Service Schema (Enhanced)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: 'Equipment Insurance Services',
   description: 'Comprehensive insurance coverage for construction equipment, commercial vehicles, and industrial machinery including accidental damage, theft, and liability protection',
-  serviceType: 'Equipment Insurance'
+  serviceType: 'Equipment Insurance',
+  minRate: '1.5',
+  maxRate: '3.0',
+  locale: 'en',
 });
 
 // FAQ Schema
@@ -90,11 +94,11 @@ const faqSchema = generateFAQSchema(faqs);
   keywords={keywords}
   ogType="website"
 >
-  <!-- Service Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+  <!-- Service Page Schema (Enhanced) -->
+  <StructuredData schema={servicePageSchema} />
 
   <!-- FAQ Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  <StructuredData schema={faqSchema} />
 
   <!-- Breadcrumbs -->
   <div class="container-custom py-4">

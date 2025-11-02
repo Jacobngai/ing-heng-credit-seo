@@ -321,6 +321,12 @@ export const EQUIPMENT_NAV_ITEMS = [
     description: 'equipment.bulldozerDesc',
     icon: '🚜',
   },
+  {
+    label: 'equipment.refrigeratedTruck',
+    href: '/equipment/refrigerated-truck',
+    description: 'equipment.refrigeratedTruckDesc',
+    icon: '🧊',
+  },
 ];
 
 /**

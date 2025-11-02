@@ -12,7 +12,8 @@ import FAQItem from '../../../components/FAQItem.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
 
 const lang = 'ms';
 
@@ -72,11 +73,14 @@ const faqs = [
   }
 ];
 
-// Service Schema
-const serviceSchema = generateServiceSchema({
-  name: 'Pembiayaan Sewa Beli Peralatan',
-  description: 'Penyelesaian pembiayaan aset untuk peralatan pembinaan, kenderaan logistik, dan jentera industri melalui perjanjian sewa beli',
-  serviceType: 'Pembiayaan Sewa Beli Peralatan'
+// Service Schema (Enhanced)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: 'Pembiayaan Sewa Beli Peralatan',
+  description: 'Pembiayaan sewa beli fleksibel untuk jengkaut, lori, forklift & peralatan pembinaan dengan kadar kelulusan 95%',
+  serviceType: 'Pembiayaan Sewa Beli',
+  minRate: '2.88',
+  maxRate: '12.00',
+  locale: 'ms',
 });
 
 // FAQ Schema
@@ -90,11 +94,11 @@ const faqSchema = generateFAQSchema(faqs);
   keywords={keywords}
   ogType="website"
 >
-  <!-- Service Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+  <!-- Service Page Schema (Enhanced) -->
+  <StructuredData schema={servicePageSchema} />
 
   <!-- FAQ Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  <StructuredData schema={faqSchema} />
 
   <!-- Breadcrumbs -->
   <div class="container-custom py-4">

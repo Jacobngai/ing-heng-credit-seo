@@ -12,7 +12,8 @@ import FAQItem from '../../../components/FAQItem.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
 
 const lang = 'zh';
 
@@ -72,11 +73,14 @@ const faqs = [
   }
 ];
 
-// Service Schema
-const serviceSchema = generateServiceSchema({
-  name: '设备租购融资服务',
-  description: '为建筑设备、物流车辆和工业机械提供租购协议的资产融资解决方案',
-  serviceType: '设备租购融资'
+// Service Schema (Enhanced)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: '设备租购融资服务',
+  description: '灵活的设备租购融资方案，适用于挖掘机、罗里、叉车及建筑设备，95%批准率，24小时快速审批',
+  serviceType: '设备租购融资',
+  minRate: '2.88',
+  maxRate: '12.00',
+  locale: 'zh',
 });
 
 // FAQ Schema
@@ -90,11 +94,11 @@ const faqSchema = generateFAQSchema(faqs);
   keywords={keywords}
   ogType="website"
 >
-  <!-- Service Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+  <!-- Service Page Schema (Enhanced) -->
+  <StructuredData schema={servicePageSchema} />
 
   <!-- FAQ Schema -->
-  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  <StructuredData schema={faqSchema} />
 
   <!-- Breadcrumbs -->
   <div class="container-custom py-4">

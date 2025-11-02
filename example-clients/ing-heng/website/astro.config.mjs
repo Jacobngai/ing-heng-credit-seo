@@ -33,6 +33,43 @@ export default defineConfig({
           ms: 'ms-MY',
         },
       },
+      filter: (page) => {
+        // Exclude language selector root page from sitemap
+        // Only exclude the exact root URL, not language-prefixed pages
+        return page !== `${SITE_URL}/`;
+      },
+      serialize: (item) => {
+        // Add lastmod to all pages
+        item.lastmod = new Date();
+
+        // Set higher priority for homepage variants
+        if (item.url.match(/\/(en|zh|ms)\/?$/)) {
+          item.priority = 1.0;
+          item.changefreq = 'weekly';
+        }
+        // Equipment pages get high priority
+        else if (item.url.includes('/equipment/')) {
+          item.priority = 0.8;
+          item.changefreq = 'monthly';
+        }
+        // Blog pages get medium priority
+        else if (item.url.includes('/blog/')) {
+          item.priority = 0.7;
+          item.changefreq = 'weekly';
+        }
+        // Service and info pages
+        else if (item.url.includes('/services/') || item.url.includes('/about') || item.url.includes('/contact')) {
+          item.priority = 0.9;
+          item.changefreq = 'monthly';
+        }
+        // Default for other pages
+        else {
+          item.priority = 0.5;
+          item.changefreq = 'monthly';
+        }
+
+        return item;
+      },
     }),
   ],
   i18n: {

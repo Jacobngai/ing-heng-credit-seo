@@ -273,24 +273,30 @@ const t = translations[locale];
   </section>
 
   <!-- Schema and Reading Progress Scripts -->
-  <script>
-    // Reading progress bar
-    window.addEventListener('scroll', () => {
-      const article = document.querySelector('article');
-      const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement;
+  <script type="module">
+    // Reading progress bar with throttling using requestAnimationFrame
+    let ticking = false;
+    const article = document.querySelector('article');
+    const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement;
 
-      if (!article || !progressBar) return;
-
+    if (article && progressBar) {
       const articleTop = article.offsetTop;
       const articleHeight = article.offsetHeight;
-      const windowHeight = window.innerHeight;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      const progress = ((scrollTop - articleTop + windowHeight) / articleHeight) * 100;
-      const clampedProgress = Math.min(Math.max(progress, 0), 100);
-
-      progressBar.style.width = `${clampedProgress}%`;
-    });
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const windowHeight = window.innerHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const progress = ((scrollTop - articleTop + windowHeight) / articleHeight) * 100;
+            const clampedProgress = Math.min(Math.max(progress, 0), 100);
+            progressBar.style.width = `${clampedProgress}%`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
   </script>
 </BaseLayout>
 
