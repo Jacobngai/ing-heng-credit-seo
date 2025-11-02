@@ -1,0 +1,561 @@
+---
+/**
+ * Malay Blog Index Page (Halaman Indeks Blog Bahasa Melayu)
+ * Equipment Financing Blog - Expert Tips & Industry Guides
+ * SEO: Informational, Service-focused, Knowledge-sharing
+ * Cultural Tone: Respectful, service-oriented, professional with government/authority references
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import NewsletterSignup from '../../../components/NewsletterSignup.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+
+// Blog categories (Bahasa Melayu)
+const categories = [
+  { name: 'Tips Pembiayaan Peralatan', slug: 'equipment-financing', count: 12, icon: '🏗️' },
+  { name: 'Berita & Trend Industri', slug: 'industry-news', count: 8, icon: '📰' },
+  { name: 'Panduan Kontraktor', slug: 'contractor-guides', count: 10, icon: '👷' },
+  { name: 'Pertumbuhan Perniagaan', slug: 'business-growth', count: 7, icon: '📈' },
+  { name: 'Cukai & Pematuhan', slug: 'tax-compliance', count: 6, icon: '📋' },
+  { name: 'Penyelenggaraan Peralatan', slug: 'equipment-maintenance', count: 9, icon: '🔧' },
+];
+
+// Featured blog posts (Artikel Pilihan)
+const featuredPosts = [
+  {
+    title: 'Panduan Lengkap Pembiayaan Peralatan di Malaysia 2025',
+    excerpt: 'Ketahui segala-galanya tentang pembiayaan peralatan pembinaan, dari beli sewa hingga pilihan pajakan. Temui kaedah pembiayaan yang terbaik untuk perniagaan anda.',
+    date: '2025-10-11',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'complete-guide-equipment-financing-malaysia',
+    image: '/images/blog/equipment-financing-guide.jpg',
+    category: 'Tips Pembiayaan Peralatan',
+    readTime: 8,
+  },
+  {
+    title: 'Pembiayaan Jengkaut: Bagaimana Kontraktor Boleh Jimat 30% Kos Peralatan',
+    excerpt: 'Temui strategi terbukti untuk mengurangkan kos pemerolehan jengkaut melalui pembiayaan pintar. Kajian kes sebenar dari kontraktor Malaysia yang berjaya.',
+    date: '2025-10-10',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'excavator-financing-save-30-percent',
+    image: '/images/blog/excavator-financing.jpg',
+    category: 'Panduan Kontraktor',
+    readTime: 6,
+  },
+  {
+    title: 'Pembiayaan Lori untuk Syarikat Logistik: Strategi Kelulusan Pantas',
+    excerpt: 'Percepatkan kelulusan pembiayaan lori anda dengan tip pakar ini. Ketahui dokumen yang diperlukan dan cara mendapat kadar terbaik untuk perniagaan logistik anda.',
+    date: '2025-10-09',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'lorry-financing-fast-approval-strategies',
+    image: '/images/blog/lorry-financing.jpg',
+    category: 'Tips Pembiayaan Peralatan',
+    readTime: 7,
+  },
+];
+
+// Recent blog posts (Artikel Terkini)
+const recentPosts = [
+  {
+    title: 'Pajakan Forklift vs Pembelian: Pilihan Mana yang Sesuai untuk Gudang Anda?',
+    excerpt: 'Bandingkan kebaikan dan keburukan pajakan berbanding pembelian forklift. Kira ROI dan buat keputusan terbaik untuk operasi gudang anda.',
+    date: '2025-10-08',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'forklift-leasing-vs-buying-guide',
+    category: 'Pertumbuhan Perniagaan',
+  },
+  {
+    title: 'Faedah Cukai Pembiayaan Peralatan: Maksimumkan Potongan Anda 2025',
+    excerpt: 'Fahami kelebihan cukai pembiayaan peralatan di Malaysia. Pelajari cara menuntut elaun modal dan kurangkan beban cukai anda secara sah.',
+    date: '2025-10-07',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'tax-benefits-equipment-financing-2025',
+    category: 'Cukai & Pematuhan',
+  },
+  {
+    title: 'Pengurusan Aliran Tunai untuk Syarikat Pembinaan: 5 Strategi Penting',
+    excerpt: 'Kuasai pengurusan aliran tunai sambil membiayai peralatan pembinaan yang mahal. Strategi terbukti dari 40+ tahun pengalaman industri.',
+    date: '2025-10-06',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'cash-flow-management-construction',
+    category: 'Pertumbuhan Perniagaan',
+  },
+  {
+    title: 'Panduan Penyelenggaraan Peralatan: Lindungi Pelaburan Anda',
+    excerpt: 'Tip penyelenggaraan penting untuk memanjangkan hayat peralatan pembiayaan anda dan maksimumkan ROI. Jadual penyelenggaraan pencegahan disertakan.',
+    date: '2025-10-05',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'equipment-maintenance-guide',
+    category: 'Penyelenggaraan Peralatan',
+  },
+  {
+    title: 'Pembiayaan Peralatan PKS: Cara Layak dengan Rekod Kredit Terhad',
+    excerpt: 'Dapatkan kelulusan pembiayaan peralatan walaupun dengan rekod kredit terhad. Ketahui apa yang pemberi pinjaman cari dan cara mengukuhkan permohonan anda.',
+    date: '2025-10-04',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'sme-equipment-financing-limited-credit',
+    category: 'Tips Pembiayaan Peralatan',
+  },
+  {
+    title: 'Trend Industri Pembinaan 2025: Apa yang Kontraktor Perlu Tahu',
+    excerpt: 'Kekal di hadapan dengan trend terkini industri pembinaan di Malaysia. Teknologi, kemampanan, dan inovasi pembiayaan dijelaskan.',
+    date: '2025-10-03',
+    author: 'Pasukan Ing Heng Credit',
+    slug: 'construction-industry-trends-2025',
+    category: 'Berita & Trend Industri',
+  },
+];
+
+// Popular posts for sidebar (Artikel Popular)
+const popularPosts = [
+  { title: 'Panduan Lengkap Pembiayaan Peralatan Malaysia 2025', slug: 'complete-guide-equipment-financing-malaysia' },
+  { title: 'Pembiayaan Jengkaut: Jimat 30% Kos Peralatan', slug: 'excavator-financing-save-30-percent' },
+  { title: 'Faedah Cukai Pembiayaan Peralatan 2025', slug: 'tax-benefits-equipment-financing-2025' },
+  { title: 'Pajakan Forklift vs Pembelian: Panduan Lengkap', slug: 'forklift-leasing-vs-buying-guide' },
+];
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+];
+
+// Schema markup for Blog CollectionPage
+const blogCollectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Blog Pembiayaan Peralatan - Tips Pakar & Panduan Industri",
+  "description": "Wawasan pakar tentang pembiayaan peralatan, pengurusan perniagaan pembinaan, dan trend industri dari rakan kongsi pembiayaan terpercaya Malaysia sejak 1985.",
+  "url": "https://ingheng-credit.vercel.app/ms/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ingheng-credit.vercel.app/logo.png"
+    }
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": featuredPosts.map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.excerpt,
+        "datePublished": post.date,
+        "author": {
+          "@type": "Organization",
+          "name": post.author
+        }
+      }
+    }))
+  }
+};
+---
+
+<BaseLayout
+  title="Blog Pembiayaan Peralatan Malaysia | Tips Pakar | Ing Heng Credit"
+  description="Wawasan pakar tentang pembiayaan peralatan, pengurusan perniagaan pembinaan, faedah cukai, dan trend industri. 40+ tahun kepakaran pembiayaan untuk membantu perniagaan anda berkembang."
+  lang={lang}
+  keywords={[
+    'blog pembiayaan peralatan',
+    'tips peralatan pembinaan',
+    'panduan pembiayaan Malaysia',
+    'tips pembiayaan jengkaut',
+    'panduan pembiayaan lori',
+    'nasihat pinjaman perniagaan',
+    'pajakan peralatan Malaysia',
+    'tips kewangan kontraktor'
+  ]}
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(blogCollectionSchema)} />
+
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+        Wawasan Pembiayaan Peralatan & Panduan Pakar
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        Belajar dari 40+ tahun kepakaran pembiayaan peralatan. Tip praktikal, wawasan industri, dan strategi terbukti untuk membantu perniagaan pembinaan, logistik, atau pembuatan anda berkembang maju.
+      </p>
+
+      <!-- Search Bar (Placeholder) -->
+      <div class="max-w-2xl mx-auto">
+        <div class="relative">
+          <input
+            type="search"
+            placeholder="Cari artikel tentang pembiayaan, peralatan, tips perniagaan..."
+            class="w-full px-6 py-4 pr-12 border-2 border-gray-300 rounded-full focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+            aria-label="Cari artikel blog"
+          />
+          <button
+            type="button"
+            class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary text-white p-3 rounded-full hover:bg-primary-dark transition-colors"
+            aria-label="Cari"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Trust Signals -->
+      <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-gray-600">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40+ Tahun Pengalaman</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>4,000+ Syarikat Dilayan</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Berlesen KPKT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <section class="section bg-white border-b border-gray-200">
+    <div class="container-custom">
+      <div class="flex flex-wrap justify-center gap-4">
+        {categories.map((category) => (
+          <a
+            href={`/ms/blog/category/${category.slug}`}
+            class="flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-full transition-all duration-200 group"
+          >
+            <span class="text-xl">{category.icon}</span>
+            <span class="font-semibold">{category.name}</span>
+            <span class="text-sm opacity-75">({category.count})</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Posts Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Artikel Pilihan</h2>
+        <p class="text-gray-600 text-lg">
+          Panduan kami yang paling popular dan berkesan untuk membantu anda membuat keputusan pembiayaan yang lebih bijak
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {featuredPosts.map((post) => (
+          <div class="card h-full flex flex-col group hover:shadow-2xl transition-shadow duration-300 relative">
+            {/* Featured Badge */}
+            <div class="absolute top-4 right-4 z-10">
+              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                PILIHAN
+              </span>
+            </div>
+
+            {/* Featured Image Placeholder */}
+            <a href={`/ms/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative">
+              <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
+                {categories.find(c => c.name === post.category)?.icon || '📝'}
+              </div>
+            </a>
+
+            <div class="card-body flex flex-col flex-grow">
+              {/* Meta Info */}
+              <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
+                <span class="badge badge-primary">{post.category}</span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {post.readTime} minit bacaan
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3 class="text-2xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">
+                <a href={`/ms/blog/${post.slug}`}>
+                  {post.title}
+                </a>
+              </h3>
+
+              {/* Excerpt */}
+              <p class="text-gray-600 mb-4 flex-grow leading-relaxed">
+                {post.excerpt}
+              </p>
+
+              {/* Author & Read More */}
+              <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <time datetime={post.date}>
+                    {new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                </div>
+                <a
+                  href={`/ms/blog/${post.slug}`}
+                  class="inline-flex items-center text-secondary font-semibold hover:text-accent transition-colors group-hover:translate-x-2 transform duration-300"
+                >
+                  Baca Lagi
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Blog Grid with Sidebar -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <!-- Main Content Area (Blog Posts) -->
+        <div class="lg:col-span-2">
+          <div class="mb-8 flex items-center justify-between">
+            <h2 class="text-2xl font-bold text-primary">Artikel Terkini</h2>
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+              <span>Menunjukkan 1-9 daripada 52 artikel</span>
+            </div>
+          </div>
+
+          <!-- Blog Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {recentPosts.map((post) => (
+              <div class="card h-full flex flex-col group hover:shadow-xl transition-shadow duration-300">
+                {/* Image Placeholder */}
+                <a href={`/ms/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
+                    {categories.find(c => c.name === post.category)?.icon || '📝'}
+                  </div>
+                </a>
+
+                <div class="card-body flex flex-col flex-grow">
+                  {/* Category Badge */}
+                  <div class="mb-3">
+                    <span class="badge badge-primary text-xs">{post.category}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+                    <a href={`/ms/blog/${post.slug}`}>
+                      {post.title}
+                    </a>
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p class="text-gray-600 mb-4 flex-grow line-clamp-3 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Footer */}
+                  <div class="flex items-center justify-between pt-4 border-t border-gray-200 text-sm">
+                    <time datetime={post.date} class="text-gray-500">
+                      {new Date(post.date).toLocaleDateString('ms-MY', { month: 'long', day: 'numeric' })}
+                    </time>
+                    <a
+                      href={`/ms/blog/${post.slug}`}
+                      class="text-secondary font-semibold hover:text-accent transition-colors"
+                    >
+                      Baca Lagi →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center gap-2">
+            <button disabled class="px-4 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed">
+              Sebelum
+            </button>
+            <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">4</button>
+            <span class="px-4 py-2">...</span>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">6</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-primary">
+              Seterusnya
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1 space-y-8">
+
+          <!-- Newsletter Signup -->
+          <div class="sticky top-24">
+            <NewsletterSignup locale={lang} variant="boxed" />
+          </div>
+
+          <!-- Categories List -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="text-xl font-bold text-primary mb-4">Lihat Mengikut Kategori</h3>
+              <ul class="space-y-3">
+                {categories.map((category) => (
+                  <li>
+                    <a
+                      href={`/ms/blog/category/${category.slug}`}
+                      class="flex items-center justify-between group hover:text-primary transition-colors"
+                    >
+                      <span class="flex items-center gap-2">
+                        <span class="text-xl">{category.icon}</span>
+                        <span class="font-medium group-hover:underline">{category.name}</span>
+                      </span>
+                      <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {category.count}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Popular Posts -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="text-xl font-bold text-primary mb-4">Paling Popular</h3>
+              <ul class="space-y-4">
+                {popularPosts.map((post, index) => (
+                  <li class="flex gap-3">
+                    <span class="text-2xl font-bold text-primary/20 flex-shrink-0">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <a
+                      href={`/ms/blog/${post.slug}`}
+                      class="text-gray-700 hover:text-primary transition-colors font-medium leading-snug"
+                    >
+                      {post.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact CTA -->
+          <div class="card bg-gradient-to-br from-primary to-secondary text-white">
+            <div class="card-body text-center">
+              <h3 class="text-2xl font-bold mb-3">Perlukan Nasihat Pembiayaan?</h3>
+              <p class="mb-6 opacity-90">
+                Pakar kami sedia membantu anda mencari penyelesaian pembiayaan terbaik untuk perniagaan anda.
+              </p>
+              <CTAButton
+                text="WhatsApp Kami Sekarang"
+                link={COMPANY_INFO.whatsapp.link}
+                variant="accent"
+                size="large"
+                icon="whatsapp"
+              />
+              <p class="mt-4 text-sm opacity-75">
+                Atau hubungi: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-accent">{COMPANY_INFO.phone.display}</a>
+              </p>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Bersedia untuk Membiayai Peralatan Anda?
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan mereka. Dapatkan kelulusan dalam 24 jam dengan kadar kompetitif dari 2.88% setahun.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Dapatkan Sebut Harga Percuma"
+          link="/ms/contact"
+          variant="accent"
+          size="large"
+        />
+        <CTAButton
+          text="Kira Bayaran Bulanan"
+          link="/ms/calculator"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+</style>

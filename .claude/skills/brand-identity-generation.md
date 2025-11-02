@@ -451,17 +451,141 @@ Layout:
 
 ## CI Brief Output Format
 
-Save each CI option as:
+**IMPORTANT: Generate HTML files for visual presentation**
+
+Save each CI option as **HTML** (not markdown):
 ```
-/clients/[client-name]/brand-identity/D/ci-option-[number]-[name].md
+example-clients/[CLIENT_NAME]/brand-identity/D/ci-option-[number]-[name].html
 ```
 
-**Example: ci-option-1-industrial-trust.md**
+**Note:** Replace `[CLIENT_NAME]` with the actual client folder name (e.g., `ing-heng-credit`, `apex-machinery`)
 
-```markdown
-# CI Option 1: Industrial Trust
+**Why HTML?**
+- Shows actual color swatches (visual, not just hex codes)
+- Demonstrates typography with real font rendering
+- Displays component examples with actual styling
+- Client/employee can open in browser and see beautiful presentation
+- No design tool needed - HTML shows the CI visually
 
-## Overview
+**Example: ci-option-1-industrial-trust.html**
+
+### HTML Template Structure
+
+Each CI HTML file should include:
+- **Color Palette Section**: Live color swatches (divs with background colors)
+- **Typography Section**: Actual text rendered in specified fonts (loaded via Google Fonts)
+- **Component Examples**: Styled buttons, cards, badges
+- **Mockup Previews**: Visual representations of hero, cards, layouts
+- **Usage Guidelines**: Styled do's and don'ts
+- **Responsive Design**: Works on mobile and desktop
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI Option 1: Heritage Trust - Ing Heng Credit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Header */
+        .header { background: #A47D4A; color: white; padding: 60px 0; text-align: center; }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+
+        /* Section styling */
+        .section { margin: 60px 0; }
+        .section h2 { font-family: 'Playfair Display', serif; color: #2C2C2C; font-size: 36px; margin-bottom: 24px; }
+
+        /* Color swatches */
+        .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .color-swatch { border-radius: 8px; padding: 80px 20px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .color-name { font-weight: 600; margin-top: 12px; }
+        .color-code { font-family: monospace; font-size: 14px; opacity: 0.8; }
+
+        /* Typography examples */
+        .type-example { margin: 20px 0; padding: 20px; background: #F5F1E8; border-radius: 8px; }
+
+        /* Component examples */
+        .button { display: inline-block; padding: 16px 32px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s; }
+        .button-primary { background: #A47D4A; color: white; }
+        .button-secondary { background: transparent; border: 2px solid #A47D4A; color: #A47D4A; }
+
+        /* Card example */
+        .card { background: white; border: 1px solid #E5E7EB; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+        /* Hero mockup */
+        .hero-mockup { background: #F5F1E8; padding: 80px 40px; text-align: center; border-radius: 8px; }
+        .hero-mockup h1 { font-family: 'Playfair Display', serif; font-size: 56px; color: #2C2C2C; margin-bottom: 16px; }
+        .hero-mockup p { font-size: 18px; color: #64748B; margin-bottom: 32px; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>CI Option 1: Heritage Trust</h1>
+        <p>Classic, authoritative brand identity built around bronze octagonal logo</p>
+    </div>
+
+    <div class="container">
+        <!-- Color Palette -->
+        <div class="section">
+            <h2>Color Palette</h2>
+            <h3>Primary Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: #A47D4A; color: white;">
+                    <div class="color-name">Bronze Gold</div>
+                    <div class="color-code">#A47D4A</div>
+                </div>
+                <div class="color-swatch" style="background: #2C2C2C; color: white;">
+                    <div class="color-name">Deep Charcoal</div>
+                    <div class="color-code">#2C2C2C</div>
+                </div>
+                <!-- More swatches... -->
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2>Typography</h2>
+            <div class="type-example">
+                <h1 style="font-family: 'Playfair Display', serif; font-size: 56px; color: #2C2C2C;">Equipment Financing Made Simple</h1>
+                <p style="font-size: 18px; color: #64748B;">This is body text in Inter Regular. Clean, readable, professional.</p>
+            </div>
+        </div>
+
+        <!-- Component Examples -->
+        <div class="section">
+            <h2>Component Examples</h2>
+            <a href="#" class="button button-primary">Primary Button</a>
+            <a href="#" class="button button-secondary">Secondary Button</a>
+
+            <div class="card" style="margin-top: 20px;">
+                <h3>Example Card</h3>
+                <p>This is how cards will look with the Heritage Trust CI.</p>
+            </div>
+        </div>
+
+        <!-- Hero Mockup -->
+        <div class="section">
+            <h2>Hero Section Mockup</h2>
+            <div class="hero-mockup">
+                <h1>设备融资，助您腾飞</h1>
+                <p>Equipment Financing That Powers Your Growth</p>
+                <a href="#" class="button button-primary">Apply Now 立即申请</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+---
+
+## Markdown Format (Legacy - Use HTML Instead)
 Modern, professional corporate identity based on existing logo's navy blue and orange palette. Conveys trust, reliability, and industrial strength.
 
 ## Color Palette
@@ -628,7 +752,7 @@ CI Options Created: 5
    - Best for: Local, family businesses
 
 All options saved to:
-/clients/apex-machinery/brand-identity/D/
+example-clients/apex-machinery/brand-identity/D/
 
 Employee next steps:
 1. Review 5 CI options
@@ -659,11 +783,12 @@ After CI approved (D/ → A/):
 - Generates website matching chosen brand identity
 
 ## Success Criteria
-✅ 5 distinct CI options generated
+✅ 5 distinct CI options generated **as HTML files**
 ✅ Each option has complete specifications
-✅ Color palettes defined (with hex codes)
-✅ Typography specifications clear
-✅ Visual examples/mockups provided
-✅ Usage guidelines included
+✅ Color palettes shown with **live color swatches** (not just hex codes)
+✅ Typography demonstrated with **actual font rendering** (Google Fonts loaded)
+✅ **Styled component examples** (buttons, cards, badges)
+✅ **Visual mockups** rendered in HTML (hero sections, layouts)
+✅ Usage guidelines included with styling
 ✅ Selection guidance provided
-✅ All saved as D/ drafts for review
+✅ All saved as D/ drafts for review (.html files, openable in browser)

@@ -1,744 +1,271 @@
-# Ing Heng Credit SEO Project
+# Result Marketing - Multi-Client SEO Automation Platform
 
-A comprehensive multilingual SEO content system for Ing Heng Credit & Leasing, designed to attract equipment financing customers through persona-based, culturally-optimized content across English, Mandarin Chinese, and Bahasa Malaysia.
-
----
-
-## Table of Contents
-
-1. [Project Overview](#project-overview)
-2. [Project Goals](#project-goals)
-3. [Folder Structure](#folder-structure)
-4. [Quick Start Guide](#quick-start-guide)
-5. [Using Slash Commands](#using-slash-commands)
-6. [Using Sub-Agents](#using-sub-agents)
-7. [Customer Personas](#customer-personas)
-8. [Content Creation Workflow](#content-creation-workflow)
-9. [Best Practices](#best-practices)
-10. [Additional Resources](#additional-resources)
+**Conquer untapped niche markets through multilingual AI-powered SEO**
 
 ---
 
-## Project Overview
+## Overview
 
-**Ing Heng Credit & Leasing** is a Malaysian equipment financing company serving construction, logistics, and industrial businesses. This project implements a structured, persona-driven SEO strategy to:
+This is the **Result Marketing SEO Framework** - a scalable, AI-powered platform for managing SEO content across multiple clients simultaneously. Our approach combines:
 
-- Attract qualified leads through organic search
-- Serve three distinct customer personas across multiple languages
-- Build topical authority in equipment financing
-- Convert website visitors to financing applications
-
-**Target Markets:**
-- Klang Valley (Shah Alam, Petaling Jaya, Klang)
-- Johor Bahru
-- Penang
-
-**Languages:**
-- English (primary B2B language)
-- Mandarin Chinese (Simplified) - primary for logistics operators
-- Bahasa Malaysia - primary for construction contractors
+- **3-Language Advantage**: English, Malay/Bahasa Malaysia, and Chinese (Mandarin)
+- **Niche Focus**: Blue ocean keyword strategies targeting untapped markets
+- **AI Efficiency**: Claude Code automation reduces costs by 60-80%
+- **Multi-Client Architecture**: Manage 50-100 clients from a single repository
 
 ---
 
-## Project Goals
+## Quick Start
 
-### Primary Objectives
+### Daily Content Generation (Every Morning)
 
-1. **Organic Traffic Growth**
-   - Increase organic search traffic by 300% in 12 months
-   - Rank in top 3 positions for 50+ target keywords across all languages
-   - Capture featured snippets for high-intent queries
+```bash
+# 1. Generate content for all clients (15 min)
+$ claude /generate-daily-blogs
 
-2. **Lead Generation**
-   - Generate 150+ qualified financing inquiries per month from organic search
-   - Achieve 5%+ conversion rate from organic traffic to lead submission
-   - Build email list of 2,000+ subscribers interested in equipment financing
+# 2. Review drafts in each client's /drafts/D/ folder
+#    Approve: Rename D/file.md → A/file.md
+#    Reject:  Rename D/file.md → F/file.md
 
-3. **Topical Authority**
-   - Become the #1 online resource for equipment financing in Malaysia
-   - Establish authority across 3 equipment categories (construction, logistics, industrial)
-   - Earn backlinks from industry publications and associations
+# 3. Publish approved content (2 min)
+$ claude /publish-approved
+```
 
-4. **Multilingual Presence**
-   - Equal content coverage across English, Mandarin, and Malay
-   - Language-specific keyword rankings for each persona
-   - Culturally optimized conversion messaging
-
-### Key Performance Indicators (KPIs)
-
-- **Traffic:** Monthly organic visits, sessions by language
-- **Rankings:** Keyword positions (top 3, top 10, top 20)
-- **Engagement:** Time on page (avg 3+ min), bounce rate (<60%)
-- **Conversions:** Form submissions, WhatsApp inquiries, calculator usage
-- **Authority:** Domain authority, backlinks, branded searches
+**Total time: 30 minutes to manage content for 50+ clients**
 
 ---
 
-## Folder Structure
+## Project Structure
 
 ```
-ING HENG CREDIT/
+ing-heng-credit-seo/
+├── example-clients/              # Multi-client workspace
+│   └── ing-heng/                # Example: Ing Heng Credit client
+│       ├── brand-identity/      # Corporate identity options (D/A/F)
+│       ├── image-briefs/        # Equipment photo analysis (D/A/F)
+│       ├── personas/            # Target audience profiles
+│       ├── keyword-research/    # SEO keyword strategy
+│       ├── blog-research/       # Content research
+│       ├── content/             # Published content
+│       │   ├── en/             # English content
+│       │   ├── ms/             # Malay content
+│       │   └── zh/             # Chinese content
+│       ├── website/            # Live Astro website
+│       ├── project-docs/       # Active documentation
+│       └── archive/            # Historical reports
 │
-├── .claude/                          # Claude Code configuration
-│   ├── commands/                     # Slash commands for quick actions
-│   │   ├── analyze-persona.md       # Analyze customer personas & SEO opportunities
-│   │   └── generate-blog.md         # Generate multi-persona multi-language blogs
-│   │
-│   └── agents/                       # Specialized AI agents
-│       ├── keyword-researcher.md     # Keyword research & strategy
-│       ├── content-optimizer.md      # Content improvement & optimization
-│       ├── competitor-analyzer.md    # Competitor analysis
-│       └── multilingual-seo-specialist.md  # Translation & localization
+├── framework-docs/              # Reusable methodology
+│   ├── architecture-presentation.html
+│   ├── seo-workflow-swimlane.md
+│   └── SEO pro.md
 │
-├── en/                               # English content
-│   ├── blogs/                        # Blog posts
-│   ├── content/                      # Other content (guides, resources)
-│   ├── landing-pages/                # Conversion-focused landing pages
-│   └── personas/                     # Persona-specific content variations
+├── shared/                      # Reusable templates & guides
+│   ├── templates/              # Blog, persona, landing page templates
+│   ├── design-research/        # UI/UX and CI frameworks
+│   └── research/               # SEO strategy methodologies
 │
-├── zh/                               # Mandarin Chinese (Simplified) content
-│   ├── blogs/                        # 博客文章
-│   ├── content/                      # 其他内容
-│   ├── landing-pages/                # 着陆页
-│   └── personas/                     # 角色特定内容
+├── .claude/                     # Claude Code automation
+│   ├── skills/                 # Reusable AI agents
+│   └── commands/               # Slash commands
 │
-├── ms/                               # Bahasa Malaysia content
-│   ├── blogs/                        # Artikel blog
-│   ├── content/                      # Kandungan lain
-│   ├── landing-pages/                # Halaman pendaratan
-│   └── personas/                     # Kandungan khusus persona
-│
-└── shared/                           # Shared resources across all languages
-    ├── personas/                     # Customer persona definitions
-    │   ├── excavator-contractor-persona.md      # Construction contractor
-    │   ├── lorry-logistics-persona.md           # Logistics operator
-    │   └── forklift-warehouse-persona.md        # Warehouse manager
-    │
-    ├── research/                     # Research and strategy documents
-    │   └── SEO-STRATEGY.md          # Comprehensive SEO strategy
-    │
-    ├── templates/                    # Content templates
-    │   └── persona-template.md      # Template for creating new personas
-    │
-    ├── WORKFLOW.md                  # Detailed workflow documentation
-    └── PERSONA-GUIDE.md             # Guide to using personas effectively
-```
-
-### Folder Organization Logic
-
-**Language Folders (en/, zh/, ms/):**
-- All published, language-specific content
-- Ready for deployment to website
-- URLs map directly to folder structure
-
-**Shared Folder:**
-- Language-agnostic resources
-- Personas, research, strategies
-- Templates and documentation
-
-**.claude Folder:**
-- AI automation configuration
-- Slash commands for repetitive tasks
-- Specialized sub-agents for complex operations
-
----
-
-## Quick Start Guide
-
-### For Content Creators
-
-1. **Familiarize yourself with personas:**
-   ```
-   Read: shared/personas/excavator-contractor-persona.md
-   Read: shared/personas/lorry-logistics-persona.md
-   Read: shared/personas/forklift-warehouse-persona.md
-   ```
-
-2. **Generate your first blog post:**
-   ```
-   /generate-blog How excavator financing helps contractors win more projects
-   ```
-   This will create 3 blog posts (one per persona) across all 3 languages.
-
-3. **Review the workflow:**
-   ```
-   Read: shared/WORKFLOW.md
-   ```
-
-### For SEO Strategists
-
-1. **Review the SEO strategy:**
-   ```
-   Read: shared/research/SEO-STRATEGY.md
-   ```
-
-2. **Conduct keyword research:**
-   Open agent: `.claude/agents/keyword-researcher.md`
-   Provide input: Topic, persona, and target language
-
-3. **Analyze competitors:**
-   Open agent: `.claude/agents/competitor-analyzer.md`
-   Provide competitor URLs for analysis
-
-### For Project Managers
-
-1. **Understand workflows:**
-   ```
-   Read: shared/WORKFLOW.md
-   ```
-
-2. **Review content quality checklist:**
-   Located in WORKFLOW.md > Quality Assurance Checklist
-
-3. **Track progress:**
-   - Use monthly content planning process (WORKFLOW.md)
-   - Monitor KPIs (SEO-STRATEGY.md)
-   - Review persona performance (PERSONA-GUIDE.md)
-
----
-
-## Using Slash Commands
-
-Slash commands are shortcuts for common tasks, configured in `.claude/commands/`.
-
-### Available Commands
-
-#### /analyze-persona
-
-**Purpose:** Analyze customer segments and identify SEO opportunities
-
-**Usage:**
-```
-/analyze-persona [website URL or industry description]
-```
-
-**Examples:**
-```
-/analyze-persona https://competitor-equipment-financing.com
-/analyze-persona medical equipment financing for clinics in Malaysia
-/analyze-persona crane rental business expanding to sales
-```
-
-**Output:**
-- Detailed customer persona breakdown
-- SEO keyword opportunity matrix
-- Content recommendations by persona
-- Prioritized action plan
-
-**When to use:**
-- Starting a new persona
-- Analyzing a new market segment
-- Competitor research
-- Quarterly strategy review
-
----
-
-#### /generate-blog
-
-**Purpose:** Generate comprehensive, SEO-optimized blog posts for ALL personas across ALL languages
-
-**Usage:**
-```
-/generate-blog [blog topic]
-```
-
-**Examples:**
-```
-/generate-blog How equipment financing helps construction companies manage seasonal cash flow
-/generate-blog New vs used excavator financing comparison
-/generate-blog Forklift rental vs purchase ROI analysis
-/generate-blog Fast commercial vehicle financing for logistics startups
-```
-
-**Output:**
-- 3-9 blog posts (depending on persona relevance)
-- Each in 3 languages (English, Mandarin, Malay)
-- SEO-optimized with frontmatter metadata
-- Target keywords identified
-- Internal linking suggestions
-
-**When to use:**
-- Creating new blog content
-- Expanding content coverage
-- Targeting new keywords
-- Monthly content production
-
----
-
-### Creating Custom Slash Commands
-
-To create a new slash command:
-
-1. Create a new `.md` file in `.claude/commands/`
-2. Name it descriptively (e.g., `create-landing-page.md`)
-3. Write detailed instructions for the AI
-4. Include examples and expected output format
-
-**Template:**
-```markdown
-# Command Title
-
-Description of what this command does.
-
-## Your Task
-
-Detailed instructions...
-
-## Output Format
-
-Expected structure...
-
-## Usage
-
-/command-name [parameters]
+└── archive/                     # Deprecated files
+    ├── project-setup/
+    └── implementation-reports/
 ```
 
 ---
 
-## Using Agents
+## The D/A/F Workflow
 
-Agents are specialized AI assistants for complex, multi-step tasks. Located in `.claude/agents/`.
+Every piece of content follows a **Draft → Approved → Failed** workflow:
 
-### Available Agents
+- **D/** = Draft (awaiting human review)
+- **A/** = Approved (employee verified, ready for production)
+- **F/** = Failed/Rejected (not suitable)
 
-#### Keyword Researcher
-**File:** `.claude/agents/keyword-researcher.md`
+### Example:
 
-**Capabilities:**
-- Multilingual keyword research
-- Search intent classification
-- Keyword difficulty assessment
-- Competitor keyword gap analysis
-- Content cluster planning
+```bash
+# Claude generates drafts
+/example-clients/ing-heng/drafts/D/2025-11-02-excavator-financing-en.md
 
-**When to use:**
-- Starting a content campaign
-- Identifying keyword opportunities
-- Planning content clusters
-- Quarterly keyword review
+# Employee reviews and approves
+/example-clients/ing-heng/drafts/A/2025-11-02-excavator-financing-en.md
 
-**How to use:**
-1. Open the agent file
-2. Read the "Input Required" section
-3. Provide requested information (topic, persona, language)
-4. Review comprehensive keyword report
-5. Implement recommendations
+# System publishes approved content
+/example-clients/ing-heng/content/en/blogs/2025-11-02-excavator-financing.md
+```
 
 ---
 
-#### Content Optimizer
-**File:** `.claude/agents/content-optimizer.md`
+## Client Onboarding
 
-**Capabilities:**
-- On-page SEO analysis
-- Readability improvement
-- E-E-A-T signal enhancement
-- SERP feature targeting
-- Conversion optimization
+### New Client Setup (One-Time, 30 minutes)
 
-**When to use:**
-- Content underperforming in rankings
-- Quarterly content refresh
-- After search algorithm updates
-- Improving conversion rates
+```bash
+# 1. Run onboarding (generates keywords, personas, strategy)
+$ claude /onboard-client new-client-name
 
-**How to use:**
-1. Open the agent file
-2. Provide content URL or file path
-3. Specify target keywords
-4. Receive detailed optimization report
-5. Implement prioritized fixes
+# 2. Review generated materials in client's folders:
+#    - /keyword-research/D/
+#    - /persona-idea/D/
+#    - /brief-draft/D/
+#    Approve by renaming D/ → A/
+
+# 3. Finalize client setup (converts to production)
+$ claude /finalize-client new-client-name
+
+# Client is now ready for daily content generation!
+```
 
 ---
 
-#### Competitor Analyzer
-**File:** `.claude/agents/competitor-analyzer.md`
+## Example Client: Ing Heng Credit
 
-**Capabilities:**
-- Competitor content analysis
-- Keyword gap identification
-- Backlink profile analysis
-- Content strategy insights
-- Competitive positioning
+**Industry**: Equipment Financing (Excavators to Helicopters)
+**Location**: Klang, Selangor, Malaysia
+**Strategy**: Blue ocean keywords in 3 languages
 
-**When to use:**
-- Launching new content initiatives
-- Quarterly competitive review
-- Responding to competitor changes
-- Identifying content opportunities
+### What We Did:
 
-**How to use:**
-1. Open the agent file
-2. Provide competitor URLs
-3. Specify analysis focus areas
-4. Review competitive intelligence report
-5. Develop counter-strategies
+- Analyzed 18 equipment types (excavators, trucks, helicopters)
+- Generated 5 corporate identity options
+- Extracted 200+ keywords across 3 languages
+- Identified zero-competition niches (helicopter financing 🚁)
+- Built multilingual website with Astro
+
+**Result**: Complete SEO infrastructure in 2 days, ready to dominate niche markets
+
+📁 **View Full Case Study**: `example-clients/ing-heng/project-docs/BRAND-SETUP-SUMMARY.md`
 
 ---
 
-#### Multilingual SEO Specialist
-**File:** `.claude/agents/multilingual-seo-specialist.md`
+## Result Marketing Philosophy
 
-**Capabilities:**
-- Professional translation with SEO optimization
-- Cultural localization
-- Hreflang implementation
-- Language-specific content strategy
+> "We conquer the spaces where no one goes before."
 
-**When to use:**
-- Translating high-performing content
-- Creating language-specific content
-- Implementing multilingual SEO
-- Cultural adaptation reviews
+### Our Approach:
 
-**How to use:**
-1. Open the agent file
-2. Provide source content and target languages
-3. Specify persona and content type
-4. Receive fully localized content package
-5. Implement with hreflang tags
+✅ **Niche Focus** - Target specific equipment models (CAT 966C, Komatsu PC350)
+✅ **Multilingual Advantage** - 3x the audience of single-language competitors
+✅ **Blue Ocean Strategy** - Find markets with zero competition
+✅ **AI-Powered Efficiency** - Enterprise SEO at SME prices
+✅ **Local Market Intelligence** - Malaysian search behavior expertise
+
+### What We DON'T Do:
+
+❌ Backlink building (not our specialty)
+❌ High-competition keyword battles
+❌ Traditional manual SEO agencies
+❌ Expensive PPC campaigns
 
 ---
 
-### Agent Best Practices
+## Technology Stack
 
-1. **Read the entire agent file first** - Understand capabilities and requirements
-2. **Provide complete input** - More context = better results
-3. **Review output carefully** - Agents provide recommendations, not final decisions
-4. **Iterate if needed** - Refine input based on initial output
-5. **Document results** - Save agent outputs for future reference
-
----
-
-## Customer Personas
-
-Our SEO strategy is built around three core customer personas. Each persona has unique characteristics, search behaviors, and content preferences.
-
-### Overview
-
-| Persona | Equipment | Primary Language | Urgency | Decision Style |
-|---------|-----------|------------------|---------|----------------|
-| **Contractor Ahmad** | Excavators, Heavy Equipment | Bahasa Malaysia | High | Project-driven, Fast |
-| **Logistics Lee** | Lorries, Commercial Vehicles | Mandarin Chinese | Very High | Contract-driven, Immediate |
-| **Warehouse William** | Forklifts, Warehouse Equipment | English | Medium | Data-driven, Deliberate |
-
-### Detailed Persona Files
-
-Each persona has a comprehensive profile in `shared/personas/`:
-
-1. **excavator-contractor-persona.md** - Construction contractors
-2. **lorry-logistics-persona.md** - Logistics and transport operators
-3. **forklift-warehouse-persona.md** - Warehouse and manufacturing managers
-
-### Key Persona Insights
-
-**Contractor Ahmad (Excavator):**
-- Seasonal cash flow challenges (monsoon season)
-- Project-based income with 60-90 day payment terms
-- Prefers Bahasa Malaysia content
-- WhatsApp is primary communication channel
-- Values: Fast approval, flexible payments
-
-**Logistics Lee (Lorry):**
-- Thin profit margins (fuel costs 40-50%)
-- Contract-driven purchasing (immediate need)
-- Prefers Mandarin Chinese content
-- WhatsApp essential (must respond within 1 hour)
-- Values: Low monthly payment, used vehicle financing
-
-**Warehouse William (Forklift):**
-- ROI-focused decision making
-- Multiple stakeholders (operations, CFO, owner)
-- Prefers English content
-- Professional communication (email, formal proposals)
-- Values: Cost savings analysis, fast approval for expansion
-
-### Using Personas in Content Creation
-
-1. **Choose the right persona** for your topic
-   - Equipment type determines primary persona
-   - Some topics relevant to multiple personas
-
-2. **Use persona-specific language and examples**
-   - Reference their pain points
-   - Address their specific challenges
-   - Use cultural references they relate to
-
-3. **Match the persona's preferred content format**
-   - Contractor Ahmad: Short, WhatsApp-friendly
-   - Logistics Lee: Quick guides, calculators
-   - Warehouse William: Detailed analysis, ROI calculators
-
-4. **Optimize for persona's search behavior**
-   - Use keywords they actually search
-   - Answer their specific questions
-   - Target their urgency level
-
-For more details, see: `shared/PERSONA-GUIDE.md`
+- **AI Development**: Claude Code, Codex, Cursor, Windsurf
+- **Web Framework**: Astro (multi-language static sites)
+- **Deployment**: Vercel (3 deployments per client: EN/MS/ZH)
+- **Version Control**: Git + GitHub
+- **Content Format**: Markdown with frontmatter
 
 ---
 
-## Content Creation Workflow
+## Key Features
 
-### Standard Blog Post Creation Process
+### Multi-Language Support
+Every client gets 3 language variants:
+- **English** (business standard, international)
+- **Chinese** (高净值人群 - high-net-worth individuals)
+- **Malay** (local market, government contractors)
 
-1. **Research Phase**
-   - Identify topic and target persona(s)
-   - Conduct keyword research using Keyword Researcher sub-agent
-   - Analyze top-ranking competitor content
-   - Define unique angle and value proposition
+### Automated Workflows
+- Daily blog generation (50+ posts across all clients)
+- Quality review system (D/A/F approval)
+- One-command deployment to production
+- Parallel agent processing for speed
 
-2. **Planning Phase**
-   - Determine relevant personas (1-3)
-   - Identify target languages (usually all 3)
-   - Create content outline with H2/H3 structure
-   - Define target keywords and search intent
-
-3. **Creation Phase**
-   - Use `/generate-blog [topic]` command for automated creation
-   - OR manually create using blog post structure:
-     - SEO-optimized title (60 chars max)
-     - Meta description (155 chars max)
-     - Target keywords (1 primary + 5-8 secondary)
-     - Engaging introduction (150-200 words)
-     - Main content (1,500-2,500 words)
-     - FAQ section (5-7 questions)
-     - Strong call-to-action
-     - Internal/external links
-
-4. **Optimization Phase**
-   - Review with Content Optimizer agent
-   - Check keyword placement and density
-   - Verify readability (Flesch score 60+)
-   - Add E-E-A-T signals
-   - Implement FAQ schema markup
-
-5. **Translation/Localization Phase**
-   - Use Multilingual SEO Specialist agent
-   - Full cultural localization (not just translation)
-   - Language-specific keyword research
-   - Implement hreflang tags
-
-6. **Quality Assurance**
-   - Review against QA checklist (see WORKFLOW.md)
-   - Native speaker review if possible
-   - Check all links and formatting
-   - Verify schema markup
-
-7. **Publishing**
-   - Add frontmatter metadata
-   - Save in appropriate language folder
-   - Implement internal links from related content
-   - Update XML sitemap
-
-8. **Promotion**
-   - Share on language-specific channels
-   - WhatsApp groups (Mandarin/Malay content)
-   - LinkedIn (English B2B content)
-   - Facebook groups (all languages)
-
-For detailed workflows, see: `shared/WORKFLOW.md`
+### Scalable Architecture
+- Single repository for all clients
+- Reusable templates and frameworks
+- No code duplication
+- Client isolation (one client's data never affects another)
 
 ---
 
-## Best Practices
+## Documentation
 
-### SEO Best Practices
+### For Daily Operations:
+- `framework-docs/seo-workflow-swimlane.md` - Employee SOP
+- `framework-docs/SEO pro.md` - Comprehensive SEO knowledge base
+- `shared/WORKFLOW.md` - Content creation workflow
+- `shared/PERSONA-GUIDE.md` - Audience targeting methodology
 
-1. **Keyword Usage**
-   - Primary keyword in title, H1, first 100 words, conclusion
-   - Keyword density: 1-2% for primary keyword
-   - Natural language flow (avoid keyword stuffing)
-   - LSI keywords throughout content
+### For New Clients:
+- `shared/templates/` - Reusable content templates
+- `.claude/skills/client-onboarding.md` - Onboarding automation
+- `.claude/skills/brand-identity-generation.md` - Brand setup
 
-2. **Content Structure**
-   - H2 subheading every 300 words
-   - Paragraphs: 2-4 sentences maximum
-   - Bullet points and lists for scannability
-   - Tables for comparisons
-
-3. **E-E-A-T Signals** (Critical for financial content)
-   - Author credentials and bio
-   - Data citations from authoritative sources
-   - Link to government regulations (KPKT, CIDB, JPJ)
-   - Customer testimonials and case studies
-   - Current statistics (update annually)
-
-4. **Internal Linking**
-   - 3-5 contextual internal links per article
-   - Link to pillar pages and related clusters
-   - Descriptive anchor text
-   - Reciprocal linking where appropriate
-
-5. **Technical SEO**
-   - Hreflang tags for all language versions
-   - Schema markup (Article, FAQPage, HowTo)
-   - Proper URL structure (/en/, /zh/, /ms/)
-   - Image alt text with keywords
-   - Mobile-responsive formatting
-
-### Multilingual Best Practices
-
-1. **Translation Quality**
-   - NEVER use word-for-word translation
-   - Always research keywords independently for each language
-   - Cultural localization is mandatory
-   - Native speaker review when possible
-
-2. **Language-Specific Considerations**
-   - **English:** Professional, authoritative, B2B-focused
-   - **Mandarin:** Relationship-focused, trust-building, community-oriented
-   - **Malay:** Respectful, community-oriented, service-focused
-
-3. **Cultural Adaptation**
-   - Use culturally relevant examples
-   - Reference local festivals and events
-   - Address language-specific concerns
-   - Localize conversion messaging
-
-4. **Technical Implementation**
-   - Hreflang tags on all pages
-   - Language-specific URLs
-   - UTF-8 encoding for Chinese/Malay characters
-   - Language switcher on website
-
-### Content Quality Standards
-
-1. **Minimum Requirements**
-   - Word count: 1,500-2,500 words for blog posts
-   - Readability: Flesch Reading Ease 60+
-   - Unique value: Not available elsewhere
-   - Persona-aligned: Addresses specific persona needs
-
-2. **Excellence Indicators**
-   - Original research or data
-   - Expert quotes or interviews
-   - Custom images or infographics
-   - Comprehensive coverage of topic
-   - Actionable advice and examples
-
-3. **Conversion Elements**
-   - Multiple CTAs (top, middle, end)
-   - Trust signals prominently displayed
-   - Calculator tools or lead magnets
-   - Clear next steps
-   - WhatsApp/contact information
-
-### Performance Monitoring
-
-1. **Track These Metrics**
-   - Keyword rankings (weekly)
-   - Organic traffic by language (weekly)
-   - Engagement metrics (monthly)
-   - Conversion rates (monthly)
-   - Backlinks acquired (monthly)
-
-2. **Review Schedule**
-   - Weekly: Rankings, traffic trends
-   - Monthly: Content performance, conversion rates
-   - Quarterly: Strategy review, competitor analysis
-   - Annually: Comprehensive audit and strategy update
-
-3. **Optimization Triggers**
-   - Content not ranking after 3 months → Optimize
-   - Traffic declining >20% → Investigate and fix
-   - Conversion rate <3% → Improve CTAs and trust signals
-   - Competitor outranking you → Competitive analysis
+### Example Reference:
+- `example-clients/ing-heng/` - Complete client example
+- All workflows, documentation, and outputs visible
 
 ---
 
-## Additional Resources
+## Getting Started
 
-### Documentation Files
+### Prerequisites:
+- Claude Code installed
+- Git configured
+- Node.js (for website builds)
+- Vercel account (for deployments)
 
-- **WORKFLOW.md** - Detailed step-by-step workflows for all content operations
-- **SEO-STRATEGY.md** - Comprehensive SEO strategy document
-- **PERSONA-GUIDE.md** - In-depth guide to using personas effectively
-
-### Persona Files
-
-- **excavator-contractor-persona.md** - Construction contractor persona
-- **lorry-logistics-persona.md** - Logistics operator persona
-- **forklift-warehouse-persona.md** - Warehouse manager persona
-
-### Agent Files
-
-- **keyword-researcher.md** - Keyword research and strategy
-- **content-optimizer.md** - Content optimization
-- **competitor-analyzer.md** - Competitive analysis
-- **multilingual-seo-specialist.md** - Translation and localization
-
-### External Resources
-
-**SEO Tools:**
-- Google Search Console - Track rankings and traffic
-- Google Analytics - Monitor user behavior
-- Ahrefs / SEMrush - Keyword research and competitor analysis
-- Screaming Frog - Technical SEO audits
-
-**Keyword Research:**
-- Google Keyword Planner - Search volume data
-- Google Trends - Trending topics and seasonality
-- AnswerThePublic - Question-based keywords
-- People Also Ask (PAA) - SERP feature opportunities
-
-**Content Tools:**
-- Hemingway Editor - Readability scoring
-- Grammarly - Grammar and style checking
-- Canva - Create images and infographics
-- Schema.org - Schema markup reference
-
-**Multilingual Resources:**
-- Google Translate - Quick reference only (never publish)
-- Baidu - Chinese search engine insights
-- Native speaker reviewers - Essential for quality
+### First Steps:
+1. Clone this repository
+2. Review `example-clients/ing-heng/` to understand structure
+3. Read `framework-docs/architecture-presentation.html` for full system overview
+4. Set up your first client using `/onboard-client` command
 
 ---
 
-## Getting Help
+## Success Metrics
 
-### Common Questions
+### SEO Performance:
+- Rank #1-3 for 50+ keywords within 12 months
+- 2,000-5,000 organic visitors/month (per client)
+- 50-150 qualified leads/month (per client)
 
-**Q: How do I know which persona to target for a topic?**
-A: Match equipment type to persona:
-- Excavators, bulldozers, cranes → Contractor Ahmad
-- Lorries, trucks, vans → Logistics Lee
-- Forklifts, warehouse equipment → Warehouse William
-See PERSONA-GUIDE.md for detailed mapping.
+### Content Output:
+- 3 blog posts per client per week
+- 150+ posts per day across all clients
+- All content multilingual (EN/MS/ZH)
 
-**Q: Should I create content in all 3 languages for every topic?**
-A: Yes, for most topics. Some persona-specific topics may prioritize their primary language, but coverage across all languages maximizes reach.
-
-**Q: How do I use agents?**
-A: Open the agent file, read the instructions, provide the required input, and follow the output recommendations. See "Using Agents" section above.
-
-**Q: What if a blog post isn't ranking after 3 months?**
-A: Use the Content Optimizer agent to analyze and improve the content. Check keyword difficulty - you may need to target easier keywords first.
-
-**Q: How often should I publish new content?**
-A: Aim for 4-6 blog posts per month (across all languages). Quality over quantity. See monthly content planning in WORKFLOW.md.
-
-### Support
-
-For questions, issues, or suggestions:
-- Review documentation files (WORKFLOW.md, SEO-STRATEGY.md, PERSONA-GUIDE.md)
-- Consult agents for specialized guidance
-- Document new learnings for future reference
+### Efficiency Gains:
+- 30 minutes daily management (vs 8 hours manual)
+- 60-80% cost reduction vs traditional agencies
+- 50-100 clients managed by 1 person
 
 ---
 
-## Project Information
+## Support & Contribution
 
-**Company:** Ing Heng Credit & Leasing
-**Industry:** Equipment Financing
-**Markets:** Malaysia (Klang Valley, Johor, Penang)
-**Languages:** English, Mandarin Chinese (Simplified), Bahasa Malaysia
-**Contact:** +60 17-570 0889 (WhatsApp)
+This is a **Result Marketing** internal framework. For questions or improvements:
 
-**Project Start Date:** October 2025
-**Last Updated:** October 10, 2025
-**Version:** 1.0
+1. Check `framework-docs/` for methodology documentation
+2. Review `example-clients/ing-heng/` for implementation examples
+3. Update `.claude/skills/` for new automation workflows
 
 ---
 
-**Ready to create world-class SEO content? Start with the Quick Start Guide above, then dive into WORKFLOW.md for detailed processes.**
+## License & Usage
+
+**Proprietary Framework** - Result Marketing
+All methodologies, templates, and automation scripts are proprietary.
+
+For client work inquiries: [Contact Result Marketing]
+
+---
+
+**Last Updated**: November 2025
+**Current Clients**: 1 (Ing Heng Credit)
+**Framework Version**: 2.0 (Multi-Client Architecture)

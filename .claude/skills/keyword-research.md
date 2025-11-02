@@ -3,6 +3,12 @@
 ## Purpose
 Research keywords independently for each language with SERP analysis and competitor insights.
 
+## Client Parameter
+**IMPORTANT:** When invoking this skill, pass the client name as a parameter:
+- Used in folder paths as: `example-clients/[client-name]/`
+- Replace `[client-name]` with actual client identifier (e.g., "apex-machinery", "ing-heng-credit")
+- Must be consistent throughout entire onboarding workflow
+
 ## Key Principle
 **DO NOT TRANSLATE KEYWORDS** - Research natively for each language.
 

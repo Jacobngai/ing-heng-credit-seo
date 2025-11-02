@@ -44,12 +44,8 @@ const isEquipmentActive = currentPath.includes('/equipment');
     <div class="equipment-dropdown-content">
       <div class="equipment-grid">
         {EQUIPMENT_NAV_ITEMS.map((item) => {
-          // Temporary: link non-existent pages to equipment catalog
-          const existingPages = ['/equipment', '/equipment/excavator'];
-          const pageExists = existingPages.includes(item.href);
-          const href = item.href === '/equipment' ? `/${lang}/equipment` :
-                      pageExists ? `/${lang}${item.href}` :
-                      `/${lang}/equipment#construction-equipment`;
+          // Link all equipment items to their dedicated pages
+          const href = `/${lang}${item.href}`;
           const isActive = currentPath.includes(item.href) && item.href !== '/equipment';
 
           return (
@@ -110,8 +106,12 @@ const isEquipmentActive = currentPath.includes('/equipment');
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0;
-    font: inherit;
+    /* Ensure consistent typography */
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.125rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 400 !important;
   }
 
   .equipment-dropdown-trigger:hover .dropdown-arrow {
@@ -161,9 +161,9 @@ const isEquipmentActive = currentPath.includes('/equipment');
 
   .equipment-dropdown-content {
     background: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e5e7eb;
+    border-radius: 0;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    border: 3px solid #1E3A8A;
     overflow: hidden;
   }
 
@@ -180,21 +180,22 @@ const isEquipmentActive = currentPath.includes('/equipment');
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0;
     text-decoration: none;
     transition: all 0.2s ease;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
   }
 
   .equipment-dropdown-item:hover {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-color: #0ea5e9;
+    background: #DBEAFE;
+    border-color: #2563EB;
     transform: translateX(4px);
   }
 
   .equipment-dropdown-item.active {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-    border-color: #2563eb;
+    background: #DBEAFE;
+    border-color: #2563EB;
+    border-left-width: 4px;
   }
 
   .equipment-item-content {
@@ -215,8 +216,8 @@ const isEquipmentActive = currentPath.includes('/equipment');
   }
 
   .equipment-name {
-    font-weight: 600;
-    color: #1e293b;
+    font-weight: 700;
+    color: #1E3A8A;
     font-size: 0.9375rem;
   }
 
@@ -230,13 +231,15 @@ const isEquipmentActive = currentPath.includes('/equipment');
   }
 
   .badge-popular {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde047 100%);
-    color: #92400e;
+    background: #FBBF24;
+    color: #1E3A8A;
+    border: 2px solid #1E3A8A;
   }
 
   .badge-fastApproval {
-    background: linear-gradient(135deg, #d1fae5 0%, #6ee7b7 100%);
-    color: #065f46;
+    background: #10B981;
+    color: white;
+    border: 2px solid #065F46;
   }
 
   .equipment-description {
@@ -261,9 +264,9 @@ const isEquipmentActive = currentPath.includes('/equipment');
 
   /* Footer */
   .equipment-dropdown-footer {
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background: #EFF6FF;
     padding: 1rem 1.5rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 3px solid #1E3A8A;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -277,14 +280,16 @@ const isEquipmentActive = currentPath.includes('/equipment');
 
   .footer-cta {
     font-size: 0.875rem;
-    font-weight: 600;
-    color: #0ea5e9;
+    font-weight: 700;
+    color: #1D4ED8;
     text-decoration: none;
     transition: color 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .footer-cta:hover {
-    color: #0284c7;
+    color: #1E3A8A;
   }
 
   /* Responsive */

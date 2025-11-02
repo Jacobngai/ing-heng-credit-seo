@@ -1,14 +1,20 @@
 # Multi-Language Content Generation Skill
 
+## Client Parameter
+**REQUIRED PARAMETER:** `[client-name]` - The client directory name (e.g., "apex-machinery", "ing-heng-credit")
+- Used in paths: `/example-clients/[client-name]/`
+- All file operations use this parameter
+- If not provided, the agent will ask for it
+
 ## Purpose
-Generate culturally-adapted native content for each language (NOT translation).
+Generate culturally-adapted native content for each language (NOT translation) for a specific client.
 
 ## Core Principle
 **NEVER TRANSLATE** - Generate each language version from scratch using:
 - Language-specific keyword research
-- Cultural context and references
+- Cultural context and references specific to the client's niche
 - Local idioms and expressions
-- Appropriate examples and case studies
+- Appropriate examples and case studies relevant to the client's industry
 
 ## Language-Specific Guidelines
 

@@ -31,10 +31,12 @@ Phase 2: Website uses 150 keywords → All opportunities captured!
 
 **Input:** All approved image briefs (A/ files)
 
+**Note:** Image briefs are generated in parallel by the image-analysis skill, with one agent per image. This ensures fast, comprehensive analysis of all visual assets.
+
 **Process:**
 ```
 For each approved image brief:
-  Read: /image-briefs/A/[image-name].md
+  Read: /example-clients/[client-name]/image-briefs/A/[image-name].md
   Extract:
     - Primary keywords (e.g., "Caterpillar excavator Malaysia")
     - Secondary keywords (e.g., "used excavator Selangor")
@@ -96,10 +98,10 @@ For each approved image brief:
 
 #### 2.1 Load Existing Keywords
 ```
-Read: /keyword-research/A/primary-keywords-en.md
-Read: /keyword-research/A/primary-keywords-zh.md
-Read: /keyword-research/A/primary-keywords-ms.md
-Read: /keyword-research/A/long-tail-keywords.md
+Read: /example-clients/[client-name]/keyword-research/A/primary-keywords-en.md
+Read: /example-clients/[client-name]/keyword-research/A/primary-keywords-zh.md
+Read: /example-clients/[client-name]/keyword-research/A/primary-keywords-ms.md
+Read: /example-clients/[client-name]/keyword-research/A/long-tail-keywords.md
 ```
 
 Extract existing keywords into structured format.
@@ -157,7 +159,7 @@ Keyword Score =
 
 **Output new draft files with merged keywords:**
 
-#### `/keyword-research/D/enhanced-primary-keywords-en.md`
+#### `/example-clients/[client-name]/keyword-research/D/enhanced-primary-keywords-en.md`
 
 ```markdown
 # Enhanced Primary Keywords (English) - With Image Analysis
@@ -284,7 +286,7 @@ Keyword Score =
 
 ### Step 4: Generate Content Gap Analysis
 
-**New file:** `/keyword-research/D/image-driven-content-opportunities.md`
+**New file:** `/example-clients/[client-name]/keyword-research/D/image-driven-content-opportunities.md`
 
 ```markdown
 # Image-Driven Content Opportunities
@@ -388,7 +390,7 @@ Gap: Limited location-specific content
 Save enhanced keyword research as **NEW DRAFTS (D/)**:
 
 ```
-/clients/apex-machinery/keyword-research/D/
+example-clients/[CLIENT_NAME]/keyword-research/D/
 ├── enhanced-primary-keywords-en.md
 ├── enhanced-primary-keywords-zh.md
 ├── enhanced-primary-keywords-ms.md
@@ -396,6 +398,8 @@ Save enhanced keyword research as **NEW DRAFTS (D/)**:
 ├── image-driven-content-opportunities.md
 └── keyword-integration-report.md
 ```
+
+**Note:** Replace `[CLIENT_NAME]` with the actual client folder name (e.g., `ing-heng-credit`, `apex-machinery`)
 
 **Employee reviews these NEW drafts** alongside Phase 1 keyword research.
 
@@ -431,11 +435,13 @@ Save enhanced keyword research as **NEW DRAFTS (D/)**:
 
 **Output:**
 ```
-/clients/apex-machinery/
+example-clients/[CLIENT_NAME]/
 ├── /image-briefs/D/*.md                    ← Image analysis
 ├── /brand-identity/D/*.md                  ← CI options
 └── /keyword-research/D/enhanced-*.md       ← UPDATED keyword research
 ```
+
+**Note:** Replace `[CLIENT_NAME]` with the actual client folder name
 
 **Employee reviews:**
 1. ✅ Image briefs (are keywords accurate?)
@@ -495,11 +501,14 @@ New from images:
 
 ## Execution Timing
 
-- Extract keywords from 47 images: ~5 minutes
+**Note:** Image analysis uses parallel agents (1 agent per image), dramatically reducing processing time.
+
+- Image analysis (47 images with parallel agents): ~3-5 minutes
+- Extract keywords from 47 generated briefs: ~2 minutes
 - Merge with existing research: ~3 minutes
 - Re-prioritize and score: ~2 minutes
 - Generate enhanced drafts: ~3 minutes
-- **Total: ~13 minutes** (added to Phase 1.5)
+- **Total: ~13-15 minutes** (including parallel image analysis)
 
 ## Agent Usage
 

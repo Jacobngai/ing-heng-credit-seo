@@ -3,6 +3,12 @@
 ## Purpose
 Convert approved drafts (A/ files) from onboarding to production configuration and prepare for daily content workflow.
 
+## Client Parameter
+**IMPORTANT:** When invoking this skill, pass the client name as a parameter:
+- Used in folder paths as: `example-clients/[client-name]/`
+- Must match the client name from Phase 1 (client-onboarding.md)
+- Replace `[client-name]` with actual client identifier (e.g., "apex-machinery", "ing-heng-credit")
+
 ## Phase
 **Phase 2:** Production Setup (THIS SKILL)
 - Input: A/ approved files from Phase 1
@@ -10,6 +16,7 @@ Convert approved drafts (A/ files) from onboarding to production configuration a
 
 ## Prerequisites
 - Phase 1 completed (`client-onboarding.md`)
+- Client name parameter ready (used throughout finalization)
 - Employee has reviewed and approved (D/ → A/):
   - Keyword research files
   - Persona files
@@ -19,7 +26,7 @@ Convert approved drafts (A/ files) from onboarding to production configuration a
 
 ### Required Approved Files
 ```
-/clients/[client-name]/
+/example-clients/[client-name]/
 ├── /keyword-research/A/
 │   ├── primary-keywords-en.md
 │   ├── primary-keywords-zh.md
@@ -32,6 +39,27 @@ Convert approved drafts (A/ files) from onboarding to production configuration a
 │   ├── [persona-2].md
 │   ├── [persona-3].md
 │   └── ... (5-8 personas)
+│
+└── /brief-draft/A/
+    └── brief.md
+```
+
+**Example structure (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/
+├── /keyword-research/A/
+│   ├── primary-keywords-en.md
+│   ├── primary-keywords-zh.md
+│   ├── primary-keywords-ms.md
+│   ├── long-tail-keywords.md
+│   └── competitor-analysis.md
+│
+├── /persona-idea/A/
+│   ├── contractor-ahmad.md
+│   ├── logistics-manager-lee.md
+│   ├── warehouse-ops-william.md
+│   ├── finance-director-sarah.md
+│   └── procurement-officer-raj.md
 │
 └── /brief-draft/A/
     └── brief.md
@@ -167,7 +195,12 @@ Read all A/*.md keyword files and extract:
 
 **Save to:**
 ```
-/clients/apex-machinery/keyword-strategy.json
+/example-clients/[client-name]/keyword-strategy.json
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/keyword-strategy.json
 ```
 
 ---
@@ -258,9 +291,17 @@ For each A/*.md persona file, extract:
 
 **Save to:**
 ```
-/clients/apex-machinery/personas/contractor-ahmad.json
-/clients/apex-machinery/personas/logistics-manager-lee.json
-/clients/apex-machinery/personas/warehouse-ops-william.json
+/example-clients/[client-name]/personas/contractor-ahmad.json
+/example-clients/[client-name]/personas/logistics-manager-lee.json
+/example-clients/[client-name]/personas/warehouse-ops-william.json
+... (one file per persona)
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/personas/contractor-ahmad.json
+/example-clients/apex-machinery/personas/logistics-manager-lee.json
+/example-clients/apex-machinery/personas/warehouse-ops-william.json
 ... (one file per persona)
 ```
 
@@ -405,7 +446,12 @@ Parse brief.md and extract:
 
 **Save to:**
 ```
-/clients/apex-machinery/brief.json
+/example-clients/[client-name]/brief.json
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/brief.json
 ```
 
 ---
@@ -423,7 +469,27 @@ Parse brief.md and extract:
 
 **Output:**
 ```
-/clients/apex-machinery/website/
+/example-clients/[client-name]/website/
+├── src/
+│   ├── content/
+│   │   └── posts/
+│   │       ├── en/
+│   │       ├── zh/
+│   │       └── ms/
+│   ├── pages/
+│   │   ├── en/
+│   │   ├── zh/
+│   │   └── ms/
+│   └── components/
+├── public/
+├── astro.config.mjs
+├── package.json
+└── vercel.json
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/website/
 ├── src/
 │   ├── content/
 │   │   └── posts/
@@ -455,7 +521,18 @@ Parse brief.md and extract:
 
 **Output:**
 ```
-/clients/apex-machinery/drafts/
+/example-clients/[client-name]/drafts/
+├── D/2025-11-01-equipment-financing-guide-en.md
+├── D/2025-11-01-equipment-financing-guide-zh.md
+├── D/2025-11-01-equipment-financing-guide-ms.md
+├── D/2025-11-02-forklift-leasing-benefits-en.md
+├── D/2025-11-02-forklift-leasing-benefits-zh.md
+... (10 total draft posts)
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/drafts/
 ├── D/2025-11-01-equipment-financing-guide-en.md
 ├── D/2025-11-01-equipment-financing-guide-zh.md
 ├── D/2025-11-01-equipment-financing-guide-ms.md
@@ -471,14 +548,26 @@ Parse brief.md and extract:
 Move all approved drafts to archive:
 
 ```bash
-Source: /clients/apex-machinery/keyword-research/A/*.md
-Destination: /clients/apex-machinery/archive/onboarding/keyword-research/*.md
+Source: /example-clients/[client-name]/keyword-research/A/*.md
+Destination: /example-clients/[client-name]/archive/onboarding/keyword-research/*.md
 
-Source: /clients/apex-machinery/persona-idea/A/*.md
-Destination: /clients/apex-machinery/archive/onboarding/persona-idea/*.md
+Source: /example-clients/[client-name]/persona-idea/A/*.md
+Destination: /example-clients/[client-name]/archive/onboarding/persona-idea/*.md
 
-Source: /clients/apex-machinery/brief-draft/A/brief.md
-Destination: /clients/apex-machinery/archive/onboarding/brief.md
+Source: /example-clients/[client-name]/brief-draft/A/brief.md
+Destination: /example-clients/[client-name]/archive/onboarding/brief.md
+```
+
+**Example (for "apex-machinery" client):**
+```bash
+Source: /example-clients/apex-machinery/keyword-research/A/*.md
+Destination: /example-clients/apex-machinery/archive/onboarding/keyword-research/*.md
+
+Source: /example-clients/apex-machinery/persona-idea/A/*.md
+Destination: /example-clients/apex-machinery/archive/onboarding/persona-idea/*.md
+
+Source: /example-clients/apex-machinery/brief-draft/A/brief.md
+Destination: /example-clients/apex-machinery/archive/onboarding/brief.md
 ```
 
 Keep folders clean - only active D/ drafts remain.
@@ -509,7 +598,12 @@ Create status file:
 
 **Save to:**
 ```
-/clients/apex-machinery/status.json
+/example-clients/[client-name]/status.json
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/status.json
 ```
 
 ---
@@ -519,7 +613,7 @@ Create status file:
 After finalization complete:
 
 ```
-/clients/apex-machinery/
+/example-clients/[client-name]/
 ├── brief.json                      ← PRODUCTION config
 ├── keyword-strategy.json           ← PRODUCTION keywords
 ├── status.json                     ← Client status
@@ -529,6 +623,40 @@ After finalization complete:
 │   ├── logistics-manager-lee.json
 │   ├── warehouse-ops-william.json
 │   └── ... (all personas)
+│
+├── /website/                       ← LIVE site
+│   ├── src/
+│   ├── public/
+│   ├── astro.config.mjs
+│   └── vercel.json
+│
+├── /drafts/                        ← First content batch
+│   ├── D/2025-11-01-post-1-en.md
+│   ├── D/2025-11-01-post-1-zh.md
+│   └── ... (10 drafts ready for review)
+│
+├── /archive/                       ← Onboarding history
+│   └── /onboarding/
+│       ├── /keyword-research/
+│       ├── /persona-idea/
+│       └── brief.md
+│
+└── /published/                     ← (created later by publishing workflow)
+```
+
+**Example structure (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/
+├── brief.json                      ← PRODUCTION config
+├── keyword-strategy.json           ← PRODUCTION keywords
+├── status.json                     ← Client status
+│
+├── /personas/                      ← PRODUCTION personas
+│   ├── contractor-ahmad.json
+│   ├── logistics-manager-lee.json
+│   ├── warehouse-ops-william.json
+│   ├── finance-director-sarah.json
+│   └── procurement-officer-raj.json
 │
 ├── /website/                       ← LIVE site
 │   ├── src/
@@ -601,6 +729,13 @@ Execution time: 10 minutes
 ## Agent Usage
 This skill is executed by: **Client Setup Agent**
 Triggered by command: `/finalize-client [client-name]`
+
+**Usage example:**
+```
+/finalize-client apex-machinery
+/finalize-client ing-heng-credit
+/finalize-client water-tanker-supplies
+```
 
 ## Related Skills
 - `website-generation.md` - Scaffold client website

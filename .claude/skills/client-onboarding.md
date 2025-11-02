@@ -3,6 +3,12 @@
 ## Purpose
 Master orchestration workflow for onboarding new clients - generates draft keyword research, personas, and brief for employee review.
 
+## Client Parameter
+**IMPORTANT:** When invoking this skill, pass the client name as a parameter:
+- Used in folder paths as: `example-clients/[client-name]/`
+- Replace `[client-name]` with actual client identifier (e.g., "apex-machinery", "ing-heng-credit")
+- Must be consistent throughout entire onboarding workflow
+
 ## Phase
 **Phase 1:** Draft Generation (THIS SKILL)
 - Output: D/ draft files for review
@@ -12,6 +18,7 @@ Master orchestration workflow for onboarding new clients - generates draft keywo
 ## Prerequisites
 - Client has completed 30+ question questionnaire
 - Employee has questionnaire answers ready to paste
+- Client name/identifier determined (will be used in all folder paths)
 
 ## Input Format
 Questionnaire should cover:
@@ -124,11 +131,20 @@ For each language, research keywords:
 
 **Output files (as drafts):**
 ```
-/clients/apex-machinery/keyword-research/D/primary-keywords-en.md
-/clients/apex-machinery/keyword-research/D/primary-keywords-zh.md
-/clients/apex-machinery/keyword-research/D/primary-keywords-ms.md
-/clients/apex-machinery/keyword-research/D/long-tail-keywords.md
-/clients/apex-machinery/keyword-research/D/competitor-analysis.md
+/example-clients/[client-name]/keyword-research/D/primary-keywords-en.md
+/example-clients/[client-name]/keyword-research/D/primary-keywords-zh.md
+/example-clients/[client-name]/keyword-research/D/primary-keywords-ms.md
+/example-clients/[client-name]/keyword-research/D/long-tail-keywords.md
+/example-clients/[client-name]/keyword-research/D/competitor-analysis.md
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/keyword-research/D/primary-keywords-en.md
+/example-clients/apex-machinery/keyword-research/D/primary-keywords-zh.md
+/example-clients/apex-machinery/keyword-research/D/primary-keywords-ms.md
+/example-clients/apex-machinery/keyword-research/D/long-tail-keywords.md
+/example-clients/apex-machinery/keyword-research/D/competitor-analysis.md
 ```
 
 ---
@@ -146,11 +162,20 @@ Generate 5-8 buyer personas based on target audience.
 
 **Output files (as drafts):**
 ```
-/clients/apex-machinery/persona-idea/D/contractor-ahmad.md
-/clients/apex-machinery/persona-idea/D/logistics-manager-lee.md
-/clients/apex-machinery/persona-idea/D/warehouse-ops-william.md
-/clients/apex-machinery/persona-idea/D/finance-director-sarah.md
-/clients/apex-machinery/persona-idea/D/procurement-officer-raj.md
+/example-clients/[client-name]/persona-idea/D/contractor-ahmad.md
+/example-clients/[client-name]/persona-idea/D/logistics-manager-lee.md
+/example-clients/[client-name]/persona-idea/D/warehouse-ops-william.md
+/example-clients/[client-name]/persona-idea/D/finance-director-sarah.md
+/example-clients/[client-name]/persona-idea/D/procurement-officer-raj.md
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/persona-idea/D/contractor-ahmad.md
+/example-clients/apex-machinery/persona-idea/D/logistics-manager-lee.md
+/example-clients/apex-machinery/persona-idea/D/warehouse-ops-william.md
+/example-clients/apex-machinery/persona-idea/D/finance-director-sarah.md
+/example-clients/apex-machinery/persona-idea/D/procurement-officer-raj.md
 ```
 
 ---
@@ -172,7 +197,12 @@ Compile all information into comprehensive client brief.
 
 **Output file (as draft):**
 ```
-/clients/apex-machinery/brief-draft/D/brief.md
+/example-clients/[client-name]/brief-draft/D/brief.md
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/brief-draft/D/brief.md
 ```
 
 ---
@@ -181,7 +211,28 @@ Compile all information into comprehensive client brief.
 Create complete folder structure:
 
 ```
-/clients/apex-machinery/
+/example-clients/[client-name]/
+├── /keyword-research/
+│   ├── D/primary-keywords-en.md
+│   ├── D/primary-keywords-zh.md
+│   ├── D/primary-keywords-ms.md
+│   ├── D/long-tail-keywords.md
+│   └── D/competitor-analysis.md
+│
+├── /persona-idea/
+│   ├── D/contractor-ahmad.md
+│   ├── D/logistics-manager-lee.md
+│   ├── D/warehouse-ops-william.md
+│   ├── D/finance-director-sarah.md
+│   └── D/procurement-officer-raj.md
+│
+└── /brief-draft/
+    └── D/brief.md
+```
+
+**Example structure (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/
 ├── /keyword-research/
 │   ├── D/primary-keywords-en.md
 │   ├── D/primary-keywords-zh.md
@@ -206,7 +257,7 @@ Create complete folder structure:
 After draft generation, employee should:
 
 ### 1. Review Keyword Research (20 minutes)
-Navigate to `/keyword-research/D/`
+Navigate to `/example-clients/[client-name]/keyword-research/D/`
 - Open each MD file
 - Validate keywords are relevant
 - Check competitor analysis accuracy
@@ -216,7 +267,7 @@ Navigate to `/keyword-research/D/`
   - ✏️ Needs edit → Edit, then rename to A/
 
 ### 2. Review Personas (15 minutes)
-Navigate to `/persona-idea/D/`
+Navigate to `/example-clients/[client-name]/persona-idea/D/`
 - Open each persona profile
 - Validate accuracy and relevance
 - Ensure diversity of personas
@@ -226,7 +277,7 @@ Navigate to `/persona-idea/D/`
   - ✏️ Needs edit → Edit, then rename to A/
 
 ### 3. Review Brief (10 minutes)
-Navigate to `/brief-draft/D/`
+Navigate to `/example-clients/[client-name]/brief-draft/D/`
 - Open brief.md
 - Validate strategy makes sense
 - Check content calendar is realistic
@@ -268,7 +319,7 @@ Generated files:
 Next steps:
 1. Employee reviews all D/ files (45 minutes)
 2. Employee approves (rename D/ to A/) or rejects (D/ to F/)
-3. Employee runs: /finalize-client apex-machinery
+3. Employee runs: /finalize-client [client-name]
 4. System converts A/ files to production config
 
 Total execution time: 5 minutes
@@ -286,6 +337,13 @@ Total execution time: 5 minutes
 ## Agent Usage
 This skill is executed by: **Client Onboarding Agent**
 Triggered by command: `/onboard-client [client-name]`
+
+**Usage example:**
+```
+/onboard-client apex-machinery
+/onboard-client ing-heng-credit
+/onboard-client water-tanker-supplies
+```
 
 ## Related Skills
 - `keyword-research.md` - Industry keyword analysis

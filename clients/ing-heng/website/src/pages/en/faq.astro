@@ -1,0 +1,505 @@
+---
+/**
+ * English FAQ Page
+ * Comprehensive FAQ optimized for featured snippets and voice search
+ * Target: Long-tail question keywords
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQItem from '../../components/FAQItem.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { generateFAQSchema } from '../../utils/schema';
+import { COMPANY_INFO } from '../../utils/constants';
+
+const lang = 'en';
+
+// FAQ Data for Schema
+const faqData = [
+  // General Financing
+  {
+    question: "What is equipment financing?",
+    answer: "Equipment financing is a type of business loan that allows you to purchase equipment through manageable monthly payments instead of paying the full amount upfront. At Ing Heng Credit, we specialize in hire purchase financing where you own the equipment while paying it off over 12-60 months, preserving your working capital for business operations."
+  },
+  {
+    question: "How fast is equipment financing approval?",
+    answer: "Our approval process takes just 24 hours for most applications. Once you submit your complete documents, our team reviews your application immediately. Simple cases can get approval within the same business day, while more complex applications may take up to 2 working days."
+  },
+  {
+    question: "What is your approval rate?",
+    answer: "We maintain a 95% approval rate across all applications. With over 40 years of experience since 1985, we've helped over 4,000 companies secure financing by understanding unique business situations and offering flexible solutions even when banks say no."
+  },
+  {
+    question: "What interest rates do you offer for equipment financing?",
+    answer: "Our competitive interest rates start from 2.88% per annum, varying based on factors like equipment type, loan amount, repayment period, and your business profile. Contact us for a personalized quote tailored to your specific financing needs."
+  },
+  {
+    question: "What are the payment terms for equipment financing?",
+    answer: "We offer flexible payment terms from 12 to 60 months depending on the equipment value and your business cash flow. Most clients choose 36 or 48-month terms to balance affordable monthly payments with total interest costs. Early settlement is allowed without penalties."
+  },
+  {
+    question: "Do you charge upfront fees for equipment financing?",
+    answer: "We believe in transparent pricing. There are no hidden upfront fees for application processing. You only pay a small documentation fee (typically RM 300-500) and the agreed down payment (usually 10-20% of equipment value) when your loan is approved."
+  },
+  {
+    question: "How does equipment financing differ from bank loans?",
+    answer: "Unlike banks that require extensive documentation and take weeks to approve, we specialize in equipment financing with faster approvals, higher approval rates, and flexible requirements. We understand business needs better and can approve applications that banks typically reject, especially for self-employed individuals and newer businesses."
+  },
+
+  // Application Process
+  {
+    question: "What documents do I need for equipment financing?",
+    answer: "You need: (1) NRIC/Passport copy, (2) Business registration (SSM for companies, sole proprietor license), (3) Latest 3-6 months bank statements, (4) Latest EPF/KWSP statement, (5) Equipment quotation from supplier, (6) Utility bill as address proof. For companies, include form 9, 24, 49, and directors' IC copies."
+  },
+  {
+    question: "Can I apply for equipment financing online?",
+    answer: "Yes! You can start your application online through our website contact form or directly via WhatsApp at +60175700889. Simply send us your basic information and equipment details, and our team will guide you through the complete process, including document submission via email or WhatsApp."
+  },
+  {
+    question: "How long does equipment financing approval take?",
+    answer: "Standard approval takes 24 hours from complete document submission. Simple applications can be approved within 4-8 hours during business hours. After approval, equipment purchase and disbursement typically complete within 2-3 working days, meaning you can have your equipment operational within a week."
+  },
+  {
+    question: "Can I get approved with bad credit history?",
+    answer: "Yes, we consider applications from individuals with less-than-perfect credit. While we check CCRIS and CTOS, we look beyond credit scores to understand your current business situation, cash flow, and equipment ROI. Over 40% of our approved clients had previous credit issues. Contact us to discuss your specific situation."
+  },
+  {
+    question: "Do I need a down payment for equipment financing?",
+    answer: "Typically, we require a 10-20% down payment of the total equipment value. However, down payment requirements can be flexible based on your business profile, credit history, and equipment type. For strong applications, we can sometimes offer financing up to 90% of equipment value."
+  },
+  {
+    question: "What if my business is less than 3 years old?",
+    answer: "New businesses are welcome! While many lenders require 3+ years of operation, we regularly approve businesses less than 3 years old, even sole proprietors who just started. We evaluate your industry experience, business plan, equipment ROI potential, and personal financial stability rather than just business age."
+  },
+
+  // Equipment Types
+  {
+    question: "What equipment types can you finance?",
+    answer: "We finance all types of business equipment including: Construction (excavators, bulldozers, road rollers, concrete mixers), Logistics (lorries, trucks, container vehicles, cargo vans, forklifts), Industrial (generators, compressors, welding machines, warehouse equipment), and Commercial vehicles (delivery vans, company cars, buses). If it generates business income, we can likely finance it."
+  },
+  {
+    question: "Do you finance used equipment?",
+    answer: "Yes! We finance both new and used equipment. Used equipment financing is popular because of lower total costs while still getting productive assets. We've financed thousands of used excavators, lorries, and forklifts that provide excellent ROI for businesses."
+  },
+  {
+    question: "How old can used equipment be for financing?",
+    answer: "Generally, we finance used equipment up to 10 years old, depending on the equipment type and condition. For vehicles like lorries and excavators, we prefer equipment under 7-8 years old. The equipment must be in good working condition with reasonable remaining lifespan. Our team will inspect or require inspection reports for older equipment."
+  },
+  {
+    question: "Can I finance multiple vehicles or equipment at once?",
+    answer: "Absolutely! We regularly help businesses finance multiple units simultaneously, whether it's a fleet of lorries, several excavators, or mixed equipment types. Bulk financing often comes with better terms. Many logistics companies finance 3-5 lorries at once, and construction firms finance multiple excavators through us."
+  },
+  {
+    question: "Can I finance equipment from any dealer or supplier?",
+    answer: "Yes, you're free to choose any equipment supplier or dealer. We don't restrict you to specific vendors. Once you've selected your equipment and received a quotation, we'll work with you and the supplier to complete the financing and purchase. We've worked with hundreds of equipment dealers across Malaysia."
+  },
+
+  // Eligibility & Requirements
+  {
+    question: "Who can apply for equipment financing?",
+    answer: "Malaysian citizens or permanent residents aged 21-65 can apply. This includes: Sole proprietors, Partnership firms, Sdn Bhd companies, Self-employed individuals, Business owners, and Contractors. Both individuals purchasing equipment for business use and established companies are eligible."
+  },
+  {
+    question: "Do I need to be a registered business to apply?",
+    answer: "While business registration strengthens your application, it's not always mandatory. Sole proprietors with sole proprietor license or individuals using equipment for business purposes (like contractor work) can apply. However, having SSM registration, business license, or company registration significantly improves approval chances and terms."
+  },
+  {
+    question: "Can sole proprietors apply for equipment financing?",
+    answer: "Yes! Sole proprietors are a major part of our client base. We understand that many contractors, small logistics operators, and independent business owners operate as sole proprietors. We've successfully financed thousands of sole proprietors for excavators, lorries, and other equipment. Just provide your sole proprietor registration and business proof."
+  },
+  {
+    question: "What if I have existing loans from other lenders?",
+    answer: "Having existing loans doesn't automatically disqualify you. We evaluate your total debt service ratio, current income, and ability to service additional financing. Many of our clients have existing business loans, vehicle financing, or mortgages. What matters is manageable total debt relative to your income and cash flow."
+  },
+
+  // After Approval
+  {
+    question: "How is the equipment purchased after approval?",
+    answer: "Once approved, we issue a financing approval letter. You then finalize equipment details with your chosen supplier. We'll conduct equipment inspection (if required), prepare financing documentation, and disburse payment directly to the supplier upon signing the hire purchase agreement. The equipment is registered in your name, and you can start using it immediately."
+  },
+  {
+    question: "Who owns the equipment during the financing period?",
+    answer: "Under hire purchase financing, you own the equipment from day one and can use it for your business immediately. However, the financier holds a charge/lien on the equipment until full repayment. Once you complete all payments, the charge is removed, and you have full, unencumbered ownership with no further obligations."
+  },
+  {
+    question: "Can I sell the equipment before paying off the loan?",
+    answer: "Yes, but you must first settle the outstanding financing balance. Many clients do this when upgrading equipment. The process involves: getting a buyer, determining settlement amount from us, buyer pays, settlement clears the charge, and ownership transfers. We facilitate this process smoothly as it happens regularly in construction and logistics industries."
+  },
+  {
+    question: "What if I want to pay off the loan early?",
+    answer: "Early settlement is allowed and encouraged! We don't charge early settlement penalties. You can pay off your financing anytime by contacting us for a settlement statement. You'll save on remaining interest charges. Many clients pay off early when they have surplus cash flow or during profitable business periods."
+  },
+  {
+    question: "What happens if the equipment breaks down during financing?",
+    answer: "Equipment breakdowns are your responsibility as the owner, which is why we strongly recommend comprehensive insurance coverage. Insurance typically covers major breakdowns, accidents, and theft. Your monthly payments continue regardless of equipment condition. Proper maintenance and insurance are crucial for protecting your investment and business operations."
+  },
+  {
+    question: "What insurance is required for financed equipment?",
+    answer: "Comprehensive insurance covering theft, fire, and accident damage is mandatory for all financed equipment. The insurance policy must name Ing Heng Credit as the loss payee. We can recommend trusted insurance partners with competitive premiums. Insurance protects both you and us from total loss scenarios and ensures business continuity."
+  }
+];
+
+const faqSchema = generateFAQSchema(faqData);
+---
+
+<BaseLayout
+  title="FAQ - Equipment Financing Malaysia | Ing Heng Credit"
+  description="Get answers about equipment financing approval, rates, requirements, and process. Learn how long approval takes, what documents needed, and who can apply for equipment loans in Malaysia."
+  lang={lang}
+  keywords={[
+    'equipment financing FAQ',
+    'how long equipment financing approval',
+    'what documents needed equipment loan',
+    'equipment financing requirements Malaysia',
+    'can I finance used equipment',
+    'equipment financing approval rate',
+    'how fast equipment loan approval',
+    'equipment financing down payment',
+    'who can apply equipment financing'
+  ]}
+>
+  <StructuredData schema={faqSchema} />
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-secondary text-white py-16 md:py-24">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Frequently Asked Questions About Equipment Financing
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 opacity-90">
+          Get instant answers to common questions about equipment financing, approval process, requirements, and terms
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton
+            text="WhatsApp Us Your Question"
+            link={COMPANY_INFO.whatsapp.link}
+            variant="accent"
+            size="large"
+            icon="whatsapp"
+          />
+          <CTAButton
+            text="Apply for Financing"
+            link="/en/contact"
+            variant="outline-white"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Quick Navigation -->
+  <section class="section bg-gray-50">
+    <div class="container-custom max-w-4xl">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4 text-center">Quick Navigation</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="#general" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+            </svg>
+            General Financing
+          </a>
+          <a href="#application" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+            </svg>
+            Application Process
+          </a>
+          <a href="#equipment" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+            </svg>
+            Equipment Types
+          </a>
+          <a href="#eligibility" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+            </svg>
+            Eligibility
+          </a>
+          <a href="#after-approval" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            After Approval
+          </a>
+          <a href="#contact-us" class="flex items-center p-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            Still Have Questions?
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: General Financing -->
+  <section id="general" class="section">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">General Financing Questions</h2>
+        <p class="text-gray-600 text-lg">
+          Learn about equipment financing basics, approval rates, interest rates, and payment terms
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="What is equipment financing?"
+          answer="Equipment financing is a type of business loan that allows you to purchase equipment through manageable monthly payments instead of paying the full amount upfront. At Ing Heng Credit, we specialize in hire purchase financing where you own the equipment while paying it off over 12-60 months, preserving your working capital for business operations."
+        />
+
+        <FAQItem
+          question="How fast is equipment financing approval?"
+          answer="Our approval process takes just <strong>24 hours</strong> for most applications. Once you submit your complete documents, our team reviews your application immediately. Simple cases can get approval within the same business day, while more complex applications may take up to 2 working days."
+        />
+
+        <FAQItem
+          question="What is your approval rate?"
+          answer="We maintain a <strong>95% approval rate</strong> across all applications. With over 40 years of experience since 1985, we've helped over 4,000 companies secure financing by understanding unique business situations and offering flexible solutions even when banks say no."
+        />
+
+        <FAQItem
+          question="What interest rates do you offer for equipment financing?"
+          answer="Our competitive interest rates start from <strong>2.88% per annum</strong>, varying based on factors like equipment type, loan amount, repayment period, and your business profile. Contact us for a personalized quote tailored to your specific financing needs."
+        />
+
+        <FAQItem
+          question="What are the payment terms for equipment financing?"
+          answer="We offer flexible payment terms from <strong>12 to 60 months</strong> depending on the equipment value and your business cash flow. Most clients choose 36 or 48-month terms to balance affordable monthly payments with total interest costs. Early settlement is allowed without penalties."
+        />
+
+        <FAQItem
+          question="Do you charge upfront fees for equipment financing?"
+          answer="We believe in transparent pricing. There are <strong>no hidden upfront fees</strong> for application processing. You only pay a small documentation fee (typically RM 300-500) and the agreed down payment (usually 10-20% of equipment value) when your loan is approved."
+        />
+
+        <FAQItem
+          question="How does equipment financing differ from bank loans?"
+          answer="Unlike banks that require extensive documentation and take weeks to approve, we specialize in equipment financing with <strong>faster approvals, higher approval rates, and flexible requirements</strong>. We understand business needs better and can approve applications that banks typically reject, especially for self-employed individuals and newer businesses."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Application Process -->
+  <section id="application" class="section bg-gray-50">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Application Process Questions</h2>
+        <p class="text-gray-600 text-lg">
+          Everything you need to know about applying for equipment financing and document requirements
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="What documents do I need for equipment financing?"
+          answer="You need: <strong>(1)</strong> NRIC/Passport copy, <strong>(2)</strong> Business registration (SSM for companies, sole proprietor license), <strong>(3)</strong> Latest 3-6 months bank statements, <strong>(4)</strong> Latest EPF/KWSP statement, <strong>(5)</strong> Equipment quotation from supplier, <strong>(6)</strong> Utility bill as address proof. For companies, include form 9, 24, 49, and directors' IC copies."
+        />
+
+        <FAQItem
+          question="Can I apply for equipment financing online?"
+          answer="Yes! You can start your application online through our website contact form or directly via <strong>WhatsApp at +60175700889</strong>. Simply send us your basic information and equipment details, and our team will guide you through the complete process, including document submission via email or WhatsApp."
+        />
+
+        <FAQItem
+          question="How long does equipment financing approval take?"
+          answer="Standard approval takes <strong>24 hours</strong> from complete document submission. Simple applications can be approved within 4-8 hours during business hours. After approval, equipment purchase and disbursement typically complete within 2-3 working days, meaning you can have your equipment operational within a week."
+        />
+
+        <FAQItem
+          question="Can I get approved with bad credit history?"
+          answer="Yes, we consider applications from individuals with less-than-perfect credit. While we check CCRIS and CTOS, we look beyond credit scores to understand your current business situation, cash flow, and equipment ROI. Over <strong>40% of our approved clients</strong> had previous credit issues. Contact us to discuss your specific situation."
+        />
+
+        <FAQItem
+          question="Do I need a down payment for equipment financing?"
+          answer="Typically, we require a <strong>10-20% down payment</strong> of the total equipment value. However, down payment requirements can be flexible based on your business profile, credit history, and equipment type. For strong applications, we can sometimes offer financing up to 90% of equipment value."
+        />
+
+        <FAQItem
+          question="What if my business is less than 3 years old?"
+          answer="New businesses are welcome! While many lenders require 3+ years of operation, we regularly approve businesses less than 3 years old, even sole proprietors who just started. We evaluate your <strong>industry experience, business plan, equipment ROI potential</strong>, and personal financial stability rather than just business age."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Equipment Types -->
+  <section id="equipment" class="section">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Equipment Types Questions</h2>
+        <p class="text-gray-600 text-lg">
+          Find out what equipment we finance, including used equipment, multiple units, and supplier flexibility
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="What equipment types can you finance?"
+          answer="We finance all types of business equipment including: <strong>Construction</strong> (excavators, bulldozers, road rollers, concrete mixers), <strong>Logistics</strong> (lorries, trucks, container vehicles, cargo vans, forklifts), <strong>Industrial</strong> (generators, compressors, welding machines, warehouse equipment), and <strong>Commercial vehicles</strong> (delivery vans, company cars, buses). If it generates business income, we can likely finance it."
+        />
+
+        <FAQItem
+          question="Do you finance used equipment?"
+          answer="Yes! We finance both <strong>new and used equipment</strong>. Used equipment financing is popular because of lower total costs while still getting productive assets. We've financed thousands of used excavators, lorries, and forklifts that provide excellent ROI for businesses."
+        />
+
+        <FAQItem
+          question="How old can used equipment be for financing?"
+          answer="Generally, we finance used equipment <strong>up to 10 years old</strong>, depending on the equipment type and condition. For vehicles like lorries and excavators, we prefer equipment under 7-8 years old. The equipment must be in good working condition with reasonable remaining lifespan. Our team will inspect or require inspection reports for older equipment."
+        />
+
+        <FAQItem
+          question="Can I finance multiple vehicles or equipment at once?"
+          answer="Absolutely! We regularly help businesses finance multiple units simultaneously, whether it's a fleet of lorries, several excavators, or mixed equipment types. <strong>Bulk financing often comes with better terms</strong>. Many logistics companies finance 3-5 lorries at once, and construction firms finance multiple excavators through us."
+        />
+
+        <FAQItem
+          question="Can I finance equipment from any dealer or supplier?"
+          answer="Yes, you're free to choose <strong>any equipment supplier or dealer</strong>. We don't restrict you to specific vendors. Once you've selected your equipment and received a quotation, we'll work with you and the supplier to complete the financing and purchase. We've worked with hundreds of equipment dealers across Malaysia."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Eligibility & Requirements -->
+  <section id="eligibility" class="section bg-gray-50">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Eligibility & Requirements Questions</h2>
+        <p class="text-gray-600 text-lg">
+          Understand who can apply, business registration requirements, and existing loan considerations
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="Who can apply for equipment financing?"
+          answer="<strong>Malaysian citizens or permanent residents aged 21-65</strong> can apply. This includes: Sole proprietors, Partnership firms, Sdn Bhd companies, Self-employed individuals, Business owners, and Contractors. Both individuals purchasing equipment for business use and established companies are eligible."
+        />
+
+        <FAQItem
+          question="Do I need to be a registered business to apply?"
+          answer="While business registration strengthens your application, it's not always mandatory. Sole proprietors with sole proprietor license or individuals using equipment for business purposes (like contractor work) can apply. However, having <strong>SSM registration, business license, or company registration</strong> significantly improves approval chances and terms."
+        />
+
+        <FAQItem
+          question="Can sole proprietors apply for equipment financing?"
+          answer="Yes! Sole proprietors are a major part of our client base. We understand that many contractors, small logistics operators, and independent business owners operate as sole proprietors. We've successfully financed <strong>thousands of sole proprietors</strong> for excavators, lorries, and other equipment. Just provide your sole proprietor registration and business proof."
+        />
+
+        <FAQItem
+          question="What if I have existing loans from other lenders?"
+          answer="Having existing loans doesn't automatically disqualify you. We evaluate your <strong>total debt service ratio, current income, and ability to service additional financing</strong>. Many of our clients have existing business loans, vehicle financing, or mortgages. What matters is manageable total debt relative to your income and cash flow."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: After Approval -->
+  <section id="after-approval" class="section">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">After Approval Questions</h2>
+        <p class="text-gray-600 text-lg">
+          Learn about equipment purchase process, ownership, early settlement, and insurance requirements
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="How is the equipment purchased after approval?"
+          answer="Once approved, we issue a financing approval letter. You then finalize equipment details with your chosen supplier. We'll conduct equipment inspection (if required), prepare financing documentation, and <strong>disburse payment directly to the supplier</strong> upon signing the hire purchase agreement. The equipment is registered in your name, and you can start using it immediately."
+        />
+
+        <FAQItem
+          question="Who owns the equipment during the financing period?"
+          answer="Under hire purchase financing, <strong>you own the equipment from day one</strong> and can use it for your business immediately. However, the financier holds a charge/lien on the equipment until full repayment. Once you complete all payments, the charge is removed, and you have full, unencumbered ownership with no further obligations."
+        />
+
+        <FAQItem
+          question="Can I sell the equipment before paying off the loan?"
+          answer="Yes, but you must first <strong>settle the outstanding financing balance</strong>. Many clients do this when upgrading equipment. The process involves: getting a buyer, determining settlement amount from us, buyer pays, settlement clears the charge, and ownership transfers. We facilitate this process smoothly as it happens regularly in construction and logistics industries."
+        />
+
+        <FAQItem
+          question="What if I want to pay off the loan early?"
+          answer="Early settlement is allowed and encouraged! We don't charge <strong>early settlement penalties</strong>. You can pay off your financing anytime by contacting us for a settlement statement. You'll save on remaining interest charges. Many clients pay off early when they have surplus cash flow or during profitable business periods."
+        />
+
+        <FAQItem
+          question="What happens if the equipment breaks down during financing?"
+          answer="Equipment breakdowns are your responsibility as the owner, which is why we strongly recommend <strong>comprehensive insurance coverage</strong>. Insurance typically covers major breakdowns, accidents, and theft. Your monthly payments continue regardless of equipment condition. Proper maintenance and insurance are crucial for protecting your investment and business operations."
+        />
+
+        <FAQItem
+          question="What insurance is required for financed equipment?"
+          answer="<strong>Comprehensive insurance</strong> covering theft, fire, and accident damage is mandatory for all financed equipment. The insurance policy must name Ing Heng Credit as the loss payee. We can recommend trusted insurance partners with competitive premiums. Insurance protects both you and us from total loss scenarios and ensures business continuity."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section id="contact-us" class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Still Have Questions?</h2>
+        <p class="text-xl mb-8 opacity-90">
+          Our experienced team is here to help you understand equipment financing better and find the perfect solution for your business needs.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <CTAButton
+            text="Contact Us on WhatsApp"
+            link={COMPANY_INFO.whatsapp.link}
+            variant="accent"
+            size="large"
+            icon="whatsapp"
+          />
+          <CTAButton
+            text="Call Us Now"
+            link={`tel:${COMPANY_INFO.phone.international}`}
+            variant="outline-white"
+            size="large"
+            icon="phone"
+          />
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div>
+              <p class="font-semibold mb-2">WhatsApp (Fastest Response)</p>
+              <p class="opacity-90">+60175700889</p>
+            </div>
+            <div>
+              <p class="font-semibold mb-2">Phone</p>
+              <p class="opacity-90">0175700889 / 03-3324 8899</p>
+            </div>
+            <div>
+              <p class="font-semibold mb-2">Email</p>
+              <p class="opacity-90">enquiry@inghengcredit.com</p>
+            </div>
+            <div>
+              <p class="font-semibold mb-2">Business Hours</p>
+              <p class="opacity-90">Mon-Fri: 9AM-5PM<br>Sat: 9AM-1PM</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="font-semibold mb-2">Office Address</p>
+            <p class="opacity-90">306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

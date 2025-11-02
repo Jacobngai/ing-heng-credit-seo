@@ -1,16 +1,22 @@
 # Daily SEO Content Generation Skill
 
+## Client Parameter
+**REQUIRED PARAMETER:** `[client-name]` - The client directory name (e.g., "apex-machinery", "ing-heng-credit")
+- Used in paths: `/example-clients/[client-name]/`
+- All file operations use this parameter
+- If not provided, the agent will ask for it
+
 ## Purpose
-Master workflow for generating daily blog posts across all clients in multiple languages.
+Master workflow for generating daily blog posts for a specific client in multiple languages.
 
 ## Prerequisites
 - Client has completed onboarding (`brief.json`, `personas/`, `keyword-strategy.json` exist)
-- Client folder structure is set up
+- Client folder structure is set up at: `/example-clients/[client-name]/`
 
 ## Workflow Steps
 
 ### 1. Load Client Configuration
-For each client in `/clients/`:
+For the specified client in `/example-clients/[client-name]/`:
 ```
 Read: brief.json
 Read: personas/*.json
@@ -49,12 +55,12 @@ Read: keyword-strategy.json
 ### 6. Save Drafts
 **File naming convention:**
 ```
-/clients/[client-name]/drafts/D/[YYYY-MM-DD]-[slug]-[lang].md
+/example-clients/[client-name]/drafts/D/[YYYY-MM-DD]-[slug]-[lang].md
 
 Examples:
-/clients/acme-corp/drafts/D/2025-11-01-excavator-financing-guide-en.md
-/clients/acme-corp/drafts/D/2025-11-01-excavator-financing-guide-zh.md
-/clients/acme-corp/drafts/D/2025-11-01-excavator-financing-guide-ms.md
+/example-clients/acme-corp/drafts/D/2025-11-01-excavator-financing-guide-en.md
+/example-clients/acme-corp/drafts/D/2025-11-01-excavator-financing-guide-zh.md
+/example-clients/acme-corp/drafts/D/2025-11-01-excavator-financing-guide-ms.md
 ```
 
 ## Output Format

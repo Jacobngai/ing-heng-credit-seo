@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI Option 2: Modern Dynamic - Ing Heng Credit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;600;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background: #FFFFFF; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 32px 80px; }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #C89660 0%, #3B82F6 100%);
+            color: white;
+            padding: 80px 32px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(200, 150, 96, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="30" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+        .header h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 64px;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        .header p {
+            font-size: 22px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 24px;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        /* Section */
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            font-family: 'Manrope', sans-serif;
+            color: #1E293B;
+            font-size: 48px;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .section h3 {
+            font-family: 'Manrope', sans-serif;
+            color: #C89660;
+            font-size: 32px;
+            margin: 32px 0 20px;
+            font-weight: 700;
+        }
+        .section p {
+            color: #94A3B8;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        /* Color Grid */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        .color-swatch {
+            border-radius: 16px;
+            padding: 100px 24px 24px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .color-swatch:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+        .color-name {
+            font-weight: 700;
+            margin-top: 12px;
+            font-size: 16px;
+            font-family: 'Manrope', sans-serif;
+        }
+        .color-code {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        .color-usage {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Typography Examples */
+        .type-example {
+            margin: 32px 0;
+            padding: 48px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            border-left: 4px solid #C89660;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .type-example h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 64px;
+            color: #1E293B;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        .type-example h2 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 48px;
+            color: #1E293B;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .type-example h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 32px;
+            color: #1E293B;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .type-example p {
+            font-size: 17px;
+            color: #94A3B8;
+            line-height: 1.6;
+        }
+        .font-spec {
+            background: #F8FAFC;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 14px;
+            color: #666;
+            font-family: monospace;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            padding: 18px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            margin: 8px;
+            font-size: 16px;
+            font-family: 'Manrope', sans-serif;
+        }
+        .button-primary {
+            background: linear-gradient(135deg, #C89660 0%, #A47D4A 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(200, 150, 96, 0.3);
+        }
+        .button-primary:hover {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 150, 96, 0.4);
+        }
+        .button-secondary {
+            background: #3B82F6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        .button-secondary:hover {
+            transform: scale(1.02) translateY(-2px);
+            background: #2563EB;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+        .card h3 {
+            color: #1E293B;
+            font-family: 'Manrope', sans-serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .card p {
+            color: #94A3B8;
+            line-height: 1.7;
+        }
+
+        /* Hero Mockup */
+        .hero-mockup {
+            background: #FFFFFF;
+            padding: 100px 40px;
+            text-align: center;
+            border-radius: 16px;
+            margin: 32px 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(200,150,96,0.05) 0%, rgba(59,130,246,0.05) 100%);
+        }
+        .hero-mockup h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 64px;
+            color: #1E293B;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        .hero-mockup p {
+            font-size: 22px;
+            color: #94A3B8;
+            margin-bottom: 36px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        /* Equipment Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin: 32px 0;
+        }
+        .equipment-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        .equipment-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        }
+        .equipment-card-image {
+            background: linear-gradient(135deg, #C89660 0%, #FB923C 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 64px;
+            position: relative;
+        }
+        .equipment-card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, #C89660 0%, #FB923C 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+        }
+        .equipment-card-content {
+            padding: 24px;
+        }
+        .equipment-card h3 {
+            font-family: 'Manrope', sans-serif;
+            color: #1E293B;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .equipment-card p {
+            color: #94A3B8;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .equipment-card .price {
+            color: #C89660;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        /* Guidelines */
+        .guidelines {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin: 32px 0;
+        }
+        .do-list, .dont-list {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .do-list {
+            border-left: 4px solid #84CC16;
+        }
+        .dont-list {
+            border-left: 4px solid #FB923C;
+        }
+        .do-list h3 {
+            color: #84CC16;
+            margin-bottom: 20px;
+        }
+        .dont-list h3 {
+            color: #FB923C;
+            margin-bottom: 20px;
+        }
+        .do-list li, .dont-list li {
+            margin: 12px 0;
+            padding-left: 8px;
+        }
+
+        /* Best For Section */
+        .best-for {
+            background: linear-gradient(135deg, rgba(200,150,96,0.1) 0%, rgba(59,130,246,0.1) 100%);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 32px 0;
+        }
+        .best-for h3 {
+            color: #C89660;
+            margin-bottom: 20px;
+            font-family: 'Manrope', sans-serif;
+        }
+        .strengths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .strength-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 40px; }
+            .type-example h1 { font-size: 40px; }
+            .hero-mockup h1 { font-size: 40px; }
+            .guidelines { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>CI Option 2: Modern Dynamic</h1>
+        <p>Contemporary, energetic brand identity that modernizes the logo while maintaining recognition</p>
+        <div class="badge">TECH-FORWARD OPTION</div>
+    </div>
+
+    <div class="container">
+        <!-- Overview -->
+        <div class="section">
+            <h2>Overview</h2>
+            <p>A contemporary, energetic brand identity that modernizes the logo while maintaining recognition. Emphasizes innovation, speed, and forward-thinking in equipment financing. Perfect for targeting younger entrepreneurs and tech-forward industries.</p>
+            <p>This option stands out from conservative financial competitors with bold, asymmetric layouts and dynamic design elements that suggest fast approval processes.</p>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2>Color Palette</h2>
+
+            <h3>Primary Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: #C89660; color: white;">
+                    <div class="color-name">Vibrant Bronze</div>
+                    <div class="color-code">#C89660</div>
+                    <div class="color-usage">Primary brand, CTAs, highlights</div>
+                </div>
+                <div class="color-swatch" style="background: #1E293B; color: white;">
+                    <div class="color-name">Deep Navy</div>
+                    <div class="color-code">#1E293B</div>
+                    <div class="color-usage">Typography, dark sections</div>
+                </div>
+            </div>
+
+            <h3>Secondary Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: #FFFFFF; color: #1E293B; border: 2px solid #E5E7EB;">
+                    <div class="color-name">Bright White</div>
+                    <div class="color-code">#FFFFFF</div>
+                    <div class="color-usage">Primary backgrounds</div>
+                </div>
+                <div class="color-swatch" style="background: #94A3B8; color: white;">
+                    <div class="color-name">Cool Gray</div>
+                    <div class="color-code">#94A3B8</div>
+                    <div class="color-usage">Secondary text, subtle elements</div>
+                </div>
+            </div>
+
+            <h3>Accent Colors</h3>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: #3B82F6; color: white;">
+                    <div class="color-name">Electric Blue</div>
+                    <div class="color-code">#3B82F6</div>
+                    <div class="color-usage">Interactive elements, links</div>
+                </div>
+                <div class="color-swatch" style="background: #84CC16; color: white;">
+                    <div class="color-name">Lime Green</div>
+                    <div class="color-code">#84CC16</div>
+                    <div class="color-usage">Success, approvals</div>
+                </div>
+                <div class="color-swatch" style="background: #FB923C; color: white;">
+                    <div class="color-name">Coral</div>
+                    <div class="color-code">#FB923C</div>
+                    <div class="color-usage">Urgent CTAs, limited offers</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2>Typography</h2>
+            <p>Modern, bold sans-serif headings paired with clean Inter body text creates an energetic, tech-forward feel.</p>
+
+            <h3>English Typography</h3>
+            <div class="type-example">
+                <h1>Lightning-Fast Equipment Financing</h1>
+                <div class="font-spec">Manrope Extra Bold 800 • 64px/4rem • Letter-spacing: -0.02em</div>
+
+                <h2>24-Hour Approval Process</h2>
+                <div class="font-spec">Manrope Extra Bold 800 • 48px/3rem</div>
+
+                <h3>Why Choose Modern Financing?</h3>
+                <div class="font-spec">Manrope Bold 700 • 32px/2rem</div>
+
+                <p>This is body text rendered in Inter Regular. It's clean, modern, and highly readable across all devices. The modern aesthetic suggests innovation and speed, perfect for tech-forward businesses looking for dynamic financing solutions.</p>
+                <div class="font-spec">Inter Regular 400 • 17px • Line-height: 1.6 • Color: #94A3B8</div>
+            </div>
+
+            <h3>Chinese Typography (中文)</h3>
+            <div class="type-example">
+                <h1 style="font-family: 'Noto Sans SC', sans-serif;">设备融资，秒速审批</h1>
+                <div class="font-spec">Noto Sans SC Bold 700 • 64px • Modern Chinese headings</div>
+
+                <p style="font-family: 'Noto Sans SC', sans-serif; color: #94A3B8;">从申请到批准，只需24小时。我们提供最快速的设备融资方案，让您的业务不再等待。</p>
+                <div class="font-spec">Noto Sans SC Regular 400 • 17px • Chinese body text</div>
+            </div>
+        </div>
+
+        <!-- Component Examples -->
+        <div class="section">
+            <h2>Component Examples</h2>
+            <p>See how buttons, cards, and other UI elements look with this modern, dynamic brand identity.</p>
+
+            <h3>Buttons</h3>
+            <div style="margin: 24px 0;">
+                <a href="#" class="button button-primary">Apply Now 立即申请</a>
+                <a href="#" class="button button-secondary">Learn More 了解更多</a>
+            </div>
+
+            <h3>Modern Equipment Cards</h3>
+            <div class="card-grid">
+                <div class="equipment-card">
+                    <div class="equipment-card-image">
+                        <div class="equipment-card-badge">热门 Popular</div>
+                        <span style="position: relative;">🚜</span>
+                    </div>
+                    <div class="equipment-card-content">
+                        <h3>Komatsu PC350 挖掘机</h3>
+                        <p>⚡ Fast Approval 快速审批<br>💰 Flexible Terms 灵活还款</p>
+                        <div class="price">From RM 8,500/month</div>
+                        <a href="#" class="button button-primary" style="width: 100%; text-align: center;">Get Started →</a>
+                    </div>
+                </div>
+
+                <div class="equipment-card">
+                    <div class="equipment-card-image" style="background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);">
+                        <div class="equipment-card-badge" style="background: #84CC16;">Available</div>
+                        <span style="position: relative;">🚁</span>
+                    </div>
+                    <div class="equipment-card-content">
+                        <h3>Robinson R66 直升机</h3>
+                        <p>⭐ Premium Equipment<br>🔒 Secure Financing</p>
+                        <div class="price">From RM 35,000/month</div>
+                        <a href="#" class="button button-secondary" style="width: 100%; text-align: center;">Schedule Call →</a>
+                    </div>
+                </div>
+
+                <div class="equipment-card">
+                    <div class="equipment-card-image" style="background: linear-gradient(135deg, #FB923C 0%, #F97316 100%);">
+                        <div class="equipment-card-badge" style="background: #C89660;">Limited Offer</div>
+                        <span style="position: relative;">⚙️</span>
+                    </div>
+                    <div class="equipment-card-content">
+                        <h3>Caterpillar 966C 装载机</h3>
+                        <p>🚀 Low as 3% Interest<br>✓ No Hidden Fees</p>
+                        <div class="price">From RM 12,500/month</div>
+                        <a href="#" class="button button-primary" style="width: 100%; text-align: center;">Apply Now →</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Interactive Loan Calculator</h3>
+            <div class="card" style="background: linear-gradient(135deg, rgba(59,130,246,0.05) 0%, rgba(200,150,96,0.05) 100%);">
+                <h3>计算您的每月还款 Calculate Monthly Payment</h3>
+                <p style="margin: 24px 0; color: #1E293B; font-weight: 600; font-size: 20px;">Loan Amount: <span style="color: #C89660;">RM 500,000</span></p>
+                <div style="height: 8px; background: #E5E7EB; border-radius: 4px; margin: 16px 0;">
+                    <div style="width: 40%; height: 100%; background: linear-gradient(90deg, #C89660 0%, #A47D4A 100%); border-radius: 4px;"></div>
+                </div>
+                <p style="margin: 24px 0; color: #1E293B; font-weight: 600; font-size: 20px;">Loan Term: <span style="color: #3B82F6;">48 months</span></p>
+                <div style="height: 8px; background: #E5E7EB; border-radius: 4px; margin: 16px 0;">
+                    <div style="width: 60%; height: 100%; background: #3B82F6; border-radius: 4px;"></div>
+                </div>
+                <div style="background: white; padding: 32px; border-radius: 12px; margin-top: 24px; text-align: center;">
+                    <p style="font-size: 14px; color: #94A3B8; margin-bottom: 8px;">每月还款 Monthly Payment:</p>
+                    <h2 style="font-family: 'Manrope', sans-serif; font-size: 48px; color: #C89660; font-weight: 800; margin-bottom: 16px;">RM 8,543</h2>
+                    <span style="display: inline-block; background: #84CC16; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700;">✓ Pre-Approved 已批准</span>
+                </div>
+                <a href="#" class="button button-primary" style="width: 100%; text-align: center; margin-top: 24px;">Apply This Plan 申请此方案</a>
+            </div>
+        </div>
+
+        <!-- Mockups -->
+        <div class="section">
+            <h2>Website Mockup Examples</h2>
+
+            <h3>Dynamic Homepage Hero</h3>
+            <div class="hero-mockup">
+                <h1>设备融资，秒速审批 🚀</h1>
+                <p>Lightning-Fast Equipment Financing | Pembiayaan Kilat untuk Peralatan Anda</p>
+                <p style="color: #94A3B8; font-size: 18px; margin-bottom: 36px;">从申请到批准，只需24小时 | Approval in 24 Hours | Kelulusan dalam 24 Jam</p>
+                <a href="#" class="button button-primary">立即申请 Apply Now</a>
+                <a href="#" class="button button-secondary">了解更多 Learn More</a>
+                <div style="margin-top: 48px; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: inline-block;">
+                    <span style="background: #84CC16; color: white; padding: 8px 16px; border-radius: 12px; font-weight: 700; font-size: 14px;">低至3%利率 | As Low as 3% Interest</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guidelines -->
+        <div class="section">
+            <h2>Usage Guidelines</h2>
+            <div class="guidelines">
+                <div class="do-list">
+                    <h3>Do's ✅</h3>
+                    <ul style="list-style: none;">
+                        <li>Use bold, asymmetric layouts for visual interest</li>
+                        <li>Incorporate geometric shapes and patterns</li>
+                        <li>Use gradient overlays on images (subtle, 10-20%)</li>
+                        <li>Animate interactive elements (hover, click)</li>
+                        <li>Use duotone icons for modern feel</li>
+                        <li>Leverage white space for breathing room</li>
+                    </ul>
+                </div>
+                <div class="dont-list">
+                    <h3>Don'ts ❌</h3>
+                    <ul style="list-style: none;">
+                        <li>Don't use more than 3 colors per section</li>
+                        <li>Don't create overly complex layouts</li>
+                        <li>Don't use heavy shadows (keep them soft)</li>
+                        <li>Don't use outdated patterns (old gradients)</li>
+                        <li>Don't sacrifice readability for style</li>
+                        <li>Don't forget mobile-first approach</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose This Option -->
+        <div class="section">
+            <h2>Why Choose This Option?</h2>
+
+            <div class="best-for">
+                <h3>Best For</h3>
+                <ul>
+                    <li>Fintech-style equipment financing</li>
+                    <li>Targeting younger entrepreneurs (30-45 age range)</li>
+                    <li>Tech-forward industries (logistics, automation)</li>
+                    <li>Companies wanting to differentiate from traditional lenders</li>
+                    <li>Markets where innovation is valued</li>
+                </ul>
+
+                <div class="strengths">
+                    <div class="strength-item">✅ Stands out from conservative financial competitors</div>
+                    <div class="strength-item">✅ Appeals to modern, digital-first business owners</div>
+                    <div class="strength-item">✅ Flexible design system for growth and expansion</div>
+                    <div class="strength-item">✅ Works well for mobile and app experiences</div>
+                    <div class="strength-item">✅ Energetic feel suggests fast approval processes</div>
+                </div>
+            </div>
+
+            <h3>Considerations</h3>
+            <ul>
+                <li>May feel "too modern" for traditional industries</li>
+                <li>Requires more development effort for animations</li>
+                <li>Bold style may not suit all equipment types</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, #1E293B 0%, #334155 100%); color: white;">
+            <h2 style="color: #C89660;">Ready to Apply This Brand Identity?</h2>
+            <p style="color: #94A3B8;">Approve this CI option (D/ → A/) and it will be automatically applied to your website generation.</p>
+            <div style="margin-top: 32px;">
+                <a href="#" class="button button-primary">✅ Approve This CI</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

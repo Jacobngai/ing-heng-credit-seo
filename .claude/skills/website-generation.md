@@ -1,7 +1,13 @@
 # Website Generation Skill
 
+## Client Parameter
+**REQUIRED PARAMETER:** `[client-name]` - The client directory name (e.g., "apex-machinery", "ing-heng-credit")
+- Used in paths: `/example-clients/[client-name]/website/`
+- All file operations use this parameter
+- If not provided, the agent will ask for it
+
 ## Purpose
-Scaffold a complete multi-language SEO-optimized website for client using Astro or Next.js.
+Scaffold a complete multi-language SEO-optimized website for a specific client using Astro or Next.js.
 
 ## Platform Decision
 
@@ -29,7 +35,7 @@ Scaffold a complete multi-language SEO-optimized website for client using Astro 
 ### Step 1: Create Project Structure
 
 ```bash
-/clients/[client-name]/website/
+/example-clients/[client-name]/website/
 ├── src/
 │   ├── content/
 │   │   ├── posts/           # Blog posts
@@ -96,7 +102,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/static';
 
 export default defineConfig({
-  site: 'https://apex-machinery.com',
+  site: 'https://[client-domain].com',
   integrations: [
     sitemap({
       i18n: {
@@ -166,7 +172,7 @@ interface Props {
 }
 
 const { title, description, language, canonical, ogImage } = Astro.props;
-const site = 'https://apex-machinery.com';
+const site = 'https://[client-domain].com';
 const currentUrl = canonical || Astro.url.pathname;
 
 // Hreflang alternate URLs
@@ -247,8 +253,8 @@ const translations = {
 ---
 
 <BaseLayout
-  title="Apex Machinery - Equipment Financing Malaysia"
-  description="Flexible equipment financing and leasing solutions for construction and logistics businesses. Get approved in 24 hours."
+  title="[Client Name] - [Service Description]"
+  description="[Client description and key value proposition relevant to their niche]"
   language="en"
 >
   <Header language="en" />
@@ -465,12 +471,12 @@ npm i -g vercel
 vercel login
 
 # Deploy
-cd /clients/apex-machinery/website/
+cd /example-clients/[client-name]/website/
 vercel --prod
 
 # Output:
-# ✅ Deployed to https://apex-machinery.vercel.app
-# ✅ Custom domain: https://apex-machinery.com
+# ✅ Deployed to https://[client-name].vercel.app
+# ✅ Custom domain: https://[client-domain].com
 ```
 
 ---
@@ -537,12 +543,13 @@ Part of: `client-finalization.md` workflow
 ```
 ✅ WEBSITE GENERATED & DEPLOYED
 
+Client: [client-name]
 Framework: Astro (Static Site Generator)
 Hosting: Vercel Edge Network
 
 URLs:
-🌐 Production: https://apex-machinery.vercel.app
-🌐 Custom domain: https://apex-machinery.com (pending DNS)
+🌐 Production: https://[client-name].vercel.app
+🌐 Custom domain: https://[client-domain].com (pending DNS)
 
 Features:
 ✅ Multi-language support (EN/ZH/MS)
@@ -597,16 +604,16 @@ Ready for content publishing! 🚀
 
 **Single Deployment (this skill):**
 ```
-apexmachinery.com/          ← English (default)
-apexmachinery.com/zh/       ← Chinese
-apexmachinery.com/ms/       ← Malay
+[client-domain].com/        ← English (default)
+[client-domain].com/zh/     ← Chinese
+[client-domain].com/ms/     ← Malay
 ```
 
 **Multi-Deployment (`multi-language-deployment.md`):**
 ```
-apexmachinery.com/          ← English (default)
-zh.apexmachinery.com/       ← Chinese (default)
-ms.apexmachinery.com/       ← Malay (default)
+[client-domain].com/        ← English (default)
+zh.[client-domain].com/     ← Chinese (default)
+ms.[client-domain].com/     ← Malay (default)
 ```
 
 Each deployment has its own Vercel project but shares the same content source (no duplication).

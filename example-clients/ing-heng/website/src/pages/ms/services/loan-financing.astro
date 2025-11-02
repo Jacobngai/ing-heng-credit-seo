@@ -1,0 +1,684 @@
+---
+/**
+ * Loan Financing Service Page - Bahasa Malaysia
+ * Halaman Perkhidmatan Pembiayaan Pinjaman - Penyelesaian pinjaman perniagaan untuk PKS Malaysia
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Calculator from '../../../components/Calculator.astro';
+import StepCard from '../../../components/StepCard.astro';
+import { generateServiceSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'ms';
+
+// SEO Configuration - Pengoptimuman 20 tahun kepakaran
+const title = 'Pembiayaan Pinjaman Perniagaan Malaysia | Pinjaman Peralatan PKS';
+const description = 'Pinjaman perniagaan pantas untuk pembelian peralatan di Malaysia. Modal kerja, pembiayaan peralatan & pinjaman pengembangan dengan kadar kelulusan 95%. Kadar kompetitif, pemprosesan 24 jam. Mohon sekarang!';
+const keywords = ['pinjaman perniagaan Malaysia', 'pembiayaan PKS', 'pinjaman peralatan Malaysia', 'pinjaman modal kerja', 'pinjaman pengembangan perniagaan', 'pembiayaan peralatan komersial', 'kredit perniagaan Malaysia', 'kelulusan pinjaman pantas'];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Perkhidmatan', href: '/ms/services' },
+  { label: 'Pembiayaan Pinjaman', href: '/ms/services/loan-financing' }
+];
+
+// FAQ Data - Kandungan yang disesuaikan dengan budaya Melayu
+const faqs = [
+  {
+    question: 'Apakah jenis-jenis pinjaman perniagaan yang Tuan/Puan tawarkan?',
+    answer: 'Kami menawarkan tiga jenis pinjaman perniagaan utama: Pinjaman Pembiayaan Peralatan (untuk pembelian jentera dan kenderaan), Pinjaman Modal Kerja (untuk operasi harian dan aliran tunai), dan Pinjaman Pengembangan Perniagaan (untuk inisiatif pertumbuhan). Setiap jenis pinjaman disertakan dengan terma fleksibel antara 12 hingga 60 bulan dan kadar faedah kompetitif bermula dari 2.88% setahun.'
+  },
+  {
+    question: 'Apakah syarat kelayakan untuk memohon pinjaman perniagaan?',
+    answer: 'Untuk layak memohon pinjaman perniagaan, syarikat Tuan/Puan mestilah didaftarkan di Malaysia (Sdn Bhd, Enterprise, atau Milikan Tunggal), beroperasi sekurang-kurangnya 6 bulan, dan mempunyai pendapatan atau hasil yang boleh disahkan. Kami memerlukan dokumentasi asas termasuk pendaftaran SSM, penyata bank (6 bulan), IC/pasport pengarah, dan penyata kewangan (jika ada). Kami mengekalkan kadar kelulusan 95%.'
+  },
+  {
+    question: 'Berapa lama masa yang diperlukan untuk kelulusan dan pengeluaran pinjaman?',
+    answer: 'Kami memproses permohonan pinjaman dalam masa 24 jam dan memberikan keputusan kelulusan pada hari yang sama bagi kebanyakan kes. Setelah diluluskan, dana boleh dikeluarkan dalam masa 3-5 hari bekerja. Proses kami yang diperkemas direka khusus untuk PKS Malaysia yang memerlukan akses pantas kepada modal tanpa prosedur bank yang berlarutan.'
+  },
+  {
+    question: 'Berapakah kadar faedah yang dikenakan untuk pinjaman perniagaan?',
+    answer: 'Kadar faedah pinjaman perniagaan kami bermula dari 2.88% setahun dan berbeza berdasarkan jumlah pinjaman, tempoh bayaran balik, profil kredit perniagaan, dan cagaran yang disediakan. Kami bekerjasama dengan pelbagai rakan kewangan untuk mendapatkan kadar paling kompetitif bagi situasi khusus Tuan/Puan. Semua kadar dan yuran didedahkan secara telus sebelum Tuan/Puan membuat komitmen.'
+  },
+  {
+    question: 'Adakah saya perlu menyediakan cagaran untuk pinjaman perniagaan?',
+    answer: 'Keperluan cagaran bergantung kepada jenis pinjaman dan jumlah pinjaman. Pinjaman pembiayaan peralatan menggunakan peralatan itu sendiri sebagai cagaran. Untuk pinjaman modal kerja dan pengembangan, kami mungkin memerlukan aset perniagaan, harta tanah, atau jaminan peribadi. Walau bagaimanapun, kami menawarkan pilihan cagaran yang fleksibel dan boleh bekerjasama dengan pelbagai pengaturan keselamatan yang sesuai dengan keadaan Tuan/Puan.'
+  },
+  {
+    question: 'Bolehkah syarikat permulaan atau perniagaan baru memohon pinjaman?',
+    answer: 'Ya! Walaupun perniagaan yang telah mantap mempunyai kelebihan, kami memang membiayai syarikat permulaan dan perniagaan yang lebih baru (minimum 6 bulan operasi). Untuk syarikat yang lebih baru, kami mungkin memerlukan bayaran pendahuluan yang lebih tinggi, jaminan peribadi, atau dokumentasi tambahan yang menunjukkan daya maju perniagaan. Pakar kami akan bekerjasama dengan Tuan/Puan untuk mencari penyelesaian pembiayaan yang sesuai.'
+  },
+  {
+    question: 'Berapakah jumlah pinjaman maksimum yang boleh saya pinjam?',
+    answer: 'Jumlah pinjaman berkisar dari RM 50,000 hingga RM 5,000,000 bergantung kepada keperluan perniagaan, kapasiti kewangan, dan jenis pinjaman Tuan/Puan. Pembiayaan peralatan biasanya meliputi 70-90% daripada nilai peralatan, manakala pinjaman modal kerja berdasarkan hasil bulanan dan keperluan operasi Tuan/Puan. Hubungi kami untuk penilaian tersuai.'
+  },
+  {
+    question: 'Bolehkah saya menggunakan pinjaman untuk pelbagai tujuan?',
+    answer: 'Ya, pinjaman perniagaan kami boleh distrukturkan untuk pelbagai tujuan. Sebagai contoh, Tuan/Puan boleh menggabungkan pembelian peralatan dengan keperluan modal kerja dalam satu pakej pinjaman. Kami menawarkan penyelesaian pembiayaan fleksibel yang disesuaikan dengan keperluan perniagaan lengkap Tuan/Puan berbanding pinjaman tujuan tunggal yang tegar.'
+  },
+  {
+    question: 'Apa yang perlu dilakukan jika perniagaan saya menghadapi kesulitan kewangan?',
+    answer: 'Kami memahami cabaran perniagaan dan turun naik aliran tunai. Jika Tuan/Puan menjangkakan kesukaran pembayaran, sila hubungi kami dengan segera. Kami menawarkan penstrukturan semula pembayaran, pelepasan pembayaran sementara, dan pengaturan penyelesaian lain. Komunikasi awal membolehkan kami membantu Tuan/Puan mengekalkan operasi perniagaan sambil menguruskan kewajipan pinjaman secara bertanggungjawab.'
+  },
+  {
+    question: 'Bagaimana cara untuk memohon pinjaman perniagaan?',
+    answer: 'Hanya hubungi kami di talian 017-570 0889, WhatsApp kami, atau isi borang hubungan dalam talian. Pakar pembiayaan perniagaan kami akan membincangkan keperluan khusus Tuan/Puan, menerangkan pilihan pinjaman, dan membimbing Tuan/Puan melalui proses permohonan. Kami menjadikan pembiayaan perniagaan mudah diakses dengan kertas kerja minimum dan kecekapan maksimum.'
+  }
+];
+
+// Service Schema
+const serviceSchema = generateServiceSchema({
+  name: 'Perkhidmatan Pembiayaan Pinjaman Perniagaan',
+  description: 'Penyelesaian pinjaman perniagaan komprehensif termasuk pembiayaan peralatan, pinjaman modal kerja, dan pembiayaan pengembangan perniagaan untuk PKS Malaysia',
+  serviceType: 'Pembiayaan Pinjaman Perniagaan'
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbItems} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Pembiayaan Pinjaman Perniagaan untuk Peralatan & Pertumbuhan"
+    subtitle="Kembangkan perniagaan Tuan/Puan dengan pembiayaan pantas dan fleksibel. Pinjaman peralatan, modal kerja, dan pembiayaan pengembangan dengan kadar kelulusan 95% dan pemprosesan 24 jam. Dapatkan sebut harga percuma hari ini!"
+    ctaText="Mohon Pinjaman"
+    ctaLink="/ms/contact"
+    ctaSecondaryText="WhatsApp Kami"
+    ctaSecondaryLink="https://wa.me/60175700889"
+    backgroundImage="/images/services/loan-financing-hero.jpg"
+    lang={lang}
+    trustSignals={['Kelulusan 95%', 'Proses 24 Jam', 'Pinjaman RM 50K-5M']}
+  />
+
+  <!-- What is Business Loan Financing Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Penyelesaian Pembiayaan Pinjaman Perniagaan untuk PKS Malaysia
+          </h2>
+          <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Pembiayaan pinjaman perniagaan menyediakan PKS Malaysia dengan modal yang diperlukan untuk memperoleh peralatan, menguruskan aliran tunai, dan mengembangkan operasi. Tidak seperti pinjaman bank tradisional yang mengambil masa berminggu-minggu atau berbulan-bulan, penyelesaian pembiayaan perniagaan khusus kami direka untuk kelajuan dan fleksibiliti—sesuai untuk perniagaan pembinaan, logistik, dan industri yang memerlukan akses pantas kepada dana.
+          </p>
+
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Sama ada Tuan/Puan membeli jengkaut baru, mengembangkan armada lori, menaik taraf forklift gudang, atau memerlukan modal kerja untuk menguruskan aliran tunai bermusim, pembiayaan pinjaman perniagaan kami akan memberikan dana kepada Tuan/Puan dalam masa 3-5 hari dengan kadar faedah kompetitif bermula dari 2.88% setahun.
+          </p>
+
+          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-sm">
+            <h3 class="text-xl font-bold text-primary mb-3">Mengapa Memilih Pinjaman Perniagaan Berbanding Pembiayaan Tradisional?</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li><strong>Kelulusan Lebih Pantas:</strong> Pemprosesan 24 jam berbanding 2-4 minggu di bank</li>
+              <li><strong>Kadar Kelulusan Lebih Tinggi:</strong> Kadar kejayaan 95% dengan rangkaian pemberi pinjaman kami</li>
+              <li><strong>Keperluan Fleksibel:</strong> Kami bekerjasama dengan perniagaan baru dan pelbagai profil kredit</li>
+              <li><strong>Pelbagai Tujuan:</strong> Gabungkan pembiayaan peralatan dengan modal kerja dalam satu pinjaman</li>
+              <li><strong>Kadar Kompetitif:</strong> Akses kepada pelbagai pembiaya memastikan syarat terbaik</li>
+              <li><strong>Terma Tersuai:</strong> Jadual bayaran balik diselaraskan dengan aliran tunai perniagaan Tuan/Puan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loan Types Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Produk Pinjaman Perniagaan Kami
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Penyelesaian pembiayaan fleksibel disesuaikan dengan keperluan perniagaan Tuan/Puan
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-primary">
+          <div class="text-primary text-5xl mb-4">🚜</div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Pinjaman Pembiayaan Peralatan</h3>
+          <p class="text-gray-600 mb-6">
+            Beli peralatan pembinaan, kenderaan logistik, atau jentera industri dengan pinjaman yang meliputi 70-90% daripada nilai peralatan.
+          </p>
+          <ul class="text-gray-700 space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Jengkaut, lori, forklift
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Peralatan baru & terpakai (sehingga 10 tahun)
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Tempoh: 12-60 bulan
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Peralatan sebagai cagaran
+            </li>
+          </ul>
+          <CTAButton
+            text="Mohon Pinjaman Peralatan"
+            link="/ms/contact"
+            variant="primary"
+            size="medium"
+          />
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-secondary">
+          <div class="text-secondary text-5xl mb-4">💰</div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Pinjaman Modal Kerja</h3>
+          <p class="text-gray-600 mb-6">
+            Uruskan operasi harian, bayar pembekal, tampung gaji, atau lancarkan jurang aliran tunai bermusim dengan modal kerja yang fleksibel.
+          </p>
+          <ul class="text-gray-700 space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Penyelesaian aliran tunai pantas
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Penggunaan dana yang fleksibel
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Tempoh: 12-36 bulan
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Penilaian berasaskan hasil
+            </li>
+          </ul>
+          <CTAButton
+            text="Mohon Modal Kerja"
+            link="/ms/contact"
+            variant="secondary"
+            size="medium"
+          />
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-accent">
+          <div class="text-accent text-5xl mb-4">📈</div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Pinjaman Pengembangan Perniagaan</h3>
+          <p class="text-gray-600 mb-6">
+            Biayai inisiatif pertumbuhan termasuk lokasi baru, peralatan tambahan, pengembangan kakitangan, atau projek pembangunan pasaran.
+          </p>
+          <ul class="text-gray-700 space-y-2 mb-6">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Penyelesaian pembiayaan pertumbuhan
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Jumlah pinjaman yang lebih besar
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Tempoh: 24-60 bulan
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Kadar pengembangan kompetitif
+            </li>
+          </ul>
+          <CTAButton
+            text="Mohon Pinjaman Pengembangan"
+            link="/ms/contact"
+            variant="accent"
+            size="medium"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Mengapa Memilih Ing Heng Credit untuk Pinjaman Perniagaan?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Pembiayaan pantas dan fleksibel dibina untuk PKS Malaysia
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <BenefitCard
+          icon="lightning"
+          title="Kelulusan 24 Jam"
+          description="Proses pantas permohonan Tuan/Puan dengan keputusan kelulusan pada hari yang sama. Tiada tempoh menunggu bank yang panjang."
+        />
+
+        <BenefitCard
+          icon="percentage"
+          title="Dari 2.88% Faedah"
+          description="Kadar kompetitif bermula dari 2.88% setahun. Kami dapatkan syarat terbaik melalui rangkaian pemberi pinjaman kami."
+        />
+
+        <BenefitCard
+          icon="calendar"
+          title="Tempoh 12-60 Bulan"
+          description="Tempoh bayaran balik fleksibel diselaraskan dengan aliran tunai dan rancangan pertumbuhan perniagaan Tuan/Puan."
+        />
+
+        <BenefitCard
+          icon="shield"
+          title="Kadar Kelulusan 95%"
+          description="Kadar kejayaan kelulusan terkemuka industri. Kami mencari penyelesaian pembiayaan untuk kebanyakan perniagaan."
+        />
+
+        <BenefitCard
+          icon="users"
+          title="Perkhidmatan Berbilang Bahasa"
+          description="Dapatkan sokongan dalam Bahasa Inggeris, Mandarin, dan Bahasa Malaysia untuk kemudahan Tuan/Puan."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="Pinjaman RM 50K - 5M"
+          description="Jumlah pinjaman berskala dari RM 50,000 hingga RM 5,000,000 berdasarkan keperluan Tuan/Puan."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="Cagaran Fleksibel"
+          description="Pelbagai pilihan keselamatan termasuk peralatan, harta tanah, atau jaminan peribadi."
+        />
+
+        <BenefitCard
+          icon="clock"
+          title="Pengeluaran 3-5 Hari"
+          description="Dana dikeluarkan dalam masa 3-5 hari bekerja selepas kelulusan. Dapatkan modal bila Tuan/Puan memerlukannya."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Process Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Proses Permohonan Mudah 3 Langkah
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Dapatkan pinjaman perniagaan Tuan/Puan diluluskan dan dibiayai dalam beberapa hari sahaja
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
+            1
+          </div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Hantar Permohonan</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Hubungi kami melalui telefon, WhatsApp, atau borang dalam talian. Berikan maklumat perniagaan asas dan keperluan pinjaman. Pakar kami akan membimbing Tuan/Puan melalui dokumentasi.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-secondary to-accent text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
+            2
+          </div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Diluluskan dalam 24 Jam</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Kami semak permohonan Tuan/Puan dan hantar kepada rangkaian pembiaya kami. Terima keputusan kelulusan dalam masa 24 jam dengan terma pinjaman dan kadar terperinci.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-24 h-24 bg-gradient-to-br from-accent to-primary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
+            3
+          </div>
+          <h3 class="text-2xl font-bold text-primary mb-4">Terima Dana dalam 3-5 Hari</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Tandatangan perjanjian pinjaman, lengkapkan dokumentasi akhir, dan dana akan dikeluarkan ke akaun Tuan/Puan. Mula gunakan modal untuk mengembangkan perniagaan Tuan/Puan dengan segera!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eligibility Section -->
+  <section class="section-padding bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Kelayakan & Keperluan
+          </h2>
+          <p class="text-xl text-white/90">
+            Dokumentasi ringkas untuk kelulusan pinjaman perniagaan pantas
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Keperluan Asas</h3>
+            <ul class="space-y-3 text-white/90">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Perniagaan berdaftar di Malaysia (minimum 6 bulan operasi)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Pendaftaran SSM yang sah (Sdn Bhd, Enterprise, atau Milikan Tunggal)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Pendapatan atau hasil perniagaan yang boleh disahkan
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Rekod kredit yang bersih (fleksibel untuk sesetengah kes)
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Dokumen yang Diperlukan</h3>
+            <ul class="space-y-3 text-white/90">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Pendaftaran SSM syarikat (Borang 9 & 49)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Penyata bank syarikat 6 bulan terkini
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Salinan IC/Pasport pengarah
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Penyata kewangan (jika ada)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Rancangan perniagaan/cadangan (untuk pinjaman pengembangan)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <p class="text-white/90 mb-6">
+            Tidak mempunyai semua dokumen? Tidak mengapa! Pasukan kami akan membantu Tuan/Puan menyediakan apa yang diperlukan.
+          </p>
+          <CTAButton
+            text="Mula Permohonan Sekarang"
+            link="/ms/contact"
+            variant="accent"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Kira Bayaran Pinjaman Perniagaan Anda
+          </h2>
+          <p class="text-xl text-gray-600">
+            Anggarkan bayaran bulanan untuk pinjaman peralatan atau perniagaan Tuan/Puan
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <Calculator
+          lang={lang}
+          equipmentType="Pinjaman Perniagaan"
+          defaultPrice={200000}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Soalan Lazim
+          </h2>
+          <p class="text-xl text-gray-600">
+            Segala yang perlu Tuan/Puan ketahui tentang pembiayaan pinjaman perniagaan
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-gray-600 mb-6">
+            Ada soalan lain? Pakar pembiayaan perniagaan kami bersedia membantu Tuan/Puan.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="Hubungi: 017-570 0889"
+              link="tel:+60175700889"
+              variant="primary"
+              icon="phone"
+            />
+            <CTAButton
+              text="WhatsApp Kami"
+              link="https://wa.me/60175700889"
+              variant="accent"
+              icon="whatsapp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Perkhidmatan Pembiayaan Berkaitan
+        </h2>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold text-primary mb-3">Pembiayaan Sewa Beli</h3>
+          <p class="text-gray-600 mb-4">
+            Miliki peralatan Tuan/Puan melalui ansuran bulanan yang berpatutan. Sesuai untuk jengkaut, lori, dan forklift dengan tempoh fleksibel 12-60 bulan.
+          </p>
+          <CTAButton
+            text="Ketahui Tentang Sewa Beli"
+            link="/ms/services/hire-purchase"
+            variant="primary"
+          />
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold text-primary mb-3">Insurans Peralatan</h3>
+          <p class="text-gray-600 mb-4">
+            Lindungi pelaburan peralatan berharga Tuan/Puan dengan perlindungan insurans komprehensif. Dapatkan ketenangan fikiran untuk jentera dan kenderaan Tuan/Puan.
+          </p>
+          <CTAButton
+            text="Ketahui Tentang Insurans"
+            link="/ms/services/insurance"
+            variant="primary"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-primary via-secondary to-accent text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Bersedia untuk Mengembangkan Perniagaan dengan Pinjaman?
+        </h2>
+        <p class="text-xl text-white/90 mb-8 leading-relaxed">
+          Sertai 500+ PKS Malaysia yang mempercayai Ing Heng Credit untuk pembiayaan perniagaan yang pantas dan fleksibel. Diluluskan dalam 24 jam dan dibiayai dalam masa 3-5 hari!
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">24jam</div>
+            <div class="text-white/90">Masa Kelulusan</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">95%</div>
+            <div class="text-white/90">Kadar Kelulusan</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">2.88%</div>
+            <div class="text-white/90">Kadar Permulaan</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton
+            text="Mohon Pinjaman Perniagaan"
+            link="/ms/contact"
+            variant="accent"
+            size="large"
+          />
+          <CTAButton
+            text="WhatsApp: 017-570 0889"
+            link="https://wa.me/60175700889"
+            variant="outline-white"
+            size="large"
+            icon="whatsapp"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Dapatkan Sebut Harga Pinjaman Percuma
+          </h2>
+          <p class="text-xl text-gray-600">
+            Isi borang dan pakar kami akan menghubungi Tuan/Puan dalam masa 24 jam
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: 3rem 0;
+    }
+  }
+</style>

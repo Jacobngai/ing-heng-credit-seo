@@ -3,6 +3,12 @@
 ## Purpose
 Generate detailed buyer personas based on client's target audience from questionnaire.
 
+## Client Parameter
+**IMPORTANT:** When invoking this skill, pass the client name as a parameter:
+- Used in folder paths as: `example-clients/[client-name]/`
+- Replace `[client-name]` with actual client identifier (e.g., "apex-machinery", "ing-heng-credit")
+- Must be consistent throughout entire onboarding workflow
+
 ## Input
 Client questionnaire answers about target audience:
 - Demographics
@@ -338,7 +344,12 @@ For each persona, identify:
 Save each persona as separate markdown file:
 
 ```
-/clients/[client-name]/persona-idea/D/[persona-slug].md
+/example-clients/[client-name]/persona-idea/D/[persona-slug].md
+```
+
+**Example (for "apex-machinery" client):**
+```
+/example-clients/apex-machinery/persona-idea/D/[persona-slug].md
 ```
 
 **File structure:**

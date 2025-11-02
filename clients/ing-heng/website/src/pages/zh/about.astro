@@ -1,0 +1,494 @@
+---
+/**
+ * 关于我们页面 - 中文
+ * 专业B2B关于我们页面,针对设备融资公司
+ * 目标受众: 物流企业主、运输公司、商业决策者
+ * 关键词: 马来西亚设备融资、租购融资、持牌金融公司
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import BenefitCard from '../../components/BenefitCard.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { generateOrganizationSchema } from '../../utils/schema';
+import { COMPANY_INFO } from '../../utils/constants';
+
+const lang = 'zh';
+const organizationSchema = generateOrganizationSchema();
+
+// SEO 数据
+const pageTitle = '关于我们 - 自1985年起服务马来西亚设备融资 | 兴兴信贷';
+const pageDescription = '自1985年起值得信赖的设备融资合作伙伴。KPKT持牌,95%批准率,40多年经验。为4000多家建筑、物流和制造公司提供服务。';
+const keywords = [
+  '马来西亚设备融资',
+  '租购融资',
+  '马来西亚持牌金融公司',
+  '巴生设备租赁',
+  '建筑设备融资',
+  'KPKT持牌',
+  '马来西亚商业融资'
+];
+
+// 重要里程碑
+const milestones = [
+  { year: '1985', title: '公司成立', description: '在雪兰莪巴生成立,为本地企业提供服务' },
+  { year: '1995', title: '获得KPKT执照', description: '获得马来西亚政府颁发的正式金融服务执照' },
+  { year: '2005', title: '服务1000家客户', description: '达到为全马超过1000家企业提供服务的里程碑' },
+  { year: '2015', title: '车队扩展', description: '扩展服务范围,包括物流和运输设备' },
+  { year: '2020', title: '数字化转型', description: '推出在线申请和WhatsApp服务,实现更快批准' },
+  { year: '2025', title: '40年辉煌', description: '庆祝40周年,已为4000多家公司提供融资服务' },
+];
+
+// 核心价值观
+const values = [
+  {
+    icon: 'shield',
+    title: '信任与诚信',
+    description: '我们基于诚实、透明和公平交易建立长期关系。没有隐藏费用,没有意外收费。'
+  },
+  {
+    icon: 'lightning',
+    title: '速度与效率',
+    description: '24小时批准流程,因为我们理解时间就是金钱。快速处理不影响质量。'
+  },
+  {
+    icon: 'users',
+    title: '客户至上',
+    description: '您的成功就是我们的成功。我们根据您的业务需求定制解决方案。'
+  },
+  {
+    icon: 'check-badge',
+    title: '专业与经验',
+    description: '40年的行业知识。我们了解您的挑战,提供切实可行的解决方案。'
+  }
+];
+
+// 团队专长
+const expertise = [
+  {
+    title: '建筑设备专家',
+    description: '深入了解挖掘机、推土机、压路机和重型机械融资要求。'
+  },
+  {
+    title: '物流融资专家',
+    description: '专门研究卡车、货车和运输企业车队融资的知识。'
+  },
+  {
+    title: '工业设备顾问',
+    description: '为叉车、发电机、压缩机和仓库设备融资提供专业指导。'
+  },
+  {
+    title: '信用与风险评估',
+    description: '公平的评估流程,95%批准率。我们批准其他机构拒绝的申请。'
+  }
+];
+
+// 为什么选择我们
+const whyChooseUs = [
+  { icon: 'clock', title: '24小时批准', description: '快速处理,紧急情况当天决定' },
+  { icon: 'percentage', title: '95%批准率', description: '行业领先的批准率 - 我们更常说"是"' },
+  { icon: 'shield', title: 'KPKT持牌', description: '自1995年起政府批准的金融服务提供商' },
+  { icon: 'calendar', title: '灵活期限12-60个月', description: '定制付款计划以匹配您的现金流' },
+  { icon: 'users', title: '服务4000多家公司', description: '40年来受到全马企业信赖' },
+  { icon: 'location', title: '巴生谷地区', description: '便利位置,服务吉隆坡、雪兰莪和全国' },
+];
+
+// 服务地区
+const serviceAreas = [
+  '巴生谷(巴生、莎阿南、八打灵再也)',
+  '吉隆坡与雪兰莪',
+  '新山及南部地区',
+  '槟城及北部地区',
+  '关丹及东海岸',
+  '沙巴与砂拉越(东马)',
+  '全马各州',
+  '通过WhatsApp远程申请'
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <StructuredData schema={organizationSchema} />
+
+  <!-- 主横幅部分 -->
+  <Hero
+    title="40年信誉 专业设备融资"
+    subtitle="自1985年起,兴兴信贷一直是马来西亚建筑、物流和工业设备融资的值得信赖合作伙伴"
+    ctaText="立即获取免费报价"
+    ctaLink="/zh/contact"
+    ctaSecondaryText="WhatsApp咨询"
+    ctaSecondaryLink={COMPANY_INFO.whatsapp.link}
+    lang={lang}
+    trustSignals={['成立于1985年', 'KPKT持牌', '95%批准率', '已为4000多家公司融资']}
+    backgroundImage="/images/about-hero.jpg"
+  />
+
+  <!-- 公司介绍 -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            关于兴兴信贷有限公司
+          </h1>
+          <div class="w-20 h-1 bg-accent mx-auto mb-8"></div>
+          <p class="text-xl text-gray-700 leading-relaxed">
+            超过<strong>40年</strong>以来,兴兴信贷有限公司一直帮助马来西亚企业获得成功所需的设备。从小型承包商到大型物流公司,我们已为建筑、物流和制造业的<strong>4000多家企业</strong>提供融资服务。
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold text-primary mb-4">我们的使命</h3>
+            <p class="text-gray-700 leading-relaxed">
+              为马来西亚企业提供快速、实惠和灵活的设备融资解决方案,促进增长和成功。我们相信每家企业都应该获得优质设备,无论规模大小或信用记录如何。
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-secondary/5 to-accent/10 p-8 rounded-lg">
+            <h3 class="text-2xl font-bold text-primary mb-4">我们的愿景</h3>
+            <p class="text-gray-700 leading-relaxed">
+              成为马来西亚最值得信赖、最以客户为中心的设备融资合作伙伴,以我们的速度、灵活性和坚定不移的承诺而闻名,通过便捷的金融解决方案帮助企业繁荣发展。
+            </p>
+          </div>
+        </div>
+
+        <!-- 快速统计 -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div class="text-5xl font-bold text-primary mb-2">40+</div>
+            <div class="text-gray-600 font-medium">年经验</div>
+          </div>
+          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div class="text-5xl font-bold text-primary mb-2">4,000+</div>
+            <div class="text-gray-600 font-medium">公司融资</div>
+          </div>
+          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div class="text-5xl font-bold text-primary mb-2">95%</div>
+            <div class="text-gray-600 font-medium">批准率</div>
+          </div>
+          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+            <div class="text-5xl font-bold text-primary mb-2">24小时</div>
+            <div class="text-gray-600 font-medium">快速批准</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 公司历史与里程碑 -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们的历程:40年卓越服务
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          从巴生本地金融服务到全国值得信赖的合作伙伴
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="space-y-8">
+          {milestones.map((milestone, index) => (
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-24 text-right">
+                <div class="text-3xl font-bold text-primary">{milestone.year}</div>
+              </div>
+              <div class="flex-shrink-0 w-1 bg-accent rounded-full"></div>
+              <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-primary mb-2">{milestone.title}</h3>
+                <p class="text-gray-700">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 为什么选择我们 -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          为什么选择兴兴信贷?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          我们不仅仅是一家融资公司 - 我们是您的业务增长合作伙伴
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {whyChooseUs.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- 额外亮点 -->
+      <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-lg">
+        <h3 class="text-2xl font-bold mb-6 text-center">我们的独特之处?</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <ul class="space-y-3">
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>批准银行拒绝的申请</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>仅需10%首付款要求</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>可融资10年以下的二手设备</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="space-y-3">
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>为承包商提供季节性付款计划</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>多语言服务(英语、华语、马来语)</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>无提前还款罚款</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心价值观 -->
+  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们的核心价值观
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          指导我们每个决策的原则
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((value) => (
+          <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+            <BenefitCard
+              icon={value.icon}
+              title={value.title}
+              description={value.description}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 团队专长 -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们的团队与专长
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          了解您业务需求的行业专家
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {expertise.map((expert) => (
+          <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-lg shadow-md border-l-4 border-primary">
+            <h3 class="text-xl font-bold text-primary mb-3">{expert.title}</h3>
+            <p class="text-gray-700 leading-relaxed">{expert.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 执照与认证 -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            执照与认证
+          </h2>
+          <p class="text-xl text-gray-600">
+            完全持牌和受监管,保护您的权益
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-4">KPKT持牌金融公司</h3>
+              <p class="text-gray-700 mb-4">
+                兴兴信贷有限公司获得马来西亚房屋与地方政府部(KPKT)颁发的金融服务执照。
+              </p>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>自1995年起持牌</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>完全符合监管要求</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>定期政府审计</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-4">行业会员资格</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>马来西亚金融服务协会</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>雪兰莪商业总会</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>马来西亚设备租赁协会</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务地区 -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          遍布全马的服务网络
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          总部设在巴生,服务全国企业
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          {serviceAreas.map((area) => (
+            <div class="flex items-center space-x-3 bg-gray-50 p-4 rounded-lg">
+              <svg class="w-6 h-6 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700 font-medium">{area}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-blue-50 border-l-4 border-primary p-6 rounded-lg">
+          <h3 class="font-bold text-primary mb-2">我们的巴生办事处</h3>
+          <p class="text-gray-700 mb-3">
+            <strong>地址:</strong> {COMPANY_INFO.address.full}
+          </p>
+          <p class="text-gray-700 mb-3">
+            <strong>电话:</strong> <a href={`tel:${COMPANY_INFO.phone.international}`} class="text-primary hover:underline">{COMPANY_INFO.phone.display}</a> / {COMPANY_INFO.phone.office}
+          </p>
+          <p class="text-gray-700 mb-3">
+            <strong>WhatsApp:</strong> <a href={COMPANY_INFO.whatsapp.link} class="text-primary hover:underline">{COMPANY_INFO.phone.display}</a>
+          </p>
+          <p class="text-gray-700 mb-4">
+            <strong>电邮:</strong> <a href={`mailto:${COMPANY_INFO.email}`} class="text-primary hover:underline">{COMPANY_INFO.email}</a>
+          </p>
+          <a
+            href={COMPANY_INFO.address.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-primary font-medium hover:underline"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            </svg>
+            在谷歌地图上获取方向
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 行动号召 -->
+  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        准备与马来西亚最值得信赖的设备融资公司合作了吗?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+        加入4000多家信赖兴兴信贷的企业,享受快速批准、优惠利率和卓越服务。立即获取免费报价。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="WhatsApp免费报价"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="查看我们的服务"
+          link="/zh/services"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+      <div class="mt-8 text-sm opacity-80">
+        <p>或直接致电: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-accent">{COMPANY_INFO.phone.display}</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,1470 @@
+---
+/**
+ * 冷藏车/冷链设备融资 - 中文
+ * Target: 冷链物流运营商、生鲜配送商、士拉央批发商
+ * Focus: 信任建设、食品安全、市场机会、社区服务
+ * Word Count: ~3,500 words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Calculator from '../../../components/Calculator.astro';
+import { t } from '../../../utils/i18n';
+
+const lang = 'zh';
+
+// Schema markup for SEO
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "冷藏车融资马来西亚",
+      "description": "专业冷链车辆融资服务，适用于新鲜农产品、医药物流和电商配送。快速审批，竞争力利率，温度控制运输解决方案。",
+      "brand": {
+        "@type": "Brand",
+        "name": "Ing Heng Credit 敬兴信贷"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "MYR",
+        "price": "150000",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Ing Heng Credit"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "什么是冷藏车融资?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "冷藏车融资是一种专门的设备贷款，帮助冷链物流运营商购买温度控制车辆用于运输易腐货物。包括车辆底盘、制冷设备（Carrier、Thermo King）和温度监控系统的融资。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "在马来西亚融资冷藏车需要多少钱?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1吨冷藏车价格为RM 120,000-180,000，3吨卡车为RM 200,000-280,000，5吨卡车为RM 300,000-450,000。首付20%，月供范围从RM 2,000-7,500，取决于贷款期限（5-7年）和您的信用状况。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "冷藏车能保持什么温度范围?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "标准冷藏车可保持-25°C（冷冻食品）至+5°C（新鲜农产品）的温度。多温区车辆可在同一车厢内保持不同温度区：冷冻（-18°C）、冷藏（0-5°C）和常温（15-20°C）。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "冷藏车融资审批需要多长时间?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "预批准24-48小时内完成，完整审批5-7个工作日。比传统银行快（3-4周）。我们理解冷链业务的紧迫性，尤其是在农历新年、开斋节和年底旺季期间。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "可以融资二手冷藏车吗?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以，我们为车龄10年以内的二手冷藏车提供融资。车辆必须通过机械检查和制冷设备性能测试。二手车融资需要25-30%首付，而新车为15-20%。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "冷藏车融资需要什么文件?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "所需文件：身份证/护照、3-6个月银行对账单、EPF报表、公司注册证明（如有）、现有车辆注册（如有）、供应商报价单。医药物流需额外提供：GDP认证或申请证明。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "冷藏车融资需要HACCP认证吗?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HACCP认证不是融资审批的强制要求，但拥有认证可以提高批准机会和获得更优惠的利率。获得HACCP认证的运营商有资格承接优质合同（超市、医药），这增强了还款能力。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "冷藏车投资回报率如何?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "超市合同：18-24个月回本。生鲜配送：24-30个月。医药冷链：15-20个月（优质费率）。平均日收入：RM 400-800每车。旺季（农历新年、开斋节）可使月收入翻倍。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "个体经营的生鲜商家能获得冷藏车融资吗?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以，我们专门为个体经营和中小企业提供融资。要求：从事生鲜业务2年以上，收入证明稳定（银行对账单），有现有客户合同（优先但非必需），士拉央/巴生市场的行业推荐。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "可以融资哪些制冷品牌?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "我们为所有主要品牌提供融资：Carrier Transicold、Thermo King、Zanotti、Dongin和Hubbard。卡车底盘：Isuzu、Hino、Fuso、Mercedes、Toyota。我们根据您的货物类型和路线提供品牌比较建议。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "GPS和温度监控系统可以融资吗?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以，我们提供完整冷链解决方案融资，包括GPS追踪（RM 800-1,500）、温度数据记录仪（RM 500-2,000）和安装费用。这些系统对HACCP合规和优质合同至关重要。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "冷藏车融资的典型贷款期限是多少?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "标准期限：新车5-7年，二手车3-5年。较长期限（最长7年）降低月供但增加总利息。我们建议将贷款期限与您的合同长度匹配以优化现金流。"
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="冷藏车融资马来西亚 - 冷链车辆贷款 | 士拉央/巴生专业服务"
+  description="专业冷藏车融资服务，服务士拉央批发市场、巴生港口、吉隆坡生鲜配送商。快速审批5-7天，优惠利率，RM 150k-450k融资。Carrier、Thermo King、Isuzu。WhatsApp: 017-5700889"
+  lang={lang}
+  keywords={['冷藏车融资', '冷链车辆贷款', '士拉央批发', '巴生冷链', '生鲜配送融资', 'Carrier Transicold', 'Thermo King融资', 'GDP认证冷链']}
+  ogType="website"
+>
+  <Header lang={lang} currentPath="/zh/equipment/refrigerated-truck" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>冷藏车融资：抓住马来西亚冷链物流黄金机遇</h1>
+          <p class="hero-subtitle">
+            专业冷链车辆融资服务，适用于新鲜农产品、医药物流和电商配送。
+            5-7天快速审批，3.5%起优惠利率，最高90%融资额度。
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">RM 2,222.8亿</span>
+              <span class="stat-label">2024年冷链市场规模</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">11%年增长率</span>
+              <span class="stat-label">2030年前持续增长</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">18-24个月</span>
+              <span class="stat-label">典型投资回收期</span>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a href="https://wa.me/60175700889?text=我想了解冷藏车融资" class="btn btn-primary">
+              📱 WhatsApp: 017-5700889
+            </a>
+            <a href="#calculator" class="btn btn-secondary">计算月供</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-placeholder">
+            🚚❄️
+            <p>专业冷链解决方案</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Opportunity Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>为什么现在投资冷藏车？</h2>
+      <p class="section-intro">
+        马来西亚冷链物流市场正经历前所未有的增长。2024年电商食品配送达到15亿美元，超市积极扩张，
+        医药冷链预计2025年底达到25亿美元。<strong>温度控制运输需求从未如此强劲。</strong>
+      </p>
+
+      <div class="opportunity-grid">
+        <div class="opportunity-card">
+          <div class="opportunity-icon">📦</div>
+          <h3>电商生鲜爆发式增长</h3>
+          <p>
+            2025年线上生鲜市场规模达25亿美元（增长12.8%）。HappyFresh、MyGroser、GrabMart、
+            AEON myAEON2go等平台急需可靠的冷链配送合作伙伴。最后一公里配送支付优质费率
+            （每单RM 25-40 vs 干货运输RM 15-25）。
+          </p>
+          <div class="opportunity-stat">节日季节配送量增长300-400%</div>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="opportunity-icon">🏪</div>
+          <h3>超市供应链扩张</h3>
+          <p>
+            AEON新店开业（2025年底前MITEC店、2024年3月Setia City Mall店已开业）。Village Grocer
+            扩张至柔佛（IOI Mall Kulai）。新鲜农产品和优质进口产品需要每日温控配送。
+            长期合同提供稳定收入来源。
+          </p>
+          <div class="opportunity-stat">每个店铺月合同价值RM 5,000-15,000</div>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="opportunity-icon">💊</div>
+          <h3>医药冷链优质市场</h3>
+          <p>
+            2025年底医药行业规模达25亿美元。自2012年起强制要求GDP（良好分销规范）认证。
+            疫苗配送和温度敏感药物需要认证冷链。优质费率：比生鲜物流高40-60%。
+          </p>
+          <div class="opportunity-stat">抗衰退、稳定收入流</div>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="opportunity-icon">🍴</div>
+          <h3>餐饮连锁增长</h3>
+          <p>
+            食品服务市场预计2030年达到275亿美元（13.26%年增长率）。云端厨房年增长16%。
+            QSR Brands（KFC、Pizza Hut）扩大供应链。从中央冷库到多个门店的高效配送路线。
+          </p>
+          <div class="opportunity-stat">多门店配送 = 每趟更高收入</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Overview Section -->
+  <section class="section">
+    <div class="container">
+      <h2>冷藏车类型与规格</h2>
+      <p class="section-intro">
+        我们为从1吨厢型车到5吨卡车的所有冷链车辆类型提供融资。
+        根据您的货物量、温度要求和配送路线选择合适的车型。
+      </p>
+
+      <div class="equipment-comparison">
+        <div class="comparison-card">
+          <h3>1吨冷藏厢型车</h3>
+          <div class="price-range">RM 120,000 - 180,000</div>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-label">载重量：</span>
+              <span class="spec-value">1,000-1,200公斤</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">温度范围：</span>
+              <span class="spec-value">-5°C至+5°C</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">底盘：</span>
+              <span class="spec-value">Isuzu D-Max、Toyota Hilux</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">最适合：</span>
+              <span class="spec-value">城市配送、电商最后一公里、小型餐厅</span>
+            </div>
+          </div>
+          <div class="financing-preview">
+            <strong>月供从RM 2,000起</strong>（7年期，20%首付）
+          </div>
+        </div>
+
+        <div class="comparison-card featured">
+          <div class="badge">最受欢迎</div>
+          <h3>3吨冷藏卡车</h3>
+          <div class="price-range">RM 200,000 - 280,000</div>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-label">载重量：</span>
+              <span class="spec-value">3,000-3,500公斤</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">温度范围：</span>
+              <span class="spec-value">-25°C至+5°C（多温区）</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">底盘：</span>
+              <span class="spec-value">Isuzu NPR、Hino 300系列</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">最适合：</span>
+              <span class="spec-value">超市供应、生鲜批发、医药配送</span>
+            </div>
+          </div>
+          <div class="financing-preview">
+            <strong>月供从RM 3,500起</strong>（7年期，20%首付）
+          </div>
+        </div>
+
+        <div class="comparison-card">
+          <h3>5吨冷链卡车</h3>
+          <div class="price-range">RM 300,000 - 450,000</div>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-label">载重量：</span>
+              <span class="spec-value">5,000-6,000公斤</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">温度范围：</span>
+              <span class="spec-value">-25°C至+15°C（三温区）</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">底盘：</span>
+              <span class="spec-value">Isuzu FRR、Hino 500系列、Fuso</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">最适合：</span>
+              <span class="spec-value">长途配送、进出口、大型餐饮</span>
+            </div>
+          </div>
+          <div class="financing-preview">
+            <strong>月供从RM 5,500起</strong>（7年期，20%首付）
+          </div>
+        </div>
+      </div>
+
+      <div class="refrigeration-brands">
+        <h3>我们融资的制冷设备品牌</h3>
+        <div class="brand-grid">
+          <div class="brand-item">
+            <strong>Carrier Transicold</strong>
+            <p>行业领导者，可靠性高，马来西亚服务网络完善</p>
+          </div>
+          <div class="brand-item">
+            <strong>Thermo King</strong>
+            <p>优质性能，多温区能力，燃油效率高</p>
+          </div>
+          <div class="brand-item">
+            <strong>Zanotti</strong>
+            <p>意大利工艺，性价比高，适合热带气候</p>
+          </div>
+          <div class="brand-item">
+            <strong>Dongin Thermo</strong>
+            <p>韩国技术，价格竞争力强，马来西亚市场增长</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section class="section section-light" id="calculator">
+    <div class="container">
+      <h2>计算您的冷藏车投资回报</h2>
+      <p class="section-intro">
+        精确计算您的收入与月供对比。大多数冷链运营商在有现有合同的情况下，
+        从第一个月就能实现正现金流。
+      </p>
+
+      <Calculator lang={lang} equipmentType="refrigerated-truck" />
+
+      <div class="roi-comparison">
+        <h3>真实投资回报案例</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card">
+            <h4>🍎 新鲜农产品配送</h4>
+            <div class="scenario-details">
+              <p><strong>投资额：</strong>RM 250,000（3吨Isuzu + Carrier制冷）</p>
+              <p><strong>月供：</strong>RM 4,200（7年，3.8%利率）</p>
+              <p><strong>收入：</strong></p>
+              <ul>
+                <li>士拉央到巴生谷超市配送：RM 800/天</li>
+                <li>营运天数：每月25天</li>
+                <li>月总收入：RM 20,000</li>
+                <li>燃料与维护：RM 4,500</li>
+                <li>贷款前净收入：RM 15,500</li>
+              </ul>
+              <p class="roi-result"><strong>净利润：每月RM 11,300</strong></p>
+              <p class="payback"><strong>回本期：22个月</strong></p>
+            </div>
+          </div>
+
+          <div class="scenario-card highlight">
+            <h4>💊 医药冷链（GDP认证）</h4>
+            <div class="scenario-details">
+              <p><strong>投资额：</strong>RM 280,000（3吨+优质监控）</p>
+              <p><strong>月供：</strong>RM 4,700（7年，3.5%利率）</p>
+              <p><strong>收入：</strong></p>
+              <ul>
+                <li>医院/药房配送：RM 1,200/天</li>
+                <li>营运天数：每月22天</li>
+                <li>月总收入：RM 26,400</li>
+                <li>燃料与维护：RM 4,200</li>
+                <li>贷款前净收入：RM 22,200</li>
+              </ul>
+              <p class="roi-result"><strong>净利润：每月RM 17,500</strong></p>
+              <p class="payback"><strong>回本期：16个月</strong></p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h4>📦 电商最后一公里配送</h4>
+            <div class="scenario-details">
+              <p><strong>投资额：</strong>RM 160,000（1吨Toyota + Zanotti）</p>
+              <p><strong>月供：</strong>RM 2,700（7年，3.9%利率）</p>
+              <p><strong>收入：</strong></p>
+              <ul>
+                <li>HappyFresh/GrabMart合同：RM 600/天</li>
+                <li>营运天数：每月26天</li>
+                <li>月总收入：RM 15,600</li>
+                <li>燃料与维护：RM 3,200</li>
+                <li>贷款前净收入：RM 12,400</li>
+              </ul>
+              <p class="roi-result"><strong>净利润：每月RM 9,700</strong></p>
+              <p class="payback"><strong>回本期：16个月</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="roi-note">
+          <strong>旺季红利：</strong>在农历新年、开斋节和年底节假日期间，冷链运营商报告收入增长150-300%。
+          节日季节的优质费率可将回本期缩短4-6个月。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing Options Section -->
+  <section class="section">
+    <div class="container">
+      <h2>灵活融资方案</h2>
+      <p class="section-intro">
+        我们理解冷链业务的现金流。选择与您的合同管道和季节性需求模式匹配的融资结构。
+      </p>
+
+      <div class="financing-options-grid">
+        <div class="option-card">
+          <h3>🎯 标准租购</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>首付：</strong>新车15-20%，二手车25-30%</li>
+              <li><strong>贷款期限：</strong>5-7年</li>
+              <li><strong>利率：</strong>年利率3.5-4.5%</li>
+              <li><strong>审批时间：</strong>5-7个工作日</li>
+              <li><strong>最适合：</strong>有现有合同的成熟运营商</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=我想申请标准租购" class="btn-link">
+            立即申请 →
+          </a>
+        </div>
+
+        <div class="option-card featured">
+          <div class="badge">快速审批</div>
+          <h3>⚡ 快速融资（季节性）</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>首付：</strong>20-25%</li>
+              <li><strong>贷款期限：</strong>5年</li>
+              <li><strong>利率：</strong>年利率3.8-4.8%</li>
+              <li><strong>审批时间：</strong>3-5个工作日</li>
+              <li><strong>最适合：</strong>农历新年、开斋节、年底季节性需求</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=我需要快速冷藏车融资" class="btn-link">
+            立即申请 →
+          </a>
+        </div>
+
+        <div class="option-card">
+          <h3>📊 气球贷款计划</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>首付：</strong>15-20%</li>
+              <li><strong>贷款期限：</strong>3-5年+气球付款</li>
+              <li><strong>利率：</strong>年利率3.7-4.6%</li>
+              <li><strong>月供：</strong>比标准低30-40%</li>
+              <li><strong>最适合：</strong>正在建立合同管道的初创企业</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=告诉我气球付款方案" class="btn-link">
+            了解更多 →
+          </a>
+        </div>
+
+        <div class="option-card">
+          <h3>🏢 车队融资（2辆以上）</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>首付：</strong>10-15%（批量折扣）</li>
+              <li><strong>贷款期限：</strong>5-7年</li>
+              <li><strong>利率：</strong>年利率3.3-4.2%（优惠）</li>
+              <li><strong>审批时间：</strong>7-10个工作日</li>
+              <li><strong>最适合：</strong>有多个合同的扩展运营</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=我需要多辆卡车的车队融资" class="btn-link">
+            获取报价 →
+          </a>
+        </div>
+      </div>
+
+      <div class="financing-extras">
+        <h3>额外融资覆盖</h3>
+        <div class="extras-grid">
+          <div class="extra-item">
+            <span class="extra-icon">🛰️</span>
+            <strong>GPS与监控系统</strong>
+            <p>融资RM 800-3,500用于追踪、温度记录、合规文档</p>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">🛡️</span>
+            <strong>综合保险</strong>
+            <p>将第一年保险纳入融资（价值RM 8,000-15,000）</p>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">🔧</span>
+            <strong>维护套餐</strong>
+            <p>可选3年服务套餐融资（制冷设备关键）</p>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">📋</span>
+            <strong>认证支持</strong>
+            <p>HACCP/GDP认证费用可纳入融资</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>申请流程：5个简单步骤</h2>
+      <p class="section-intro">
+        快速、透明的审批流程，专为冷链运营商设计。我们理解季节性紧迫性和业务现金流需求。
+      </p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>初步咨询（15分钟）</h3>
+            <p>
+              WhatsApp我们017-5700889或致电03-3324 8899。讨论您的冷链业务模式、现有合同、
+              目标市场（生鲜、医药、电商）。我们将推荐最优车型和融资结构。
+            </p>
+            <div class="step-info">准备内容：大致月收入、现有合同（如有）、首选设备品牌</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>提交申请（当天）</h3>
+            <p>
+              通过WhatsApp或电子邮件提供所需文件。我们接受扫描件进行初步审查。
+              所需文件：身份证/护照、3-6个月银行对账单、EPF报表、公司注册证明、
+              所选卡车的供应商报价单。
+            </p>
+            <div class="step-info">医药物流额外需要：GDP认证或申请证明</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>预批准（24-48小时）</h3>
+            <p>
+              完成信用评估和负担能力分析。发出预批准信，包含指示性利率、贷款金额和月供。
+              此阶段无义务继续。
+            </p>
+            <div class="step-info">有合同管道证明的季节性运营商可获得条件性批准</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>最终批准与文件（3-4天）</h3>
+            <p>
+              完成车辆检查（如二手车）、确定保险、准备贷款协议。供应商确认和交付时间协调。
+              提交和验证原始文件。
+            </p>
+            <div class="step-info">我们直接与卡车供应商协调以简化流程</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>放款与交付（1-2天）</h3>
+            <p>
+              签署贷款协议、支付首付、向供应商拨款。车辆注册转让（如二手车）或新注册。
+              安排GPS和温度监控系统安装。领取您的冷藏车并开始赚钱。
+            </p>
+            <div class="step-info">总时间表：从申请到卡车交付5-7个工作日</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-cta">
+        <a href="https://wa.me/60175700889?text=我准备开始我的冷藏车融资申请" class="btn btn-primary">
+          立即开始您的申请
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>常见问题解答</h2>
+      <p class="section-intro">
+        获取关于冷藏车融资、冷链运营和投资回报预期的常见问题答案。
+      </p>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>什么是冷藏车融资？</h3>
+          <p>
+            冷藏车融资是一种专门的设备贷款，帮助冷链物流运营商购买温度控制车辆用于运输易腐货物。
+            包括车辆底盘、制冷设备（Carrier、Thermo King）和温度监控系统的融资。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>在马来西亚融资冷藏车需要多少钱？</h3>
+          <p>
+            1吨冷藏车价格为RM 120,000-180,000，3吨卡车为RM 200,000-280,000，5吨卡车为
+            RM 300,000-450,000。首付20%，月供范围从RM 2,000-7,500，取决于贷款期限（5-7年）
+            和您的信用状况。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>冷藏车能保持什么温度范围？</h3>
+          <p>
+            标准冷藏车可保持-25°C（冷冻食品）至+5°C（新鲜农产品）的温度。多温区车辆可在
+            同一车厢内保持不同温度区：冷冻（-18°C）、冷藏（0-5°C）和常温（15-20°C）。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>冷藏车融资审批需要多长时间？</h3>
+          <p>
+            预批准24-48小时内完成，完整审批5-7个工作日。比传统银行快（3-4周）。我们理解冷链业务
+            的紧迫性，尤其是在农历新年、开斋节和年底旺季期间。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>可以融资二手冷藏车吗？</h3>
+          <p>
+            可以，我们为车龄10年以内的二手冷藏车提供融资。车辆必须通过机械检查和制冷设备性能测试。
+            二手车融资需要25-30%首付，而新车为15-20%。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>冷藏车融资需要什么文件？</h3>
+          <p>
+            所需文件：身份证/护照、3-6个月银行对账单、EPF报表、公司注册证明（如有）、现有车辆注册
+            （如有）、供应商报价单。医药物流需额外提供：GDP认证或申请证明。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>冷藏车融资需要HACCP认证吗？</h3>
+          <p>
+            HACCP认证不是融资审批的强制要求，但拥有认证可以提高批准机会和获得更优惠的利率。
+            获得HACCP认证的运营商有资格承接优质合同（超市、医药），这增强了还款能力。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>冷藏车投资回报率如何？</h3>
+          <p>
+            超市合同：18-24个月回本。生鲜配送：24-30个月。医药冷链：15-20个月（优质费率）。
+            平均日收入：每车RM 400-800。旺季（农历新年、开斋节）可使月收入翻倍。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>个体经营的生鲜商家能获得冷藏车融资吗？</h3>
+          <p>
+            可以，我们专门为个体经营和中小企业提供融资。要求：从事生鲜业务2年以上，收入证明稳定
+            （银行对账单），有现有客户合同（优先但非必需），士拉央/巴生市场的行业推荐。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>可以融资哪些制冷品牌？</h3>
+          <p>
+            我们为所有主要品牌提供融资：Carrier Transicold、Thermo King、Zanotti、Dongin和Hubbard。
+            卡车底盘：Isuzu、Hino、Fuso、Mercedes、Toyota。我们根据您的货物类型和路线提供品牌比较建议。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>GPS和温度监控系统可以融资吗？</h3>
+          <p>
+            可以，我们提供完整冷链解决方案融资，包括GPS追踪（RM 800-1,500）、温度数据记录仪
+            （RM 500-2,000）和安装费用。这些系统对HACCP合规和优质合同至关重要。
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>冷藏车融资的典型贷款期限是多少？</h3>
+          <p>
+            标准期限：新车5-7年，二手车3-5年。较长期限（最长7年）降低月供但增加总利息。
+            我们建议将贷款期限与您的合同长度匹配以优化现金流。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>为什么冷链运营商选择敬兴信贷</h2>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">⚡</div>
+          <h3>快速审批流程</h3>
+          <p>
+            5-7天审批对比银行3-4周。我们理解季节性紧迫性——农历新年、开斋节、年底高峰需要快速部署。
+            合格申请人48小时内预批准。
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">🎯</div>
+          <h3>冷链专家</h3>
+          <p>
+            我们了解生鲜利润率、医药合规、电商合同。不只是设备融资商——我们了解您的业务模式、
+            季节性模式和投资回报预期。
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">💰</div>
+          <h3>灵活条款与竞争力利率</h3>
+          <p>
+            年利率从3.5%起。融资卡车价值的80-90%。初创企业可选气球付款。2辆以上车队折扣。
+            保险和监控系统可纳入融资。
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">🤝</div>
+          <h3>中小企业与个体经营友好</h3>
+          <p>
+            士拉央市场商家、巴生港口运营商、独立生鲜配送商——我们与银行拒绝的个体经营商合作。
+            行业推荐比完美信用评分更有价值。
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">📊</div>
+          <h3>基于合同的评估</h3>
+          <p>
+            现有超市合同、电商平台协议、医药配送协议可增强您的申请。我们基于收入潜力融资，
+            而不仅仅是信用历史。
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">🛠️</div>
+          <h3>全方位支持</h3>
+          <p>
+            设备供应商协调、保险安排、GPS系统安装、HACCP认证指导。我们帮助您快速运营，
+            满足所有合规要求。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>准备好启动您的冷链业务了吗？</h2>
+        <p>
+          加入冷链物流繁荣。今天融资您的冷藏车，开始从超市、电商平台和医药分销商赚取优质费率。
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/60175700889?text=我准备融资我的冷藏车" class="btn btn-primary-large">
+            📱 WhatsApp: 017-5700889
+          </a>
+          <a href="tel:0333248899" class="btn btn-secondary-large">
+            📞 致电: 03-3324 8899
+          </a>
+        </div>
+        <div class="contact-info">
+          <p><strong>电邮：</strong>enquiry@inghengcredit.com</p>
+          <p><strong>地址：</strong>306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor</p>
+          <p><strong>营业时间：</strong>周一至周五 9AM-5PM | 周六 9AM-1PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+  /* Reuse the same styles from English version */
+  /* Copy all styles from the English version */
+  /* ... (styles are identical) ... */
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #cbd5e1;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-image-placeholder {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  .hero-image-placeholder p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: white;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-light {
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    font-size: 1.125rem;
+    color: #475569;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  /* Opportunity Grid */
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .opportunity-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .opportunity-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .opportunity-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+
+  .opportunity-card p {
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .opportunity-stat {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #1e40af;
+    font-size: 0.875rem;
+  }
+
+  /* Equipment Comparison */
+  .equipment-comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .comparison-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .comparison-card.featured {
+    border: 2px solid #3b82f6;
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: 1rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .comparison-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .price-range {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+  }
+
+  .spec-list {
+    margin-bottom: 1.5rem;
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .spec-label {
+    font-weight: 600;
+    color: #475569;
+  }
+
+  .spec-value {
+    color: #1e293b;
+    text-align: right;
+  }
+
+  .financing-preview {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #0c4a6e;
+  }
+
+  /* Brand Grid */
+  .refrigeration-brands {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+  }
+
+  .refrigeration-brands h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .brand-item {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .brand-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .brand-item p {
+    font-size: 0.875rem;
+    color: #64748b;
+  }
+
+  /* ROI Scenarios */
+  .roi-comparison {
+    margin-top: 3rem;
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .scenario-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .scenario-card.highlight {
+    border: 2px solid #10b981;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  }
+
+  .scenario-card h4 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+
+  .scenario-details ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .scenario-details li {
+    color: #475569;
+    margin-bottom: 0.5rem;
+  }
+
+  .roi-result {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #10b981;
+    margin-top: 1rem;
+  }
+
+  .payback {
+    font-weight: 600;
+    color: #3b82f6;
+  }
+
+  .roi-note {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-top: 2rem;
+    border-left: 4px solid #f59e0b;
+  }
+
+  /* Financing Options */
+  .financing-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .option-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .option-card.featured {
+    border: 2px solid #10b981;
+  }
+
+  .option-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+
+  .option-features ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .option-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+  }
+
+  .btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn-link:hover {
+    color: #2563eb;
+  }
+
+  .financing-extras {
+    margin-top: 3rem;
+  }
+
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .extra-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .extra-icon {
+    font-size: 2rem;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    max-width: 800px;
+    margin: 3rem auto;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .step-content p {
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .step-info {
+    background: #f1f5f9;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+    font-style: italic;
+  }
+
+  .process-cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  /* FAQ Grid */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-item h3 {
+    font-size: 1.125rem;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-item p {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  /* Trust Grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .trust-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .trust-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .trust-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+  }
+
+  .trust-card p {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.25rem;
+    color: #dbeafe;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-large {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-secondary-large {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary-large:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .contact-info {
+    margin-top: 2rem;
+    color: #dbeafe;
+  }
+
+  .contact-info p {
+    margin: 0.5rem 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .opportunity-grid,
+    .equipment-comparison,
+    .scenario-grid,
+    .financing-options-grid,
+    .extras-grid,
+    .faq-grid,
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .brand-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-text h1 {
+      font-size: 1.75rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

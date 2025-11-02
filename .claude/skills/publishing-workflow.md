@@ -1,30 +1,34 @@
 # Publishing Workflow Skill
 
+## Client Parameter
+**REQUIRED PARAMETER:** `[client-name]` - The client directory name (e.g., "apex-machinery", "ing-heng-credit")
+- Used in paths: `/example-clients/[client-name]/`
+- All file operations use this parameter
+- If not provided, the agent will ask for it
+
 ## Purpose
-Deploy all approved content (A/ prefix) to production websites with Git and Vercel automation.
+Deploy all approved content (A/ prefix) to production websites with Git and Vercel automation for a specific client.
 
 ## Prerequisites
 - Employee has reviewed and approved content (renamed D/ to A/)
-- Client website repository exists
+- Client website repository exists at: `/example-clients/[client-name]/website/`
 - Vercel deployment configured
 
 ## Workflow Steps
 
-### Step 1: Find All Approved Content
-Scan all client folders for A/ prefixed files:
+### Step 1: Find Approved Content for Client
+Scan the specified client's folder for A/ prefixed files:
 
 ```bash
-Scan: /clients/*/drafts/A/*.md
+Scan: /example-clients/[client-name]/drafts/A/*.md
 
 Example finds:
-/clients/acme-corp/drafts/A/2025-11-01-excavator-guide-en.md
-/clients/acme-corp/drafts/A/2025-11-01-excavator-guide-zh.md
-/clients/acme-corp/drafts/A/2025-11-01-excavator-guide-ms.md
-/clients/tech-startup/drafts/A/2025-11-01-cloud-migration-en.md
-...
+/example-clients/acme-corp/drafts/A/2025-11-01-excavator-guide-en.md
+/example-clients/acme-corp/drafts/A/2025-11-01-excavator-guide-zh.md
+/example-clients/acme-corp/drafts/A/2025-11-01-excavator-guide-ms.md
 ```
 
-**Group by client** for efficient processing.
+**Process one client at a time** for efficient workflow.
 
 ---
 
@@ -33,7 +37,7 @@ For each approved file:
 
 #### 2.1 Read Approved Draft
 ```
-Read: /clients/[client]/drafts/A/[filename].md
+Read: /example-clients/[client-name]/drafts/A/[filename].md
 ```
 
 #### 2.2 Validate Frontmatter
@@ -89,12 +93,12 @@ For FAQ section, add JSON-LD schema:
 Organize by language and date:
 
 ```bash
-Source: /clients/acme-corp/drafts/A/2025-11-01-excavator-guide-en.md
+Source: /example-clients/[client-name]/drafts/A/2025-11-01-excavator-guide-en.md
 
-Destination: /clients/acme-corp/website/src/content/posts/en/2025/11/excavator-guide.md
+Destination: /example-clients/[client-name]/website/src/content/posts/en/2025/11/excavator-guide.md
 
 Language structure:
-/website/src/content/posts/
+/example-clients/[client-name]/website/src/content/posts/
 ├── en/
 │   └── 2025/
 │       └── 11/
@@ -146,7 +150,7 @@ Add to rss.xml (per language):
 
 #### 5.1 Git Add
 ```bash
-cd /clients/acme-corp/website/
+cd /example-clients/[client-name]/website/
 git add src/content/posts/
 git add public/sitemap.xml
 git add public/rss.xml
@@ -192,21 +196,23 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 **For Single-Deployment Clients:**
 ```bash
+cd /example-clients/[client-name]/website/
 git push origin main
 ```
 
 **For Multi-Deployment Clients** (see `multi-language-deployment.md`):
 ```bash
-# Push to main
+cd /example-clients/[client-name]/website/
+# Push to main branch
 git push origin main
 
-# Also push to all language deployment branches
+# Also push to all language deployment branches for this client
 git push origin main:deploy-en --force
 git push origin main:deploy-zh --force
 git push origin main:deploy-ms --force
 ```
 
-This triggers separate Vercel deployments for each language version.
+This triggers separate Vercel deployments for each language version simultaneously.
 
 **Error handling:**
 - If push fails → retry once
@@ -215,35 +221,61 @@ This triggers separate Vercel deployments for each language version.
 
 ---
 
-### Step 6: Vercel Auto-Deploy
+### Step 6: Vercel Deployment (Automated via MCP)
 
-**Single Deployment:**
-Vercel automatically deploys on push to main branch.
+**Trigger 3 deployments in parallel** using Vercel MCP tools:
 
-**Multi-Deployment:**
-Vercel deploys all language versions in parallel (one build per language branch).
+#### 6.1 Deploy to All Language Projects
+```javascript
+// Use mcp__vercel__deploy_to_vercel for each project
+// Projects: [client-name]-en, [client-name]-ms, [client-name]-zh
 
-**Monitoring:**
+Parallel deployments:
+1. Deploy [client-name]-en (English default)
+2. Deploy [client-name]-ms (Malay default)
+3. Deploy [client-name]-zh (Chinese default)
 ```
-Wait for Vercel webhook response:
-- Building... (1-2 minutes per deployment)
-- Deploying... (30 seconds per deployment)
-- Success! ✅
 
-Single-deployment URL:
-https://acme-corp.vercel.app
+#### 6.2 Monitor Deployment Status
+```bash
+Use mcp__vercel__get_deployment to check status:
+- ⏳ EN: Building...
+- ⏳ MS: Building...
+- ⏳ ZH: Building...
 
-Multi-deployment URLs:
-- EN: https://acme-corp.vercel.app
-- ZH: https://zh.acme-corp.vercel.app
-- MS: https://ms.acme-corp.vercel.app
+Wait for all to complete (2-3 minutes):
+- ✅ EN: Ready
+- ✅ MS: Ready
+- ✅ ZH: Ready
+```
+
+#### 6.3 Handle Deployment Errors
+If any deployment fails:
+```bash
+Use mcp__vercel__get_deployment_build_logs to retrieve error details
+
+Report to user:
+❌ Deployment failed for [client-name]-ms
+Error: [build log excerpt]
+
+Other deployments:
+✅ EN: Success
+❌ MS: Failed
+✅ ZH: Success
+```
+
+**Deployment URLs:**
+```
+https://[client-name]-en.vercel.app  (or custom domain)
+https://[client-name]-ms.vercel.app  (or custom domain)
+https://[client-name]-zh.vercel.app  (or custom domain)
 ```
 
 **Verify deployment:**
 - Check deployment logs
-- Verify URLs are live
-- Test hreflang tags
-- Validate sitemap
+- Verify URLs are live (all 3)
+- Test language redirects
+- Validate sitemap for each deployment
 
 ---
 
@@ -251,9 +283,9 @@ Multi-deployment URLs:
 Move published files from A/ to archive:
 
 ```bash
-Source: /clients/acme-corp/drafts/A/2025-11-01-excavator-guide-en.md
+Source: /example-clients/[client-name]/drafts/A/2025-11-01-excavator-guide-en.md
 
-Destination: /clients/acme-corp/drafts/archive/2025/11/2025-11-01-excavator-guide-en.md
+Destination: /example-clients/[client-name]/drafts/archive/2025/11/2025-11-01-excavator-guide-en.md
 ```
 
 **Keep drafts folder clean:**
@@ -288,36 +320,31 @@ Mark published topics in keyword-strategy.json:
 
 ---
 
-## Batch Processing
+## Single Client Processing
 
-### Process Multiple Clients
-For efficiency, process all clients in one Git workflow:
+### Process One Client at a Time
+For clarity and manageable workflow:
 
 ```bash
-For each client with A/ files:
+For the specified client:
   1. Generate final posts
   2. Move to website folder
   3. Git add
-
-After all clients processed:
-  1. Git commit (batch message)
-  2. Git push (batch)
-  3. Vercel deploys all sites in parallel
+  4. Git commit
+  5. Git push
+  6. Verify Vercel deployment
 ```
 
-**Batch commit message:**
+**Single client commit message:**
 ```
-feat: Publish daily content for 50 clients
+feat: Publish daily content for [client-name]
 
-Total posts published: 150
-- 50 topics
-- 3 languages per topic (EN/ZH/MS)
+Total posts published: 3
+- 1 topic
+- 3 languages (EN/ZH/MS)
 
-Clients updated:
-- acme-corp (3 posts)
-- tech-startup (3 posts)
-- retail-co (3 posts)
-... [list all]
+Client: [client-name]
+Topics: [list topics]
 
 Auto-generated via Claude Code SEO Platform
 
@@ -398,24 +425,25 @@ Triggered by command: `/publish-approved`
 ```
 📊 PUBLISHING SUMMARY
 
-Total clients processed: 50
-Total posts published: 150
-- English: 50
-- Mandarin: 50
-- Malay: 50
+Client: [client-name]
+Total posts published: 3
+- English: 1
+- Mandarin: 1
+- Malay: 1
 
-Git commits: 50 (1 per client)
-Vercel deployments: 50 (parallel)
+Git commits: 1
+Vercel deployments: 1 (or 3 if multi-deployment)
 
-All deployments successful ✅
+Deployment successful ✅
 
 Published URLs:
-- https://acme-corp.com/en/blog/excavator-guide
-- https://acme-corp.com/zh/blog/excavator-guide
-- https://acme-corp.com/ms/blog/excavator-guide
-... [list all]
+- https://[client-name].com/en/blog/[slug]
+- https://[client-name].com/zh/blog/[slug]
+- https://[client-name].com/ms/blog/[slug]
 
-Execution time: 5 minutes 23 seconds
+(Or language-specific subdomains if multi-deployment)
+
+Execution time: 2-5 minutes
 ```
 
 ---

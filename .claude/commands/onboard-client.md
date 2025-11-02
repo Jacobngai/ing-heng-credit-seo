@@ -42,21 +42,47 @@ You paste the full questionnaire response.
 **Generated files (all as D/ drafts):**
 ```
 /clients/apex-machinery/
-├── /keyword-research/D/
-│   ├── primary-keywords-en.md
-│   ├── primary-keywords-zh.md
-│   ├── primary-keywords-ms.md
-│   ├── long-tail-keywords.md
-│   └── competitor-analysis.md
+├── /keyword-research/
+│   ├── D/                           # Draft keywords (generated)
+│   │   ├── primary-keywords-en.md
+│   │   ├── primary-keywords-zh.md
+│   │   ├── primary-keywords-ms.md
+│   │   ├── long-tail-keywords.md
+│   │   └── competitor-analysis.md
+│   ├── A/                           # Approved keywords (after review)
+│   └── F/                           # Rejected keywords
 │
-├── /persona-idea/D/
-│   ├── contractor-ahmad.md
-│   ├── logistics-manager-lee.md
-│   ├── warehouse-ops-william.md
-│   └── ... (5-8 personas)
+├── /persona-idea/
+│   ├── D/                           # Draft personas (generated)
+│   │   ├── contractor-ahmad.md
+│   │   ├── logistics-manager-lee.md
+│   │   ├── warehouse-ops-william.md
+│   │   └── ... (5-8 personas)
+│   ├── A/                           # Approved personas
+│   └── F/                           # Rejected personas
 │
-└── /brief-draft/D/
-    └── brief.md
+├── /brief-draft/
+│   ├── D/brief.md                   # Draft brief (generated)
+│   ├── A/                           # Approved brief
+│   └── F/                           # Rejected brief
+│
+├── /personas/                       # Final JSON personas (after finalization)
+├── /content/                        # Published content
+│   ├── /en/blogs/
+│   ├── /zh/blogs/
+│   └── /ms/blogs/
+├── /blog-research/                  # Research notes
+├── /brand-identity/                 # Brand assets
+│   ├── A/                           # Approved brand assets
+│   └── D/                           # Draft brand assets
+├── /images/                         # All client images
+│   ├── /logos/                      # Company logos
+│   ├── /equipment-photos/           # Product/equipment photos
+│   └── /image-briefs/               # Image generation briefs
+├── /website/                        # Astro website code
+├── /project-docs/                   # Project documentation
+├── /archive/                        # Archived materials
+└── /vehicle-machinery-types/        # Equipment type definitions
 ```
 
 **Next steps:**

@@ -1,14 +1,20 @@
 ---
 /**
- * CTAButton Component
- * Reusable button component with multiple variants and sizes
+ * CTAButton Component - Bold Industrial Blue/Yellow Brand
+ * Implements the approved CI Option 4B brand identity
+ *
+ * Updated with:
+ * - Bebas Neue typography
+ * - Brutalist offset shadows
+ * - Navy/Yellow color scheme
+ * - Sharp corners
  */
 
 interface Props {
   text: string;
   link: string;
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'outline-white';
-  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'outline-white' | 'outline-yellow' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
   icon?: string;
   iconPosition?: 'left' | 'right';
   external?: boolean;
@@ -22,7 +28,7 @@ const {
   text,
   link,
   variant = 'primary',
-  size = 'medium',
+  size = 'md',
   icon,
   iconPosition = 'right',
   external = false,
@@ -38,21 +44,22 @@ const variantClasses = {
   secondary: 'btn btn-secondary',
   accent: 'btn btn-accent',
   outline: 'btn btn-outline',
-  'outline-white': 'btn border-2 border-white text-white hover:bg-white hover:text-primary',
+  'outline-white': 'btn btn-outline-white',
+  'outline-yellow': 'btn btn-outline-yellow',
+  ghost: 'btn btn-ghost',
 };
 
 const sizeClasses = {
-  small: 'px-4 py-2 text-sm',
-  medium: 'px-6 py-3 text-base',
-  large: 'px-8 py-4 text-lg',
+  sm: 'btn-sm',
+  md: '',
+  lg: 'btn-lg',
 };
 
 const classes = [
   variantClasses[variant],
   sizeClasses[size],
-  fullWidth ? 'w-full' : '',
-  disabled ? 'opacity-50 cursor-not-allowed' : '',
-  'inline-flex items-center justify-center space-x-2',
+  fullWidth ? 'btn-block' : '',
+  disabled ? 'btn-disabled' : '',
 ].filter(Boolean).join(' ');
 
 // Icon SVGs
@@ -77,8 +84,184 @@ const iconHtml = loading ? icons.loading : (icon && icons[icon as keyof typeof i
   aria-disabled={disabled}
   tabindex={disabled ? -1 : undefined}
 >
-  {iconPosition === 'left' && !loading && icon && <span set:html={iconHtml} />}
-  {loading && <span set:html={iconHtml} />}
+  {iconPosition === 'left' && iconHtml && <span set:html={iconHtml} />}
   <span>{text}</span>
-  {iconPosition === 'right' && !loading && icon && <span set:html={iconHtml} />}
+  {iconPosition === 'right' && iconHtml && <span set:html={iconHtml} />}
 </a>
+
+<style>
+  /* ========================================
+     BUTTON SYSTEM - Bold Industrial Blue/Yellow
+     Based on CI Option 4B
+     ======================================== */
+
+  /* Base Button */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.125rem; /* 18px */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1.25rem 2.5rem; /* 20px 40px */
+    border: 3px solid #1E3A8A; /* navy-900 */
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 200ms;
+    line-height: 1;
+  }
+
+  /* Primary Button - Blue background */
+  .btn-primary {
+    background: #2563EB; /* blue-600 */
+    color: #FFFFFF;
+    box-shadow: 6px 6px 0 #1E3A8A; /* navy-900 brutalist shadow */
+  }
+
+  .btn-primary:hover {
+    background: #1D4ED8; /* blue-700 */
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0 #1E3A8A;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  /* Secondary Button - Yellow background */
+  .btn-secondary {
+    background: #FBBF24; /* yellow-400 */
+    color: #1E3A8A; /* navy-900 */
+    box-shadow: 6px 6px 0 #1E3A8A;
+  }
+
+  .btn-secondary:hover {
+    background: #F59E0B; /* yellow-500 */
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0 #1E3A8A;
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  /* Accent Button - Yellow background (alias for secondary) */
+  .btn-accent {
+    background: #FBBF24; /* yellow-400 */
+    color: #1E3A8A; /* navy-900 */
+    box-shadow: 6px 6px 0 #1E3A8A;
+  }
+
+  .btn-accent:hover {
+    background: #F59E0B; /* yellow-500 */
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0 #1E3A8A;
+  }
+
+  .btn-accent:active {
+    transform: translateY(0);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  /* Outline Button - White with navy border */
+  .btn-outline {
+    background: #FFFFFF;
+    color: #1E3A8A; /* navy-900 */
+    border: 3px solid #1E3A8A;
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  .btn-outline:hover {
+    background: #1E3A8A;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 #1E3A8A;
+  }
+
+  .btn-outline:active {
+    transform: translateY(0);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  /* Outline White - For blue backgrounds */
+  .btn-outline-white {
+    background: transparent;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+  }
+
+  .btn-outline-white:hover {
+    background: #FFFFFF;
+    color: #1E3A8A;
+  }
+
+  /* Outline Yellow - For blue backgrounds */
+  .btn-outline-yellow {
+    background: transparent;
+    color: #FBBF24;
+    border: 3px solid #FBBF24;
+  }
+
+  .btn-outline-yellow:hover {
+    background: #FBBF24;
+    color: #1E3A8A;
+  }
+
+  /* Ghost Button - No background or border */
+  .btn-ghost {
+    background: transparent;
+    color: #2563EB; /* blue-600 */
+    border: none;
+    box-shadow: none;
+    text-decoration: underline;
+  }
+
+  .btn-ghost:hover {
+    color: #1D4ED8; /* blue-700 */
+    text-decoration: none;
+  }
+
+  /* Size Variants */
+  .btn-sm {
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    font-size: 1rem; /* 16px */
+  }
+
+  .btn-lg {
+    padding: 1.5rem 3rem; /* 24px 48px */
+    font-size: 1.25rem; /* 20px */
+  }
+
+  /* Block Button */
+  .btn-block {
+    width: 100%;
+  }
+
+  /* Disabled State */
+  .btn-disabled,
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Loading Animation */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+</style>

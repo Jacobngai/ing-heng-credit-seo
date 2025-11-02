@@ -1,7 +1,13 @@
 # Content Quality Check Skill
 
+## Client Parameter
+**REQUIRED PARAMETER:** `[client-name]` - The client directory name (e.g., "apex-machinery", "ing-heng-credit")
+- Used in paths: `/example-clients/[client-name]/`
+- All file operations use this parameter
+- If not provided, the agent will ask for it
+
 ## Purpose
-Validate blog post quality against standardized criteria before saving as draft.
+Validate blog post quality against standardized criteria before saving as draft for a specific client.
 
 ## Quality Standards
 
@@ -237,16 +243,16 @@ Score = (Passed checks / 10) × 100
 ### Step 3: Decision Logic
 ```
 If score >= 80%:
-  → Save to /drafts/D/[filename].md
+  → Save to /example-clients/[client-name]/drafts/D/[filename].md
   → Status: "Ready for review"
 
 If score < 80% AND critical errors:
-  → Save to /drafts/F/[filename].md
+  → Save to /example-clients/[client-name]/drafts/F/[filename].md
   → Status: "Failed - needs revision"
   → Include failure reasons
 
 If score < 80% BUT no critical errors:
-  → Save to /drafts/D/[filename].md
+  → Save to /example-clients/[client-name]/drafts/D/[filename].md
   → Status: "Needs minor improvements"
   → Include improvement notes
 ```
@@ -283,7 +289,7 @@ Passed checks:
 Minor notes:
 - Consider adding 1 more CTA in middle section
 
-Saved to: /drafts/D/2025-11-01-excavator-financing-guide-en.md
+Saved to: /example-clients/[client-name]/drafts/D/2025-11-01-excavator-financing-guide-en.md
 ```
 
 ### Fail (F/ Failed)
@@ -307,7 +313,7 @@ Passed checks:
 - Meta info: Complete ✅
 - CTAs: 4 ✅
 
-Saved to: /drafts/F/2025-11-01-excavator-financing-guide-en.md
+Saved to: /example-clients/[client-name]/drafts/F/2025-11-01-excavator-financing-guide-en.md
 
 REVISION NEEDED:
 1. Add 300+ words to reach minimum

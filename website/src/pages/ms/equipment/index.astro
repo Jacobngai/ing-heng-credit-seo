@@ -204,7 +204,7 @@ const faqs = [
   { question: 'Jenis peralatan apa yang boleh dibiayai?', answer: 'Kami membiayai SEMUA jenis peralatan komersial dan industri termasuk jentera pembinaan (jengkaut, jentolak, kren), kenderaan logistik (lori, prime mover, trak), peralatan industri (forklift, mesin CNC, alat pembuatan), dan peralatan khusus. Jika peralatan menjana pendapatan untuk perniagaan anda, kami boleh biayainya.' },
   { question: 'Berapa lama proses kelulusan?', answer: 'Kelulusan awal: 2 jam. Kelulusan akhir: 24 jam dari penghantaran dokumen lengkap. Kes segera boleh dipercepatkan dengan perkhidmatan premium untuk tarikh akhir projek kritikal.' },
   { question: 'Bolehkah membiayai peralatan terpakai?', answer: 'Ya! Kami membiayai peralatan terpakai sehingga 10 tahun dari mana-mana jenama bereputasi. Peralatan mesti dalam keadaan baik dan lulus pemeriksaan kami. Peralatan terpakai selalunya layak mendapat kadar yang sama seperti baru.' },
-  { question: 'Apakah jumlah pinjaman minimum dan maksimum?', answer: 'Minimum: RM 30,000. Maksimum: RM 5,000,000 bergantung kepada jenis peralatan dan profil kewangan anda. Kami boleh membiayai 90% nilai peralatan dengan bayaran pendahuluan 10%.' },
+  { question: 'Apakah jumlah pinjaman minimum dan maksimum?', answer: 'Minimum: RM 30,000. Maksimum: RM 2,000,000 bergantung kepada jenis peralatan dan profil kewangan anda. Kami boleh membiayai 90% nilai peralatan dengan bayaran pendahuluan 10%.' },
   { question: 'Bolehkah membiayai berbilang unit peralatan?', answer: 'Ya! Pembiayaan armada tersedia dengan kadar diskaun untuk 2+ unit. Dokumentasi dipermudah untuk pembelian pukal. Sesuai untuk kontraktor dan syarikat logistik yang mengembangkan operasi.' },
   { question: 'Bagaimana jika saya ada rekod kredit buruk atau gagal bayar?', answer: 'Kami pertimbangkan setiap permohonan secara individu. Kredit buruk tidak bermakna penolakan automatik. Kami fokus pada prestasi perniagaan semasa anda, kontrak projek, dan nilai peralatan. Kadar kelulusan 95% termasuk ramai pelanggan dengan isu kredit.' },
   { question: 'Bolehkah tukar beli peralatan lama?', answer: 'Sudah tentu! Program tukar beli dan naik taraf tersedia. Kami boleh membiayai semula peralatan sedia ada anda dan sediakan dana tambahan untuk mesin lebih baru/besar. Perkhidmatan penilaian peralatan percuma disertakan.' },
@@ -330,7 +330,7 @@ const faqSchema = {
   <!-- Hero Section -->
   <Hero
     title="Biayai Sebarang Peralatan - Kelulusan Pantas 2 Jam"
-    subtitle="Peralatan Pembinaan, Logistik & Industri | Kadar Kelulusan 95% | Tempoh Fleksibel 12-60 Bulan | RM 30,000 - RM 5,000,000"
+    subtitle="Peralatan Pembinaan, Logistik & Industri | Kadar Kelulusan 95% | Tempoh Fleksibel 12-60 Bulan | RM 30,000 - RM 2,000,000"
     ctaText="Dapatkan Sebut Harga Percuma WhatsApp"
     ctaLink="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20dapatkan%20sebut%20harga%20pembiayaan%20peralatan."
     ctaSecondaryText="Hubungi: 017-570 0889"
@@ -343,38 +343,41 @@ const faqSchema = {
   <!-- Equipment Categories Overview -->
   <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
           Kategori Peralatan Yang Kami Biayai
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Dari jentera pembinaan hingga kenderaan logistik dan peralatan industri
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         {equipmentCategories.map((category) => (
-          <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <div class="text-4xl mb-4">
-              {category.icon === 'construction' && '🏗️'}
-              {category.icon === 'truck' && '🚛'}
-              {category.icon === 'warehouse' && '🏭'}
+          <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+            <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+              <div class="text-5xl mb-3">
+                {category.icon === 'construction' && '🏗️'}
+                {category.icon === 'truck' && '🚛'}
+                {category.icon === 'warehouse' && '🏭'}
+              </div>
+              <h3 class="text-2xl font-display uppercase text-white">{category.name}</h3>
             </div>
-            <h3 class="text-2xl font-bold text-primary mb-3">{category.name}</h3>
-            <p class="text-gray-600 mb-4">{category.description}</p>
-            <ul class="space-y-2 mb-6">
-              {category.items.map((item) => (
-                <li class="text-sm text-gray-700 flex items-center space-x-2">
-                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <a href={category.link} class="text-secondary font-semibold hover:text-primary transition-colors">
-              Lihat Peralatan →
-            </a>
+            <div class="p-8">
+              <p class="text-gray-700 leading-relaxed mb-6">{category.description}</p>
+              <ul class="space-y-3 mb-8">
+                {category.items.map((item) => (
+                  <li class="text-sm text-gray-700 flex items-start space-x-3">
+                    <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900 flex-shrink-0 mt-0.5"></div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={category.link} class="btn btn-outline w-full block text-center">
+                Lihat Peralatan
+              </a>
+            </div>
           </div>
         ))}
       </div>
@@ -382,13 +385,14 @@ const faqSchema = {
   </section>
 
   <!-- Featured Equipment -->
-  <section class="section" id="construction-equipment">
+  <section class="section bg-white" id="construction-equipment">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Peralatan Pilihan Untuk Pembiayaan
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Peralatan Pilihan <span class="text-secondary">Untuk Pembiayaan</span>
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Pilihan peralatan popular dengan kadar bulanan kompetitif
         </p>
       </div>
@@ -409,7 +413,7 @@ const faqSchema = {
       </div>
 
       <!-- Additional Equipment Note -->
-      <div class="mt-12 text-center p-6 bg-blue-50 rounded-lg">
+      <div class="mt-12 text-center p-6 bg-gray-50 rounded-lg">
         <h3 class="text-xl font-bold text-primary mb-3">Tidak Jumpa Peralatan Anda?</h3>
         <p class="text-gray-700 mb-4">
           Kami membiayai SEMUA jenis peralatan komersial dan industri. Hubungi kami untuk sebut harga tersuai bagi jentera khusus, peralatan pertanian, alat perlombongan dan lain-lain.
@@ -427,13 +431,14 @@ const faqSchema = {
   </section>
 
   <!-- Benefits Section -->
-  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+  <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Kenapa Pilih Ing Heng Credit Untuk Pembiayaan Peralatan?
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Kenapa Pilih <span class="text-secondary">Ing Heng Credit</span>?
         </h2>
-        <p class="text-xl text-gray-600">
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
           Kelulusan pantas, terma fleksibel dan kadar kompetitif untuk semua jenis peralatan
         </p>
       </div>
@@ -454,7 +459,7 @@ const faqSchema = {
   <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <h2 class="text-5xl md:text-6xl font-display uppercase text-navy-900 mb-4">
           Kira Bayaran Bulanan Anda
         </h2>
         <p class="text-xl text-gray-600">
@@ -468,10 +473,10 @@ const faqSchema = {
   </section>
 
   <!-- How It Works -->
-  <section class="section">
+  <section class="section bg-white">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <h2 class="text-5xl md:text-6xl font-display uppercase text-navy-900 mb-4">
           Bagaimana Pembiayaan Peralatan Berfungsi
         </h2>
         <p class="text-xl text-gray-600">
@@ -507,7 +512,7 @@ const faqSchema = {
   <section class="section bg-gray-50" id="logistics-equipment">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <h2 class="text-5xl md:text-6xl font-display uppercase text-navy-900 mb-4">
           Industri Yang Kami Khidmati
         </h2>
         <p class="text-xl text-gray-600">
@@ -535,7 +540,7 @@ const faqSchema = {
   </section>
 
   <!-- Trust Signals & Stats -->
-  <section class="section bg-gradient-to-r from-primary to-secondary text-white" id="industrial-equipment">
+  <section class="section bg-secondary text-white" id="industrial-equipment">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -568,10 +573,10 @@ const faqSchema = {
   </section>
 
   <!-- FAQ Section -->
-  <section class="section">
+  <section class="section bg-white">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <h2 class="text-5xl md:text-6xl font-display uppercase text-navy-900 mb-4">
           Soalan Lazim
         </h2>
         <p class="text-xl text-gray-600">
@@ -588,9 +593,9 @@ const faqSchema = {
   </section>
 
   <!-- Final CTA -->
-  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+  <section class="section bg-gray-50">
     <div class="container-custom text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+      <h2 class="text-5xl md:text-6xl font-display uppercase text-navy-900 mb-6">
         Bersedia Untuk Membiayai Peralatan Anda?
       </h2>
       <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">

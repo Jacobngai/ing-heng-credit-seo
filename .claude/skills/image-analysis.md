@@ -22,26 +22,53 @@ Client provides photos in various categories:
 
 Create folder structure:
 ```
-/clients/[client-name]/images/
-├── /original/                  ← Client uploads here
+/example-clients/[client-name]/
+├── /images/original/              ← Client uploads here
 │   ├── product-1.jpg
 │   ├── testimonial-1.jpg
 │   ├── office.jpg
 │   └── logo.png
 │
-├── /processed/                 ← Optimized versions
+├── /images/processed/             ← Optimized versions
 │   └── (generated in Step 4)
 │
-└── /image-briefs/D/           ← Analysis drafts
+└── /image-briefs/D/               ← Analysis drafts
     └── (generated in Step 3)
 ```
 
-### Step 2: Analyze Each Image
+### Step 2: Analyze Each Image Using Parallel Agents
 
-For **each image**, extract:
+**CRITICAL: Use Task tool with parallel agents for maximum efficiency**
+
+For **each image**, launch a separate Task agent to analyze and generate a complete brief:
+
+```
+Launch parallel Task agents (general-purpose):
+- Agent 1: Analyze image-1.jpg → Generate complete brief → Save as D/image-1.md
+- Agent 2: Analyze image-2.jpg → Generate complete brief → Save as D/image-2.md
+- Agent 3: Analyze image-3.jpg → Generate complete brief → Save as D/image-3.md
+... (continue for all images)
+```
+
+**Each agent's task:**
+1. Read the image file
+2. Perform complete visual analysis (see details below)
+3. Extract all keywords
+4. Generate full image brief following the template
+5. Save as D/[image-name].md
+
+**Execution approach:**
+- Launch ALL agents in parallel (single message with multiple Task tool calls)
+- Each agent works independently on ONE image
+- All briefs generated simultaneously
+- Massive time savings: 50 images = ~3-5 minutes total (vs 100 minutes sequential)
+
+### Step 2.1: Visual Analysis (Per Agent, Per Image)
+
+**Each agent performs the following analysis:**
 
 #### A. Visual Content Identification
-Using AI vision (Claude's image analysis):
+Using AI vision (Claude's image analysis via Read tool):
 - **What is shown:** Product name, type, model
 - **Context:** Indoor/outdoor, location type, setting
 - **Text visible:** Brand names, model numbers, specifications (OCR)
@@ -144,11 +171,11 @@ Image SEO Metadata:
 - File rename: office-location-klang-selangor-equipment-financing.jpg
 ```
 
-### Step 3: Generate Image Brief (Per Image)
+### Step 3: Generate Image Brief (Automatic by Each Agent)
 
-For each image, create a detailed brief:
+**Each parallel agent automatically generates a complete brief for its assigned image:**
 
-**image-briefs/D/caterpillar-320-excavator.md:**
+**example-clients/[client-name]/image-briefs/D/caterpillar-320-excavator.md:**
 ```markdown
 # Image Brief: Caterpillar 320 Excavator
 
@@ -385,7 +412,7 @@ For approved image briefs (A/ files):
 
 ---
 
-## Batch Processing
+## Batch Processing with Parallel Agents
 
 For clients with many images (50-100+):
 
@@ -396,10 +423,75 @@ For clients with many images (50-100+):
 4. **Team:** Low priority (brand building)
 5. **Misc:** As needed
 
-### Parallel Execution
-- Process 10 images simultaneously
-- Generate briefs in batches
-- Save all as D/ for employee review
+### Parallel Agent Execution Strategy
+
+**ALWAYS use parallel Task agents - one agent per image:**
+
+**Example: 18 images to process**
+```
+Single message with 18 Task tool calls:
+- Task agent 1: Process "excavator.jpg" → Generate D/excavator-brief.md
+- Task agent 2: Process "forklift.jpg" → Generate D/forklift-brief.md
+- Task agent 3: Process "truck.jpg" → Generate D/truck-brief.md
+... (all 18 launched simultaneously)
+```
+
+**Each agent prompt should include:**
+```
+You are analyzing ONE image for SEO keyword extraction and content opportunities.
+
+Image: [image-path]
+Client: [client-name]
+Business: [business-type]
+
+Tasks:
+1. Read the image using Read tool
+2. Perform visual analysis:
+   - Equipment/product identification
+   - Brand/model extraction (OCR if visible)
+   - Condition assessment
+   - Setting/context analysis
+3. Extract SEO keywords:
+   - Primary keywords (high-value, 10+)
+   - Secondary keywords (supporting)
+   - Long-tail opportunities (5+)
+   - Multilingual keywords (EN/MS/ZH)
+4. Identify content opportunities:
+   - Blog post ideas (3+)
+   - Landing page opportunities
+   - FAQ topics
+5. Generate complete image brief following this template:
+   [Include full template from Step 3]
+6. Save as: example-clients/[client-name]/image-briefs/D/[descriptive-filename].md
+
+Filename format: sequential-number-equipment-type.md
+Example: 01-caterpillar-excavator.md
+
+Output only the brief content, properly formatted in markdown.
+```
+
+**Benefits of parallel agents:**
+- ✅ 50 images processed in ~5 minutes (vs ~100 minutes sequential)
+- ✅ Each agent focuses on one image deeply
+- ✅ No context switching or confusion
+- ✅ Consistent quality across all briefs
+- ✅ All briefs ready for review simultaneously
+
+### Agent Coordination
+
+**Launch command:**
+```
+Launch 18 parallel agents in ONE message:
+Each agent processes 1 image independently
+All save to example-clients/[client-name]/image-briefs/D/
+Wait for all agents to complete
+Review all 18 briefs together
+```
+
+**No batch limits:**
+- Can launch 50+ agents simultaneously if needed
+- System handles parallel execution efficiently
+- All results collected when complete
 
 ---
 
@@ -431,7 +523,7 @@ Content Opportunities Identified:
 - Case study possibilities: 12
 
 Image Briefs Generated:
-📁 /image-briefs/D/ (47 briefs for review)
+📁 /example-clients/[client-name]/image-briefs/D/ (47 briefs for review)
 
 Top Keyword Finds:
 1. "Caterpillar excavator Malaysia" (product image)
@@ -440,7 +532,7 @@ Top Keyword Finds:
 4. "warehouse equipment lease" (premises + products)
 
 Employee next steps:
-1. Review /image-briefs/D/ → Approve (D/ to A/)
+1. Review /example-clients/[client-name]/image-briefs/D/ → Approve (D/ to A/)
 2. Estimated review time: 60-90 minutes
 3. After approval, images will be optimized and renamed
 
@@ -463,9 +555,11 @@ Execution time: 18 minutes
 
 ---
 
-## Execution Timing
-- Per image analysis: ~2 minutes
-- 50 images: ~20 minutes (parallel processing)
+## Execution Timing (with Parallel Agents)
+- Per image analysis (sequential): ~2 minutes per image
+- 50 images (parallel agents): ~3-5 minutes total
+- 18 images (parallel agents): ~2-3 minutes total
+- Time savings: ~95% reduction with parallel execution
 
 ## Agent Usage
 This skill is used by: **Brand Identity Agent**

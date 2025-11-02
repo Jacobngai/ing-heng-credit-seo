@@ -1,7 +1,13 @@
 # Multi-Language Deployment Strategy
 
+## Client Parameter
+**REQUIRED PARAMETER:** `[client-name]` - The client directory name (e.g., "apex-machinery", "ing-heng-credit")
+- Used in paths: `/example-clients/[client-name]/`
+- All file operations use this parameter
+- If not provided, the agent will ask for it
+
 ## Purpose
-Deploy a single multilingual website to multiple Vercel projects, each with a different primary language, without duplicating content or code.
+Deploy a single multilingual website to multiple Vercel projects, each with a different primary language, without duplicating content or code. For use with clients requiring language-specific domains.
 
 ## Key Principle
 **One Codebase, Multiple Builds** - Like having dev/staging/prod environments, but for languages (en/zh/ms/etc.)
@@ -20,7 +26,7 @@ Client needs:
 **Shared Content + Language-Specific Build Targets**
 
 ```
-/clients/[client-name]/
+/example-clients/[client-name]/
 ├── /content/                    ← SINGLE SOURCE OF TRUTH
 │   ├── /en/                     ← English content
 │   │   ├── /blogs/
@@ -64,23 +70,23 @@ Client needs:
 
 **Setup:**
 ```
-Vercel Project 1: apex-machinery-en
+Vercel Project 1: [client-name]-en
 - Git branch: deploy-en
 - Build command: npm run build:en
 - Output: English-primary website
-- Domain: apexmachinery.com (or en.apexmachinery.com)
+- Domain: [client-domain].com (or en.[client-domain].com)
 
-Vercel Project 2: apex-machinery-zh
+Vercel Project 2: [client-name]-zh
 - Git branch: deploy-zh
 - Build command: npm run build:zh
 - Output: Chinese-primary website
-- Domain: zh.apexmachinery.com
+- Domain: zh.[client-domain].com
 
-Vercel Project 3: apex-machinery-ms
+Vercel Project 3: [client-name]-ms
 - Git branch: deploy-ms
 - Build command: npm run build:ms
 - Output: Malay-primary website
-- Domain: ms.apexmachinery.com
+- Domain: ms.[client-domain].com
 ```
 
 ### Build Configuration
@@ -123,8 +129,8 @@ export default defineConfig({
   "defaultLocale": "en",
   "locales": ["en", "zh", "ms"],
   "fallbackLocale": "en",
-  "domain": "apexmachinery.com",
-  "vercelProject": "apex-machinery-en"
+  "domain": "[client-domain].com",
+  "vercelProject": "[client-name]-en"
 }
 ```
 
@@ -134,8 +140,8 @@ export default defineConfig({
   "defaultLocale": "zh",
   "locales": ["zh", "en", "ms"],
   "fallbackLocale": "en",
-  "domain": "zh.apexmachinery.com",
-  "vercelProject": "apex-machinery-zh"
+  "domain": "zh.[client-domain].com",
+  "vercelProject": "[client-name]-zh"
 }
 ```
 
@@ -145,8 +151,8 @@ export default defineConfig({
   "defaultLocale": "ms",
   "locales": ["ms", "en", "zh"],
   "fallbackLocale": "en",
-  "domain": "ms.apexmachinery.com",
-  "vercelProject": "apex-machinery-ms"
+  "domain": "ms.[client-domain].com",
+  "vercelProject": "[client-name]-ms"
 }
 ```
 
@@ -156,7 +162,7 @@ export default defineConfig({
 
 ### User Experience
 
-**English-primary deployment (apexmachinery.com):**
+**English-primary deployment ([client-domain].com):**
 ```
 Homepage: /                    ← English content
 About:    /about               ← English content
@@ -164,7 +170,7 @@ Chinese:  /zh/about            ← Language switcher
 Malay:    /ms/about            ← Language switcher
 ```
 
-**Chinese-primary deployment (zh.apexmachinery.com):**
+**Chinese-primary deployment (zh.[client-domain].com):**
 ```
 Homepage: /                    ← Chinese content (默认中文)
 About:    /about               ← Chinese content
@@ -172,7 +178,7 @@ English:  /en/about            ← Language switcher
 Malay:    /ms/about            ← Language switcher
 ```
 
-**Malay-primary deployment (ms.apexmachinery.com):**
+**Malay-primary deployment (ms.[client-domain].com):**
 ```
 Homepage: /                    ← Malay content (Bahasa utama)
 About:    /about               ← Malay content
@@ -195,15 +201,16 @@ Chinese:  /zh/about            ← Language switcher
 
 ### Single Command Deployment
 
-**Command:** `/publish-approved` (updated)
+**Command:** `/publish-approved [client-name]` (updated for specific client)
 
 **Process:**
-1. Find all approved blog posts (A/ files)
+1. Find approved blog posts (A/ files) for the specified client
 2. Generate final markdown (move A/ → production)
-3. Copy to `/content/[lang]/blogs/`
+3. Copy to `/example-clients/[client-name]/content/[lang]/blogs/`
 4. Commit to main branch
-5. **Push to ALL deployment branches:**
+5. **Push to ALL deployment branches for this client:**
    ```bash
+   cd /example-clients/[client-name]/website/
    git push origin main:deploy-en
    git push origin main:deploy-zh
    git push origin main:deploy-ms
@@ -211,9 +218,9 @@ Chinese:  /zh/about            ← Language switcher
 6. **Vercel auto-deploys all 3 projects** (via webhooks)
 
 **Result:**
-- ✅ English site updates: apexmachinery.com
-- ✅ Chinese site updates: zh.apexmachinery.com
-- ✅ Malay site updates: ms.apexmachinery.com
+- ✅ English site updates: [client-domain].com
+- ✅ Chinese site updates: zh.[client-domain].com
+- ✅ Malay site updates: ms.[client-domain].com
 
 **Time:** ~5 minutes for all 3 deployments (parallel)
 
@@ -224,7 +231,7 @@ Chinese:  /zh/about            ← Language switcher
 ### Content Organization
 
 ```
-/clients/apex-machinery/content/
+/example-clients/[client-name]/content/
 ├── /en/
 │   ├── /blogs/
 │   │   ├── 2025-11-01-excavator-financing-guide.md
@@ -259,7 +266,7 @@ Chinese:  /zh/about            ← Language switcher
 ### Website Codebase (Single)
 
 ```
-/clients/apex-machinery/website/
+/example-clients/[client-name]/website/
 ├── /src/
 │   ├── /content/              ← Symlink to ../../content/
 │   ├── /pages/
@@ -327,12 +334,12 @@ git push origin main:deploy-ms --force
 
 ## Vercel Project Setup
 
-### Project 1: apex-machinery-en
+### Project 1: [client-name]-en
 
 **Vercel Dashboard Settings:**
 ```
-Project Name: apex-machinery-en
-Git Repository: github.com/your-org/ing-heng-clients
+Project Name: [client-name]-en
+Git Repository: github.com/your-org/[client-repo]
 Git Branch: deploy-en
 Build Command: npm run build:en
 Output Directory: dist
@@ -342,13 +349,13 @@ Environment Variables:
 ```
 
 **Domain:**
-- Primary: apexmachinery.com
-- Alternate: en.apexmachinery.com
+- Primary: [client-domain].com
+- Alternate: en.[client-domain].com
 
-### Project 2: apex-machinery-zh
+### Project 2: [client-name]-zh
 
 ```
-Project Name: apex-machinery-zh
+Project Name: [client-name]-zh
 Git Branch: deploy-zh
 Build Command: npm run build:zh
 Environment Variables:
@@ -356,13 +363,13 @@ Environment Variables:
 ```
 
 **Domain:**
-- Primary: zh.apexmachinery.com
-- Alternate: cn.apexmachinery.com
+- Primary: zh.[client-domain].com
+- Alternate: cn.[client-domain].com
 
-### Project 3: apex-machinery-ms
+### Project 3: [client-name]-ms
 
 ```
-Project Name: apex-machinery-ms
+Project Name: [client-name]-ms
 Git Branch: deploy-ms
 Build Command: npm run build:ms
 Environment Variables:
@@ -370,8 +377,8 @@ Environment Variables:
 ```
 
 **Domain:**
-- Primary: ms.apexmachinery.com
-- Alternate: my.apexmachinery.com
+- Primary: ms.[client-domain].com
+- Alternate: my.[client-domain].com
 
 ---
 
@@ -575,26 +582,27 @@ deployConfigs.forEach(config => {
 
 **Usage:**
 ```bash
+cd /example-clients/[client-name]/website/
 npm run deploy:all
 ```
 
 **Output:**
 ```
 🚀 Deploying to 3 language versions...
-📤 Pushing to deploy-en (apexmachinery.com)...
+📤 Pushing to deploy-en ([client-domain].com)...
 ✅ EN deployment triggered
-📤 Pushing to deploy-zh (zh.apexmachinery.com)...
+📤 Pushing to deploy-zh (zh.[client-domain].com)...
 ✅ ZH deployment triggered
-📤 Pushing to deploy-ms (ms.apexmachinery.com)...
+📤 Pushing to deploy-ms (ms.[client-domain].com)...
 ✅ MS deployment triggered
 
 ✅ All deployments triggered!
 ⏱️  Estimated completion: 5 minutes
 
 Monitor builds:
-  - EN: https://vercel.com/apex-machinery-en
-  - ZH: https://vercel.com/apex-machinery-zh
-  - MS: https://vercel.com/apex-machinery-ms
+  - EN: https://vercel.com/[client-name]-en
+  - ZH: https://vercel.com/[client-name]-zh
+  - MS: https://vercel.com/[client-name]-ms
 ```
 
 ---
@@ -603,20 +611,20 @@ Monitor builds:
 
 **Each deployment generates hreflang pointing to other deployments:**
 
-**On apexmachinery.com/blog/excavator-guide:**
+**On [client-domain].com/blog/excavator-guide:**
 ```html
-<link rel="alternate" hreflang="en" href="https://apexmachinery.com/blog/excavator-guide" />
-<link rel="alternate" hreflang="zh" href="https://zh.apexmachinery.com/blog/excavator-guide" />
-<link rel="alternate" hreflang="ms" href="https://ms.apexmachinery.com/blog/excavator-guide" />
-<link rel="alternate" hreflang="x-default" href="https://apexmachinery.com/blog/excavator-guide" />
+<link rel="alternate" hreflang="en" href="https://[client-domain].com/blog/excavator-guide" />
+<link rel="alternate" hreflang="zh" href="https://zh.[client-domain].com/blog/excavator-guide" />
+<link rel="alternate" hreflang="ms" href="https://ms.[client-domain].com/blog/excavator-guide" />
+<link rel="alternate" hreflang="x-default" href="https://[client-domain].com/blog/excavator-guide" />
 ```
 
-**On zh.apexmachinery.com/blog/excavator-guide:**
+**On zh.[client-domain].com/blog/excavator-guide:**
 ```html
-<link rel="alternate" hreflang="zh" href="https://zh.apexmachinery.com/blog/excavator-guide" />
-<link rel="alternate" hreflang="en" href="https://apexmachinery.com/blog/excavator-guide" />
-<link rel="alternate" hreflang="ms" href="https://ms.apexmachinery.com/blog/excavator-guide" />
-<link rel="alternate" hreflang="x-default" href="https://apexmachinery.com/blog/excavator-guide" />
+<link rel="alternate" hreflang="zh" href="https://zh.[client-domain].com/blog/excavator-guide" />
+<link rel="alternate" hreflang="en" href="https://[client-domain].com/blog/excavator-guide" />
+<link rel="alternate" hreflang="ms" href="https://ms.[client-domain].com/blog/excavator-guide" />
+<link rel="alternate" hreflang="x-default" href="https://[client-domain].com/blog/excavator-guide" />
 ```
 
 **Benefit:** Google knows all 3 versions are related, serves correct one to users based on language preference.
