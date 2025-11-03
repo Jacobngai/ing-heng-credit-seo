@@ -1,4 +1,6 @@
 ---
-// Auto-redirect to English version
-return Astro.redirect('/en/', 301);
+// Dynamic redirect based on build-time environment variable
+// Each build command (build:en, build:ms, build:zh) sets PUBLIC_DEFAULT_LOCALE
+const defaultLocale = import.meta.env.PUBLIC_DEFAULT_LOCALE || 'en';
+return Astro.redirect(`/${defaultLocale}/`, 301);
 ---
