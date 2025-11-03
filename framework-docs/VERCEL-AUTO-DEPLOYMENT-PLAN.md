@@ -32,7 +32,7 @@ Client: Ing Heng Credit
 - **Repo**: `Jacobngai/ing-heng-credit-seo`
 - **Structure**:
   ```
-  example-clients/ing-heng/website/
+  clients/ing-heng/website/
   ├── src/pages/
   │   ├── en/          # English content
   │   ├── ms/          # Malay content
@@ -90,7 +90,7 @@ Client: Ing Heng Credit
 2. Create 3 new projects:
    - **Project 1**: `ingheng-credit-en`
      - Framework: Astro
-     - Root Directory: `example-clients/ing-heng/website`
+     - Root Directory: `clients/ing-heng/website`
      - Build Command: `npm run build`
      - Output Directory: `dist`
      - Environment Variables:
@@ -164,7 +164,7 @@ Move to production folders:
 
 ### Step 2: Git Commit
 ```bash
-git add example-clients/*/content/
+git add clients/*/content/
 git commit -m "Publish approved content - [date]
 
 Content published:
@@ -257,8 +257,8 @@ ingheng-credit-zh      → cn.ingheng-credit.com
                      ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ CLAUDE: Find all A/*.md files across all clients           │
-│ - example-clients/ing-heng/drafts/A/                       │
-│ - example-clients/apex-machinery/drafts/A/                 │
+│ - clients/ing-heng/drafts/A/                               │
+│ - clients/apex-machinery/drafts/A/                         │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -324,7 +324,7 @@ Modify to include deployment step:
 3. Report combined results
 ```
 
-### 4. Create `example-clients/ing-heng/website/.env.example`
+### 4. Create `clients/ing-heng/website/.env.example`
 Document environment variables:
 ```env
 # Language Configuration

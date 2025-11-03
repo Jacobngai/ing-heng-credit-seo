@@ -8,6 +8,10 @@ import vercel from '@astrojs/vercel/static';
 const DEFAULT_LOCALE = process.env.PUBLIC_DEFAULT_LOCALE || 'en';
 const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ingheng-credit.vercel.app';
 
+// Ensure default locale is first in the array (Astro requirement)
+const ALL_LOCALES = ['en', 'zh', 'ms'];
+const LOCALES = [DEFAULT_LOCALE, ...ALL_LOCALES.filter(loc => loc !== DEFAULT_LOCALE)];
+
 export default defineConfig({
   site: SITE_URL,
   output: 'static', // Explicitly set static output
@@ -74,7 +78,7 @@ export default defineConfig({
   ],
   i18n: {
     defaultLocale: DEFAULT_LOCALE,
-    locales: ['en', 'zh', 'ms'],
+    locales: LOCALES,
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false, // Disable to prevent redirect loops
