@@ -5,8 +5,9 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/static';
 
 // Read environment variables for multi-site deployment
-const DEFAULT_LOCALE = process.env.PUBLIC_DEFAULT_LOCALE || 'en';
-const SITE_URL = process.env.PUBLIC_SITE_URL || 'https://ingheng-credit.vercel.app';
+// Use build-time vars (without PUBLIC_) first, fallback to runtime vars (with PUBLIC_)
+const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || process.env.PUBLIC_DEFAULT_LOCALE || 'en';
+const SITE_URL = process.env.SITE_URL || process.env.PUBLIC_SITE_URL || 'https://ingheng-credit.vercel.app';
 
 // Ensure default locale is first in the array (Astro requirement)
 const ALL_LOCALES = ['en', 'zh', 'ms'];
