@@ -380,7 +380,7 @@ export const NAV_LINKS = [
   { href: '/about', label: 'nav.about' },
   { href: '/services', label: 'nav.services' },
   { href: '/equipment', label: 'nav.equipment', hasDropdown: true },
-  { href: '/blog', label: 'nav.blog', hasDropdown: true },
+  { href: '/blog', label: 'nav.blog' },
   { href: '/contact', label: 'nav.contact' },
 ];
 
