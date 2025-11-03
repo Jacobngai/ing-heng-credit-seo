@@ -1,0 +1,413 @@
+---
+/**
+ * Calculator Page - Chinese
+ * Interactive payment calculator for equipment financing
+ * Target: Business owners, contractors, decision makers researching financing options
+ * Keywords: 设备融资计算器, 付款计算器马来西亚, 租购计算器
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Calculator from '../../components/Calculator.astro';
+import BenefitCard from '../../components/BenefitCard.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { generateOrganizationSchema } from '../../utils/schema';
+import { COMPANY_INFO } from '../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '设备融资计算器 - 即时付款估算 | Ing Heng Credit';
+const pageDescription = '即时计算您的设备融资付款。免费在线计算器，用于挖掘机、货车、叉车等。获得12-60个月灵活条款的准确每月付款估算。';
+const keywords = [
+  '设备融资计算器马来西亚',
+  '租购付款计算器',
+  '设备贷款计算器',
+  '挖掘机融资计算器',
+  '货车融资计算器',
+  '叉车付款计算器',
+  '建筑设备计算器',
+  '月付款估算器'
+];
+
+// Schema for the page
+const schema = generateOrganizationSchema();
+
+// Calculator Benefits
+const benefits = [
+  {
+    icon: 'calculator',
+    title: '即时估算',
+    description: '在实时调整融资参数时获得准确的月度付款计算'
+  },
+  {
+    icon: 'chart-bar',
+    title: '透明定价',
+    description: '查看您的付款、利率和总成本的完整明细，无隐藏费用'
+  },
+  {
+    icon: 'adjustments',
+    title: '灵活选择',
+    description: '自定义首付（10-50%）和贷款期限（12-60个月）以符合您的预算'
+  },
+  {
+    icon: 'lightning',
+    title: '快速批准',
+    description: '找到合适的计划后，通过WhatsApp申请，可在24小时内获得批准'
+  }
+];
+
+// Quick Tips
+const tips = [
+  {
+    title: '优化您的首付款',
+    description: '更高的首付款（20-30%）可降低每月付款和总利息。但是，我们的低10%最低限额确保了大多数企业的可访问性。'
+  },
+  {
+    title: '选择合适的期限',
+    description: '较短的期限（12-24个月）节省总利息，但每月付款较高。较长的期限（48-60个月）提供较低的月付款，但总成本较高。'
+  },
+  {
+    title: '考虑现金流量',
+    description: '将贷款期限与设备的收益周期相匹配。具有季节性工作的建筑设备可能受益于灵活的付款安排。'
+  },
+  {
+    title: '税收优惠',
+    description: '设备融资为利息付款和潜在资本津贴提供税收减免。咨询您的会计师以最大化收益。'
+  }
+];
+
+// Popular Equipment Examples
+const equipmentExamples = [
+  {
+    name: '挖掘机 (小松 PC200)',
+    price: 250000,
+    link: '/zh/equipment/excavator'
+  },
+  {
+    name: '商用货车 (3吨)',
+    price: 120000,
+    link: '/zh/equipment/lorry'
+  },
+  {
+    name: '叉车 (2.5吨)',
+    price: 80000,
+    link: '/zh/equipment/forklift'
+  },
+  {
+    name: '牵引车 (沃尔沃)',
+    price: 350000,
+    link: '/zh/equipment/prime-mover'
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <StructuredData schema={schema} />
+
+  <!-- Hero Section with Bold Industrial Style -->
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white overflow-hidden">
+    <!-- Industrial Pattern Background -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-16 md:py-24">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Bold Uppercase Headline (Bebas Neue style) -->
+        <h1 class="text-5xl md:text-7xl font-extrabold uppercase tracking-wider mb-6" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;">
+          <span class="text-white">设备融资</span><br/>
+          <span class="text-yellow-400">付款计算器</span>
+        </h1>
+
+        <!-- Industrial Divider -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-1 w-20 bg-yellow-400"></div>
+          <div class="h-2 w-2 bg-yellow-400 rotate-45"></div>
+          <div class="h-1 w-20 bg-yellow-400"></div>
+        </div>
+
+        <p class="text-xl md:text-2xl text-white leading-relaxed mb-8">
+          即时计算您的每月付款。自定义您的融资计划。<br/>
+          <strong class="text-yellow-400">几秒钟内获得准确估算。</strong>
+        </p>
+
+        <!-- Trust Signals with Industrial Badge Style -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <div class="bg-blue-950/50 border-2 border-yellow-400 px-6 py-3 backdrop-blur-sm">
+            <div class="text-yellow-400 font-bold text-sm uppercase tracking-wider">KPKT 许可</div>
+          </div>
+          <div class="bg-blue-950/50 border-2 border-yellow-400 px-6 py-3 backdrop-blur-sm">
+            <div class="text-yellow-400 font-bold text-sm uppercase tracking-wider">95% 批准率</div>
+          </div>
+          <div class="bg-blue-950/50 border-2 border-yellow-400 px-6 py-3 backdrop-blur-sm">
+            <div class="text-yellow-400 font-bold text-sm uppercase tracking-wider">24小时处理</div>
+          </div>
+          <div class="bg-blue-950/50 border-2 border-yellow-400 px-6 py-3 backdrop-blur-sm">
+            <div class="text-yellow-400 font-bold text-sm uppercase tracking-wider">40+ 年</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Angled Bottom Edge -->
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-white" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="section bg-gray-50 -mt-8 relative z-20">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <!-- Calculator Card with Industrial Border Style -->
+        <div class="bg-white rounded-lg shadow-2xl border-8 border-blue-900 relative">
+          <!-- Yellow Corner Accent -->
+          <div class="absolute top-0 left-0 w-20 h-20 bg-yellow-400 clip-triangle"></div>
+          <div class="absolute bottom-0 right-0 w-20 h-20 bg-yellow-400 clip-triangle-br"></div>
+
+          <div class="p-8 md:p-12">
+            <Calculator lang={lang} />
+          </div>
+        </div>
+
+        <!-- Quick Equipment Examples -->
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold text-center mb-6 text-gray-900" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;">
+            热门设备融资示例
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            {equipmentExamples.map((equipment) => (
+              <a
+                href={equipment.link}
+                class="bg-white p-6 rounded-lg border-4 border-blue-900 hover:border-yellow-400 transition-all hover:shadow-xl group"
+              >
+                <div class="flex justify-between items-center">
+                  <div>
+                    <div class="font-bold text-lg text-gray-900 group-hover:text-blue-900">{equipment.name}</div>
+                    <div class="text-sm text-gray-600">典型价格范围</div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-900" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif;">
+                      RM {equipment.price.toLocaleString()}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;">
+          为什么使用我们的计算器?
+        </h2>
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="h-1 w-20 bg-yellow-400"></div>
+          <div class="h-2 w-2 bg-yellow-400 rotate-45"></div>
+          <div class="h-1 w-20 bg-yellow-400"></div>
+        </div>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          使用我们的透明易用计算器做出明智的融资决策
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        {benefits.map((benefit) => (
+          <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-lg border-4 border-blue-900 hover:border-yellow-400 transition-all">
+            <BenefitCard
+              icon={benefit.icon}
+              title={benefit.title}
+              description={benefit.description}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips & Best Practices -->
+  <section class="section bg-gradient-to-br from-blue-50 to-yellow-50">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;">
+            聪明融资技巧
+          </h2>
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="h-1 w-20 bg-yellow-400"></div>
+            <div class="h-2 w-2 bg-yellow-400 rotate-45"></div>
+            <div class="h-1 w-20 bg-yellow-400"></div>
+          </div>
+          <p class="text-xl text-gray-600">
+            最大化您的设备融资优势的专家建议
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {tips.map((tip, index) => (
+            <div class="bg-white p-8 rounded-lg border-l-8 border-blue-900 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-yellow-400 flex items-center justify-center font-bold text-2xl text-blue-900" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif;">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-blue-900 mb-3">{tip.title}</h3>
+                  <p class="text-gray-700 leading-relaxed">{tip.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;">
+            从计算器到批准
+          </h2>
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="h-1 w-20 bg-yellow-400"></div>
+            <div class="h-2 w-2 bg-yellow-400 rotate-45"></div>
+            <div class="h-1 w-20 bg-yellow-400"></div>
+          </div>
+          <p class="text-xl text-gray-600">
+            获得设备融资的四个简单步骤
+          </p>
+        </div>
+
+        <div class="relative">
+          <!-- Connection Line -->
+          <div class="hidden md:block absolute top-24 left-0 right-0 h-1 bg-blue-200" style="top: 4rem;"></div>
+
+          <div class="grid md:grid-cols-4 gap-8 relative">
+            <div class="text-center">
+              <div class="w-24 h-24 bg-blue-900 text-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl font-bold border-8 border-white shadow-xl" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif;">
+                1
+              </div>
+              <h3 class="text-xl font-bold text-blue-900 mb-2">计算</h3>
+              <p class="text-gray-600">使用我们的计算器估算每月付款</p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-24 h-24 bg-blue-900 text-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl font-bold border-8 border-white shadow-xl" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif;">
+                2
+              </div>
+              <h3 class="text-xl font-bold text-blue-900 mb-2">申请</h3>
+              <p class="text-gray-600">通过WhatsApp以最少的文件提交</p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-24 h-24 bg-blue-900 text-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl font-bold border-8 border-white shadow-xl" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif;">
+                3
+              </div>
+              <h3 class="text-xl font-bold text-blue-900 mb-2">获得批准</h3>
+              <p class="text-gray-600">在24小时内获得决定</p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-24 h-24 bg-yellow-400 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl font-bold border-8 border-white shadow-xl" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif;">
+                4
+              </div>
+              <h3 class="text-xl font-bold text-blue-900 mb-2">获得设备</h3>
+              <p class="text-gray-600">立即开始使用您的设备</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white relative overflow-hidden">
+    <!-- Industrial Pattern Background -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);"></div>
+    </div>
+
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 uppercase" style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;">
+        准备好融资您的设备了吗?
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white">
+        找到完美的付款计划？现在通过WhatsApp申请并获得<br/>
+        <strong class="text-yellow-400">24小时内批准</strong>，我们的批准率为95%。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+        <a
+          href={COMPANY_INFO.whatsapp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-10 py-5 text-xl uppercase transition-all shadow-xl hover:shadow-2xl border-4 border-blue-900"
+          style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;"
+        >
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          通过WhatsApp申请
+        </a>
+
+        <a
+          href="/zh/contact"
+          class="inline-flex items-center justify-center gap-3 bg-transparent hover:bg-white/10 text-white font-bold px-10 py-5 text-xl uppercase transition-all border-4 border-yellow-400 hover:border-white"
+          style="font-family: 'Noto Sans SC', 'Bebas Neue', sans-serif; letter-spacing: 0.05em;"
+        >
+          联系我们
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-8 text-sm">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>24小时批准</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>95%批准率</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>KPKT 许可</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40+ 年经验</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .clip-triangle {
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .clip-triangle-br {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+</style>

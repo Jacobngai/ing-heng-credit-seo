@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel';
 
 // Read environment variables for multi-site deployment
 // Use build-time vars (without PUBLIC_) first, fallback to runtime vars (with PUBLIC_)

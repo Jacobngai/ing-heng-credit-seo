@@ -103,49 +103,29 @@ const organizationSchema = generateOrganizationSchema();
     <WhatsAppButton lang={lang} />
 
     <!-- Scripts -->
-    <script>
-      // Mobile menu toggle
-      document.addEventListener('DOMContentLoaded', () => {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuButton && mobileMenu) {
-          mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
-          });
+    <script is:inline>
+      // Sticky header on scroll
+      (function() {
+        function initStickyHeader() {
+          const header = document.querySelector('header');
+          if (header) {
+            window.addEventListener('scroll', function() {
+              if (window.scrollY > 100) {
+                header.classList.add('shadow-md', 'bg-white/95', 'backdrop-blur-sm');
+              } else {
+                header.classList.remove('shadow-md', 'bg-white/95', 'backdrop-blur-sm');
+              }
+            });
+          }
         }
 
-        // Sticky header on scroll
-        const header = document.querySelector('header');
-        if (header) {
-          window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-              header.classList.add('shadow-md', 'bg-white/95', 'backdrop-blur-sm');
-            } else {
-              header.classList.remove('shadow-md', 'bg-white/95', 'backdrop-blur-sm');
-            }
-          });
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initStickyHeader);
+        } else {
+          initStickyHeader();
         }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-          if (mobileMenu && !mobileMenu.contains(e.target as Node) &&
-              mobileMenuButton && !mobileMenuButton.contains(e.target as Node)) {
-            mobileMenu.classList.add('hidden');
-            mobileMenuButton.setAttribute('aria-expanded', 'false');
-          }
-        });
-
-        // Close mobile menu on ESC key
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-            mobileMenuButton?.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
+      })();
     </script>
   </body>
 </html>

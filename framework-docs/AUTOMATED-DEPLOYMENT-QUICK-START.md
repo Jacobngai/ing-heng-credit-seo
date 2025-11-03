@@ -65,7 +65,7 @@ $ claude /publish-approved
 
 ```
 Single GitHub Repo
-└── example-clients/ing-heng/website/
+└── clients/ing-heng/website/
     └── src/content/posts/
         ├── en/  ← English content
         ├── ms/  ← Malay content
@@ -301,7 +301,7 @@ Fix in Vercel dashboard → Settings → Environment Variables
 
 ```
 ing-heng-credit-seo/
-├── example-clients/
+├── clients/
 │   └── ing-heng/
 │       ├── drafts/
 │       │   ├── D/  ← Generated content (awaiting review)
