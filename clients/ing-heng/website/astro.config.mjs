@@ -23,6 +23,9 @@ export default defineConfig({
     imageService: true,
   }),
   trailingSlash: 'ignore', // Let Vercel handle trailing slashes
+  devToolbar: {
+    enabled: false, // Disable Astro dev toolbar to prevent mobile menu conflicts
+  },
   build: {
     format: 'directory',
   },
@@ -84,9 +87,12 @@ export default defineConfig({
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false, // Disable to prevent redirect loops
     },
-    fallback: {
-      zh: 'en', // If Chinese page missing, show English
-      ms: 'en', // If Malay page missing, show English
-    },
+    // Dynamic fallback: only include non-default locales
+    // Astro doesn't allow the default locale to be used as a fallback key
+    fallback: Object.fromEntries(
+      ALL_LOCALES
+        .filter(loc => loc !== DEFAULT_LOCALE)
+        .map(loc => [loc, DEFAULT_LOCALE])
+    ),
   },
 });
