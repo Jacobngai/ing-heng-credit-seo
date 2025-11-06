@@ -26,7 +26,7 @@ const availableLocales = locales.map((locale) => ({
   <!-- Selected Language Button -->
   <button
     type="button"
-    class="lang-switcher inline-flex items-center justify-center w-full px-4 py-3 text-base font-medium text-navy-900 bg-white border-3 border-navy-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-colors duration-200"
+    class="lang-switcher inline-flex items-center justify-center w-full px-4 py-3 text-base font-medium text-[#8B6F47] bg-white border-3 border-[#2D1810] hover:bg-[#F5F1EB] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8B6F47] transition-colors duration-200 shadow-[2px_2px_0_#2D1810]"
     style="min-height: 48px; min-width: 48px;"
     id="language-menu-button"
     aria-expanded="false"
@@ -34,14 +34,14 @@ const availableLocales = locales.map((locale) => ({
   >
     <span class="mr-2 text-xl" aria-hidden="true">{currentLocale.flag}</span>
     <span class="mr-2 font-bold">{currentLocale.code.toUpperCase()}</span>
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+    <svg class="w-4 h-4 lang-switcher-arrow transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
       <path stroke-linecap="square" stroke-linejoin="miter" d="M19 9l-7 7-7-7" />
     </svg>
   </button>
 
   <!-- Dropdown Menu -->
   <div
-    class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right bg-white border-3 border-navy-900 shadow-brutal-md focus:outline-none"
+    class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right bg-white border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] focus:outline-none"
     role="menu"
     aria-orientation="vertical"
     aria-labelledby="language-menu-button"
@@ -54,8 +54,8 @@ const availableLocales = locales.map((locale) => ({
           href={locale.url}
           class={`flex items-center px-4 py-3 text-base transition-colors ${
             locale.isCurrent
-              ? 'bg-secondary text-white font-bold'
-              : 'text-gray-900 hover:bg-gray-100'
+              ? 'bg-[#8B6F47] text-white font-bold'
+              : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
           }`}
           style="min-height: 48px;"
           role="menuitem"
@@ -75,37 +75,63 @@ const availableLocales = locales.map((locale) => ({
   </div>
 </div>
 
-<script>
+<script is:inline>
   // Language switcher dropdown functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const switcher = document.querySelector('[data-language-switcher]');
-    const button = document.getElementById('language-menu-button');
-    const menu = document.getElementById('language-menu');
+  (function() {
+    function initLanguageSwitcher() {
+      const switcher = document.querySelector('[data-language-switcher]');
+      const button = document.getElementById('language-menu-button');
+      const menu = document.getElementById('language-menu');
+      const arrow = document.querySelector('.lang-switcher-arrow');
 
-    if (!button || !menu) return;
+      if (!button || !menu) return;
 
-    // Toggle dropdown
-    button.addEventListener('click', () => {
-      const isExpanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', (!isExpanded).toString());
-      menu.classList.toggle('hidden');
-    });
+      // Toggle dropdown
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', (!isExpanded).toString());
+        menu.classList.toggle('hidden');
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (switcher && !switcher.contains(e.target as Node)) {
-        button.setAttribute('aria-expanded', 'false');
-        menu.classList.add('hidden');
-      }
-    });
+        // Rotate arrow
+        if (arrow) {
+          if (isExpanded) {
+            arrow.style.transform = 'rotate(0deg)';
+          } else {
+            arrow.style.transform = 'rotate(180deg)';
+          }
+        }
+      });
 
-    // Close dropdown on ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
-        button.setAttribute('aria-expanded', 'false');
-        menu.classList.add('hidden');
-        button.focus();
-      }
-    });
-  });
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (switcher && !switcher.contains(e.target)) {
+          button.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          if (arrow) {
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+
+      // Close dropdown on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+          button.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          button.focus();
+          if (arrow) {
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+      initLanguageSwitcher();
+    }
+  })();
 </script>

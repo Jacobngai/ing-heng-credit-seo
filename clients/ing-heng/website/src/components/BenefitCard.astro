@@ -1,7 +1,7 @@
 ---
 /**
- * BenefitCard Component
- * Simple card for displaying benefits/features with icon
+ * BenefitCard Component - Industrial Trust Neobrutalist Design
+ * Simple card for displaying benefits/features with icon and bronze theme
  */
 
 interface Props {
@@ -30,14 +30,14 @@ const icons = {
 const iconHtml = icon && icons[icon as keyof typeof icons] ? icons[icon as keyof typeof icons] : icons.default;
 ---
 
-<div class="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow duration-300 group">
-  {/* Icon */}
-  <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
+<div class="benefit-card text-center p-6 bg-white group">
+  {/* Icon with Bronze Background */}
+  <div class="icon-wrapper inline-flex items-center justify-center w-16 h-16 mb-4 group-hover:scale-110 transition-transform duration-300">
     <div set:html={iconHtml} />
   </div>
 
   {/* Title */}
-  <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">
+  <h3 class="text-xl font-bold text-brown-dark mb-3 group-hover:text-bronze transition-colors" style="font-family: 'Bebas Neue', sans-serif;">
     {title}
   </h3>
 
@@ -46,3 +46,35 @@ const iconHtml = icon && icons[icon as keyof typeof icons] ? icons[icon as keyof
     {description}
   </p>
 </div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .benefit-card {
+    border: 3px solid #2D1810; /* dark brown */
+    border-radius: 8px;
+    box-shadow: 6px 6px 0 #2D1810;
+    transition: all 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 #2D1810;
+  }
+
+  .icon-wrapper {
+    background: #8B6F47; /* bronze */
+    color: #FFFFFF;
+    border: 3px solid #2D1810;
+    border-radius: 50%;
+    box-shadow: 4px 4px 0 #2D1810;
+  }
+
+  .text-bronze {
+    color: #8B6F47;
+  }
+
+  .text-brown-dark {
+    color: #2D1810;
+  }
+</style>

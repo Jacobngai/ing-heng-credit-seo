@@ -12,9 +12,10 @@ export const COMPANY_INFO = {
 
   // Contact Details
   phone: {
-    display: '0175700889',
+    display: '017-570 0889',
     international: '+60175700889',
-    office: '03-3324 8899',
+    office: '03-3371 9888',
+    office2: '03-3382 4999',
   },
 
   whatsapp: {
@@ -26,13 +27,13 @@ export const COMPANY_INFO = {
   email: 'enquiry@inghengcredit.com',
 
   address: {
-    street: '306-1, Persiaran Pegaga, Taman Bayu Perdana',
+    street: 'No. 16, Lintang Menalu, Taman Chi Liung',
     city: 'Klang',
     state: 'Selangor',
     postcode: '41200',
     country: 'Malaysia',
-    full: '306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor',
-    googleMapsUrl: 'https://maps.google.com/?q=306-1,+Persiaran+Pegaga,+Taman+Bayu+Perdana,+41200+Klang,+Selangor',
+    full: 'No. 16, Lintang Menalu, Taman Chi Liung, 41200 Klang, Selangor',
+    googleMapsUrl: 'https://maps.google.com/?q=No.+16,+Lintang+Menalu,+Taman+Chi+Liung,+41200+Klang,+Selangor',
   },
 
   // Social Media
@@ -44,14 +45,14 @@ export const COMPANY_INFO = {
   // Business Hours
   hours: {
     weekdays: {
-      open: '09:00',
-      close: '17:00',
-      display: 'Monday - Friday: 9:00 AM - 5:00 PM',
+      open: '08:30',
+      close: '17:30',
+      display: 'Monday - Friday: 8:30 AM - 5:30 PM',
     },
     saturday: {
-      open: '09:00',
+      open: '08:30',
       close: '13:00',
-      display: 'Saturday: 9:00 AM - 1:00 PM',
+      display: 'Saturday: 8:30 AM - 1:00 PM',
     },
     sunday: {
       open: null,
@@ -177,9 +178,9 @@ export const KEY_BENEFITS = [
     id: 'fast-approval',
     icon: 'clock',
     title: {
-      en: '24-Hour Approval',
-      zh: '24小时批准',
-      ms: 'Kelulusan 24 Jam',
+      en: 'Quick Approval',
+      zh: '快速批准',
+      ms: 'Kelulusan Pantas',
     },
     description: {
       en: 'Fast processing with minimal documentation required',

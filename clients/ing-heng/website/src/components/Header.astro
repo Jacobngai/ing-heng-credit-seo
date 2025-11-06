@@ -29,14 +29,14 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="sticky top-0 z-40 bg-white border-b-4 border-navy-900 shadow-brutal-sm">
+<header class="sticky top-0 z-40 bg-white border-b-3 border-[#2D1810] shadow-brutal">
   <nav class="container-custom" aria-label="Main navigation">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
+      <!-- Logo (Beige/Bronze) -->
       <div class="flex items-center">
         <a href={`/${lang}/`} class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
           <img
-            src="/images/logo.png"
+            src="/logos/ing heng logo no background.png"
             alt={COMPANY_INFO.name}
             class="h-12 w-auto"
             width="150"
@@ -60,7 +60,9 @@ function isActive(href: string): boolean {
           return (
             <a
               href={href}
-              class={active ? 'nav-link-active' : 'nav-link'}
+              class={active
+                ? 'text-[#8B6F47] font-black uppercase tracking-tight text-sm border-b-3 border-[#8B6F47] pb-1'
+                : 'text-[#6B5437] font-bold uppercase tracking-tight text-sm hover:text-[#8B6F47] hover:border-b-3 hover:border-[#D4A574] pb-1 transition-all'}
               aria-current={active ? 'page' : undefined}
             >
               {t(link.label, lang)}
@@ -79,7 +81,7 @@ function isActive(href: string): boolean {
           href={COMPANY_INFO.whatsapp.link}
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-accent flex items-center space-x-2"
+          class="bg-white text-[#8B6F47] font-black uppercase tracking-tight px-4 py-2 border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[2px_2px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all flex items-center space-x-2"
           aria-label={t('cta.whatsapp', lang)}
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -94,7 +96,7 @@ function isActive(href: string): boolean {
         <button
           id="mobile-menu-button"
           type="button"
-          class="inline-flex items-center justify-center p-3 border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary"
+          class="inline-flex items-center justify-center p-3 border-3 border-[#2D1810] text-[#8B6F47] hover:bg-[#8B6F47] hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8B6F47] shadow-[2px_2px_0_#2D1810]"
           style="min-width: 48px; min-height: 48px;"
           aria-controls="mobile-menu"
           aria-expanded="false"
@@ -113,7 +115,7 @@ function isActive(href: string): boolean {
     </div>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t-3 border-navy-900">
+    <div id="mobile-menu" class="hidden lg:hidden border-t-3 border-[#2D1810] bg-white">
       <div class="px-2 pt-2 pb-3 space-y-1 mobile-menu-scrollable">
         {NAV_LINKS.map((link) => {
           const href = link.href === '/' ? `/${lang}/` : `/${lang}${link.href}`;
@@ -125,10 +127,10 @@ function isActive(href: string): boolean {
               <div class="mobile-submenu-wrapper">
                 <button
                   type="button"
-                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-4 py-3 rounded-md text-base font-medium transition-colors ${
+                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-4 py-3 rounded-md text-base font-bold transition-colors ${
                     active
-                      ? 'bg-primary text-white'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+                      ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                      : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47] hover:border-2 hover:border-[#D4A574]'
                   }`}
                   style="min-height: 48px;"
                   aria-expanded="false"
@@ -154,10 +156,10 @@ function isActive(href: string): boolean {
                     return (
                       <a
                         href={equipHref}
-                        class={`block px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                        class={`block px-4 py-3 rounded-md text-sm font-bold transition-colors ${
                           equipActive
-                            ? 'bg-primary text-white'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-primary'
+                            ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                            : 'text-[#6B5437] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
                         }`}
                         style="min-height: 48px; display: flex; align-items: center;"
                       >
@@ -175,10 +177,10 @@ function isActive(href: string): boolean {
           return (
             <a
               href={href}
-              class={`block px-4 py-3 rounded-md text-base font-medium transition-colors ${
+              class={`block px-4 py-3 rounded-md text-base font-bold transition-colors ${
                 active
-                  ? 'bg-primary text-white'
-                  : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
+                  ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                  : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
               }`}
               style="min-height: 48px;"
               aria-current={active ? 'page' : undefined}
@@ -190,7 +192,7 @@ function isActive(href: string): boolean {
       </div>
 
       <!-- Mobile Language Switcher & CTA -->
-      <div class="px-2 pt-4 pb-3 border-t-3 border-navy-900 space-y-3">
+      <div class="px-2 pt-4 pb-3 border-t-3 border-[#2D1810] space-y-3">
         <div class="flex justify-center">
           <LanguageSwitcher lang={lang} currentPath={currentPath} />
         </div>
@@ -199,7 +201,7 @@ function isActive(href: string): boolean {
           href={COMPANY_INFO.whatsapp.link}
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-accent w-full flex items-center justify-center space-x-2"
+          class="bg-white text-[#8B6F47] font-black uppercase tracking-tight px-4 py-3 border-3 border-[#2D1810] shadow-brutal-sm hover:shadow-[2px_2px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all w-full flex items-center justify-center space-x-2"
           aria-label={t('cta.whatsapp', lang)}
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -343,16 +345,16 @@ function isActive(href: string): boolean {
   }
 
   .mobile-menu-scrollable::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #F5F1EB;
   }
 
   .mobile-menu-scrollable::-webkit-scrollbar-thumb {
-    background: #1E3A8A;
+    background: #8B6F47;
     border-radius: 3px;
   }
 
   .mobile-menu-scrollable::-webkit-scrollbar-thumb:hover {
-    background: #2563EB;
+    background: #6B5437;
   }
 
   /* Smooth slide animations for submenus */
