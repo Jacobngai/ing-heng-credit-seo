@@ -1,0 +1,223 @@
+---
+/**
+ * Related Equipment Component
+ * Displays related equipment financing options for internal linking
+ */
+
+import type { Locale } from '../utils/i18n';
+
+interface EquipmentItem {
+  name: string;
+  description: string;
+  url: string;
+  badge?: string;
+}
+
+interface Props {
+  lang: Locale;
+  currentEquipment?: string; // e.g., 'excavator', 'lorry', 'forklift'
+}
+
+const { lang, currentEquipment } = Astro.props;
+
+// All available equipment with URLs and descriptions
+const allEquipment: Record<string, Record<Locale, EquipmentItem>> = {
+  excavator: {
+    en: {
+      name: 'Excavator',
+      description: 'Mini to large excavators (1-30 tons) for construction and earthmoving.',
+      url: '/en/equipment/excavator',
+      badge: 'Most Popular'
+    },
+    ms: {
+      name: 'Jengkaut',
+      description: 'Jengkaut mini hingga besar (1-30 tan) untuk pembinaan dan tanah kerja.',
+      url: '/ms/equipment/excavator',
+      badge: 'Paling Popular'
+    },
+    zh: {
+      name: '挖掘机',
+      description: '迷你至大型挖掘机（1-30吨）用于建筑和土方工程。',
+      url: '/zh/equipment/excavator',
+      badge: '最受欢迎'
+    }
+  },
+  lorry: {
+    en: {
+      name: 'Commercial Lorry',
+      description: 'Light to heavy-duty lorries (1-40 tons) for logistics and delivery.',
+      url: '/en/equipment/lorry',
+      badge: 'Fast Approval'
+    },
+    ms: {
+      name: 'Lori Komersial',
+      description: 'Lori ringan hingga berat (1-40 tan) untuk logistik dan penghantaran.',
+      url: '/ms/equipment/lorry',
+      badge: 'Kelulusan Pantas'
+    },
+    zh: {
+      name: '商用罗里',
+      description: '轻型至重型罗里（1-40吨）用于物流和配送。',
+      url: '/zh/equipment/lorry',
+      badge: '快速批准'
+    }
+  },
+  forklift: {
+    en: {
+      name: 'Forklift',
+      description: 'Electric and diesel forklifts (1-10 tons) for warehouse operations.',
+      url: '/en/equipment/forklift'
+    },
+    ms: {
+      name: 'Forklift',
+      description: 'Forklift elektrik dan diesel (1-10 tan) untuk operasi gudang.',
+      url: '/ms/equipment/forklift'
+    },
+    zh: {
+      name: '叉车',
+      description: '电动和柴油叉车（1-10吨）用于仓库操作。',
+      url: '/zh/equipment/forklift'
+    }
+  },
+  crane: {
+    en: {
+      name: 'Mobile Crane',
+      description: 'Hydraulic cranes (5-100 tons) for construction and heavy lifting.',
+      url: '/en/equipment/crane'
+    },
+    ms: {
+      name: 'Kren Mudah Alih',
+      description: 'Kren hidraulik (5-100 tan) untuk pembinaan dan angkat berat.',
+      url: '/ms/equipment/crane'
+    },
+    zh: {
+      name: '移动式起重机',
+      description: '液压起重机（5-100吨）用于建筑和重物吊装。',
+      url: '/zh/equipment/crane'
+    }
+  },
+  bulldozer: {
+    en: {
+      name: 'Bulldozer',
+      description: 'Heavy-duty bulldozers for earthmoving and land clearing projects.',
+      url: '/en/equipment/bulldozer'
+    },
+    ms: {
+      name: 'Jentolak',
+      description: 'Jentolak berat untuk projek tanah kerja dan pembersihan tanah.',
+      url: '/ms/equipment/bulldozer'
+    },
+    zh: {
+      name: '推土机',
+      description: '重型推土机用于土方工程和清理土地项目。',
+      url: '/zh/equipment/bulldozer'
+    }
+  },
+  primeMover: {
+    en: {
+      name: 'Prime Mover',
+      description: 'Tractor units for trailer hauling and long-distance freight.',
+      url: '/en/equipment/prime-mover'
+    },
+    ms: {
+      name: 'Prime Mover',
+      description: 'Unit traktor untuk mengangkut treler dan pengangkutan jarak jauh.',
+      url: '/ms/equipment/prime-mover'
+    },
+    zh: {
+      name: '牵引车',
+      description: '拖车单元用于拖车运输和长途货运。',
+      url: '/zh/equipment/prime-mover'
+    }
+  },
+  refrigeratedTruck: {
+    en: {
+      name: 'Refrigerated Truck',
+      description: 'Temperature-controlled trucks for frozen and fresh goods transport.',
+      url: '/en/equipment/refrigerated-truck'
+    },
+    ms: {
+      name: 'Trak Peti Sejuk',
+      description: 'Trak kawalan suhu untuk pengangkutan barangan beku dan segar.',
+      url: '/ms/equipment/refrigerated-truck'
+    },
+    zh: {
+      name: '冷藏车',
+      description: '温控卡车用于冷冻和新鲜货物运输。',
+      url: '/zh/equipment/refrigerated-truck'
+    }
+  }
+};
+
+// Filter out current equipment and select 3 related items
+const relatedEquipment = Object.entries(allEquipment)
+  .filter(([key]) => key !== currentEquipment)
+  .slice(0, 3)
+  .map(([, data]) => data[lang]);
+
+// Translations
+const translations = {
+  en: {
+    title: 'Looking for Other Equipment?',
+    subtitle: 'Explore our full range of equipment financing solutions',
+    viewAll: 'View All Equipment'
+  },
+  ms: {
+    title: 'Mencari Peralatan Lain?',
+    subtitle: 'Terokai rangkaian penuh penyelesaian pembiayaan peralatan kami',
+    viewAll: 'Lihat Semua Peralatan'
+  },
+  zh: {
+    title: '寻找其他设备？',
+    subtitle: '探索我们全系列设备融资解决方案',
+    viewAll: '查看所有设备'
+  }
+};
+
+const t = translations[lang];
+---
+
+<section class="section bg-[#F5F5DC]">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        {t.title}
+      </h2>
+      <p class="text-xl text-[#4F3E29]">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      {relatedEquipment.map((equipment) => (
+        <a
+          href={equipment.url}
+          class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-all hover:-translate-y-1 block"
+        >
+          {equipment.badge && (
+            <span class="inline-block px-3 py-1 bg-[#D4A574] text-[#2D1810] text-xs font-bold uppercase rounded-full mb-3">
+              {equipment.badge}
+            </span>
+          )}
+          <h3 class="text-xl font-bold text-primary mb-2">{equipment.name}</h3>
+          <p class="text-[#4F3E29] text-sm">{equipment.description}</p>
+          <div class="mt-4 text-primary font-bold flex items-center">
+            <span class="mr-2">Learn More</span>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a
+        href={`/${lang}/equipment`}
+        class="btn btn-primary btn-lg inline-block"
+      >
+        {t.viewAll}
+      </a>
+    </div>
+  </div>
+</section>

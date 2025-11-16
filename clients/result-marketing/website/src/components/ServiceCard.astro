@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  link?: string;
+  features?: string[];
+}
+
+const { title, description, icon, link, features } = Astro.props;
+---
+
+<div class="card card-hover h-full flex flex-col">
+  <!-- Icon -->
+  <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl mb-4">
+    {icon}
+  </div>
+
+  <!-- Title -->
+  <h3 class="text-xl font-heading font-bold text-dark mb-3">
+    {title}
+  </h3>
+
+  <!-- Description -->
+  <p class="text-gray-600 mb-4 flex-grow">
+    {description}
+  </p>
+
+  <!-- Features -->
+  {features && features.length > 0 && (
+    <ul class="space-y-2 mb-6">
+      {features.map(feature => (
+        <li class="flex items-start gap-2 text-sm text-gray-700">
+          <svg class="h-5 w-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>{feature}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <!-- CTA -->
+  {link && (
+    <a href={link} class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors group">
+      <span>Learn More</span>
+      <svg class="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  )}
+</div>

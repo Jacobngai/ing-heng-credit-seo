@@ -1,0 +1,313 @@
+---
+/**
+ * English Blog Category Pages
+ * Dynamic routes for blog categories
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO, SITE_CONFIG } from '../../../../utils/constants';
+
+export async function getStaticPaths() {
+  const categories = ['equipment-financing', 'contractor-guides', 'business-growth', 'tax-compliance'];
+  return categories.map(slug => ({
+    params: { slug }
+  }));
+}
+
+const lang = 'en';
+const { slug } = Astro.params;
+
+// Define all categories
+const categoryMap = {
+  'equipment-financing': {
+    name: 'Equipment Financing Tips',
+    description: 'Expert tips and guides on equipment financing in Malaysia',
+    icon: '🏗️'
+  },
+  'contractor-guides': {
+    name: 'Contractor Guides',
+    description: 'Essential guides for contractors and construction businesses',
+    icon: '👷'
+  },
+  'business-growth': {
+    name: 'Business Growth',
+    description: 'Strategies to grow your construction or logistics business',
+    icon: '📈'
+  },
+  'tax-compliance': {
+    name: 'Tax & Compliance',
+    description: 'Tax benefits and compliance information for equipment financing',
+    icon: '📋'
+  },
+};
+
+const category = categoryMap[slug];
+
+if (!category) {
+  return Astro.redirect('/en/blog', 301);
+}
+
+// Map blog posts to their categories
+const allPosts = [
+  {
+    title: 'Complete Guide to Equipment Financing in Malaysia 2025',
+    excerpt: 'Learn everything you need to know about financing construction equipment, from hire purchase to leasing options.',
+    date: '2025-10-11',
+    slug: 'complete-guide-equipment-financing-malaysia',
+    category: 'Equipment Financing Tips',
+    readTime: 8,
+  },
+  {
+    title: 'Excavator Financing: How Contractors Can Save 30% on Equipment Costs',
+    excerpt: 'Discover proven strategies to reduce your excavator acquisition costs through smart financing.',
+    date: '2025-10-10',
+    slug: 'excavator-financing-save-30-percent',
+    category: 'Contractor Guides',
+    readTime: 6,
+  },
+  {
+    title: 'Lorry Financing for Logistics Companies: Fast Approval Strategies',
+    excerpt: 'Fast-track your lorry financing approval with these expert tips.',
+    date: '2025-10-09',
+    slug: 'lorry-financing-fast-approval-strategies',
+    category: 'Equipment Financing Tips',
+    readTime: 7,
+  },
+  {
+    title: 'Forklift Leasing vs. Buying: Which Option is Right for Your Warehouse?',
+    excerpt: 'Compare the pros and cons of leasing versus purchasing forklifts.',
+    date: '2025-10-08',
+    slug: 'forklift-leasing-vs-buying-guide',
+    category: 'Business Growth',
+    readTime: 7,
+  },
+  {
+    title: 'Tax Benefits of Equipment Financing: Maximize Your Deductions in 2025',
+    excerpt: 'Understand the tax advantages of equipment financing in Malaysia.',
+    date: '2025-10-07',
+    slug: 'tax-benefits-equipment-financing-2025',
+    category: 'Tax & Compliance',
+    readTime: 8,
+  },
+  {
+    title: 'Cash Flow Management for Construction Companies: 5 Essential Strategies',
+    excerpt: 'Master cash flow management while financing expensive construction equipment.',
+    date: '2025-10-06',
+    slug: 'cash-flow-management-construction',
+    category: 'Business Growth',
+    readTime: 9,
+  },
+];
+
+// Filter posts by category
+const categoryPosts = allPosts.filter(post => post.category === category.name);
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: category.name, href: `/en/blog/category/${slug}` },
+];
+---
+
+<BaseLayout
+  title={`${category.name} | Equipment Financing Blog | Ing Heng Credit`}
+  description={category.description}
+  lang={lang}
+  keywords={[category.name.toLowerCase(), 'equipment financing', 'Malaysia']}
+>
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Category Header -->
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <div class="text-6xl mb-4">{category.icon}</div>
+      <h1 class="text-4xl md:text-5xl font-black text-[#D4A574] mb-4 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        {category.name}
+      </h1>
+      <p class="text-xl text-white leading-relaxed">
+        {category.description}
+      </p>
+      <div class="mt-6 text-sm font-bold text-[#D4A574]">
+        {categoryPosts.length} {categoryPosts.length === 1 ? 'Article' : 'Articles'}
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Posts -->
+  <section class="section">
+    <div class="container-custom max-w-5xl mx-auto">
+      {categoryPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {categoryPosts.map((post) => (
+            <div class="card-brutalist h-full flex flex-col group">
+              {/* Image Placeholder */}
+              <a href={`/en/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-yellow-100 to-yellow-200 relative border-b-3 border-navy-900">
+                <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-30">
+                  {category.icon}
+                </div>
+              </a>
+
+              <div class="p-6 flex flex-col flex-grow">
+                {/* Meta Info */}
+                <div class="flex items-center justify-between text-sm mb-3" style="color: #2D1810;">
+                  <span class="badge-brutalist text-xs">{category.name}</span>
+                  <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {post.readTime} min read
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 class="text-xl font-black text-navy-900 mb-3 group-hover:text-yellow-600 transition-colors line-clamp-2" style="font-family: 'Bebas Neue', sans-serif;">
+                  <a href={`/en/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h3>
+
+                {/* Excerpt */}
+                <p class="mb-4 flex-grow line-clamp-3 leading-relaxed font-medium" style="color: #2D1810;">
+                  {post.excerpt}
+                </p>
+
+                {/* Footer */}
+                <div class="flex items-center justify-between pt-4 border-t-3 border-navy-900 text-sm">
+                  <time datetime={post.date} class="text-gray-500">
+                    {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                  </time>
+                  <a
+                    href={`/en/blog/${post.slug}`}
+                    class="text-yellow-600 font-black hover:text-navy-900 transition-colors uppercase"
+                  >
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="card-brutalist p-12 text-center">
+          <div class="text-6xl mb-4">📝</div>
+          <h2 class="text-2xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">No Articles Yet</h2>
+          <p class="mb-6" style="color: #2D1810;">
+            We're working on adding content to this category. Check back soon or explore other categories.
+          </p>
+          <CTAButton
+            text="View All Articles"
+            link="/en/blog"
+            variant="primary"
+            size="medium"
+          />
+        </div>
+      )}
+
+      {/* Back to Blog */}
+      <div class="mt-12 text-center">
+        <a
+          href="/en/blog"
+          class="inline-flex items-center gap-2 text-yellow-600 font-black hover:text-navy-900 transition-colors uppercase"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to All Articles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+        Ready to Finance Your Equipment?
+      </h2>
+      <p class="text-xl mb-8 text-white opacity-90 max-w-2xl mx-auto">
+        Get expert advice from Malaysia's trusted equipment financing partner since 1985.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Get Free Quote Now"
+          link="/en/contact"
+          variant="accent"
+          size="large"
+        />
+        <CTAButton
+          text="Calculate Monthly Payment"
+          link="/en/calculator"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 text-xs font-black uppercase;
+    @apply bg-[#D4A574] text-navy-900 border-2 border-navy-900;
+    box-shadow: 3px 3px 0 #1E3A8A;
+  }
+
+  .card-brutalist {
+    @apply bg-white overflow-hidden border-4 border-navy-900;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+
+  .card-brutalist:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+
+  .bg-navy-900 {
+    background-color: #0F172A;
+  }
+
+  .text-navy-900 {
+    color: #0F172A;
+  }
+
+  .border-navy-900 {
+    border-color: #0F172A;
+  }
+
+  .border-3 {
+    border-width: 3px;
+  }
+</style>

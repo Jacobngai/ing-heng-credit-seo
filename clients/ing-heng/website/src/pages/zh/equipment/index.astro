@@ -15,11 +15,12 @@ import Calculator from '../../../components/Calculator.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { encodeJSONLD } from '../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../utils/constants';
 const lang = 'zh';
 
 // SEO Data
 const pageTitle = '马来西亚设备融资 | 挖掘机、卡车、叉车、起重机贷款';
-const pageDescription = '融资任何建筑、物流或工业设备。2小时快速批准，95%批准率，灵活还款。挖掘机、卡车、叉车、起重机等设备贷款。';
+const pageDescription = '融资任何建筑、物流或工业设备。快速快速批准，Industry-Leading批准率，灵活还款。挖掘机、卡车、叉车、起重机等设备贷款。';
 const keywords = ['马来西亚设备融资', '重型设备贷款', '建筑设备贷款', '机械融资', '马来西亚设备租赁'];
 
 // Breadcrumbs
@@ -61,12 +62,6 @@ const featuredEquipment = [
     image: '/images/equipment/excavator.jpg',
     priceRange: 'RM 80,000 - RM 800,000',
     monthlyFrom: 2400,
-    features: [
-      '接受10年内新旧设备',
-      '所有主要品牌认可',
-      '季节性付款选项',
-      '仅需10%首付'
-    ],
     link: '/zh/equipment/excavator',
     badge: '最受欢迎'
   },
@@ -76,12 +71,6 @@ const featuredEquipment = [
     image: '/images/equipment/lorry.jpg',
     priceRange: 'RM 50,000 - RM 500,000',
     monthlyFrom: 1500,
-    features: [
-      '所有吨位类别',
-      '车队融资可用',
-      '以旧换新计划',
-      '24小时快速批准'
-    ],
     link: '/zh/equipment/lorry',
     badge: '快速批准'
   },
@@ -91,12 +80,6 @@ const featuredEquipment = [
     image: '/images/equipment/forklift.jpg',
     priceRange: 'RM 30,000 - RM 200,000',
     monthlyFrom: 900,
-    features: [
-      '电动和柴油型号',
-      '室内/室外变体',
-      '含电池',
-      '灵活12-60月期限'
-    ],
     link: '/zh/equipment/forklift'
   },
   {
@@ -105,12 +88,6 @@ const featuredEquipment = [
     image: '/images/equipment/crane.jpg',
     priceRange: 'RM 300,000 - RM 2,000,000',
     monthlyFrom: 9000,
-    features: [
-      '所有吨位容量',
-      '公路移动式起重机',
-      '认证操作员网络',
-      '项目融资'
-    ],
     link: '/zh/equipment/crane'
   },
   {
@@ -119,12 +96,6 @@ const featuredEquipment = [
     image: '/images/equipment/prime-mover.jpg',
     priceRange: 'RM 200,000 - RM 600,000',
     monthlyFrom: 6000,
-    features: [
-      '4x2、6x2、6x4配置',
-      'Euro 2-5标准',
-      '接受高里程车辆',
-      '拖车组合融资'
-    ],
     link: '/zh/equipment/prime-mover'
   },
   {
@@ -133,12 +104,6 @@ const featuredEquipment = [
     image: '/images/equipment/bulldozer.jpg',
     priceRange: 'RM 150,000 - RM 1,000,000',
     monthlyFrom: 4500,
-    features: [
-      '履带和轮式变体',
-      '包含松土器和推土板',
-      '沼泽推土机可用',
-      '政府项目融资'
-    ],
     link: '/zh/equipment/bulldozer'
   },
   {
@@ -147,12 +112,6 @@ const featuredEquipment = [
     image: '/images/equipment/reefer-truck.jpg',
     priceRange: 'RM 80,000 - RM 350,000',
     monthlyFrom: 2400,
-    features: [
-      '-20°C至+20°C范围',
-      'Thermo King/Carrier机组',
-      '保温箱体',
-      '车队融资可用'
-    ],
     link: '/zh/equipment/refrigerated-truck'
   },
   {
@@ -161,20 +120,14 @@ const featuredEquipment = [
     image: '/images/equipment/cnc-machine.jpg',
     priceRange: 'RM 100,000 - RM 2,000,000',
     monthlyFrom: 3000,
-    features: [
-      '数控车床、铣床、路由器',
-      '日本和欧洲品牌',
-      '软件和培训支持',
-      '技术升级融资'
-    ],
     link: '/zh/equipment/cnc-machinery'
   }
 ];
 
 // Benefits
 const benefits = [
-  { icon: 'clock', title: '2小时快速批准', description: '紧急设备需求可在2小时内获得初步批准。' },
-  { icon: 'percentage', title: '95%批准率', description: '行业领先的批准率。我们批准其他机构拒绝的申请。' },
+  { icon: 'clock', title: '快速快速批准', description: '紧急设备需求可在快速内获得初步批准。' },
+  { icon: 'percentage', title: 'Industry-Leading批准率', description: '行业领先的批准率。我们批准其他机构拒绝的申请。' },
   { icon: 'calendar', title: '灵活12-60月期限', description: '选择符合您业务现金流的还款期限。' },
   { icon: 'shield', title: '所有设备类型', description: '融资任何设备，从挖掘机到数控机床，新旧皆可。' },
   { icon: 'users', title: '低至10%首付', description: '最低前期投资。保留营运资金。' },
@@ -185,7 +138,7 @@ const benefits = [
 const steps = [
   { stepNumber: 1, icon: 'contact', title: '选择设备', description: '浏览我们的目录或带上您自己的设备供应商。' },
   { stepNumber: 2, icon: 'document', title: '提交申请', description: '5分钟完成在线表格或WhatsApp申请。' },
-  { stepNumber: 3, icon: 'check', title: '快速批准', description: '2小时初步批准，24小时最终确认。' },
+  { stepNumber: 3, icon: 'check', title: '快速批准', description: '快速初步批准，迅速最终确认。' },
   { stepNumber: 4, icon: 'truck', title: '收到设备', description: '资金直接发放给供应商。立即开始运营。' },
 ];
 
@@ -202,11 +155,11 @@ const industries = [
 // FAQs
 const faqs = [
   { question: '你们可以融资哪些设备类型？', answer: '我们融资所有类型的商用和工业设备，包括建筑机械（挖掘机、推土机、起重机）、物流车辆（卡车、牵引车、货车）、工业设备（叉车、数控机床、制造工具）和专用设备。只要设备能为您的业务创造收入，我们就可以融资。' },
-  { question: '批准需要多长时间？', answer: '初步批准：2小时。最终批准：提交完整文件后24小时。紧急情况可加急处理，满足关键项目截止日期。' },
+  { question: '批准需要多长时间？', answer: '初步批准：快速。最终批准：提交完整文件后迅速进行。紧急情况可加急处理，满足关键项目截止日期。' },
   { question: '可以融资二手设备吗？', answer: '可以！我们融资任何信誉良好品牌的10年内二手设备。设备必须处于良好工作状态并通过我们的检查。二手设备通常可获得与新设备相同的利率。' },
   { question: '最低和最高贷款金额是多少？', answer: '最低：RM 30,000。最高：RM 2,000,000，取决于设备类型和您的财务状况。我们可以融资设备价值的90%，首付10%。' },
   { question: '可以融资多台设备吗？', answer: '可以！2台以上设备享受车队融资折扣利率。批量采购文件简化。适合扩展业务的承包商和物流公司。' },
-  { question: '如果我有不良信用或贷款违约怎么办？', answer: '我们逐一考虑每个申请。不良信用不意味着自动拒绝。我们关注您当前的业务表现、项目合同和设备价值。95%的批准率包括许多有信用问题的客户。' },
+  { question: '如果我有不良信用或贷款违约怎么办？', answer: '我们逐一考虑每个申请。不良信用不意味着自动拒绝。我们关注您当前的业务表现、项目合同和设备价值。Industry-Leading的批准率包括许多有信用问题的客户。' },
   { question: '可以以旧换新吗？', answer: '当然可以！提供以旧换新和升级计划。我们可以为您现有设备再融资，并提供额外资金购买更新/更大的机器。包含免费设备估值服务。' },
   { question: '需要哪些文件？', answer: '个人：身份证、6个月银行对账单、收入证明。公司：SSM注册、公司银行对账单、董事身份证、财务报表（如有）。简单直接的流程。' },
   { question: '你们服务马来西亚所有州吗？', answer: '是的！我们服务所有州：雪兰莪、吉隆坡、柔佛、槟城、霹雳、彭亨、沙巴、砂拉越等。偏远地区申请可通过在线和WhatsApp处理。全国覆盖，本地专业知识。' },
@@ -226,7 +179,7 @@ const itemListSchema = {
       '@type': 'Product',
       name: equipment.name,
       description: equipment.description,
-      image: `https://ingheng-credit.vercel.app${equipment.image}`,
+      image: `${SITE_CONFIG.url}${equipment.image}`,
       offers: {
         '@type': 'Offer',
         priceCurrency: 'MYR',
@@ -329,42 +282,41 @@ const faqSchema = {
 
   <!-- Hero Section -->
   <Hero
-    title="融资任何设备 - 2小时快速批准"
-    subtitle="建筑、物流和工业设备 | 95%批准率 | 灵活12-60月期限 | RM 30,000 - RM 2,000,000"
+    title="融资任何设备 - 快速快速批准"
+    subtitle="建筑、物流和工业设备 | Industry-Leading批准率 | 灵活12-60月期限 | RM 30,000 - RM 2,000,000"
     ctaText="WhatsApp免费报价"
     ctaLink="https://wa.me/60175700889?text=您好！我想咨询设备融资报价。"
     ctaSecondaryText="致电：017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/equipment-hero.jpg"
     lang={lang}
-    trustSignals={['40年经验', 'KPKT持牌', '95%批准率', '2小时快速批准']}
+    trustSignals={['40年经验', 'KPKT持牌', 'Industry-Leading批准率', '快速快速批准']}
   />
 
   <!-- Equipment Categories Overview -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           我们融资的设备类别
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从建筑机械到物流车辆和工业设备
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         {equipmentCategories.map((category) => (
-          <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
             <div class="text-4xl mb-4">
               {category.icon === 'construction' && '🏗️'}
               {category.icon === 'truck' && '🚛'}
               {category.icon === 'warehouse' && '🏭'}
             </div>
             <h3 class="text-2xl font-bold text-primary mb-3">{category.name}</h3>
-            <p class="text-gray-600 mb-4">{category.description}</p>
+            <p class="text-[#4F3E29] mb-4">{category.description}</p>
             <ul class="space-y-2 mb-6">
               {category.items.map((item) => (
-                <li class="text-sm text-gray-700 flex items-center space-x-2">
+                <li class="text-sm text-[#4F3E29] flex items-center space-x-2">
                   <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                   </svg>
@@ -372,7 +324,7 @@ const faqSchema = {
                 </li>
               ))}
             </ul>
-            <a href={category.link} class="text-secondary font-semibold hover:text-primary transition-colors">
+            <a href={category.link} class="text-[#D4A574] font-semibold hover:text-primary transition-colors">
               查看设备 →
             </a>
           </div>
@@ -388,7 +340,7 @@ const faqSchema = {
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           特色融资设备
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           热门设备选择，具有竞争力的月付款率
         </p>
       </div>
@@ -409,9 +361,9 @@ const faqSchema = {
       </div>
 
       <!-- Additional Equipment Note -->
-      <div class="mt-12 text-center p-6 bg-gray-50 rounded-lg">
+      <div class="mt-12 text-center p-6 bg-[#F5F5DC] rounded-lg">
         <h3 class="text-xl font-bold text-primary mb-3">没看到您的设备？</h3>
-        <p class="text-gray-700 mb-4">
+        <p class="text-[#4F3E29] mb-4">
           我们融资所有类型的商用和工业设备。联系我们获取专用机械、农业设备、采矿工具等的定制报价。
         </p>
         <a
@@ -427,13 +379,13 @@ const faqSchema = {
   </section>
 
   <!-- Benefits Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          为什么选择英兴信贷设备融资？
+          为什么选择荣兴信贷设备融资？
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           快速批准、灵活条款和所有设备类型的竞争利率
         </p>
       </div>
@@ -451,13 +403,13 @@ const faqSchema = {
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-8">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           计算您的月付款
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           看看设备融资对您的业务有多实惠
         </p>
       </div>
@@ -474,7 +426,7 @@ const faqSchema = {
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           设备融资流程
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从申请到设备交付的简单4步流程
         </p>
       </div>
@@ -504,20 +456,20 @@ const faqSchema = {
   </section>
 
   <!-- Industries We Serve -->
-  <section class="section bg-gray-50" id="logistics-equipment">
+  <section class="section bg-[#F5F5DC]" id="logistics-equipment">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           我们服务的行业
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           每个商业领域的专业融资解决方案
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {industries.map((industry) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <div class="text-3xl mb-3">
               {industry.icon === 'building' && '🏗️'}
               {industry.icon === 'truck' && '🚛'}
@@ -527,7 +479,7 @@ const faqSchema = {
               {industry.icon === 'mountain' && '⛏️'}
             </div>
             <h3 class="text-xl font-bold text-primary mb-2">{industry.name}</h3>
-            <p class="text-sm text-gray-600">{industry.equipment}</p>
+            <p class="text-sm text-[#4F3E29]">{industry.equipment}</p>
           </div>
         ))}
       </div>
@@ -535,7 +487,7 @@ const faqSchema = {
   </section>
 
   <!-- Trust Signals & Stats -->
-  <section class="section bg-secondary text-white" id="industrial-equipment">
+  <section class="section bg-[#8B6F47] text-white" id="industrial-equipment">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -548,11 +500,11 @@ const faqSchema = {
 
       <div class="grid md:grid-cols-4 gap-8 text-center">
         <div>
-          <div class="text-5xl font-bold mb-2">95%</div>
+          <div class="text-5xl font-bold mb-2">Industry-Leading</div>
           <div class="text-lg opacity-90">批准率</div>
         </div>
         <div>
-          <div class="text-5xl font-bold mb-2">2-24小时</div>
+          <div class="text-5xl font-bold mb-2">迅速</div>
           <div class="text-lg opacity-90">批准时间</div>
         </div>
         <div>
@@ -574,7 +526,7 @@ const faqSchema = {
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           常见问题
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           关于设备融资您需要了解的一切
         </p>
       </div>
@@ -588,13 +540,13 @@ const faqSchema = {
   </section>
 
   <!-- Final CTA -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
         准备融资您的设备了吗？
       </h2>
-      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-        2小时快速批准。加入4,000多家选择英兴信贷满足设备融资需求的企业。
+      <p class="text-xl text-[#4F3E29] mb-8 max-w-2xl mx-auto">
+        快速快速批准。加入4,000多家选择荣兴信贷满足设备融资需求的企业。
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -614,7 +566,7 @@ const faqSchema = {
         </a>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 mt-8">
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-[#4F3E29] mt-8">
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
@@ -625,7 +577,7 @@ const faqSchema = {
           <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>2小时快速批准</span>
+          <span>快速快速批准</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">

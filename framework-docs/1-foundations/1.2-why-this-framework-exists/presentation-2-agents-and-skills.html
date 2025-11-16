@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Workflow - Agents & Skills Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .legend-command {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            color: #92400e;
+        }
+
+        .legend-agent {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+        }
+
+        .legend-skill {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+
+        .phases-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .phase-section {
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .phase-onboard {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 3px solid #3b82f6;
+        }
+
+        .phase-build {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #10b981;
+        }
+
+        .phase-review {
+            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+            border: 3px solid #f59e0b;
+        }
+
+        .phase-publish {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+            border: 3px solid #ef4444;
+        }
+
+        .phase-header {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phase-onboard .phase-header {
+            color: #1e40af;
+        }
+
+        .phase-build .phase-header {
+            color: #065f46;
+        }
+
+        .phase-review .phase-header {
+            color: #92400e;
+        }
+
+        .phase-publish .phase-header {
+            color: #991b1b;
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .command-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .command-title {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #78350f;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+        }
+
+        .command-icon {
+            background: white;
+            color: #f59e0b;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .command-desc {
+            color: #4b5563;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .agents-section {
+            margin-bottom: 15px;
+        }
+
+        .section-label {
+            font-weight: bold;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .agent {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 4px;
+            font-size: 0.9em;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+        }
+
+        .agent-icon {
+            font-size: 1.1em;
+        }
+
+        .skills-section {
+            margin-top: 10px;
+        }
+
+        .skill {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 3px;
+            font-size: 0.85em;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+
+        .output-box {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 3px 10px rgba(236, 72, 153, 0.3);
+        }
+
+        .stats-overview {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .agent-catalog {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 3px solid #e5e7eb;
+        }
+
+        .agent-catalog h2 {
+            color: #1f2937;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .agents-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .agent-catalog-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .agent-catalog-card h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .agent-catalog-card .description {
+            color: #6b7280;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .agent-catalog-card .used-in {
+            font-size: 0.85em;
+            color: #9ca3af;
+        }
+
+        .skill-catalog {
+            background: #f0fdf4;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 3px solid #86efac;
+        }
+
+        .skill-catalog h2 {
+            color: #065f46;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-catalog-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .skill-catalog-card h4 {
+            color: #065f46;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+
+        .skill-catalog-card .description {
+            color: #6b7280;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 1200px) {
+            .commands-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .phase-header {
+                font-size: 1.5em;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .new-badge {
+            background: #dc2626;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 SEO Workflow Architecture</h1>
+        <p class="subtitle">Complete Mapping of Commands → Agents → Skills</p>
+
+        <div class="legend">
+            <div class="legend-item legend-command">
+                📋 Command (User Runs)
+            </div>
+            <div class="legend-item legend-agent">
+                🤖 Agent (Complex Work)
+            </div>
+            <div class="legend-item legend-skill">
+                ⚡ Skill (Specific Task)
+            </div>
+        </div>
+
+        <div class="stats-overview">
+            <h2 style="text-align: center; margin-bottom: 20px;">📊 System Architecture Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Total Commands</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Specialized Agents</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">35+</span>
+                    <span class="stat-label">Reusable Skills</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Workflow Phases</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phases-container">
+            <!-- PHASE 1: ONBOARD -->
+            <div class="phase-section phase-onboard">
+                <div class="phase-header">
+                    🔍 PHASE 1: ONBOARD
+                </div>
+
+                <div class="commands-grid">
+                    <!-- Command 1: Research Business -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">1</span>
+                            /research-business
+                        </div>
+                        <div class="command-desc">
+                            Deep dive into client's business, competitors, and market positioning
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">📊</span>
+                                competitor-intelligence
+                            </div>
+                            <div class="agent">
+                                <span class="agent-icon">📝</span>
+                                client-onboarding
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">competitive-analysis</span>
+                            <span class="skill">market-research</span>
+                            <span class="skill">persona-identification</span>
+                            <span class="skill">keyword-gap-analysis</span>
+                            <span class="skill">serp-analysis</span>
+                        </div>
+
+                        <div class="output-box">
+                            📄 Output: Business Brief + Competitor Report + Personas
+                        </div>
+                    </div>
+
+                    <!-- Command 2: Organize by Intent -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">2</span>
+                            /organize-by-intent
+                        </div>
+                        <div class="command-desc">
+                            Map keywords and content to the 4 search intents (informational, commercial, transactional, local)
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🗂️</span>
+                                hub-and-spoke-architect
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">keyword-research</span>
+                            <span class="skill">intent-mapping</span>
+                            <span class="skill">content-clustering</span>
+                            <span class="skill">priority-scoring</span>
+                            <span class="skill">hub-spoke-planning</span>
+                        </div>
+
+                        <div class="output-box">
+                            📋 Output: Content Strategy Map + Hub-Spoke Plan
+                        </div>
+                    </div>
+
+                    <!-- Command 3: Plan Authority -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">3</span>
+                            /plan-authority
+                        </div>
+                        <div class="command-desc">
+                            Design E-E-A-T strategy, author profiles, and trust signal framework
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">👤</span>
+                                eeat-documentation
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">author-credential-documentation</span>
+                            <span class="skill">trust-signal-identification</span>
+                            <span class="skill">experience-evidence-collection</span>
+                            <span class="skill">expertise-validation</span>
+                        </div>
+
+                        <div class="output-box">
+                            👨‍💼 Output: Authority Plan + Author Profile Templates
+                        </div>
+                    </div>
+
+                    <!-- Command 4: Design Brand Options (NEW) -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">4</span>
+                            /design-brand-options
+                            <span class="new-badge">NEW</span>
+                        </div>
+                        <div class="command-desc">
+                            Create 10 comprehensive HTML mockups showing different brand identity options (colors, typography, layout) for client selection
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🎨</span>
+                                brand-identity
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">brand-material-analysis</span>
+                            <span class="skill">color-palette-generation</span>
+                            <span class="skill">typography-selection</span>
+                            <span class="skill">design-system-creation</span>
+                            <span class="skill">html-mockup-generation</span>
+                            <span class="skill">brand-personality-mapping</span>
+                        </div>
+
+                        <div class="output-box">
+                            🎨 Output: 10 HTML Files (ci-option-1.html to ci-option-10.html)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 2: BUILD -->
+            <div class="phase-section phase-build">
+                <div class="phase-header">
+                    🏗️ PHASE 2: BUILD
+                </div>
+
+                <div class="commands-grid">
+                    <!-- Command 1: Build Author -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">1</span>
+                            /build-author
+                        </div>
+                        <div class="command-desc">
+                            Create author bio page with credentials, experience, and E-E-A-T signals
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">✍️</span>
+                                content-generation
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">author-page-generation</span>
+                            <span class="skill">schema-markup</span>
+                            <span class="skill">credential-formatting</span>
+                            <span class="skill">bio-writing</span>
+                        </div>
+
+                        <div class="output-box">
+                            👤 Output: Author Bio Page (.astro)
+                        </div>
+                    </div>
+
+                    <!-- Command 2: Build Hub Page -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">2</span>
+                            /build-hub-page
+                        </div>
+                        <div class="command-desc">
+                            Create comprehensive pillar content (3,000-5,000 words) on core topic
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">✍️</span>
+                                content-generation
+                            </div>
+                            <div class="agent">
+                                <span class="agent-icon">🗂️</span>
+                                hub-and-spoke-architect
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">hub-page-generation</span>
+                            <span class="skill">internal-linking</span>
+                            <span class="skill">semantic-optimization</span>
+                            <span class="skill">comprehensive-research</span>
+                            <span class="skill">table-of-contents-generation</span>
+                        </div>
+
+                        <div class="output-box">
+                            📄 Output: Hub Page (.astro) + Spoke Map
+                        </div>
+                    </div>
+
+                    <!-- Command 3: Build Blog -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">3</span>
+                            /build-blog
+                        </div>
+                        <div class="command-desc">
+                            Generate blog post (1,500-2,500 words) optimized for target keyword
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">✍️</span>
+                                content-generation
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">blog-post-generation</span>
+                            <span class="skill">seo-optimization</span>
+                            <span class="skill">featured-snippet-formatting</span>
+                            <span class="skill">keyword-placement</span>
+                            <span class="skill">readability-optimization</span>
+                        </div>
+
+                        <div class="output-box">
+                            📝 Output: Blog Post (.astro) + SEO Metadata
+                        </div>
+                    </div>
+
+                    <!-- Command 4: Build Service Page -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">4</span>
+                            /build-service-page
+                        </div>
+                        <div class="command-desc">
+                            Create service/product page with conversion focus and local optimization
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">✍️</span>
+                                content-generation
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">service-page-generation</span>
+                            <span class="skill">conversion-optimization</span>
+                            <span class="skill">local-seo-signals</span>
+                            <span class="skill">cta-placement</span>
+                            <span class="skill">trust-badge-integration</span>
+                        </div>
+
+                        <div class="output-box">
+                            🛒 Output: Service/Product Page (.astro)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 3: REVIEW -->
+            <div class="phase-section phase-review">
+                <div class="phase-header">
+                    ✅ PHASE 3: REVIEW
+                </div>
+
+                <div class="commands-grid">
+                    <!-- Command 1: Review SEO -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">1</span>
+                            /review-seo
+                        </div>
+                        <div class="command-desc">
+                            Check technical SEO, on-page optimization, schema markup, Core Web Vitals
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🔍</span>
+                                content-qa
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">technical-seo-audit</span>
+                            <span class="skill">on-page-checklist</span>
+                            <span class="skill">performance-check</span>
+                            <span class="skill">schema-validation</span>
+                            <span class="skill">mobile-friendliness-check</span>
+                        </div>
+
+                        <div class="output-box">
+                            ✅ Output: SEO Audit Report + Priority Fixes
+                        </div>
+                    </div>
+
+                    <!-- Command 2: Review E-E-A-T -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">2</span>
+                            /review-eeat
+                        </div>
+                        <div class="command-desc">
+                            Verify Experience, Expertise, Authority, Trust signals are strong
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">👤</span>
+                                eeat-documentation
+                            </div>
+                            <div class="agent">
+                                <span class="agent-icon">🔍</span>
+                                content-qa
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">eeat-checklist</span>
+                            <span class="skill">trust-signal-verification</span>
+                            <span class="skill">credential-validation</span>
+                            <span class="skill">experience-scoring</span>
+                            <span class="skill">authority-measurement</span>
+                        </div>
+
+                        <div class="output-box">
+                            ✅ Output: E-E-A-T Score (0-100) + Improvements
+                        </div>
+                    </div>
+
+                    <!-- Command 3: Review Readability -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">3</span>
+                            /review-readability
+                        </div>
+                        <div class="command-desc">
+                            Check content quality, readability, UX, and conversion elements
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🔍</span>
+                                content-qa
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">readability-scoring</span>
+                            <span class="skill">ux-checklist</span>
+                            <span class="skill">conversion-audit</span>
+                            <span class="skill">formatting-check</span>
+                            <span class="skill">cta-effectiveness</span>
+                        </div>
+
+                        <div class="output-box">
+                            ✅ Output: Readability Report + UX Fixes
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 4: PUBLISH -->
+            <div class="phase-section phase-publish">
+                <div class="phase-header">
+                    🚀 PHASE 4: PUBLISH
+                </div>
+
+                <div class="commands-grid">
+                    <!-- Command 1: Translate Content -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">1</span>
+                            /translate-content
+                        </div>
+                        <div class="command-desc">
+                            Translate and localize content for EN, MS, ZH with cultural adaptation
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🌐</span>
+                                content-generation
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">translation-localization</span>
+                            <span class="skill">cultural-adaptation</span>
+                            <span class="skill">hreflang-generation</span>
+                            <span class="skill">keyword-translation</span>
+                            <span class="skill">currency-conversion</span>
+                        </div>
+
+                        <div class="output-box">
+                            🌍 Output: 3 Language Versions (EN, MS, ZH)
+                        </div>
+                    </div>
+
+                    <!-- Command 2: Deploy Multi-Language -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">2</span>
+                            /deploy-multilang
+                        </div>
+                        <div class="command-desc">
+                            Deploy to 3 Vercel projects with correct environment variables
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🚀</span>
+                                publishing
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">multi-language-deployment</span>
+                            <span class="skill">vercel-deployment</span>
+                            <span class="skill">environment-configuration</span>
+                            <span class="skill">build-optimization</span>
+                            <span class="skill">deployment-verification</span>
+                        </div>
+
+                        <div class="output-box">
+                            ✅ Output: Live on 3 Domains (EN, MS, ZH)
+                        </div>
+                    </div>
+
+                    <!-- Command 3: Submit to Search Engines -->
+                    <div class="command-card">
+                        <div class="command-title">
+                            <span class="command-icon">3</span>
+                            /submit-search
+                        </div>
+                        <div class="command-desc">
+                            Submit to Google Search Console, Bing, generate sitemaps, request indexing
+                        </div>
+
+                        <div class="agents-section">
+                            <div class="section-label">🤖 Agents Used</div>
+                            <div class="agent">
+                                <span class="agent-icon">🚀</span>
+                                publishing
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <div class="section-label">⚡ Skills Used</div>
+                            <span class="skill">sitemap-generation</span>
+                            <span class="skill">search-console-submission</span>
+                            <span class="skill">indexing-request</span>
+                            <span class="skill">robots-txt-configuration</span>
+                            <span class="skill">bing-webmaster-submission</span>
+                        </div>
+
+                        <div class="output-box">
+                            ✅ Output: Submitted to Google + Bing
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AGENT CATALOG -->
+        <div class="agent-catalog">
+            <h2>🤖 Agent Catalog (8 Specialized Agents)</h2>
+            <div class="agents-list">
+                <div class="agent-catalog-card">
+                    <h3>📊 competitor-intelligence</h3>
+                    <p class="description">
+                        Analyzes competitor SEO strategies, keyword gaps, backlink profiles, and content performance. Uses DataForSEO API for comprehensive competitor data.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /research-business</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>📝 client-onboarding</h3>
+                    <p class="description">
+                        Structures client information, creates business briefs, identifies target personas, and establishes initial SEO strategy framework.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /research-business</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>🗂️ hub-and-spoke-architect</h3>
+                    <p class="description">
+                        Designs content cluster strategies using hub-and-spoke model. Maps relationships between pillar content and supporting articles.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /organize-by-intent, /build-hub-page</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>👤 eeat-documentation</h3>
+                    <p class="description">
+                        Builds E-E-A-T (Experience, Expertise, Authority, Trust) frameworks. Creates author profiles, identifies trust signals, validates credentials.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /plan-authority, /review-eeat</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>🎨 brand-identity</h3>
+                    <p class="description">
+                        Analyzes brand materials provided by employees. Generates 10 comprehensive HTML mockups showing different brand identity options (colors, typography, layouts).
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /design-brand-options</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>✍️ content-generation</h3>
+                    <p class="description">
+                        Writes high-quality SEO-optimized content. Handles blog posts, hub pages, service pages, author bios, and translations. Applies best practices from SEO-pro.md.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /build-author, /build-hub-page, /build-blog, /build-service-page, /translate-content</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>🔍 content-qa</h3>
+                    <p class="description">
+                        Performs comprehensive quality assurance checks. Audits technical SEO, on-page optimization, readability, UX, and conversion elements.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /review-seo, /review-eeat, /review-readability</p>
+                </div>
+
+                <div class="agent-catalog-card">
+                    <h3>🚀 publishing</h3>
+                    <p class="description">
+                        Handles deployment to multiple Vercel projects, environment configuration, sitemap generation, and search engine submission for 3 languages.
+                    </p>
+                    <p class="used-in"><strong>Used in:</strong> /deploy-multilang, /submit-search</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILL CATALOG -->
+        <div class="skill-catalog">
+            <h2>⚡ Skill Catalog (35+ Reusable Skills)</h2>
+            <div class="skills-list">
+                <div class="skill-catalog-card">
+                    <h4>competitive-analysis</h4>
+                    <p class="description">Analyzes competitor SERP rankings, content strategies, and keyword targeting</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>market-research</h4>
+                    <p class="description">Researches industry trends, user behavior, and market opportunities</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>persona-identification</h4>
+                    <p class="description">Creates detailed buyer personas with demographics and pain points</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>keyword-research</h4>
+                    <p class="description">Discovers keywords using DataForSEO and other SEO tools</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>intent-mapping</h4>
+                    <p class="description">Classifies keywords by search intent (informational/commercial/transactional/local)</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>content-clustering</h4>
+                    <p class="description">Groups related keywords into topical clusters</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>author-credential-documentation</h4>
+                    <p class="description">Documents author qualifications, certifications, and experience</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>trust-signal-identification</h4>
+                    <p class="description">Identifies trust opportunities (reviews, certifications, press)</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>brand-material-analysis</h4>
+                    <p class="description">Analyzes existing brand materials and extracts design principles</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>color-palette-generation</h4>
+                    <p class="description">Creates professional color schemes aligned with brand personality</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>typography-selection</h4>
+                    <p class="description">Selects optimal font pairings for readability and brand tone</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>html-mockup-generation</h4>
+                    <p class="description">Creates complete HTML mockups with real content and styling</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>author-page-generation</h4>
+                    <p class="description">Creates author bio pages with schema markup</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>hub-page-generation</h4>
+                    <p class="description">Writes comprehensive 3,000-5,000 word pillar content</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>blog-post-generation</h4>
+                    <p class="description">Creates 1,500-2,500 word SEO-optimized blog posts</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>service-page-generation</h4>
+                    <p class="description">Writes conversion-focused service/product pages</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>internal-linking</h4>
+                    <p class="description">Creates strategic internal link structures</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>semantic-optimization</h4>
+                    <p class="description">Adds LSI keywords and semantic variations</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>featured-snippet-formatting</h4>
+                    <p class="description">Structures content to win featured snippets</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>conversion-optimization</h4>
+                    <p class="description">Optimizes CTA placement, trust signals, and conversion paths</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>technical-seo-audit</h4>
+                    <p class="description">Checks crawlability, indexing, Core Web Vitals</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>on-page-checklist</h4>
+                    <p class="description">Verifies title tags, meta descriptions, headers, keywords</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>schema-validation</h4>
+                    <p class="description">Validates structured data markup</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>eeat-checklist</h4>
+                    <p class="description">Scores Experience, Expertise, Authority, Trust signals</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>readability-scoring</h4>
+                    <p class="description">Measures Flesch Reading Ease, grade level, sentence complexity</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>ux-checklist</h4>
+                    <p class="description">Audits formatting, white space, mobile-friendliness</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>translation-localization</h4>
+                    <p class="description">Translates content while maintaining SEO optimization</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>cultural-adaptation</h4>
+                    <p class="description">Adapts content for cultural appropriateness (currency, examples, idioms)</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>hreflang-generation</h4>
+                    <p class="description">Creates hreflang tags for multi-language sites</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>multi-language-deployment</h4>
+                    <p class="description">Deploys same codebase to 3 Vercel projects with different configs</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>vercel-deployment</h4>
+                    <p class="description">Executes Vercel CLI commands with proper project IDs</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>environment-configuration</h4>
+                    <p class="description">Sets PUBLIC_DEFAULT_LOCALE and other env variables</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>sitemap-generation</h4>
+                    <p class="description">Creates XML sitemaps for all languages</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>search-console-submission</h4>
+                    <p class="description">Submits URLs to Google Search Console API</p>
+                </div>
+                <div class="skill-catalog-card">
+                    <h4>indexing-request</h4>
+                    <p class="description">Requests priority indexing for new/updated pages</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border-radius: 15px; text-align: center; color: white;">
+            <h2 style="margin-bottom: 20px;">🎯 Architecture Summary</h2>
+            <p style="font-size: 1.2em; line-height: 1.8; margin-bottom: 20px;">
+                <strong>14 Commands</strong> orchestrate <strong>8 Specialized Agents</strong><br>
+                which use <strong>35+ Reusable Skills</strong> to deliver complete SEO workflow<br>
+                from research to live deployment in 3 languages
+            </p>
+            <p style="font-size: 0.9em; opacity: 0.9;">
+                📚 See SEO-WORKFLOW-COMPREHENSIVE-GUIDE.md for complete documentation
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -15,8 +15,10 @@ import ContactForm from '../../../components/ContactForm.astro';
 import Calculator from '../../../components/Calculator.astro';
 import TestimonialCard from '../../../components/TestimonialCard.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
 import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../utils/constants';
 const lang = 'en';
 
 // SEO Data
@@ -33,11 +35,11 @@ const breadcrumbs = [
 
 // Benefits
 const benefits = [
-  { icon: 'clock', title: 'Fast 48-Hour Approval', description: 'Government tender deadlines? We approve fleet financing up to RM 15M in 48 hours.' },
+  { icon: 'clock', title: 'Fast Approval', description: 'Government tender deadlines? We approve fleet financing up to RM 15M quickly.' },
   { icon: 'percentage', title: 'Up to RM 15 Million Financing', description: 'Fleet packages for CIDB G7 contractors. Finance 5-10 bulldozers simultaneously.' },
   { icon: 'calendar', title: 'Flexible 36-84 Month Terms', description: 'Align payments with mega project timelines. MRT3, ECRL, Pan Borneo durations.' },
   { icon: 'shield', title: 'GPS & Smart Technology', description: 'Finance GPS-guided bulldozers with 3D machine control. Tender competitiveness advantage.' },
-  { icon: 'users', title: '80% LTV Financing', description: 'Only 20% down payment for fleet purchases. Preserve capital for tender deposits.' },
+  { icon: 'users', title: 'Down Payment From 0%*', description: 'Minimal down payment for fleet purchases. Loan up to 100%* for qualified applicants. Preserve capital for tender deposits. *Subject to terms and conditions' },
   { icon: 'lightning', title: 'Project-Based Repayment', description: 'Structure payments around government project cash flows and retention schedules.' },
   { icon: 'clock', title: 'CIDB Upgrade Support', description: 'Equipment packages designed for G6 to G7 contractor upgrades. Tender capacity increase.' },
   { icon: 'shield', title: 'Tax Benefit Maximization', description: 'Capital allowance optimization. 20% initial + 14% annual allowance structuring.' },
@@ -109,7 +111,7 @@ const testimonials = [
     name: 'Khairul Anuar bin Abdullah',
     company: 'KA Construction & Engineering',
     location: 'Perak',
-    testimonial: 'Needed Komatsu D155 bulldozers urgently for MRT3 tender submission. Equipment ownership scored 25 points in technical evaluation. Ing Heng approved RM 3.2M financing in 24 hours. We demonstrated owned equipment in our proposal. Won the RM 180M earthwork package. ROI achieved in 18 months.',
+    testimonial: 'Needed Komatsu D155 bulldozers urgently for MRT3 tender submission. Equipment ownership scored 25 points in technical evaluation. Ing Heng approved RM 3.2M financing fast. We demonstrated owned equipment in our proposal. Won the RM 180M earthwork package. ROI achieved in 18 months.',
     rating: 5,
   },
 ];
@@ -126,7 +128,7 @@ const faqs = [
   },
   {
     question: 'What is the approval process for fleet financing above RM 5 million?',
-    answer: 'Fleet financing (RM 5M-15M) requires: (1) Company financials and CIDB registration, (2) Tender documents or confirmed contract awards, (3) Equipment specifications and dealer quotations, (4) Directors\' guarantees and corporate resolutions. Approval timeline: 48-72 hours from complete documentation. We coordinate directly with equipment dealers (Tractors Malaysia/CAT, Komatsu distributors) for valuation and inspection.'
+    answer: 'Fleet financing (RM 5M-15M) requires: (1) Company financials and CIDB registration, (2) Tender documents or confirmed contract awards, (3) Equipment specifications and dealer quotations, (4) Directors\' guarantees and corporate resolutions. Approval timeline: within days from complete documentation. We coordinate directly with equipment dealers (Tractors Malaysia/CAT, Komatsu distributors) for valuation and inspection.'
   },
   {
     question: 'Can you structure payments around government project cash flows?',
@@ -202,7 +204,7 @@ const faqs = [
 const productSchema = generateProductSchema({
   name: 'Bulldozer Financing for Government Tenders Malaysia',
   description: 'Fleet financing for CIDB G7 contractors. Finance GPS-guided bulldozers for MRT3, ECRL, Pan Borneo mega projects. Up to RM 15M financing. 48-hour approval.',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/bulldozer-financing.jpg',
+  imageUrl: `${SITE_CONFIG.url}/images/bulldozer-financing.jpg`,
   category: 'Financial Service - Heavy Equipment Financing',
   offers: {
     price: '1800000',
@@ -241,27 +243,26 @@ const faqSchema = generateFAQSchema(faqs);
     ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20bulldozer%20fleet%20financing%20for%20government%20tender."
     ctaSecondaryText="Call: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/bulldozer-hero.jpg"
     lang={lang}
     trustSignals={['40 Years Experience', 'CIDB G7 Specialist', 'RM 15M Fleet Financing', 'Mega Project Approved']}
   />
 
   <!-- Problem/Solution Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           Major Contractors Face Equipment Investment Challenges
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           You've been shortlisted for MRT3 or Pan Borneo Highway tenders worth RM 500 million. But equipment ownership scoring requires demonstrating a fleet of 5-10 bulldozers (RM 8M-12M investment). Banks want 40% down payment. Tender submission deadline is 30 days. How do you compete?
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-red-600 font-bold text-lg mb-3">The Challenge</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>Mega project tenders require owned equipment (20-30 scoring points)</span>
@@ -281,9 +282,9 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-green-600 font-bold text-lg mb-3">Our Solution</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
               <span>Up to RM 15M fleet financing with 48-hour approval</span>
@@ -303,7 +304,7 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="font-bold text-lg mb-3 text-yellow-600">Real Success Story</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">Dato' Syed from Selangor</strong> needed 5 CAT D8T bulldozers (RM 6.2M) for a flood mitigation tender.</p>
@@ -322,24 +323,24 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Mega Projects Requiring Bulldozer Fleets in 2025
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           RM 70+ billion in infrastructure projects creating unprecedented opportunities for equipped contractors
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 mb-8">
         {megaProjects.map((project) => (
-          <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-l-4 border-primary">
+          <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-l-4 border-primary">
             <div class="flex justify-between items-start mb-4">
               <h3 class="text-2xl font-bold text-primary">{project.name}</h3>
-              <span class="text-lg font-bold text-secondary bg-accent px-3 py-1 rounded-full">{project.value}</span>
+              <span class="text-lg font-bold text-[#D4A574] bg-accent px-3 py-1 rounded-full">{project.value}</span>
             </div>
-            <p class="text-gray-700 leading-relaxed">{project.description}</p>
+            <p class="text-[#4F3E29] leading-relaxed">{project.description}</p>
           </div>
         ))}
       </div>
 
-      <div class="text-center bg-gray-50 border-l-4 border-primary p-6 rounded-lg">
+      <div class="text-center bg-[#F5F5DC] border-l-4 border-primary p-6 rounded-lg">
         <p class="text-lg text-gray-800">
           <strong>Equipment Requirement Insight:</strong> Government tenders for these projects typically award 20-30 points for equipment ownership, 15-20 points for GPS/smart technology, and 10-15 points for telematics fleet management. <span class="text-primary font-semibold">Demonstrated bulldozer ownership can be the deciding factor in winning RM 500M+ contracts.</span>
         </p>
@@ -348,13 +349,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Benefits Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Why CIDB G7 Contractors Choose Ing Heng Credit
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Specialized financing designed for mega project contractors and government tender specialists
         </p>
       </div>
@@ -381,13 +382,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- How It Works -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Fleet Financing Process: From Application to Tender Submission
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Structured process designed for government tender deadlines
         </p>
       </div>
@@ -413,7 +414,7 @@ const faqSchema = generateFAQSchema(faqs);
         >
           Start Fleet Financing Application
         </a>
-        <p class="text-gray-600 mt-4">Government tender deadline approaching? Request expedited 24-hour processing.</p>
+        <p class="text-[#4F3E29] mt-4">Government tender deadline approaching? Request expedited fast processing.</p>
       </div>
     </div>
   </section>
@@ -425,16 +426,16 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Bulldozer Types We Finance for Government Tenders
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           From compact D3K2 to heavy-duty D11T - All bulldozer categories for infrastructure projects
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {bulldozerTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow border-t-4 border-primary">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{equipment.description}</p>
+            <p class="text-[#4F3E29] text-sm leading-relaxed">{equipment.description}</p>
           </div>
         ))}
       </div>
@@ -444,12 +445,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">Accepted Brands for Government Tenders</h3>
         <div class="flex flex-wrap justify-center gap-4 mb-6">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full shadow-sm text-gray-700 font-medium border border-primary/20">
+            <span class="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium border border-primary/20">
               {brand}
             </span>
           ))}
         </div>
-        <div class="max-w-3xl mx-auto bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
+        <div class="max-w-3xl mx-auto bg-[#F5F5DC] p-6 rounded-lg border-l-4 border-primary">
           <p class="text-gray-800">
             <strong>Tender Specification Note:</strong> Most government tenders specify "equivalent to CAT/Komatsu standard." Both Japanese (Komatsu) and American (Caterpillar) brands score equally in technical evaluation. Chinese brands (Shantui, XCMG) are cost-effective but may score 5-10% lower in some tender evaluations.
           </p>
@@ -465,47 +466,47 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           CIDB G7 Upgrade Equipment Financing
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Strategic equipment packages designed to help G6 contractors upgrade to unlimited tender capacity
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">CIDB G7 Requirements</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
               <span class="text-2xl">1.</span>
               <div>
                 <div class="font-semibold text-gray-900">RM 750,000 Paid-Up Capital</div>
-                <div class="text-sm text-gray-600">Financial capability verification</div>
+                <div class="text-sm text-[#4F3E29]">Financial capability verification</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
               <span class="text-2xl">2.</span>
               <div>
                 <div class="font-semibold text-gray-900">Technical Personnel (Degree Holders)</div>
-                <div class="text-sm text-gray-600">Minimum 5 years experience required</div>
+                <div class="text-sm text-[#4F3E29]">Minimum 5 years experience required</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
               <span class="text-2xl">3.</span>
               <div>
                 <div class="font-semibold text-gray-900 text-primary">Equipment Ownership/Access</div>
-                <div class="text-sm text-gray-600">Demonstrate advanced technology and infrastructure access</div>
+                <div class="text-sm text-[#4F3E29]">Demonstrate advanced technology and infrastructure access</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
               <span class="text-2xl">4.</span>
               <div>
                 <div class="font-semibold text-gray-900">Progressive Track Record</div>
-                <div class="text-sm text-gray-600">Successful completion of large construction projects</div>
+                <div class="text-sm text-[#4F3E29]">Successful completion of large construction projects</div>
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-lg shadow-lg text-white">
+        <div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-lg shadow-[6px_6px_0_#2D1810] text-white">
           <h3 class="text-2xl font-bold mb-6">Typical G7 Equipment Investment</h3>
           <div class="space-y-4 text-sm">
             <div class="border-b border-white/30 pb-3">
@@ -539,20 +540,20 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Requirements Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Application Requirements for Fleet Financing
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Documentation requirements for RM 5M-15M bulldozer fleet financing
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- Company Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">Company Documentation</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -561,7 +562,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">SSM Registration + Form 24/49</div>
-                <div class="text-sm text-gray-600">Company registration, shareholding structure, directors list</div>
+                <div class="text-sm text-[#4F3E29]">Company registration, shareholding structure, directors list</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -570,7 +571,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">CIDB Registration Certificate</div>
-                <div class="text-sm text-gray-600">G6/G7 registration. Current grade and tender capacity limit.</div>
+                <div class="text-sm text-[#4F3E29]">G6/G7 registration. Current grade and tender capacity limit.</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -579,7 +580,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Financial Statements (2-3 years)</div>
-                <div class="text-sm text-gray-600">Audited accounts, balance sheets, cash flow statements</div>
+                <div class="text-sm text-[#4F3E29]">Audited accounts, balance sheets, cash flow statements</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -588,14 +589,14 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Company Bank Statements (12 months)</div>
-                <div class="text-sm text-gray-600">Operating account transaction history</div>
+                <div class="text-sm text-[#4F3E29]">Operating account transaction history</div>
               </div>
             </li>
           </ul>
         </div>
 
         <!-- Project Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">Project & Equipment Documentation</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -604,7 +605,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Tender Documents or Contract Awards</div>
-                <div class="text-sm text-gray-600">LOA/LOI for confirmed projects, or tender invitation for bidding projects</div>
+                <div class="text-sm text-[#4F3E29]">LOA/LOI for confirmed projects, or tender invitation for bidding projects</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -613,7 +614,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Equipment Quotations</div>
-                <div class="text-sm text-gray-600">Dealer quotations (CAT, Komatsu), specifications, delivery terms</div>
+                <div class="text-sm text-[#4F3E29]">Dealer quotations (CAT, Komatsu), specifications, delivery terms</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -622,7 +623,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Project Track Record</div>
-                <div class="text-sm text-gray-600">Previous government project completions, reference letters</div>
+                <div class="text-sm text-[#4F3E29]">Previous government project completions, reference letters</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -631,7 +632,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Directors' IC + Guarantees</div>
-                <div class="text-sm text-gray-600">All directors, corporate resolutions, personal guarantees for RM 5M+ financing</div>
+                <div class="text-sm text-[#4F3E29]">All directors, corporate resolutions, personal guarantees for RM 5M+ financing</div>
               </div>
             </li>
           </ul>
@@ -639,13 +640,13 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <!-- Additional Notes -->
-      <div class="max-w-4xl mx-auto mt-8 p-6 bg-gray-50 border-l-4 border-primary rounded-lg">
+      <div class="max-w-4xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
         <h4 class="font-bold text-primary mb-3">Expedited Processing for Government Tenders:</h4>
-        <ul class="space-y-2 text-gray-700">
-          <li>• <strong>Conditional Approval:</strong> Available within 48 hours for tender submission (demonstrates equipment ownership)</li>
-          <li>• <strong>Final Approval:</strong> Upon contract award (LOA/LOI confirmation) within 72 hours</li>
+        <ul class="space-y-2 text-[#4F3E29]">
+          <li>• <strong>Conditional Approval:</strong> Available for tender submission (demonstrates equipment ownership)</li>
+          <li>• <strong>Final Approval:</strong> Upon contract award (LOA/LOI confirmation) within days</li>
           <li>• <strong>Disbursement:</strong> 5-7 days post final approval for equipment procurement</li>
-          <li>• <strong>Urgent Cases:</strong> 24-hour processing available for imminent tender deadlines (premium service)</li>
+          <li>• <strong>Urgent Cases:</strong> Priority processing available for imminent tender deadlines (premium service)</li>
         </ul>
       </div>
     </div>
@@ -658,7 +659,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Success Stories from CIDB G7 Contractors
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Major developers who secured mega projects through strategic equipment financing
         </p>
       </div>
@@ -677,82 +678,6 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Ing Heng Credit vs Banks vs Dealer Financing
-        </h2>
-        <p class="text-xl text-gray-600">
-          Why major contractors choose specialized equipment financing over traditional sources
-        </p>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
-          <thead class="bg-secondary text-white">
-            <tr>
-              <th class="px-6 py-4 text-left">Feature</th>
-              <th class="px-6 py-4 text-center bg-accent text-primary font-bold">Ing Heng Credit</th>
-              <th class="px-6 py-4 text-center">Commercial Banks</th>
-              <th class="px-6 py-4 text-center">Dealer Financing</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr>
-              <td class="px-6 py-4 font-medium">Maximum Fleet Financing</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">RM 15 Million</td>
-              <td class="px-6 py-4 text-center text-gray-600">RM 5-8 Million</td>
-              <td class="px-6 py-4 text-center text-gray-600">RM 3-5 Million</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Approval Time</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">48-72 hours</td>
-              <td class="px-6 py-4 text-center text-gray-600">3-6 weeks</td>
-              <td class="px-6 py-4 text-center text-gray-600">2-3 weeks</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Down Payment (Fleet)</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">20%</td>
-              <td class="px-6 py-4 text-center text-gray-600">30-40%</td>
-              <td class="px-6 py-4 text-center text-gray-600">25-30%</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Interest Rate</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">6.5-10%</td>
-              <td class="px-6 py-4 text-center text-gray-600">9-15%</td>
-              <td class="px-6 py-4 text-center text-gray-600">10-18%</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Project-Based Repayment</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Available</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Fixed Only</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Fixed Only</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">GPS/Smart Technology</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Actively Financed</td>
-              <td class="px-6 py-4 text-center text-gray-600">Rarely</td>
-              <td class="px-6 py-4 text-center text-gray-600">Sometimes</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">CIDB G7 Expertise</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Specialized</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ No Expertise</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ No Expertise</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Tender Deadline Support</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Expedited 24hr</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Not Available</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Not Available</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
 
   <!-- FAQ Section -->
   <section class="section">
@@ -761,7 +686,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Frequently Asked Questions
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Everything major contractors need to know about bulldozer fleet financing
         </p>
       </div>
@@ -775,7 +700,7 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         Ready to Finance Your Bulldozer Fleet for Mega Projects?
@@ -824,16 +749,19 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="bulldozer" />
+
   <!-- Contact Form Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-2xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-primary mb-4">
             Request Fleet Financing Consultation
           </h2>
-          <p class="text-gray-600">
-            Our CIDB G7 financing specialists will contact you within 2 hours during business hours
+          <p class="text-[#4F3E29]">
+            Our CIDB G7 financing specialists will contact you promptly during business hours
           </p>
         </div>
         <ContactForm lang={lang} />

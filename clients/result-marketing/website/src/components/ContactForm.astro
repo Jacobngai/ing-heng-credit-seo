@@ -1,0 +1,175 @@
+---
+import type { Locale } from '../utils/constants';
+import { t } from '../utils/i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const translate = t(lang);
+---
+
+<form id="contact-form" class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Name -->
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+        {translate('form.name')} <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all"
+        placeholder={translate('form.namePlaceholder')}
+      />
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+        {translate('form.email')} <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all"
+        placeholder={translate('form.emailPlaceholder')}
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Phone -->
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+        {translate('form.phone')}
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all"
+        placeholder={translate('form.phonePlaceholder')}
+      />
+    </div>
+
+    <!-- Company -->
+    <div>
+      <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
+        {translate('form.company')}
+      </label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all"
+        placeholder={translate('form.companyPlaceholder')}
+      />
+    </div>
+  </div>
+
+  <!-- Service Interest -->
+  <div>
+    <label for="service" class="block text-sm font-medium text-gray-700 mb-2">
+      {translate('form.service')}
+    </label>
+    <select
+      id="service"
+      name="service"
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all"
+    >
+      <option value="">{translate('form.selectService')}</option>
+      <option value="ai-seo">{translate('services.aiSeo')}</option>
+      <option value="long-tail">{translate('services.longTail')}</option>
+      <option value="content">{translate('services.content')}</option>
+      <option value="technical">{translate('services.technical')}</option>
+    </select>
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+      {translate('form.message')} <span class="text-red-500">*</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="6"
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all resize-none"
+      placeholder={translate('form.messagePlaceholder')}
+    ></textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <button
+      type="submit"
+      class="w-full btn btn-primary"
+    >
+      <span id="submit-text">{translate('form.submit')}</span>
+      <span id="loading-text" class="hidden">{translate('form.sending')}</span>
+    </button>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="form-message" class="hidden"></div>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const submitText = document.getElementById('submit-text');
+  const loadingText = document.getElementById('loading-text');
+  const formMessage = document.getElementById('form-message');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Show loading state
+    if (submitButton) submitButton.disabled = true;
+    submitText?.classList.add('hidden');
+    loadingText?.classList.remove('hidden');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      // TODO: Replace with actual API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // Success
+        if (formMessage) {
+          formMessage.className = 'p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg';
+          formMessage.textContent = 'Thank you! We will get back to you soon.';
+          formMessage.classList.remove('hidden');
+        }
+        form.reset();
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      // Error
+      if (formMessage) {
+        formMessage.className = 'p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg';
+        formMessage.textContent = 'Something went wrong. Please try again or email us directly.';
+        formMessage.classList.remove('hidden');
+      }
+    } finally {
+      // Reset button state
+      if (submitButton) submitButton.disabled = false;
+      submitText?.classList.remove('hidden');
+      loadingText?.classList.add('hidden');
+    }
+  });
+</script>

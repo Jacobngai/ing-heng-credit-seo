@@ -16,7 +16,9 @@ import ContactForm from '../../../components/ContactForm.astro';
 import Calculator from '../../../components/Calculator.astro';
 import TestimonialCard from '../../../components/TestimonialCard.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
 import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import { SITE_CONFIG } from '../../../utils/constants';
 
 const lang = 'ms';
 
@@ -37,7 +39,6 @@ const benefits = [
   { icon: 'clock', title: 'Kelulusan Pantas 48 Jam', description: 'Kelulusan diutamakan untuk pengusaha kren berpengalaman dengan kontrak sewa dan rekod pematuhan DOSH yang baik. Perkhidmatan segera untuk projek mendesak.' },
   { icon: 'shield', title: 'Sokongan Pematuhan DOSH', description: 'Pembiayaan sistem keselamatan: TSM (Tower Crane Systems Monitoring), sistem anti-perlanggaran, penunjuk beban. Pakej lengkap untuk pematuhan Sijil Kecergasan (CF).' },
   { icon: 'calendar', title: 'Pakej Pembiayaan Fleet', description: 'Beli 2-5 kren serentak dengan diskaun volum. Bayaran bulanan disatukan, proses kelulusan dipermudahkan, kadar faedah lebih rendah 0.5-1%.' },
-  { icon: 'percentage', title: 'Pelan Bayaran Bermusim', description: 'Bayaran lebih rendah semasa musim tengkujuh (Nov-Feb) apabila projek perlahan. Bayaran lebih tinggi musim puncak (Mar-Okt) mengikut aliran tunai sebenar.' },
   { icon: 'users', title: 'Kren Baru & Terpakai', description: 'Pembiayaan kren baharu atau terpakai sehingga 15 tahun. Semua jenama utama diterima: Liebherr, Tadano, Zoomlion, Manitowoc, Potain, Terex, Grove.' },
   { icon: 'lightning', title: 'Pembiayaan Teknologi Keselamatan', description: 'Gabungkan pembelian kren dengan sistem keselamatan TSM, anti-perlanggaran, dan teknologi pemantauan. Satu pakej pembiayaan menyeluruh.' },
   { icon: 'document', title: 'Kepakaran Industri Kren', description: '40 tahun pengalaman pembiayaan jentera. Kami fahami bisnes sewa kren: kadar penggunaan, kitaran projek, kekurangan operator. Nasihat pakar percuma.' },
@@ -49,7 +50,6 @@ const steps = [
   { stepNumber: 1, icon: 'contact', title: 'Hubungi Melalui WhatsApp', description: 'Berbincang dengan pakar pembiayaan kami. Kongsikan jenis kren, jenama pilihan, projek yang ada. Sertakan kontrak sewa untuk kelulusan lebih pantas.' },
   { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen Perniagaan', description: 'Pendaftaran syarikat SSM, penyata kewangan 12 bulan, kontrak sewa, rekod pemilikan kren sedia ada (jika ada). Proses mudah, tidak rumit.' },
   { stepNumber: 3, icon: 'check', title: 'Kelulusan Dalam 48 Jam', description: 'Laluan pantas untuk pengusaha kren berpengalaman. Kren dilengkapi teknologi keselamatan diberi keutamaan dan kadar faedah istimewa.' },
-  { stepNumber: 4, icon: 'clipboard', title: 'Semak Terma Pinjaman', description: 'Terma telus dengan pilihan bayaran bermusim. Tiada bayaran tersembunyi, bayaran awal fleksibel, pembiayaan semula tersedia. Perkhidmatan mesra dan profesional.' },
   { stepNumber: 5, icon: 'truck', title: 'Terima Kren Anda', description: 'Dapatkan dana untuk pembelian kren dan kos mobilisasi. Mula jana pendapatan sewa serta-merta dalam projek bangunan tinggi dan infrastruktur.' },
 ];
 
@@ -115,7 +115,6 @@ const testimonials = [
     name: 'Kumar Subramaniam',
     company: 'KS Tower Cranes Sdn Bhd',
     location: 'Johor Bahru, Johor',
-    testimonial: 'Beli 2 kren menara Zoomlion untuk projek bangunan tinggi di Iskandar Malaysia. Pembiayaan fleet jimat 1.5% faedah. Pelan bayaran bermusim sangat membantu semasa musim hujan apabila projek perlahan. Ing Heng Credit benar-benar faham cabaran bisnes kami. Syabas!',
     rating: 5,
   },
   {
@@ -143,11 +142,7 @@ const faqs = [
   },
   {
     question: 'Apakah kriteria kelulusan untuk pembiayaan kren?',
-    answer: 'Faktor kelulusan utama: (1) Pengalaman bisnes sewa kren (minimum 2 tahun diutamakan), (2) Pemilikan kren sedia ada atau sejarah sewa jangka panjang, (3) Kontrak sewa aktif atau projek dalam pipeline (projek kerajaan diberi keutamaan), (4) Penyata kewangan yang menunjukkan pendapatan sewa, (5) Rekod pematuhan DOSH yang baik (tiada pelanggaran besar). Pembeli kren kali pertama dengan latar belakang bisnes pembinaan dan kontrak sewa yang dijamin juga dipertimbangkan. Kadar kelulusan untuk pengusaha berpengalaman: 90-95%. Kami percaya pada potensi pertumbuhan bisnes anda dan berkomitmen untuk menjadi rakan kongsi jangka panjang.'
-  },
-  {
-    question: 'Bagaimana pelan bayaran bermusim berfungsi untuk bisnes sewa kren?',
-    answer: 'Kami memahami sifat bermusim industri pembinaan Malaysia. Pelan bermusim standard: (1) Musim Puncak (Mac-Okt): 120% daripada bayaran bulanan standard apabila kadar penggunaan 80-90%, (2) Musim Tengkujuh (Nov-Feb): 60% daripada bayaran bulanan standard apabila kadar penggunaan turun ke 50-70%. Jumlah bayaran tahunan kekal sama, tetapi aliran tunai diselaraskan dengan pendapatan sebenar. Ini menghalang kegagalan bayaran semasa bulan perlahan dan membantu mengekalkan aliran tunai positif sepanjang tahun. Tersedia untuk pinjaman melebihi RM 1 juta. Kami prihatin terhadap cabaran aliran tunai yang anda hadapi dan ingin membantu bisnes anda berkembang dengan stabil.'
+    answer: 'Faktor kelulusan utama: (1) Pengalaman bisnes sewa kren (minimum 2 tahun diutamakan), (2) Pemilikan kren sedia ada atau sejarah sewa jangka panjang, (3) Kontrak sewa aktif atau projek dalam pipeline (projek kerajaan diberi keutamaan), (4) Penyata kewangan yang menunjukkan pendapatan sewa, (5) Rekod pematuhan DOSH yang baik (tiada pelanggaran besar). Pembeli kren kali pertama dengan latar belakang bisnes pembinaan dan kontrak sewa yang dijamin juga dipertimbangkan. Kadar kelulusan untuk pengusaha berpengalaman: 90-Industry-Leading. Kami percaya pada potensi pertumbuhan bisnes anda dan berkomitmen untuk menjadi rakan kongsi jangka panjang.'
   },
   {
     question: 'Bolehkah saya dapatkan pembiayaan fleet untuk beberapa kren sekaligus?',
@@ -163,11 +158,10 @@ const faqs = [
   },
   {
     question: 'Apa yang terjadi jika kren saya menganggur semasa musim tengkujuh?',
-    answer: 'Inilah sebabnya kami menawarkan pelan bayaran bermusim khusus untuk pengusaha kren. Tidak seperti bank dengan bayaran bulanan tetap, kami menyedari bahawa kadar penggunaan kren turun 20-40% semasa musim tengkujuh (November-Februari) akibat pemberhentian kerja berkaitan cuaca. Pelan bermusim kami mengurangkan bayaran bulanan semasa bulan perlahan. Selain itu, kami mengesyorkan: (1) Insurans komprehensif meliputi kerosakan cuaca, (2) Penjadualan penyelenggaraan musim tengkujuh, (3) Kemudahan modal kerja untuk bulan perlahan. Ramai pengusaha menggunakan masa henti musim tengkujuh untuk penyelenggaraan kren dan pensijilan semula DOSH. Kami adalah rakan kongsi jangka panjang bisnes anda dan prihatin terhadap kejayaan berterusan anda dalam semua musim.'
   },
   {
     question: 'Bolehkah saya membiayai semula pinjaman kren yang sedia ada?',
-    answer: 'Boleh! Kami menawarkan perkhidmatan pembiayaan semula dan pembelian balik pinjaman kren. Faedah pembiayaan semula: (1) Kadar faedah lebih rendah (biasanya pengurangan 2-4%), (2) Terma bayaran lebih baik dengan fleksibiliti bermusim, (3) Keluarkan ekuiti untuk pengembangan fleet atau modal kerja, (4) Satukan beberapa pinjaman kren menjadi satu bayaran. Sesuai untuk pengusaha yang membayar kadar faedah tinggi (melebihi 10%) dari pembiayaan pengedar atau pinjaman lama. Pembiayaan semula tersedia selepas 12 bulan pembayaran tepat masa pada pinjaman sedia ada. Kami komited membantu anda mengoptimumkan kedudukan kewangan dan mengurangkan kos operasi untuk meningkatkan keuntungan bisnes anda.'
+    answer: 'Boleh! Kami menawarkan perkhidmatan pembiayaan semula dan pembelian balik pinjaman kren. Faedah pembiayaan semula: (1) Kadar faedah lebih rendah (biasanya pengurangan 2-4%), (2) Terma bayaran lebih baik dan fleksibel, (3) Keluarkan ekuiti untuk pengembangan fleet atau modal kerja, (4) Satukan beberapa pinjaman kren menjadi satu bayaran. Sesuai untuk pengusaha yang membayar kadar faedah tinggi (melebihi 10%) dari pembiayaan pengedar atau pinjaman lama. Pembiayaan semula tersedia selepas 12 bulan pembayaran tepat masa pada pinjaman sedia ada. Kami komited membantu anda mengoptimumkan kedudukan kewangan dan mengurangkan kos operasi untuk meningkatkan keuntungan bisnes anda.'
   },
   {
     question: 'Apakah keperluan Sijil Kecergasan (Certificate of Fitness) DOSH?',
@@ -183,7 +177,7 @@ const faqs = [
   },
   {
     question: 'Berapa pantas kelulusan pembiayaan kren?',
-    answer: 'Kelulusan standard: 48 jam (2 hari bekerja) untuk permohonan lengkap. Kelulusan dipercepatkan: 24 jam untuk pengusaha berpengalaman dengan: (1) Pemilikan kren sedia ada, (2) Kontrak sewa aktif (projek kerajaan diutamakan), (3) Penyata kewangan kukuh, (4) Rekod pematuhan DOSH yang bersih. Kami mengutamakan kes mendesak di mana pengusaha mempunyai peluang projek segera (contoh: memenangi tender kerajaan, mendapatkan kontrak sewa jangka panjang). Hantar permohonan sebelum 12 tengah hari untuk penilaian awal hari yang sama. Kami faham bahawa peluang perniagaan tidak menunggu, dan komitmen kami adalah memberikan perkhidmatan pantas tanpa mengorbankan kualiti penilaian dan keselamatan kewangan anda.'
+    answer: 'Kelulusan standard: 48 jam (2 hari bekerja) untuk permohonan lengkap. Kelulusan dipercepatkan: Pantas untuk pengusaha berpengalaman dengan: (1) Pemilikan kren sedia ada, (2) Kontrak sewa aktif (projek kerajaan diutamakan), (3) Penyata kewangan kukuh, (4) Rekod pematuhan DOSH yang bersih. Kami mengutamakan kes mendesak di mana pengusaha mempunyai peluang projek segera (contoh: memenangi tender kerajaan, mendapatkan kontrak sewa jangka panjang). Hantar permohonan sebelum 12 tengah hari untuk penilaian awal hari yang sama. Kami faham bahawa peluang perniagaan tidak menunggu, dan komitmen kami adalah memberikan perkhidmatan pantas tanpa mengorbankan kualiti penilaian dan keselamatan kewangan anda.'
   },
   {
     question: 'Bolehkah warga asing atau syarikat asing memohon?',
@@ -207,7 +201,6 @@ const faqs = [
   },
   {
     question: 'Apakah yang membezakan pembiayaan kren anda daripada bank?',
-    answer: 'Perbezaan utama: (1) Kepakaran industri sewa kren - Kami faham kadar penggunaan, kitaran bermusim, ekonomi projek. Bank tidak faham. (2) Fleksibiliti bayaran bermusim - Selaras dengan turun naik pendapatan musim tengkujuh. Bank hanya menawarkan bayaran tetap. (3) Pembiayaan teknologi - Kami gabungkan peningkatan pematuhan DOSH. Bank tidak membiayai teknologi berasingan. (4) Penerimaan kren terpakai - Sehingga 15 tahun. Bank hadkan kepada 5 tahun. (5) Pakej pembiayaan fleet - Diskaun volum dan terma disatukan. Bank uruskan setiap kren berasingan. (6) Kelulusan lebih pantas - 48 jam berbanding 3-4 minggu untuk bank. (7) Kadar kelulusan lebih tinggi - 90-95% berbanding 50-60% untuk bank. (8) Penyelesaian kekurangan operator - Termasuk kos latihan dalam pembiayaan. Kami adalah rakan kongsi sebenar kejayaan bisnes anda, bukan sekadar pemberi pinjaman. Hubungi kami hari ini untuk pengalaman pembiayaan yang berbeza dan perkhidmatan yang benar-benar prihatin!'
   },
 ];
 
@@ -215,7 +208,7 @@ const faqs = [
 const productSchema = generateProductSchema({
   name: 'Pembiayaan Kren Malaysia - Kren Menara & Mudah Alih',
   description: 'Pembiayaan kren profesional untuk pengusaha sewa. Pembiayaan kren menara, kren mudah alih, kren crawler. Pematuhan DOSH, pakej fleet, kelulusan 48 jam. Dari RM500,000 hingga RM10 juta.',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/crane-financing.jpg',
+  imageUrl: `${SITE_CONFIG.url}/images/crane-financing.jpg`,
   category: 'Financial Service - Heavy Equipment Financing',
   offers: {
     price: '500000',
@@ -254,50 +247,49 @@ const faqSchema = generateFAQSchema(faqs);
     ctaLink="https://wa.me/60175700889?text=Assalamualaikum!%20Saya%20ingin%20mendapatkan%20sebut%20harga%20pembiayaan%20kren."
     ctaSecondaryText="Hubungi Sekarang: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/crane-hero.jpg"
     lang={lang}
     trustSignals={['40 Tahun Pengalaman', 'Pakar Pematuhan DOSH', 'Pakar Pembiayaan Fleet', 'Kadar Kelulusan 90%']}
   />
 
   <!-- Market Opportunity Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           Pasaran Sewa Kren Malaysia Berkembang Pesat - Adakah Anda Merebut Peluang Ini?
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           Ledakan bangunan tinggi di Lembah Klang, Johor, dan Pulau Pinang. Projek MRT3, LRT Pulau Pinang, pusat data (Google, Microsoft). Kadar penggunaan kren menara mencapai 80-90%. Kadar sewa meningkat 15-20%. Kekurangan operator mewujudkan peluang harga premium. Satu masalah: Akses kepada modal untuk pemerolehan peralatan. Biar kami bantu anda!
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-primary font-bold text-2xl mb-2">RM 1.74 Bilion</div>
-          <div class="text-gray-700 font-semibold mb-2">Pusat Data Gamuda Elmina</div>
-          <p class="text-sm text-gray-600">Kemudahan hyperscale Google memerlukan kren mudah alih untuk pembinaan 28 bulan. Pipeline projek serupa: Microsoft, operator hyperscale lain. Peluang pasaran besar!</p>
+          <div class="text-[#4F3E29] font-semibold mb-2">Pusat Data Gamuda Elmina</div>
+          <p class="text-sm text-[#4F3E29]">Kemudahan hyperscale Google memerlukan kren mudah alih untuk pembinaan 28 bulan. Pipeline projek serupa: Microsoft, operator hyperscale lain. Peluang pasaran besar!</p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-primary font-bold text-2xl mb-2">Penggunaan 80-90%</div>
-          <div class="text-gray-700 font-semibold mb-2">Permintaan Kren Menara Memuncak</div>
-          <p class="text-sm text-gray-600">Kadar penggunaan tertinggi dalam 10 tahun. Projek RTS Johor, ledakan bangunan tinggi Penang, pembaharuan bandar KL. Kekurangan bekalan menyokong premium sewa.</p>
+          <div class="text-[#4F3E29] font-semibold mb-2">Permintaan Kren Menara Memuncak</div>
+          <p class="text-sm text-[#4F3E29]">Kadar penggunaan tertinggi dalam 10 tahun. Projek RTS Johor, ledakan bangunan tinggi Penang, pembaharuan bandar KL. Kekurangan bekalan menyokong premium sewa.</p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-primary font-bold text-2xl mb-2">Peraturan DOSH 2024</div>
-          <div class="text-gray-700 font-semibold mb-2">Mandat Teknologi Keselamatan</div>
-          <p class="text-sm text-gray-600">Keperluan Sijil Kecergasan baharu. TSM, sistem anti-perlanggaran semakin diperlukan. Kren dilengkapi teknologi perintah premium sewa 10-20%.</p>
+          <div class="text-[#4F3E29] font-semibold mb-2">Mandat Teknologi Keselamatan</div>
+          <p class="text-sm text-[#4F3E29]">Keperluan Sijil Kecergasan baharu. TSM, sistem anti-perlanggaran semakin diperlukan. Kren dilengkapi teknologi perintah premium sewa 10-20%.</p>
         </div>
       </div>
 
       <!-- ROI Calculator Section -->
-      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4 text-center">Pulangan Pelaburan (ROI) Bisnes Sewa Kren Menara</h3>
         <div class="grid md:grid-cols-2 gap-6 text-sm">
           <div>
             <h4 class="font-bold text-gray-800 mb-2">Contoh Pelaburan:</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• Kren menara Zoomlion: RM 1,800,000</li>
               <li>• Deposit (20%): RM 360,000</li>
               <li>• Bayaran bulanan (7 tahun): RM 25,000</li>
@@ -306,7 +298,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
           <div>
             <h4 class="font-bold text-gray-800 mb-2">Potensi Pendapatan:</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• Kadar sewa bulanan: RM 120,000-180,000</li>
               <li>• Pendapatan kasar tahunan: RM 1.44 juta-2.16 juta</li>
               <li>• Keuntungan bersih tahunan: RM 600,000-900,000</li>
@@ -330,7 +322,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Mengapa Pengusaha Kren Memilih Ing Heng Credit
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Pembiayaan khusus untuk bisnes sewa kren dengan kepakaran industri dan terma fleksibel
         </p>
       </div>
@@ -348,14 +340,14 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-primary mb-4">Kira Bayaran Bulanan Kren Anda</h2>
-          <p class="text-gray-600">Anggarkan bayaran bulanan untuk kren menara, kren mudah alih, atau pembiayaan fleet</p>
+          <p class="text-[#4F3E29]">Anggarkan bayaran bulanan untuk kren menara, kren mudah alih, atau pembiayaan fleet</p>
         </div>
-        <Calculator lang={lang} equipmentType="Kren" defaultPrice={1800000} />
+        <Calculator lang={lang} equipmentType="Kren" defaultPrice={450000} />
       </div>
     </div>
   </section>
@@ -367,7 +359,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Cara Membiayai Fleet Kren Anda Dalam 5 Langkah Mudah
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Pengusaha berpengalaman dari permohonan hingga penempatan kren dalam 5-7 hari
         </p>
       </div>
@@ -393,32 +385,32 @@ const faqSchema = generateFAQSchema(faqs);
         >
           Berbincang Tentang Pembiayaan Fleet Anda
         </a>
-        <p class="text-sm text-gray-600 mt-3">Pengusaha berpengalaman diluluskan dalam 48 jam | Terma fleksibel tersedia</p>
+        <p class="text-sm text-[#4F3E29] mt-3">Pengusaha berpengalaman diluluskan dalam 48 jam | Terma fleksibel tersedia</p>
       </div>
     </div>
   </section>
 
   <!-- Equipment Types -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Jenis Kren Yang Kami Biayai
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Pembiayaan menyeluruh untuk semua kategori kren dan aplikasi
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {equipmentTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600 mb-3 text-sm">{equipment.description}</p>
-            <div class="text-sm text-gray-700 space-y-2">
+            <p class="text-[#4F3E29] mb-3 text-sm">{equipment.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-2">
               <p><strong>Aplikasi:</strong> {equipment.applications}</p>
               <p><strong>Julat Harga:</strong> <span class="text-primary font-semibold">{equipment.priceRange}</span></p>
-              <p><strong>Jenama:</strong> <span class="text-gray-600">{equipment.brands}</span></p>
+              <p><strong>Jenama:</strong> <span class="text-[#4F3E29]">{equipment.brands}</span></p>
             </div>
           </div>
         ))}
@@ -429,12 +421,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">Jenama Kren Yang Diterima</h3>
         <div class="flex flex-wrap justify-center gap-4">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium hover:shadow-md transition-shadow">
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-gray-600 mt-4">Jenama premium (Liebherr, Tadano) menerima kadar faedah keutamaan kerana nilai jualan semula yang lebih kukuh.</p>
+        <p class="text-[#4F3E29] mt-4">Jenama premium (Liebherr, Tadano) menerima kadar faedah keutamaan kerana nilai jualan semula yang lebih kukuh.</p>
       </div>
     </div>
   </section>
@@ -446,14 +438,14 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Pematuhan DOSH & Pembiayaan Teknologi Keselamatan
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Gabungkan teknologi keselamatan dengan pembiayaan kren untuk pematuhan DOSH menyeluruh
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- DOSH Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">Keperluan DOSH 2024</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -462,7 +454,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Sijil Kecergasan (CF)</div>
-                <div class="text-sm text-gray-600">CF sah diperlukan setiap 15 bulan. Denda ketidakpatuhan: Sehingga RM 100,000. Kami sahkan status CF sebelum pembiayaan.</div>
+                <div class="text-sm text-[#4F3E29]">CF sah diperlukan setiap 15 bulan. Denda ketidakpatuhan: Sehingga RM 100,000. Kami sahkan status CF sebelum pembiayaan.</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -471,7 +463,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Pensijilan Operator</div>
-                <div class="text-sm text-gray-600">Operator bersijil CIDB/JKKP mandatori. Kekurangan operator mencipta kelebihan kompetitif untuk pasukan terlatih.</div>
+                <div class="text-sm text-[#4F3E29]">Operator bersijil CIDB/JKKP mandatori. Kekurangan operator mencipta kelebihan kompetitif untuk pasukan terlatih.</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -480,14 +472,14 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Teknologi Keselamatan</div>
-                <div class="text-sm text-gray-600">Pemaju besar (Gamuda, Sime Darby, UEM) semakin memerlukan TSM, anti-perlanggaran, pemantauan beban.</div>
+                <div class="text-sm text-[#4F3E29]">Pemaju besar (Gamuda, Sime Darby, UEM) semakin memerlukan TSM, anti-perlanggaran, pemantauan beban.</div>
               </div>
             </li>
           </ul>
         </div>
 
         <!-- Technology Financing -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">Teknologi Yang Kami Biayai</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -496,7 +488,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Pemantauan Sistem Kren Menara (TSM)</div>
-                <div class="text-sm text-gray-600">Pemantauan masa nyata, anti-perlanggaran, sistem penzonan. Kos: RM 100,000-250,000. Premium sewa: 10-20%.</div>
+                <div class="text-sm text-[#4F3E29]">Pemantauan masa nyata, anti-perlanggaran, sistem penzonan. Kos: RM 100,000-250,000. Premium sewa: 10-20%.</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -505,7 +497,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Penunjuk Momen Beban (LMI)</div>
-                <div class="text-sm text-gray-600">Pencegahan beban lampau, pengurusan kapasiti. Kos: RM 30,000-80,000. Pengurangan premium insurans: 5-15%.</div>
+                <div class="text-sm text-[#4F3E29]">Pencegahan beban lampau, pengurusan kapasiti. Kos: RM 30,000-80,000. Pengurangan premium insurans: 5-15%.</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -514,7 +506,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Sistem Pemantauan Cuaca</div>
-                <div class="text-sm text-gray-600">Anemometer, protokol penutupan automatik. Kritikal untuk keselamatan musim tengkujuh. Kos: RM 20,000-50,000.</div>
+                <div class="text-sm text-[#4F3E29]">Anemometer, protokol penutupan automatik. Kritikal untuk keselamatan musim tengkujuh. Kos: RM 20,000-50,000.</div>
               </div>
             </li>
           </ul>
@@ -522,9 +514,9 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <!-- Technology ROI Note -->
-      <div class="max-w-3xl mx-auto mt-8 p-6 bg-gray-50 border-l-4 border-primary rounded-lg">
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
         <h4 class="font-bold text-primary mb-2">Pulangan Pelaburan Teknologi:</h4>
-        <p class="text-gray-700 text-sm">
+        <p class="text-[#4F3E29] text-sm">
           Kren dilengkapi TSM perintah premium sewa 10-20% (RM 15,000-30,000 pendapatan bulanan tambahan untuk kren menara). Penjimatan insurans: 5-15% tahunan (RM 5,000-15,000). Nilai pencegahan kemalangan: Berpotensi berjuta dalam pengelakan liabiliti/masa henti. Tempoh pulangan modal untuk pelaburan teknologi: Biasanya 2-3 tahun. Pemaju besar semakin memerlukan TSM di tapak berbilang kren. Melabur dalam teknologi keselamatan adalah keputusan perniagaan bijak!
         </p>
       </div>
@@ -532,13 +524,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Kisah Kejayaan Pengusaha Sewa Kren
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Pengusaha sebenar yang mengembangkan bisnes sewa kren mereka dengan pembiayaan kami
         </p>
       </div>
@@ -558,13 +550,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- FAQ Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Soalan Lazim Tentang Pembiayaan Kren
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Jawapan komprehensif untuk soalan pembiayaan pengusaha kren
         </p>
       </div>
@@ -578,7 +570,7 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         Bersedia Untuk Merebut Ledakan Sewa Kren Malaysia?
@@ -627,6 +619,9 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="crane" />
+
   <!-- Contact Form Section -->
   <section class="section">
     <div class="container-custom">
@@ -635,7 +630,7 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             Hantar Permohonan Pembiayaan Kren Anda
           </h2>
-          <p class="text-gray-600">
+          <p class="text-[#4F3E29]">
             Kami akan menghubungi anda dalam masa 4 jam semasa waktu perniagaan (Isnin-Jumaat 9 Pagi-5 Petang, Sabtu 9 Pagi-1 Tengah Hari)
           </p>
         </div>

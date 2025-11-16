@@ -1,0 +1,250 @@
+<!-- TODO: Translate content to 中文 -->
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'zh';
+
+// Placeholder blog posts - will be replaced with real content
+const blogPosts = [
+  {
+    title: 'How to Dominate Long-Tail Keywords in 2025',
+    excerpt: 'Stop chasing competitive head terms. Learn how to identify and rank for 100+ long-tail keywords that actually convert.',
+    author: 'Walter Chen',
+    date: '2025-01-15',
+    category: 'Strategy',
+    readTime: '8 min read',
+    slug: 'dominate-long-tail-keywords-2025',
+    featured: true
+  },
+  {
+    title: 'AI Search Optimization: Complete Guide for Malaysian Businesses',
+    excerpt: 'ChatGPT, Perplexity, and Claude are changing search. Here\'s how to optimize your content to get cited by AI engines.',
+    author: 'Sarah Tan',
+    date: '2025-01-12',
+    category: 'AI SEO',
+    readTime: '10 min read',
+    slug: 'ai-search-optimization-guide-malaysia',
+    featured: true
+  },
+  {
+    title: 'Understanding SEO Agency Pricing in Malaysia',
+    excerpt: 'A guide to understanding SEO agency pricing structures and what to look for when evaluating service providers.',
+    author: 'Walter Chen',
+    date: '2025-01-08',
+    category: 'Industry',
+    readTime: '6 min read',
+    slug: 'seo-contract-analysis'
+  },
+  {
+    title: 'Long-Tail Keyword Strategy: B2B SaaS Case Study',
+    excerpt: 'Exploring how B2B SaaS companies can expand their keyword coverage using long-tail strategies and AI tools.',
+    author: 'Sarah Tan',
+    date: '2025-01-05',
+    category: 'Case Study',
+    readTime: '7 min read',
+    slug: 'b2b-saas-case-study'
+  },
+  {
+    title: 'Content at Scale: How AI + Humans Create Better Content Faster',
+    excerpt: 'The truth about AI content: when it works, when it doesn\'t, and how to get 10x productivity without sacrificing quality.',
+    author: 'Walter Chen',
+    date: '2025-01-02',
+    category: 'Content',
+    readTime: '9 min read',
+    slug: 'content-at-scale-ai-humans'
+  },
+  {
+    title: 'Technical SEO Checklist for Malaysian Websites',
+    excerpt: 'Common technical SEO issues found on Malaysian websites and best practices for addressing them.',
+    author: 'Sarah Tan',
+    date: '2024-12-28',
+    category: 'Technical',
+    readTime: '12 min read',
+    slug: 'technical-seo-checklist-malaysia'
+  }
+];
+
+const categories = [
+  { name: 'All Posts', count: blogPosts.length, slug: 'all' },
+  { name: 'Strategy', count: 2, slug: 'strategy' },
+  { name: 'AI SEO', count: 2, slug: 'ai-seo' },
+  { name: 'Case Studies', count: 1, slug: 'case-studies' },
+  { name: 'Content', count: 1, slug: 'content' },
+  { name: 'Technical', count: 1, slug: 'technical' }
+];
+
+const featuredPosts = blogPosts.filter(post => post.featured);
+const regularPosts = blogPosts.filter(post => !post.featured);
+---
+
+<BaseLayout
+  title="SEO Blog - AI-Powered Strategies & Insights | Result Marketing"
+  description="Learn cutting-edge SEO strategies, AI optimization techniques, and long-tail keyword tactics. Free insights from Malaysia's leading AI SEO agency."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Blog</span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+          AI-Powered SEO Insights
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Learn the strategies we use to help Malaysian businesses dominate long-tail search. No fluff, no theory—just actionable insights from real campaigns.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#subscribe" class="btn-primary">
+            Subscribe for Updates
+          </a>
+          <a href="/zh/contact" class="btn-secondary">
+            Work with Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section bg-white border-b border-gray-200">
+    <div class="container-custom">
+      <div class="flex flex-wrap justify-center gap-4">
+        {categories.map(category => (
+          <button class={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            category.slug === 'all'
+              ? 'bg-primary-600 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}>
+            {category.name} ({category.count})
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Posts -->
+  {featuredPosts.length > 0 && (
+    <section class="section">
+      <div class="container-custom">
+        <h2 class="text-2xl font-bold mb-8">Featured Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredPosts.map(post => (
+            <article class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+              <div class="p-8">
+                <div class="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                  <span class="bg-primary-100 text-primary-700 px-3 py-1 rounded-full font-medium">
+                    {post.category}
+                  </span>
+                  <span>{post.readTime}</span>
+                  <span>{post.date}</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 hover:text-primary-600 transition-colors">
+                  <a href={`/zh/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-600">By {post.author}</span>
+                  <a href={`/zh/blog/${post.slug}`} class="text-primary-600 font-medium hover:text-primary-700 flex items-center gap-1">
+                    Read more
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Regular Posts -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-2xl font-bold mb-8">Latest Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {regularPosts.map(post => (
+          <article class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="h-40 bg-gradient-to-br from-primary-300 to-primary-500"></div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3 text-xs text-gray-600">
+                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded font-medium">
+                  {post.category}
+                </span>
+                <span>{post.readTime}</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 hover:text-primary-600 transition-colors">
+                <a href={`/zh/blog/${post.slug}`}>
+                  {post.title}
+                </a>
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                {post.excerpt}
+              </p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-600">{post.author}</span>
+                <span class="text-gray-500">{post.date}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="section" id="subscribe">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-12 text-center text-white">
+        <h2 class="text-3xl font-heading font-bold mb-4">
+          Get Weekly SEO Insights
+        </h2>
+        <p class="text-xl mb-8 text-primary-100">
+          Join Malaysian business owners getting actionable SEO tips. No spam, unsubscribe anytime.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="flex-1 px-6 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          />
+          <button type="submit" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+            Subscribe
+          </button>
+        </form>
+        <p class="text-sm text-primary-200 mt-4">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-heading font-bold mb-4">
+          Ready to Apply These Strategies to Your Business?
+        </h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Let's talk about how we can help you cover 100+ long-tail keywords and drive real business growth.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/zh/contact" class="btn-primary">
+            Get Free Analysis
+          </a>
+          <a href="/zh/case-studies" class="btn-secondary">
+            See Case Studies
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

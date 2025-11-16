@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO-Complete Framework - Interactive Swimlane Workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phase-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.5em;
+            font-weight: 600;
+        }
+
+        /* Swimlane Container */
+        .swimlane-diagram {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .swimlane-container {
+            min-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* Swimlane Row */
+        .swimlane {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-bottom: 2px solid #dee2e6;
+            min-height: 150px;
+        }
+
+        .swimlane:last-child {
+            border-bottom: none;
+        }
+
+        /* Swimlane Label */
+        .lane-label {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: 600;
+            border-right: 3px solid white;
+        }
+
+        .lane-label .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .lane-label .title {
+            font-size: 1.1em;
+        }
+
+        /* Employee Lane */
+        .lane-label.employee {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+        }
+
+        /* AI Agent Lane */
+        .lane-label.ai-agent {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* System/Automation Lane */
+        .lane-label.system {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+        }
+
+        /* Client Deliverables Lane */
+        .lane-label.client {
+            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+            color: #333;
+        }
+
+        /* Lane Content Area */
+        .lane-content {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            background: white;
+        }
+
+        /* Process Steps */
+        .process-step {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 15px 20px;
+            min-width: 180px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .process-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .process-step.manual {
+            border-color: #17a2b8;
+            background: #e7f8fc;
+        }
+
+        .process-step.automated {
+            border-color: #667eea;
+            background: #f0f3ff;
+        }
+
+        .process-step.decision {
+            border-color: #ffc107;
+            background: #fff9e6;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            padding: 20px 15px;
+        }
+
+        .process-step.deliverable {
+            border-color: #28a745;
+            background: #e8f5e9;
+            position: relative;
+        }
+
+        .process-step.deliverable::before {
+            content: "📄";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5em;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+
+        .step-time {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Arrows */
+        .arrow {
+            width: 40px;
+            height: 2px;
+            background: #667eea;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .arrow::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #667eea;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .arrow.parallel {
+            background: #28a745;
+        }
+
+        .arrow.parallel::after {
+            border-left-color: #28a745;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            width: 280px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: rgba(0,0,0,0.9);
+        }
+
+        .process-step:hover .tooltip {
+            display: block;
+        }
+
+        /* Legend */
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            flex-shrink: 0;
+        }
+
+        .legend-icon.manual {
+            background: #e7f8fc;
+            border: 2px solid #17a2b8;
+        }
+
+        .legend-icon.automated {
+            background: #f0f3ff;
+            border: 2px solid #667eea;
+        }
+
+        .legend-icon.decision {
+            background: #fff9e6;
+            border: 2px solid #ffc107;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .legend-icon.deliverable {
+            background: #e8f5e9;
+            border: 2px solid #28a745;
+        }
+
+        /* Metrics Box */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        /* Real-world Analogy */
+        .analogy-box {
+            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+            color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 6px solid #e0a800;
+        }
+
+        .analogy-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analogy-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .analogy-stage {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .analogy-stage .stage-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .analogy-stage .stage-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Phase Timeline */
+        .phase-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .phase-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 15px;
+        }
+
+        .phase-item::after {
+            content: "→";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .phase-item:last-child::after {
+            content: "";
+        }
+
+        .phase-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .phase-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Interactive Navigation */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-tab:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .nav-tabs {
+                display: none;
+            }
+            .tab-content {
+                display: block !important;
+            }
+            .section {
+                page-break-after: always;
+            }
+            .tooltip {
+                display: none !important;
+            }
+        }
+
+        /* Accessibility */
+        .process-step:focus {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .swimlane-container {
+                min-width: 800px;
+            }
+            .analogy-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🏊 SEO-Complete Framework - Interactive Swimlane Workflow</h1>
+            <p class="subtitle">Visual Guide: Who Does What, When, and How (AI 95% | Human 5%)</p>
+        </div>
+
+        <div class="content">
+
+            <!-- OVERVIEW -->
+            <div class="section">
+                <h2 class="section-title">📋 Framework Overview</h2>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-value">6</span>
+                        <span class="metric-label">Workflow Phases</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">4</span>
+                        <span class="metric-label">Swimlane Actors</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">95%</span>
+                        <span class="metric-label">AI Automation</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">15min</span>
+                        <span class="metric-label">Daily Human Time</span>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-icon manual"></div>
+                        <div>
+                            <strong>Manual Action</strong>
+                            <div style="font-size: 0.9em; color: #666;">Human approval/decision</div>
+                        </div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-icon automated"></div>
+                        <div>
+                            <strong>Automated Process</strong>
+                            <div style="font-size: 0.9em; color: #666;">AI agent execution</div>
+                        </div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-icon decision"></div>
+                        <div>
+                            <strong>Decision Point</strong>
+                            <div style="font-size: 0.9em; color: #666;">Conditional branching</div>
+                        </div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-icon deliverable"></div>
+                        <div>
+                            <strong>Deliverable</strong>
+                            <div style="font-size: 0.9em; color: #666;">Client-facing output</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-world Analogy -->
+                <div class="analogy-box">
+                    <div class="analogy-title">
+                        🍽️ Restaurant Kitchen Analogy
+                    </div>
+                    <p style="margin-bottom: 15px;">Think of the SEO framework like a modern restaurant kitchen with AI sous chefs:</p>
+                    <div class="analogy-content">
+                        <div class="analogy-stage">
+                            <div class="stage-icon">🛒</div>
+                            <div class="stage-title">Ingredients</div>
+                            <div style="font-size: 0.9em; color: #666;">Keywords, Research, Data (AI gathers)</div>
+                        </div>
+                        <div class="analogy-stage">
+                            <div class="stage-icon">👨‍🍳</div>
+                            <div class="stage-title">Cooking</div>
+                            <div style="font-size: 0.9em; color: #666;">Content Creation (AI writes 95%)</div>
+                        </div>
+                        <div class="analogy-stage">
+                            <div class="stage-icon">🍽️</div>
+                            <div class="stage-title">Plating & Serving</div>
+                            <div style="font-size: 0.9em; color: #666;">Review & Publish (Human tastes, AI serves)</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-style: italic;">Head Chef (you) just tastes and approves. The AI sous chefs do all the prep, cooking, and plating!</p>
+                </div>
+            </div>
+
+            <!-- NAVIGATION TABS -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showPhase('phase1')">Phase 1: Onboarding</button>
+                <button class="nav-tab" onclick="showPhase('phase2')">Phase 2: Setup</button>
+                <button class="nav-tab" onclick="showPhase('phase3')">Phase 3: Daily Content</button>
+                <button class="nav-tab" onclick="showPhase('phase4')">Phase 4: Publishing</button>
+                <button class="nav-tab" onclick="showPhase('phase5')">Phase 5: Link Building</button>
+                <button class="nav-tab" onclick="showPhase('phase6')">Phase 6: Monitoring</button>
+            </div>
+
+            <!-- PHASE 1: CLIENT ONBOARDING -->
+            <div id="phase1" class="tab-content active">
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="phase-badge">Phase 1</span>
+                        🚀 Client Onboarding (30 Minutes)
+                    </h2>
+
+                    <div class="swimlane-diagram">
+                        <div class="swimlane-container">
+
+                            <!-- Employee Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label employee">
+                                    <div class="icon">👤</div>
+                                    <div class="title">User/Employee</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step manual">
+                                        <div class="step-title">Run Command</div>
+                                        <div>/onboard-client acme</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Execute slash command with client name<br>
+                                            <strong>Skills Required:</strong> None - just type command<br>
+                                            <strong>Output:</strong> Triggers AI agent
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 180px; opacity: 0.3; text-align: center; font-style: italic;">Wait for AI...</div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Review Drafts</div>
+                                        <div>Check D/ folders</div>
+                                        <div class="step-time">⏱️ 10 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Open keyword-research/D/, persona-idea/D/, brief-draft/D/<br>
+                                            <strong>Check For:</strong> Accuracy, relevance, quality<br>
+                                            <strong>Decision:</strong> Move to A/ (approve) or F/ (reject)
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step decision">
+                                        <div class="step-title">Approve?</div>
+                                        <div class="tooltip">
+                                            <strong>Yes:</strong> Move to A/ folder<br>
+                                            <strong>No:</strong> Move to F/ folder or request regeneration
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Finalize</div>
+                                        <div>/finalize-client</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Run finalize command after approvals<br>
+                                            <strong>Triggers:</strong> AI creates production files from A/ folder
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Agent Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label ai-agent">
+                                    <div class="icon">🤖</div>
+                                    <div class="title">AI Agents</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="min-width: 200px;"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Research Keywords</div>
+                                        <div>DataForSEO API</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Onboarding Agent<br>
+                                            <strong>Skill:</strong> keyword-research.md<br>
+                                            <strong>Data Source:</strong> DataForSEO MCP<br>
+                                            <strong>Output:</strong> 50-100 keywords with volume/difficulty
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Create Personas</div>
+                                        <div>3-5 buyer types</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Onboarding Agent<br>
+                                            <strong>Skill:</strong> persona-generation.md<br>
+                                            <strong>Output:</strong> Detailed persona profiles with pain points, goals, behaviors
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Draft Strategy</div>
+                                        <div>SEO brief</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Onboarding Agent<br>
+                                            <strong>Skill:</strong> brief-template.md<br>
+                                            <strong>Output:</strong> Complete SEO strategy brief with content calendar
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 120px;"></div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Generate Files</div>
+                                        <div>Production ready</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Onboarding Agent<br>
+                                            <strong>Action:</strong> Convert A/ folder content to JSON files<br>
+                                            <strong>Creates:</strong> personas/*.json, brief.json, keyword-strategy.json<br>
+                                            <strong>Also Creates:</strong> 10-folder client structure
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label system">
+                                    <div class="icon">⚙️</div>
+                                    <div class="title">System/Automation</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="min-width: 200px;"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Save to D/</div>
+                                        <div>Draft folders</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> File system writes<br>
+                                            <strong>Locations:</strong> keyword-research/D/, persona-idea/D/, brief-draft/D/<br>
+                                            <strong>Format:</strong> Markdown files
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 350px; text-align: center; opacity: 0.5; font-style: italic;">Files await human review in D/ folders...</div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Move to A/</div>
+                                        <div>After approval</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Human moves files from D/ to A/<br>
+                                            <strong>Triggers:</strong> System ready for finalization
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Create Structure</div>
+                                        <div>10 folders</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Auto-create client folder hierarchy<br>
+                                            <strong>Folders:</strong> 1-ONBOARDING through 10-ANALYTICS<br>
+                                            <strong>Each with:</strong> D/, A/, F/ subfolders
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Client Deliverables Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label client">
+                                    <div class="icon">📦</div>
+                                    <div class="title">Client Deliverables</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="flex: 1;"></div>
+                                    <div class="process-step deliverable">
+                                        <div class="step-title">Strategy Package</div>
+                                        <div>Ready to execute</div>
+                                        <div class="tooltip">
+                                            <strong>Deliverable 1:</strong> keyword-strategy.json (50-100 keywords)<br>
+                                            <strong>Deliverable 2:</strong> personas/*.json (3-5 profiles)<br>
+                                            <strong>Deliverable 3:</strong> brief.json (SEO strategy)<br>
+                                            <strong>Deliverable 4:</strong> content-calendar.json (90-day plan)<br>
+                                            <strong>Status:</strong> Client folder ready for production
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Phase Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">20min</span>
+                            <span class="metric-label">AI Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">10min</span>
+                            <span class="metric-label">Human Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">4</span>
+                            <span class="metric-label">Key Deliverables</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">10</span>
+                            <span class="metric-label">Folders Created</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 2: SETUP & CONFIGURATION -->
+            <div id="phase2" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="phase-badge">Phase 2</span>
+                        ⚙️ Setup & Configuration (60 Minutes)
+                    </h2>
+
+                    <div class="swimlane-diagram">
+                        <div class="swimlane-container">
+
+                            <!-- Employee Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label employee">
+                                    <div class="icon">👤</div>
+                                    <div class="title">User/Employee</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step manual">
+                                        <div class="step-title">Brand Assets</div>
+                                        <div>/setup-brand acme</div>
+                                        <div class="step-time">⏱️ 2 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Provide logo, colors, existing website<br>
+                                            <strong>AI Will:</strong> Generate complete brand identity<br>
+                                            <strong>Review:</strong> Tailwind config, color palette, typography
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Review Brand</div>
+                                        <div>Check D/ folder</div>
+                                        <div class="step-time">⏱️ 15 min</div>
+                                        <div class="tooltip">
+                                            <strong>Review:</strong> Brand identity draft<br>
+                                            <strong>Check:</strong> Colors match, fonts appropriate<br>
+                                            <strong>Approve:</strong> Move to A/ or request changes
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Website Config</div>
+                                        <div>Domain setup</div>
+                                        <div class="step-time">⏱️ 10 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Configure 3 domains (EN/MS/ZH)<br>
+                                            <strong>Verify:</strong> DNS settings, SSL certificates<br>
+                                            <strong>Setup:</strong> Vercel projects (3 separate)
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Deploy</div>
+                                        <div>Go live!</div>
+                                        <div class="step-time">⏱️ 3 min</div>
+                                        <div class="tooltip">
+                                            <strong>Command:</strong> /setup-vercel-projects acme<br>
+                                            <strong>Deploys:</strong> 3 language versions<br>
+                                            <strong>Verifies:</strong> All sites live and working
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Agent Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label ai-agent">
+                                    <div class="icon">🤖</div>
+                                    <div class="title">AI Agents</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step automated">
+                                        <div class="step-title">Analyze Brand</div>
+                                        <div>Extract identity</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Brand Identity Agent<br>
+                                            <strong>Skill:</strong> brand-identity-generation.md<br>
+                                            <strong>Analyzes:</strong> Logo, existing site, industry<br>
+                                            <strong>Output:</strong> Color palette, typography, design system
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Generate Website</div>
+                                        <div>Astro + Tailwind</div>
+                                        <div class="step-time">⏱️ 15 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Website Generation Agent<br>
+                                            <strong>Skill:</strong> website-generation.md<br>
+                                            <strong>Creates:</strong> Full Astro website (3 languages)<br>
+                                            <strong>Includes:</strong> SEO, i18n, components, layouts
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Build & Test</div>
+                                        <div>QA checks</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Content QA Agent<br>
+                                            <strong>Tests:</strong> Build success, links, i18n, mobile<br>
+                                            <strong>Validates:</strong> SEO tags, schema markup, accessibility
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Deploy 3 Sites</div>
+                                        <div>Vercel production</div>
+                                        <div class="step-time">⏱️ 10 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Publishing Agent<br>
+                                            <strong>Skill:</strong> vercel-multi-language-deployment.md<br>
+                                            <strong>Deploys:</strong> EN (inghengcredit.com), MS (kreditloan.my), ZH (inghengcredit.my)<br>
+                                            <strong>Sets:</strong> Environment variables per project
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label system">
+                                    <div class="icon">⚙️</div>
+                                    <div class="title">System/Automation</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step automated">
+                                        <div class="step-title">Git Initialize</div>
+                                        <div>Version control</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Create Git repository<br>
+                                            <strong>Initial commit:</strong> Base website code<br>
+                                            <strong>Branch:</strong> master (production)
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Vercel Linking</div>
+                                        <div>3 projects</div>
+                                        <div class="tooltip">
+                                            <strong>Creates:</strong> 3 Vercel projects (EN/MS/ZH)<br>
+                                            <strong>Configures:</strong> Build settings, env vars<br>
+                                            <strong>Sets up:</strong> Custom domains
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">DNS Configuration</div>
+                                        <div>Point domains</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Configure DNS records<br>
+                                            <strong>Enables:</strong> SSL certificates<br>
+                                            <strong>Verifies:</strong> Domain ownership
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Analytics Setup</div>
+                                        <div>Tracking codes</div>
+                                        <div class="tooltip">
+                                            <strong>Installs:</strong> Google Analytics 4<br>
+                                            <strong>Adds:</strong> Google Search Console<br>
+                                            <strong>Configures:</strong> Conversion tracking
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Client Deliverables Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label client">
+                                    <div class="icon">📦</div>
+                                    <div class="title">Client Deliverables</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="flex: 1;"></div>
+                                    <div class="process-step deliverable">
+                                        <div class="step-title">Live Websites</div>
+                                        <div>3 languages ready</div>
+                                        <div class="tooltip">
+                                            <strong>English:</strong> www.clientname.com<br>
+                                            <strong>Malay:</strong> www.clientname.my (MS version)<br>
+                                            <strong>Chinese:</strong> www.clientname.asia (ZH version)<br>
+                                            <strong>Features:</strong> SEO optimized, mobile-ready, fast loading<br>
+                                            <strong>Analytics:</strong> Google Analytics + Search Console configured
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Phase Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">35min</span>
+                            <span class="metric-label">AI Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">30min</span>
+                            <span class="metric-label">Human Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">3</span>
+                            <span class="metric-label">Live Websites</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">SEO Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 3: DAILY CONTENT GENERATION -->
+            <div id="phase3" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="phase-badge">Phase 3</span>
+                        📝 Daily Content Generation (15 Minutes)
+                    </h2>
+
+                    <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
+                        <strong>Frequency:</strong> Every morning at 9 AM | <strong>Scale:</strong> 50 clients = 150 posts/day (3 languages × 50)
+                    </p>
+
+                    <div class="swimlane-diagram">
+                        <div class="swimlane-container">
+
+                            <!-- Employee Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label employee">
+                                    <div class="icon">👤</div>
+                                    <div class="title">User/Employee</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step manual">
+                                        <div class="step-title">Run Command</div>
+                                        <div>/generate-daily-blogs</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Single command for all clients<br>
+                                            <strong>Triggers:</strong> AI processes entire content calendar<br>
+                                            <strong>For:</strong> All 50 clients simultaneously
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 600px; text-align: center; opacity: 0.3; font-style: italic;">AI generates 150 blog posts (3 languages × 50 clients)...</div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Batch Review</div>
+                                        <div>Skim all drafts</div>
+                                        <div class="step-time">⏱️ 15 min</div>
+                                        <div class="tooltip">
+                                            <strong>Speed:</strong> 30 seconds per post<br>
+                                            <strong>Check:</strong> Headline quality, structure, facts<br>
+                                            <strong>Action:</strong> Move to A/ (approve) or F/ (reject)<br>
+                                            <strong>Note:</strong> Read headlines + first paragraph only
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Agent Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label ai-agent">
+                                    <div class="icon">🤖</div>
+                                    <div class="title">AI Agents</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="min-width: 180px;"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Read Calendar</div>
+                                        <div>Today's topics</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Content Generation Agent<br>
+                                            <strong>Reads:</strong> content-calendar.json (all clients)<br>
+                                            <strong>Identifies:</strong> Topics scheduled for today<br>
+                                            <strong>Loops:</strong> Through each client
+                                        </div>
+                                    </div>
+                                    <div class="arrow parallel"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Research SERP</div>
+                                        <div>Top 3 analysis</div>
+                                        <div class="step-time">⏱️ 2 min/client</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Content Generation Agent<br>
+                                            <strong>Analyzes:</strong> Top 3 ranking posts for target keyword<br>
+                                            <strong>Extracts:</strong> Word count, structure, topics covered<br>
+                                            <strong>Applies:</strong> Skyscraper technique (20-30% better)
+                                        </div>
+                                    </div>
+                                    <div class="arrow parallel"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Write 3 Versions</div>
+                                        <div>EN + MS + ZH</div>
+                                        <div class="step-time">⏱️ 5 min/client</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Content Generation Agent<br>
+                                            <strong>Skill:</strong> multi-language-content.md<br>
+                                            <strong>Writes:</strong> English (2000+ words)<br>
+                                            <strong>Translates:</strong> Malay (cultural adaptation)<br>
+                                            <strong>Translates:</strong> Chinese (simplified, localized)<br>
+                                            <strong>Adds:</strong> E-E-A-T elements, internal links, CTAs
+                                        </div>
+                                    </div>
+                                    <div class="arrow parallel"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Quality Check</div>
+                                        <div>SEO validation</div>
+                                        <div class="step-time">⏱️ 1 min/client</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Content QA Agent<br>
+                                            <strong>Skill:</strong> content-quality-check.md<br>
+                                            <strong>Checks:</strong> Keyword placement, readability, links<br>
+                                            <strong>Validates:</strong> Schema markup, meta tags, alt text<br>
+                                            <strong>Scores:</strong> Quality 0-100 (auto-reject if <70)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label system">
+                                    <div class="icon">⚙️</div>
+                                    <div class="title">System/Automation</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="min-width: 180px;"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Parallel Processing</div>
+                                        <div>All 50 clients</div>
+                                        <div class="tooltip">
+                                            <strong>Concurrency:</strong> Process 10 clients at once<br>
+                                            <strong>Total Time:</strong> 15 minutes for all 50 clients<br>
+                                            <strong>Efficiency:</strong> AI parallelization
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Save to D/</div>
+                                        <div>drafts/D/*.md</div>
+                                        <div class="tooltip">
+                                            <strong>Location:</strong> 2-CONTENT-PRODUCTION/drafts/D/<br>
+                                            <strong>Files:</strong> post-title-en.md, post-title-ms.md, post-title-zh.md<br>
+                                            <strong>Format:</strong> Frontmatter + Markdown<br>
+                                            <strong>Status:</strong> Awaiting human review
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Notify</div>
+                                        <div>Review ready!</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Slack/email notification<br>
+                                            <strong>Message:</strong> "150 posts ready for review in D/ folders"<br>
+                                            <strong>Link:</strong> Direct to review interface
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Client Deliverables Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label client">
+                                    <div class="icon">📦</div>
+                                    <div class="title">Client Deliverables</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="flex: 1;"></div>
+                                    <div class="process-step deliverable">
+                                        <div class="step-title">150 Blog Posts</div>
+                                        <div>Ready for approval</div>
+                                        <div class="tooltip">
+                                            <strong>Per Client:</strong> 3 posts (EN/MS/ZH)<br>
+                                            <strong>Total:</strong> 50 clients × 3 = 150 posts<br>
+                                            <strong>Quality:</strong> 2000+ words, SEO optimized<br>
+                                            <strong>Features:</strong> Internal links, CTAs, E-E-A-T<br>
+                                            <strong>Next:</strong> Human reviews in 15 minutes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Real-world Analogy -->
+                    <div class="analogy-box">
+                        <div class="analogy-title">
+                            🏭 Assembly Line Production
+                        </div>
+                        <p style="margin-bottom: 15px;">Like a modern factory with robotic assembly:</p>
+                        <div class="analogy-content">
+                            <div class="analogy-stage">
+                                <div class="stage-icon">📋</div>
+                                <div class="stage-title">Blueprint Reading</div>
+                                <div style="font-size: 0.9em; color: #666;">AI reads content calendar (manufacturing orders)</div>
+                            </div>
+                            <div class="analogy-stage">
+                                <div class="stage-icon">🤖</div>
+                                <div class="stage-title">Robotic Assembly</div>
+                                <div style="font-size: 0.9em; color: #666;">AI writes 150 posts in parallel (robots build products)</div>
+                            </div>
+                            <div class="analogy-stage">
+                                <div class="stage-icon">✅</div>
+                                <div class="stage-title">Quality Inspector</div>
+                                <div style="font-size: 0.9em; color: #666;">Human spot-checks (inspector approves batch)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">15min</span>
+                            <span class="metric-label">AI Time (all 50 clients)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">15min</span>
+                            <span class="metric-label">Human Time (30s/post)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">150</span>
+                            <span class="metric-label">Posts Generated</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">2000+</span>
+                            <span class="metric-label">Words per Post</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 4: PUBLISHING & DEPLOYMENT -->
+            <div id="phase4" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="phase-badge">Phase 4</span>
+                        🚀 Publishing & Deployment (5 Minutes)
+                    </h2>
+
+                    <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
+                        <strong>Trigger:</strong> After human approvals (A/ folder) | <strong>Frequency:</strong> Daily after review
+                    </p>
+
+                    <div class="swimlane-diagram">
+                        <div class="swimlane-container">
+
+                            <!-- Employee Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label employee">
+                                    <div class="icon">👤</div>
+                                    <div class="title">User/Employee</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step manual">
+                                        <div class="step-title">Publish Command</div>
+                                        <div>/publish-approved</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Single command publishes all approved posts<br>
+                                            <strong>Scope:</strong> All clients' A/ folders<br>
+                                            <strong>Safe:</strong> Only publishes human-approved content
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 400px; text-align: center; opacity: 0.3; font-style: italic;">AI deploys to all websites...</div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Verify</div>
+                                        <div>Spot check sites</div>
+                                        <div class="step-time">⏱️ 5 min (optional)</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Open 2-3 random client sites<br>
+                                            <strong>Check:</strong> New posts visible, no errors<br>
+                                            <strong>Verify:</strong> All 3 languages deployed correctly
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Agent Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label ai-agent">
+                                    <div class="icon">🤖</div>
+                                    <div class="title">AI Agents</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="min-width: 180px;"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Read A/ Folders</div>
+                                        <div>All approved posts</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Publishing Agent<br>
+                                            <strong>Scans:</strong> All client A/ folders<br>
+                                            <strong>Identifies:</strong> Posts ready to publish<br>
+                                            <strong>Groups:</strong> By client and language
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Move to Website</div>
+                                        <div>File placement</div>
+                                        <div class="step-time">⏱️ 1 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Publishing Agent<br>
+                                            <strong>Skill:</strong> publishing-workflow.md<br>
+                                            <strong>Copies:</strong> From A/ to 3-WEBSITE/src/pages/<br>
+                                            <strong>Structure:</strong> /en/blog/, /ms/blog/, /zh/blog/<br>
+                                            <strong>Preserves:</strong> Frontmatter, formatting
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Update Sitemaps</div>
+                                        <div>SEO indexing</div>
+                                        <div class="step-time">⏱️ 30 sec</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Publishing Agent<br>
+                                            <strong>Updates:</strong> sitemap.xml (all 3 languages)<br>
+                                            <strong>Adds:</strong> New post URLs with lastmod dates<br>
+                                            <strong>Priority:</strong> Set based on post type
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Deploy 3 Sites</div>
+                                        <div>Vercel build</div>
+                                        <div class="step-time">⏱️ 3 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Publishing Agent<br>
+                                            <strong>Deploys:</strong> EN, MS, ZH (parallel)<br>
+                                            <strong>Method:</strong> Vercel CLI with correct env vars<br>
+                                            <strong>Validates:</strong> Build success per language
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label system">
+                                    <div class="icon">⚙️</div>
+                                    <div class="title">System/Automation</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="min-width: 180px;"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Git Commit</div>
+                                        <div>Version control</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Create git commit<br>
+                                            <strong>Message:</strong> "feat: Add [X] blog posts"<br>
+                                            <strong>Branch:</strong> master<br>
+                                            <strong>Push:</strong> To GitHub
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Build Websites</div>
+                                        <div>Astro compilation</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Run Astro build<br>
+                                            <strong>Processes:</strong> Markdown → HTML<br>
+                                            <strong>Optimizes:</strong> Images, CSS, JS<br>
+                                            <strong>Generates:</strong> Static files
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">CDN Deploy</div>
+                                        <div>Edge network</div>
+                                        <div class="tooltip">
+                                            <strong>Platform:</strong> Vercel Edge Network<br>
+                                            <strong>Speed:</strong> <100ms global latency<br>
+                                            <strong>Cache:</strong> Automatic CDN caching<br>
+                                            <strong>SSL:</strong> Automatic HTTPS
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Ping Search Engines</div>
+                                        <div>Indexing request</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Submit sitemap to Google/Bing<br>
+                                            <strong>APIs:</strong> Google Search Console API<br>
+                                            <strong>Request:</strong> Immediate re-crawl<br>
+                                            <strong>Result:</strong> Faster indexing (hours not days)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Client Deliverables Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label client">
+                                    <div class="icon">📦</div>
+                                    <div class="title">Client Deliverables</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="flex: 1;"></div>
+                                    <div class="process-step deliverable">
+                                        <div class="step-title">Live Content</div>
+                                        <div>150 posts published</div>
+                                        <div class="tooltip">
+                                            <strong>Published:</strong> 150 blog posts across 50 clients<br>
+                                            <strong>SEO:</strong> Sitemaps updated, search engines pinged<br>
+                                            <strong>Performance:</strong> Cached on global CDN<br>
+                                            <strong>Tracking:</strong> Analytics tracking active<br>
+                                            <strong>Time to Index:</strong> 1-24 hours (vs 3-7 days manual)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Phase Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">5min</span>
+                            <span class="metric-label">AI Time (all clients)</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">1min</span>
+                            <span class="metric-label">Human Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">150</span>
+                            <span class="metric-label">Sites Updated</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Deployment Success</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 5: LINK BUILDING & AUTHORITY -->
+            <div id="phase5" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="phase-badge">Phase 5</span>
+                        🔗 Link Building & Authority (2 Hours/Month)
+                    </h2>
+
+                    <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
+                        <strong>Frequency:</strong> Monthly | <strong>Goal:</strong> 10 quality backlinks per client per month
+                    </p>
+
+                    <div class="swimlane-diagram">
+                        <div class="swimlane-container">
+
+                            <!-- Employee Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label employee">
+                                    <div class="icon">👤</div>
+                                    <div class="title">User/Employee</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step manual">
+                                        <div class="step-title">Research</div>
+                                        <div>/research-link-prospects</div>
+                                        <div class="step-time">⏱️ 2 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> Command for all clients<br>
+                                            <strong>Triggers:</strong> AI finds link opportunities<br>
+                                            <strong>DataForSEO:</strong> Uses competitor backlink data
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Review Prospects</div>
+                                        <div>Check D/ folder</div>
+                                        <div class="step-time">⏱️ 30 min</div>
+                                        <div class="tooltip">
+                                            <strong>Review:</strong> Link prospect lists (500+ per client)<br>
+                                            <strong>Filter:</strong> Mark GOLD/SILVER/BRONZE<br>
+                                            <strong>Approve:</strong> Top 50 prospects → A/ folder<br>
+                                            <strong>Priority:</strong> High DA, relevant, link-likely
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Launch Campaign</div>
+                                        <div>/launch-outreach-campaign</div>
+                                        <div class="step-time">⏱️ 2 min</div>
+                                        <div class="tooltip">
+                                            <strong>Action:</strong> AI generates outreach emails<br>
+                                            <strong>Personalized:</strong> Per prospect and client<br>
+                                            <strong>Templates:</strong> Guest post, resource mention, broken link
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Review Emails</div>
+                                        <div>Final approval</div>
+                                        <div class="step-time">⏱️ 30 min</div>
+                                        <div class="tooltip">
+                                            <strong>Review:</strong> Draft outreach emails<br>
+                                            <strong>Customize:</strong> Add personal touches<br>
+                                            <strong>Approve:</strong> Move to A/ to send
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Agent Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label ai-agent">
+                                    <div class="icon">🤖</div>
+                                    <div class="title">AI Agents</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step automated">
+                                        <div class="step-title">Find Prospects</div>
+                                        <div>DataForSEO scan</div>
+                                        <div class="step-time">⏱️ 10 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Link Building Agent<br>
+                                            <strong>Skill:</strong> link-prospect-research.md<br>
+                                            <strong>Sources:</strong> Competitor backlinks, industry directories<br>
+                                            <strong>Finds:</strong> 500+ prospects per client<br>
+                                            <strong>Scores:</strong> By DA, relevance, link-likelihood
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 220px;"></div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Write Emails</div>
+                                        <div>Personalized outreach</div>
+                                        <div class="step-time">⏱️ 15 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Link Building Agent<br>
+                                            <strong>Skill:</strong> outreach-email-generation.md<br>
+                                            <strong>Personalization:</strong> Per prospect (name, site, content)<br>
+                                            <strong>Templates:</strong> Guest post pitch, resource suggestion, partnership<br>
+                                            <strong>Tone:</strong> Professional, value-focused
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div style="min-width: 220px;"></div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Send & Track</div>
+                                        <div>Campaign monitoring</div>
+                                        <div class="step-time">⏱️ Ongoing</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Link Building Agent<br>
+                                            <strong>Sends:</strong> Approved emails (staggered)<br>
+                                            <strong>Tracks:</strong> Opens, replies, link acquired<br>
+                                            <strong>Follow-up:</strong> Auto-follow-up after 7 days<br>
+                                            <strong>Records:</strong> All in backlink-tracking.json
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label system">
+                                    <div class="icon">⚙️</div>
+                                    <div class="title">System/Automation</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step automated">
+                                        <div class="step-title">DataForSEO API</div>
+                                        <div>Backlink data</div>
+                                        <div class="tooltip">
+                                            <strong>API Calls:</strong> Competitor backlink analysis<br>
+                                            <strong>Returns:</strong> Linking domains, anchor text, DA<br>
+                                            <strong>Filters:</strong> Dofollow, relevant, active
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Save Prospects</div>
+                                        <div>D/ folder</div>
+                                        <div class="tooltip">
+                                            <strong>Location:</strong> 5-LINK-BUILDING/prospects/D/<br>
+                                            <strong>Format:</strong> link-prospects.json<br>
+                                            <strong>Fields:</strong> Domain, DA, email, opportunity type
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Email Queue</div>
+                                        <div>Staggered sending</div>
+                                        <div class="tooltip">
+                                            <strong>Rate:</strong> 5-10 emails/day per client<br>
+                                            <strong>Timing:</strong> Business hours (9 AM - 5 PM)<br>
+                                            <strong>Prevents:</strong> Spam flags
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Response Tracking</div>
+                                        <div>CRM updates</div>
+                                        <div class="tooltip">
+                                            <strong>Monitors:</strong> Email replies<br>
+                                            <strong>Updates:</strong> Prospect status<br>
+                                            <strong>Alerts:</strong> Human for positive responses
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Client Deliverables Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label client">
+                                    <div class="icon">📦</div>
+                                    <div class="title">Client Deliverables</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="flex: 1;"></div>
+                                    <div class="process-step deliverable">
+                                        <div class="step-title">Link Campaign</div>
+                                        <div>10 backlinks/month</div>
+                                        <div class="tooltip">
+                                            <strong>Target:</strong> 10 quality backlinks per month<br>
+                                            <strong>Success Rate:</strong> 20% (50 outreach → 10 links)<br>
+                                            <strong>Link Quality:</strong> DA 30+ domains<br>
+                                            <strong>Types:</strong> Guest posts, resource mentions, partnerships<br>
+                                            <strong>Report:</strong> Monthly link acquisition summary
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Phase Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">30min</span>
+                            <span class="metric-label">AI Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">1hr</span>
+                            <span class="metric-label">Human Time</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">10</span>
+                            <span class="metric-label">Backlinks/Client/Month</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">500+</span>
+                            <span class="metric-label">Prospects Researched</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 6: MONITORING & OPTIMIZATION -->
+            <div id="phase6" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <span class="phase-badge">Phase 6</span>
+                        📊 Monitoring & Optimization (2 Hours/Month)
+                    </h2>
+
+                    <p style="margin-bottom: 20px; font-size: 1.1em; color: #666;">
+                        <strong>Frequency:</strong> Weekly audits + Monthly reports | <strong>Goal:</strong> Prevent content decay, identify opportunities
+                    </p>
+
+                    <div class="swimlane-diagram">
+                        <div class="swimlane-container">
+
+                            <!-- Employee Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label employee">
+                                    <div class="icon">👤</div>
+                                    <div class="title">User/Employee</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step manual">
+                                        <div class="step-title">Weekly Audit</div>
+                                        <div>/audit-content-performance</div>
+                                        <div class="step-time">⏱️ 2 min</div>
+                                        <div class="tooltip">
+                                            <strong>Frequency:</strong> Every Friday<br>
+                                            <strong>Scope:</strong> All clients<br>
+                                            <strong>Identifies:</strong> Declining content (>25% traffic drop)
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Review Report</div>
+                                        <div>Prioritize refreshes</div>
+                                        <div class="step-time">⏱️ 15 min</div>
+                                        <div class="tooltip">
+                                            <strong>Review:</strong> declining-content.json<br>
+                                            <strong>Sort:</strong> By traffic impact<br>
+                                            <strong>Decide:</strong> Which posts to refresh (top 10)
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Monthly Reports</div>
+                                        <div>/generate-monthly-report</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Frequency:</strong> First Monday of month<br>
+                                            <strong>For:</strong> All clients<br>
+                                            <strong>Generates:</strong> Performance summaries, charts, insights
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step manual">
+                                        <div class="step-title">Strategic Review</div>
+                                        <div>Adjust strategy</div>
+                                        <div class="step-time">⏱️ 1 hour</div>
+                                        <div class="tooltip">
+                                            <strong>Review:</strong> All monthly reports<br>
+                                            <strong>Identify:</strong> Winning strategies<br>
+                                            <strong>Adjust:</strong> Content calendar for next month<br>
+                                            <strong>Share:</strong> Reports with clients
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Agent Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label ai-agent">
+                                    <div class="icon">🤖</div>
+                                    <div class="title">AI Agents</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step automated">
+                                        <div class="step-title">Fetch Analytics</div>
+                                        <div>Google APIs</div>
+                                        <div class="step-time">⏱️ 10 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Analytics Agent<br>
+                                            <strong>APIs:</strong> Google Analytics 4, Search Console<br>
+                                            <strong>Data:</strong> Traffic, rankings, CTR, conversions<br>
+                                            <strong>Period:</strong> Last 90 days vs previous 90
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Analyze Trends</div>
+                                        <div>Identify issues</div>
+                                        <div class="step-time">⏱️ 5 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Analytics Agent<br>
+                                            <strong>Skill:</strong> performance-tracking.md<br>
+                                            <strong>Flags:</strong> Traffic drops >25%, ranking losses >5 positions<br>
+                                            <strong>Calculates:</strong> Content decay rate
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Generate Reports</div>
+                                        <div>Charts & insights</div>
+                                        <div class="step-time">⏱️ 15 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Analytics Agent<br>
+                                            <strong>Creates:</strong> Executive summary, charts, KPIs<br>
+                                            <strong>Insights:</strong> AI-written analysis and recommendations<br>
+                                            <strong>Format:</strong> JSON + PDF report
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Competitor Scan</div>
+                                        <div>Opportunities</div>
+                                        <div class="step-time">⏱️ 10 min</div>
+                                        <div class="tooltip">
+                                            <strong>Agent:</strong> Competitor Intelligence Agent<br>
+                                            <strong>Monitors:</strong> Competitor keyword rankings (DataForSEO)<br>
+                                            <strong>Identifies:</strong> New keywords they rank for<br>
+                                            <strong>Flags:</strong> Content gaps and opportunities
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label system">
+                                    <div class="icon">⚙️</div>
+                                    <div class="title">System/Automation</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div class="process-step automated">
+                                        <div class="step-title">API Integration</div>
+                                        <div>Multi-source data</div>
+                                        <div class="tooltip">
+                                            <strong>Google Analytics 4:</strong> Traffic, behavior, conversions<br>
+                                            <strong>Google Search Console:</strong> Rankings, impressions, CTR<br>
+                                            <strong>DataForSEO:</strong> Competitor data, keyword opportunities<br>
+                                            <strong>Aggregation:</strong> Combine into unified dataset
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Database Update</div>
+                                        <div>Historical tracking</div>
+                                        <div class="tooltip">
+                                            <strong>Storage:</strong> 10-ANALYTICS/ folder<br>
+                                            <strong>Format:</strong> monthly-YYYY-MM.json<br>
+                                            <strong>Retention:</strong> 24 months<br>
+                                            <strong>Enables:</strong> Long-term trend analysis
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Report Generation</div>
+                                        <div>PDF creation</div>
+                                        <div class="tooltip">
+                                            <strong>Template:</strong> Branded client report<br>
+                                            <strong>Charts:</strong> Traffic trends, ranking changes<br>
+                                            <strong>Tables:</strong> Top posts, keyword rankings<br>
+                                            <strong>AI Summary:</strong> Natural language insights
+                                        </div>
+                                    </div>
+                                    <div class="arrow"></div>
+                                    <div class="process-step automated">
+                                        <div class="step-title">Alert System</div>
+                                        <div>Proactive notifications</div>
+                                        <div class="tooltip">
+                                            <strong>Triggers:</strong> Traffic drop >30%, ranking loss to page 2<br>
+                                            <strong>Notification:</strong> Slack/email alert<br>
+                                            <strong>Priority:</strong> High-revenue clients first<br>
+                                            <strong>Action:</strong> Auto-queue for refresh
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Client Deliverables Swimlane -->
+                            <div class="swimlane">
+                                <div class="lane-label client">
+                                    <div class="icon">📦</div>
+                                    <div class="title">Client Deliverables</div>
+                                </div>
+                                <div class="lane-content">
+                                    <div style="flex: 1;"></div>
+                                    <div class="process-step deliverable">
+                                        <div class="step-title">Monthly Report</div>
+                                        <div>Performance insights</div>
+                                        <div class="tooltip">
+                                            <strong>Traffic Report:</strong> MoM growth, top posts<br>
+                                            <strong>Rankings:</strong> Keyword position changes<br>
+                                            <strong>Conversions:</strong> Leads, sales attribution<br>
+                                            <strong>Insights:</strong> AI-written recommendations<br>
+                                            <strong>Action Items:</strong> Next month's strategy<br>
+                                            <strong>Format:</strong> Branded PDF + JSON data
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Phase Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-value">40min</span>
+                            <span class="metric-label">AI Time/Month</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">1.5hr</span>
+                            <span class="metric-label">Human Time/Month</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">50</span>
+                            <span class="metric-label">Client Reports Generated</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">25%</span>
+                            <span class="metric-label">Traffic Decay Prevention</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="section" style="text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+                <h2 style="margin-bottom: 20px;">🎉 Complete Workflow Implementation</h2>
+                <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.95;">
+                    <strong>6 Phases</strong> covering the entire SEO lifecycle from onboarding to optimization<br>
+                    <strong>4 Actors</strong> (Employee, AI, System, Client) working in harmony<br>
+                    <strong>95% AI Automation</strong> with 5% human quality control
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">⏱️</div>
+                        <div style="font-size: 1.1em; font-weight: 600;">15 min/day</div>
+                        <div style="opacity: 0.9;">Daily Operations</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">🎯</div>
+                        <div style="font-size: 1.1em; font-weight: 600;">50+ Clients</div>
+                        <div style="opacity: 0.9;">Manageable Scale</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">💰</div>
+                        <div style="font-size: 1.1em; font-weight: 600;">$25K/mo</div>
+                        <div style="opacity: 0.9;">Revenue Potential</div>
+                    </div>
+                </div>
+                <p style="margin-top: 30px; opacity: 0.9;">
+                    📚 For detailed implementation: <code style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">FRAMEWORK-USAGE-GUIDE.md</code><br>
+                    📋 Full specification: <code style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">SEO-COMPLETE-FRAMEWORK-SPEC.md</code>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Tab Navigation
+        function showPhase(phaseId) {
+            // Hide all tab content
+            const allContent = document.querySelectorAll('.tab-content');
+            allContent.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const allTabs = document.querySelectorAll('.nav-tab');
+            allTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(phaseId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Accessibility: Keyboard navigation for process steps
+        document.querySelectorAll('.process-step').forEach(step => {
+            step.setAttribute('tabindex', '0');
+            step.setAttribute('role', 'button');
+            step.setAttribute('aria-label', step.querySelector('.step-title').textContent);
+        });
+
+        // Print functionality
+        window.addEventListener('beforeprint', () => {
+            // Show all phases when printing
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'block';
+            });
+        });
+
+        window.addEventListener('afterprint', () => {
+            // Restore tab visibility after printing
+            document.querySelectorAll('.tab-content').forEach(content => {
+                if (!content.classList.contains('active')) {
+                    content.style.display = 'none';
+                }
+            });
+        });
+
+        // Console log for debugging
+        console.log('SEO Framework Swimlane Diagram Loaded');
+        console.log('6 Workflow Phases | 4 Swimlane Actors | 95% AI Automation');
+    </script>
+</body>
+</html>

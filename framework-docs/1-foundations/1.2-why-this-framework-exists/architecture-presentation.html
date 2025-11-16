@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Framework - Visual Workflow Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .workflow-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .workflow-diagram h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .key-point {
+            background: white;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .key-point strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .mermaid {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .section {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🤖 SEO Framework - Visual Workflow Guide</h1>
+            <p class="subtitle">AI Does 95% of Work → Humans Approve in 15 Min/Day</p>
+        </div>
+
+        <div class="content">
+
+            <!-- EXECUTIVE SUMMARY -->
+            <div class="section">
+                <h2>📊 At a Glance</h2>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="number">95%</span>
+                        <span class="label">AI Automated</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">15 min</span>
+                        <span class="label">Daily Human Time</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">50+</span>
+                        <span class="label">Clients Served</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="number">150</span>
+                        <span class="label">Posts/Day</span>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>🤖 AI Does:</strong>
+                        Research, writing, translation, tracking, analysis, reporting
+                    </div>
+                    <div class="key-point">
+                        <strong>👤 Human Does:</strong>
+                        Review D/ folder → Move to A/ (approve) or F/ (reject)
+                    </div>
+                    <div class="key-point">
+                        <strong>📁 D/A/F Workflow:</strong>
+                        D = Draft (AI), A = Approved (Human), F = Failed (Rejected)
+                    </div>
+                    <div class="key-point">
+                        <strong>💰 Economics:</strong>
+                        50 clients × $500/mo = $25K revenue for 1 hour/day work
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORKFLOW 1: ONBOARDING -->
+            <div class="section">
+                <h2>🚀 Workflow 1: Client Onboarding (30 Minutes)</h2>
+
+                <div class="workflow-diagram">
+                    <h3>AI vs Human: Who Does What?</h3>
+                    <div class="mermaid">
+sequenceDiagram
+    participant H as 👤 Human
+    participant AI as 🤖 AI Agent
+    participant D as 📂 D/ Draft
+    participant A as ✅ A/ Approved
+
+    Note over H,A: Step 1: Run Command (1 min)
+    H->>AI: /onboard-client acme-machinery
+
+    Note over H,A: Step 2: AI Generates (15 min)
+    AI->>AI: Research keywords (DataForSEO)
+    AI->>AI: Analyze competitors
+    AI->>AI: Create personas
+    AI->>AI: Draft SEO strategy
+    AI->>D: Save to keyword-research/D/
+    AI->>D: Save to persona-idea/D/
+    AI->>D: Save to brief-draft/D/
+
+    Note over H,A: Step 3: Human Reviews (10 min)
+    H->>D: Open D/ folders
+    H->>H: Skim content (30 sec each)
+    H->>A: Move good files to A/
+    H->>D: Move bad files to F/
+
+    Note over H,A: Step 4: AI Finalizes (5 min)
+    H->>AI: /finalize-client acme-machinery
+    AI->>A: Read A/ folders
+    AI->>AI: Generate personas/*.json
+    AI->>AI: Generate brief.json
+    AI->>AI: Generate keyword-strategy.json
+    AI->>AI: Create 10 folder structures
+
+    Note over H,A: ✅ Client Ready!
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>AI Time:</strong> 20 minutes (research + generation)
+                    </div>
+                    <div class="key-point">
+                        <strong>Human Time:</strong> 10 minutes (approval only)
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORKFLOW 2: DAILY CONTENT -->
+            <div class="section">
+                <h2>📝 Workflow 2: Daily Content Generation (15 Minutes)</h2>
+
+                <div class="workflow-diagram">
+                    <h3>Every Morning at 9 AM</h3>
+                    <div class="mermaid">
+sequenceDiagram
+    participant H as 👤 Human
+    participant AI as 🤖 AI Agent
+    participant D as 📂 D/ Draft
+    participant A as ✅ A/ Approved
+    participant W as 🌐 Website
+
+    Note over H,W: Step 1: Run Command (1 min)
+    H->>AI: /generate-daily-blogs
+
+    Note over H,W: Step 2: AI Generates (15 min)
+    loop For Each Client
+        AI->>AI: Read content-calendar.json
+        AI->>AI: Research target keyword
+        AI->>AI: Analyze top 3 competitors
+        AI->>AI: Apply skyscraper technique
+        AI->>AI: Generate EN blog (2000 words)
+        AI->>AI: Translate to MS
+        AI->>AI: Translate to ZH
+        AI->>AI: Add E-E-A-T elements
+        AI->>AI: Classify intent (TOFU/MOFU/BOFU)
+        AI->>D: Save 3 files to drafts/D/
+    end
+
+    Note over H,W: Step 3: Human Reviews (15 min)
+    H->>D: Open drafts/D/ folder
+    loop For Each Post (30 sec)
+        H->>H: Skim post quickly
+        H->>H: Quality check
+        alt Approve
+            H->>A: Move to A/
+        else Reject
+            H->>D: Move to F/
+        end
+    end
+
+    Note over H,W: Step 4: AI Publishes (1 min)
+    H->>AI: /publish-approved
+    AI->>A: Read A/ folder
+    AI->>W: Deploy to website
+    AI->>W: Update sitemap
+    AI->>W: Ping search engines
+
+    Note over H,W: ✅ 150 Posts Published!
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>AI Time:</strong> 15 minutes (150 posts generated)
+                    </div>
+                    <div class="key-point">
+                        <strong>Human Time:</strong> 15 minutes (30 sec per post × 30 posts)
+                    </div>
+                    <div class="key-point">
+                        <strong>For 50 Clients:</strong> 3 posts/client × 50 = 150 total posts/day
+                    </div>
+                    <div class="key-point">
+                        <strong>Total Time:</strong> 30 minutes for entire operation
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORKFLOW 3: WEEKLY MAINTENANCE -->
+            <div class="section">
+                <h2>🔄 Workflow 3: Weekly Content Maintenance (30 Minutes)</h2>
+
+                <div class="workflow-diagram">
+                    <h3>Every Friday at 3 PM</h3>
+                    <div class="mermaid">
+sequenceDiagram
+    participant H as 👤 Human
+    participant AI as 🤖 AI Agent
+    participant GSC as 📊 Google APIs
+    participant D as 📂 D/ Draft
+
+    Note over H,D: Step 1: Audit Performance (1 min + 15 min AI)
+    H->>AI: /audit-content-performance
+    AI->>GSC: Fetch traffic data (all clients)
+    AI->>GSC: Fetch ranking data
+    AI->>AI: Identify declining content (>25% drop)
+    AI->>AI: Prioritize by impact
+    AI->>AI: Generate declining-content.csv
+
+    Note over H,D: Step 2: Human Prioritizes (5 min)
+    H->>AI: Open declining-content.csv
+    H->>H: Review top 20 candidates
+    H->>H: Select top 5-10 for immediate refresh
+    H->>H: Note seasonal declines (acceptable)
+
+    Note over H,D: Step 3: Refresh Top Candidates (1 min + 10 min AI)
+    H->>AI: /refresh-content [url-1]
+    H->>AI: /refresh-content [url-2]
+    H->>AI: /refresh-content [url-3]
+    H->>AI: /refresh-content [url-4]
+    H->>AI: /refresh-content [url-5]
+
+    loop For Each URL (parallel)
+        AI->>AI: Research current SERP (2025 data)
+        AI->>AI: Analyze top 3 competitors
+        AI->>AI: Apply skyscraper technique
+        AI->>AI: Expand word count 20-30%
+        AI->>AI: Add latest statistics
+        AI->>D: Save to update-drafts/D/
+    end
+
+    Note over H,D: Step 4: Review Next Week
+    Note over H,D: Refreshed posts appear in Monday's D/ folder
+    Note over H,D: Approve and publish in daily workflow
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>AI Time:</strong> 25 minutes (15 audit + 10 refresh)
+                    </div>
+                    <div class="key-point">
+                        <strong>Human Time:</strong> 6 minutes (1 trigger + 5 review)
+                    </div>
+                    <div class="key-point">
+                        <strong>Result:</strong> Prevent 15-30% annual traffic decay
+                    </div>
+                    <div class="key-point">
+                        <strong>Frequency:</strong> Every Friday at 3 PM
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORKFLOW 4: MONTHLY STRATEGIC REVIEW -->
+            <div class="section">
+                <h2>📈 Workflow 4: Monthly Analytics & Strategy (2 Hours)</h2>
+
+                <div class="workflow-diagram">
+                    <h3>First Monday of Each Month</h3>
+                    <div class="mermaid">
+sequenceDiagram
+    participant H as 👤 Human
+    participant AI as 🤖 AI Agent
+    participant APIs as 🔌 Multiple APIs
+    participant R as 📊 Reports
+
+    Note over H,R: Part 1: Performance Reports (30 min)
+    H->>AI: /generate-monthly-report
+    AI->>APIs: Google Analytics (traffic)
+    AI->>APIs: Google Search Console (rankings)
+    AI->>APIs: DataForSEO (competitor rankings)
+    AI->>AI: Aggregate all metrics
+    AI->>AI: Calculate trends (MoM, YoY)
+    AI->>AI: Identify wins & losses
+    AI->>R: Generate monthly-report.json
+    AI->>R: Generate executive summary (PDF)
+    H->>R: Review reports
+    H->>H: Adjust strategy
+
+    Note over H,R: Part 2: Competitor Analysis (20 min)
+    H->>AI: /competitor-analysis competitor1.com
+    H->>AI: /competitor-analysis competitor2.com
+    AI->>APIs: DataForSEO (competitor keywords)
+    AI->>APIs: DataForSEO (competitor backlinks)
+    AI->>AI: Identify content gaps
+    AI->>AI: Identify link opportunities
+    AI->>R: Generate competitor-analysis.json
+
+    Note over H,R: Part 3: SEO Health Check (20 min)
+    H->>AI: /health-check
+    AI->>AI: Scan all websites
+    AI->>AI: Check Core Web Vitals
+    AI->>AI: Check broken links
+    AI->>AI: Check E-E-A-T coverage
+    AI->>AI: Score health (0-100)
+    AI->>R: Generate seo-health-score.json
+    H->>R: Review critical issues
+    H->>H: Prioritize fixes
+
+    Note over H,R: Part 4: Keyword Opportunities (20 min)
+    H->>AI: /keyword-opportunity-scan
+    AI->>APIs: DataForSEO (related keywords)
+    AI->>APIs: DataForSEO (competitor gaps)
+    AI->>AI: Score opportunities (GOLD/SILVER/BRONZE)
+    AI->>R: Generate keyword-opportunities.json
+    H->>R: Review opportunities
+    H->>H: Update content calendar
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>AI Time:</strong> 1.5 hours (data collection + analysis)
+                    </div>
+                    <div class="key-point">
+                        <strong>Human Time:</strong> 1 hour (strategic decisions)
+                    </div>
+                    <div class="key-point">
+                        <strong>Output:</strong> 4 major reports per client
+                    </div>
+                    <div class="key-point">
+                        <strong>Frequency:</strong> Once per month (first Monday)
+                    </div>
+                </div>
+            </div>
+
+            <!-- D/A/F WORKFLOW -->
+            <div class="section">
+                <h2>📂 The D/A/F Approval System</h2>
+
+                <div class="workflow-diagram">
+                    <h3>Simple 3-Folder Workflow for Everything</h3>
+                    <div class="mermaid">
+graph TB
+    AI[🤖 AI Generates Content]
+    D[📂 D/ Draft Folder<br/>Awaiting Review]
+    Human[👤 Human Reviews<br/>30 seconds per item]
+    A[✅ A/ Approved Folder<br/>Ready to Use]
+    F[❌ F/ Failed Folder<br/>Rejected/Archived]
+    Publish[🌐 AI Publishes<br/>to Website]
+
+    AI -->|Saves to| D
+    D -->|Human opens| Human
+    Human -->|Good quality| A
+    Human -->|Bad quality| F
+    A -->|AI reads| Publish
+    F -.->|Optional: Delete or<br/>Move back to D| D
+
+    style AI fill:#667eea,color:#fff
+    style D fill:#ffc107,color:#333
+    style A fill:#28a745,color:#fff
+    style F fill:#dc3545,color:#fff
+    style Human fill:#17a2b8,color:#fff
+    style Publish fill:#667eea,color:#fff
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>D/ = Draft:</strong> AI-generated content awaiting human review
+                    </div>
+                    <div class="key-point">
+                        <strong>A/ = Approved:</strong> Human-validated, ready for AI to publish
+                    </div>
+                    <div class="key-point">
+                        <strong>F/ = Failed:</strong> Rejected content, archived or deleted
+                    </div>
+                    <div class="key-point">
+                        <strong>Human Job:</strong> Move files from D/ to A/ or F/. That's it!
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOLDER STRUCTURE -->
+            <div class="section">
+                <h2>📁 Complete Folder Architecture</h2>
+
+                <div class="workflow-diagram">
+                    <h3>10 Main Folders Per Client</h3>
+                    <div class="mermaid">
+graph TB
+    Client[/clients/acme-machinery/]
+
+    F1[1-ONBOARDING/<br/>Keywords → Personas → Brief]
+    F2[2-CONTENT-PRODUCTION/<br/>Daily Blog Generation]
+    F3[3-WEBSITE/<br/>Published Astro Site]
+    F4[4-CONTENT-MAINTENANCE/<br/>Prevent Traffic Decay]
+    F5[5-LINK-BUILDING/<br/>Systematic Backlinks]
+    F6[6-ASSETS/<br/>Images, Logos, Brand]
+    F7[7-EEAT-DOCUMENTATION/<br/>Trust Signals]
+    F8[8-RESEARCH/<br/>Competitive Intel]
+    F9[9-META/<br/>Client Config]
+    F10[10-ANALYTICS/<br/>Performance Reports]
+
+    Client --> F1
+    Client --> F2
+    Client --> F3
+    Client --> F4
+    Client --> F5
+    Client --> F6
+    Client --> F7
+    Client --> F8
+    Client --> F9
+    Client --> F10
+
+    style Client fill:#667eea,color:#fff
+    style F1 fill:#28a745,color:#fff
+    style F2 fill:#17a2b8,color:#fff
+    style F3 fill:#ffc107,color:#333
+    style F4 fill:#dc3545,color:#fff
+    style F5 fill:#6f42c1,color:#fff
+    style F6 fill:#fd7e14,color:#fff
+    style F7 fill:#20c997,color:#fff
+    style F8 fill:#e83e8c,color:#fff
+    style F9 fill:#6c757d,color:#fff
+    style F10 fill:#007bff,color:#fff
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>Setup (Folders 1, 6, 9):</strong> One-time client configuration
+                    </div>
+                    <div class="key-point">
+                        <strong>Production (Folders 2, 3):</strong> Daily content workflow
+                    </div>
+                    <div class="key-point">
+                        <strong>Growth (Folders 4, 5, 7):</strong> Weekly/monthly optimization
+                    </div>
+                    <div class="key-point">
+                        <strong>Intelligence (Folders 8, 10):</strong> Monthly strategy & reporting
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCALING -->
+            <div class="section">
+                <h2>📊 Scaling Economics</h2>
+
+                <div class="workflow-diagram">
+                    <h3>Time Investment by Client Count</h3>
+                    <div class="mermaid">
+graph LR
+    C1[1 Client<br/>15 min/day<br/>$500/mo]
+    C10[10 Clients<br/>30 min/day<br/>$5K/mo]
+    C50[50 Clients<br/>1 hour/day<br/>$25K/mo]
+    C100[100 Clients<br/>2 hours/day<br/>$50K/mo<br/>or Hire 1 Reviewer]
+    C200[200+ Clients<br/>Hire 2-3 Reviewers<br/>$100K+/mo<br/>60-70% margins]
+
+    C1 --> C10
+    C10 --> C50
+    C50 --> C100
+    C100 --> C200
+
+    style C1 fill:#28a745,color:#fff
+    style C10 fill:#17a2b8,color:#fff
+    style C50 fill:#ffc107,color:#333
+    style C100 fill:#fd7e14,color:#fff
+    style C200 fill:#667eea,color:#fff
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <div class="key-point">
+                        <strong>1-50 Clients:</strong> Solo operation, 15 min - 1 hour/day
+                    </div>
+                    <div class="key-point">
+                        <strong>50-100 Clients:</strong> Hire 1 non-technical reviewer ($3K/mo)
+                    </div>
+                    <div class="key-point">
+                        <strong>100-200 Clients:</strong> Hire 2-3 reviewers (no SEO skills needed)
+                    </div>
+                    <div class="key-point">
+                        <strong>Key Insight:</strong> Reviewers just move files A/ or F/ (no writing!)
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUICK COMMAND REFERENCE -->
+            <div class="section">
+                <h2>⚡ Quick Command Reference (By Frequency)</h2>
+
+                <div class="key-points">
+                    <div class="key-point" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white;">
+                        <strong>🟢 DAILY (Mon-Fri, 9 AM - 15 min):</strong><br/>
+                        <code>/generate-daily-blogs</code><br/>
+                        → Review D/ folder manually (15 min)<br/>
+                        <code>/publish-approved</code>
+                    </div>
+
+                    <div class="key-point" style="background: linear-gradient(135deg, #007bff 0%, #6610f2 100%); color: white;">
+                        <strong>🔵 ONBOARDING (Once/Client - 2 hours over 3 days):</strong><br/>
+                        <code>/onboard-client [name]</code> → review (60 min)<br/>
+                        <code>/setup-brand [name]</code> <em>(optional)</em> → review<br/>
+                        <code>/finalize-client [name]</code><br/>
+                        <code>/setup-vercel-projects [name]</code> <em>(one-time)</em>
+                    </div>
+
+                    <div class="key-point" style="background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%); color: #333;">
+                        <strong>🟡 WEEKLY (Every Friday, 3 PM - 30 min):</strong><br/>
+                        <code>/audit-content-performance</code><br/>
+                        → Review & prioritize (5 min)<br/>
+                        <code>/refresh-content [url]</code> × 5-10 posts
+                    </div>
+
+                    <div class="key-point" style="background: linear-gradient(135deg, #fd7e14 0%, #dc3545 100%); color: white;">
+                        <strong>🟠 MONTHLY (1st Monday, 9 AM - 4 hours):</strong><br/>
+                        <code>/monthly-review</code> 🆕 <em>(primary)</em><br/>
+                        → Includes: Performance + Health + Content audit<br/><br/>
+                        <strong>Optional add-ons:</strong><br/>
+                        <code>/keyword-opportunity-scan</code><br/>
+                        <code>/competitor-analysis [domain]</code> × 3<br/><br/>
+                        <strong>On-demand alternatives:</strong><br/>
+                        <code>/generate-monthly-report</code> <em>(performance only)</em><br/>
+                        <code>/health-check</code> <em>(health only)</em><br/>
+                        <code>/audit-content-performance</code> <em>(content only)</em>
+                    </div>
+
+                    <div class="key-point" style="background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%); color: white;">
+                        <strong>🟣 GROWTH (When Ready - Campaign-based):</strong><br/>
+                        <code>/build-hub-page [topic]</code> <em>(after 5+ spokes)</em><br/>
+                        <code>/organize-by-intent</code> <em>(quarterly)</em><br/>
+                        <code>/document-eeat [url]</code> <em>(high-value content)</em><br/>
+                        <code>/research-link-prospects [topic]</code><br/>
+                        <code>/launch-outreach-campaign [topic]</code>
+                    </div>
+
+                    <div class="key-point" style="background: #f8f9fa; border: 2px dashed #6c757d;">
+                        <strong>⚪ OPTIONAL (Use If Helpful):</strong><br/>
+                        <code>/review-quality</code> <em>(QA assistance)</em>
+                    </div>
+                </div>
+
+                <div style="background: #e7f3ff; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h3 style="color: #0066cc; margin-bottom: 10px;">📅 Typical Week Schedule</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="background: #fff;">
+                            <td style="padding: 10px; border: 1px solid #ddd;"><strong>Monday-Friday</strong></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">9:00 AM - Daily workflow (15 min)</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 10px; border: 1px solid #ddd;"><strong>Friday</strong></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">3:00 PM - Weekly maintenance (30 min)</td>
+                        </tr>
+                        <tr style="background: #fff;">
+                            <td style="padding: 10px; border: 1px solid #ddd;"><strong>1st Monday</strong></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">9:00 AM - Monthly review (4 hours)</td>
+                        </tr>
+                        <tr style="background: #f0f8ff;">
+                            <td style="padding: 10px; border: 1px solid #ddd;"><strong>Total/Month</strong></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><strong>11 hours for 50 clients = $2,212/hour</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="section" style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 10px;">
+                <h2 style="color: #667eea; margin-bottom: 20px;">🚀 You're Ready to Scale!</h2>
+                <p style="font-size: 1.2em; color: #666; margin-bottom: 10px;">
+                    <strong>AI Does 95%</strong> (Research, Writing, Translation, Tracking)<br/>
+                    <strong>You Do 5%</strong> (Move files from D/ to A/ or F/)<br/>
+                    <strong>Result:</strong> 50+ clients served in 1 hour/day
+                </p>
+                <p style="color: #999; margin-top: 20px;">
+                    📚 For Details: See <code>FRAMEWORK-USAGE-GUIDE.md</code><br/>
+                    📋 Full Spec: See <code>SEO-COMPLETE-FRAMEWORK-SPEC.md</code>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                diagramMarginX: 50,
+                diagramMarginY: 10,
+                actorMargin: 50,
+                width: 150,
+                height: 65,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35
+            }
+        });
+    </script>
+</body>
+</html>

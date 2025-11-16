@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Workflow - Swimlane Diagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-box {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+
+        .legend-command { background: #fbbf24; }
+        .legend-agent { background: #60a5fa; }
+        .legend-skill { background: #34d399; }
+        .legend-output { background: #f472b6; }
+
+        .swimlane-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .lane {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 600px;
+            border: 3px solid;
+        }
+
+        .lane-onboard { border-color: #3b82f6; }
+        .lane-build { border-color: #10b981; }
+        .lane-review { border-color: #f59e0b; }
+        .lane-publish { border-color: #ef4444; }
+
+        .lane-header {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .header-onboard { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .header-build { background: linear-gradient(135deg, #10b981, #059669); }
+        .header-review { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .header-publish { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+        .command {
+            background: #fef3c7;
+            border: 3px solid #fbbf24;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .command-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #92400e;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .command-icon {
+            background: #fbbf24;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .command-desc {
+            font-size: 0.9em;
+            color: #78350f;
+            margin-bottom: 10px;
+        }
+
+        .uses-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px dashed #fbbf24;
+        }
+
+        .uses-label {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 6px;
+        }
+
+        .agent, .skill {
+            font-size: 0.85em;
+            padding: 6px 10px;
+            margin: 4px 0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .agent {
+            background: #dbeafe;
+            border: 2px solid #60a5fa;
+            color: #1e40af;
+        }
+
+        .skill {
+            background: #d1fae5;
+            border: 2px solid #34d399;
+            color: #065f46;
+        }
+
+        .output {
+            background: #fce7f3;
+            border: 2px solid #f472b6;
+            color: #9f1239;
+            padding: 8px 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 3em;
+            color: #cbd5e0;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .summary {
+            background: #eef2ff;
+            border: 3px solid #6366f1;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .summary-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4338ca;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 5px solid;
+        }
+
+        .summary-card.onboard { border-left-color: #3b82f6; }
+        .summary-card.build { border-left-color: #10b981; }
+        .summary-card.review { border-left-color: #f59e0b; }
+        .summary-card.publish { border-left-color: #ef4444; }
+
+        .summary-card h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .summary-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .summary-card li {
+            padding: 5px 0;
+            color: #4a5568;
+        }
+
+        .summary-card li:before {
+            content: "→ ";
+            color: #6366f1;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1200px) {
+            .swimlane-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .swimlane-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 SEO Workflow: 4-Phase System</h1>
+        <p class="subtitle">Simple as 1-2-3-4 | Designed for clarity and efficiency</p>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-box legend-command"></div>
+                <span><strong>Command</strong> (User runs this)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box legend-agent"></div>
+                <span><strong>Agent</strong> (Does complex work)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box legend-skill"></div>
+                <span><strong>Skill</strong> (Specialized task)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box legend-output"></div>
+                <span><strong>Output</strong> (What you get)</span>
+            </div>
+        </div>
+
+        <div class="swimlane-container">
+            <!-- PHASE 1: ONBOARD -->
+            <div class="lane lane-onboard">
+                <div class="lane-header header-onboard">
+                    <span class="icon">🔍</span> PHASE 1: ONBOARD
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">①</span>
+                        /research-business
+                    </div>
+                    <div class="command-desc">
+                        Understand the client's business, goals, competitors, and market position
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">📊 competitor-intelligence</div>
+                        <div class="agent">🎯 client-onboarding</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">competitive-analysis</div>
+                        <div class="skill">market-research</div>
+                        <div class="skill">persona-identification</div>
+                    </div>
+                    <div class="output">
+                        📄 Business Brief + Competitor Report
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">②</span>
+                        /organize-by-intent
+                    </div>
+                    <div class="command-desc">
+                        Map keywords and content ideas to search intent (informational, commercial, transactional, local)
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🗂️ hub-and-spoke-architect</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">keyword-research</div>
+                        <div class="skill">intent-mapping</div>
+                        <div class="skill">content-clustering</div>
+                    </div>
+                    <div class="output">
+                        📋 Content Strategy Map by Intent
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">③</span>
+                        /plan-authority
+                    </div>
+                    <div class="command-desc">
+                        Design E-E-A-T strategy, author profiles, and trust signals
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">👤 eeat-documentation</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">author-credential-documentation</div>
+                        <div class="skill">trust-signal-identification</div>
+                        <div class="skill">experience-evidence-collection</div>
+                    </div>
+                    <div class="output">
+                        👨‍💼 Authority Plan + Author Profiles
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">④</span>
+                        /design-brand-options
+                    </div>
+                    <div class="command-desc">
+                        Create 10 comprehensive HTML mockups showing different brand identity options for client selection
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🎨 brand-identity</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">brand-material-analysis</div>
+                        <div class="skill">color-palette-generation</div>
+                        <div class="skill">typography-selection</div>
+                        <div class="skill">html-mockup-generation</div>
+                    </div>
+                    <div class="output">
+                        🎨 10 HTML Brand Options
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 2: BUILD -->
+            <div class="lane lane-build">
+                <div class="lane-header header-build">
+                    <span class="icon">🏗️</span> PHASE 2: BUILD
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑤</span>
+                        /build-author
+                    </div>
+                    <div class="command-desc">
+                        Create author bio pages with credentials, experience, and E-E-A-T signals
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">✍️ content-generation</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">author-page-generation</div>
+                        <div class="skill">schema-markup</div>
+                        <div class="skill">credential-formatting</div>
+                    </div>
+                    <div class="output">
+                        👤 Author Bio Page (.astro)
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑥</span>
+                        /build-hub-page
+                    </div>
+                    <div class="command-desc">
+                        Create comprehensive pillar content (3,000-5,000 words) on core topic
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">📝 content-generation</div>
+                        <div class="agent">🗂️ hub-and-spoke-architect</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">hub-page-generation</div>
+                        <div class="skill">internal-linking</div>
+                        <div class="skill">semantic-optimization</div>
+                    </div>
+                    <div class="output">
+                        📄 Hub Page (.astro) + Spoke Map
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑦</span>
+                        /build-blog
+                    </div>
+                    <div class="command-desc">
+                        Generate blog post (1,500-2,500 words) optimized for target keyword and intent
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">✍️ content-generation</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">blog-post-generation</div>
+                        <div class="skill">seo-optimization</div>
+                        <div class="skill">featured-snippet-formatting</div>
+                    </div>
+                    <div class="output">
+                        📝 Blog Post (.astro) + SEO metadata
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑧</span>
+                        /build-service-page
+                    </div>
+                    <div class="command-desc">
+                        Create service/product page with conversion focus and local optimization
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">✍️ content-generation</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">service-page-generation</div>
+                        <div class="skill">conversion-optimization</div>
+                        <div class="skill">local-seo-signals</div>
+                    </div>
+                    <div class="output">
+                        🛒 Service/Product Page (.astro)
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 3: REVIEW -->
+            <div class="lane lane-review">
+                <div class="lane-header header-review">
+                    <span class="icon">✅</span> PHASE 3: REVIEW
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑨</span>
+                        /review-seo
+                    </div>
+                    <div class="command-desc">
+                        Check technical SEO, on-page optimization, schema markup, and Core Web Vitals
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🔍 content-qa</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">technical-seo-audit</div>
+                        <div class="skill">on-page-checklist</div>
+                        <div class="skill">performance-check</div>
+                    </div>
+                    <div class="output">
+                        ✅ SEO Audit Report + Fixes
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑩</span>
+                        /review-eeat
+                    </div>
+                    <div class="command-desc">
+                        Verify Experience, Expertise, Authority, Trust signals are strong
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">👤 eeat-documentation</div>
+                        <div class="agent">🔍 content-qa</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">eeat-checklist</div>
+                        <div class="skill">trust-signal-verification</div>
+                        <div class="skill">credential-validation</div>
+                    </div>
+                    <div class="output">
+                        ✅ E-E-A-T Score + Improvements
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑪</span>
+                        /review-readability
+                    </div>
+                    <div class="command-desc">
+                        Check content quality, readability, user experience, and conversion elements
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🔍 content-qa</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">readability-scoring</div>
+                        <div class="skill">ux-checklist</div>
+                        <div class="skill">conversion-audit</div>
+                    </div>
+                    <div class="output">
+                        ✅ Quality Report + UX Fixes
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHASE 4: PUBLISH -->
+            <div class="lane lane-publish">
+                <div class="lane-header header-publish">
+                    <span class="icon">🚀</span> PHASE 4: PUBLISH
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑫</span>
+                        /translate-content
+                    </div>
+                    <div class="command-desc">
+                        Translate and localize content for EN, MS, ZH versions with cultural adaptation
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🌐 content-generation</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">translation-localization</div>
+                        <div class="skill">cultural-adaptation</div>
+                        <div class="skill">hreflang-generation</div>
+                    </div>
+                    <div class="output">
+                        🌍 3 Language Versions (EN, MS, ZH)
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑬</span>
+                        /deploy-multilang
+                    </div>
+                    <div class="command-desc">
+                        Deploy to 3 Vercel projects with correct environment variables
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🚀 publishing</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">multi-language-deployment</div>
+                        <div class="skill">vercel-deployment</div>
+                        <div class="skill">environment-configuration</div>
+                    </div>
+                    <div class="output">
+                        ✅ Live on 3 Domains
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-title">
+                        <span class="command-icon">⑭</span>
+                        /submit-search
+                    </div>
+                    <div class="command-desc">
+                        Submit to Google Search Console, Bing, generate sitemaps, request indexing
+                    </div>
+                    <div class="uses-section">
+                        <div class="uses-label">🤖 Uses Agents:</div>
+                        <div class="agent">🚀 publishing</div>
+                        <div class="uses-label">⚡ Uses Skills:</div>
+                        <div class="skill">sitemap-generation</div>
+                        <div class="skill">search-console-submission</div>
+                        <div class="skill">indexing-request</div>
+                    </div>
+                    <div class="output">
+                        ✅ Submitted to Search Engines
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="summary">
+            <div class="summary-title">📊 Workflow Summary: Keep It Simple</div>
+            <div class="summary-grid">
+                <div class="summary-card onboard">
+                    <h3>🔍 Phase 1: ONBOARD (Research)</h3>
+                    <p><strong>Goal:</strong> Understand before building</p>
+                    <ul>
+                        <li>Who is the client?</li>
+                        <li>What do users search for?</li>
+                        <li>What content should we make?</li>
+                        <li>How do we show authority?</li>
+                        <li>What should the brand look like?</li>
+                    </ul>
+                    <p><strong>Commands: 4</strong></p>
+                </div>
+
+                <div class="summary-card build">
+                    <h3>🏗️ Phase 2: BUILD (Create)</h3>
+                    <p><strong>Goal:</strong> Make great content</p>
+                    <ul>
+                        <li>Author profiles with credentials</li>
+                        <li>Hub pages (big guides)</li>
+                        <li>Blog posts (helpful articles)</li>
+                        <li>Service pages (sell)</li>
+                    </ul>
+                    <p><strong>Commands: 4</strong></p>
+                </div>
+
+                <div class="summary-card review">
+                    <h3>✅ Phase 3: REVIEW (Check Quality)</h3>
+                    <p><strong>Goal:</strong> Make sure it's excellent</p>
+                    <ul>
+                        <li>SEO perfect?</li>
+                        <li>Authority strong?</li>
+                        <li>Easy to read?</li>
+                        <li>Will it convert?</li>
+                    </ul>
+                    <p><strong>Commands: 3</strong></p>
+                </div>
+
+                <div class="summary-card publish">
+                    <h3>🚀 Phase 4: PUBLISH (Go Live)</h3>
+                    <p><strong>Goal:</strong> Get it online in 3 languages</p>
+                    <ul>
+                        <li>Translate EN → MS → ZH</li>
+                        <li>Deploy to 3 domains</li>
+                        <li>Tell Google about it</li>
+                    </ul>
+                    <p><strong>Commands: 3</strong></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 8px; border-left: 5px solid #6366f1;">
+                <h3 style="color: #4338ca; margin-bottom: 10px;">🎓 The 5th Grader Test</h3>
+                <p style="color: #4a5568; line-height: 1.6;">
+                    <strong>Can a 5th grader understand this workflow?</strong><br>
+                    ✅ Yes! Only 14 commands total<br>
+                    ✅ Each phase has a clear purpose<br>
+                    ✅ Each command does ONE thing well<br>
+                    ✅ 8 specialized agents do the complex work<br>
+                    ✅ 35+ reusable skills handle the details<br>
+                    ✅ You just run simple commands like "research," "design-brand," "build," "review," "publish"
+                </p>
+            </div>
+
+            <div style="margin-top: 20px; padding: 20px; background: #fef3c7; border-radius: 8px; border: 3px solid #fbbf24;">
+                <h3 style="color: #92400e; margin-bottom: 10px;">💡 Key Principle: Commands Stay Simple</h3>
+                <p style="color: #78350f; line-height: 1.6;">
+                    <strong>Commands</strong> are like restaurant menu items - simple choices<br>
+                    <strong>Agents</strong> are like chefs - do the complex cooking<br>
+                    <strong>Skills</strong> are like recipes - specific techniques<br><br>
+                    You order from the menu. The kitchen handles the rest.
+                </p>
+            </div>
+        </div>
+
+        <!-- DEPENDENCIES SECTION -->
+        <div style="margin-top: 60px; padding: 40px; background: #f0f9ff; border-radius: 15px; border: 3px solid #0284c7;">
+            <h2 style="color: #0c4a6e; margin-bottom: 30px; text-align: center;">🔗 Command Dependencies: What Must Exist First?</h2>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #3b82f6;">
+                <h3 style="color: #1e40af; margin-bottom: 15px;">🔍 Phase 1: ONBOARD (Creates Foundation)</h3>
+                <p style="color: #64748b; margin-bottom: 15px;">These commands create the foundational assets needed for everything else.</p>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                    <thead>
+                        <tr style="background: #dbeafe;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #93c5fd;">Command</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #93c5fd;">Requires (Input)</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #93c5fd;">Creates (Output)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>① /research-business</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ❌ Nothing required<br>
+                                <span style="color: #10b981; font-size: 0.85em; font-weight: bold;">✓ START HERE - First command for new client</span>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>business-brief.md</code><br>
+                                ✅ <code>competitor-report.md</code><br>
+                                ✅ <code>personas.md</code><br>
+                                ✅ <code>keyword-opportunities.csv</code>
+                            </td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>② /organize-by-intent</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>business-brief.md</code> (from ①)<br>
+                                📋 <code>personas.md</code> (from ①)<br>
+                                📋 <code>keyword-opportunities.csv</code> (from ①)
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Run ① /research-business first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>content-strategy-map.md</code><br>
+                                ✅ <code>hub-spoke-plan.md</code><br>
+                                ✅ <code>keyword-database.csv</code>
+                            </td>
+                        </tr>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>③ /plan-authority</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>business-brief.md</code> (from ①)<br>
+                                📋 <code>personas.md</code> (from ①)
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Run ① /research-business first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>authority-plan.md</code><br>
+                                ✅ <code>author-profiles.md</code><br>
+                                ✅ <code>trust-signals.md</code>
+                            </td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>④ /design-brand-options</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>business-brief.md</code> (from ①)<br>
+                                📋 Employee-provided brand materials
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Run ① /research-business first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>ci-option-1.html</code> through <code>ci-option-10.html</code><br>
+                                ✅ Client picks one → becomes design system
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #10b981;">
+                <h3 style="color: #065f46; margin-bottom: 15px;">🏗️ Phase 2: BUILD (Requires Onboard Assets)</h3>
+                <p style="color: #64748b; margin-bottom: 15px;">Cannot build content without foundational assets from ONBOARD phase.</p>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                    <thead>
+                        <tr style="background: #d1fae5;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #6ee7b7;">Command</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #6ee7b7;">Requires (Input)</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #6ee7b7;">Creates (Output)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑤ /build-author</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>author-profiles.md</code> (from ③)<br>
+                                📋 Selected brand design (from ④)<br>
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Run ③ /plan-authority and ④ /design-brand-options first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>src/pages/en/authors/[name].astro</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">Ready for review</span>
+                            </td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑥ /build-hub-page</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>content-strategy-map.md</code> (from ②)<br>
+                                📋 <code>hub-spoke-plan.md</code> (from ②)<br>
+                                📋 <code>personas.md</code> (from ①)<br>
+                                📋 Selected brand design (from ④)<br>
+                                📋 <code>author-profiles.md</code> (from ③)
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Complete ONBOARD phase ①-④ first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>src/pages/en/guides/[topic].astro</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">3,000-5,000 word pillar content</span>
+                            </td>
+                        </tr>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑦ /build-blog</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>content-strategy-map.md</code> (from ②)<br>
+                                📋 <code>personas.md</code> (from ①)<br>
+                                📋 Selected brand design (from ④)<br>
+                                📋 <code>author-profiles.md</code> (from ③)
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Complete ONBOARD phase ①-④ first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>src/pages/en/blog/[slug].astro</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">1,500-2,500 word blog post</span>
+                            </td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑧ /build-service-page</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 <code>business-brief.md</code> (from ①)<br>
+                                📋 <code>personas.md</code> (from ①)<br>
+                                📋 Selected brand design (from ④)<br>
+                                📋 <code>author-profiles.md</code> (from ③)<br>
+                                📋 <code>trust-signals.md</code> (from ③)
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing:</strong> Complete ONBOARD phase ①-④ first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>src/pages/en/services/[service].astro</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">Conversion-focused service page</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #f59e0b;">
+                <h3 style="color: #92400e; margin-bottom: 15px;">✅ Phase 3: REVIEW (Requires Built Content)</h3>
+                <p style="color: #64748b; margin-bottom: 15px;">Cannot review until content has been built.</p>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                    <thead>
+                        <tr style="background: #fed7aa;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #fdba74;">Command</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #fdba74;">Requires (Input)</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #fdba74;">Creates (Output)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑨ /review-seo</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 Any built page (.astro file)<br>
+                                <span style="color: #64748b; font-size: 0.85em;">From ⑤, ⑥, ⑦, or ⑧</span>
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If no content:</strong> Run BUILD commands ⑤-⑧ first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>seo-audit-report.md</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">Pass/Fail + fixes needed</span>
+                            </td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑩ /review-eeat</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 Any built page (.astro file)<br>
+                                <span style="color: #64748b; font-size: 0.85em;">From ⑤, ⑥, ⑦, or ⑧</span>
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If no content:</strong> Run BUILD commands ⑤-⑧ first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>eeat-score-report.md</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">Score 0-100 + improvements</span>
+                            </td>
+                        </tr>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑪ /review-readability</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 Any built page (.astro file)<br>
+                                <span style="color: #64748b; font-size: 0.85em;">From ⑤, ⑥, ⑦, or ⑧</span>
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If no content:</strong> Run BUILD commands ⑤-⑧ first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>readability-report.md</code><br>
+                                <span style="color: #64748b; font-size: 0.85em;">Flesch score + UX fixes</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #ef4444;">
+                <h3 style="color: #991b1b; margin-bottom: 15px;">🚀 Phase 4: PUBLISH (Requires Approved Content)</h3>
+                <p style="color: #64748b; margin-bottom: 15px;">Cannot publish until content passes all review checks.</p>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                    <thead>
+                        <tr style="background: #fecaca;">
+                            <th style="padding: 12px; text-align: left; border: 1px solid #fca5a5;">Command</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #fca5a5;">Requires (Input)</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #fca5a5;">Creates (Output)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑫ /translate-content</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 Built page that passed all 3 reviews<br>
+                                ✅ <code>seo-audit-report.md</code> (from ⑨ PASS)<br>
+                                ✅ <code>eeat-score-report.md</code> (from ⑩ PASS)<br>
+                                ✅ <code>readability-report.md</code> (from ⑪ PASS)
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If reviews failed:</strong> Fix issues, then run REVIEW commands ⑨-⑪ again
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ <code>/en/[page].astro</code> (original)<br>
+                                ✅ <code>/ms/[page].astro</code> (Malay)<br>
+                                ✅ <code>/zh/[page].astro</code> (Chinese)
+                            </td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑬ /deploy-multilang</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 Translated pages (EN, MS, ZH) (from ⑫)<br>
+                                📋 Vercel CLI configured<br>
+                                📋 3 project IDs
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If missing translations:</strong> Run ⑫ /translate-content first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ www.inghengcredit.com (EN) - LIVE<br>
+                                ✅ www.kreditloan.my (MS) - LIVE<br>
+                                ✅ www.inghengcredit.my (ZH) - LIVE
+                            </td>
+                        </tr>
+                        <tr style="background: #f8fafc;">
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⑭ /submit-search</strong></td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                📋 Live websites (from ⑬)<br>
+                                📋 Google Search Console access<br>
+                                📋 Bing Webmaster access
+                                <div style="margin-top: 8px; padding: 8px; background: #fee2e2; border-radius: 4px; font-size: 0.85em;">
+                                    ❌ <strong>If not deployed:</strong> Run ⑬ /deploy-multilang first
+                                </div>
+                            </td>
+                            <td style="padding: 12px; border: 1px solid #e2e8f0;">
+                                ✅ Sitemaps generated<br>
+                                ✅ URLs submitted to Google<br>
+                                ✅ URLs submitted to Bing<br>
+                                ✅ Indexing requested
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; padding: 25px; border-radius: 10px; margin-top: 30px;">
+                <h3 style="margin-bottom: 15px;">⚠️ Critical Rule: Never Skip Phases</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px;">❌ Wrong Order</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;">
+                            <span style="text-decoration: line-through;">Run /build-blog first</span><br>
+                            → Missing: personas, brand, strategy<br>
+                            → Result: Generic, off-brand content
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px;">✅ Right Order</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;">
+                            1️⃣ ONBOARD (create assets)<br>
+                            2️⃣ BUILD (use assets)<br>
+                            3️⃣ REVIEW (check quality)<br>
+                            4️⃣ PUBLISH (go live)
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px;">❌ Skip Review</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;">
+                            <span style="text-decoration: line-through;">Build → Publish directly</span><br>
+                            → Missing: Quality checks<br>
+                            → Result: SEO issues go live
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h4 style="margin-bottom: 10px;">✅ Follow Chain</h4>
+                        <p style="font-size: 0.9em; line-height: 1.6;">
+                            Build → Review → Fix → Translate → Deploy<br>
+                            → Result: High-quality content in 3 languages
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #e0f2fe; padding: 20px; border-radius: 10px; margin-top: 20px; border: 2px solid #0284c7;">
+                <h3 style="color: #0c4a6e; margin-bottom: 15px;">💡 Quick Reference: Minimum Requirements</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <div>
+                        <strong style="color: #0369a1;">To start BUILD phase (⑤-⑧), you must have:</strong>
+                        <ul style="margin-top: 10px; color: #475569; line-height: 1.8;">
+                            <li>✅ business-brief.md (from ①)</li>
+                            <li>✅ personas.md (from ①)</li>
+                            <li>✅ content-strategy-map.md (from ②)</li>
+                            <li>✅ author-profiles.md (from ③)</li>
+                            <li>✅ Selected brand design (from ④)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #0369a1;">To start REVIEW phase (⑨-⑪), you must have:</strong>
+                        <ul style="margin-top: 10px; color: #475569; line-height: 1.8;">
+                            <li>✅ At least 1 built page (.astro) from ⑤-⑧</li>
+                            <li>✅ Content is complete</li>
+                            <li>✅ All images and assets in place</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #0369a1;">To start PUBLISH phase (⑫-⑭), you must have:</strong>
+                        <ul style="margin-top: 10px; color: #475569; line-height: 1.8;">
+                            <li>✅ Content passed ⑨ /review-seo</li>
+                            <li>✅ Content passed ⑩ /review-eeat</li>
+                            <li>✅ Content passed ⑪ /review-readability</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #0369a1;">To complete workflow (⑭), you must have:</strong>
+                        <ul style="margin-top: 10px; color: #475569; line-height: 1.8;">
+                            <li>✅ Translations complete (from ⑫)</li>
+                            <li>✅ Sites deployed (from ⑬)</li>
+                            <li>✅ Search Console configured</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXECUTION FLOW CHART -->
+        <div style="margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 15px;">
+            <h2 style="color: white; margin-bottom: 30px; text-align: center;">📋 Command Execution Order (1-14)</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;">
+                <!-- ONBOARD Column -->
+                <div>
+                    <div style="background: #3b82f6; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 15px;">
+                        🔍 ONBOARD (①-④)
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #3b82f6; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ① START HERE
+                        </div>
+                        <strong>/research-business</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">No requirements</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #3b82f6; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ②
+                        </div>
+                        <strong>/organize-by-intent</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ① outputs</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #3b82f6; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ③
+                        </div>
+                        <strong>/plan-authority</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ① outputs</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #3b82f6; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ④
+                        </div>
+                        <strong>/design-brand-options</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ① outputs</span><br>
+                        <span style="font-size: 0.75em; color: #ef4444; font-weight: bold;">→ Client picks design</span>
+                    </div>
+                </div>
+
+                <!-- BUILD Column -->
+                <div>
+                    <div style="background: #10b981; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 15px;">
+                        🏗️ BUILD (⑤-⑧)
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #10b981; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑤
+                        </div>
+                        <strong>/build-author</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ③④ outputs</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #10b981; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑥
+                        </div>
+                        <strong>/build-hub-page</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ①②③④ outputs</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #10b981; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑦
+                        </div>
+                        <strong>/build-blog</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ①②③④ outputs</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #10b981; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑧
+                        </div>
+                        <strong>/build-service-page</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ①③④ outputs</span>
+                    </div>
+                </div>
+
+                <!-- REVIEW Column -->
+                <div>
+                    <div style="background: #f59e0b; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 15px;">
+                        ✅ REVIEW (⑨-⑪)
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #f59e0b; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑨
+                        </div>
+                        <strong>/review-seo</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: Any ⑤⑥⑦⑧</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #f59e0b; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑩
+                        </div>
+                        <strong>/review-eeat</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: Any ⑤⑥⑦⑧</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #f59e0b; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑪
+                        </div>
+                        <strong>/review-readability</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: Any ⑤⑥⑦⑧</span>
+                    </div>
+                    <div style="margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 6px; text-align: center;">
+                        <span style="color: white; font-size: 0.85em; font-weight: bold;">All must PASS ✓</span>
+                    </div>
+                </div>
+
+                <!-- PUBLISH Column -->
+                <div>
+                    <div style="background: #ef4444; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 15px;">
+                        🚀 PUBLISH (⑫-⑭)
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #ef4444; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑫
+                        </div>
+                        <strong>/translate-content</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ⑨⑩⑪ all PASS</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #ef4444; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑬
+                        </div>
+                        <strong>/deploy-multilang</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ⑫ translations</span>
+                    </div>
+                    <div style="text-align: center; color: white; font-size: 2em;">↓</div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                        <div style="background: #ef4444; color: white; padding: 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; font-weight: bold;">
+                            ⑭ FINISH
+                        </div>
+                        <strong>/submit-search</strong><br>
+                        <span style="font-size: 0.8em; color: #64748b;">Needs: ⑬ live sites</span>
+                    </div>
+                    <div style="margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 6px; text-align: center;">
+                        <span style="color: white; font-size: 0.85em; font-weight: bold;">🎉 DONE!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; backdrop-filter: blur(10px);">
+                <h3 style="color: white; margin-bottom: 15px; text-align: center;">🚨 Error Handling: What To Do When Requirements Missing</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "business-brief.md not found"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>① /research-business</strong> for this client
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "content-strategy-map.md not found"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>② /organize-by-intent</strong> for this client
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "author-profiles.md not found"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>③ /plan-authority</strong> for this client
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "No brand design selected"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>④ /design-brand-options</strong>, ask client to pick
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "No content to review"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>⑤-⑧ BUILD commands</strong> to create content first
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "Reviews not passed"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Fix issues, then run <strong>⑨-⑪ REVIEW commands</strong> again
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "Translations not found"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>⑫ /translate-content</strong> first
+                        </span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fbbf24;">❌ Error: "Sites not deployed"</strong><br>
+                        <span style="color: white; font-size: 0.9em;">
+                            → Go back: Run <strong>⑬ /deploy-multilang</strong> first
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

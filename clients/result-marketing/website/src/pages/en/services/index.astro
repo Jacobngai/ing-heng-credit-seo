@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+
+const lang = 'en';
+
+const services = [
+  {
+    title: 'AI-Powered SEO',
+    description: 'Leverage Claude Code automation to cover 100+ long-tail keywords monthly. Enterprise results at SME prices.',
+    icon: '🤖',
+    link: '/en/services/ai-seo',
+    features: [
+      'AI keyword research & clustering',
+      'Automated content outlines',
+      'Technical SEO audits',
+      'Performance tracking dashboards'
+    ]
+  },
+  {
+    title: 'Long-Tail Keyword Strategy',
+    description: 'Stop fighting for 10 competitive terms. Dominate 1,000 specific, high-intent searches your customers actually make.',
+    icon: '🎯',
+    link: '/en/services/long-tail',
+    features: [
+      '100+ keywords covered monthly',
+      'Search intent optimization',
+      'Conversion-focused targeting',
+      'Competitor gap analysis'
+    ]
+  },
+  {
+    title: 'Content Creation at Scale',
+    description: '10x faster content production without sacrificing quality. AI-assisted creation with human oversight.',
+    icon: '📝',
+    link: '/en/services/content',
+    features: [
+      'AI-assisted drafting',
+      'Expert human editing',
+      'SEO optimization built-in',
+      'Consistent brand voice'
+    ]
+  },
+  {
+    title: 'Technical SEO',
+    description: 'Fast websites, clean code, perfect indexing. We handle the technical foundation so your content can shine.',
+    icon: '⚙️',
+    link: '/en/services/technical',
+    features: [
+      'Site speed optimization',
+      'Core Web Vitals tuning',
+      'Schema markup',
+      'Mobile optimization'
+    ]
+  },
+  {
+    title: 'AI Search Optimization',
+    description: 'Future-proof your SEO. Optimize for ChatGPT, Perplexity, Claude, and other AI search engines.',
+    icon: '🔮',
+    link: '/en/services/ai-seo',
+    features: [
+      'Citation-worthy content',
+      'Structured data optimization',
+      'Authority building',
+      'AI engine indexing'
+    ]
+  },
+  {
+    title: 'Local SEO',
+    description: 'Dominate local search in Malaysian markets. Perfect for businesses serving specific cities or regions.',
+    icon: '📍',
+    link: '/en/services/ai-seo',
+    features: [
+      'Google Business Profile optimization',
+      'Local keyword targeting',
+      'Review management',
+      'Local citation building'
+    ]
+  }
+];
+
+const industries = [
+  {
+    name: 'B2B SaaS',
+    description: 'Help buyers find you when researching solutions',
+    icon: '💼'
+  },
+  {
+    name: 'Professional Services',
+    description: 'Capture high-intent clients searching for expertise',
+    icon: '👔'
+  },
+  {
+    name: 'E-commerce',
+    description: 'Drive product discovery and comparison searches',
+    icon: '🛒'
+  },
+  {
+    name: 'Financial Services',
+    description: 'Build trust with comprehensive educational content',
+    icon: '💰'
+  },
+  {
+    name: 'Healthcare',
+    description: 'Answer patient questions and establish authority',
+    icon: '⚕️'
+  },
+  {
+    name: 'Manufacturing',
+    description: 'Help B2B buyers find your technical solutions',
+    icon: '🏭'
+  }
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Discovery & Audit',
+    description: 'We analyze your current SEO situation, identify quick wins, and map out a 90-day roadmap.'
+  },
+  {
+    step: '02',
+    title: 'Keyword Strategy',
+    description: 'Our AI tools identify 100+ long-tail opportunities your competitors are missing.'
+  },
+  {
+    step: '03',
+    title: 'Content Production',
+    description: 'AI-assisted creation with human quality control. Fast, scalable, but never sacrificing quality.'
+  },
+  {
+    step: '04',
+    title: 'Deployment & Optimization',
+    description: 'Content goes live within 24-48 hours. We monitor, refine, and scale based on performance data.'
+  }
+];
+---
+
+<BaseLayout
+  title="SEO Services - AI-Powered Long-Tail Strategy | Result Marketing"
+  description="Comprehensive SEO services powered by AI automation. Cover 100+ keywords monthly, optimize for AI search engines, and drive real business growth."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Our Services</span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+          Performance-Focused SEO Services
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          We don't do "SEO" for the sake of rankings. We do strategic content marketing that drives traffic, generates leads, and grows revenue. Everything else is just vanity metrics.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/en/contact" class="btn-primary">
+            Get Free Analysis
+          </a>
+          <a href="/en/pricing" class="btn-secondary">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map(service => (
+          <a href={service.link} class="group">
+            <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary-200 transition-all h-full">
+              <div class="text-4xl mb-4">{service.icon}</div>
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary-600 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-gray-600 mb-4">{service.description}</p>
+              <ul class="space-y-2">
+                {service.features.map(feature => (
+                  <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-4 text-primary-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">How We Work</h2>
+        <p class="text-lg text-gray-600">
+          Our proven process delivers results in 90 days or less. No 12-month lock-in contracts.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {process.map(item => (
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-primary-100 text-primary-700 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Industries We Serve</h2>
+        <p class="text-lg text-gray-600">
+          Our AI-powered approach works across industries. Here's where we've had the most success.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {industries.map(industry => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 text-center">
+            <div class="text-4xl mb-3">{industry.icon}</div>
+            <h3 class="font-semibold mb-2">{industry.name}</h3>
+            <p class="text-sm text-gray-600">{industry.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-br from-primary-600 to-primary-700">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Ready to See What 100 Keywords Can Do?
+        </h2>
+        <p class="text-xl mb-8 text-primary-100">
+          Get a free keyword gap analysis. We'll show you exactly what opportunities you're missing right now.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/en/contact" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+            Get Free Analysis
+          </a>
+          <a href="/en/case-studies" class="btn-secondary border-white text-white hover:bg-white/10">
+            See Case Studies
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,61 @@
+{
+  "commandName": "build-hub-page",
+  "description": "Build SEO hub page with spoke content using hub-and-spoke architecture",
+  "files": [
+    {
+      "path": "clients/ing-heng/seo/keyword-research/primary-keywords.json",
+      "reason": "Contains target keywords for hub page optimization and spoke content generation",
+      "generateCommand": "/keyword-opportunity-scan",
+      "docs": "framework-docs/KEYWORD-RESEARCH.md",
+      "order": 1,
+      "estimatedTime": "3-5 minutes"
+    },
+    {
+      "path": "clients/ing-heng/seo/content-strategy/hub-topics.json",
+      "reason": "Defines hub topic structure and spoke content relationships for internal linking",
+      "generateCommand": "/organize-by-intent",
+      "docs": "framework-docs/HUB-AND-SPOKE-ARCHITECTURE.md",
+      "order": 2,
+      "estimatedTime": "2-3 minutes"
+    }
+  ],
+  "data": [
+    {
+      "file": "clients/ing-heng/seo/keyword-research/primary-keywords.json",
+      "type": "keyword data",
+      "requiredFields": ["keyword", "search_volume", "difficulty", "intent", "related_keywords"],
+      "validationCommand": "node scripts/validate-keyword-data.js",
+      "impact": "Without complete keyword data, hub pages cannot be optimized for search intent and spoke pages cannot be properly clustered"
+    },
+    {
+      "file": "clients/ing-heng/seo/content-strategy/hub-topics.json",
+      "type": "hub structure data",
+      "requiredFields": ["hub_topic", "primary_keyword", "spoke_keywords", "internal_links"],
+      "validationCommand": "node scripts/validate-hub-structure.js",
+      "impact": "Without hub structure data, internal linking strategy cannot be implemented and topical authority cannot be established"
+    }
+  ],
+  "commands": [
+    {
+      "name": "keyword-opportunity-scan",
+      "command": "/keyword-opportunity-scan",
+      "outputFile": "clients/ing-heng/seo/keyword-research/primary-keywords.json",
+      "reason": "Identifies high-value keywords to target in hub and spoke content",
+      "exampleOutput": "Found 47 keyword opportunities with avg. search volume 2,400/month",
+      "estimatedTime": "3-5 minutes",
+      "nextSteps": "Review opportunities and select primary keywords for hub topics",
+      "order": 1
+    },
+    {
+      "name": "organize-by-intent",
+      "command": "/organize-by-intent",
+      "outputFile": "clients/ing-heng/seo/content-strategy/hub-topics.json",
+      "reason": "Groups keywords by search intent to create logical hub-and-spoke structure",
+      "exampleOutput": "Created 8 hub topics with 47 spoke keywords clustered by intent",
+      "estimatedTime": "2-3 minutes",
+      "nextSteps": "Review hub structure and adjust keyword clustering if needed",
+      "order": 2
+    }
+  ],
+  "tools": []
+}

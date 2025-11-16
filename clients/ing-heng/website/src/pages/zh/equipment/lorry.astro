@@ -15,13 +15,15 @@ import ContactForm from '../../../components/ContactForm.astro';
 import Calculator from '../../../components/Calculator.astro';
 import TestimonialCard from '../../../components/TestimonialCard.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
 import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../utils/constants';
 const lang = 'zh';
 
 // SEO Data
-const pageTitle = '商用货车融资服务 | 巴生港物流业者专属 | 24小时批准';
-const pageDescription = '专为巴生港物流业者提供货车融资服务。24小时快速批准，90%融资额度，灵活还款计划。箱型货车、平板车、油罐车、拖车融资。立即申请！';
+const pageTitle = '商用货车融资服务 | 巴生港物流业者专属 | 快速批准';
+const pageDescription = '专为巴生港物流业者提供货车融资服务。快速批准，90%融资额度，灵活还款计划。箱型货车、平板车、油罐车、拖车融资。立即申请！';
 const keywords = ['货车融资马来西亚', '巴生港货车贷款', '商用车辆融资', '车队融资方案', '中小企业货车贷款', '物流公司融资'];
 
 // Breadcrumbs
@@ -33,8 +35,8 @@ const breadcrumbs = [
 
 // Benefits
 const benefits = [
-  { icon: 'clock', title: '24小时快速批准', description: '紧急合同不用等，当天申请隔天批准。巴生港配送合同即刻签约。' },
-  { icon: 'percentage', title: '90%高额融资', description: '只需10%首期，保留营运资金用于柴油、维修和业务周转。' },
+  { icon: 'clock', title: '快速批准', description: '紧急合同不用等，当天申请隔天批准。巴生港配送合同即刻签约。' },
+  { icon: 'percentage', title: '首付从0%起*', description: '符合条件者首付从0%起*。可贷款至100%*。保留营运资金用于柴油和业务周转。*受条款及条件约束' },
   { icon: 'calendar', title: '灵活12-84个月还款', description: '配合您的车队营运规划。根据收入周期调整月供额度。' },
   { icon: 'shield', title: '新旧货车皆可', description: '接受15年车龄货车融资。五十铃、日野、三菱、UD等所有主要品牌。' },
   { icon: 'users', title: '车队融资方案', description: '多辆货车享特惠利率。扩大车队规模，提升配送能力和营收。' },
@@ -47,7 +49,7 @@ const benefits = [
 const steps = [
   { stepNumber: 1, icon: 'contact', title: 'WhatsApp咨询', description: '发送货车需求至我们的WhatsApp。物流融资专员即刻回复。' },
   { stepNumber: 2, icon: 'document', title: '提交文件', description: '身份证、银行月结单、公司注册（如有）。数字化简易提交流程。' },
-  { stepNumber: 3, icon: 'check', title: '24小时内批准', description: '快速信贷决策。通过WhatsApp或电话通知批准结果。' },
+  { stepNumber: 3, icon: 'check', title: '快速信贷决策', description: '快速信贷决策。通过WhatsApp或电话通知批准结果。' },
   { stepNumber: 4, icon: 'clipboard', title: '签署贷款合约', description: '审核条款并完成文件。可安排在巴生港或雪隆区见面签约。' },
   { stepNumber: 5, icon: 'truck', title: '开走您的货车', description: '资金到账，即刻取车。立即开始配送业务，赚取收入。' },
 ];
@@ -113,14 +115,14 @@ const faqs = [
   { question: '提前还款有罚款吗？', answer: '没有提前还款罚款！您可随时结清贷款，无需额外费用。许多客户在业务增长或为车队扩展转贷时提前还款。' },
   { question: '可以以旧货车换购新车型吗？', answer: '可以！我们提供以旧换新计划。评估旧货车价值，结清剩余贷款（如有），融资新货车。许多业者从旧车型（10-15年）升级到燃油效率更高的新货车。' },
   { question: '最高贷款额度是多少？', answer: '最低贷款：RM 40,000。最高贷款：车队融资RM 5,000,000。单辆货车融资通常介于RM 80,000（二手3吨）至RM 800,000（新拖头/集装箱拖车）。' },
-  { question: '从申请到放款整个流程需要多长时间？', answer: '标准时间线：24小时批准决策，3-5天完成文件和放款。紧急情况（如即时合约需求）可加快至1-2天（需完整文件）。' },
+  { question: '从申请到放款整个流程需要多长时间？', answer: '标准时间线：快速批准决策，3-5天完成文件和放款。紧急情况（如即时合约需求）可加快至1-2天（需完整文件）。' },
 ];
 
 // Product Schema
 const productSchema = generateProductSchema({
   name: '马来西亚商用货车融资服务',
   description: '快速商用货车融资，专为巴生港和雪隆区物流业者设计。车队解决方案，支持中小企业扩展。',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/lorry-financing.jpg',
+  imageUrl: `${SITE_CONFIG.url}/images/lorry-financing.jpg`,
   category: '金融服务 - 商用车辆融资',
   offers: {
     price: '40000',
@@ -154,32 +156,31 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="巴生港物流业者专属商用货车融资"
-    subtitle="24小时快速批准 | 90%高额融资 | 车队融资方案 | 新旧货车皆可接受"
+    subtitle="快速批准 | 90%高额融资 | 车队融资方案 | 新旧货车皆可接受"
     ctaText="WhatsApp免费咨询"
     ctaLink="https://wa.me/60175700889?text=你好！我想咨询货车融资。"
     ctaSecondaryText="致电：017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/lorry-hero.jpg"
     lang={lang}
     trustSignals={['40年信誉经验', '巴生港专家', '车队融资专业', '当天批准']}
   />
 
   <!-- Problem/Solution Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           物流业者面临车队融资难题
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           巴生港2024年创下1,464万TEU记录。电商配送需求激增。您有合约却缺货车。银行要求30-50%首期。无法扩展车队以满足需求。竞争对手抢走商机，您却在等待批准。
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-red-600 font-bold text-lg mb-3">遇到的问题</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>高首期阻碍车队扩展（30-50%）</span>
@@ -199,9 +200,9 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-green-600 font-bold text-lg mb-3">我们的解决方案</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
               <span>只需10-20%首期即可</span>
@@ -212,7 +213,7 @@ const faqSchema = generateFAQSchema(faqs);
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>24小时批准紧急合约</span>
+              <span>快速批准紧急合约</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
@@ -221,7 +222,7 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="font-bold text-lg mb-3 text-yellow-600">真实案例</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">巴生港的李先生</strong>接到Shopee/Lazada合约，需要3辆箱型货车，月收入RM 45,000。</p>
@@ -240,7 +241,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           为什么物流业者选择Ing Heng Credit？
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           专为巴生港和雪隆区物流企业设计的货车融资服务
         </p>
       </div>
@@ -258,10 +259,10 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
-        <Calculator lang={lang} equipmentType="货车" defaultPrice={140000} />
+        <Calculator lang={lang} equipmentType="货车" defaultPrice={200000} />
       </div>
     </div>
   </section>
@@ -273,7 +274,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           5个简单步骤取得您的货车
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从申请到开走货车，最快3-5天完成
         </p>
       </div>
@@ -304,22 +305,22 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Lorry Types -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           我们融资的商用货车类型
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从1吨小货车到30吨拖头，所有货车类型皆可融资
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {lorryTypes.map((lorry) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <h3 class="text-lg font-bold text-primary mb-3">{lorry.name}</h3>
-            <p class="text-gray-600 text-sm">{lorry.description}</p>
+            <p class="text-[#4F3E29] text-sm">{lorry.description}</p>
           </div>
         ))}
       </div>
@@ -329,12 +330,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">接受的货车品牌</h3>
         <div class="flex flex-wrap justify-center gap-4">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium">
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-gray-600 mt-4">...还有更多品牌！联系我们咨询其他品牌。</p>
+        <p class="text-[#4F3E29] mt-4">...还有更多品牌！联系我们咨询其他品牌。</p>
       </div>
     </div>
   </section>
@@ -346,14 +347,14 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           申请所需文件
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           简单文件流程 - 大多数物流业者已有这些文件
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- Individual Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">个人申请</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -362,7 +363,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">身份证 / 护照副本</div>
-                <div class="text-sm text-gray-600">马来西亚身份证或有效护照（含工作准证）</div>
+                <div class="text-sm text-[#4F3E29]">马来西亚身份证或有效护照（含工作准证）</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -371,7 +372,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">6个月银行月结单</div>
-                <div class="text-sm text-gray-600">个人账户显示收入稳定性</div>
+                <div class="text-sm text-[#4F3E29]">个人账户显示收入稳定性</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -380,14 +381,14 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">物流收入证明</div>
-                <div class="text-sm text-gray-600">配送合约、服务协议或发票</div>
+                <div class="text-sm text-[#4F3E29]">配送合约、服务协议或发票</div>
               </div>
             </li>
           </ul>
         </div>
 
         <!-- Company Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">公司申请</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -396,7 +397,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">SSM公司注册</div>
-                <div class="text-sm text-gray-600">公司注册证书（Form 9/24/49）</div>
+                <div class="text-sm text-[#4F3E29]">公司注册证书（Form 9/24/49）</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -405,7 +406,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">公司银行月结单</div>
-                <div class="text-sm text-gray-600">6个月公司账户月结单</div>
+                <div class="text-sm text-[#4F3E29]">6个月公司账户月结单</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -414,7 +415,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">董事身份证副本</div>
-                <div class="text-sm text-gray-600">所有公司董事和股东</div>
+                <div class="text-sm text-[#4F3E29]">所有公司董事和股东</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -423,7 +424,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">配送合约（可选）</div>
-                <div class="text-sm text-gray-600">客户协议可加强申请</div>
+                <div class="text-sm text-[#4F3E29]">客户协议可加强申请</div>
               </div>
             </li>
           </ul>
@@ -431,12 +432,12 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <!-- Additional Notes -->
-      <div class="max-w-3xl mx-auto mt-8 p-6 bg-gray-50 border-l-4 border-primary rounded-lg">
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
         <h4 class="font-bold text-primary mb-2">重要提示：</h4>
-        <ul class="space-y-1 text-gray-700 text-sm">
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
           <li>• 货车车龄：接受15年以内车龄</li>
           <li>• 信用记录：接受CCRIS/CTOS记录</li>
-          <li>• 处理时间：文件完整后24小时</li>
+          <li>• 处理时间：文件完整后快速处理</li>
           <li>• 车队融资：2辆以上享特惠利率</li>
         </ul>
       </div>
@@ -444,13 +445,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           物流业者成功案例
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           真实客户通过我们的货车融资服务实现业务增长
         </p>
       </div>
@@ -469,77 +470,14 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="section">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          为什么选择Ing Heng Credit而不是银行？
-        </h2>
-        <p class="text-xl text-gray-600">
-          与传统银行货车融资的比较
-        </p>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
-          <thead class="bg-secondary text-white">
-            <tr>
-              <th class="px-6 py-4 text-left">比较项目</th>
-              <th class="px-6 py-4 text-center bg-accent text-primary font-bold">Ing Heng Credit</th>
-              <th class="px-6 py-4 text-center">传统银行</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr>
-              <td class="px-6 py-4 font-medium">批准时间</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">24小时</td>
-              <td class="px-6 py-4 text-center text-gray-600">2-4星期</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">首期</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">10-20%</td>
-              <td class="px-6 py-4 text-center text-gray-600">30-50%</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">中小企业支持</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ 欢迎</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ 很少</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">车队融资</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ 批量折扣</td>
-              <td class="px-6 py-4 text-center text-gray-600">有限</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">季节性还款</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ 可安排</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ 不提供</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">二手货车车龄</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">15年以内</td>
-              <td class="px-6 py-4 text-center text-gray-600">7年以内</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">接受信用问题</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ 个案审核</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ 拒绝</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           常见问题解答
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           关于货车融资您需要了解的一切
         </p>
       </div>
@@ -552,8 +490,11 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="lorry" />
+
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         准备好扩展您的车队了吗？
@@ -590,7 +531,7 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>24小时批准</span>
+          <span>快速批准</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -610,8 +551,8 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             或填写在线表格
           </h2>
-          <p class="text-gray-600">
-            营业时间内2小时内联系您
+          <p class="text-[#4F3E29]">
+            营业时间内快速内联系您
           </p>
         </div>
         <ContactForm lang={lang} />

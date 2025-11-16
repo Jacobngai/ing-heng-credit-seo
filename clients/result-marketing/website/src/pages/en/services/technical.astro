@@ -1,0 +1,414 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+const technicalIssues = [
+  {
+    issue: 'Slow Page Speed',
+    impact: 'Every 1-second delay = 7% conversion loss',
+    solution: 'Image optimization, code minification, CDN setup',
+    icon: '🐌'
+  },
+  {
+    issue: 'Poor Core Web Vitals',
+    impact: 'Google ranking penalty since 2021',
+    solution: 'LCP, FID, CLS optimization',
+    icon: '📊'
+  },
+  {
+    issue: 'Mobile Issues',
+    impact: '60% of traffic on mobile, most sites broken',
+    solution: 'Responsive design fixes, mobile-first approach',
+    icon: '📱'
+  },
+  {
+    issue: 'Indexing Problems',
+    impact: 'Google can\'t find/crawl your pages',
+    solution: 'Sitemap fixes, robots.txt, canonical tags',
+    icon: '🔍'
+  },
+  {
+    issue: 'Missing Schema',
+    impact: 'No rich snippets = lower CTR',
+    solution: 'Structured data implementation',
+    icon: '🏷️'
+  },
+  {
+    issue: 'Security Issues',
+    impact: 'Google flags site as "Not Secure"',
+    solution: 'SSL certificates, HTTPS migration',
+    icon: '🔒'
+  }
+];
+
+const services = [
+  {
+    category: 'Speed Optimization',
+    description: 'Make your site load in under 2 seconds (3 seconds on mobile)',
+    tasks: [
+      'Image compression & lazy loading',
+      'Code minification (CSS, JS, HTML)',
+      'Browser caching setup',
+      'CDN configuration',
+      'Database query optimization',
+      'Hosting performance audit'
+    ]
+  },
+  {
+    category: 'Core Web Vitals',
+    description: 'Pass Google\'s page experience requirements',
+    tasks: [
+      'Largest Contentful Paint (LCP) optimization',
+      'First Input Delay (FID) improvement',
+      'Cumulative Layout Shift (CLS) fixes',
+      'Interaction to Next Paint (INP) tuning',
+      'Real user monitoring setup',
+      'Monthly performance reports'
+    ]
+  },
+  {
+    category: 'Mobile Optimization',
+    description: 'Perfect mobile experience for 60% of your traffic',
+    tasks: [
+      'Responsive design implementation',
+      'Touch target sizing',
+      'Mobile viewport configuration',
+      'Mobile-specific performance fixes',
+      'AMP implementation (if needed)',
+      'Mobile usability testing'
+    ]
+  },
+  {
+    category: 'Indexing & Crawlability',
+    description: 'Ensure Google can find and index all important pages',
+    tasks: [
+      'XML sitemap generation & submission',
+      'Robots.txt optimization',
+      'Canonical tag implementation',
+      'Internal linking structure',
+      'Pagination handling',
+      'Crawl budget optimization'
+    ]
+  },
+  {
+    category: 'Schema Markup',
+    description: 'Rich snippets for better CTR and visibility',
+    tasks: [
+      'Organization schema',
+      'Local business schema',
+      'Product schema (e-commerce)',
+      'Article/Blog schema',
+      'FAQ schema',
+      'Breadcrumb schema'
+    ]
+  },
+  {
+    category: 'Security & HTTPS',
+    description: 'Protect your site and maintain user trust',
+    tasks: [
+      'SSL certificate installation',
+      'HTTP to HTTPS migration',
+      'Mixed content fixes',
+      'Security header implementation',
+      'Regular security audits',
+      'Malware monitoring'
+    ]
+  }
+];
+
+const auditProcess = [
+  {
+    step: 1,
+    title: 'Comprehensive Audit',
+    description: 'We scan your entire site using industry-standard tools (Lighthouse, Screaming Frog, GTmetrix)',
+    deliverable: 'Detailed audit report with prioritized issues'
+  },
+  {
+    step: 2,
+    title: 'Priority Fixes',
+    description: 'We tackle high-impact issues first: speed, mobile, indexing problems',
+    deliverable: 'Quick wins implemented within 1 week'
+  },
+  {
+    step: 3,
+    title: 'Deep Optimization',
+    description: 'Systematic fixes across all technical areas',
+    deliverable: 'Full technical optimization within 2-3 weeks'
+  },
+  {
+    step: 4,
+    title: 'Testing & Validation',
+    description: 'Verify all fixes work across devices, browsers, and regions',
+    deliverable: 'Before/after performance report'
+  },
+  {
+    step: 5,
+    title: 'Ongoing Monitoring',
+    description: 'Monthly checks to catch new issues before they impact rankings',
+    deliverable: 'Monthly technical health reports'
+  }
+];
+
+const tools = [
+  { name: 'Google Lighthouse', purpose: 'Performance audits' },
+  { name: 'PageSpeed Insights', purpose: 'Core Web Vitals' },
+  { name: 'Screaming Frog', purpose: 'Site crawling' },
+  { name: 'GTmetrix', purpose: 'Speed testing' },
+  { name: 'Google Search Console', purpose: 'Indexing monitoring' },
+  { name: 'Schema Validator', purpose: 'Structured data testing' }
+];
+
+const pricing = {
+  oneTime: {
+    name: 'One-Time Audit & Fix',
+    price: 'RM 3,500',
+    includes: [
+      'Full technical audit',
+      'Priority issue fixes',
+      'Performance optimization',
+      'Schema markup setup',
+      '30-day support'
+    ],
+    bestFor: 'New sites or major overhauls'
+  },
+  ongoing: {
+    name: 'Ongoing Technical SEO',
+    price: 'RM 1,500/month',
+    includes: [
+      'Monthly technical audits',
+      'Continuous optimization',
+      'New page optimization',
+      'Core Web Vitals monitoring',
+      'Priority support'
+    ],
+    bestFor: 'Active sites with regular updates'
+  }
+};
+---
+
+<BaseLayout
+  title="Technical SEO Services - Fast, Secure, Google-Friendly | Result Marketing"
+  description="Comprehensive technical SEO: speed optimization, Core Web Vitals, mobile fixes, schema markup, and security. Get your site technically perfect."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Technical SEO</span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+          Fix the Foundation So Your Content Can Shine
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Great content won't rank if your site is slow, broken, or hard to crawl. We handle the technical foundation so you can focus on growing your business.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/en/contact" class="btn-primary">
+            Get Free Audit
+          </a>
+          <a href="#pricing" class="btn-secondary">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Issues -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          6 Technical Issues Killing Your Rankings
+        </h2>
+        <p class="text-lg text-gray-600">
+          Most websites have at least 3 of these problems. We fix them all.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {technicalIssues.map(item => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div class="text-4xl mb-3">{item.icon}</div>
+            <h3 class="text-lg font-semibold mb-2 text-red-600">{item.issue}</h3>
+            <p class="text-sm text-gray-600 mb-3">
+              <strong>Impact:</strong> {item.impact}
+            </p>
+            <p class="text-sm text-primary-600">
+              <strong>Solution:</strong> {item.solution}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Our Technical SEO Services
+        </h2>
+        <p class="text-lg text-gray-600">
+          Comprehensive technical optimization across all critical areas
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {services.map(service => (
+          <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-100">
+            <h3 class="text-xl font-semibold mb-2">{service.category}</h3>
+            <p class="text-gray-600 mb-4">{service.description}</p>
+            <ul class="space-y-2">
+              {service.tasks.map(task => (
+                <li class="flex items-start gap-2 text-sm text-gray-600">
+                  <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>{task}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Our Audit & Fix Process
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        {auditProcess.map((item) => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div class="flex gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-700 font-bold text-lg flex items-center justify-center">
+                  {item.step}
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+                <p class="text-gray-600 mb-2">{item.description}</p>
+                <p class="text-sm text-primary-600">
+                  <strong>Deliverable:</strong> {item.deliverable}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Tools We Use
+        </h2>
+        <p class="text-lg text-gray-600">
+          Industry-standard tools for enterprise-level technical SEO
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {tools.map(tool => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 text-center">
+            <h3 class="font-semibold mb-1">{tool.name}</h3>
+            <p class="text-sm text-gray-600">{tool.purpose}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Technical SEO Pricing
+        </h2>
+        <p class="text-lg text-gray-600">
+          Choose the option that fits your needs
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-lg p-8 shadow-lg border border-gray-200">
+          <h3 class="text-2xl font-bold mb-2">{pricing.oneTime.name}</h3>
+          <div class="text-4xl font-bold text-primary-600 mb-4">{pricing.oneTime.price}</div>
+          <p class="text-gray-600 mb-6">
+            <strong>Best for:</strong> {pricing.oneTime.bestFor}
+          </p>
+          <ul class="space-y-3 mb-8">
+            {pricing.oneTime.includes.map(item => (
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/en/contact" class="btn-primary w-full text-center block">
+            Get Started
+          </a>
+        </div>
+
+        <div class="bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg p-8 shadow-lg border-2 border-primary-500 text-white relative">
+          <div class="absolute top-0 right-6 -mt-3">
+            <span class="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">
+              RECOMMENDED
+            </span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">{pricing.ongoing.name}</h3>
+          <div class="text-4xl font-bold mb-4">{pricing.ongoing.price}</div>
+          <p class="text-primary-100 mb-6">
+            <strong>Best for:</strong> {pricing.ongoing.bestFor}
+          </p>
+          <ul class="space-y-3 mb-8">
+            {pricing.ongoing.includes.map(item => (
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/en/contact" class="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-colors w-full text-center block">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Get a Free Technical Audit
+        </h2>
+        <p class="text-xl text-gray-600 mb-8">
+          We'll scan your site and send you a detailed report showing exactly what needs fixing. No cost, no obligation.
+        </p>
+        <a href="/en/contact" class="btn-primary">
+          Request Free Audit
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option 1: Industrial Trust - Dark Mode Enabled</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ============================================
+       CSS VARIABLES - Light & Dark Mode
+       ============================================ */
+    :root {
+      /* Light Mode Colors */
+      --color-primary: #8B6F47;
+      --color-primary-dark: #6B5437;
+      --color-primary-light: #D4BFA8;
+
+      --color-secondary: #D4A574;
+      --color-secondary-dark: #BF9463;
+      --color-secondary-light: #E8DFD4;
+
+      --color-accent: #2D1810;
+      --color-accent-light: #4C3729;
+
+      --color-neutral: #F5F5DC;
+      --color-neutral-dark: #E8E8C8;
+
+      /* Text Colors */
+      --text-primary: #1A140D;
+      --text-secondary: #4F3E29;
+      --text-muted: #6B5437;
+
+      /* Background Colors */
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F5DC;
+      --bg-tertiary: #F5F1EC;
+
+      /* Border Colors */
+      --border-color: #2D1810;
+      --border-light: #D4BFA8;
+
+      /* Shadow */
+      --shadow-sm: 0 2px 4px rgba(45, 24, 16, 0.1);
+      --shadow-md: 0 4px 8px rgba(45, 24, 16, 0.15);
+      --shadow-lg: 0 8px 16px rgba(45, 24, 16, 0.2);
+      --shadow-brutal: 8px 8px 0 var(--border-color);
+    }
+
+    [data-theme="dark"] {
+      /* Dark Mode Colors - Adjusted for contrast */
+      --color-primary: #C09F7D;
+      --color-primary-dark: #D4BFA8;
+      --color-primary-light: #8B6F47;
+
+      --color-secondary: #E8DFD4;
+      --color-secondary-dark: #F5F1EC;
+      --color-secondary-light: #D4A574;
+
+      --color-accent: #F5F5DC;
+      --color-accent-light: #E8E8C8;
+
+      --color-neutral: #4F3E29;
+      --color-neutral-dark: #2D1810;
+
+      /* Text Colors */
+      --text-primary: #F5F5DC;
+      --text-secondary: #E8E8C8;
+      --text-muted: #C09F7D;
+
+      /* Background Colors */
+      --bg-primary: #1A140D;
+      --bg-secondary: #2D1810;
+      --bg-tertiary: #33281A;
+
+      /* Border Colors */
+      --border-color: #8B6F47;
+      --border-light: #6B5437;
+
+      /* Shadow */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+      --shadow-brutal: 8px 8px 0 var(--border-color);
+    }
+
+    /* ============================================
+       BASE STYLES
+       ============================================ */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ============================================
+       HEADER WITH DARK MODE TOGGLE
+       ============================================ */
+    .header {
+      background: var(--bg-secondary);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 60px;
+      position: relative;
+      border: 3px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--color-primary);
+      border: 3px solid var(--border-color);
+      color: var(--bg-primary);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .dark-mode-toggle::before {
+      content: '☀️';
+      font-size: 20px;
+    }
+
+    [data-theme="dark"] .dark-mode-toggle::before {
+      content: '🌙';
+    }
+
+    .header h1 {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .header .subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .header .badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: var(--bg-primary);
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 2px solid var(--border-color);
+    }
+
+    /* ============================================
+       SECTION STYLES
+       ============================================ */
+    .section {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 50px;
+      margin-bottom: 40px;
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-brutal);
+      transition: all 0.3s ease;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    /* ============================================
+       COLOR PALETTE
+       ============================================ */
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .color-swatch {
+      background: var(--bg-primary);
+      border: 3px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .color-swatch:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .color-box {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      font-weight: 800;
+    }
+
+    .color-info {
+      padding: 15px;
+      background: var(--bg-primary);
+    }
+
+    .color-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+
+    .color-hex {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+    }
+
+    .color-usage {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ============================================
+       HERO SECTION DEMO
+       ============================================ */
+    .demo-hero {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      padding: 80px 50px;
+      border-radius: 12px;
+      text-align: center;
+      color: var(--bg-primary);
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-brutal);
+      margin: 30px 0;
+    }
+
+    .demo-hero h2 {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .demo-hero .highlight {
+      color: var(--color-secondary);
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    }
+
+    .demo-hero p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      opacity: 0.95;
+      font-weight: 500;
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .button-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 3px solid var(--border-color);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--color-secondary);
+      color: var(--accent);
+      box-shadow: 4px 4px 0 var(--border-color);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-secondary-dark);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--border-color);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--bg-primary);
+      border: 3px solid var(--bg-primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 3px solid var(--color-primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: var(--bg-primary);
+    }
+
+    /* ============================================
+       CARDS
+       ============================================ */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .card {
+      background: var(--bg-primary);
+      border: 3px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-brutal);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 var(--border-color);
+    }
+
+    .card-header {
+      background: var(--color-primary);
+      color: var(--bg-primary);
+      padding: 25px;
+      border-bottom: 3px solid var(--border-color);
+    }
+
+    .card-header h3 {
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .card-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    .card-body p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* ============================================
+       STATS SECTION
+       ============================================ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-primary);
+      padding: 35px 25px;
+      text-align: center;
+      border: 3px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       CODE BLOCKS
+       ============================================ */
+    .code-section {
+      margin: 30px 0;
+    }
+
+    .code-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    pre {
+      background: var(--bg-tertiary);
+      border: 3px solid var(--border-color);
+      border-radius: 8px;
+      padding: 25px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      box-shadow: var(--shadow-md);
+    }
+
+    code {
+      font-family: 'Courier New', 'Monaco', monospace;
+      color: var(--text-primary);
+    }
+
+    /* ============================================
+       FEATURES LIST
+       ============================================ */
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .feature-item {
+      background: var(--bg-primary);
+      padding: 25px;
+      border: 3px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--color-primary);
+      color: var(--bg-primary);
+      padding: 50px;
+      border-radius: 12px;
+      text-align: center;
+      border: 3px solid var(--border-color);
+      box-shadow: var(--shadow-brutal);
+      margin-top: 60px;
+    }
+
+    .footer h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .footer p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 15px;
+      }
+
+      .section {
+        padding: 30px 20px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .demo-hero h2 {
+        font-size: 32px;
+      }
+
+      .dark-mode-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* ============================================
+       SMOOTH TRANSITIONS
+       ============================================ */
+    * {
+      transition: background-color 0.3s ease,
+                  color 0.3s ease,
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- ========================================
+       HEADER WITH DARK MODE TOGGLE
+       ======================================== -->
+  <div class="header">
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <span id="mode-text">Dark Mode</span>
+    </button>
+
+    <h1>🏭 Option 1: Industrial Trust</h1>
+    <p class="subtitle">Logo-Based Bronze/Brown Palette • Traditional • Established • Heritage</p>
+    <span class="badge">With Dark Mode Support</span>
+  </div>
+
+  <!-- ========================================
+       COLOR PALETTE SECTION
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">🎨 Color Palette</h2>
+    <p class="section-subtitle">Core brand colors extracted from your actual logo</p>
+
+    <div class="color-palette">
+      <div class="color-swatch">
+        <div class="color-box" style="background: #8B6F47;">🎯</div>
+        <div class="color-info">
+          <div class="color-name">Primary Bronze</div>
+          <div class="color-hex">#8B6F47</div>
+          <div class="color-usage">Hero backgrounds, headers, buttons</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-box" style="background: #D4A574;">✨</div>
+        <div class="color-info">
+          <div class="color-name">Secondary Gold</div>
+          <div class="color-hex">#D4A574</div>
+          <div class="color-usage">Accent buttons, highlights, CTAs</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-box" style="background: #2D1810;">🌑</div>
+        <div class="color-info">
+          <div class="color-name">Dark Brown</div>
+          <div class="color-hex">#2D1810</div>
+          <div class="color-usage">Text, borders, shadows</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-box" style="background: #F5F5DC; color: #2D1810;">☁️</div>
+        <div class="color-info">
+          <div class="color-name">Neutral Beige</div>
+          <div class="color-hex">#F5F5DC</div>
+          <div class="color-usage">Backgrounds, cards, sections</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       HERO SECTION DEMO
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">🚀 Hero Section Demo</h2>
+    <p class="section-subtitle">Live preview of hero section with bronze/gold palette</p>
+
+    <div class="demo-hero">
+      <h2>Equipment Financing <span class="highlight">Made Simple</span></h2>
+      <p>40 Years of Trust • 95% Approval Rate • 24-Hour Processing</p>
+      <div class="button-group">
+        <a href="#" class="btn btn-primary">Get Free Quote Now</a>
+        <a href="#" class="btn btn-secondary">WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       BUTTONS SHOWCASE
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">🎯 Button Styles</h2>
+    <p class="section-subtitle">Three button variations with bronze/gold theme</p>
+
+    <div class="button-group">
+      <button class="btn btn-primary">Primary Button</button>
+      <button class="btn btn-outline">Outline Button</button>
+      <button class="btn" style="background: var(--color-primary); color: var(--bg-primary);">Bronze Button</button>
+    </div>
+  </div>
+
+  <!-- ========================================
+       STATS SECTION
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">📊 Stats Section Demo</h2>
+    <p class="section-subtitle">Trust signals with bronze accent color</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4,000+</div>
+        <div class="stat-label">Companies Served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">Approval Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24h</div>
+        <div class="stat-label">Fast Approval</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       CARDS SHOWCASE
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">📦 Service Cards Demo</h2>
+    <p class="section-subtitle">Service cards with bronze headers and brutal shadows</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">🚜</span>
+          <h3>Hire Purchase</h3>
+        </div>
+        <div class="card-body">
+          <p>Asset financing that allows your firm to possess equipment through flexible monthly payments. Own your assets while maintaining healthy cash flow.</p>
+          <button class="btn btn-outline" style="width: 100%;">Learn More</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">💰</span>
+          <h3>Loan Financing</h3>
+        </div>
+        <div class="card-body">
+          <p>Customized business loans trusted by over 4,000 companies across Malaysia. Get working capital with competitive rates and flexible terms.</p>
+          <button class="btn btn-outline" style="width: 100%;">Learn More</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">🛡️</span>
+          <h3>Insurance Service</h3>
+        </div>
+        <div class="card-body">
+          <p>Comprehensive insurance coverage for personal, business, and motor needs. Protect your valuable equipment investments with trusted partners.</p>
+          <button class="btn btn-outline" style="width: 100%;">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       FEATURES LIST
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">⭐ Why Choose Us</h2>
+    <p class="section-subtitle">Key benefits with bronze icon accents</p>
+
+    <div class="features-list">
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <h3 class="feature-title">KPKT Licensed</h3>
+        <p class="feature-desc">Government-approved financial company operating since 1985 with full regulatory compliance</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-icon">%</span>
+        <h3 class="feature-title">Affordable Rates</h3>
+        <p class="feature-desc">Competitive interest rates starting from 2.88% p.a. tailored to your business needs</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-icon">📍</span>
+        <h3 class="feature-title">Convenient Location</h3>
+        <p class="feature-desc">Located in Klang, Selangor with easy access from KL, Shah Alam, and Port Klang</p>
+      </div>
+
+      <div class="feature-item">
+        <span class="feature-icon">📅</span>
+        <h3 class="feature-title">Flexible Terms</h3>
+        <p class="feature-desc">Customized payment plans from 12 to 60 months with minimal down payment</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       IMPLEMENTATION CODE
+       ======================================== -->
+  <div class="section">
+    <h2 class="section-title">💻 Tailwind CSS Implementation</h2>
+    <p class="section-subtitle">Copy this into your tailwind.config.mjs</p>
+
+    <div class="code-section">
+      <div class="code-title">📁 tailwind.config.mjs</div>
+      <pre><code>export default {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#8B6F47',  // Bronze
+          50: '#F5F1EC',
+          100: '#E8DFD4',
+          200: '#D4BFA8',
+          300: '#C09F7D',
+          400: '#AC7F51',
+          500: '#8B6F47',  // Main
+          600: '#6B5437',
+          700: '#4F3E29',
+          800: '#33281A',
+          900: '#1A140D',
+        },
+        secondary: {
+          DEFAULT: '#D4A574',  // Gold
+          500: '#D4A574',
+          600: '#BF9463',
+        },
+        accent: {
+          DEFAULT: '#2D1810',  // Dark Brown
+        },
+      },
+    },
+  },
+  darkMode: 'class', // Enable dark mode
+}</code></pre>
+    </div>
+
+    <div class="code-section" style="margin-top: 30px;">
+      <div class="code-title">📝 Usage Example - Hero Section</div>
+      <pre><code>&lt;section class="bg-gradient-to-br from-primary-500 to-primary-700
+                dark:from-primary-400 dark:to-primary-600
+                text-white py-20"&gt;
+  &lt;h1 class="text-6xl font-black uppercase"&gt;
+    Equipment Financing
+    &lt;span class="text-secondary-500"&gt;Made Simple&lt;/span&gt;
+  &lt;/h1&gt;
+
+  &lt;button class="bg-secondary-500 text-accent
+                 border-3 border-accent font-bold
+                 px-8 py-4 hover:bg-secondary-600"&gt;
+    Get Free Quote
+  &lt;/button&gt;
+&lt;/section&gt;</code></pre>
+    </div>
+
+    <div class="code-section" style="margin-top: 30px;">
+      <div class="code-title">🌓 Dark Mode Toggle (JavaScript)</div>
+      <pre><code>// Add to your layout or header component
+const toggleDarkMode = () => {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+};
+
+// Load saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+});</code></pre>
+    </div>
+
+    <div class="code-section" style="margin-top: 30px;">
+      <div class="code-title">🎨 CSS Variables Approach (Alternative)</div>
+      <pre><code>/* globals.css */
+:root {
+  --color-primary: #8B6F47;
+  --color-secondary: #D4A574;
+  --color-accent: #2D1810;
+  --bg-primary: #FFFFFF;
+  --text-primary: #1A140D;
+}
+
+[data-theme="dark"] {
+  --color-primary: #C09F7D;
+  --color-secondary: #E8DFD4;
+  --bg-primary: #1A140D;
+  --text-primary: #F5F5DC;
+}
+
+/* Use in components */
+.hero {
+  background: var(--color-primary);
+  color: var(--text-primary);
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- ========================================
+       FOOTER CTA
+       ======================================== -->
+  <div class="footer">
+    <h2>Ready to Implement? 🚀</h2>
+    <p>Copy the code above into your Astro/Next.js project and start using the Industrial Trust brand identity!</p>
+    <div class="button-group">
+      <button class="btn btn-primary">Start Implementation</button>
+      <button class="btn btn-outline" style="border-color: var(--bg-primary); color: var(--bg-primary);">View Full Documentation</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========================================
+     DARK MODE TOGGLE SCRIPT
+     ======================================== -->
+<script>
+  // Dark mode toggle function
+  function toggleDarkMode() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    // Update button text
+    const modeText = document.getElementById('mode-text');
+    modeText.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+  }
+
+  // Load saved theme on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Update button text based on current theme
+    const modeText = document.getElementById('mode-text');
+    modeText.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+  });
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      const newTheme = e.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+const problems = [
+  'Content takes forever to produce (3-4 weeks per piece)',
+  'Expensive (RM 2K-5K per long-form article)',
+  'Inconsistent quality across writers',
+  'Generic, doesn\'t reflect your brand voice',
+  'Not SEO-optimized from day one'
+];
+
+const solution = [
+  {
+    title: 'AI-Assisted Drafting',
+    description: 'Claude and GPT-4 create comprehensive first drafts based on your brief. 80% faster than starting from scratch.',
+    icon: '⚡'
+  },
+  {
+    title: 'Expert Human Editing',
+    description: 'Our team refines every piece for accuracy, brand voice, and persuasive flow. AI speed + human quality.',
+    icon: '✍️'
+  },
+  {
+    title: 'SEO Built-In',
+    description: 'Keywords, headers, meta tags, internal links—all optimized during creation, not as an afterthought.',
+    icon: '🎯'
+  },
+  {
+    title: 'Brand Voice Training',
+    description: 'We train custom AI models on your existing content. Every piece sounds like YOU, not generic AI.',
+    icon: '🎨'
+  }
+];
+
+const contentTypes = [
+  {
+    type: 'Long-Form Blog Posts',
+    length: '2,000-3,000 words',
+    timeline: '48-72 hours',
+    price: 'RM 800-1,200',
+    bestFor: 'Ranking for long-tail keywords, establishing authority'
+  },
+  {
+    type: 'Service Pages',
+    length: '1,000-1,500 words',
+    timeline: '24-48 hours',
+    price: 'RM 500-800',
+    bestFor: 'Converting traffic into leads, product education'
+  },
+  {
+    type: 'Pillar Content',
+    length: '4,000-6,000 words',
+    timeline: '5-7 days',
+    price: 'RM 2,000-3,500',
+    bestFor: 'Hub pages, comprehensive guides, link magnets'
+  },
+  {
+    type: 'Case Studies',
+    length: '1,500-2,000 words',
+    timeline: '3-5 days',
+    price: 'RM 1,000-1,500',
+    bestFor: 'Social proof, sales enablement, credibility'
+  },
+  {
+    type: 'FAQ Pages',
+    length: '800-1,200 words',
+    timeline: '24 hours',
+    price: 'RM 400-600',
+    bestFor: 'Voice search, featured snippets, support deflection'
+  },
+  {
+    type: 'Landing Pages',
+    length: '600-1,000 words',
+    timeline: '24-48 hours',
+    price: 'RM 600-900',
+    bestFor: 'PPC campaigns, conversion optimization, lead gen'
+  }
+];
+
+const process = [
+  {
+    step: 1,
+    title: 'Brief & Research',
+    description: 'You provide the topic, target keywords, and key points. We research competitors and search intent.',
+    duration: '2-4 hours'
+  },
+  {
+    step: 2,
+    title: 'AI Drafting',
+    description: 'Our trained models create a comprehensive first draft with proper structure, citations, and SEO optimization.',
+    duration: '4-6 hours'
+  },
+  {
+    step: 3,
+    title: 'Human Editing',
+    description: 'Expert editors refine for accuracy, persuasion, brand voice, and flow. This is where the magic happens.',
+    duration: '6-8 hours'
+  },
+  {
+    step: 4,
+    title: 'SEO Optimization',
+    description: 'Final pass for keywords, meta tags, internal links, schema markup, and readability.',
+    duration: '2-3 hours'
+  },
+  {
+    step: 5,
+    title: 'Review & Revisions',
+    description: 'You review, we revise. Usually 1-2 rounds to get everything perfect.',
+    duration: '4-6 hours'
+  }
+];
+
+const qualityStandards = [
+  {
+    standard: 'Originality',
+    description: 'All content passes Copyscape. Zero plagiarism, even from AI sources.',
+    icon: '✓'
+  },
+  {
+    standard: 'Accuracy',
+    description: 'Fact-checked by humans. We don\'t publish AI hallucinations.',
+    icon: '✓'
+  },
+  {
+    standard: 'Brand Voice',
+    description: 'Matches your tone, style, and terminology. Not generic.',
+    icon: '✓'
+  },
+  {
+    standard: 'SEO Optimized',
+    description: 'Keywords, structure, meta tags all built-in from day one.',
+    icon: '✓'
+  },
+  {
+    standard: 'Conversion-Focused',
+    description: 'Every piece has clear CTAs and guides readers to take action.',
+    icon: '✓'
+  },
+  {
+    standard: 'Mobile-Friendly',
+    description: 'Short paragraphs, scannable headers, easy to read on phones.',
+    icon: '✓'
+  }
+];
+
+const comparison = {
+  traditional: {
+    method: 'Traditional Content Agency',
+    timeline: '3-4 weeks per piece',
+    cost: 'RM 2,000-5,000 per article',
+    volume: '2-4 pieces/month',
+    quality: 'Variable (depends on writer)',
+    seo: 'Added later, if at all',
+    revision: '1-2 rounds, slow turnaround'
+  },
+  resultMarketing: {
+    method: 'Result Marketing (AI + Human)',
+    timeline: '48-72 hours per piece',
+    cost: 'RM 800-1,200 per article',
+    volume: '20-30 pieces/month',
+    quality: 'Consistent (AI + expert editing)',
+    seo: 'Built-in from start',
+    revision: '1-2 rounds, same-day turnaround'
+  }
+};
+
+// Pre-process comparison rows for template
+const comparisonRows = (Object.keys(comparison.traditional) as Array<keyof typeof comparison.traditional>)
+  .filter(key => key !== 'method')
+  .map(key => ({
+    label: key.replace(/_/g, ' '),
+    traditional: comparison.traditional[key],
+    resultMarketing: comparison.resultMarketing[key]
+  }));
+---
+
+<BaseLayout
+  title="Content Creation at Scale - 10x Faster Production | Result Marketing"
+  description="AI-assisted content creation with human quality control. Produce 20-30 SEO-optimized pieces monthly at 50-70% lower cost than traditional agencies."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Content Creation</span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+          Produce 10x More Content Without Sacrificing Quality
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          AI-assisted content creation with expert human editing. Get 20-30 SEO-optimized pieces monthly at 50-70% lower cost than traditional agencies. Fast, affordable, still high-quality.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/en/contact" class="btn-primary">
+            Get Sample Content
+          </a>
+          <a href="/en/pricing" class="btn-secondary">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold mb-6 text-center">
+          The Content Production Problem
+        </h2>
+        <div class="bg-red-50 rounded-lg p-8 border border-red-200">
+          <p class="text-lg mb-4 text-gray-700">
+            Traditional content agencies are slow and expensive because they're still producing content like it's 2010:
+          </p>
+          <ul class="space-y-2">
+            {problems.map(problem => (
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 text-xl flex-shrink-0">✗</span>
+                <span class="text-gray-700">{problem}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Grid -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Our AI + Human Approach
+        </h2>
+        <p class="text-lg text-gray-600">
+          We leverage AI for speed and consistency, humans for quality and brand voice
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {solution.map(item => (
+          <div class="bg-white rounded-lg p-8 shadow-sm border border-gray-100">
+            <div class="text-4xl mb-4">{item.icon}</div>
+            <h3 class="text-xl font-semibold mb-3">{item.title}</h3>
+            <p class="text-gray-600">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Types -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Content Types & Pricing
+        </h2>
+        <p class="text-lg text-gray-600">
+          Transparent pricing. No hidden fees. Volume discounts available.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {contentTypes.map(content => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <h3 class="text-lg font-semibold mb-3">{content.type}</h3>
+            <div class="space-y-2 mb-4">
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Length:</span>
+                <span class="font-medium">{content.length}</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Timeline:</span>
+                <span class="font-medium">{content.timeline}</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Price:</span>
+                <span class="font-semibold text-primary-600">{content.price}</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">
+                <strong>Best for:</strong> {content.bestFor}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Timeline -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Our Production Process
+        </h2>
+        <p class="text-lg text-gray-600">
+          From brief to published: 48-72 hours for most content types
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {process.map((item) => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div class="flex gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-primary-100 text-primary-700 font-bold text-lg flex items-center justify-center">
+                  {item.step}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-lg font-semibold">{item.title}</h3>
+                  <span class="text-sm text-gray-500">{item.duration}</span>
+                </div>
+                <p class="text-gray-600">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Standards -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Our Quality Standards
+        </h2>
+        <p class="text-lg text-gray-600">
+          Every piece we deliver meets these non-negotiable standards
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {qualityStandards.map(item => (
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl text-green-500">{item.icon}</span>
+              <h3 class="font-semibold">{item.standard}</h3>
+            </div>
+            <p class="text-sm text-gray-600">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Traditional vs. AI-Powered Content
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto overflow-x-auto">
+        <table class="w-full bg-white rounded-lg shadow-sm border border-gray-100">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-200">
+              <th class="px-6 py-4 text-left font-semibold text-gray-900">Aspect</th>
+              <th class="px-6 py-4 text-left font-semibold text-gray-900">Traditional Agency</th>
+              <th class="px-6 py-4 text-left font-semibold text-primary-600">Result Marketing</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row, idx) => (
+              <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="px-6 py-4 font-medium text-gray-900 capitalize">{row.label}</td>
+                <td class="px-6 py-4 text-gray-600">{row.traditional}</td>
+                <td class="px-6 py-4 text-primary-600 font-semibold">{row.resultMarketing}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-br from-primary-600 to-primary-700">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Get a Free Sample Content Piece
+        </h2>
+        <p class="text-xl mb-8 text-primary-100">
+          Not sure about AI-assisted content? We'll create one piece for free so you can judge the quality yourself.
+        </p>
+        <a href="/en/contact" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+          Request Free Sample
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

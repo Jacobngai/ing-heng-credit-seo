@@ -16,13 +16,15 @@ import ContactForm from '../../../components/ContactForm.astro';
 import Calculator from '../../../components/Calculator.astro';
 import TestimonialCard from '../../../components/TestimonialCard.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
 import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../utils/constants';
 const lang = 'zh';
 
 // SEO Data - 优化为拖车头融资马来西亚
-const pageTitle = '拖车头融资巴生港 | 2小时批准 | 90%融资 | 专服务货运业';
-const pageDescription = '快速拖车头融资，专为集装箱货运商设计。2小时批准，90%融资，巴生港专家。接受斯堪尼亚、沃尔沃、奔驰。车队融资优惠。';
+const pageTitle = '拖车头融资巴生港 | 快速批准 | 90%融资 | 专服务货运业';
+const pageDescription = '快速拖车头融资，专为集装箱货运商设计。快速批准，90%融资，巴生港专家。接受斯堪尼亚、沃尔沃、奔驰。车队融资优惠。';
 const keywords = ['拖车头融资', '集装箱卡车融资', '巴生港拖车头贷款', '重型卡车融资', '货运车辆贷款', '马士基合同融资'];
 
 // Breadcrumbs
@@ -34,8 +36,8 @@ const breadcrumbs = [
 
 // Benefits - 关系导向和信任建立
 const benefits = [
-  { icon: 'clock', title: '2小时快速批准', description: '紧急船运合同可2小时批准。把握商机，不错过任何订单。' },
-  { icon: 'percentage', title: '高达90%融资', description: '仅需10%首付。保留现金流用于柴油、维修和日常运营开支。' },
+  { icon: 'clock', title: '快速快速批准', description: '紧急船运合同可快速批准。把握商机，不错过任何订单。' },
+  { icon: 'percentage', title: '首付从0%起*', description: '符合条件者首付从0%起*。可贷款至100%*。保留现金流用于柴油和日常运营。*受条款及条件约束' },
   { icon: 'calendar', title: '12-84个月期限', description: '灵活还款期限长达7年。根据您的合同周期和收入流量匹配付款。' },
   { icon: 'shield', title: '接受二手车', description: '融资15年以内的二手拖车头。斯堪尼亚、沃尔沃、奔驰、日野、UD全接受。' },
   { icon: 'users', title: '车队融资优惠', description: '2台以上享特别利率。扩大车队争取马士基、MSC、达飞合同。批量优惠。' },
@@ -48,7 +50,7 @@ const benefits = [
 const steps = [
   { stepNumber: 1, icon: 'contact', title: 'WhatsApp联系', description: '联系我们的货运融资专家。根据车型和合同情况立即报价。' },
   { stepNumber: 2, icon: 'document', title: '提交文件', description: '身份证、6个月银行对账单、SSM、船运合同（如有）。简单流程。' },
-  { stepNumber: 3, icon: 'check', title: '2小时批准', description: '紧急情况2小时内批准。标准申请当天批准（完整文件）。' },
+  { stepNumber: 3, icon: 'check', title: '快速批准', description: '紧急情况快速内批准。标准申请当天批准（完整文件）。' },
   { stepNumber: 4, icon: 'clipboard', title: '签署协议', description: '透明贷款条款。无隐藏费用。可选GPS追踪系统合规安装。' },
   { stepNumber: 5, icon: 'truck', title: '取车运货', description: '收到资金，立即取车。开始拉集装箱，第一天就有收入。' },
 ];
@@ -102,7 +104,7 @@ const testimonials = [
     name: '李俊辉',
     company: 'LCH物流有限公司',
     location: '雪兰莪，巴生港',
-    testimonial: '紧急需要3台斯堪尼亚拖车头用于MSC五年合同。银行要求30%首付。Ing Heng Credit在2小时内批准了RM 120万，仅需RM 13.5万首付（10%）。车队融资折扣省了1.5%利息。现在每天处理15-20个集装箱，业务蒸蒸日上。',
+    testimonial: '紧急需要3台斯堪尼亚拖车头用于MSC五年合同。银行要求30%首付。Ing Heng Credit在快速内批准了RM 120万，仅需RM 13.5万首付（10%）。车队融资折扣省了1.5%利息。现在每天处理15-20个集装箱，业务蒸蒸日上。',
     rating: 5,
   },
   {
@@ -133,7 +135,7 @@ const faqs = [
   },
   {
     question: '如果我有船运公司合同怎么办？',
-    answer: '太好了！船运公司合同（马士基、MSC、达飞、长荣等）显著提高批准机会和条款。优势包括：(1) 更高贷款额度（最高90% vs 标准80%）；(2) 更优利率（折扣0.5-1%）；(3) 更快批准（紧急合同2小时内）；(4) 更长还款期限（最长84个月）。请随申请一起提交合同书或订单。我们理解基于合同的收入并相应设计融资。'
+    answer: '太好了！船运公司合同（马士基、MSC、达飞、长荣等）显著提高批准机会和条款。优势包括：(1) 更高贷款额度（最高90% vs 标准80%）；(2) 更优利率（折扣0.5-1%）；(3) 更快批准（紧急合同快速内）；(4) 更长还款期限（最长84个月）。请随申请一起提交合同书或订单。我们理解基于合同的收入并相应设计融资。'
   },
   {
     question: '可以为巴生港运营融资拖车头吗？',
@@ -145,7 +147,7 @@ const faqs = [
   },
   {
     question: '批准需要多长时间？',
-    answer: '标准批准：完整申请当天内（6-8小时内）。紧急批准：有即时合同截止期或标书机会的货运商2小时内。我们优先考虑需要快速获得车辆以签订船运合同的巴生港运营商。早上提交申请，下午获得批准，3-5天内取车。这种速度对集装箱货运至关重要，因为合同的赢得或失去取决于设备可用性。'
+    answer: '标准批准：完整申请当天内（6-8小时内）。紧急批准：有即时合同截止期或标书机会的货运商快速内。我们优先考虑需要快速获得车辆以签订船运合同的巴生港运营商。早上提交申请，下午获得批准，3-5天内取车。这种速度对集装箱货运至关重要，因为合同的赢得或失去取决于设备可用性。'
   },
   {
     question: '拖车头融资需要什么文件？',
@@ -158,10 +160,6 @@ const faqs = [
   {
     question: '如果我有不良信用或CTOS记录问题怎么办？',
     answer: '我们专门批准银行拒绝的申请。不良信用或CTOS/CCRIS问题不意味着自动拒绝。我们查看：(1) 当前财务状况和现金流；(2) 现有合同或客户；(3) 车辆价值和状况（作为抵押）；(4) 集装箱货运业务记录。许多成功客户之前都有信用问题。拖车头的价值保证了贷款，降低了风险。严重信用问题可能需要更高首付（15-20%），但批准是可能的。'
-  },
-  {
-    question: '有货运商季节性付款计划吗？',
-    answer: '有！我们理解集装箱货运有旺季和淡季。季节性付款选项包括：(1) 旺季（农历新年冲刺12-2月，年底10-12月）高付款；(2) 淡季（雨季、新年后低潮）低付款；(3) 气球付款结构，月供较低加最终气球付款；(4) 主要节日运营放缓期间的宽限期。这种灵活性帮助巴生港运营商在全年保持正现金流，尽管季节性收入波动。'
   },
   {
     question: '可以再融资现有拖车头贷款吗？',
@@ -185,11 +183,10 @@ const faqs = [
   },
   {
     question: '雨季或淡季期间会怎样？',
-    answer: '我们理解马来西亚集装箱货运有季节性变化。解决方案包括：(1) 季节性付款计划（雨季11-2月更低付款）；(2) 严重淡季期间的付款延期（1-2个月）；(3) 危机期间暂时仅付利息；(4) 与主要航运周期对齐的灵活付款日期。巴生港运营商在雨季和新年后低潮期间面临20-30%收入下降。我们的融资适应这一现实。许多银行不理解货运季节性，但我们理解。'
   },
   {
     question: '外国人可以申请拖车头融资吗？',
-    answer: '可以，持有有效工作许可和马来西亚公司注册的外国人可以申请。要求：(1) 有效护照和工作许可/MM2H签证；(2) 马来西亚企业注册（Sdn Bhd或Enterprise的SSM）；(3) 本地担保人（马来西亚公民或PR）；(4) 6个月马来西亚银行对账单；(5) 更高首付（15-20% vs 公民10%）。外国人批准率：80-85%（vs 公民95%）。许多物流/货运外国投资者已成功通过我们融资车队。'
+    answer: '可以，持有有效工作许可和马来西亚公司注册的外国人可以申请。要求：(1) 有效护照和工作许可/MM2H签证；(2) 马来西亚企业注册（Sdn Bhd或Enterprise的SSM）；(3) 本地担保人（马来西亚公民或PR）；(4) 6个月马来西亚银行对账单；(5) 更高首付（15-20% vs 公民10%）。外国人批准率：80-85%（vs 公民Industry-Leading）。许多物流/货运外国投资者已成功通过我们融资车队。'
   },
   {
     question: '你们服务马来西亚哪些地区？',
@@ -208,8 +205,8 @@ const faqs = [
 // Product Schema
 const productSchema = generateProductSchema({
   name: '拖车头融资马来西亚 - 巴生港专家',
-  description: '快速拖车头融资，专为集装箱货运运营商设计。2小时批准，90%融资，车队折扣。专门服务巴生港集装箱运输，灵活付款条款。',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/prime-mover-financing.jpg',
+  description: '快速拖车头融资，专为集装箱货运运营商设计。快速批准，90%融资，车队折扣。专门服务巴生港集装箱运输，灵活付款条款。',
+  imageUrl: `${SITE_CONFIG.url}/images/prime-mover-financing.jpg`,
   category: '金融服务 - 商用车辆融资',
   offers: {
     price: '40000',
@@ -243,48 +240,47 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="巴生港集装箱货运商拖车头融资"
-    subtitle="2小时批准 | 90%融资 | 车队折扣 | 巴生港专家 | 12-84个月期限"
+    subtitle="快速批准 | 90%融资 | 车队折扣 | 巴生港专家 | 12-84个月期限"
     ctaText="WhatsApp免费报价"
     ctaLink="https://wa.me/60175700889?text=你好！我想获取拖车头融资的报价。"
     ctaSecondaryText="立即致电: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/prime-mover-hero.jpg"
     lang={lang}
     trustSignals={['40年经验', '巴生港专家', '服务4000+货运商', '90%融资']}
   />
 
   <!-- Port Klang Context Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           巴生港蓬勃发展 - 您准备好扩大车队了吗？
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed mb-6">
+        <p class="text-xl text-[#4F3E29] leading-relaxed mb-6">
           巴生港2024年达到1464万标准箱，全球排名第10。西港扩建将在2028年前将容量翻倍至2800万标准箱。这为集装箱货运商创造了巨大机会。
         </p>
         <div class="grid md:grid-cols-3 gap-6 text-center">
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
             <div class="text-4xl font-bold text-primary mb-2">1464万</div>
-            <div class="text-gray-600">2024年标准箱</div>
+            <div class="text-[#4F3E29]">2024年标准箱</div>
             <div class="text-sm text-green-600 mt-2">+4.1%增长</div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
             <div class="text-4xl font-bold text-primary mb-2">2800万</div>
-            <div class="text-gray-600">2028年目标</div>
+            <div class="text-[#4F3E29]">2028年目标</div>
             <div class="text-sm text-green-600 mt-2">容量翻倍</div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
             <div class="text-4xl font-bold text-primary mb-2">RM 126亿</div>
-            <div class="text-gray-600">西港投资</div>
+            <div class="text-[#4F3E29]">西港投资</div>
             <div class="text-sm text-green-600 mt-2">长期增长</div>
           </div>
         </div>
       </div>
 
-      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4">对货运商的意义：</h3>
-        <ul class="space-y-3 text-gray-700">
+        <ul class="space-y-3 text-[#4F3E29]">
           <li class="flex items-start space-x-3">
             <span class="text-green-500 text-xl mt-1">✓</span>
             <span><strong>集装箱量翻倍 = 货运需求翻倍</strong> - 更多合同，更多收入机会</span>
@@ -316,21 +312,21 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Problem/Solution Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           集装箱货运商面临独特的融资挑战
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           您有船运合同在手，但银行要求30%首付。设备经销商收取12-15%利息。您的竞争对手因为有5-10台车而赢得MSC和马士基合同，而您只有1-2台。这听起来熟悉吗？
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-red-600 font-bold text-lg mb-3">常见问题</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>银行要求25-30%首付，耗尽营运资金</span>
@@ -354,20 +350,19 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-green-600 font-bold text-lg mb-3">我们的解决方案</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
               <span>仅需10%首付（vs 银行25-30%）。保留现金用于柴油和运营</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>紧急合同2小时批准。标准申请当天批准</span>
+              <span>紧急合同快速批准。标准申请当天批准</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>季节性付款计划与巴生港集装箱周期对齐</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
@@ -380,23 +375,23 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="font-bold text-lg mb-3 text-yellow-600">真实成功案例</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">来自巴生的李先生</strong>需要3台斯堪尼亚拖车头（每台RM 45万）用于MSC五年合同。</p>
-            <p class="mb-3"><strong class="text-red-600">银行拒绝。</strong>我们在2小时内批准了RM 120万车队融资，仅需RM 13.5万首付（10%）。</p>
+            <p class="mb-3"><strong class="text-red-600">银行拒绝。</strong>我们在快速内批准了RM 120万车队融资，仅需RM 13.5万首付（10%）。</p>
             <p class="font-semibold text-green-700">结果：确保了MSC合同，3台车每月赚RM 12万，2年内扩展到8台车。年收入现在RM 180万。</p>
           </div>
         </div>
       </div>
 
       <!-- ROI Calculator Section -->
-      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4 text-center">计算您的拖车头投资回报</h3>
         <div class="grid md:grid-cols-2 gap-6 text-sm">
           <div>
             <h4 class="font-bold text-gray-800 mb-2">投资示例（1台车）：</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• 二手斯堪尼亚6x4（8年车龄）：RM 180,000</li>
               <li>• 首付（10%）：RM 18,000</li>
               <li>• 月供（48个月）：RM 4,200</li>
@@ -405,7 +400,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
           <div>
             <h4 class="font-bold text-gray-800 mb-2">收入潜力（巴生港）：</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• 每趟费率：RM 180-280（40尺柜）</li>
               <li>• 每日趟数：2趟（港口-吉隆坡往返）</li>
               <li>• 月收入（25天）：RM 9,000-14,000</li>
@@ -421,15 +416,15 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <!-- Trust Building Chinese Cultural Element -->
-      <div class="max-w-3xl mx-auto mt-12 text-center p-6 bg-white rounded-lg shadow-md">
+      <div class="max-w-3xl mx-auto mt-12 text-center p-6 bg-white rounded-lg shadow-[4px_4px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4">40年信誉，服务华人货运社区</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">
+        <p class="text-[#4F3E29] leading-relaxed mb-4">
           我们深刻理解华人货运商的需求和挑战。从家族生意传承到车队扩展，从应对季节性波动到把握船运公司合同机会。我们不仅是金融公司，更是您生意成长路上的可靠伙伴和朋友。
         </p>
         <p class="text-primary font-semibold text-lg">
           超过70%的客户来自巴生港华人社区推荐 - 这是最好的信任证明（口碑相传）
         </p>
-        <p class="text-gray-600 text-sm mt-2">
+        <p class="text-[#4F3E29] text-sm mt-2">
           我们讲华语、理解关系、重视信誉。像家人一样对待每一位客户。
         </p>
       </div>
@@ -443,7 +438,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           为什么巴生港货运商选择Ing Heng Credit
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           我们理解集装箱货运，专门为巴生港运营商设计融资
         </p>
       </div>
@@ -461,12 +456,12 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-primary mb-4">计算您的月供</h2>
-          <p class="text-gray-600">根据车价和贷款期限估算拖车头融资月供</p>
+          <p class="text-[#4F3E29]">根据车价和贷款期限估算拖车头融资月供</p>
         </div>
         <Calculator lang={lang} equipmentType="拖车头" defaultPrice={180000} />
       </div>
@@ -480,7 +475,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           5个简单步骤获得您的拖车头
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从申请到拉集装箱最快3-5天
         </p>
       </div>
@@ -506,29 +501,29 @@ const faqSchema = generateFAQSchema(faqs);
         >
           立即开始申请
         </a>
-        <p class="text-sm text-gray-600 mt-3">2小时内获得批准 | 无义务报价</p>
+        <p class="text-sm text-[#4F3E29] mt-3">快速内获得批准 | 无义务报价</p>
       </div>
     </div>
   </section>
 
   <!-- Equipment Types -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           我们融资的拖车头类型
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从6x2轻型到8x4重载卡车的所有配置
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {equipmentTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600 mb-3">{equipment.description}</p>
-            <div class="text-sm text-gray-700 space-y-1">
+            <p class="text-[#4F3E29] mb-3">{equipment.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-1">
               <p><strong>应用：</strong> {equipment.applications}</p>
               <p><strong>价格范围：</strong> <span class="text-primary font-semibold">{equipment.priceRange}</span></p>
             </div>
@@ -541,12 +536,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">接受的拖车头品牌</h3>
         <div class="flex flex-wrap justify-center gap-4">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium hover:shadow-md transition-shadow">
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-gray-600 mt-4">新旧车辆均接受。欧洲、日本和中国品牌都融资。</p>
+        <p class="text-[#4F3E29] mt-4">新旧车辆均接受。欧洲、日本和中国品牌都融资。</p>
       </div>
     </div>
   </section>
@@ -558,13 +553,13 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           船运公司合同融资
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           有马士基、MSC、达飞合同？获得更好的融资条款
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">巴生港主要船运公司</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -573,7 +568,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">MSC（地中海航运公司）</div>
-                <div class="text-sm text-gray-600">全球847万标准箱容量。最大船队。2001年起在马来西亚。</div>
+                <div class="text-sm text-[#4F3E29]">全球847万标准箱容量。最大船队。2001年起在马来西亚。</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -582,7 +577,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">马士基 Maersk</div>
-                <div class="text-sm text-gray-600">1974年起在马来西亚。在吉隆坡、槟城、巴生港、丹绒柏勒巴斯设有办事处。</div>
+                <div class="text-sm text-[#4F3E29]">1974年起在马来西亚。在吉隆坡、槟城、巴生港、丹绒柏勒巴斯设有办事处。</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -591,13 +586,13 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">达飞轮船 CMA CGM</div>
-                <div class="text-sm text-gray-600">在马来西亚有5个办事处。在巴生港和柔佛拥有集装箱堆场。</div>
+                <div class="text-sm text-[#4F3E29]">在马来西亚有5个办事处。在巴生港和柔佛拥有集装箱堆场。</div>
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-8 rounded-lg shadow-lg">
+        <div class="bg-white border-4 border-[#D4A574] p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold mb-6 text-yellow-600">基于合同融资的优势</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -618,7 +613,7 @@ const faqSchema = generateFAQSchema(faqs);
               <span class="text-xl mt-0.5 text-yellow-500">✓</span>
               <div>
                 <div class="font-semibold text-gray-800">更快批准</div>
-                <div class="text-sm text-gray-800">紧急合同截止期2小时批准</div>
+                <div class="text-sm text-gray-800">紧急合同截止期快速批准</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -635,13 +630,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           巴生港货运商的成功故事
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           通过我们的融资扩大车队的真实集装箱运营商
         </p>
       </div>
@@ -661,13 +656,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- FAQ Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           拖车头融资常见问题
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           巴生港货运商需要了解的关于融资拖车头的一切
         </p>
       </div>
@@ -680,14 +675,17 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="primeMover" />
+
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         准备好扩大车队并发展货运生意了吗？
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        巴生港2028年前容量翻倍。现在是为大规模增长准备车队的时候。今天申请，2小时内批准。加入4000+选择Ing Heng Credit的货运商。
+        巴生港2028年前容量翻倍。现在是为大规模增长准备车队的时候。今天申请，快速内批准。加入4000+选择Ing Heng Credit的货运商。
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -718,7 +716,7 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>2小时批准</span>
+          <span>快速批准</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -738,8 +736,8 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             或填写我们的在线申请表格
           </h2>
-          <p class="text-gray-600">
-            我们将在营业时间内2小时内与您联系（周一至周五9AM-5PM，周六9AM-1PM）
+          <p class="text-[#4F3E29]">
+            我们将在营业时间内快速内与您联系（周一至周五9AM-5PM，周六9AM-1PM）
           </p>
         </div>
         <ContactForm lang={lang} />

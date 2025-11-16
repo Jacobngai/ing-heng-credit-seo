@@ -1,0 +1,61 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  index: number;
+}
+
+const { question, answer, index } = Astro.props;
+---
+
+<div class="border-b border-gray-200 last:border-0">
+  <button
+    class="faq-toggle w-full py-6 flex items-center justify-between text-left group"
+    aria-expanded="false"
+    aria-controls={`faq-answer-${index}`}
+  >
+    <span class="text-lg font-semibold text-dark group-hover:text-primary-600 transition-colors pr-8">
+      {question}
+    </span>
+    <svg
+      class="faq-icon h-6 w-6 text-primary-600 flex-shrink-0 transition-transform"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div
+    id={`faq-answer-${index}`}
+    class="faq-answer hidden pb-6"
+  >
+    <p class="text-gray-600 leading-relaxed">
+      {answer}
+    </p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('.faq-icon');
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-toggle').forEach((otherButton) => {
+        if (otherButton !== button) {
+          otherButton.setAttribute('aria-expanded', 'false');
+          otherButton.nextElementSibling?.classList.add('hidden');
+          otherButton.querySelector('.faq-icon')?.classList.remove('rotate-180');
+        }
+      });
+
+      // Toggle current FAQ
+      button.setAttribute('aria-expanded', (!isExpanded).toString());
+      answer?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

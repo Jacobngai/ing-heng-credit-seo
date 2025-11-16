@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+
+const lang = 'ms';
+
+const contactMethods = [
+  {
+    icon: '📧',
+    title: 'Email',
+    value: SITE_CONFIG.contact.email,
+    link: `mailto:${SITE_CONFIG.contact.email}`,
+    description: 'Terbaik untuk soalan terperinci'
+  },
+  {
+    icon: '📱',
+    title: 'WhatsApp',
+    value: SITE_CONFIG.contact.phone,
+    link: `https://wa.me/${SITE_CONFIG.contact.whatsapp}`,
+    description: 'Balasan paling cepat'
+  },
+  {
+    icon: '📍',
+    title: 'Pejabat',
+    value: SITE_CONFIG.contact.address,
+    description: 'Pasukan kerja jarak jauh'
+  },
+  {
+    icon: '🕐',
+    title: 'Waktu',
+    value: SITE_CONFIG.contact.hours,
+    description: 'Balas dalam 24 jam'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Berapa cepat kita boleh mula?',
+    answer: 'Kebanyakan pelanggan aktif dalam 2 minggu. Kami kerja cepat - panggilan strategi dalam 48 jam, kajian kata kunci dalam 1 minggu, kandungan pertama naik dalam 2 minggu.'
+  },
+  {
+    question: 'Apa yang bezakan anda dengan agensi lain?',
+    answer: 'Tiga perkara: (1) Kami guna AI untuk liput 5-10x lebih banyak kata kunci pada harga lebih murah, (2) Kami fokus pada hasil perniagaan (jualan, leads) bukan ranking sahaja, dan (3) Kami telus - anda nampak semua.'
+  },
+  {
+    question: 'Anda kerja dengan perniagaan luar Malaysia?',
+    answer: 'Ya! Walaupun kami pakar dalam pasaran Malaysia, kami kerja dengan pelanggan di Asia Tenggara, Singapura, dan Australia. Cara AI kami boleh guna di mana-mana.'
+  },
+  {
+    question: 'Kalau saya tak puas hati dengan hasil?',
+    answer: 'Kami kerja rapat dengan pelanggan untuk pastikan kepuasan. Kalau anda tak nampak kemajuan yang dijangka, kami akan berbincang dan ubah strategi untuk capai matlamat perniagaan anda.'
+  }
+];
+---
+
+<BaseLayout
+  title="Hubungi Result Marketing - Analisis SEO Percuma"
+  description="Nak kuasai carian long-tail? Hubungi Result Marketing untuk analisis kata kunci percuma. Email, WhatsApp, atau tempah panggilan hari ini."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Hubungi Kami</span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+          Jom Berbual Tentang Matlamat Perniagaan Anda
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Tempah konsultasi percuma 30 minit. Kami akan analisis keadaan SEO anda sekarang, kenal pasti cara cepat untuk maju, dan tunjuk macam mana nak tangkap 100+ kata kunci. Tiada komitmen, tiada tekanan jualan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+        {contactMethods.map(method => (
+          <div class="text-center">
+            <div class="text-4xl mb-3">{method.icon}</div>
+            <h3 class="font-semibold mb-1">{method.title}</h3>
+            {method.link ? (
+              <a href={method.link} class="text-primary-600 hover:text-primary-700 font-medium block mb-1">
+                {method.value}
+              </a>
+            ) : (
+              <p class="text-gray-900 font-medium mb-1">{method.value}</p>
+            )}
+            <p class="text-sm text-gray-500">{method.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Contact Form -->
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
+          <h2 class="text-2xl font-bold mb-6 text-center">Hantar Mesej Kepada Kami</h2>
+          <ContactForm lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold mb-8 text-center">Soalan Lazim</h2>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+              <h3 class="text-lg font-semibold mb-2">{faq.question}</h3>
+              <p class="text-gray-600">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Notice -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="bg-primary-50 rounded-lg p-8 border border-primary-100">
+          <div class="text-4xl mb-4">🌏</div>
+          <h3 class="text-xl font-semibold mb-2">Pasukan Kerja Jarak Jauh</h3>
+          <p class="text-gray-600">
+            Kami berpusat di Kuala Lumpur tapi kerja dengan pelanggan di seluruh Malaysia dan Asia Tenggara. Semua mesyuarat secara online - lebih mudah untuk anda, lebih cekap untuk kami.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-12 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Nak Lihat Hasil Dulu?
+        </h2>
+        <p class="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">
+          Ketahui lebih lanjut tentang strategi SEO berkuasa AI kami dan macam mana ia boleh bantu majukan perniagaan anda.
+        </p>
+        <a href="/ms/services" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+          Lihat Perkhidmatan Kami
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

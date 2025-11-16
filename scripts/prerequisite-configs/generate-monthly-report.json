@@ -1,0 +1,86 @@
+{
+  "commandName": "generate-monthly-report",
+  "description": "Generate comprehensive monthly SEO performance report with insights and recommendations",
+  "files": [
+    {
+      "path": "clients/ing-heng/seo/analytics/performance-report.json",
+      "reason": "Contains current performance metrics needed for month-over-month comparison",
+      "generateCommand": "/audit-content-performance",
+      "docs": "framework-docs/PERFORMANCE-TRACKING.md",
+      "order": 1,
+      "estimatedTime": "5-7 minutes"
+    },
+    {
+      "path": "clients/ing-heng/seo/keyword-research/keyword-rankings.json",
+      "reason": "Provides keyword ranking data to track position changes and opportunities",
+      "generateCommand": "/keyword-opportunity-scan",
+      "docs": "framework-docs/KEYWORD-RESEARCH.md",
+      "order": 2,
+      "estimatedTime": "3-5 minutes"
+    },
+    {
+      "path": "clients/ing-heng/seo/backlinks/backlink-profile.json",
+      "reason": "Shows backlink growth and quality metrics for authority tracking",
+      "generateCommand": "/research-link-prospects",
+      "docs": "framework-docs/LINK-BUILDING.md",
+      "order": 3,
+      "estimatedTime": "4-6 minutes"
+    }
+  ],
+  "data": [
+    {
+      "file": "clients/ing-heng/seo/analytics/performance-report.json",
+      "type": "performance metrics",
+      "requiredFields": ["url", "impressions", "clicks", "ctr", "average_position", "trend", "date_range"],
+      "validationCommand": "node scripts/validate-performance-data.js",
+      "impact": "Without complete performance data, report cannot show accurate month-over-month trends"
+    },
+    {
+      "file": "clients/ing-heng/seo/keyword-research/keyword-rankings.json",
+      "type": "keyword ranking data",
+      "requiredFields": ["keyword", "current_position", "previous_position", "change", "url"],
+      "validationCommand": "node scripts/validate-keyword-data.js",
+      "impact": "Without ranking data, report cannot track keyword position improvements or losses"
+    },
+    {
+      "file": "clients/ing-heng/seo/backlinks/backlink-profile.json",
+      "type": "backlink data",
+      "requiredFields": ["total_backlinks", "referring_domains", "new_backlinks", "lost_backlinks", "domain_authority"],
+      "validationCommand": "node scripts/validate-backlink-data.js",
+      "impact": "Without backlink data, report cannot show authority growth and link building progress"
+    }
+  ],
+  "commands": [
+    {
+      "name": "audit-content-performance",
+      "command": "/audit-content-performance",
+      "outputFile": "clients/ing-heng/seo/analytics/performance-report.json",
+      "reason": "Generates performance metrics for all content",
+      "exampleOutput": "Analyzed 47 pages: 23 improving, 12 stable, 12 declining",
+      "estimatedTime": "5-7 minutes",
+      "nextSteps": "Performance data ready for monthly report",
+      "order": 1
+    },
+    {
+      "name": "keyword-opportunity-scan",
+      "command": "/keyword-opportunity-scan",
+      "outputFile": "clients/ing-heng/seo/keyword-research/keyword-rankings.json",
+      "reason": "Collects current keyword rankings for comparison",
+      "exampleOutput": "Tracked 150 keywords: 45 improved, 23 declined, 82 stable",
+      "estimatedTime": "3-5 minutes",
+      "nextSteps": "Ranking data ready for monthly report",
+      "order": 2
+    },
+    {
+      "name": "research-link-prospects",
+      "command": "/research-link-prospects",
+      "outputFile": "clients/ing-heng/seo/backlinks/backlink-profile.json",
+      "reason": "Gathers backlink metrics and quality scores",
+      "exampleOutput": "Found 342 backlinks from 87 domains (DA avg: 45)",
+      "estimatedTime": "4-6 minutes",
+      "nextSteps": "Backlink data ready for monthly report",
+      "order": 3
+    }
+  ],
+  "tools": []
+}

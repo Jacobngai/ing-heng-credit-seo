@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+import { t } from '../../utils/i18n';
+
+const lang = 'ms';
+const translate = t(lang);
+
+const services = [
+  {
+    title: 'SEO Long-Tail Berkuasa AI',
+    description: 'Liput 100+ kata kunci sebulan manakala pesaing hanya urus 10-20. Kuasai carian jangka panjang dengan AI.',
+    icon: '🚀',
+    features: [
+      '100+ kata kunci setiap bulan',
+      'Optimum untuk ChatGPT, Perplexity',
+      'Disemak oleh pakar manusia',
+      'Siap dalam 24-48 jam'
+    ]
+  },
+  {
+    title: 'Kandungan Pantas',
+    description: 'Hasilkan kandungan 10x lebih cepat dengan AI. Kualiti syarikat besar pada harga untuk SME.',
+    icon: '⚡',
+    features: [
+      'AI bantu tulis kandungan',
+      'SEO sempurna dari awal',
+      'Suara jenama konsisten',
+      'SEO teknikal siap sedia'
+    ]
+  },
+  {
+    title: 'Strategi Masa Depan',
+    description: 'Optimum untuk enjin carian masa depan: ChatGPT, Perplexity, Claude, dan Gemini.',
+    icon: '🤖',
+    features: [
+      'Optimum untuk AI search',
+      'Kandungan berkualiti tinggi',
+      'Bina autoriti perniagaan',
+      'Liputan menyeluruh'
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="SEO Berkuasa AI untuk Perniagaan Malaysia"
+  description="Liput 100+ kata kunci setiap bulan dengan AI. Pantas, berpatutan, dan bawa hasil sebenar untuk perniagaan anda."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <Hero
+    title="Jangan Rebut 10 Kata Kunci. Kuasai 1,000."
+    subtitle="Result Marketing guna AI untuk bantu perniagaan Malaysia tangkap 100+ kata kunci setiap bulan. Masa pesaing berebut kata kunci popular, anda dah kuasai soalan yang pelanggan tanya."
+    ctaText="Mula Hari Ini"
+    ctaLink="/ms/contact"
+    secondaryCtaText="Ketahui Lebih Lanjut"
+    secondaryCtaLink="/ms/about"
+  />
+
+  <!-- Services Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Apa Yang Kami Buat</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Perkhidmatan SEO Fokus Hasil
+        </h2>
+        <p class="text-lg text-gray-600">
+          Kami fokus pada perkara penting: jualan, leads, dan keuntungan. Bukan ranking semata-mata.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Cara Kerja Kami</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Dari 0 ke 100 Kata Kunci dalam 90 Hari
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {[
+          {
+            step: '01',
+            title: 'Kajian & Strategi',
+            description: 'Kami cari 100+ kata kunci yang pesaing anda terlepas pandang.'
+          },
+          {
+            step: '02',
+            title: 'Cipta dengan AI',
+            description: 'AI kami hasilkan kandungan SEO yang sempurna 10x lebih cepat.'
+          },
+          {
+            step: '03',
+            title: 'Semak Kualiti',
+            description: 'Semua kandungan disemak oleh pakar kami untuk pastikan tepat dan berkualiti.'
+          },
+          {
+            step: '04',
+            title: 'Lancar & Baiki',
+            description: 'Kandungan naik dalam 24-48 jam. Kami pantau dan baiki untuk hasil terbaik.'
+          }
+        ].map(item => (
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-primary-100 text-primary-700 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container-custom">
+      <CTASection
+        title="Nak Lihat Hasil SEO Yang Nyata?"
+        description="Dapatkan analisis kata kunci percuma. Kami tunjuk 100+ peluang untuk majukan perniagaan anda."
+        ctaText="Analisis Percuma"
+        ctaLink="/ms/contact"
+        secondaryCtaText="Lihat Perkhidmatan Kami"
+        secondaryCtaLink="/ms/services"
+      />
+    </div>
+  </section>
+</BaseLayout>

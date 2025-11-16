@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+
+const lang = 'en';
+
+const contactMethods = [
+  {
+    icon: '📧',
+    title: 'Email',
+    value: SITE_CONFIG.contact.email,
+    link: `mailto:${SITE_CONFIG.contact.email}`,
+    description: 'Best for detailed inquiries'
+  },
+  {
+    icon: '📱',
+    title: 'WhatsApp',
+    value: SITE_CONFIG.contact.phone,
+    link: `https://wa.me/${SITE_CONFIG.contact.whatsapp}`,
+    description: 'Fastest response time'
+  },
+  {
+    icon: '📍',
+    title: 'Office',
+    value: SITE_CONFIG.contact.address,
+    description: 'Remote-first team'
+  },
+  {
+    icon: '🕐',
+    title: 'Hours',
+    value: SITE_CONFIG.contact.hours,
+    description: 'Response within 24 hours'
+  }
+];
+
+const faqs = [
+  {
+    question: 'How quickly can we get started?',
+    answer: 'Most clients are live within 2 weeks. We move fast—initial strategy call within 48 hours, keyword research within 1 week, first content batch live within 2 weeks.'
+  },
+  {
+    question: 'What makes you different from other agencies?',
+    answer: 'Three things: (1) We leverage AI automation to cover 5-10x more keywords than competitors at lower cost, (2) We focus on business results (conversions, leads) not vanity metrics (rankings), and (3) We\'re radically transparent—you see everything.'
+  },
+  {
+    question: 'Do you work with businesses outside Malaysia?',
+    answer: 'Yes! While we specialize in the Malaysian market, we work with clients across Southeast Asia, Singapore, and even Australia. Our AI approach works globally.'
+  },
+  {
+    question: 'What if I\'m not happy with the results?',
+    answer: 'We offer a 60-day money-back guarantee. If you\'re not seeing measurable progress (traffic, rankings, engagement) after 2 months, we\'ll refund your retainer. No questions asked.'
+  }
+];
+---
+
+<BaseLayout
+  title="Contact Result Marketing - Get Your Free SEO Analysis"
+  description="Ready to dominate long-tail search? Contact Result Marketing for a free keyword gap analysis. Email, WhatsApp, or schedule a call today."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Get in Touch</span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+          Let's Talk About Your Growth Goals
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Schedule a free 30-minute consultation. We'll analyze your current SEO situation, identify quick wins, and show you how to capture 100+ long-tail keywords. No obligation, no sales pressure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+        {contactMethods.map(method => (
+          <div class="text-center">
+            <div class="text-4xl mb-3">{method.icon}</div>
+            <h3 class="font-semibold mb-1">{method.title}</h3>
+            {method.link ? (
+              <a href={method.link} class="text-primary-600 hover:text-primary-700 font-medium block mb-1">
+                {method.value}
+              </a>
+            ) : (
+              <p class="text-gray-900 font-medium mb-1">{method.value}</p>
+            )}
+            <p class="text-sm text-gray-500">{method.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Contact Form -->
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-100 p-8">
+          <h2 class="text-2xl font-bold mb-6 text-center">Send Us a Message</h2>
+          <ContactForm lang={lang} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+              <h3 class="text-lg font-semibold mb-2">{faq.question}</h3>
+              <p class="text-gray-600">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Notice -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="bg-primary-50 rounded-lg p-8 border border-primary-100">
+          <div class="text-4xl mb-4">🌏</div>
+          <h3 class="text-xl font-semibold mb-2">Remote-First Team</h3>
+          <p class="text-gray-600">
+            We're based in Kuala Lumpur but work with clients across Malaysia and Southeast Asia. All meetings are virtual—more convenient for you, more efficient for us.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-12 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Prefer to See Results First?
+        </h2>
+        <p class="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">
+          Check out our case studies to see exactly how we've helped businesses implement long-tail SEO strategies.
+        </p>
+        <a href="/en/case-studies" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+          View Case Studies
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

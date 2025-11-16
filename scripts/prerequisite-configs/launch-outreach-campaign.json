@@ -1,0 +1,61 @@
+{
+  "commandName": "launch-outreach-campaign",
+  "description": "Launch link building outreach campaign to identified prospects",
+  "files": [
+    {
+      "path": "clients/ing-heng/seo/backlinks/link-prospects.json",
+      "reason": "Contains qualified link prospects with contact information for outreach",
+      "generateCommand": "/research-link-prospects",
+      "docs": "framework-docs/LINK-BUILDING.md",
+      "order": 1,
+      "estimatedTime": "4-6 minutes"
+    },
+    {
+      "path": "clients/ing-heng/seo/content/linkable-assets.json",
+      "reason": "Identifies high-quality content assets to promote in outreach emails",
+      "generateCommand": "/audit-content-performance",
+      "docs": "framework-docs/CONTENT-MAINTENANCE.md",
+      "order": 2,
+      "estimatedTime": "5-7 minutes"
+    }
+  ],
+  "data": [
+    {
+      "file": "clients/ing-heng/seo/backlinks/link-prospects.json",
+      "type": "link prospect data",
+      "requiredFields": ["domain", "url", "contact_email", "authority_score", "relevance_score", "outreach_status"],
+      "validationCommand": "node scripts/validate-link-prospects.js",
+      "impact": "Without complete prospect data, outreach emails cannot be personalized and campaign cannot track responses"
+    },
+    {
+      "file": "clients/ing-heng/seo/content/linkable-assets.json",
+      "type": "content asset data",
+      "requiredFields": ["url", "title", "content_type", "target_keywords", "unique_value"],
+      "validationCommand": "node scripts/validate-linkable-assets.js",
+      "impact": "Without linkable assets identified, outreach will lack compelling content to promote"
+    }
+  ],
+  "commands": [
+    {
+      "name": "research-link-prospects",
+      "command": "/research-link-prospects",
+      "outputFile": "clients/ing-heng/seo/backlinks/link-prospects.json",
+      "reason": "Identifies and qualifies potential link prospects in target industry",
+      "exampleOutput": "Found 87 qualified prospects: 34 high-priority, 53 medium-priority",
+      "estimatedTime": "4-6 minutes",
+      "nextSteps": "Review prospects and prioritize for outreach",
+      "order": 1
+    },
+    {
+      "name": "audit-content-performance",
+      "command": "/audit-content-performance --identify-assets",
+      "outputFile": "clients/ing-heng/seo/content/linkable-assets.json",
+      "reason": "Identifies top-performing content suitable for link building promotion",
+      "exampleOutput": "Identified 12 linkable assets with high engagement and unique value",
+      "estimatedTime": "5-7 minutes",
+      "nextSteps": "Select assets to feature in outreach campaign",
+      "order": 2
+    }
+  ],
+  "tools": []
+}

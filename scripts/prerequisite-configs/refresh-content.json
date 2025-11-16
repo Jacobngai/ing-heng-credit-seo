@@ -1,0 +1,61 @@
+{
+  "commandName": "refresh-content",
+  "description": "Refresh existing content using skyscraper technique to improve rankings",
+  "files": [
+    {
+      "path": "clients/ing-heng/seo/analytics/performance-report.json",
+      "reason": "Identifies underperforming content that needs refresh based on traffic and ranking data",
+      "generateCommand": "/audit-content-performance",
+      "docs": "framework-docs/CONTENT-MAINTENANCE.md",
+      "order": 1,
+      "estimatedTime": "5-7 minutes"
+    },
+    {
+      "path": "clients/ing-heng/seo/competitor-analysis/content-gaps.json",
+      "reason": "Shows what competitors are doing better and identifies content improvement opportunities",
+      "generateCommand": "/competitor-analysis",
+      "docs": "framework-docs/COMPETITOR-ANALYSIS.md",
+      "order": 2,
+      "estimatedTime": "5-8 minutes"
+    }
+  ],
+  "data": [
+    {
+      "file": "clients/ing-heng/seo/analytics/performance-report.json",
+      "type": "performance data",
+      "requiredFields": ["url", "impressions", "clicks", "ctr", "average_position", "trend"],
+      "validationCommand": "node scripts/validate-performance-data.js",
+      "impact": "Without performance data, cannot identify which content needs refresh or measure improvement"
+    },
+    {
+      "file": "clients/ing-heng/seo/competitor-analysis/content-gaps.json",
+      "type": "competitor analysis data",
+      "requiredFields": ["competitor_url", "word_count", "headings", "images", "internal_links", "backlinks"],
+      "validationCommand": "node scripts/validate-competitor-data.js",
+      "impact": "Without competitor analysis, refresh may not address competitive gaps and miss ranking opportunities"
+    }
+  ],
+  "commands": [
+    {
+      "name": "audit-content-performance",
+      "command": "/audit-content-performance",
+      "outputFile": "clients/ing-heng/seo/analytics/performance-report.json",
+      "reason": "Analyzes current content performance to identify underperforming pages",
+      "exampleOutput": "Analyzed 47 pages, found 12 underperforming (>30 day traffic decline)",
+      "estimatedTime": "5-7 minutes",
+      "nextSteps": "Review underperforming content and prioritize for refresh",
+      "order": 1
+    },
+    {
+      "name": "competitor-analysis",
+      "command": "/competitor-analysis",
+      "outputFile": "clients/ing-heng/seo/competitor-analysis/content-gaps.json",
+      "reason": "Identifies what competitors are doing better to inform content improvements",
+      "exampleOutput": "Analyzed 5 competitors, identified 23 content gaps and opportunities",
+      "estimatedTime": "5-8 minutes",
+      "nextSteps": "Identify specific improvements to make content more competitive",
+      "order": 2
+    }
+  ],
+  "tools": []
+}

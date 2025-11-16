@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import StatsSection from '../../components/StatsSection.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+import { t } from '../../utils/i18n';
+
+const lang = 'en';
+const translate = t(lang);
+
+const services = [
+  {
+    title: 'AI-Powered Long-Tail SEO',
+    description: 'Cover 100+ high-intent keywords monthly while competitors manage 10-20. Dominate the long-tail with AI automation.',
+    icon: '🚀',
+    features: [
+      '100+ keywords covered monthly',
+      'AI search optimization (ChatGPT, Perplexity)',
+      'Human-reviewed quality control',
+      'Fast deployment (24-48 hours)'
+    ]
+  },
+  {
+    title: 'Content at Scale',
+    description: '10x faster content production using Claude Code automation. Enterprise results at SME prices.',
+    icon: '⚡',
+    features: [
+      'AI-assisted content creation',
+      'SEO-optimized from day one',
+      'Consistent brand voice',
+      'Technical SEO built-in'
+    ]
+  },
+  {
+    title: 'Future-Proof Strategy',
+    description: 'Optimize for where search is heading: AI engines like ChatGPT, Perplexity, Claude, and Gemini.',
+    icon: '🤖',
+    features: [
+      'AI search optimization',
+      'Citation-worthy content',
+      'Authority positioning',
+      'Comprehensive coverage'
+    ]
+  }
+];
+
+const testimonials = [
+  {
+    quote: 'The AI-powered approach to SEO makes sense for businesses that want to cover more ground efficiently. The team is knowledgeable and responsive.',
+    author: 'Business Owner',
+    role: 'CEO',
+    company: 'B2B SaaS Company, Kuala Lumpur',
+    rating: 5
+  },
+  {
+    quote: 'Their focus on long-tail keywords and AI search optimization aligns well with where the industry is heading. Good strategic thinking.',
+    author: 'Marketing Professional',
+    role: 'Marketing Director',
+    company: 'Financial Services, Singapore',
+    rating: 5
+  }
+];
+---
+
+<BaseLayout
+  title="AI-Powered Long-Tail SEO for Malaysian Businesses"
+  description="Cover 100+ high-intent keywords monthly with AI automation. Fast, affordable, results-driven SEO that actually grows your business."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <Hero
+    title="Stop Fighting for 10 Keywords. Dominate 1,000."
+    subtitle="Result Marketing uses AI automation to help Malaysian businesses capture 100+ long-tail keywords monthly. While competitors fight over competitive terms, you'll own the specific questions your customers actually ask."
+    ctaText="Get Started Today"
+    ctaLink="/en/contact"
+    secondaryCtaText="See Case Studies"
+    secondaryCtaLink="/en/case-studies"
+  />
+
+  <!-- Stats Section -->
+  <StatsSection />
+
+  <!-- Services Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">What We Do</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Performance-Focused SEO Services
+        </h2>
+        <p class="text-lg text-gray-600">
+          We focus on what matters: conversions, leads, and revenue. Not rankings for the sake of rankings.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Our Process</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          From Zero to 100 Keywords in 90 Days
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {[
+          {
+            step: '01',
+            title: 'Research & Strategy',
+            description: 'We identify 100+ high-intent long-tail keywords your competitors are missing.'
+          },
+          {
+            step: '02',
+            title: 'AI-Powered Creation',
+            description: 'Our Claude Code automation generates SEO-optimized content at 10x speed.'
+          },
+          {
+            step: '03',
+            title: 'Human Quality Control',
+            description: 'Every piece is reviewed and refined by our expert team for accuracy and brand voice.'
+          },
+          {
+            step: '04',
+            title: 'Deploy & Optimize',
+            description: 'Content goes live in 24-48 hours. We monitor, refine, and scale based on results.'
+          }
+        ].map(item => (
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-primary-100 text-primary-700 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Success Stories</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          What Our Clients Say
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {testimonials.map(testimonial => (
+          <TestimonialCard {...testimonial} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container-custom">
+      <CTASection
+        title="Ready to See Real SEO Results?"
+        description="Get a free keyword gap analysis. We'll show you 100+ opportunities that can drive actual business growth."
+        ctaText="Get Free Analysis"
+        ctaLink="/en/contact"
+        secondaryCtaText="View Pricing"
+        secondaryCtaLink="/en/pricing"
+      />
+    </div>
+  </section>
+</BaseLayout>

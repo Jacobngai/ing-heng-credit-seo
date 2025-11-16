@@ -1,98 +1,84 @@
 ---
 /**
- * English Blog Index Page
+ * English Blog Index Page - HYBRID ARCHITECTURE
  * Equipment Financing Blog - Expert Tips & Industry Guides
  * SEO: Informational, B2B educational content hub
  * Cultural Tone: Professional, informative, ROI-focused
+ *
+ * ARCHITECTURE: Auto-discovers blog posts from BOTH:
+ * 1. Existing .astro files (src/pages/en/blog/*.astro)
+ * 2. New markdown files (src/content/blogs/en/*.md)
  */
 
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import BlogCard from '../../../components/BlogCard.astro';
-import NewsletterSignup from '../../../components/NewsletterSignup.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import { SITE_CONFIG } from '../../../utils/constants';
 
 const lang = 'en';
 
-// Blog categories
+// 🔥 AUTO-DISCOVER .md blog posts (Content Collections)
+const allMdPosts = await getCollection('blogs');
+const allPosts = allMdPosts
+  .filter(post => post.data.locale === lang)
+  .map(post => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,  // Remove locale folder prefix
+    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
+    author: post.data.author,
+    category: post.data.category,
+    readTime: post.data.readingTime || 5,
+    featured: post.data.featured,
+    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
+  }));
+
+// 🔥 SORT by date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.date).valueOf() - new Date(a.date).valueOf()
+);
+
+// 🔥 FEATURED posts (auto-selected from featured flag, limit 3)
+const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
+
+// If no featured posts, use the 3 most recent
+const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
+
+// 🔥 RECENT posts (latest 6)
+const recentPosts = sortedPosts.slice(0, 6);
+
+// 🔥 POPULAR posts (for sidebar - use first 4)
+const popularPosts = sortedPosts.slice(0, 4).map(p => ({ title: p.title, slug: p.slug }));
+
+// 🔥 DYNAMIC category counts
 const categories = [
-  { name: 'Equipment Financing Tips', slug: 'equipment-financing', count: 12, icon: '🏗️' },
-  { name: 'Industry News & Trends', slug: 'industry-news', count: 8, icon: '📰' },
-  { name: 'Contractor Guides', slug: 'contractor-guides', count: 10, icon: '👷' },
-  { name: 'Business Growth', slug: 'business-growth', count: 7, icon: '📈' },
-  { name: 'Tax & Compliance', slug: 'tax-compliance', count: 6, icon: '📋' },
-  { name: 'Equipment Maintenance', slug: 'equipment-maintenance', count: 9, icon: '🔧' },
-];
-
-// Featured blog posts (placeholders - will be populated when actual blogs are created)
-const featuredPosts = [
   {
-    title: 'Complete Guide to Equipment Financing in Malaysia 2025',
-    excerpt: 'Learn everything you need to know about financing construction equipment, from hire purchase to leasing options. Discover which financing method works best for your business.',
-    date: '2025-10-11',
-    author: 'Ing Heng Credit Team',
-    slug: 'complete-guide-equipment-financing-malaysia',
-    image: '/images/blog/equipment-financing-guide.jpg',
-    category: 'Equipment Financing Tips',
-    readTime: 8,
+    name: 'Equipment Financing Tips',
+    slug: 'equipment-financing',
+    count: allPosts.filter(p => p.category === 'Equipment Financing Tips').length,
+    icon: '🏗️'
   },
   {
-    title: 'Excavator Financing: How Contractors Can Save 30% on Equipment Costs',
-    excerpt: 'Discover proven strategies to reduce your excavator acquisition costs through smart financing. Real case studies from successful Malaysian contractors.',
-    date: '2025-10-10',
-    author: 'Ing Heng Credit Team',
-    slug: 'excavator-financing-save-30-percent',
-    image: '/images/blog/excavator-financing.jpg',
-    category: 'Contractor Guides',
-    readTime: 6,
+    name: 'Contractor Guides',
+    slug: 'contractor-guides',
+    count: allPosts.filter(p => p.category === 'Contractor Guides').length,
+    icon: '👷'
   },
   {
-    title: 'Lorry Financing for Logistics Companies: Fast Approval Strategies',
-    excerpt: 'Fast-track your lorry financing approval with these expert tips. Learn what documents you need and how to qualify for the best rates.',
-    date: '2025-10-09',
-    author: 'Ing Heng Credit Team',
-    slug: 'lorry-financing-fast-approval-strategies',
-    image: '/images/blog/lorry-financing.jpg',
-    category: 'Equipment Financing Tips',
-    readTime: 7,
-  },
-];
-
-// Recent blog posts (only posts that actually exist)
-const recentPosts = [
-  {
-    title: 'Forklift Leasing vs. Buying: Which Option is Right for Your Warehouse?',
-    excerpt: 'Compare the pros and cons of leasing versus purchasing forklifts. Calculate ROI and make the best decision for your warehouse operations.',
-    date: '2025-10-08',
-    author: 'Ing Heng Credit Team',
-    slug: 'forklift-leasing-vs-buying-guide',
-    category: 'Business Growth',
+    name: 'Business Growth',
+    slug: 'business-growth',
+    count: allPosts.filter(p => p.category === 'Business Growth').length,
+    icon: '📈'
   },
   {
-    title: 'Tax Benefits of Equipment Financing: Maximize Your Deductions in 2025',
-    excerpt: 'Understand the tax advantages of equipment financing in Malaysia. Learn how to claim capital allowances and reduce your tax burden legally.',
-    date: '2025-10-07',
-    author: 'Ing Heng Credit Team',
-    slug: 'tax-benefits-equipment-financing-2025',
-    category: 'Tax & Compliance',
+    name: 'Tax & Compliance',
+    slug: 'tax-compliance',
+    count: allPosts.filter(p => p.category === 'Tax & Compliance').length,
+    icon: '📋'
   },
-  {
-    title: 'Cash Flow Management for Construction Companies: 5 Essential Strategies',
-    excerpt: 'Master cash flow management while financing expensive construction equipment. Proven strategies from 40+ years of industry experience.',
-    date: '2025-10-06',
-    author: 'Ing Heng Credit Team',
-    slug: 'cash-flow-management-construction',
-    category: 'Business Growth',
-  },
-];
-
-// Popular posts for sidebar
-const popularPosts = [
-  { title: 'Complete Guide to Equipment Financing in Malaysia 2025', slug: 'complete-guide-equipment-financing-malaysia' },
-  { title: 'Excavator Financing: Save 30% on Equipment Costs', slug: 'excavator-financing-save-30-percent' },
-  { title: 'Tax Benefits of Equipment Financing 2025', slug: 'tax-benefits-equipment-financing-2025' },
-  { title: 'Forklift Leasing vs. Buying: Complete Guide', slug: 'forklift-leasing-vs-buying-guide' },
 ];
 
 // Breadcrumb navigation
@@ -107,18 +93,18 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "Equipment Financing Blog - Expert Tips & Industry Guides",
   "description": "Expert insights on equipment financing, construction business management, and industry trends from Malaysia's trusted financing partner since 1985.",
-  "url": "https://ingheng-credit.vercel.app/en/blog",
+  "url": `${SITE_CONFIG.url}/en/blog`,
   "publisher": {
     "@type": "Organization",
     "name": "Ing Heng Credit & Leasing Sdn Bhd",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://ingheng-credit.vercel.app/logo.png"
+      "url": `${SITE_CONFIG.url}/logo.png`
     }
   },
   "mainEntity": {
     "@type": "ItemList",
-    "itemListElement": featuredPosts.map((post, index) => ({
+    "itemListElement": displayFeaturedPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
@@ -164,7 +150,7 @@ const blogCollectionSchema = {
   <!-- Hero Section -->
   <section class="section bg-navy-900">
     <div class="container-custom text-center max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-black text-yellow-400 mb-6 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+      <h1 class="text-4xl md:text-5xl font-black text-[#D4A574] mb-6 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
         Equipment Financing Insights & Expert Guides
       </h1>
       <p class="text-xl text-white leading-relaxed mb-8">
@@ -177,13 +163,13 @@ const blogCollectionSchema = {
           <input
             type="search"
             placeholder="Search articles about financing, equipment, business tips..."
-            class="w-full px-6 py-4 pr-12 border-4 border-yellow-400 bg-white focus:border-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-400/20 transition-all"
+            class="w-full px-6 py-4 pr-12 border-4 border-[#D4A574] bg-white focus:border-[#D4A574] focus:outline-none focus:ring-4 focus:ring-[#D4A574]/20 transition-all"
             aria-label="Search blog posts"
             style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);"
           />
           <button
             type="button"
-            class="absolute right-3 top-1/2 -translate-y-1/2 bg-yellow-400 text-navy-900 p-3 hover:bg-yellow-300 transition-colors font-bold"
+            class="absolute right-3 top-1/2 -translate-y-1/2 bg-[#D4A574] text-navy-900 p-3 hover:bg-yellow-300 transition-colors font-bold"
             aria-label="Search"
             style="box-shadow: 4px 4px 0 rgba(30, 58, 138, 0.3);"
           >
@@ -195,21 +181,21 @@ const blogCollectionSchema = {
       </div>
 
       <!-- Trust Signals -->
-      <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-yellow-400 font-bold">
+      <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-[#D4A574] font-bold">
         <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-[#D4A574]" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
           <span>40+ Years Experience</span>
         </div>
         <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-[#D4A574]" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
           <span>4,000+ Companies Helped</span>
         </div>
         <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+          <svg class="w-5 h-5 text-[#D4A574]" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
           <span>KPKT Licensed</span>
@@ -225,7 +211,7 @@ const blogCollectionSchema = {
         {categories.map((category) => (
           <a
             href={`/en/blog/category/${category.slug}`}
-            class="flex items-center gap-2 px-6 py-3 bg-white border-3 border-navy-900 hover:bg-yellow-400 hover:text-navy-900 transition-all duration-200 group font-bold"
+            class="flex items-center gap-2 px-6 py-3 bg-white border-3 border-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all duration-200 group font-bold"
             style="box-shadow: 4px 4px 0 #1E3A8A;"
           >
             <span class="text-xl">{category.icon}</span>
@@ -248,11 +234,11 @@ const blogCollectionSchema = {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {featuredPosts.map((post) => (
+        {displayFeaturedPosts.map((post) => (
           <div class="card-brutalist h-full flex flex-col group relative">
             {/* Featured Badge */}
             <div class="absolute top-4 right-4 z-10">
-              <span class="bg-yellow-400 text-navy-900 px-3 py-1 text-xs font-black uppercase border-2 border-navy-900" style="box-shadow: 3px 3px 0 #1E3A8A;">
+              <span class="bg-[#D4A574] text-navy-900 px-3 py-1 text-xs font-black uppercase border-2 border-navy-900" style="box-shadow: 3px 3px 0 #1E3A8A;">
                 FEATURED
               </span>
             </div>
@@ -324,8 +310,8 @@ const blogCollectionSchema = {
         <div class="lg:col-span-2">
           <div class="mb-8 flex items-center justify-between">
             <h2 class="text-2xl font-black text-navy-900 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">Recent Articles</h2>
-            <div class="flex items-center gap-2 text-sm text-gray-700 font-bold">
-              <span>Showing 1-9 of 52 articles</span>
+            <div class="flex items-center gap-2 text-sm font-bold" style="color: #2D1810;">
+              <span>Showing 1-{recentPosts.length} of 6 articles</span>
             </div>
           </div>
 
@@ -375,18 +361,13 @@ const blogCollectionSchema = {
             ))}
           </div>
 
-          <!-- Pagination -->
+          <!-- Pagination (showing all posts on 1 page) -->
           <div class="flex justify-center gap-2">
-            <button disabled class="px-4 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed">
+            <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
               Previous
             </button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">4</button>
-            <span class="px-4 py-2">...</span>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">6</button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark">
+            <button class="px-4 py-2 bg-[#D4A574] text-navy-900 border-3 border-navy-900 font-black" style="box-shadow: 4px 4px 0 #1E3A8A;">1</button>
+            <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
               Next
             </button>
           </div>
@@ -394,11 +375,6 @@ const blogCollectionSchema = {
 
         <!-- Sidebar -->
         <aside class="lg:col-span-1 space-y-8">
-
-          <!-- Newsletter Signup -->
-          <div class="sticky top-24">
-            <NewsletterSignup locale={lang} variant="boxed" />
-          </div>
 
           <!-- Categories List -->
           <div class="card">
@@ -479,7 +455,7 @@ const blogCollectionSchema = {
         Ready to Finance Your Equipment?
       </h2>
       <p class="text-xl mb-8 text-white opacity-90 max-w-2xl mx-auto">
-        Join 4,000+ businesses who trust Ing Heng Credit for their financing needs. Get approved in 24 hours with competitive rates from 2.88% p.a.
+        Join 4,000+ businesses who trust Ing Heng Credit for their financing needs. Get approved quickly with competitive rates from 2.88% p.a.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <CTAButton
@@ -519,7 +495,7 @@ const blogCollectionSchema = {
   /* Brutalist Badge */
   .badge-brutalist {
     @apply inline-block px-3 py-1 text-xs font-black uppercase;
-    @apply bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    @apply bg-[#D4A574] text-navy-900 border-2 border-navy-900;
     box-shadow: 3px 3px 0 #1E3A8A;
   }
 

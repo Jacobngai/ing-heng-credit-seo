@@ -1,82 +1,84 @@
 ---
 /**
- * Malay Blog Index Page (Halaman Indeks Blog Bahasa Melayu)
+ * Malay Blog Index Page - HYBRID ARCHITECTURE (Halaman Indeks Blog Bahasa Melayu)
  * Equipment Financing Blog - Expert Tips & Industry Guides
  * SEO: Informational, Service-focused, Knowledge-sharing
  * Cultural Tone: Respectful, service-oriented, professional with government/authority references
+ *
+ * ARCHITECTURE: Auto-discovers blog posts from BOTH:
+ * 1. Existing .astro files (src/pages/ms/blog/*.astro)
+ * 2. New markdown files (src/content/blogs/ms/*.md)
  */
 
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import BlogCard from '../../../components/BlogCard.astro';
-import NewsletterSignup from '../../../components/NewsletterSignup.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import { SITE_CONFIG } from '../../../utils/constants';
 
 const lang = 'ms';
 
-// Blog categories (Bahasa Melayu)
+// 🔥 AUTO-DISCOVER .md blog posts (Content Collections)
+const allMdPosts = await getCollection('blogs');
+const allPosts = allMdPosts
+  .filter(post => post.data.locale === lang)
+  .map(post => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,  // Remove locale folder prefix
+    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
+    author: post.data.author,
+    category: post.data.category,
+    readTime: post.data.readingTime || 5,
+    featured: post.data.featured,
+    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
+  }));
+
+// 🔥 SORT by date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.date).valueOf() - new Date(a.date).valueOf()
+);
+
+// 🔥 FEATURED posts (auto-selected from featured flag, limit 3)
+const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
+
+// If no featured posts, use the 3 most recent
+const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
+
+// 🔥 RECENT posts (latest 6)
+const recentPosts = sortedPosts.slice(0, 6);
+
+// 🔥 POPULAR posts (for sidebar - use first 4)
+const popularPosts = sortedPosts.slice(0, 4).map(p => ({ title: p.title, slug: p.slug }));
+
+// 🔥 DYNAMIC category counts
 const categories = [
-  { name: 'Tips Pembiayaan Peralatan', slug: 'equipment-financing', count: 12, icon: '🏗️' },
-  { name: 'Berita & Trend Industri', slug: 'industry-news', count: 8, icon: '📰' },
-  { name: 'Panduan Kontraktor', slug: 'contractor-guides', count: 10, icon: '👷' },
-  { name: 'Pertumbuhan Perniagaan', slug: 'business-growth', count: 7, icon: '📈' },
-  { name: 'Cukai & Pematuhan', slug: 'tax-compliance', count: 6, icon: '📋' },
-  { name: 'Penyelenggaraan Peralatan', slug: 'equipment-maintenance', count: 9, icon: '🔧' },
-];
-
-// Featured blog posts (Artikel Pilihan)
-const featuredPosts = [
   {
-    title: 'Panduan Lengkap Pembiayaan Peralatan di Malaysia 2025',
-    excerpt: 'Ketahui segala-galanya tentang pembiayaan peralatan pembinaan, dari beli sewa hingga pilihan pajakan. Temui kaedah pembiayaan yang terbaik untuk perniagaan anda.',
-    date: '2025-10-11',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'complete-guide-equipment-financing-malaysia',
-    image: '/images/blog/equipment-financing-guide.jpg',
-    category: 'Tips Pembiayaan Peralatan',
-    readTime: 8,
+    name: 'Tips Pembiayaan Peralatan',
+    slug: 'equipment-financing',
+    count: allPosts.filter(p => p.category === 'Tips Pembiayaan Peralatan').length,
+    icon: '🏗️'
   },
   {
-    title: 'Pembiayaan Jengkaut: Bagaimana Kontraktor Boleh Jimat 30% Kos Peralatan',
-    excerpt: 'Temui strategi terbukti untuk mengurangkan kos pemerolehan jengkaut melalui pembiayaan pintar. Kajian kes sebenar dari kontraktor Malaysia yang berjaya.',
-    date: '2025-10-10',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'excavator-financing-save-30-percent',
-    image: '/images/blog/excavator-financing.jpg',
-    category: 'Panduan Kontraktor',
-    readTime: 6,
+    name: 'Panduan Kontraktor',
+    slug: 'contractor-guides',
+    count: allPosts.filter(p => p.category === 'Panduan Kontraktor').length,
+    icon: '👷'
   },
   {
-    title: 'Pembiayaan Lori untuk Syarikat Logistik: Strategi Kelulusan Pantas',
-    excerpt: 'Percepatkan kelulusan pembiayaan lori anda dengan tip pakar ini. Ketahui dokumen yang diperlukan dan cara mendapat kadar terbaik untuk perniagaan logistik anda.',
-    date: '2025-10-09',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'lorry-financing-fast-approval-strategies',
-    image: '/images/blog/lorry-financing.jpg',
-    category: 'Tips Pembiayaan Peralatan',
-    readTime: 7,
+    name: 'Cukai & Pematuhan',
+    slug: 'tax-compliance',
+    count: allPosts.filter(p => p.category === 'Cukai & Pematuhan').length,
+    icon: '📋'
   },
-];
-
-// Recent blog posts (Artikel Terkini - Only posts that actually exist)
-const recentPosts = [
   {
-    title: 'Faedah Cukai Pembiayaan Peralatan: Maksimumkan Potongan Anda 2025',
-    excerpt: 'Fahami kelebihan cukai pembiayaan peralatan di Malaysia. Pelajari cara menuntut elaun modal dan kurangkan beban cukai anda secara sah.',
-    date: '2025-10-07',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'tax-benefits-equipment-financing-2025',
-    category: 'Cukai & Pematuhan',
+    name: 'Pertumbuhan Perniagaan',
+    slug: 'business-growth',
+    count: allPosts.filter(p => p.category === 'Pertumbuhan Perniagaan').length,
+    icon: '📈'
   },
-];
-
-// Popular posts for sidebar (Artikel Popular)
-const popularPosts = [
-  { title: 'Panduan Lengkap Pembiayaan Peralatan Malaysia 2025', slug: 'complete-guide-equipment-financing-malaysia' },
-  { title: 'Pembiayaan Jengkaut: Jimat 30% Kos Peralatan', slug: 'excavator-financing-save-30-percent' },
-  { title: 'Faedah Cukai Pembiayaan Peralatan 2025', slug: 'tax-benefits-equipment-financing-2025' },
-  { title: 'Pajakan Forklift vs Pembelian: Panduan Lengkap', slug: 'forklift-leasing-vs-buying-guide' },
 ];
 
 // Breadcrumb navigation
@@ -91,18 +93,18 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "Blog Pembiayaan Peralatan - Tips Pakar & Panduan Industri",
   "description": "Wawasan pakar tentang pembiayaan peralatan, pengurusan perniagaan pembinaan, dan trend industri dari rakan kongsi pembiayaan terpercaya Malaysia sejak 1985.",
-  "url": "https://ingheng-credit.vercel.app/ms/blog",
+  "url": `${SITE_CONFIG.url}/ms/blog`,
   "publisher": {
     "@type": "Organization",
     "name": "Ing Heng Credit & Leasing Sdn Bhd",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://ingheng-credit.vercel.app/logo.png"
+      "url": `${SITE_CONFIG.url}/logo.png`
     }
   },
   "mainEntity": {
     "@type": "ItemList",
-    "itemListElement": featuredPosts.map((post, index) => ({
+    "itemListElement": displayFeaturedPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
@@ -229,11 +231,11 @@ const blogCollectionSchema = {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {featuredPosts.map((post) => (
-          <div class="card h-full flex flex-col group hover:shadow-2xl transition-shadow duration-300 relative">
+        {displayFeaturedPosts.map((post) => (
+          <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300 relative">
             {/* Featured Badge */}
             <div class="absolute top-4 right-4 z-10">
-              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-[6px_6px_0_#2D1810]">
                 PILIHAN
               </span>
             </div>
@@ -305,15 +307,15 @@ const blogCollectionSchema = {
         <div class="lg:col-span-2">
           <div class="mb-8 flex items-center justify-between">
             <h2 class="text-2xl font-bold text-primary">Artikel Terkini</h2>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <span>Menunjukkan 1-9 daripada 52 artikel</span>
+            <div class="flex items-center gap-2 text-sm font-semibold" style="color: #2D1810;">
+              <span>Menunjukkan 1-{recentPosts.length} daripada 4 artikel</span>
             </div>
           </div>
 
           <!-- Blog Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {recentPosts.map((post) => (
-              <div class="card h-full flex flex-col group hover:shadow-xl transition-shadow duration-300">
+              <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300">
                 {/* Image Placeholder */}
                 <a href={`/ms/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
                   <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
@@ -356,18 +358,13 @@ const blogCollectionSchema = {
             ))}
           </div>
 
-          <!-- Pagination -->
+          <!-- Pagination (showing all posts on 1 page) -->
           <div class="flex justify-center gap-2">
-            <button disabled class="px-4 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed">
+            <button disabled class="px-4 py-2 border-3 opacity-50 cursor-not-allowed bg-gray-100 text-primary" style="border-color: var(--color-primary-dark); box-shadow: 4px 4px 0 var(--color-primary-dark);">
               Sebelum
             </button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">4</button>
-            <span class="px-4 py-2">...</span>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">6</button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark">
+            <button class="px-4 py-2 bg-primary text-white border-3 font-bold" style="border-color: var(--color-primary-dark); box-shadow: 4px 4px 0 var(--color-primary-dark);">1</button>
+            <button disabled class="px-4 py-2 border-3 opacity-50 cursor-not-allowed bg-gray-100 text-primary" style="border-color: var(--color-primary-dark); box-shadow: 4px 4px 0 var(--color-primary-dark);">
               Seterusnya
             </button>
           </div>
@@ -375,11 +372,6 @@ const blogCollectionSchema = {
 
         <!-- Sidebar -->
         <aside class="lg:col-span-1 space-y-8">
-
-          <!-- Newsletter Signup -->
-          <div class="sticky top-24">
-            <NewsletterSignup locale={lang} variant="boxed" />
-          </div>
 
           <!-- Categories List -->
           <div class="card">
@@ -460,7 +452,7 @@ const blogCollectionSchema = {
         Bersedia untuk Membiayai Peralatan Anda?
       </h2>
       <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan mereka. Dapatkan kelulusan dalam 24 jam dengan kadar kompetitif dari 2.88% setahun.
+        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan mereka. Dapatkan kelulusan pantas dengan kadar kompetitif dari 2.88% setahun.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <CTAButton
@@ -504,7 +496,7 @@ const blogCollectionSchema = {
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden;
+    @apply bg-white rounded-lg shadow-[4px_4px_0_#2D1810] overflow-hidden;
   }
 
   .card-body {

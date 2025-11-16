@@ -1,0 +1,272 @@
+---
+/**
+ * Malay Blog Category Pages (Halaman Kategori Blog Bahasa Melayu)
+ * Dynamic routes for blog categories
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO, SITE_CONFIG } from '../../../../utils/constants';
+
+export async function getStaticPaths() {
+  const categories = ['equipment-financing', 'contractor-guides', 'business-growth', 'tax-compliance'];
+  return categories.map(slug => ({
+    params: { slug }
+  }));
+}
+
+const lang = 'ms';
+const { slug } = Astro.params;
+
+// Define all categories
+const categoryMap = {
+  'equipment-financing': {
+    name: 'Tips Pembiayaan Peralatan',
+    description: 'Tips dan panduan pakar tentang pembiayaan peralatan di Malaysia',
+    icon: '🏗️'
+  },
+  'contractor-guides': {
+    name: 'Panduan Kontraktor',
+    description: 'Panduan penting untuk kontraktor dan perniagaan pembinaan',
+    icon: '👷'
+  },
+  'business-growth': {
+    name: 'Pertumbuhan Perniagaan',
+    description: 'Strategi untuk mengembangkan perniagaan pembinaan atau logistik anda',
+    icon: '📈'
+  },
+  'tax-compliance': {
+    name: 'Cukai & Pematuhan',
+    description: 'Faedah cukai dan maklumat pematuhan untuk pembiayaan peralatan',
+    icon: '📋'
+  },
+};
+
+const category = categoryMap[slug];
+
+if (!category) {
+  return Astro.redirect('/ms/blog', 301);
+}
+
+// Map blog posts to their categories
+const allPosts = [
+  {
+    title: 'Panduan Lengkap Pembiayaan Peralatan di Malaysia 2025',
+    excerpt: 'Ketahui segala-galanya tentang pembiayaan peralatan pembinaan, dari beli sewa hingga pilihan pajakan.',
+    date: '2025-10-11',
+    slug: 'complete-guide-equipment-financing-malaysia',
+    category: 'Tips Pembiayaan Peralatan',
+    readTime: 8,
+  },
+  {
+    title: 'Pembiayaan Jengkaut: Bagaimana Kontraktor Boleh Jimat 30% Kos Peralatan',
+    excerpt: 'Temui strategi terbukti untuk mengurangkan kos pemerolehan jengkaut melalui pembiayaan pintar.',
+    date: '2025-10-10',
+    slug: 'excavator-financing-save-30-percent',
+    category: 'Panduan Kontraktor',
+    readTime: 6,
+  },
+  {
+    title: 'Pembiayaan Lori untuk Syarikat Logistik: Strategi Kelulusan Pantas',
+    excerpt: 'Percepatkan kelulusan pembiayaan lori anda dengan tip pakar ini.',
+    date: '2025-10-09',
+    slug: 'lorry-financing-fast-approval-strategies',
+    category: 'Tips Pembiayaan Peralatan',
+    readTime: 7,
+  },
+  {
+    title: 'Faedah Cukai Pembiayaan Peralatan: Maksimumkan Potongan Anda 2025',
+    excerpt: 'Fahami kelebihan cukai pembiayaan peralatan di Malaysia.',
+    date: '2025-10-07',
+    slug: 'tax-benefits-equipment-financing-2025',
+    category: 'Cukai & Pematuhan',
+    readTime: 8,
+  },
+];
+
+// Filter posts by category
+const categoryPosts = allPosts.filter(post => post.category === category.name);
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: category.name, href: `/ms/blog/category/${slug}` },
+];
+---
+
+<BaseLayout
+  title={`${category.name} | Blog Pembiayaan Peralatan | Ing Heng Credit`}
+  description={category.description}
+  lang={lang}
+  keywords={[category.name.toLowerCase(), 'pembiayaan peralatan', 'Malaysia']}
+>
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Category Header -->
+  <section class="section bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <div class="text-6xl mb-4">{category.icon}</div>
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+        {category.name}
+      </h1>
+      <p class="text-xl leading-relaxed" style="color: #2D1810;">
+        {category.description}
+      </p>
+      <div class="mt-6 text-sm font-bold text-primary">
+        {categoryPosts.length} {categoryPosts.length === 1 ? 'Artikel' : 'Artikel'}
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Posts -->
+  <section class="section">
+    <div class="container-custom max-w-5xl mx-auto">
+      {categoryPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {categoryPosts.map((post) => (
+            <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300">
+              {/* Image Placeholder */}
+              <a href={`/ms/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
+                <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
+                  {category.icon}
+                </div>
+              </a>
+
+              <div class="card-body flex flex-col flex-grow">
+                {/* Category Badge */}
+                <div class="mb-3">
+                  <span class="badge badge-primary text-xs">{category.name}</span>
+                </div>
+
+                {/* Title */}
+                <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+                  <a href={`/ms/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h3>
+
+                {/* Excerpt */}
+                <p class="mb-4 flex-grow line-clamp-3 leading-relaxed" style="color: #2D1810;">
+                  {post.excerpt}
+                </p>
+
+                {/* Footer */}
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200 text-sm">
+                  <time datetime={post.date} class="text-gray-500">
+                    {new Date(post.date).toLocaleDateString('ms-MY', { month: 'long', day: 'numeric' })}
+                  </time>
+                  <a
+                    href={`/ms/blog/${post.slug}`}
+                    class="text-secondary font-semibold hover:text-accent transition-colors"
+                  >
+                    Baca Lagi →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="card p-12 text-center">
+          <div class="text-6xl mb-4">📝</div>
+          <h2 class="text-2xl font-bold text-primary mb-4">Tiada Artikel Lagi</h2>
+          <p class="mb-6" style="color: #2D1810;">
+            Kami sedang menambah kandungan ke kategori ini. Sila semak semula tidak lama lagi atau teroka kategori lain.
+          </p>
+          <CTAButton
+            text="Lihat Semua Artikel"
+            link="/ms/blog"
+            variant="primary"
+            size="medium"
+          />
+        </div>
+      )}
+
+      {/* Back to Blog */}
+      <div class="mt-12 text-center">
+        <a
+          href="/ms/blog"
+          class="inline-flex items-center gap-2 text-secondary font-semibold hover:text-accent transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Kembali ke Semua Artikel
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Bersedia untuk Membiayai Peralatan Anda?
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Dapatkan nasihat pakar dari rakan kongsi pembiayaan peralatan terpercaya Malaysia sejak 1985.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Dapatkan Sebut Harga Percuma"
+          link="/ms/contact"
+          variant="accent"
+          size="large"
+        />
+        <CTAButton
+          text="Kira Bayaran Bulanan"
+          link="/ms/calculator"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-[4px_4px_0_#2D1810] overflow-hidden;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+</style>

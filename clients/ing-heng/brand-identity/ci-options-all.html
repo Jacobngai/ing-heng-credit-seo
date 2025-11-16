@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ing Heng Credit - 5 CI Options</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .ci-option {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .ci-header {
+      border-bottom: 3px solid currentColor;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .ci-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .ci-subtitle {
+      font-size: 16px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .ci-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .ci-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      width: 120px;
+    }
+
+    .color-box {
+      width: 100%;
+      height: 80px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 2px solid #e0e0e0;
+    }
+
+    .color-name {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .color-hex {
+      font-size: 11px;
+      color: #666;
+      font-family: 'Courier New', monospace;
+    }
+
+    .typography-sample {
+      margin-bottom: 15px;
+    }
+
+    .font-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .mockup-section {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    .mockup-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .demo-hero {
+      padding: 60px 40px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .demo-hero h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .demo-hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .demo-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-btn {
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .best-for {
+      background: #f0f7ff;
+      border-left: 4px solid #2563eb;
+      padding: 20px;
+      border-radius: 6px;
+      margin-top: 30px;
+    }
+
+    .best-for h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #2563eb;
+    }
+
+    .pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .pros, .cons {
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    .pros {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+    }
+
+    .cons {
+      background: #fef2f2;
+      border-left: 3px solid #ef4444;
+    }
+
+    .pros h5, .cons h5 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      font-size: 14px;
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .pros li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    .cons li:before {
+      content: "✗";
+      position: absolute;
+      left: 0;
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    /* =================================================================
+       OPTION 1: INDUSTRIAL TRUST (Logo-based Bronze/Brown)
+       ================================================================= */
+    .option-1 .ci-header {
+      color: #8B6F47;
+    }
+
+    .option-1 .demo-hero {
+      background: linear-gradient(135deg, #8B6F47 0%, #6B5437 100%);
+      color: white;
+    }
+
+    .option-1 .demo-btn-primary {
+      background: #D4A574;
+      color: #2D1810;
+      border: 3px solid #2D1810;
+    }
+
+    .option-1 .demo-btn-primary:hover {
+      background: #BF9463;
+    }
+
+    .option-1 .demo-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-1 .demo-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* =================================================================
+       OPTION 2: CURRENT INDUSTRIAL BLUE (Navy + Yellow - Current Site)
+       ================================================================= */
+    .option-2 .ci-header {
+      color: #1E3A8A;
+    }
+
+    .option-2 .demo-hero {
+      background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%);
+      color: white;
+    }
+
+    .option-2 .demo-btn-primary {
+      background: #FBBF24;
+      color: #1E3A8A;
+      border: 3px solid #1E3A8A;
+    }
+
+    .option-2 .demo-btn-primary:hover {
+      background: #F59E0B;
+    }
+
+    .option-2 .demo-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-2 .demo-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* =================================================================
+       OPTION 3: MODERN MINIMALIST (Black/White/Teal)
+       ================================================================= */
+    .option-3 .ci-header {
+      color: #000000;
+    }
+
+    .option-3 .demo-hero {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      color: white;
+    }
+
+    .option-3 .demo-btn-primary {
+      background: #14B8A6;
+      color: white;
+      border: 3px solid #14B8A6;
+    }
+
+    .option-3 .demo-btn-primary:hover {
+      background: #0D9488;
+    }
+
+    .option-3 .demo-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-3 .demo-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* =================================================================
+       OPTION 4: CORPORATE PROFESSIONAL (Corporate Blue/Gray)
+       ================================================================= */
+    .option-4 .ci-header {
+      color: #0F4C81;
+    }
+
+    .option-4 .demo-hero {
+      background: linear-gradient(135deg, #0F4C81 0%, #1565C0 100%);
+      color: white;
+    }
+
+    .option-4 .demo-btn-primary {
+      background: #64748B;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-4 .demo-btn-primary:hover {
+      background: #475569;
+    }
+
+    .option-4 .demo-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-4 .demo-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* =================================================================
+       OPTION 5: BOLD DYNAMIC (Electric Blue/Bright Orange)
+       ================================================================= */
+    .option-5 .ci-header {
+      color: #0EA5E9;
+    }
+
+    .option-5 .demo-hero {
+      background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+      color: white;
+    }
+
+    .option-5 .demo-btn-primary {
+      background: #FB923C;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-5 .demo-btn-primary:hover {
+      background: #F97316;
+    }
+
+    .option-5 .demo-btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+    }
+
+    .option-5 .demo-btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- ========================================
+       HEADER
+       ======================================== -->
+  <div class="header">
+    <h1>🎨 Ing Heng Credit - 5 Corporate Identity Options</h1>
+    <p>Review and select the brand identity that best represents your business</p>
+  </div>
+
+  <!-- ========================================
+       OPTION 1: INDUSTRIAL TRUST (Logo-based)
+       ======================================== -->
+  <div class="ci-option option-1">
+    <div class="ci-header">
+      <div class="ci-title">Option 1: Industrial Trust</div>
+      <div class="ci-subtitle">Logo-based • Traditional • Established • Bronze/Brown Palette</div>
+    </div>
+
+    <div class="ci-grid">
+      <!-- Colors -->
+      <div>
+        <h3 class="section-title">Color Palette</h3>
+        <div class="color-palette">
+          <div class="color-swatch">
+            <div class="color-box" style="background: #8B6F47;"></div>
+            <div class="color-name">Primary Bronze</div>
+            <div class="color-hex">#8B6F47</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #D4A574;"></div>
+            <div class="color-name">Accent Gold</div>
+            <div class="color-hex">#D4A574</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #2D1810;"></div>
+            <div class="color-name">Dark Brown</div>
+            <div class="color-hex">#2D1810</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #F5F5DC; border: 2px solid #ccc;"></div>
+            <div class="color-name">Beige</div>
+            <div class="color-hex">#F5F5DC</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div>
+        <h3 class="section-title">Typography</h3>
+        <div class="typography-sample">
+          <div class="font-name">Headings: Inter Bold / 700-900</div>
+          <h2 style="font-family: Inter, sans-serif; font-weight: 800; font-size: 32px; color: #8B6F47;">Equipment Financing</h2>
+        </div>
+        <div class="typography-sample">
+          <div class="font-name">Body: Inter Regular / 400-600</div>
+          <p style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px;">Trusted equipment financing partner since 1985. Serving 4,000+ Malaysian businesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Mockup -->
+    <div class="mockup-section">
+      <div class="mockup-title">🎨 Visual Mockup</div>
+      <div class="demo-hero">
+        <h2>Equipment Financing Made Simple</h2>
+        <p>40 Years of Trust • 95% Approval Rate • 24-Hour Processing</p>
+        <div class="demo-buttons">
+          <a href="#" class="demo-btn demo-btn-primary">Get Free Quote</a>
+          <a href="#" class="demo-btn demo-btn-secondary">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best For -->
+    <div class="best-for">
+      <h4>✨ Best For:</h4>
+      <p><strong>Traditional B2B industrial clients</strong> who value established heritage, trust, and conservative financial services. Perfect for contractors, logistics companies, and manufacturing businesses who prefer a stable, time-tested brand identity that matches your actual logo colors.</p>
+    </div>
+
+    <!-- Pros/Cons -->
+    <div class="pros-cons">
+      <div class="pros">
+        <h5>✓ Strengths</h5>
+        <ul>
+          <li>Matches actual logo (brand consistency)</li>
+          <li>Conveys heritage and trust (40 years)</li>
+          <li>Distinct from competitors (brown vs blue)</li>
+          <li>Warm, approachable feel</li>
+          <li>Strong for traditional industries</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h5>✗ Considerations</h5>
+        <ul>
+          <li>May feel dated to younger audiences</li>
+          <li>Brown less common in finance industry</li>
+          <li>Less "tech-forward" appearance</li>
+          <li>Requires complete brand refresh from current site</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       OPTION 2: CURRENT INDUSTRIAL BLUE (Keep Current Site)
+       ======================================== -->
+  <div class="ci-option option-2">
+    <div class="ci-header">
+      <div class="ci-title">Option 2: Current Industrial Blue</div>
+      <div class="ci-subtitle">Current Website • Modern • Professional • Navy Blue + Yellow</div>
+    </div>
+
+    <div class="ci-grid">
+      <!-- Colors -->
+      <div>
+        <h3 class="section-title">Color Palette</h3>
+        <div class="color-palette">
+          <div class="color-swatch">
+            <div class="color-box" style="background: #1E3A8A;"></div>
+            <div class="color-name">Primary Navy</div>
+            <div class="color-hex">#1E3A8A</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #FBBF24;"></div>
+            <div class="color-name">Accent Yellow</div>
+            <div class="color-hex">#FBBF24</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #1E293B;"></div>
+            <div class="color-name">Dark Navy</div>
+            <div class="color-hex">#1E293B</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #EFF6FF; border: 2px solid #ccc;"></div>
+            <div class="color-name">Light Blue</div>
+            <div class="color-hex">#EFF6FF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div>
+        <h3 class="section-title">Typography</h3>
+        <div class="typography-sample">
+          <div class="font-name">Headings: Inter Black / 800-900 UPPERCASE</div>
+          <h2 style="font-family: Inter, sans-serif; font-weight: 900; font-size: 32px; color: #1E3A8A; text-transform: uppercase;">Equipment Financing</h2>
+        </div>
+        <div class="typography-sample">
+          <div class="font-name">Body: Inter Regular / 400-600</div>
+          <p style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px;">Trusted equipment financing partner since 1985. Serving 4,000+ Malaysian businesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Mockup -->
+    <div class="mockup-section">
+      <div class="mockup-title">🎨 Visual Mockup</div>
+      <div class="demo-hero">
+        <h2>Equipment Financing Made Simple</h2>
+        <p>40 Years of Trust • 95% Approval Rate • 24-Hour Processing</p>
+        <div class="demo-buttons">
+          <a href="#" class="demo-btn demo-btn-primary">Get Free Quote</a>
+          <a href="#" class="demo-btn demo-btn-secondary">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best For -->
+    <div class="best-for">
+      <h4>✨ Best For:</h4>
+      <p><strong>Keep your current website identity</strong> - Bold, industrial, high-energy brand. Perfect for construction equipment, logistics, and industrial financing. This option maintains brand consistency with your existing website and requires NO rebranding work.</p>
+    </div>
+
+    <!-- Pros/Cons -->
+    <div class="pros-cons">
+      <div class="pros">
+        <h5>✓ Strengths</h5>
+        <ul>
+          <li>Already implemented (current website)</li>
+          <li>No rebranding work needed</li>
+          <li>Strong visibility (high contrast)</li>
+          <li>Industry-standard (blue = trust/finance)</li>
+          <li>Modern, professional appearance</li>
+          <li>High energy with yellow accent</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h5>✗ Considerations</h5>
+        <ul>
+          <li>Doesn't match brown logo</li>
+          <li>Blue overused in finance industry</li>
+          <li>Less distinctive vs competitors</li>
+          <li>Brand inconsistency (logo vs site)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       OPTION 3: MODERN MINIMALIST (Black/White/Teal)
+       ======================================== -->
+  <div class="ci-option option-3">
+    <div class="ci-header">
+      <div class="ci-title">Option 3: Modern Minimalist</div>
+      <div class="ci-subtitle">Ultra-Clean • Tech-Forward • Premium • Black + Teal Accent</div>
+    </div>
+
+    <div class="ci-grid">
+      <!-- Colors -->
+      <div>
+        <h3 class="section-title">Color Palette</h3>
+        <div class="color-palette">
+          <div class="color-swatch">
+            <div class="color-box" style="background: #000000;"></div>
+            <div class="color-name">Primary Black</div>
+            <div class="color-hex">#000000</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #14B8A6;"></div>
+            <div class="color-name">Accent Teal</div>
+            <div class="color-hex">#14B8A6</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #475569;"></div>
+            <div class="color-name">Gray</div>
+            <div class="color-hex">#475569</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #FFFFFF; border: 2px solid #ccc;"></div>
+            <div class="color-name">White</div>
+            <div class="color-hex">#FFFFFF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div>
+        <h3 class="section-title">Typography</h3>
+        <div class="typography-sample">
+          <div class="font-name">Headings: Inter Light / 300-500</div>
+          <h2 style="font-family: Inter, sans-serif; font-weight: 300; font-size: 32px; color: #000000; letter-spacing: -1px;">Equipment Financing</h2>
+        </div>
+        <div class="typography-sample">
+          <div class="font-name">Body: Inter Regular / 400</div>
+          <p style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px;">Trusted equipment financing partner since 1985. Serving 4,000+ Malaysian businesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Mockup -->
+    <div class="mockup-section">
+      <div class="mockup-title">🎨 Visual Mockup</div>
+      <div class="demo-hero">
+        <h2 style="font-weight: 300; letter-spacing: -1px;">Equipment Financing Made Simple</h2>
+        <p>40 Years of Trust • 95% Approval Rate • 24-Hour Processing</p>
+        <div class="demo-buttons">
+          <a href="#" class="demo-btn demo-btn-primary">Get Free Quote</a>
+          <a href="#" class="demo-btn demo-btn-secondary">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best For -->
+    <div class="best-for">
+      <h4>✨ Best For:</h4>
+      <p><strong>Tech-forward businesses and startups</strong> seeking a premium, sophisticated look. Perfect if you want to position Ing Heng Credit as innovative, modern, and forward-thinking. Appeals to younger business owners and digital-native entrepreneurs.</p>
+    </div>
+
+    <!-- Pros/Cons -->
+    <div class="pros-cons">
+      <div class="pros">
+        <h5>✓ Strengths</h5>
+        <ul>
+          <li>Premium, sophisticated appearance</li>
+          <li>Highly distinctive (unique in industry)</li>
+          <li>Modern, tech-forward positioning</li>
+          <li>Clean, easy to read</li>
+          <li>Appeals to younger demographics</li>
+          <li>Timeless design (won't look dated)</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h5>✗ Considerations</h5>
+        <ul>
+          <li>May feel too "startup" vs established</li>
+          <li>Black can feel impersonal/cold</li>
+          <li>Doesn't match logo or current site</li>
+          <li>Risk: too minimal = less trustworthy?</li>
+          <li>Teal unusual for finance industry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       OPTION 4: CORPORATE PROFESSIONAL (Corporate Blue/Gray)
+       ======================================== -->
+  <div class="ci-option option-4">
+    <div class="ci-header">
+      <div class="ci-title">Option 4: Corporate Professional</div>
+      <div class="ci-subtitle">Traditional • Authoritative • Safe • Corporate Blue + Gray</div>
+    </div>
+
+    <div class="ci-grid">
+      <!-- Colors -->
+      <div>
+        <h3 class="section-title">Color Palette</h3>
+        <div class="color-palette">
+          <div class="color-swatch">
+            <div class="color-box" style="background: #0F4C81;"></div>
+            <div class="color-name">Primary Blue</div>
+            <div class="color-hex">#0F4C81</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #64748B;"></div>
+            <div class="color-name">Accent Gray</div>
+            <div class="color-hex">#64748B</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #1E293B;"></div>
+            <div class="color-name">Dark Slate</div>
+            <div class="color-hex">#1E293B</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #F1F5F9; border: 2px solid #ccc;"></div>
+            <div class="color-name">Light Gray</div>
+            <div class="color-hex">#F1F5F9</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div>
+        <h3 class="section-title">Typography</h3>
+        <div class="typography-sample">
+          <div class="font-name">Headings: Inter SemiBold / 600-700</div>
+          <h2 style="font-family: Inter, sans-serif; font-weight: 600; font-size: 32px; color: #0F4C81;">Equipment Financing</h2>
+        </div>
+        <div class="typography-sample">
+          <div class="font-name">Body: Inter Regular / 400</div>
+          <p style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px;">Trusted equipment financing partner since 1985. Serving 4,000+ Malaysian businesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Mockup -->
+    <div class="mockup-section">
+      <div class="mockup-title">🎨 Visual Mockup</div>
+      <div class="demo-hero">
+        <h2 style="font-weight: 600;">Equipment Financing Made Simple</h2>
+        <p>40 Years of Trust • 95% Approval Rate • 24-Hour Processing</p>
+        <div class="demo-buttons">
+          <a href="#" class="demo-btn demo-btn-primary">Get Free Quote</a>
+          <a href="#" class="demo-btn demo-btn-secondary">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best For -->
+    <div class="best-for">
+      <h4>✨ Best For:</h4>
+      <p><strong>Conservative B2B clients and government tenders</strong>. Perfect for large enterprises, government projects, and clients who value stability over innovation. Conveys authority, reliability, and institutional trust. Safe, predictable, professional.</p>
+    </div>
+
+    <!-- Pros/Cons -->
+    <div class="pros-cons">
+      <div class="pros">
+        <h5>✓ Strengths</h5>
+        <ul>
+          <li>Maximum trustworthiness</li>
+          <li>Appeals to conservative clients</li>
+          <li>Professional, authoritative</li>
+          <li>Industry-standard (safe choice)</li>
+          <li>Good for government tenders</li>
+          <li>Won't alienate traditional clients</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h5>✗ Considerations</h5>
+        <ul>
+          <li>Generic (looks like every bank)</li>
+          <li>Low differentiation</li>
+          <li>May feel boring/uninspiring</li>
+          <li>Doesn't match brown logo</li>
+          <li>Gray can feel dull</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       OPTION 5: BOLD DYNAMIC (Electric Blue/Bright Orange)
+       ======================================== -->
+  <div class="ci-option option-5">
+    <div class="ci-header">
+      <div class="ci-title">Option 5: Bold & Dynamic</div>
+      <div class="ci-subtitle">High-Energy • Exciting • Modern • Electric Blue + Bright Orange</div>
+    </div>
+
+    <div class="ci-grid">
+      <!-- Colors -->
+      <div>
+        <h3 class="section-title">Color Palette</h3>
+        <div class="color-palette">
+          <div class="color-swatch">
+            <div class="color-box" style="background: #0EA5E9;"></div>
+            <div class="color-name">Electric Blue</div>
+            <div class="color-hex">#0EA5E9</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #FB923C;"></div>
+            <div class="color-name">Bright Orange</div>
+            <div class="color-hex">#FB923C</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #0C4A6E;"></div>
+            <div class="color-name">Deep Blue</div>
+            <div class="color-hex">#0C4A6E</div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #F0F9FF; border: 2px solid #ccc;"></div>
+            <div class="color-name">Sky Blue</div>
+            <div class="color-hex">#F0F9FF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div>
+        <h3 class="section-title">Typography</h3>
+        <div class="typography-sample">
+          <div class="font-name">Headings: Inter Bold / 700-900 UPPERCASE</div>
+          <h2 style="font-family: Inter, sans-serif; font-weight: 800; font-size: 32px; color: #0EA5E9; text-transform: uppercase; letter-spacing: -0.5px;">Equipment Financing</h2>
+        </div>
+        <div class="typography-sample">
+          <div class="font-name">Body: Inter Medium / 500-600</div>
+          <p style="font-family: Inter, sans-serif; font-weight: 500; font-size: 16px;">Trusted equipment financing partner since 1985. Serving 4,000+ Malaysian businesses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Mockup -->
+    <div class="mockup-section">
+      <div class="mockup-title">🎨 Visual Mockup</div>
+      <div class="demo-hero">
+        <h2 style="font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px;">Equipment Financing Made Simple</h2>
+        <p style="font-weight: 500;">40 Years of Trust • 95% Approval Rate • 24-Hour Processing</p>
+        <div class="demo-buttons">
+          <a href="#" class="demo-btn demo-btn-primary">Get Free Quote</a>
+          <a href="#" class="demo-btn demo-btn-secondary">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best For -->
+    <div class="best-for">
+      <h4>✨ Best For:</h4>
+      <p><strong>Young, dynamic brands and disruptors</strong>. Perfect if you want to position Ing Heng Credit as cutting-edge, fast, and exciting. Appeals to ambitious entrepreneurs and growing businesses who value speed and innovation over tradition.</p>
+    </div>
+
+    <!-- Pros/Cons -->
+    <div class="pros-cons">
+      <div class="pros">
+        <h5>✓ Strengths</h5>
+        <ul>
+          <li>High energy, exciting</li>
+          <li>Highly memorable (stands out)</li>
+          <li>Appeals to younger demographics</li>
+          <li>Conveys speed and efficiency</li>
+          <li>Modern, forward-thinking</li>
+          <li>Orange = urgency/action</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h5>✗ Considerations</h5>
+        <ul>
+          <li>May feel too aggressive for finance</li>
+          <li>Risk: looks less trustworthy</li>
+          <li>Orange can be polarizing</li>
+          <li>May alienate conservative clients</li>
+          <li>Doesn't match logo</li>
+          <li>High energy = less established feel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       COMPARISON FOOTER
+       ======================================== -->
+  <div class="ci-option" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+    <h2 style="font-size: 28px; font-weight: 800; margin-bottom: 20px; text-align: center;">🎯 Quick Selection Guide</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+      <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px);">
+        <h4 style="font-weight: 700; margin-bottom: 10px;">✓ Option 1: Industrial Trust</h4>
+        <p style="font-size: 14px; opacity: 0.9;">Choose if: Match logo colors, traditional B2B clients, heritage matters</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px);">
+        <h4 style="font-weight: 700; margin-bottom: 10px;">✓ Option 2: Current Blue</h4>
+        <p style="font-size: 14px; opacity: 0.9;">Choose if: Keep current site, no rebranding, safe industry standard</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px);">
+        <h4 style="font-weight: 700; margin-bottom: 10px;">✓ Option 3: Minimalist</h4>
+        <p style="font-size: 14px; opacity: 0.9;">Choose if: Tech-forward, premium positioning, younger clients</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px);">
+        <h4 style="font-weight: 700; margin-bottom: 10px;">✓ Option 4: Corporate</h4>
+        <p style="font-size: 14px; opacity: 0.9;">Choose if: Government tenders, large enterprises, maximum trust</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px);">
+        <h4 style="font-weight: 700; margin-bottom: 10px;">✓ Option 5: Bold Dynamic</h4>
+        <p style="font-size: 14px; opacity: 0.9;">Choose if: Disrupt market, young brand, speed/innovation focus</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.15); border-radius: 8px; text-align: center; backdrop-filter: blur(10px);">
+      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 15px;">📊 Recommendation</h3>
+      <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+        <strong>For Ing Heng Credit:</strong> We recommend <strong>Option 1 (Industrial Trust)</strong> or <strong>Option 2 (Current Blue)</strong>
+      </p>
+      <p style="font-size: 14px; opacity: 0.9; line-height: 1.6;">
+        <strong>Option 1:</strong> Matches your actual logo and reinforces 40-year heritage with warm, trustworthy bronze/brown palette.<br>
+        <strong>Option 2:</strong> Keep current website (no rebranding), modern industrial look, industry-standard trust signals.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
