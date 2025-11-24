@@ -5,7 +5,7 @@ author: 'Ing Heng Credit & Leasing'
 publishDate: 2025-11-13
 updatedDate: 2025-11-13
 metaTitle: 'How to Apply for Excavator Financing Malaysia | Fast Approval Guide'
-metaDescription: 'Step-by-step guide to excavator financing application in Malaysia. Documents required, approval process, and expert tips for fast approval. 95% approval rate.'
+metaDescription: 'Step-by-step guide to excavator financing application in Malaysia. Documents required, approval process, and expert tips for fast approval. high approval rate.'
 keywords:
   - 'excavator financing Malaysia'
   - 'excavator loan application'
@@ -147,7 +147,7 @@ Use our [financing calculator](/en/calculator) for your exact figures.
 
 **Credit Companies (Ing Heng Credit)**
 - **Interest rates:** 7-12% p.a.
-- **Approval rate:** 95%+ (flexible evaluation)
+- **Approval rate:** high success rate (flexible evaluation)
 - **Approval time:** Fast approval (1-3 business days)
 - **Down payment:** 10-30% (negotiable)
 - **Best for:** Bad credit, new businesses, used equipment, urgent financing
@@ -160,7 +160,7 @@ Use our [financing calculator](/en/calculator) for your exact figures.
 - **Best for:** Brand loyalty, new equipment only
 
 **Why choose Ing Heng Credit:**
-- 95%+ approval rate (including bad credit)
+- high success rate approval rate (including bad credit)
 - Fast approval from complete submission
 - Accept used equipment up to 10 years old
 - Flexible down payment (as low as 10%)

@@ -1,6 +1,6 @@
 ---
 title: 'Panduan Lengkap Pembiayaan Excavator di Malaysia 2025'
-description: 'Pelajari cara dapatkan pembiayaan excavator di Malaysia. Proses permohonan, dokumen diperlukan, kadar kelulusan 95%, dan tips untuk kelulusan pantas.'
+description: 'Pelajari cara dapatkan pembiayaan excavator di Malaysia. Proses permohonan, dokumen diperlukan, kadar kelulusan high approval rate, dan tips untuk kelulusan pantas.'
 author: 'Ing Heng Credit & Leasing'
 publishDate: 2025-12-23
 category: 'Construction Equipment'
@@ -635,11 +635,11 @@ Kami bukan syarikat baharu. Sejak 1990, kami dah bantu beribu kontraktor dapat p
 - Panel pembiayaan yang luas dan kukuh
 - Hubungan rapat dengan pembekal excavator
 
-### Kadar Kelulusan 95%
+### Kadar Kelulusan high approval rate
 
 Kami bangga dengan kadar kelulusan tinggi:
 
-- 95% permohonan lengkap diluluskan
+- high approval rate permohonan lengkap diluluskan
 - Kami cuba sedaya upaya untuk bantu anda
 - Ada pelbagai pilihan pembiayaan
 - Kalau satu panel tak lulus, cuba panel lain

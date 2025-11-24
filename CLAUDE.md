@@ -7,13 +7,15 @@
 
 ## 🔄 CLIENT-SPECIFIC CONTEXT AUTO-LOADING
 
-**CRITICAL:** When working in any `clients/[client-name]/` directory, automatically load:
+**CRITICAL:** When working in any `clients/[client-name]/` directory, **YOU MUST automatically load and follow:**
 
-1. **`clients/[client-name]/CLAUDE.md`** - Client-specific rules (deployment, brand, content guidelines)
+1. **`clients/[client-name]/CLAUDE.md`** - Client-specific rules (deployment, brand, content guidelines, messaging rules)
 2. **`clients/[client-name]/IMPORT-PATH-RULES.md`** - Client import path rules (if exists)
 3. **`clients/[client-name]/SEO-INTERNAL-LINKING-RULES.md`** - Client SEO linking rules (if exists)
 
 **Hierarchy:** Client-specific rules OVERRIDE global rules when in conflict.
+
+**⚠️ CRITICAL:** Always read `clients/[client-name]/CLAUDE.md` FIRST before creating ANY content. It contains client-specific prohibitions (e.g., approval rate claims, timeframe claims) that you MUST follow.
 
 **Example:**
 ```

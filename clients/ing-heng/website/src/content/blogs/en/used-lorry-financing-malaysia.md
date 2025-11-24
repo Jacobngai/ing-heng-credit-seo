@@ -60,7 +60,7 @@ Banks and finance companies have different rules. Here's what you need to know:
 - Down payment: 10-20%
 - Interest rate: 2.88-4.5% per annum
 - Loan tenure: 5-7 years
-- Approval rate: 90-95%
+- Approval rate: 90-high approval rate
 
 **Why It's Easy:**
 - Trucks are still modern and reliable
@@ -230,7 +230,7 @@ Not all brands are equal. Finance companies prefer certain brands.
 ### Tier 1: Easy Approval (Japanese Brands)
 
 **Hino:**
-- **Approval Rate:** 95%
+- **Approval Rate:** high approval rate
 - **Why Easy:** Most popular in Malaysia, easy resale
 - **Best Models:** Hino 300 Series (light duty), WU342R (heavy duty)
 - **Parts:** Widely available, affordable
@@ -238,7 +238,7 @@ Not all brands are equal. Finance companies prefer certain brands.
 - **Financing:** Up to 10 years old accepted
 
 **Isuzu:**
-- **Approval Rate:** 95%
+- **Approval Rate:** high approval rate
 - **Why Easy:** Reliable, strong resale demand
 - **Best Models:** NPR (light), FTR (medium), Giga (heavy)
 - **Parts:** Common, affordable
@@ -604,7 +604,7 @@ Total Payment: RM 84,720
 
 ### Can I get financing if my business is only 1 year old?
 
-**Answer:** Possible but challenging. We need: strong personal credit (700+), 30% down payment, solid contracts showing income, and guarantor (optional). Approval rate is 60-70% vs 95% for 3+ year businesses.
+**Answer:** Possible but challenging. We need: strong personal credit (700+), 30% down payment, solid contracts showing income, and guarantor (optional). Approval rate is 60-70% vs high approval rate for 3+ year businesses.
 
 ### How do I transfer ownership after financing?
 

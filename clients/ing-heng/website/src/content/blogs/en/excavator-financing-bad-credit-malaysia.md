@@ -1,5 +1,5 @@
 ---
-title: 'Excavator Financing with Bad Credit Malaysia: 95% Approval Rate'
+title: 'Excavator Financing with Bad Credit Malaysia: High Approval Rate'
 description: 'Get excavator financing even with bad credit, CCRIS issues, or CTOS problems. Learn how credit companies evaluate your application differently than banks.'
 author: 'Ing Heng Credit & Leasing'
 publishDate: 2025-12-05
@@ -16,7 +16,7 @@ keywords:
 persona: 'Contractor Ahmad'
 faqSchema:
   - question: 'Can I get excavator financing with bad credit?'
-    answer: 'Yes! Credit companies like Ing Heng Credit evaluate each case individually. We approve 95% of applications including those with credit issues.'
+    answer: 'Yes! Credit companies like Ing Heng Credit evaluate each case individually. We approve a high number of applications including those with credit issues.'
   - question: 'Will my CCRIS record disqualify me?'
     answer: 'No. We look at current financial situation and business potential, not just past credit issues.'
   - question: 'How long does approval take with bad credit?'
@@ -27,7 +27,7 @@ faqSchema:
     answer: 'Down payment typically ranges from 15-25% for applicants with credit challenges, compared to 10-20% for those with strong credit.'
 ---
 
-# Excavator Financing with Bad Credit Malaysia: 95% Approval Rate
+# Excavator Financing with Bad Credit Malaysia: High Approval Rate
 
 You've worked hard to build your construction business. You know that owning an excavator—instead of renting one—could save you thousands and help you win more projects. But there's a problem: your credit history isn't perfect.
 
@@ -35,7 +35,7 @@ Maybe you had late payments during the 2020 pandemic. Maybe a business deal went
 
 **Here's the truth: You are not alone.** Most Malaysian contractors have faced credit challenges at some point. And more importantly, **bad credit does NOT mean you can't get excavator financing.**
 
-At Ing Heng Credit & Leasing, we've helped hundreds of contractors with credit issues get the equipment they need. Our approval rate is 95%—including applicants with CCRIS records, CTOS flags, and past payment problems.
+At Ing Heng Credit & Leasing, we've helped hundreds of contractors with credit issues get the equipment they need. Our approval rate is high—including applicants with CCRIS records, CTOS flags, and past payment problems.
 
 In this guide, you'll learn:
 - Why banks reject bad credit (and why we don't)
@@ -270,7 +270,7 @@ Here's exactly how we review applications from contractors with credit challenge
 
 **Possible outcomes:**
 
-**✅ APPROVED (95% of cases)**
+**✅ APPROVED (high approval rate of cases)**
 - Standard terms (if credit decent)
 - Adjusted terms (if credit challenged)
 - Higher down payment option (if needed to strengthen)
@@ -607,7 +607,7 @@ Let's be transparent about costs.
 
 ### 1. Can I get excavator financing with bad credit?
 
-**Yes!** Credit companies like Ing Heng Credit evaluate each case individually. We approve 95% of applications including those with credit issues. We focus on current business performance and equipment as collateral, not just credit scores.
+**Yes!** Credit companies like Ing Heng Credit evaluate each case individually. We approve high approval rate of applications including those with credit issues. We focus on current business performance and equipment as collateral, not just credit scores.
 
 ---
 
@@ -675,7 +675,7 @@ Your fresh start matters to us.
 - It's not automatic pass/fail
 - We review the full context
 - We focus on current situation
-- 95% approval rate (including credit issues)
+- high approval rate (including credit issues)
 
 ---
 
@@ -758,7 +758,7 @@ Complete and return within 24 hours for fastest processing.
 ### Step 4: Get Approval
 
 **Timeline:** 1-2 business days
-**Outcome:** 95% approval rate
+**Outcome:** high approval rate
 
 ---
 
@@ -772,7 +772,7 @@ You'll be operating your own excavator by next week.
 
 ## Why Contractors Choose Ing Heng Credit
 
-### ✅ 95% Approval Rate
+### ✅ high approval rate Approval Rate
 We approve almost all applications, including those with credit challenges.
 
 ### ✅ Fast Approval Process
@@ -804,7 +804,7 @@ At Ing Heng Credit & Leasing, we understand that credit scores don't tell the fu
 - Your commitment (down payment)
 - Equipment as collateral
 
-**95% of contractors with credit challenges get approved.** The excavator you need is within reach.
+**high approval rate of contractors with credit challenges get approved.** The excavator you need is within reach.
 
 **Stop renting. Start owning.**
 

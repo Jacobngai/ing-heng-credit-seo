@@ -1,6 +1,6 @@
 ---
 title: 'How to Apply for Excavator Financing in Malaysia: Complete Guide 2025'
-description: 'Step-by-step guide to excavator financing application. Learn requirements, documents needed, approval process, and expert tips for fast approval with 95% success rate.'
+description: 'Step-by-step guide to excavator financing application. Learn requirements, documents needed, approval process, and expert tips for fast approval with high approval rate success rate.'
 author: 'Ing Heng Credit & Leasing'
 publishDate: 2025-12-02
 category: 'Equipment Financing'
@@ -20,7 +20,7 @@ faqSchema:
   - question: 'How long does excavator financing approval take?'
     answer: 'Approval typically takes 1-3 business days with complete documentation. At Ing Heng Credit, we offer fast approval for qualified applicants.'
   - question: 'What credit score is needed for excavator financing?'
-    answer: 'No strict minimum credit score required. We evaluate applications individually and approve cases with credit scores from 580+. We have a 95% approval rate.'
+    answer: 'No strict minimum credit score required. We evaluate applications individually and approve cases with credit scores from 580+. We have a high approval rate.'
   - question: 'Can I finance used excavators?'
     answer: 'Yes, we finance used excavators up to 10 years old with competitive rates. Most of our clients choose used equipment for better ROI.'
   - question: 'What documents do I need to apply?'
@@ -236,7 +236,7 @@ Not all financing companies are the same. Here's how to choose:
 | Factor | Traditional Banks | Ing Heng Credit |
 |--------|------------------|-----------------|
 | **Approval Time** | 2-4 weeks | 1-3 business days |
-| **Approval Rate** | 60-70% | 95% |
+| **Approval Rate** | 60-70% | high approval rate |
 | **Documentation** | Extensive | Minimal |
 | **Used Equipment** | Up to 5 years | Up to 10 years |
 | **Credit Score** | 700+ required | 580+ accepted |
@@ -248,7 +248,7 @@ Not all financing companies are the same. Here's how to choose:
 **Fast Approval**
 We approve applications in 1-3 business days. Banks take 2-4 weeks. When you have a project starting, speed matters.
 
-**95% Approval Rate**
+**high approval rate Approval Rate**
 We understand construction business. We look at your projects, not just your credit score. If you have contracts and steady work, you can qualify.
 
 **Finance Up to 10 Years Old**
@@ -360,7 +360,7 @@ Your business income should be 3x the monthly payment.
 - Seasonal cash flow
 
 **Expert Insight:**
-"We've financed over 500 excavators for contractors. Our 95% approval rate is because we understand construction realities. Monsoon season? Project payment delays? Equipment breakdowns? We've seen it all. We work with you, not against you."
+"We've financed over 500 excavators for contractors. Our high approval rate is because we understand construction realities. Monsoon season? Project payment delays? Equipment breakdowns? We've seen it all. We work with you, not against you."
 — Ing Heng Credit Team, 40 years in equipment financing
 
 ---
@@ -753,7 +753,7 @@ Approval typically takes 1-3 business days with complete documentation. At Ing H
 
 **What credit score is needed for excavator financing?**
 
-No strict minimum credit score required. We evaluate applications individually and approve cases with credit scores from 580+. We have a 95% approval rate because we look at your entire business profile, not just credit score. Strong project contracts can offset lower credit scores.
+No strict minimum credit score required. We evaluate applications individually and approve cases with credit scores from 580+. We have a high approval rate because we look at your entire business profile, not just credit score. Strong project contracts can offset lower credit scores.
 
 **Can I finance used excavators?**
 
@@ -824,7 +824,7 @@ Visit [our contact page](/en/contact) to:
 **Why Choose Ing Heng Credit:**
 
 ✅ **40 Years Experience** - We've been financing equipment since 1985
-✅ **95% Approval Rate** - We understand construction business realities
+✅ **high approval rate Approval Rate** - We understand construction business realities
 ✅ **Fast Approval** - 1-3 days vs 2-4 weeks for banks
 ✅ **Finance Up to 10 Years Old** - More options, better prices
 ✅ **Flexible Terms** - Seasonal payment plans available

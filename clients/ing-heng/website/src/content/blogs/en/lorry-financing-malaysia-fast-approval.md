@@ -612,7 +612,7 @@ Speak with our financing specialist. We will explain:
 ### What Makes Us Different
 
 - **1-3 Day Approval:** Traditional banks take 2-4 weeks
-- **95% Approval Rate:** We understand SME financial realities
+- **high approval rate Approval Rate:** We understand SME financial realities
 - **Up to 10-Year-Old Lorries:** Banks limit to 5-7 years
 - **Flexible Documentation:** Accept informal income proof for cash-based businesses
 - **Zero Upfront Fees:** No application or processing fees

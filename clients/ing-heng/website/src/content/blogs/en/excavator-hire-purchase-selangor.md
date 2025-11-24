@@ -35,7 +35,7 @@ Need an excavator for your Selangor construction project? Hire purchase financin
 **Why contractors choose us:**
 - Based in Klang - we understand local construction needs
 - Fast approval (faster than banks' 2-4 week process)
-- 95% approval rate for qualified applicants
+- high approval rate for qualified applicants
 - Finance excavators from 1.5 tons to 25 tons
 - Competitive rates starting from 2.88% per annum
 - Used excavators accepted (up to 10 years old)
@@ -72,7 +72,7 @@ Banks take 2-4 weeks. We provide much faster responses. This matters when:
 
 ### 4. High Approval Rates
 
-Our 95% approval rate helps contractors who:
+Our high approval rate helps contractors who:
 - Have credit scores 580+ (banks require 700+)
 - Run cash-based businesses
 - Are new companies (1-2 years old)
@@ -333,7 +333,7 @@ We've been in Klang for 40 years. We know:
 - Minimal documentation
 - Direct decision-making
 
-### 3. Higher Approval Rates (95%)
+### 3. Higher Approval Rates (high approval rate)
 
 We approve applicants that banks reject:
 - **Credit score 580+** (banks want 700+)
@@ -632,7 +632,7 @@ Once approved:
 
 **Contractor-focused financing**
 - Fast approval (faster than banks)
-- 95% approval rate
+- high approval rate
 - Flexible down payments (10-20%)
 - Used equipment specialists (up to 10 years)
 - Seasonal payment understanding

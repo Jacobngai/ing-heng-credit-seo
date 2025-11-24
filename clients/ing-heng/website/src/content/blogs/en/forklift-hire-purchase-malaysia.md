@@ -569,7 +569,7 @@ How to apply for forklift HP financing - step-by-step.
 ### Quick Overview:
 
 **Timeline:** 3-7 days from application to approval
-**Approval Rate:** 95%+ (we rarely reject)
+**Approval Rate:** high success rate (we rarely reject)
 **Minimum Down Payment:** 10% (negotiable)
 **Maximum Age:** 10 years old (used forklifts)
 
@@ -636,7 +636,7 @@ You receive:
 **Possible outcomes:**
 - **Approved:** Ready to proceed
 - **Conditional approval:** Fulfill conditions (e.g., higher down payment)
-- **Declined:** Reasons provided (rare - we approve 95%+)
+- **Declined:** Reasons provided (rare - we approve high success rate)
 
 **Step 5: Agreement Signing (Day 5-7)**
 
@@ -861,7 +861,7 @@ Now that you understand forklift hire purchase, here's how to get started.
 
 ### Why Choose Ing Heng Credit for Forklift HP:
 
-**95%+ Approval Rate**
+**high success rate Approval Rate**
 - We rarely reject applications
 - Bad credit accepted (higher rates)
 - New businesses welcomed

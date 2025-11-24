@@ -522,7 +522,7 @@ We have been financing equipment since 1985 (40 years experience).
 - No surprises
 
 **5. Excellent Approval Rate**
-- 95% approval rate
+- high approval rate
 - Flexible for SMEs
 - Work with various credit profiles
 - Find solutions for most applicants
