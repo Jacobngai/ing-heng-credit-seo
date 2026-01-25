@@ -1,0 +1,605 @@
+---
+/**
+ * Warehouse Equipment Financing Page - Malay
+ * TARGET: "pembiayaan peralatan gudang" keyword
+ * Complete financing solutions for warehouse and material handling equipment
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import ServiceCard from '../../../../components/ServiceCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import StructuredData from '../../../../components/StructuredData.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'ms';
+
+// SEO Configuration - KEYWORD DOMINANT
+const title = 'Pembiayaan Peralatan Gudang Malaysia | Forklift & Pengendalian Bahan | Ing Heng Credit';
+const description = 'Pembiayaan peralatan gudang untuk forklift, pallet jack, conveyor & peralatan pengendalian bahan di Malaysia. 0% deposit, 100% pembiayaan tersedia. Kelulusan pantas untuk operasi gudang.';
+const keywords = [
+  'pembiayaan peralatan gudang',
+  'pembiayaan peralatan gudang malaysia',
+  'pembiayaan forklift gudang',
+  'pinjaman peralatan pengendalian bahan',
+  'pembiayaan automasi gudang',
+  'pembiayaan pallet jack malaysia',
+  'pembiayaan sistem conveyor',
+  'pembiayaan reach truck gudang',
+  'beli pajak peralatan gudang',
+  'pembiayaan peralatan logistik'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Halaman Utama', href: '/ms' },
+  { label: 'Perkhidmatan', href: '/ms/services' },
+  { label: 'Pembiayaan Peralatan Gudang', href: '/ms/services/warehouse-equipment-financing' }
+];
+
+// FAQ Data - Warehouse Specific
+const faqs = [
+  {
+    question: 'Peralatan gudang apa yang boleh anda biayai?',
+    answer: 'Kami membiayai semua peralatan gudang penting termasuk forklift (elektrik, diesel, LPG), reach truck, pallet jack, stacker, sistem conveyor, rak gudang, peralatan dok pemuatan, scissor lift, sistem pengisihan automatik, dan teknologi pengurusan gudang. Peralatan baru dan terpakai diterima.'
+  },
+  {
+    question: 'Adakah anda menawarkan 0% deposit untuk pembiayaan peralatan gudang?',
+    answer: 'Ya! Kami menawarkan 0% deposit dengan 100% pembiayaan tersedia untuk pengendali gudang yang layak (tertakluk kepada terma dan syarat). Ini bermakna tiada bayaran pendahuluan diperlukan untuk forklift, sistem conveyor, atau peralatan gudang lain anda. Gudang anda boleh beroperasi segera tanpa menghabiskan modal kerja.'
+  },
+  {
+    question: 'Bolehkah anda membiayai peralatan gudang berumur 10+ tahun?',
+    answer: 'Sudah pasti! Kami membiayai peralatan gudang berumur 10+ tahun, malah peralatan lama dipertimbangkan. Kami menilai keadaan kerja dan daya maju perniagaan, bukan had umur yang sewenang-wenangnya. Banyak forklift dan peralatan gudang berumur 13-15 tahun masih sangat produktif dan boleh dibiayai dengan kami.'
+  },
+  {
+    question: 'Seberapa pantas pembiayaan peralatan gudang boleh diluluskan?',
+    answer: 'Kami memberikan kelulusan pantas untuk pembiayaan peralatan gudang. Proses kami yang diperkemas direka untuk pengendali gudang yang memerlukan peralatan dengan pantas untuk puncak musim, penunaian kontrak, atau pengembangan perniagaan. Dokumentasi adalah minimum dan pasukan kami faham corak aliran tunai gudang.'
+  },
+  {
+    question: 'Adakah anda faham aliran tunai musiman gudang?',
+    answer: 'Ya! Kami pakar dalam operasi gudang dan faham turun naik musiman, tempoh pemuatan puncak, kitaran kontrak, dan aliran tunai pengurusan inventori. Terma pembayaran kami boleh distruktur untuk memadankan corak hasil gudang anda dan permintaan musiman.'
+  },
+  {
+    question: 'Bolehkah anda membiayai pakej peralatan gudang yang lengkap?',
+    answer: 'Sudah pasti! Kami membiayai persediaan gudang lengkap termasuk berbilang forklift, sistem conveyor, rak, dan peralatan automasi sebagai satu pakej menyeluruh. Ini sesuai untuk kemudahan gudang baru atau pengembangan dan naik taraf gudang utama.'
+  },
+  {
+    question: 'Bagaimana jika forklift sewa saya rosak semasa musim puncak?',
+    answer: 'Memiliki peralatan gudang anda menghapuskan pergantungan sewa. Apabila anda membiayai melalui kami, anda mengawal jadual penyelenggaraan, mempunyai pilihan peralatan sandaran, dan tidak pernah menghadapi mimpi buruk syarikat sewa berkata "penggantian terawal adalah minggu depan" semasa tempoh paling sibuk anda.'
+  },
+  {
+    question: 'Berapa banyak yang boleh saya jimat berbanding sewa peralatan gudang?',
+    answer: 'Kebanyakan pengendali gudang jimat 40-60% berbanding yuran sewa jangka panjang. Daripada membayar yuran sewa RM 12,000+ bulanan selama-lamanya, anda boleh miliki peralatan gudang berkualiti dan bina nilai aset. Pembayaran bulanan anda bekerja ke arah pemilikan, bukan memperkaya syarikat sewa.'
+  },
+  {
+    question: 'Adakah anda membiayai peralatan automasi gudang?',
+    answer: 'Ya! Kami membiayai automasi gudang moden termasuk kenderaan berpandu automatik (AGV), sistem pengisihan conveyor, perkakasan perisian pengurusan gudang, sistem pengimbasan kod bar, sistem penyimpanan dan pengambilan automatik, dan robotik untuk operasi gudang.'
+  },
+  {
+    question: 'Dokumen apa yang diperlukan untuk pembiayaan peralatan gudang?',
+    answer: 'Untuk pengendali gudang, kami perlukan: Pendaftaran syarikat SSM, 6 bulan penyata bank terkini, IC/pasport pengarah, perjanjian pajak gudang atau pemilikan hartanah, sebut harga peralatan, dan bukti kontrak gudang sedia ada atau pangkalan pelanggan. Kami faham dokumentasi perniagaan gudang.'
+  }
+];
+
+// Service Schema (Enhanced for Warehouse Equipment)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: 'Pembiayaan Peralatan Gudang',
+  description: 'Solusi pembiayaan menyeluruh untuk peralatan gudang termasuk forklift, sistem pengendalian bahan, dan peralatan automasi gudang',
+  serviceType: 'Pembiayaan Peralatan Gudang',
+  minRate: '8.00',
+  maxRate: '18.00',
+  locale: 'ms',
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Service Page Schema -->
+  <StructuredData schema={servicePageSchema} />
+
+  <!-- FAQ Schema -->
+  <StructuredData schema={faqSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="bg-blue-50 border-b-3 border-navy-900">
+    <div class="container-custom py-4">
+      <Breadcrumbs items={breadcrumbItems} lang={lang} />
+    </div>
+  </div>
+
+  <!-- Hero Section - Hyper-Specific Pain Points -->
+  <section class="hero relative overflow-hidden">
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-display uppercase leading-tight mb-6">
+          Pembiayaan Peralatan <span class="text-yellow-400">Gudang</span>
+        </h1>
+        <div class="text-xl md:text-2xl opacity-90 mb-8">
+          <p class="mb-4">Apabila forklift sewa anda rosak semasa pemuatan musim puncak, dan syarikat sewa berkata 
+          <span class="text-yellow-400 font-bold">"penggantian terawal adalah minggu depan,"</span> 
+          adakah anda merasakan lubang di perut anda kerana tahu pesanan akan tertunda?</p>
+          
+          <p>Apabila anda mengira <span class="text-yellow-400 font-bold">yuran sewa forklift bulanan RM 12,000,</span> 
+          dan sedar anda boleh memilikinya dengan lebih murah, adakah ia terasa seperti mencurahkan wang ke dalam lubang?</p>
+        </div>
+        
+        <div class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg inline-block font-bold text-lg mb-8">
+          🏗️ 0% DEPOSIT • 100% PEMBIAYAAN • WALAUPUN PERALATAN 10+ TAHUN DIPERTIMBANGKAN
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-8 py-4">
+            WhatsApp: Sebut Harga Segera
+          </a>
+          <a href="/ms/contact" class="btn btn-outline-white text-xl px-8 py-4">
+            Kira Penjimatan Saya
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
+
+  <!-- Pain Point Articulation Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+            Adakah Ini Kedengaran <span class="text-secondary">Biasa?</span>
+          </h2>
+          <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Pain Point 1 -->
+          <div class="bg-red-50 border-l-8 border-red-500 p-8 shadow-brutal-lg">
+            <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Mimpi Buruk Peralatan Sewa</h3>
+            <div class="text-gray-700 leading-relaxed space-y-4">
+              <p class="italic">"Apabila syarikat sewa menelefon pada jam 5 petang berkata 'kami perlukan forklift kembali esok pagi,' 
+              dan anda mempunyai tiga kontena tiba pada jam 6 pagi, adakah anda merasakan panik di dada anda kerana tahu 
+              operasi gudang anda akan terhenti?"</p>
+              
+              <p class="italic">"Apabila reach truck sewa anda rosak semasa penghantaran inventori pelanggan terbesar anda, 
+              dan kakitangan anda memindahkan pallet secara manual sementara pelanggan menunggu, 
+              adakah perut anda jatuh kerana tahu ini boleh merugikan anda kontrak?"</p>
+            </div>
+          </div>
+
+          <!-- Pain Point 2 -->
+          <div class="bg-red-50 border-l-8 border-red-500 p-8 shadow-brutal-lg">
+            <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Yuran Sewa Bulanan Yang Mengalir</h3>
+            <div class="text-gray-700 leading-relaxed space-y-4">
+              <p class="italic">"Apabila anda menulis cek sewa peralatan bulanan RM 12,000+, 
+              dan anda berjalan melalui gudang anda kerana tahu anda TIDAK memiliki sebarang peralatan selepas 3 tahun, 
+              adakah anda merasakan kekecewaan di rahang anda memikirkan 'Saya sepatutnya sudah memiliki ini sekarang'?"</p>
+              
+              <p class="italic">"Apabila anda mengira RM 144,000 yang dibelanjakan untuk sewa forklift setiap tahun, 
+              dan sedar itu cukup untuk membeli TIGA forklift terpakai berkualiti, 
+              adakah bahu anda tegang kerana tahu anda sedang membina perniagaan orang lain?"</p>
+            </div>
+          </div>
+
+          <!-- Solution Bridge -->
+          <div class="lg:col-span-2 bg-green-50 border-l-8 border-green-500 p-8 shadow-brutal-xl text-center">
+            <h3 class="text-3xl font-display uppercase text-navy-900 mb-6">Ada Cara Yang Lebih Baik</h3>
+            <div class="text-xl text-gray-700 mb-6">
+              <p class="mb-4"><span class="font-bold text-green-700">Peralatan anda.</span> <span class="font-bold text-green-700">Jadual anda.</span> <span class="font-bold text-green-700">Hasil anda.</span></p>
+              <p><span class="font-bold text-green-700">Bina ekuiti.</span> <span class="font-bold text-green-700">Simpan keuntungan.</span> <span class="font-bold text-green-700">Kawal operasi.</span></p>
+            </div>
+            <a href="/ms/equipment/forklift" class="btn btn-primary text-xl px-8 py-4 inline-block">
+              Lihat Bagaimana Pembiayaan Peralatan Gudang Berfungsi →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warehouse Equipment We Finance -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Peralatan Gudang <span class="text-secondary">Yang Kami Biayai</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl">
+          Pembiayaan peralatan gudang lengkap untuk pengendalian bahan, penyimpanan, dan sistem automasi
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Forklifts -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">🏗️</div>
+            <h3 class="text-2xl font-display uppercase text-white">Forklift</h3>
+            <p class="text-white">Semua Jenis & Kapasiti</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• Forklift Elektrik (1-8 tan)</li>
+              <li>• Forklift Diesel (1-25 tan)</li>
+              <li>• Forklift LPG (1-15 tan)</li>
+              <li>• Reach Truck (1.5-3 tan)</li>
+              <li>• Order Picker</li>
+              <li>• Stacker Gudang</li>
+            </ul>
+            <a href="/ms/equipment/forklift" class="btn btn-primary w-full mt-6 block text-center">
+              Pembiayaan Forklift →
+            </a>
+          </div>
+        </div>
+
+        <!-- Material Handling -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">📦</div>
+            <h3 class="text-2xl font-display uppercase text-white">Pengendalian Bahan</h3>
+            <p class="text-white">Peralatan Bergerak & Angkat</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• Pallet Jack (Manual & Elektrik)</li>
+              <li>• Hand Stacker</li>
+              <li>• Platform Truck</li>
+              <li>• Drum Handler</li>
+              <li>• Scissor Lift</li>
+              <li>• Dock Leveler</li>
+            </ul>
+            <a href="/ms/services/equipment-financing" class="btn btn-primary w-full mt-6 block text-center">
+              Kewangan Pengendalian Bahan →
+            </a>
+          </div>
+        </div>
+
+        <!-- Conveyor Systems -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">🔄</div>
+            <h3 class="text-2xl font-display uppercase text-white">Sistem Conveyor</h3>
+            <p class="text-white">Penyelesaian Aliran Automatik</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• Belt Conveyor</li>
+              <li>• Roller Conveyor</li>
+              <li>• Sistem Pengisihan</li>
+              <li>• Kenderaan Berpandu Automatik</li>
+              <li>• Pneumatic Conveyor</li>
+              <li>• Sistem Pemuatan/Pemunggahan</li>
+            </ul>
+            <div class="btn btn-primary w-full mt-6 flex items-center justify-center cursor-default">
+              Kewangan Automasi Tersedia
+            </div>
+          </div>
+        </div>
+
+        <!-- Storage Systems -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">🏪</div>
+            <h3 class="text-2xl font-display uppercase text-white">Sistem Penyimpanan</h3>
+            <p class="text-white">Rak & Organisasi</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• Sistem Rak Pallet</li>
+              <li>• Drive-in Racking</li>
+              <li>• Cantilever Racking</li>
+              <li>• Penyimpanan/Pengambilan Automatik</li>
+              <li>• Lantai Mezzanine</li>
+              <li>• Rak Gudang</li>
+            </ul>
+            <div class="btn btn-primary w-full mt-6 flex items-center justify-center cursor-default">
+              Kewangan Sistem Lengkap
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warehouse Equipment Financing Benefits -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Mengapa Pilih <span class="text-secondary">Pembiayaan Peralatan Gudang</span> Kami?
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl">
+          Pembiayaan khusus direka untuk operasi gudang dan perniagaan pengendalian bahan
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <BenefitCard
+          icon="percentage"
+          title="0% Deposit Diperlukan"
+          description="Tiada bayaran pendahuluan diperlukan. Biayai 100% nilai peralatan gudang anda. Mula operasi segera tanpa menghabiskan modal kerja."
+        />
+
+        <BenefitCard
+          icon="clock"
+          title="Walaupun Peralatan 10+ Tahun"
+          description="Kami membiayai peralatan gudang berumur 10+ tahun, malah peralatan lama dipertimbangkan. Forklift dan peralatan pengendalian bahan terpakai berkualiti diterima."
+        />
+
+        <BenefitCard
+          icon="lightning"
+          title="Proses Kelulusan Pantas"
+          description="Kelulusan pantas direka untuk pengendali gudang. Kami faham puncak musiman dan keperluan penggantian peralatan segera."
+        />
+
+        <BenefitCard
+          icon="calendar"
+          title="Fleksibiliti Pembayaran Musiman"
+          description="Terma pembayaran yang sepadan dengan corak aliran tunai gudang. Kami faham musim puncak, kitaran kontrak, dan pengurusan inventori."
+        />
+
+        <BenefitCard
+          icon="users"
+          title="Kepakaran Gudang"
+          description="Pasukan kami faham operasi gudang, aliran kerja pengendalian bahan, dan keperluan peralatan logistik."
+        />
+
+        <BenefitCard
+          icon="shield"
+          title="Pakej Peralatan Lengkap"
+          description="Biayai persediaan gudang lengkap termasuk berbilang forklift, conveyor, rak, dan automasi sebagai satu pakej menyeluruh."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section class="section bg-yellow-400">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-navy-900">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-8">
+          Henti Kehilangan <span class="text-white">Yuran Sewa</span>
+        </h2>
+        
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-xl p-8 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div>
+              <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Semakan Realiti Sewa</h3>
+              <div class="space-y-4 text-gray-700">
+                <div class="flex justify-between">
+                  <span>Sewa forklift bulanan:</span>
+                  <span class="font-bold text-red-600">RM 12,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Kos sewa tahunan:</span>
+                  <span class="font-bold text-red-600">RM 144,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Jumlah sewa 3 tahun:</span>
+                  <span class="font-bold text-red-600">RM 432,000</span>
+                </div>
+                <div class="flex justify-between border-t pt-2">
+                  <span class="font-bold">Pemilikan peralatan selepas 3 tahun:</span>
+                  <span class="font-bold text-red-600">RM 0</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Realiti Pembiayaan</h3>
+              <div class="space-y-4 text-gray-700">
+                <div class="flex justify-between">
+                  <span>Pembayaran pembiayaan bulanan:</span>
+                  <span class="font-bold text-green-600">RM 8,500</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Kos pembiayaan tahunan:</span>
+                  <span class="font-bold text-green-600">RM 102,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Jumlah pembiayaan 3 tahun:</span>
+                  <span class="font-bold text-green-600">RM 306,000</span>
+                </div>
+                <div class="flex justify-between border-t pt-2">
+                  <span class="font-bold">Pemilikan peralatan selepas 3 tahun:</span>
+                  <span class="font-bold text-green-600">RM 200,000+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 p-6 bg-green-100 border-l-8 border-green-500">
+            <div class="text-2xl font-bold text-green-800 mb-2">
+              Penjimatan Anda: RM 126,000 lebih 3 tahun + RM 200,000 pemilikan aset
+            </div>
+            <p class="text-green-700">Daripada memperkaya syarikat sewa, anda membina ekuiti dalam aset gudang produktif.</p>
+          </div>
+        </div>
+
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-primary text-xl px-8 py-4">
+          Kira Penjimatan Peralatan Gudang Saya →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Process -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Proses Permohonan <span class="text-secondary">Yang Mudah</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+          Dapatkan pembiayaan peralatan gudang anda diluluskan dalam 4 langkah mudah
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">1</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Penilaian Peralatan</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Kenal pasti keperluan peralatan gudang anda: forklift, conveyor, sistem pengendalian bahan
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">2</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Permohonan Pantas</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Hantar dokumentasi perniagaan gudang dan sebut harga peralatan melalui WhatsApp atau dalam talian
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">3</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Kelulusan Pantas</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Dapatkan kelulusan dengan pantas dengan kepakaran pembiayaan yang fokus gudang kami
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">4</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Penghantaran Peralatan</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Terima peralatan gudang anda dan mula bina pemilikan sambil beroperasi
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+            Soalan Lazim <span class="text-secondary">Pembiayaan Peralatan Gudang</span>
+          </h2>
+          <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+          <p class="text-gray-700 text-xl">
+            Semua yang perlu anda ketahui tentang pembiayaan peralatan gudang
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-16 text-center">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-6">
+            Bersedia Untuk Miliki Peralatan Gudang Anda?
+          </h3>
+          <p class="text-gray-600 mb-8 text-lg">
+            Henti bayar yuran sewa selama-lamanya. Mula bina ekuiti peralatan gudang hari ini.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-8 py-4">
+              WhatsApp: {COMPANY_INFO.phone.display}
+            </a>
+            <a href="/ms/contact" class="btn btn-primary text-xl px-8 py-4">
+              Dapatkan Sebut Harga Peralatan Gudang Percuma
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Links -->
+  <section class="section bg-secondary text-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6">
+          <span class="text-yellow-400">Pembiayaan Peralatan</span> Berkaitan
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-6xl mb-4">🏗️</div>
+          <h3 class="text-xl font-display uppercase mb-3">Pembiayaan Forklift</h3>
+          <p class="text-white/90 mb-4">Pembiayaan forklift khusus untuk semua kapasiti dan jenis gudang</p>
+          <a href="/ms/equipment/forklift" class="btn btn-outline-white">Ketahui Lanjut →</a>
+        </div>
+
+        <div class="text-center">
+          <div class="text-6xl mb-4">🚚</div>
+          <h3 class="text-xl font-display uppercase mb-3">Pembiayaan Peralatan</h3>
+          <p class="text-white/90 mb-4">Pembiayaan peralatan lengkap untuk peralatan pembinaan dan logistik</p>
+          <a href="/ms/services/equipment-financing" class="btn btn-outline-white">Ketahui Lanjut →</a>
+        </div>
+
+        <div class="text-center">
+          <div class="text-6xl mb-4">🏗️</div>
+          <h3 class="text-xl font-display uppercase mb-3">Pembiayaan Kren</h3>
+          <p class="text-white/90 mb-4">Pembiayaan kren mudah alih dan menara untuk gudang dan pembinaan</p>
+          <a href="/ms/equipment/crane" class="btn btn-outline-white">Ketahui Lanjut →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Dapatkan Sebut Harga <span class="text-secondary">Peralatan Gudang</span> Percuma Anda
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 text-xl">
+          Isi borang di bawah dan pakar pembiayaan peralatan gudang kami akan menghubungi anda segera
+        </p>
+      </div>
+      <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-xl p-8 md:p-12">
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+  }
+</style>

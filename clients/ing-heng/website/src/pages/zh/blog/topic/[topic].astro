@@ -1,0 +1,280 @@
+---
+/**
+ * Dynamic Topic Tag Page - Chinese
+ * URL: /zh/blog/topic/融资指南
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import {
+  getTopicTags,
+  getEquipmentTags,
+  getBrandTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'zh';
+
+export function getStaticPaths() {
+  const topics = getTopicTags();
+  return topics.map((topic) => ({
+    params: { topic: topic.slug.zh },
+    props: { topicId: topic.id }
+  }));
+}
+
+const { topic } = Astro.params;
+const { topicId } = Astro.props;
+
+const topicTag = getTopicTags().find(t => t.id === topicId);
+if (!topicTag) {
+  return Astro.redirect('/zh/blog');
+}
+
+const topicName = getTagName(topicTag, lang);
+const equipment = getEquipmentTags();
+const brands = getBrandTags().slice(0, 6);
+
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: '按主题', href: '/zh/blog' },
+  { label: topicName, href: `/zh/blog/topic/${topic}` }
+];
+
+// Topic-specific content (Chinese)
+const topicContent: Record<string, { description: string; tips: string[]; relatedEquipment: string[] }> = {
+  'financing-guide': {
+    description: '全面的指南帮助您了解马来西亚设备融资的选择、要求和流程。',
+    tips: [
+      '在做决定前比较多家贷款机构的利率',
+      '了解租购与租赁的区别',
+      '检查隐藏费用和提前还款罚金',
+      '申请前准备好所有文件以加快审批'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'lorry', 'crane']
+  },
+  'buying-tips': {
+    description: '关于购买新旧重型设备的专家建议。了解要注意什么，避免代价高昂的错误。',
+    tips: [
+      '购买前务必仔细检查设备',
+      '核实二手设备的维护记录',
+      '比较多家经销商的价格',
+      '考虑总拥有成本，而不仅仅是购买价格'
+    ],
+    relatedEquipment: ['excavator', 'bulldozer', 'wheel-loader', 'backhoe']
+  },
+  'industry-news': {
+    description: '了解马来西亚重型设备和建筑行业的最新新闻和趋势。',
+    tips: [
+      '关注政府基础设施公告',
+      '监测建筑行业增长报告',
+      '跟踪设备价格趋势',
+      '了解设备新技术动态'
+    ],
+    relatedEquipment: ['crane', 'bulldozer', 'road-roller', 'prime-mover']
+  },
+  'tax-benefits': {
+    description: '了解马来西亚设备融资可享受的税收减免、优惠和福利。',
+    tips: [
+      '申报设备购置的资本津贴',
+      '了解投资税务津贴资格',
+      '保留适当的税务文件',
+      '咨询税务专业人士进行最佳规划'
+    ],
+    relatedEquipment: ['excavator', 'lorry', 'forklift', 'crane']
+  },
+  'business-growth': {
+    description: '通过智能设备投资和融资来发展业务的策略和见解。',
+    tips: [
+      '投资能提高生产力的设备',
+      '根据项目需求安排购买时间',
+      '利用融资保留营运资金',
+      '随业务增长扩大设备车队'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'lorry', 'prime-mover']
+  },
+  'maintenance': {
+    description: '重型设备维护的技巧和最佳实践，延长使用寿命并减少停机时间。',
+    tips: [
+      '遵循制造商的维护计划',
+      '培训操作员正确使用设备',
+      '保留详细的维护记录',
+      '及早解决问题，防止小问题变成大修'
+    ],
+    relatedEquipment: ['excavator', 'bulldozer', 'wheel-loader', 'crane']
+  },
+  'used-equipment': {
+    description: '关于购买、融资和评估二手重型设备所需了解的一切。',
+    tips: [
+      '检查设备年龄和工时表读数',
+      '检查磨损和损坏迹象',
+      '核实所有权和产权清晰',
+      '考虑认证二手设备选项'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'lorry', 'backhoe']
+  },
+  'leasing-vs-buying': {
+    description: '比较租赁和购买选项，为您的设备需求做出最佳财务决策。',
+    tips: [
+      '考虑您的长期设备需求',
+      '比较设备生命周期的总成本',
+      '评估每个选项的税务影响',
+      '考虑维护责任'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'crane', 'bulldozer']
+  }
+};
+
+const content = topicContent[topicId] || {
+  description: '探索关于此主题的文章和资源。',
+  tips: ['保持信息灵通', '做出明智决策', '咨询专家', '提前规划'],
+  relatedEquipment: ['excavator', 'forklift', 'lorry']
+};
+---
+
+<BaseLayout
+  title={`${topicName} | 设备融资资源 | 盈亨信贷`}
+  description={content.description}
+  lang={lang}
+  keywords={[
+    `${topicName}马来西亚`,
+    `设备${topicName}`,
+    `重型设备${topicName}`,
+    '设备融资马来西亚'
+  ]}
+>
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-brutalist mb-6 inline-block">主题</span>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif;">
+          <span class="text-yellow-400">{topicName}</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          {content.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-3xl font-black text-navy-900 mb-6" style="font-family: 'Bebas Neue', sans-serif;">
+          关键提示：{topicName}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {content.tips.map((tip, index) => (
+            <div class="bg-gray-50 border-4 border-navy-900 p-4" style="box-shadow: 4px 4px 0 #1E3A8A;">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-yellow-400 border-2 border-navy-900 flex items-center justify-center font-black text-navy-900 flex-shrink-0">
+                  {index + 1}
+                </div>
+                <p class="text-gray-700 font-medium">{tip}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif;">
+        相关设备融资
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {equipment.filter(e => content.relatedEquipment.includes(e.id)).map((equip) => (
+          <a href={buildBrandEquipmentPostUrl(lang, 'caterpillar', equip.id)} class="card-brutalist group">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-yellow-400 border-3 border-navy-900 flex items-center justify-center mb-4" style="box-shadow: 3px 3px 0 #1E3A8A;">
+                <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-black text-navy-900 group-hover:text-yellow-600 transition-colors mb-2" style="font-family: 'Bebas Neue', sans-serif;">
+                {getTagName(equip, lang)}融资
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                以优惠利率融资您的{getTagName(equip, lang)}。
+              </p>
+              <span class="inline-flex items-center text-yellow-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
+                了解更多 →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom">
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif;">
+        我们融资的热门品牌
+      </h2>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        {brands.map((brand) => (
+          <a
+            href={`/zh/blog/brand/${brand.slug.zh}`}
+            class="px-6 py-3 bg-white border-4 border-navy-900 font-black text-navy-900 hover:bg-navy-900 hover:text-white transition-colors"
+            style="box-shadow: 4px 4px 0 #1E3A8A;"
+          >
+            {getTagName(brand, lang)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+        需要设备融资帮助？
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        我们的团队拥有40多年帮助企业融资设备的经验。立即获取免费咨询。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="获取免费报价"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="查看所有主题"
+          link="/zh/blog"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist { @apply inline-block px-3 py-1 font-black bg-yellow-400 text-navy-900 border-2 border-navy-900; box-shadow: 2px 2px 0 #1E3A8A; }
+  .card-brutalist { @apply bg-white overflow-hidden border-4 border-navy-900; box-shadow: 6px 6px 0 #1E3A8A; transition: all 0.3s ease; }
+  .card-brutalist:hover { box-shadow: 3px 3px 0 #1E3A8A; transform: translate(3px, 3px); }
+</style>

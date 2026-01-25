@@ -6,22 +6,24 @@
  * Cultural Focus: Professional, ROI-focused, data-driven B2B messaging
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Hero from '../../../components/Hero.astro';
-import BenefitCard from '../../../components/BenefitCard.astro';
-import StepCard from '../../../components/StepCard.astro';
-import FAQItem from '../../../components/FAQItem.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import Calculator from '../../../components/Calculator.astro';
-import TestimonialCard from '../../../components/TestimonialCard.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import TestimonialCard from '../../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../../utils/constants';
 const lang = 'ms';
 
 // SEO Data
-const pageTitle = 'Pembiayaan Excavator Malaysia | Kelulusan 24 Jam | 95% Kadar Kelulusan';
-const pageDescription = 'Pembiayaan excavator pantas untuk kontraktor. Kelulusan 24 jam, kadar kelulusan 95%, tempoh fleksibel 12-60 bulan. Biayai excavator baru & terpakai dari RM30k-RM3J. Mohon sekarang!';
+const pageTitle = 'Pembiayaan Excavator Malaysia | Kelulusan Pantas';
+const pageDescription = 'Pembiayaan excavator pantas untuk kontraktor. Kelulusan pantas, tempoh fleksibel 12-60 bulan. Biayai excavator baru & terpakai dari RM30k-RM3J. Mohon sekarang!';
 const keywords = ['pembiayaan excavator Malaysia', 'pinjaman excavator Malaysia', 'pembiayaan jentera pembinaan', 'excavator sewa beli', 'pembiayaan mesin berat', 'pajakan excavator Malaysia'];
 
 // Breadcrumbs
@@ -33,21 +35,19 @@ const breadcrumbs = [
 
 // Benefits
 const benefits = [
-  { icon: 'clock', title: 'Kelulusan 24 Jam', description: 'Dapatkan kelulusan dalam 24 jam. Pemprosesan pantas bermakna anda boleh mula menjana pendapatan projek dengan segera tanpa kelewatan.' },
-  { icon: 'percentage', title: 'Kadar Kelulusan 95%', description: 'Kadar kelulusan tertinggi dalam industri. Kami meluluskan permohonan yang ditolak bank. Kredit buruk diterima.' },
-  { icon: 'calendar', title: 'Tempoh Fleksibel 12-60 Bulan', description: 'Pilih tempoh bayaran yang sepadan dengan garis masa projek dan aliran tunai anda. Pilihan bayaran bermusim tersedia.' },
+  { icon: 'clock', title: 'Kelulusan Pantas', description: 'Dapatkan kelulusan dengan pantas. Pemprosesan pantas bermakna anda boleh mula menjana pendapatan projek dengan segera tanpa kelewatan.' },
+  { icon: 'percentage', title: 'Kadar Kelulusan Terbaik', description: 'Kami meluluskan permohonan yang ditolak bank. Kredit buruk diterima.' },
   { icon: 'shield', title: 'Baru & Terpakai Diterima', description: 'Biayai excavator baru atau terpakai sehingga 10 tahun. Semua jenama utama: CAT, Komatsu, Hitachi, Kobelco, Hyundai.' },
-  { icon: 'users', title: '0% Bayaran Pendahuluan Tersedia', description: 'Pinjaman penuh tersedia. Simpan 100% modal kerja anda untuk operasi, buruh, dan bahan.' },
-  { icon: 'lightning', title: 'Pelan Bayaran Bermusim', description: 'Laraskan bayaran semasa musim monsun atau tempoh perlahan. Bayaran sejajar dengan kitaran hasil anda.' },
+  { icon: 'users', title: 'Bayaran Pendahuluan Dari 0%*', description: 'Pelaburan awal minimum. Pinjaman sehingga 100%* untuk pemohon layak. Simpan modal kerja anda untuk operasi. *Tertakluk pada terma dan syarat' },
   { icon: 'document', title: 'Dokumentasi Mudah', description: 'Kelulusan pantas dengan kertas kerja minimum. IC, penyata bank, dan dokumen syarikat. Tiada penyata kewangan kompleks diperlukan.' },
-  { icon: 'shield', title: 'Tiada Bayaran Tersembunyi', description: 'Harga telus tanpa caj kejutan. Kadar kompetitif dari 7.5-12% setahun. Apa yang anda lihat adalah apa yang anda bayar.' },
+  { icon: 'shield', title: 'Tiada Bayaran Tersembunyi', description: 'Harga telus tanpa caj kejutan. Kadar kompetitif dari 8-18% setahun. Tiada penalti bayaran awal. Apa yang anda lihat adalah apa yang anda bayar.' },
 ];
 
 // Steps
 const steps = [
   { stepNumber: 1, icon: 'contact', title: 'Hubungi Kami Via WhatsApp', description: 'Sembang dengan pakar pembiayaan kami. Dapatkan jawapan segera kepada soalan anda. Tersedia semasa waktu perniagaan.' },
   { stepNumber: 2, icon: 'document', title: 'Serahkan Dokumen', description: 'Sediakan IC, penyata bank 6 bulan, dan pendaftaran syarikat. Kertas kerja mudah, tiada kerumitan.' },
-  { stepNumber: 3, icon: 'check', title: 'Dapatkan Kelulusan dalam 24 Jam', description: 'Terima keputusan kelulusan dalam satu hari bekerja. Kes mendesak diproses dalam 8-12 jam.' },
+  { stepNumber: 3, icon: 'check', title: 'Keputusan Kelulusan Pantas', description: 'Terima keputusan kelulusan dengan pantas. Kes mendesak diproses segera.' },
   { stepNumber: 4, icon: 'clipboard', title: 'Tandatangan Perjanjian Pinjaman', description: 'Semak dan tandatangan perjanjian pinjaman. Terma telus tanpa klausa tersembunyi. Tanya soalan bila-bila masa.' },
   { stepNumber: 5, icon: 'truck', title: 'Dapatkan Excavator Anda', description: 'Terima dana dan ambil pemilikan excavator anda. Mula bekerja dan menjana pendapatan dengan segera.' },
 ];
@@ -57,38 +57,32 @@ const equipmentTypes = [
   {
     name: 'Excavator Mini (1-5 tan)',
     description: 'Sempurna untuk projek kediaman, landskap, pemasangan utiliti, dan ruang bandar yang sempit. Jimat bahan api dengan kos operasi rendah.',
-    applications: 'Penggalian asas, parit, landskap, persediaan perobohan',
-    priceRange: 'RM 30,000 - RM 180,000'
+    applications: 'Penggalian asas, parit, landskap, persediaan perobohan'
   },
   {
     name: 'Excavator Sederhana (5-10 tan)',
     description: 'Sesuai untuk tapak pembinaan sederhana, kerja jalan raya, projek perparitan, dan pemasangan utiliti. Kuasa dan mobiliti seimbang.',
-    applications: 'Pembinaan jalan raya, sistem perparitan, kerja asas komersial',
-    priceRange: 'RM 180,000 - RM 450,000'
+    applications: 'Pembinaan jalan raya, sistem perparitan, kerja asas komersial'
   },
   {
     name: 'Excavator Besar (10-30 tan)',
     description: 'Mesin tugas berat untuk pembinaan utama, perlombongan, kerja tanah, dan projek infrastruktur berskala besar.',
-    applications: 'Perlombongan, pembinaan empangan, projek lebuh raya utama, kerja tanah besar',
-    priceRange: 'RM 450,000 - RM 2,000,000'
+    applications: 'Perlombongan, pembinaan empangan, projek lebuh raya utama, kerja tanah besar'
   },
   {
     name: 'Excavator Long Reach',
     description: 'Excavator lengan lanjutan untuk penggalian dalam, pengorekan, kerja tebing sungai, dan penstabilan cerun sehingga jangkauan 30 meter.',
-    applications: 'Pengorekan sungai, asas dalam, penggalian kolam, kerja cerun',
-    priceRange: 'RM 350,000 - RM 1,500,000'
+    applications: 'Pengorekan sungai, asas dalam, penggalian kolam, kerja cerun'
   },
   {
     name: 'Excavator Roda',
     description: 'Excavator mudah alih untuk pembinaan jalan raya dan projek bandar. Pemindahan pantas antara tapak tanpa pengangkutan trela.',
-    applications: 'Pembinaan bandar, penyelenggaraan jalan raya, pembaikan utiliti',
-    priceRange: 'RM 200,000 - RM 800,000'
+    applications: 'Pembinaan bandar, penyelenggaraan jalan raya, pembaikan utiliti'
   },
   {
     name: 'Excavator Amfibia',
     description: 'Mesin khusus untuk paya, tanah lembap, kawasan terdedah banjir, dan pembinaan berasaskan air. Keperluan unik Malaysia.',
-    applications: 'Pembersihan paya, penstabilan tebing sungai, kerja mitigasi banjir',
-    priceRange: 'RM 400,000 - RM 1,200,000'
+    applications: 'Pembersihan paya, penstabilan tebing sungai, kerja mitigasi banjir'
   },
 ];
 
@@ -101,14 +95,13 @@ const testimonials = [
     name: 'Ahmad bin Hassan',
     company: 'AH Construction Sdn Bhd',
     location: 'Klang, Selangor',
-    testimonial: 'Diluluskan dalam 18 jam dengan 0% bayaran pendahuluan - pinjaman penuh! Pilihan bayaran bermusim menyelamatkan perniagaan saya semasa bulan monsun. Perkhidmatan profesional dan terma telus dari awal hingga akhir.',
     rating: 5,
   },
   {
     name: 'Tan Chee Keong',
     company: 'TCK Earthworks Sdn Bhd',
     location: 'Johor Bahru, Johor',
-    testimonial: 'Memerlukan excavator Komatsu terpakai dengan segera untuk tender kerajaan. Bank menolak permohonan saya kerana sejarah kredit terhad. Ing Heng Credit meluluskannya dalam 24 jam. Perniagaan saya berkembang 40% selepas memperoleh mesin ini.',
+    testimonial: 'Memerlukan excavator Komatsu terpakai dengan segera untuk tender kerajaan. Bank menolak permohonan saya kerana sejarah kredit terhad. Ing Heng Credit meluluskannya dengan pantas. Perniagaan saya berkembang 40% selepas memperoleh mesin ini.',
     rating: 5,
   },
   {
@@ -124,15 +117,15 @@ const testimonials = [
 const faqs = [
   {
     question: 'Bolehkah saya biayai excavator terpakai?',
-    answer: 'Ya! Kami membiayai excavator terpakai sehingga 10 tahun dari mana-mana jenama bereputasi termasuk Caterpillar, Komatsu, Hitachi, Kobelco, Hyundai, dan Doosan. Excavator mesti dalam keadaan berfungsi baik dan lulus pemeriksaan kami. Pinjaman penuh (0% bayaran pendahuluan) tersedia untuk excavator terpakai - peralatan lama mempunyai nilai pasaran lebih rendah, menjadikan pembiayaan penuh lebih mudah diluluskan.'
+    answer: 'Ya! Kami membiayai excavator terpakai sehingga 10 tahun dari mana-mana jenama bereputasi termasuk Caterpillar, Komatsu, Hitachi, Kobelco, Hyundai, dan Doosan. Excavator mesti dalam keadaan berfungsi baik dan lulus pemeriksaan kami. Pembiayaan excavator terpakai biasanya memerlukan 10-20% bayaran pendahuluan bergantung pada umur dan keadaan peralatan.'
   },
   {
     question: 'Apakah umur excavator maksimum yang anda terima?',
-    answer: 'Kami menerima excavator sehingga 10 tahun untuk pembiayaan. Untuk excavator 5-7 tahun, terma standard digunakan. Untuk excavator 8-10 tahun, pinjaman penuh (0% bayaran pendahuluan) sebenarnya lebih mudah diluluskan - peralatan lama mempunyai nilai pasaran lebih rendah, jadi kami boleh membiayai lebih daripada harga belian apabila diperlukan. Peralatan lebih tua dari 10 tahun memerlukan penilaian kes demi kes.'
+    answer: 'Kami menerima excavator sehingga 10 tahun untuk pembiayaan. Untuk excavator 5-7 tahun, terma standard digunakan. Untuk excavator 8-10 tahun, kami mungkin memerlukan bayaran pendahuluan lebih tinggi (15-20%) atau tempoh pinjaman lebih pendek. Peralatan lebih tua dari 10 tahun memerlukan penilaian kes demi kes.'
   },
   {
     question: 'Adakah anda membiayai kontraktor kali pertama?',
-    answer: 'Sudah tentu! Kami pakar dalam membantu kontraktor baru bermula. Tidak seperti bank yang hanya fokus pada sejarah kredit, kami menilai potensi projek anda, kontrak sedia ada, dan rancangan perniagaan. Kadar kelulusan 95% kami membuktikan kami menyokong perniagaan yang berkembang. Ramai pelanggan berjaya bermula dengan kami sebagai pembeli peralatan kali pertama.'
+    answer: 'Sudah tentu! Kami pakar dalam membantu kontraktor baru bermula. Tidak seperti bank yang hanya fokus pada sejarah kredit, kami menilai potensi projek anda, kontrak sedia ada, dan rancangan perniagaan. Kami menyokong perniagaan yang berkembang. Ramai pelanggan berjaya bermula dengan kami sebagai pembeli peralatan kali pertama.'
   },
   {
     question: 'Bagaimana jika saya mempunyai kredit buruk atau tunggakan pinjaman sebelumnya?',
@@ -140,19 +133,18 @@ const faqs = [
   },
   {
     question: 'Bolehkah saya dapatkan pembiayaan semasa musim monsun?',
-    answer: 'Ya! Kami memahami kemusiman pembinaan di Malaysia. Pelan bayaran bermusim kami membenarkan bayaran lebih rendah semasa bulan monsun (November-Februari) apabila pembinaan perlahan, dan bayaran lebih tinggi semasa musim puncak (Mac-Oktober) apabila anda mempunyai lebih banyak projek dan aliran tunai. Ciri unik ini membantu kontraktor mengekalkan operasi sepanjang tahun.'
   },
   {
     question: 'Apakah jenama excavator yang anda terima?',
-    answer: 'Kami menerima semua jenama utama: Caterpillar (CAT), Komatsu, Hitachi, Kobelco, Hyundai, Doosan, SANY, XCMG, Volvo, Sumitomo, JCB, dan Liebherr. Kedua-dua jenama Jepun, Amerika, China, Korea, dan Eropah boleh diterima. Pinjaman penuh (0% bayaran pendahuluan) tersedia untuk semua jenama - kami menilai setiap kes berdasarkan keadaan peralatan dan nilai pasaran.'
+    answer: 'Kami menerima semua jenama utama: Caterpillar (CAT), Komatsu, Hitachi, Kobelco, Hyundai, Doosan, SANY, XCMG, Volvo, Sumitomo, JCB, dan Liebherr. Kedua-dua jenama Jepun, Amerika, China, Korea, dan Eropah boleh diterima. Untuk jenama China seperti SANY dan XCMG, kami mungkin memerlukan bayaran pendahuluan sedikit lebih tinggi kerana pertimbangan nilai jualan semula.'
   },
   {
     question: 'Berapa lama proses kelulusan?',
-    answer: 'Kelulusan standard mengambil masa 24 jam (1 hari bekerja) dari penyerahan dokumen lengkap. Kes mendesak dengan tarikh akhir projek segera boleh diproses dalam 8-12 jam dengan perkhidmatan premium. Kami mengutamakan kontraktor yang memerlukan peralatan dengan cepat untuk tender kerajaan atau projek sensitif masa. Serahkan permohonan anda pada pagi hari, dapatkan kelulusan pada petang.'
+    answer: 'Kelulusan standard mengambil masa pantas dari penyerahan dokumen lengkap. Kes mendesak dengan tarikh akhir projek segera boleh diproses dengan perkhidmatan premium. Kami mengutamakan kontraktor yang memerlukan peralatan dengan cepat untuk tender kerajaan atau projek sensitif masa. Serahkan permohonan anda pada pagi hari, dapatkan kelulusan dengan pantas.'
   },
   {
     question: 'Apakah dokumen yang saya perlukan untuk memohon?',
-    answer: 'Untuk individu: (1) IC atau Pasport, (2) Penyata bank 6 bulan, (3) Bukti pendapatan (slip gaji, penyata KWSP, atau kontrak projek). Untuk syarikat: (1) Pendaftaran SSM (Borang 9/24/49), (2) Penyata bank syarikat (6 bulan), (3) Salinan IC pengarah, (4) Penyata kewangan jika ada (tidak wajib untuk syarikat baru), (5) Kontrak projek jika ada (membantu kelulusan). Prosesnya mudah dan langsung.'
+    answer: 'Untuk individu: (1) IC atau Pasport, (2) Penyata bank 6 bulan, (3) Bukti pendapatan (slip gaji, penyata KWSP, atau kontrak projek). Untuk syarikat: (1) Pendaftaran SSM, (2) Penyata bank syarikat (6 bulan), (3) Salinan IC pengarah, (4) Penyata kewangan jika ada (tidak wajib untuk syarikat baru), (5) Kontrak projek jika ada (membantu kelulusan). Prosesnya mudah dan langsung.'
   },
   {
     question: 'Bolehkah saya naik taraf excavator saya kemudian?',
@@ -168,7 +160,7 @@ const faqs = [
   },
   {
     question: 'Apakah kadar faedah anda?',
-    answer: 'Kadar faedah berkisar dari 7.5% hingga 12% setahun bergantung pada: (1) Profil kredit dan skor kredit, (2) Panjang tempoh pinjaman (tempoh lebih pendek = kadar lebih rendah), (3) Umur peralatan dan jenama. Pinjaman penuh (0% bayaran pendahuluan) tersedia pada kadar kompetitif. Kadar kami kompetitif berbanding bank (9-15%) dan pembiayaan peniaga (10-18%). Hubungi kami untuk sebut harga peribadi.'
+    answer: 'Kadar faedah berkisar dari 7.5% hingga 12% setahun bergantung pada: (1) Profil kredit dan skor kredit, (2) Jumlah bayaran pendahuluan (bayaran pendahuluan lebih tinggi = kadar lebih rendah), (3) Panjang tempoh pinjaman (tempoh lebih pendek = kadar lebih rendah), (4) Umur peralatan dan jenama (peralatan lebih baharu = kadar lebih rendah). Kadar kami kompetitif berbanding bank (9-15%) dan pembiayaan peniaga (10-18%). Hubungi kami untuk sebut harga peribadi.'
   },
   {
     question: 'Bolehkah saya biayai beberapa excavator sekaligus?',
@@ -180,7 +172,7 @@ const faqs = [
   },
   {
     question: 'Berapa banyak yang boleh saya pinjam?',
-    answer: 'Pinjaman minimum: RM 30,000 untuk excavator mini. Pinjaman maksimum: RM 2,000,000 untuk excavator besar dan armada. Pinjaman penuh (0% bayaran pendahuluan) tersedia - kami boleh membiayai 100% nilai peralatan. Untuk peralatan terpakai, pinjaman penuh selalunya lebih mudah diluluskan kerana nilai pasaran lebih rendah daripada harga belian. Jumlah pinjaman juga bergantung pada pendapatan dan kapasiti pembayaran balik anda.'
+    answer: 'Pinjaman minimum: RM 30,000 untuk excavator mini. Pinjaman maksimum: RM 2,000,000 untuk excavator besar dan armada. Kami boleh membiayai sehingga 90% nilai peralatan (10% bayaran pendahuluan diperlukan). Untuk peralatan terpakai, kami mungkin membiayai 80-85% nilai pasaran semasa (15-20% bayaran pendahuluan). Jumlah pinjaman juga bergantung pada pendapatan dan kapasiti pembayaran balik anda.'
   },
   {
     question: 'Bolehkah warga asing memohon pembiayaan excavator?',
@@ -207,8 +199,8 @@ const faqs = [
 // Product Schema
 const productSchema = generateProductSchema({
   name: 'Pembiayaan Excavator Malaysia',
-  description: 'Pembiayaan excavator pantas dengan kelulusan 24 jam, kadar kelulusan 95%, dan terma bayaran fleksibel untuk kontraktor pembinaan. Biayai excavator baru dan terpakai dari RM30,000 hingga RM2,000,000.',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/excavator-financing.jpg',
+  description: 'Pembiayaan excavator pantas dengan kelulusan cepat dan terma bayaran fleksibel untuk kontraktor pembinaan. Biayai excavator baru dan terpakai dari RM30,000 hingga RM2,000,000.',
+  imageUrl: `${SITE_CONFIG.url}/images/excavator-financing.jpg`,
   category: 'Financial Service - Equipment Financing',
   offers: {
     price: '30000',
@@ -242,39 +234,38 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="Pembiayaan Excavator Pantas Untuk Kontraktor Malaysia"
-    subtitle="Kelulusan 24 Jam | 95% Kadar Kelulusan | 0% Bayaran Pendahuluan (Pinjaman Penuh) | Tempoh Fleksibel 12-60 Bulan | Biayai RM30k-RM3J"
+    subtitle="Kelulusan Pantas | 10% Bayaran Pendahuluan | Tempoh Fleksibel 12-60 Bulan | Biayai RM30k-RM3J"
     ctaText="Dapatkan Sebut Harga Percuma Via WhatsApp"
     ctaLink="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20dapatkan%20sebut%20harga%20untuk%20pembiayaan%20excavator."
     ctaSecondaryText="Hubungi Sekarang: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/excavator-hero.jpg"
     lang={lang}
-    trustSignals={['40 Tahun Beroperasi', 'Berlesen KPKT', '4,000+ Syarikat Dibiayai', '95% Kadar Kelulusan']}
+    trustSignals={['40 Tahun Beroperasi', 'Berlesen KPKT', '4,000+ Syarikat Dibiayai', 'Kelulusan Terbaik']}
   />
 
   <!-- Problem/Solution Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           Kontraktor Pembinaan Hadapi Cabaran Pembiayaan Peralatan
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           Anda mempunyai projek beratur dan kontrak bersedia. Tetapi bank menolak permohonan pinjaman excavator anda. Peniaga peralatan menuntut 30-50% bayaran pendahuluan di hadapan. Pesaing anda memenangi tender kerana mereka mempunyai excavator dan anda tidak. Kedengarannya biasa?
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-red-600 font-bold text-lg mb-3">Masalah Biasa</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>Bank menolak permohonan kerana sejarah kredit terhad atau isu CCRIS</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
-              <span>Keperluan bayaran pendahuluan tinggi (20-50%) menguras modal kerja</span>
+              <span>Keperluan bayaran pendahuluan tinggi (30-50%) menguras modal kerja</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
@@ -291,20 +282,19 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-green-600 font-bold text-lg mb-3">Penyelesaian Kami</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>Kadar kelulusan 95% - Kami meluluskan permohonan yang ditolak bank</span>
+              <span>Kami meluluskan permohonan yang ditolak bank</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>0% bayaran pendahuluan - Pinjaman Penuh tersedia (berbanding 20-50% dari peniaga/bank)</span>
+              <span>Hanya 10% bayaran pendahuluan diperlukan (berbanding 30-50% dari peniaga/bank)</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>Pelan bayaran bermusim sejajar dengan kitaran hasil anda</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
@@ -312,37 +302,37 @@ const faqSchema = generateFAQSchema(faqs);
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>Kelulusan 24 jam - Mula menjana pendapatan projek dengan segera</span>
+              <span>Kelulusan pantas - Mula menjana pendapatan projek dengan segera</span>
             </li>
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="font-bold text-lg mb-3 text-yellow-600">Kisah Kejayaan Sebenar</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">Ahmad dari Klang</strong> memerlukan excavator Komatsu PC130 RM 180,000 untuk projek pelebaran jalan kerajaan bernilai RM 850,000.</p>
-            <p class="mb-3"><strong class="text-red-600">3 bank menolak permohonannya.</strong> Kami meluluskan dalam 18 jam dengan 0% bayaran pendahuluan - pinjaman penuh untuk keseluruhan RM 180,000!</p>
+            <p class="mb-3"><strong class="text-red-600">3 bank menolak permohonannya.</strong> Kami meluluskan dalam 18 jam dengan hanya RM 18,000 bayaran pendahuluan (10%).</p>
             <p class="font-semibold text-green-700">Hasil: Dia menyiapkan projek, memperoleh keuntungan RM 250,000, dan membeli excavator kedua 6 bulan kemudian. Kini memiliki 3 excavator dan hasil tahunan RM 2.5J.</p>
           </div>
         </div>
       </div>
 
       <!-- ROI Calculator Section -->
-      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4 text-center">Kira ROI Excavator Anda</h3>
         <div class="grid md:grid-cols-2 gap-6 text-sm">
           <div>
             <h4 class="font-bold text-gray-800 mb-2">Contoh Pelaburan:</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• Kos excavator: RM 180,000</li>
-              <li>• Bayaran pendahuluan: RM 0 (Pinjaman Penuh)</li>
-              <li>• Bayaran bulanan (36 bulan): RM 5,800</li>
-              <li>• Jumlah kos faedah: RM 28,800</li>
+              <li>• Bayaran pendahuluan (10%): RM 18,000</li>
+              <li>• Bayaran bulanan (36 bulan): RM 5,200</li>
+              <li>• Jumlah kos faedah: RM 7,200</li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-gray-800 mb-2">Potensi Hasil:</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• Kadar sewa harian: RM 800-1,200</li>
               <li>• Hasil bulanan (20 hari bekerja): RM 16,000-24,000</li>
               <li>• Hasil kasar tahunan: RM 192,000-288,000</li>
@@ -352,7 +342,7 @@ const faqSchema = generateFAQSchema(faqs);
         </div>
         <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-500">
           <p class="text-sm text-gray-800">
-            <strong>Wawasan Utama:</strong> Dengan hanya 20 hari bekerja sebulan pada kadar sewa RM 800/hari, excavator anda menjana hasil RM 16,000 bulanan. Selepas menolak bayaran pinjaman RM 5,800 dan kos operasi RM 3,000 (bahan api, operator, penyelenggaraan), anda memperoleh keuntungan bersih RM 7,200/bulan = RM 86,400/tahun. Dengan 0% bayaran pendahuluan, anda mula menjana pendapatan segera tanpa menguras modal anda!
+            <strong>Wawasan Utama:</strong> Dengan hanya 20 hari bekerja sebulan pada kadar sewa RM 800/hari, excavator anda menjana hasil RM 16,000 bulanan. Selepas menolak bayaran pinjaman RM 5,200 dan kos operasi RM 3,000 (bahan api, operator, penyelenggaraan), anda memperoleh keuntungan bersih RM 7,800/bulan = RM 93,600/tahun.
           </p>
         </div>
       </div>
@@ -366,7 +356,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Mengapa Pilih Ing Heng Credit Untuk Pembiayaan Excavator?
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Kami memahami cabaran kontraktor dan mereka bentuk pembiayaan khusus untuk keperluan perniagaan anda
         </p>
       </div>
@@ -384,12 +374,12 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-primary mb-4">Kira Bayaran Bulanan Anda</h2>
-          <p class="text-gray-600">Anggarkan bayaran pembiayaan excavator bulanan anda berdasarkan harga peralatan dan tempoh pinjaman</p>
+          <p class="text-[#4F3E29]">Anggarkan bayaran pembiayaan excavator bulanan anda berdasarkan harga peralatan dan tempoh pinjaman</p>
         </div>
         <Calculator lang={lang} equipmentType="Excavator" defaultPrice={180000} />
       </div>
@@ -403,7 +393,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Cara Dapatkan Excavator Anda Dalam 5 Langkah Mudah
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Dari permohonan kepada penghantaran peralatan secepat 3-5 hari
         </p>
       </div>
@@ -428,31 +418,30 @@ const faqSchema = generateFAQSchema(faqs);
         >
           Mulakan Permohonan Anda Sekarang
         </a>
-        <p class="text-sm text-gray-600 mt-3">Dapatkan kelulusan dalam 24 jam | Sebut harga tanpa obligasi</p>
+        <p class="text-sm text-[#4F3E29] mt-3">Dapatkan kelulusan dengan pantas | Sebut harga tanpa obligasi</p>
       </div>
     </div>
   </section>
 
   <!-- Equipment Types -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Jenis Excavator Yang Kami Biayai
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Semua kategori excavator dari mini 1 tan hingga mesin tugas berat 30 tan
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {equipmentTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600 mb-3">{equipment.description}</p>
-            <div class="text-sm text-gray-700 space-y-1">
+            <p class="text-[#4F3E29] mb-3">{equipment.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-1">
               <p><strong>Aplikasi:</strong> {equipment.applications}</p>
-              <p><strong>Julat Harga:</strong> <span class="text-primary font-semibold">{equipment.priceRange}</span></p>
             </div>
           </div>
         ))}
@@ -463,12 +452,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">Jenama Excavator Diterima</h3>
         <div class="flex flex-wrap justify-center gap-4">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium hover:shadow-md transition-shadow">
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-gray-600 mt-4">...dan banyak lagi! Hubungi kami untuk jenama lain dan peralatan khusus.</p>
+        <p class="text-[#4F3E29] mt-4">...dan banyak lagi! Hubungi kami untuk jenama lain dan peralatan khusus.</p>
       </div>
     </div>
   </section>
@@ -480,14 +469,14 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Keperluan Permohonan
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Proses dokumentasi mudah - Kebanyakan kontraktor sudah mempunyai dokumen ini
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- Individual Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">Untuk Individu / Pemilik Tunggal</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -496,7 +485,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Salinan IC Malaysia / Pasport</div>
-                <div class="text-sm text-gray-600">IC Malaysia untuk warganegara, pasport sah + permit kerja untuk warga asing</div>
+                <div class="text-sm text-[#4F3E29]">IC Malaysia untuk warganegara, pasport sah + permit kerja untuk warga asing</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -505,7 +494,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Penyata Bank 6 Bulan</div>
-                <div class="text-sm text-gray-600">Akaun peribadi atau perniagaan menunjukkan pendapatan tetap atau deposit projek</div>
+                <div class="text-sm text-[#4F3E29]">Akaun peribadi atau perniagaan menunjukkan pendapatan tetap atau deposit projek</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -514,7 +503,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Bukti Pendapatan</div>
-                <div class="text-sm text-gray-600">Slip gaji, penyata KWSP, kontrak projek, atau resit pembayaran</div>
+                <div class="text-sm text-[#4F3E29]">Slip gaji, penyata KWSP, kontrak projek, atau resit pembayaran</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -523,14 +512,14 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Pendaftaran CIDB (Jika Ada)</div>
-                <div class="text-sm text-gray-600">Pendaftaran kontraktor CIDB membantu tetapi tidak wajib</div>
+                <div class="text-sm text-[#4F3E29]">Pendaftaran kontraktor CIDB membantu tetapi tidak wajib</div>
               </div>
             </li>
           </ul>
         </div>
 
         <!-- Company Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">Untuk Syarikat (Sdn Bhd / PLT)</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -539,7 +528,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Pendaftaran SSM</div>
-                <div class="text-sm text-gray-600">Sijil pendaftaran syarikat (Borang 9 untuk Sdn Bhd, Borang 24 untuk Enterprise, Borang 49 untuk Perkongsian)</div>
+                <div class="text-sm text-[#4F3E29]">Sijil pendaftaran syarikat (Borang 9 untuk Sdn Bhd, Borang 24 untuk Enterprise, Borang 49 untuk Perkongsian)</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -548,7 +537,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Penyata Bank Syarikat</div>
-                <div class="text-sm text-gray-600">6 bulan penyata akaun syarikat menunjukkan transaksi perniagaan</div>
+                <div class="text-sm text-[#4F3E29]">6 bulan penyata akaun syarikat menunjukkan transaksi perniagaan</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -557,7 +546,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Salinan IC Pengarah</div>
-                <div class="text-sm text-gray-600">Semua pengarah dan pemegang saham utama (25%+ pemilikan)</div>
+                <div class="text-sm text-[#4F3E29]">Semua pengarah dan pemegang saham utama (25%+ pemilikan)</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -566,19 +555,19 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">Penyata Kewangan (Pilihan)</div>
-                <div class="text-sm text-gray-600">Akaun teraudit membantu tetapi tidak wajib untuk syarikat bawah 2 tahun</div>
+                <div class="text-sm text-[#4F3E29]">Akaun teraudit membantu tetapi tidak wajib untuk syarikat bawah 2 tahun</div>
               </div>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="max-w-3xl mx-auto mt-8 p-6 bg-gray-50 border-l-4 border-primary rounded-lg">
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
         <h4 class="font-bold text-primary mb-2">Nota Penting:</h4>
-        <ul class="space-y-1 text-gray-700 text-sm">
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
           <li>• Umur peralatan: Kami menerima excavator sehingga 10 tahun untuk pembiayaan</li>
           <li>• Skor kredit: Kami menerima pemohon dengan isu CCRIS/CTOS - Kredit buruk diluluskan</li>
-          <li>• Masa pemprosesan: 24 jam dari penyerahan dokumen lengkap (8-12 jam untuk kes mendesak)</li>
+          <li>• Masa pemprosesan: Pantas dari penyerahan dokumen lengkap (8-1cepat untuk kes mendesak)</li>
           <li>• Dokumen tambahan mungkin diminta berdasarkan kes individu (contohnya kontrak projek, sebut harga)</li>
           <li>• Untuk pinjaman melebihi RM 500,000, cagaran tambahan mungkin diperlukan (harta atau penjamin)</li>
         </ul>
@@ -587,13 +576,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Kisah Kejayaan Dari Kontraktor Malaysia
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Kontraktor sebenar yang mengembangkan perniagaan mereka dengan pembiayaan excavator kami
         </p>
       </div>
@@ -612,97 +601,15 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="section">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Mengapa Ing Heng Credit Mengalahkan Pesaing
-        </h2>
-        <p class="text-xl text-gray-600">
-          Bandingkan kami dengan bank dan pembiayaan peniaga - Lihat perbezaannya
-        </p>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
-          <thead class="bg-secondary text-white">
-            <tr>
-              <th class="px-6 py-4 text-left">Ciri</th>
-              <th class="px-6 py-4 text-center bg-accent text-primary font-bold">Ing Heng Credit</th>
-              <th class="px-6 py-4 text-center">Bank Tradisional</th>
-              <th class="px-6 py-4 text-center">Pembiayaan Peniaga</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr>
-              <td class="px-6 py-4 font-medium">Kadar Kelulusan</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">95%</td>
-              <td class="px-6 py-4 text-center text-gray-600">50-60%</td>
-              <td class="px-6 py-4 text-center text-gray-600">70%</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Masa Kelulusan</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">24 jam</td>
-              <td class="px-6 py-4 text-center text-gray-600">2-4 minggu</td>
-              <td class="px-6 py-4 text-center text-gray-600">1-2 minggu</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Bayaran Pendahuluan</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">0% (Pinjaman Penuh)</td>
-              <td class="px-6 py-4 text-center text-gray-600">20-30%</td>
-              <td class="px-6 py-4 text-center text-gray-600">20-30%</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Kadar Faedah (setahun)</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">7.5-12%</td>
-              <td class="px-6 py-4 text-center text-gray-600">9-15%</td>
-              <td class="px-6 py-4 text-center text-gray-600">10-18%</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Pelan Bayaran Bermusim</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Tersedia</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Tidak Tersedia</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Tidak Tersedia</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Pembiayaan Peralatan Terpakai</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Sehingga 10 tahun</td>
-              <td class="px-6 py-4 text-center text-gray-600">Sehingga 5 tahun</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Baru sahaja</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Kredit Buruk Diterima</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Ya (95% kelulusan)</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Jarang</td>
-              <td class="px-6 py-4 text-center text-gray-600">Kadang-kadang</td>
-            </tr>
-            <tr class="bg-gray-50">
-              <td class="px-6 py-4 font-medium">Kontraktor Kali Pertama</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✓ Diluluskan</td>
-              <td class="px-6 py-4 text-center text-red-600">✗ Sukar</td>
-              <td class="px-6 py-4 text-center text-gray-600">Kes demi kes</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 font-medium">Penalti Bayaran Awal</td>
-              <td class="px-6 py-4 text-center text-green-600 font-bold">✗ Tiada penalti</td>
-              <td class="px-6 py-4 text-center text-gray-600">Penalti 1-3%</td>
-              <td class="px-6 py-4 text-center text-gray-600">Penalti 2-5%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
 
   <!-- FAQ Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Soalan Lazim Tentang Pembiayaan Excavator
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Segala yang anda perlu tahu tentang pembiayaan excavator anda
         </p>
       </div>
@@ -716,13 +623,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         Bersedia Untuk Dapatkan Excavator Anda Dan Mula Menjana Pendapatan?
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Mohon hari ini dan dapatkan kelulusan esok. Sertai 4,000+ kontraktor yang memilih Ing Heng Credit untuk keperluan pembiayaan excavator mereka. 40 tahun pengalaman, kadar kelulusan 95%, terma telus.
+        Mohon hari ini dan dapatkan kelulusan esok. Sertai 4,000+ kontraktor yang memilih Ing Heng Credit untuk keperluan pembiayaan excavator mereka. 40 tahun pengalaman, kadar kelulusan Industry-Leading, terma telus.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -753,7 +660,7 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Kelulusan 24 Jam Dijamin</span>
+          <span>Kelulusan Pantas Dijamin</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -765,6 +672,9 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="excavator" />
+
   <!-- Contact Form Section -->
   <section class="section">
     <div class="container-custom">
@@ -773,8 +683,8 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             Atau Isi Borang Permohonan Dalam Talian Kami
           </h2>
-          <p class="text-gray-600">
-            Kami akan menghubungi anda dalam 2 jam semasa waktu perniagaan (Isnin-Jumaat 9AM-5PM, Sabtu 9AM-1PM)
+          <p class="text-[#4F3E29]">
+            Kami akan menghubungi anda dalam cepat semasa waktu perniagaan (Isnin-Jumaat 9AM-5PM, Sabtu 9AM-1PM)
           </p>
         </div>
         <ContactForm lang={lang} />

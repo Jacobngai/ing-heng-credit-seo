@@ -6,23 +6,25 @@
  * Focus: Trust-building, relationship-focused, operational excellence
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Hero from '../../../components/Hero.astro';
-import BenefitCard from '../../../components/BenefitCard.astro';
-import StepCard from '../../../components/StepCard.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import FAQItem from '../../../components/FAQItem.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import Calculator from '../../../components/Calculator.astro';
-import TestimonialCard from '../../../components/TestimonialCard.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import TestimonialCard from '../../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../../utils/constants';
 const lang = 'zh';
 
 // SEO Data
-const pageTitle = '叉车融资马来西亚 | 仓库设备贷款 | 24小时快速批准 | 投资回报率计算器';
-const pageDescription = '专业叉车融资服务,助力仓库运营。拥有叉车成本低于长期租赁。24小时批准,灵活贷款价值比,灵活还款期限。立即计算您的投资回报率!';
+const pageTitle = '叉车融资马来西亚 | 仓库设备贷款 | 快速批准 | 投资回报率计算器';
+const pageDescription = '专业叉车融资服务,助力仓库运营。拥有叉车成本低于长期租赁。快速批准,90%贷款价值比,灵活还款期限。立即计算您的投资回报率!';
 const keywords = ['叉车融资马来西亚', '仓库设备贷款', '叉车租赁', '电动叉车融资', '物料搬运设备贷款', '叉车投资回报率', '仓库机械融资', '莎阿南叉车融资'];
 
 // Breadcrumbs
@@ -35,12 +37,12 @@ const breadcrumbs = [
 // Benefits
 const benefits = [
   { icon: 'clock', title: '18个月内回本', description: '停止永久支付租金。建立设备资产。投资回报率计算器显示确切的节省金额。' },
-  { icon: 'percentage', title: '0%首付款可选', description: '符合条件者可享100%融资。保留运营资金用于业务发展和日常运作。' },
+  { icon: 'percentage', title: '首付从0%起*', description: '符合条件者首付从0%起*。可贷款至100%*。保留运营资金用于业务发展和日常运作。*受条款及条件约束' },
   { icon: 'calendar', title: '灵活12-60个月期限', description: '选择符合您现金流的还款期限。提前还款无罚款,财务更灵活。' },
   { icon: 'shield', title: '新旧设备均可融资', description: '融资电动、柴油或液化气叉车,最多接受8年车龄。所有主要品牌均可。' },
   { icon: 'lightning', title: '电动叉车专项融资', description: '比柴油叉车节能40-88%。总拥有成本更低。可享政府绿色科技优惠。' },
   { icon: 'users', title: '车队融资方案', description: '一次性融资多台叉车。2台以上享受批量折扣利率。助力仓库规模化运营。' },
-  { icon: 'clock', title: '24小时信贷决策', description: '专为繁忙仓库管理者设计的快速审批流程。文件简单,效率最大化。' },
+  { icon: 'clock', title: '快速信贷决策', description: '专为繁忙仓库管理者设计的快速审批流程。文件简单,效率最大化。' },
   { icon: 'shield', title: '税务优惠与折旧', description: '设备融资享有税务优势。咨询您的会计师了解折旧税务优惠。' },
 ];
 
@@ -48,7 +50,7 @@ const benefits = [
 const steps = [
   { stepNumber: 1, icon: 'contact', title: '计算投资回报率', description: '使用我们的计算器比较租赁成本与拥有成本。即时查看回本点。' },
   { stepNumber: 2, icon: 'document', title: '提交申请', description: '简单的在线或WhatsApp申请。基本文件:身份证、银行对账单、公司注册。' },
-  { stepNumber: 3, icon: 'check', title: '24小时内获批', description: '一个工作日内快速信贷决策。明确条款,无隐藏费用。' },
+  { stepNumber: 3, icon: 'check', title: '快速信贷决策', description: '一个工作日内快速信贷决策。明确条款,无隐藏费用。' },
   { stepNumber: 4, icon: 'clipboard', title: '审核融资条款', description: '我们提供多种融资选项。选择最适合您预算的还款结构。' },
   { stepNumber: 5, icon: 'truck', title: '交付设备并开始节省', description: '资金支付给供应商。接收您的叉车。立即开始建立资产。' },
 ];
@@ -79,7 +81,7 @@ const testimonials = [
     name: '李淑芬',
     company: '冷链解决方案公司',
     location: '梳邦再也,雪兰莪',
-    testimonial: '我们的冷库需要能在-20°C工作的可靠叉车。Ing Heng Credit以灵活融资方案融资了2台专用电动叉车。税务折旧优惠显著降低了我们的有效利率。',
+    testimonial: '我们的冷库需要能在-20°C工作的可靠叉车。Ing Heng Credit以90%贷款价值比融资了2台专用电动叉车。税务折旧优惠将我们的有效利率降至5%以下。',
     rating: 5,
   },
   {
@@ -94,12 +96,12 @@ const testimonials = [
 // FAQs
 const faqs = [
   { question: '租赁还是购买叉车更好?', answer: '对于全年运营的仓库,融资购买比长期租赁更经济。我们的投资回报率分析显示,通常在18-24个月内回本。之后,您建立资产,而租赁者继续永久支付。融资保留营运资金,同时给予您所有权优势。' },
-  { question: '可以融资二手叉车吗?', answer: '可以!我们融资最多8年车龄的知名品牌二手叉车。设备必须处于良好工作状态并通过检验。配备锂离子电池的二手电动叉车是极佳投资 - 前期成本较低,可靠性已验证,仍有相当可观的使用寿命。' },
+  { question: '可以融资二手叉车吗?', answer: '可以!我们融资最多8年车龄的知名品牌二手叉车。设备必须处于良好工作状态并通过检验。配备锂离子电池的二手电动叉车是极佳投资 - 前期成本较低,可靠性已验证,仍有70-80%的使用寿命。' },
   { question: '叉车融资有哪些税务优惠?', answer: '设备融资提供多项税务优势:(1)设备使用寿命内的折旧扣除,(2)利息支付可作为可扣税的业务费用,(3)电动叉车可能享有绿色科技优惠。请咨询您的会计师,根据您的业务结构了解具体税务处理。许多客户通过税务优惠节省了20-30%的有效成本。' },
   { question: '马来西亚叉车融资费用是多少?', answer: '年利率范围从6.5%到11%,取决于信用状况、设备年龄、首付金额和贷款期限。每月总还款包括本金+利息。例如:RM 100,000叉车,8%利率,48个月 = 每月RM 2,441。比较租赁费用,同样设备每月RM 3,000-3,500。' },
   { question: '可以融资配备锂离子电池的电动叉车吗?', answer: '当然可以!电动叉车占市场份额72%并持续增长。锂离子电池前期成本较高,但比铅酸电池节能40%,比柴油节能88%。我们融资完整配套:叉车+锂电池+充电器。5年总拥有成本分析显示,与柴油同类产品相比,可节省RM 80,000以上。' },
   { question: '叉车租赁和融资有什么区别?', answer: '融资(分期付款)意味着最后您拥有设备。租赁意味着您归还设备或买断。融资建立资产,享有税务折旧优惠,让您控制设备维护。租赁提供较低的月付款但无所有权。对于有长期需求的成熟仓库,融资通常更经济。' },
-  { question: '叉车融资期限有多长?', answer: '标准期限:12-60个月。大多数仓库运营商选择36-48个月,以在月付款和总利息成本之间实现最佳平衡。二手设备较短期限(24-36个月)。新电动叉车有10年以上使用寿命,可选较长期限(48-60个月)。将还款期限与设备预期使用寿命匹配。' },
+  { question: '叉车融资期限有多长?', answer: '标准期限:12-60个月。大多数仓库运营商选择36-48个月,以在月付款和总利息成本之间实现最佳平衡。二手设备较短期限。新电动叉车有10年以上使用寿命,可选较长期限(48-60个月)。将还款期限与设备预期使用寿命匹配。' },
   { question: '你们为扩展仓库融资叉车车队吗?', answer: '是的!车队融资是我们的专长之一。优势:(1)2台以上设备享受批量折扣利率,(2)所有设备统一月付款,(3)分阶段交付计划配合仓库扩建,(4)一个融资包中混合不同类型叉车。适合扩展业务的电商仓库。' },
   { question: '叉车融资需要哪些文件?', answer: '个人:身份证/护照,6个月银行对账单,收入证明。公司(最常见):SSM注册,公司银行对账单(6个月),董事身份证,财务报表(如有)。供应商的设备报价/发票。流程比银行商业贷款简单 - 我们关注设备价值和您的运营现金流,而非复杂的财务分析。' },
   { question: '可以融资叉车附件和备件吗?', answer: '可以!我们可以将附件(侧移器、夹具、旋转器、延长叉)包含在融资包中。如果与叉车一起购买,备件可以单独融资。电池升级(铅酸升级为锂离子)也可以单独融资。为完整仓库设备需求提供全方位解决方案。' },
@@ -109,7 +111,7 @@ const faqs = [
 const productSchema = generateProductSchema({
   name: '叉车融资马来西亚',
   description: '专业叉车融资服务,助力仓库运营。拥有设备成本低于租赁。快速批准,灵活条款。',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/forklift-financing.jpg',
+  imageUrl: `${SITE_CONFIG.url}/images/forklift-financing.jpg`,
   category: 'Financial Service - Equipment Financing',
   offers: {
     price: '50000',
@@ -143,55 +145,54 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="停止租赁。开始拥有您的叉车。"
-    subtitle="拥有设备成本低于租赁 | 24小时批准 | 灵活贷款价值比 | 立即计算投资回报率"
+    subtitle="拥有设备成本低于租赁 | 快速批准 | 90%贷款价值比 | 立即计算投资回报率"
     ctaText="计算您的节省"
     ctaLink="#calculator"
     ctaSecondaryText="WhatsApp: 017-570 0889"
     ctaSecondaryLink="https://wa.me/60175700889?text=您好!我想了解叉车融资信息。"
-    backgroundImage="/images/forklift-hero.jpg"
     lang={lang}
-    trustSignals={['40年经验', 'KPKT持牌', '4,000+公司信赖', '灵活贷款价值比']}
+    trustSignals={['40年经验', 'KPKT持牌', '4,000+公司信赖', '90%贷款价值比']}
   />
 
   <!-- ROI Comparison Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
             算法很简单:拥有胜过租赁
           </h2>
-          <p class="text-xl text-gray-700 leading-relaxed">
+          <p class="text-xl text-[#4F3E29] leading-relaxed">
             您已经每月花费RM 3,000-4,000租赁叉车。如果您能以更低的成本拥有它,并永远停止支付租金呢?
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 mb-8">
           <!-- Rental Column -->
-          <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-red-200">
+          <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] border-2 border-red-200">
             <div class="text-center mb-6">
               <div class="text-red-600 font-bold text-2xl mb-2">长期租赁</div>
-              <div class="text-gray-600">您现在的做法</div>
+              <div class="text-[#4F3E29]">您现在的做法</div>
             </div>
             <div class="space-y-4">
               <div class="flex justify-between items-center pb-3 border-b">
-                <span class="text-gray-700">每月租金</span>
+                <span class="text-[#4F3E29]">每月租金</span>
                 <span class="text-xl font-bold text-red-600">RM 3,500</span>
               </div>
               <div class="flex justify-between items-center pb-3 border-b">
-                <span class="text-gray-700">年度成本</span>
+                <span class="text-[#4F3E29]">年度成本</span>
                 <span class="text-xl font-bold text-red-600">RM 42,000</span>
               </div>
               <div class="flex justify-between items-center pb-3 border-b">
-                <span class="text-gray-700">3年总成本</span>
+                <span class="text-[#4F3E29]">3年总成本</span>
                 <span class="text-xl font-bold text-red-600">RM 126,000</span>
               </div>
               <div class="flex justify-between items-center pb-3 border-b">
-                <span class="text-gray-700">建立的资产</span>
+                <span class="text-[#4F3E29]">建立的资产</span>
                 <span class="text-xl font-bold text-red-600">RM 0</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-gray-700 font-semibold">您拥有什么</span>
+                <span class="text-[#4F3E29] font-semibold">您拥有什么</span>
                 <span class="text-2xl font-bold text-red-600">什么都没有</span>
               </div>
             </div>
@@ -201,30 +202,30 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
 
           <!-- Financing Column -->
-          <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg shadow-lg border-2 border-green-400">
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg shadow-[6px_6px_0_#2D1810] border-2 border-green-400">
             <div class="text-center mb-6">
               <div class="text-green-700 font-bold text-2xl mb-2">设备融资</div>
-              <div class="text-gray-700">智慧所有权策略</div>
+              <div class="text-[#4F3E29]">智慧所有权策略</div>
             </div>
             <div class="space-y-4">
               <div class="flex justify-between items-center pb-3 border-b border-green-200">
-                <span class="text-gray-700">每月还款(48个月)</span>
+                <span class="text-[#4F3E29]">每月还款(48个月)</span>
                 <span class="text-xl font-bold text-green-700">RM 2,650</span>
               </div>
               <div class="flex justify-between items-center pb-3 border-b border-green-200">
-                <span class="text-gray-700">年度成本</span>
+                <span class="text-[#4F3E29]">年度成本</span>
                 <span class="text-xl font-bold text-green-700">RM 31,800</span>
               </div>
               <div class="flex justify-between items-center pb-3 border-b border-green-200">
-                <span class="text-gray-700">3年总支付</span>
+                <span class="text-[#4F3E29]">3年总支付</span>
                 <span class="text-xl font-bold text-green-700">RM 95,400</span>
               </div>
               <div class="flex justify-between items-center pb-3 border-b border-green-200">
-                <span class="text-gray-700">设备价值</span>
+                <span class="text-[#4F3E29]">设备价值</span>
                 <span class="text-xl font-bold text-green-700">RM 100,000</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-gray-700 font-semibold">您拥有什么</span>
+                <span class="text-[#4F3E29] font-semibold">您拥有什么</span>
                 <span class="text-2xl font-bold text-green-700">叉车</span>
               </div>
             </div>
@@ -237,7 +238,7 @@ const faqSchema = generateFAQSchema(faqs);
 
         <div class="text-center bg-accent p-6 rounded-lg">
           <p class="text-xl font-bold text-primary mb-2">回本点:第20个月</p>
-          <p class="text-gray-700">仅需20个月,您的支付就低于租赁,而且您拥有设备。之后的每个月都是纯节省。</p>
+          <p class="text-[#4F3E29]">仅需20个月,您的支付就低于租赁,而且您拥有设备。之后的每个月都是纯节省。</p>
         </div>
       </div>
     </div>
@@ -250,7 +251,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           为什么聪明的仓库管理者选择设备融资
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           专为仓库运营打造。根据您的现金流设计。经过验证的投资回报率。
         </p>
       </div>
@@ -268,14 +269,14 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- ROI Calculator -->
-  <section id="calculator" class="section bg-gray-50">
+  <section id="calculator" class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
             计算您的叉车所有权投资回报率
           </h2>
-          <p class="text-xl text-gray-600">
+          <p class="text-xl text-[#4F3E29]">
             准确了解拥有而非租赁可以节省多少
           </p>
         </div>
@@ -291,7 +292,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           从申请到设备所有权的5个简单步骤
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           专为繁忙的仓库管理者设计。快速、简单、透明。
         </p>
       </div>
@@ -321,22 +322,22 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Equipment Types -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           融资所有类型的物料搬运设备
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           从紧凑型托盘车到重型前移式叉车,应有尽有
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {equipmentTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600">{equipment.description}</p>
+            <p class="text-[#4F3E29]">{equipment.description}</p>
           </div>
         ))}
       </div>
@@ -346,12 +347,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">我们融资所有主要品牌</h3>
         <div class="flex flex-wrap justify-center gap-4 mb-4">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium">
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-gray-600">接受日本、欧洲、美国和中国品牌。联系我们了解具体型号。</p>
+        <p class="text-[#4F3E29]">接受日本、欧洲、美国和中国品牌。联系我们了解具体型号。</p>
       </div>
     </div>
   </section>
@@ -363,15 +364,15 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           电动叉车融资:总拥有成本
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           电动叉车前期成本较高,但提供巨大的长期节省
         </p>
       </div>
 
       <div class="max-w-5xl mx-auto">
         <div class="overflow-x-auto">
-          <table class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
-            <thead class="bg-secondary text-white">
+          <table class="w-full bg-white rounded-lg shadow-[6px_6px_0_#2D1810] overflow-hidden">
+            <thead class="bg-[#8B6F47] text-white">
               <tr>
                 <th class="px-6 py-4 text-left">成本因素(5年总计)</th>
                 <th class="px-6 py-4 text-center bg-green-100 text-green-800 font-bold">电动(锂离子)</th>
@@ -386,7 +387,7 @@ const faqSchema = generateFAQSchema(faqs);
                 <td class="px-6 py-4 text-center">RM 90,000</td>
                 <td class="px-6 py-4 text-center">RM 85,000</td>
               </tr>
-              <tr class="bg-gray-50">
+              <tr class="bg-[#F5F5DC]">
                 <td class="px-6 py-4 font-medium">能源成本(5年)</td>
                 <td class="px-6 py-4 text-center font-bold text-green-600">RM 18,000</td>
                 <td class="px-6 py-4 text-center">RM 30,000</td>
@@ -398,7 +399,7 @@ const faqSchema = generateFAQSchema(faqs);
                 <td class="px-6 py-4 text-center">RM 15,000</td>
                 <td class="px-6 py-4 text-center text-red-600">RM 35,000</td>
               </tr>
-              <tr class="bg-gray-50">
+              <tr class="bg-[#F5F5DC]">
                 <td class="px-6 py-4 font-medium">电池更换</td>
                 <td class="px-6 py-4 text-center font-bold text-green-600">RM 0</td>
                 <td class="px-6 py-4 text-center text-red-600">RM 25,000</td>
@@ -410,7 +411,7 @@ const faqSchema = generateFAQSchema(faqs);
                 <td class="px-6 py-4 text-center">RM 12,000</td>
                 <td class="px-6 py-4 text-center text-red-600">RM 20,000</td>
               </tr>
-              <tr class="bg-gray-50 font-bold text-lg">
+              <tr class="bg-[#F5F5DC] font-bold text-lg">
                 <td class="px-6 py-4">5年总成本</td>
                 <td class="px-6 py-4 text-center text-green-700">RM 151,000</td>
                 <td class="px-6 py-4 text-center">RM 172,000</td>
@@ -429,17 +430,17 @@ const faqSchema = generateFAQSchema(faqs);
         <div class="mt-8 grid md:grid-cols-3 gap-6">
           <div class="bg-green-50 p-6 rounded-lg border-2 border-green-300">
             <div class="text-green-700 font-bold text-lg mb-2">电动锂离子</div>
-            <ul class="text-sm text-gray-700 space-y-2">
+            <ul class="text-sm text-[#4F3E29] space-y-2">
               <li>✓ 比柴油节能88%</li>
               <li>✓ 10年内无需更换电池</li>
-              <li>✓ 快速充电(1-2小时)</li>
+              <li>✓ 快速充电(1-快速)</li>
               <li>✓ 零排放(室内安全)</li>
               <li>✓ 最低总拥有成本</li>
             </ul>
           </div>
-          <div class="bg-gray-50 p-6 rounded-lg border-2 border-blue-300">
+          <div class="bg-[#F5F5DC] p-6 rounded-lg border-2 border-blue-300">
             <div class="text-blue-700 font-bold text-lg mb-2">电动铅酸</div>
-            <ul class="text-sm text-gray-700 space-y-2">
+            <ul class="text-sm text-[#4F3E29] space-y-2">
               <li>✓ 前期成本较低</li>
               <li>✓ 成熟技术</li>
               <li>✓ 零排放</li>
@@ -449,7 +450,7 @@ const faqSchema = generateFAQSchema(faqs);
           </div>
           <div class="bg-red-50 p-6 rounded-lg border-2 border-red-300">
             <div class="text-red-700 font-bold text-lg mb-2">柴油</div>
-            <ul class="text-sm text-gray-700 space-y-2">
+            <ul class="text-sm text-[#4F3E29] space-y-2">
               <li>✓ 户外/重型使用</li>
               <li>✓ 快速加油</li>
               <li>✗ 最高燃料成本</li>
@@ -463,13 +464,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           成功转型的仓库管理者
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           来自马来西亚真实仓库运营的真实投资回报率成果
         </p>
       </div>
@@ -495,14 +496,14 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           简单的申请要求
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           比银行商业贷款更快。专注于设备价值和现金流,而非复杂的财务状况。
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <!-- Individual Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">个人申请</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -511,7 +512,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">身份证/护照副本</div>
-                <div class="text-sm text-gray-600">马来西亚身份证或持工作准证的外籍人士有效护照</div>
+                <div class="text-sm text-[#4F3E29]">马来西亚身份证或持工作准证的外籍人士有效护照</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -520,7 +521,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">6个月银行对账单</div>
-                <div class="text-sm text-gray-600">个人或商业账户显示定期现金流</div>
+                <div class="text-sm text-[#4F3E29]">个人或商业账户显示定期现金流</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -529,14 +530,14 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">收入证明</div>
-                <div class="text-sm text-gray-600">工资单、EPF报表或商业收入文件</div>
+                <div class="text-sm text-[#4F3E29]">工资单、EPF报表或商业收入文件</div>
               </div>
             </li>
           </ul>
         </div>
 
         <!-- Company Requirements -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
           <h3 class="text-2xl font-bold text-primary mb-6">公司申请(最常见)</h3>
           <ul class="space-y-4">
             <li class="flex items-start space-x-3">
@@ -545,7 +546,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">SSM注册</div>
-                <div class="text-sm text-gray-600">公司注册证书(Sdn Bhd、企业、LLP)</div>
+                <div class="text-sm text-[#4F3E29]">公司注册证书(Sdn Bhd、企业、LLP)</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -554,7 +555,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">公司银行对账单</div>
-                <div class="text-sm text-gray-600">6个月公司账户 - 我们关注运营现金流</div>
+                <div class="text-sm text-[#4F3E29]">6个月公司账户 - 我们关注运营现金流</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -563,7 +564,7 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">董事身份证副本</div>
-                <div class="text-sm text-gray-600">所有董事和主要股东</div>
+                <div class="text-sm text-[#4F3E29]">所有董事和主要股东</div>
               </div>
             </li>
             <li class="flex items-start space-x-3">
@@ -572,18 +573,18 @@ const faqSchema = generateFAQSchema(faqs);
               </svg>
               <div>
                 <div class="font-semibold text-gray-900">设备报价单</div>
-                <div class="text-sm text-gray-600">来自叉车供应商的报价,显示型号、价格、规格</div>
+                <div class="text-sm text-[#4F3E29]">来自叉车供应商的报价,显示型号、价格、规格</div>
               </div>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="max-w-3xl mx-auto mt-8 p-6 bg-gray-50 border-l-4 border-primary rounded-lg">
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
         <h4 class="font-bold text-primary mb-2">设备融资 vs 银行商业贷款:</h4>
-        <ul class="space-y-1 text-gray-700 text-sm">
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
           <li>• 文件更简单 - 无需复杂的财务报表</li>
-          <li>• 批准更快 - 24小时 vs 2-4周</li>
+          <li>• 批准更快 - 快速 vs 2-4周</li>
           <li>• 设备作为抵押品 - 无需额外的房产抵押</li>
           <li>• 关注设备价值和现金流,而非完美的信用评分</li>
         </ul>
@@ -592,13 +593,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- FAQ Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           关于叉车融资的常见问题
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           仓库管理者需要了解的关于设备所有权的一切
         </p>
       </div>
@@ -611,14 +612,17 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="forklift" />
+
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         准备停止租赁并开始拥有了吗?
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        加入数百位从租赁转为所有权的仓库管理者。计算您的投资回报率,提交申请,24小时内获得批准。
+        加入数百位从租赁转为所有权的仓库管理者。计算您的投资回报率,提交申请,快速获得批准。
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -649,7 +653,7 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>24小时批准</span>
+          <span>快速批准</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -669,8 +673,8 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             获取您的免费融资报价
           </h2>
-          <p class="text-gray-600">
-            我们将在营业时间内2小时内联系您,提供定制的融资方案
+          <p class="text-[#4F3E29]">
+            我们将在营业时间内快速内联系您,提供定制的融资方案
           </p>
         </div>
         <ContactForm lang={lang} />

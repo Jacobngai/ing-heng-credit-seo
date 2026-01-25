@@ -1,0 +1,341 @@
+---
+/**
+ * Dynamic Location Tag Page
+ * Lists all equipment financing articles for a specific location
+ * URL: /en/blog/location/selangor, /en/blog/location/johor, etc.
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import {
+  getLocationTags,
+  getLocationTagBySlug,
+  getEquipmentTags,
+  getTagName,
+  buildBlogPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'en';
+
+// Generate static paths for all locations
+export function getStaticPaths() {
+  const locations = getLocationTags();
+  return locations.map((loc) => ({
+    params: { location: loc.slug.en },
+    props: { locationId: loc.id }
+  }));
+}
+
+const { location } = Astro.params;
+const { locationId } = Astro.props;
+
+// Get location data
+const locationTag = getLocationTagBySlug(location as string, lang);
+if (!locationTag) {
+  return Astro.redirect('/en/blog');
+}
+
+const locationName = getTagName(locationTag, lang);
+const equipmentTags = getEquipmentTags();
+
+// Location-specific data
+const locationData: Record<string, { description: string; highlights: string[]; industries: string[] }> = {
+  'selangor': {
+    description: 'Selangor is Malaysia\'s most industrialized state with the highest concentration of construction and manufacturing activities.',
+    highlights: ['Shah Alam Industrial Zone', 'Petaling Jaya Business Hub', 'KLIA Logistics Corridor'],
+    industries: ['Construction', 'Manufacturing', 'Logistics', 'Warehousing']
+  },
+  'kuala-lumpur': {
+    description: 'Kuala Lumpur, the capital city, is the center of Malaysia\'s economic and business activities.',
+    highlights: ['KLCC Development Area', 'Bukit Bintang Commercial Zone', 'TRX Financial District'],
+    industries: ['Commercial Construction', 'Property Development', 'Infrastructure']
+  },
+  'johor': {
+    description: 'Johor is Malaysia\'s southern gateway with massive development projects including Forest City and Iskandar Malaysia.',
+    highlights: ['Iskandar Malaysia', 'Forest City', 'Port of Tanjung Pelepas'],
+    industries: ['Port Operations', 'Manufacturing', 'Property Development']
+  },
+  'penang': {
+    description: 'Penang is Malaysia\'s tech hub with a thriving electronics and manufacturing sector.',
+    highlights: ['Bayan Lepas Free Trade Zone', 'Penang Science Park', 'Georgetown Heritage Zone'],
+    industries: ['Electronics', 'Manufacturing', 'Tourism Infrastructure']
+  },
+  'perak': {
+    description: 'Perak offers growing opportunities in mining, agriculture, and infrastructure development.',
+    highlights: ['Lumut Port', 'Ipoh Industrial Area', 'Cameron Highlands'],
+    industries: ['Mining', 'Agriculture', 'Manufacturing']
+  }
+};
+
+const locInfo = locationData[locationTag.id] || {
+  description: `${locationName} offers excellent opportunities for equipment financing across various industries.`,
+  highlights: ['Industrial Parks', 'Commercial Zones', 'Development Areas'],
+  industries: ['Construction', 'Manufacturing', 'Logistics']
+};
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: 'By Location', href: '/en/blog/location' },
+  { label: locationName, href: `/en/blog/location/${location}` },
+];
+
+// Schema markup
+const tagPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": `Equipment Financing in ${locationName} | Ing Heng Credit Blog`,
+  "description": `Expert guides on equipment financing options in ${locationName}. Learn about excavator, forklift, lorry, and heavy machinery financing solutions.`,
+  "url": `https://www.inghengcredit.com/en/blog/location/${location}`,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.inghengcredit.com/logo.png"
+    }
+  }
+};
+---
+
+<BaseLayout
+  title={`Equipment Financing in ${locationName} | Expert Guides | Ing Heng Credit`}
+  description={`Comprehensive equipment financing guides for ${locationName}. Learn about financing options for excavators, forklifts, lorries, and more. Get approved in 24 hours.`}
+  lang={lang}
+  keywords={[
+    `equipment financing ${locationName}`,
+    `${locationName} excavator financing`,
+    `${locationName} forklift loan`,
+    `${locationName} lorry financing`,
+    `heavy equipment loan ${locationName}`,
+    `construction equipment ${locationName}`
+  ]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(tagPageSchema)} />
+
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-yellow-400 text-navy-900 px-4 py-2 mb-6 border-3 border-navy-900 font-black uppercase text-sm" style="box-shadow: 4px 4px 0 rgba(0,0,0,0.3);">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          <span>Location Guide</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Equipment Financing in <span class="text-yellow-400">{locationName}</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          {locInfo.description}
+        </p>
+
+        <!-- Location Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {locInfo.industries.map((industry) => (
+            <div class="bg-white/10 backdrop-blur px-4 py-3 border-2 border-yellow-400/30">
+              <span class="text-yellow-400 font-bold text-sm uppercase">{industry}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="flex flex-wrap justify-center gap-6 text-sm text-yellow-400 font-bold">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>{equipmentTags.length} Equipment Types</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>Local Service</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>24-Hour Approval</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Articles Grid -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Equipment Financing Guides for {locationName}
+        </h2>
+        <p class="text-gray-700 text-lg max-w-2xl mx-auto">
+          Select an equipment type to learn about financing options, requirements, and tips specific to {locationName}.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {equipmentTags.map((equipment) => (
+          <a
+            href={buildBlogPostUrl(lang, locationTag.id, equipment.id)}
+            class="card-brutalist group hover:scale-[1.02] transition-transform duration-300"
+          >
+            <div class="aspect-video bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center border-b-4 border-navy-900">
+              <span class="text-6xl opacity-50 group-hover:opacity-70 transition-opacity">
+                {equipment.icon === 'excavator' ? '🚜' :
+                 equipment.icon === 'forklift' ? '🏗️' :
+                 equipment.icon === 'lorry' ? '🚛' :
+                 equipment.icon === 'prime-mover' ? '🚚' :
+                 equipment.icon === 'crane' ? '🏗️' :
+                 equipment.icon === 'bulldozer' ? '🚜' :
+                 equipment.icon === 'backhoe' ? '🚜' :
+                 equipment.icon === 'wheel-loader' ? '🚜' :
+                 equipment.icon === 'road-roller' ? '🚧' : '🏗️'}
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge-brutalist text-xs">{locationName}</span>
+                <span class="badge-brutalist bg-white text-xs">{getTagName(equipment, lang)}</span>
+              </div>
+              <h3 class="text-xl font-black text-navy-900 mb-2 group-hover:text-yellow-600 transition-colors" style="font-family: 'Bebas Neue', sans-serif;">
+                {getTagName(equipment, lang)} Financing in {locationName}
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Complete guide to financing {getTagName(equipment, lang).toLowerCase()}s in {locationName}. Learn about requirements, rates, and approval process.
+              </p>
+              <span class="inline-flex items-center text-yellow-600 font-black text-sm uppercase group-hover:translate-x-2 transition-transform">
+                Read Guide
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Highlights -->
+  <section class="section bg-gray-50 border-y-4 border-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Why Finance Equipment in {locationName}?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {locInfo.highlights.map((highlight, index) => (
+            <div class="bg-white p-6 border-4 border-navy-900" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <div class="text-4xl font-black text-yellow-400 mb-2" style="font-family: 'Bebas Neue', sans-serif;">
+                0{index + 1}
+              </div>
+              <h3 class="text-lg font-bold text-navy-900">{highlight}</h3>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA Box -->
+        <div class="bg-navy-900 p-8 border-4 border-yellow-400 text-center" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+          <h3 class="text-2xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Ready to Finance Your Equipment in {locationName}?
+          </h3>
+          <p class="text-white mb-6">
+            Get a free quote today. Our team serves {locationName} and can help you find the best financing solution.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="Get Free Quote"
+              link={COMPANY_INFO.whatsapp.link}
+              variant="accent"
+              size="large"
+              icon="whatsapp"
+            />
+            <CTAButton
+              text="Call Us Now"
+              link={`tel:${COMPANY_INFO.phone.international}`}
+              variant="outline-white"
+              size="large"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Locations -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <h2 class="text-2xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Browse Other Locations
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        {getLocationTags().filter(loc => loc.id !== locationTag.id).map((loc) => (
+          <a
+            href={`/en/blog/location/${loc.slug.en}`}
+            class="px-4 py-2 bg-white border-3 border-navy-900 font-bold text-navy-900 hover:bg-yellow-400 transition-colors"
+            style="box-shadow: 3px 3px 0 #1E3A8A;"
+          >
+            {getTagName(loc, lang)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+
+  .bg-navy-900 {
+    background-color: #0F172A;
+  }
+
+  .text-navy-900 {
+    color: #0F172A;
+  }
+
+  .border-navy-900 {
+    border-color: #0F172A;
+  }
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black uppercase;
+    @apply bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+
+  .card-brutalist {
+    @apply bg-white overflow-hidden border-4 border-navy-900;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+
+  .card-brutalist:hover {
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+</style>

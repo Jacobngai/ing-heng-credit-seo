@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '春节前税务购买 2026 - 节前采购',
+  slug: '春节前税务购买2026',
+  excerpt: '2026年春节前设备购买税务优惠。节前采购享受当年税务扣除。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '农历年特惠',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["春节前税务购买","节前采购","年末采购","税务规划"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 春节前税务购买 2026
+
+## 春节前购买
+
+春节前购买设备享受税务优惠:
+
+```
+春节前购买 → 当年税务扣除 → 节省税单
+```
+
+## 节前购买好处
+
+| 购买时间 | 税务扣除 | 节省 |
+|---------|---------|------|
+| 12月购买 | 当年抵税RM 20,000 | RM 4,800 |
+| 1月购买 | 次年抵税 | 等待1年 |
+
+## 节前采购
+
+- 0%首付
+- 当年税务扣除
+- 48小时批准
+- 节前获得设备
+
+**立即申请: WhatsApp +60175700889**
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

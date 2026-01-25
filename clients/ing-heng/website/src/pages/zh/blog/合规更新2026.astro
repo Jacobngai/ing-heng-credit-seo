@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '合规更新 2026 - 法规合规',
+  slug: '合规更新2026',
+  excerpt: '2026年设备合规更新。新法规要求，设备合规升级。JPJ、PUSPAKOM。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["合规更新","设备合规","JPJ要求","PUSPAKOM"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 合规更新 2026
+
+## 设备合规
+
+2026年法规更新:
+
+```
+新法规 → 设备需要更新 → 合规升级 → 0%首付
+```
+
+## 合规要求
+
+### JPJ货车要求
+
+- 年检要求
+- 排放标准
+- 安全设备
+
+### PUSPAKOM要求
+
+- 检查标准
+- 设备合格
+- 合规证明
+
+### 建筑设备
+
+- DOSH认证
+- 安全标准
+- 操作员执照
+
+## 合规升级
+
+| 要求 | 设备 | 成本 | Ing Heng首付 |
+|------|------|------|-------------|
+| 排放标准 | 新货车 | RM 60,000-80,000 | RM 0 |
+| 安全设备 | 新叉车 | RM 25,000-35,000 | RM 0 |
+| DOSH认证 | 新挖掘机 | RM 80,000-150,000 | RM 0 |
+
+**立即申请: WhatsApp +60175700889**
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

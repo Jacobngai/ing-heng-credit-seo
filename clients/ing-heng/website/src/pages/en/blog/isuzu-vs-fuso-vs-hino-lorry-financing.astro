@@ -1,0 +1,621 @@
+---
+/**
+ * Isuzu vs FUSO vs Hino: Malaysia\'s Best Lorry Financing Comparison
+ * Persona: Logistics Lee - Commercial Lorry Financing
+ * Category: Lorry Financing
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'en';
+const category = 'Lorry Financing';
+const slug = 'isuzu-vs-fuso-vs-hino-lorry-financing';
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: 'Isuzu vs FUSO vs Hino Comparison', href: `/en/blog/${slug}` },
+];
+
+// Blog metadata
+const meta = {
+  title: 'Isuzu vs FUSO vs Hino: Malaysia\'s Best Lorry Financing Comparison',
+  description: 'Compare Isuzu, FUSO, and Hino lorries for Malaysian logistics. Learn fuel efficiency, resale value, maintenance costs, and financing options for each brand to make the best investment decision.',
+  publishDate: '2025-01-23',
+  author: 'Ing Heng Credit Team',
+  readTime: 10,
+};
+
+// Schema markup for Article
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": meta.title,
+  "description": meta.description,
+  "datePublished": meta.publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": meta.author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.inghengcredit.com/logo.png"
+    }
+  }
+};
+
+// Brand comparison data
+const brands = [
+  {
+    name: 'Isuzu',
+    country: 'Japan',
+    marketShare: '35%',
+    reputation: 'Fuel efficiency leader',
+    icon: '🇯🇵',
+    color: 'red'
+  },
+  {
+    name: 'FUSO (Mitsubishi)',
+    country: 'Japan',
+    marketShare: '28%',
+    reputation: 'Durability specialist',
+    icon: '🇯🇵',
+    color: 'blue'
+  },
+  {
+    name: 'Hino',
+    country: 'Japan',
+    marketShare: '22%',
+    reputation: 'Reliability focused',
+    icon: '🇯🇵',
+    color: 'green'
+  }
+];
+
+// Detailed comparison table
+const comparisonTable = [
+  { factor: 'Fuel Efficiency (km/l)', isuzu: '4.5-5.5', fuso: '4.0-5.0', hino: '4.2-5.2', winner: 'Isuzu' },
+  { factor: 'Initial Price (5-ton)', isuzu: 'RM140k-160k', fuso: 'RM135k-155k', hino: 'RM145k-165k', winner: 'FUSO' },
+  { factor: 'Resale Value (5-year)', isuzu: '55-65%', fuso: '50-60%', hino: '52-62%', winner: 'Isuzu' },
+  { factor: 'Maintenance Cost/Year', isuzu: 'RM8k-12k', fuso: 'RM10k-14k', hino: 'RM9k-13k', winner: 'Isuzu' },
+  { factor: 'Parts Availability', isuzu: 'Excellent', fuso: 'Excellent', hino: 'Very Good', winner: 'Isuzu/FUSO' },
+  { factor: 'Engine Power (PS)', isuzu: '150-210', fuso: '150-240', hino: '150-220', winner: 'FUSO' },
+  { factor: 'Service Centers', isuzu: '65+ nationwide', fuso: '60+ nationwide', hino: '50+ nationwide', winner: 'Isuzu' },
+  { factor: 'Warranty', isuzu: '3 years/unlimited km', fuso: '3 years/100k km', hino: '3 years/unlimited km', winner: 'Isuzu/Hino' },
+  { factor: 'Loading Capacity', isuzu: '5-10 tons', fuso: '5-10 tons', hino: '5-10 tons', winner: 'Tie' },
+  { factor: 'Driver Comfort', isuzu: 'Modern ergonomics', fuso: 'Spacious cabin', hino: 'Functional design', winner: 'FUSO' }
+];
+
+// Use case recommendations
+const useCases = [
+  {
+    scenario: 'Long-Haul (>500km/trip)',
+    recommended: 'Isuzu',
+    reason: 'Best fuel efficiency reduces operating costs over distance',
+    icon: '🛣️'
+  },
+  {
+    scenario: 'Heavy Loads (10-ton)',
+    recommended: 'FUSO',
+    reason: 'Higher torque and power for challenging terrain',
+    icon: '📦'
+  },
+  {
+    scenario: 'Urban Delivery (Klang Valley)',
+    recommended: 'Hino',
+    reason: 'Reliability for frequent stop-start operations',
+    icon: '🏙️'
+  },
+  {
+    scenario: 'Port Klang Operations',
+    recommended: 'Isuzu',
+    reason: 'Fuel economy + resale value in high-demand area',
+    icon: '⚓'
+  },
+  {
+    scenario: 'Cross-Border (Singapore-Thailand)',
+    recommended: 'FUSO',
+    reason: 'Power and durability for international routes',
+    icon: '🌏'
+  },
+  {
+    scenario: 'Budget-Conscious SME',
+    recommended: 'FUSO',
+    reason: 'Lower initial price with proven reliability',
+    icon: '💰'
+  }
+];
+
+// Financing comparison
+const financingData = [
+  { brand: 'Isuzu', typicalLoanAmount: 'RM140k-160k', interestRate: '2.88-3.5%', monthlyPayment: '~RM2,100-2,400', approvalRate: '95%' },
+  { brand: 'FUSO', typicalLoanAmount: 'RM135k-155k', interestRate: '2.88-3.5%', monthlyPayment: '~RM2,000-2,300', approvalRate: '94%' },
+  { brand: 'Hino', typicalLoanAmount: 'RM145k-165k', interestRate: '2.88-3.5%', monthlyPayment: '~RM2,150-2,450', approvalRate: '93%' }
+];
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  lang={lang}
+  keywords={[
+    'Isuzu lorry Malaysia',
+    'FUSO truck financing',
+    'Hino lorry price',
+    'Isuzu vs FUSO vs Hino',
+    'lorry brand comparison Malaysia',
+    'best lorry for logistics',
+    'Japanese truck Malaysia',
+    'lorry financing rates'
+  ]}
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="section bg-navy-900">
+    <div class="container-custom max-w-4xl mx-auto text-center">
+      <span class="inline-block bg-yellow-400 text-navy-900 px-4 py-2 text-sm font-black uppercase border-2 border-yellow-400 mb-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+        Lorry Financing Guide
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Isuzu vs FUSO vs Hino: Malaysia\'s Best Lorry Financing Comparison
+      </h1>
+      <p class="text-xl text-yellow-400 leading-relaxed mb-8 font-bold">
+        Compare Isuzu, FUSO, and Hino lorries for Malaysian logistics. Learn fuel efficiency, resale value, maintenance costs, and financing options for each brand.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-white">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>10 min read</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          <time datetime={meta.publishDate}>
+            {new Date(meta.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Overview Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Malaysia\'s Big Three Japanese Lorry Brands
+        </h2>
+        <p class="text-gray-600 text-lg">
+          Understanding the market leaders in commercial logistics vehicles
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {brands.map((brand) => (
+          <div class="card-brutalist p-8 text-center">
+            <div class="text-6xl mb-4">{brand.icon}</div>
+            <h3 class="text-3xl font-black text-navy-900 mb-2" style="font-family: 'Bebas Neue', sans-serif;">{brand.name}</h3>
+            <p class="text-gray-600 mb-4">{brand.country} Heritage</p>
+            <div class="border-t-2 border-navy-900 pt-4 mt-4">
+              <div class="text-sm text-gray-600 mb-1">Market Share</div>
+              <div class="text-2xl font-black text-navy-900">{brand.marketShare}</div>
+            </div>
+            <div class="mt-4">
+              <span class={`inline-block px-4 py-2 text-sm font-bold ${
+                brand.color === 'red' ? 'bg-red-100 text-red-800' :
+                brand.color === 'blue' ? 'bg-blue-100 text-blue-800' :
+                'bg-green-100 text-green-800'
+              }`}>
+                {brand.reputation}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container-custom max-w-4xl mx-auto">
+      <article class="prose prose-lg max-w-none">
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+          <p class="text-navy-900 font-bold mb-0">
+            <strong>Quick Summary:</strong> Isuzu leads in fuel efficiency and resale value (ideal for long-haul), FUSO offers power and durability at lower initial cost (great for heavy loads), Hino balances reliability with reasonable pricing (suited for urban delivery). All three have strong financing approval rates at Ing Heng Credit.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Detailed Comparison Table</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Malaysian logistics operators have three dominant Japanese brands to choose from. Here's how they compare across key factors:
+        </p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full border-collapse border-2 border-navy-900">
+            <thead>
+              <tr class="bg-navy-900 text-white">
+                <th class="p-4 text-left font-bold border border-navy-900">Factor</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Isuzu</th>
+                <th class="p-4 text-left font-bold border border-navy-900">FUSO</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Hino</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonTable.map((row, index) => (
+                <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  <td class="p-4 border border-gray-300 font-bold">{row.factor}</td>
+                  <td class="p-4 border border-gray-300">{row.isuzu}</td>
+                  <td class="p-4 border border-gray-300">{row.fuso}</td>
+                  <td class="p-4 border border-gray-300">{row.hino}</td>
+                  <td class="p-4 border border-gray-300">
+                    <span class={`inline-block px-3 py-1 text-xs font-bold bg-yellow-100 text-yellow-800`}>
+                      {row.winner}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Isuzu: The Fuel Efficiency Champion</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Market Leader (35% Share)</strong> - Isuzu dominates Malaysian logistics for good reason. The brand's reputation for fuel efficiency makes it the top choice for long-haul operators.
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Key Strengths</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Fuel Efficiency:</strong> 4.5-5.5 km/l (best in class) saves thousands annually</li>
+          <li><strong>Resale Value:</strong> 55-65% retention after 5 years (highest among brands)</li>
+          <li><strong>Service Network:</strong> 65+ service centers nationwide</li>
+          <li><strong>Warranty:</strong> 3 years with unlimited kilometers</li>
+        </ul>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Best For</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Long-haul routes (KL-Penang, KL-Johor, KL-Kuantan)</li>
+          <li>High-mileage operations (>8,000 km/month)</li>
+          <li>Operators prioritizing total cost of ownership over initial price</li>
+          <li>Port Klang logistics (fuel efficiency matters most)</li>
+        </ul>
+
+        <div class="bg-red-50 border-l-4 border-red-400 p-6 mb-8">
+          <h4 class="text-red-900 font-black text-lg mb-3">Diesel Price Reality Check</h4>
+          <p class="text-red-900 mb-3">
+            At <strong>RM3.35/litre</strong> (up 55% since June 2024), Isuzu's fuel advantage translates to:
+          </p>
+          <ul class="text-red-900 space-y-1 text-sm">
+            <li><strong>10,000 km/month:</strong> Save ~RM400-600/month vs. competitors</li>
+            <li><strong>Annual savings:</strong> RM4,800-7,200 in fuel costs alone</li>
+            <li><strong>5-year savings:</strong> RM24,000-36,000 (often exceeds initial price difference)</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">FUSO (Mitsubishi): The Power & Value Choice</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Strong Challenger (28% Share)</strong> - FUSO balances power, durability, and competitive pricing. It's the go-to choice for heavy-load operations and budget-conscious SMEs.
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Key Strengths</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Lower Initial Price:</strong> RM135k-155k for 5-ton models (most affordable)</li>
+          <li><strong>High Torque:</strong> 150-240 PS engine options for challenging terrain</li>
+          <li><strong>Durability:</strong> Built tough for heavy-load applications</li>
+          <li><strong>Spacious Cabin:</strong> Best-in-class driver comfort for long trips</li>
+        </ul>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Best For</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>10-ton lorries for heavy cargo (construction materials, machinery)</li>
+          <li>Cross-border operations (Singapore-Thailand routes)</li>
+          <li>Hilly terrain (Penang hills, Cameron Highlands routes)</li>
+          <li>Budget-conscious startups needing reliable workhorses</li>
+        </ul>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Hino: The Reliability Specialist</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Third Pillar (22% Share)</strong> - Hino earns its reputation through reliability and reasonable pricing. It's particularly strong in urban delivery applications.
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Key Strengths</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Proven Reliability:</strong> Lower breakdown rates in stop-start urban operations</li>
+          <li><strong>Functional Design:</strong> No-frills approach focused on cargo capacity</li>
+          <li><strong>Reasonable Pricing:</strong> Mid-range pricing between Isuzu and premium options</li>
+          <li><strong>Warranty:</strong> 3 years unlimited kilometers (matches Isuzu)</li>
+        </ul>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Best For</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Urban delivery (Klang Valley, Penang Island, Johor Bahru)</li>
+          <li>Frequent stop-start operations (last-mile delivery)</li>
+          <li>Operators valuing reliability over brand prestige</li>
+          <li>Multi-drop routes requiring consistent performance</li>
+        </ul>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Financing Comparison by Brand</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          All three brands enjoy high approval rates at Ing Heng Credit, but monthly payments vary based on vehicle price:
+        </p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full border-collapse border-2 border-navy-900">
+            <thead>
+              <tr class="bg-navy-900 text-white">
+                <th class="p-4 text-left font-bold border border-navy-900">Brand</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Loan Amount (5-ton)</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Interest Rate</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Monthly Payment (7-yr)</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Approval Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {financingData.map((item, index) => (
+                <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  <td class="p-4 border border-gray-300 font-bold">{item.brand}</td>
+                  <td class="p-4 border border-gray-300">{item.typicalLoanAmount}</td>
+                  <td class="p-4 border border-gray-300">{item.interestRate}</td>
+                  <td class="p-4 border border-gray-300 font-bold text-navy-900">{item.monthlyPayment}</td>
+                  <td class="p-4 border border-gray-300">
+                    <span class="inline-block px-3 py-1 text-xs font-bold bg-green-100 text-green-800">
+                      {item.approvalRate}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <em>Note:</em> All rates based on 0% down payment, 7-year tenure. Actual rates vary based on credit profile, business financials, and specific model.
+        </p>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Which Brand Suits Your Operations?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {useCases.map((useCase) => (
+            <div class="border-2 border-gray-200 p-6 rounded-lg">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-3xl">{useCase.icon}</span>
+                <h4 class="font-black text-navy-900">{useCase.scenario}</h4>
+              </div>
+              <div class="mb-2">
+                <span class={`inline-block px-3 py-1 text-xs font-bold ${
+                  useCase.recommended === 'Isuzu' ? 'bg-red-100 text-red-800' :
+                  useCase.recommended === 'FUSO' ? 'bg-blue-100 text-blue-800' :
+                  'bg-green-100 text-green-800'
+                }`}>
+                  Recommended: {useCase.recommended}
+                </span>
+              </div>
+              <p class="text-gray-600 text-sm">{useCase.reason}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Total Cost of Ownership: 5-Year Projection</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          For logistics operators, total cost of ownership matters more than initial price. Here's a realistic 5-year projection for a 5-ton lorry doing 10,000 km/month:
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
+          <h4 class="text-blue-900 font-black text-lg mb-3">5-Year Cost Comparison (10,000 km/month)</h4>
+          <table class="w-full text-blue-900 text-sm">
+            <thead>
+              <tr class="border-b border-blue-300">
+                <th class="text-left py-2">Cost Category</th>
+                <th class="text-right py-2">Isuzu</th>
+                <th class="text-right py-2">FUSO</th>
+                <th class="text-right py-2">Hino</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-blue-200">
+                <td class="py-2">Initial Price</td>
+                <td class="text-right">RM150,000</td>
+                <td class="text-right">RM145,000</td>
+                <td class="text-right">RM155,000</td>
+              </tr>
+              <tr class="border-b border-blue-200">
+                <td class="py-2">Fuel (5 years @ RM3.35/L)</td>
+                <td class="text-right">RM457,000</td>
+                <td class="text-right">RM504,000</td>
+                <td class="text-right">RM487,000</td>
+              </tr>
+              <tr class="border-b border-blue-200">
+                <td class="py-2">Maintenance (5 years)</td>
+                <td class="text-right">RM50,000</td>
+                <td class="text-right">RM60,000</td>
+                <td class="text-right">RM55,000</td>
+              </tr>
+              <tr class="border-b border-blue-200">
+                <td class="py-2">Interest (7-year loan)</td>
+                <td class="text-right">RM22,000</td>
+                <td class="text-right">RM21,000</td>
+                <td class="text-right">RM23,000</td>
+              </tr>
+              <tr class="border-b border-blue-200 font-bold">
+                <td class="py-2">Total Cost</td>
+                <td class="text-right">RM679,000</td>
+                <td class="text-right">RM730,000</td>
+                <td class="text-right">RM720,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-bold">Resale Value (after 5 years)</td>
+                <td class="text-right text-green-700">RM90,000</td>
+                <td class="text-right text-green-700">RM75,000</td>
+                <td class="text-right text-green-700">RM82,000</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-blue-900 mt-3 text-sm font-bold">
+            Winner: Isuzu saves RM51,000 over 5 years compared to FUSO
+          </p>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <em>Key Insight:</em> Despite higher initial price, Isuzu's fuel efficiency and resale value make it the most economical choice for high-mileage operations.
+        </p>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Port Klang Logistics: Which Brand Wins?</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          With Port Klang handling <strong>14.64 million TEUs</strong> in 2024, container trucking is a major business segment. Our recommendation:
+        </p>
+
+        <div class="bg-green-50 border-l-4 border-green-400 p-6 mb-8">
+          <h4 class="text-green-900 font-black text-lg mb-3">Best for Port Klang: Isuzu</h4>
+          <p class="text-green-900 mb-3">
+            Container movements involve frequent short trips and waiting time. Isuzu's fuel efficiency during idle and stop-go traffic provides maximum savings.
+          </p>
+          <ul class="text-green-900 space-y-1 text-sm">
+            <li><strong>Average Port Trip:</strong> 30-50 km (warehouse to port to warehouse)</li>
+            <li><strong>Daily Trips:</strong> 3-5 trips/day typical</li>
+            <li><strong>Annual Distance:</strong> 40,000-60,000 km/year</li>
+            <li><strong>Fuel Savings:</strong> RM3,000-5,000/year vs. competitors</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Why Choose Ing Heng Credit for Lorry Financing?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="card-brutalist p-6">
+            <h3 class="text-lg font-black text-navy-900 mb-3">All Brands Supported</h3>
+            <p class="text-gray-600 text-sm">We finance Isuzu, FUSO, Hino, and all major Japanese brands with competitive rates.</p>
+          </div>
+          <div class="card-brutalist p-6">
+            <h3 class="text-lg font-black text-navy-900 mb-3">93-95% Approval Rate</h3>
+            <p class="text-gray-600 text-sm">High approval across all three brands based on business profile, not vehicle choice.</p>
+          </div>
+          <div class="card-brutalist p-6">
+            <h3 class="text-lg font-black text-navy-900 mb-3">0% Down Payment</h3>
+            <p class="text-gray-600 text-sm">Preserve cash for operations, fuel, and driver costs regardless of brand.</p>
+          </div>
+          <div class="card-brutalist p-6">
+            <h3 class="text-lg font-black text-navy-900 mb-3">Fast 72-Hour Approval</h3>
+            <p class="text-gray-600 text-sm">Meet urgent contract deadlines without brand-specific delays.</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Get Started: Choose Your Lorry Brand</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Ready to finance your next logistics lorry? Contact us with:
+        </p>
+
+        <ol class="list-decimal pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Your preferred brand (Isuzu, FUSO, Hino, or other)</li>
+          <li>Intended use (long-haul, urban delivery, port operations, etc.)</li>
+          <li>Expected monthly mileage</li>
+          <li>Required load capacity (5-ton, 10-ton, etc.)</li>
+          <li>Business financial documents (bank statements, tax returns)</li>
+        </ol>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Not sure which brand?</strong> Our logistics specialists can provide a personalized recommendation based on your routes, cargo, and budget.
+        </p>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-r from-navy-900 to-navy-700 text-white">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Finance Your Isuzu, FUSO, or Hino Lorry Today
+      </h2>
+      <p class="text-xl mb-8 opacity-90">
+        All three brands available with 0% down payment, fast 72-hour approval, and competitive rates from 2.88% p.a.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="WhatsApp Us Now"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="Get Free Quote"
+          link="/en/contact"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+      <p class="mt-6 text-sm opacity-75">
+        Or call us: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-yellow-400">{COMPANY_INFO.phone.display}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+
+  /* Brutalist Card */
+  .card-brutalist {
+    @apply bg-white overflow-hidden border-4 border-navy-900;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+
+  .card-brutalist:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  /* Navy color class */
+  .bg-navy-900 {
+    background-color: #0F172A;
+  }
+
+  .text-navy-900 {
+    color: #0F172A;
+  }
+
+  .border-navy-900 {
+    border-color: #0F172A;
+  }
+</style>

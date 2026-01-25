@@ -1,98 +1,100 @@
 ---
 /**
- * Mandarin Blog Index Page (中文博客首页)
+ * Mandarin Blog Index Page - HYBRID ARCHITECTURE (中文博客首页)
  * Equipment Financing Blog - Expert Tips & Industry Guides
  * SEO: Informational, Community-focused, Relationship-building
  * Cultural Tone: Relationship-focused, trust-building, practical wisdom sharing
+ *
+ * ARCHITECTURE: Auto-discovers blog posts from BOTH:
+ * 1. Existing .astro files (src/pages/zh/blog/*.astro)
+ * 2. New markdown files (src/content/blogs/zh/*.md)
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import BlogCard from '../../../components/BlogCard.astro';
-import NewsletterSignup from '../../../components/NewsletterSignup.astro';
-import CTAButton from '../../../components/CTAButton.astro';
-import { COMPANY_INFO } from '../../../utils/constants';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import BlogCard from '../../../../components/BlogCard.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+import { SITE_CONFIG } from '../../../../utils/constants';
 
 const lang = 'zh';
 
-// Blog categories (中文)
+// 🔥 AUTO-DISCOVER .md blog posts (Content Collections)
+const allMdPosts = await getCollection('blogs');
+const allPosts = allMdPosts
+  .filter(post => post.data.locale === lang)
+  .map(post => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,  // Remove locale folder prefix
+    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
+    author: post.data.author,
+    category: post.data.category,
+    readTime: post.data.readingTime || 5,
+    featured: post.data.featured,
+    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
+  }));
+
+// 🔥 SORT by date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.date).valueOf() - new Date(a.date).valueOf()
+);
+
+// 🔥 FEATURED posts (auto-selected from featured flag, limit 3)
+const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
+
+// If no featured posts, use the 3 most recent
+const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
+
+// 🔥 PAGINATION SETUP
+const POSTS_PER_PAGE = 12;
+const currentPage = 1; // This would come from URL params in a real pagination system
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const paginatedPosts = sortedPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+// 🔥 POPULAR posts (for sidebar - use first 8)
+const popularPosts = sortedPosts.slice(0, 8).map(p => ({ title: p.title, slug: p.slug }));
+
+// 🔥 DYNAMIC category counts (updated for new blog structure)
 const categories = [
-  { name: '设备融资贴士', slug: 'equipment-financing', count: 12, icon: '🏗️' },
-  { name: '行业新闻与趋势', slug: 'industry-news', count: 8, icon: '📰' },
-  { name: '承包商指南', slug: 'contractor-guides', count: 10, icon: '👷' },
-  { name: '企业增长策略', slug: 'business-growth', count: 7, icon: '📈' },
-  { name: '税务与合规', slug: 'tax-compliance', count: 6, icon: '📋' },
-  { name: '设备维护保养', slug: 'equipment-maintenance', count: 9, icon: '🔧' },
-];
-
-// Featured blog posts (精选文章)
-const featuredPosts = [
   {
-    title: '2025年马来西亚设备融资完整指南',
-    excerpt: '详细了解建筑设备融资的所有知识，从租购到租赁选项。发现最适合您业务的融资方式，助您企业稳健发展。',
-    date: '2025-10-11',
-    author: '永兴信贷团队',
-    slug: 'complete-guide-equipment-financing-malaysia',
-    image: '/images/blog/equipment-financing-guide.jpg',
-    category: '设备融资贴士',
-    readTime: 8,
+    name: '设备融资',
+    slug: 'equipment-financing',
+    count: allPosts.filter(p => p.category === 'Equipment Financing').length,
+    icon: '🏗️'
   },
   {
-    title: '挖掘机融资：承包商如何节省30%设备成本',
-    excerpt: '探索经过验证的策略，通过智能融资降低挖掘机购置成本。来自成功马来西亚承包商的真实案例分享。',
-    date: '2025-10-10',
-    author: '永兴信贷团队',
-    slug: 'excavator-financing-save-30-percent',
-    image: '/images/blog/excavator-financing.jpg',
-    category: '承包商指南',
-    readTime: 6,
+    name: '政府招标',
+    slug: 'government-tenders', 
+    count: allPosts.filter(p => p.title.includes('政府') || p.title.includes('CIDB') || p.title.includes('捷运') || p.title.includes('东铁') || p.title.includes('婆罗洲')).length,
+    icon: '🏛️'
   },
   {
-    title: '物流公司货车融资：快速批准策略',
-    excerpt: '用这些专家技巧加快您的货车融资批准。了解所需文件以及如何获得最优惠利率，让您的物流业务更上一层楼。',
-    date: '2025-10-09',
-    author: '永兴信贷团队',
-    slug: 'lorry-financing-fast-approval-strategies',
-    image: '/images/blog/lorry-financing.jpg',
-    category: '设备融资贴士',
-    readTime: 7,
-  },
-];
-
-// Recent blog posts (最新文章 - Only posts that actually exist)
-const recentPosts = [
-  {
-    title: '叉车租赁 vs 购买：哪个选项适合您的仓库？',
-    excerpt: '比较租赁与购买叉车的利弊。计算投资回报率，为您的仓库运营做出最佳决策。',
-    date: '2025-10-08',
-    author: '永兴信贷团队',
-    slug: 'forklift-leasing-vs-buying-guide',
-    category: '企业增长策略',
+    name: '起重机融资',
+    slug: 'crane-financing',
+    count: allPosts.filter(p => p.title.includes('起重机') || p.title.includes('塔式') || p.title.includes('移动式')).length,
+    icon: '🏗️'
   },
   {
-    title: '设备融资的税收优惠：2025年最大化您的扣除额',
-    excerpt: '了解马来西亚设备融资的税收优势。学习如何合法申请资本津贴并减少税务负担。',
-    date: '2025-10-07',
-    author: '永兴信贷团队',
-    slug: 'tax-benefits-equipment-financing-2025',
-    category: '税务与合规',
+    name: '车队融资', 
+    slug: 'fleet-financing',
+    count: allPosts.filter(p => p.title.includes('车队') || p.title.includes('批量') || p.title.includes('台') || p.title.includes('多')).length,
+    icon: '🚛'
   },
   {
-    title: '建筑公司现金流管理：5个关键策略',
-    excerpt: '在融资昂贵建筑设备的同时掌握现金流管理。来自40多年行业经验的实证策略。',
-    date: '2025-10-06',
-    author: '永兴信贷团队',
-    slug: 'cash-flow-management-construction',
-    category: '企业增长策略',
+    name: '技术设备',
+    slug: 'technology-equipment',
+    count: allPosts.filter(p => p.title.includes('GPS') || p.title.includes('智能') || p.title.includes('3D') || p.title.includes('IoT')).length,
+    icon: '🔧'
   },
-];
-
-// Popular posts for sidebar (热门文章)
-const popularPosts = [
-  { title: '2025年马来西亚设备融资完整指南', slug: 'complete-guide-equipment-financing-malaysia' },
-  { title: '挖掘机融资：节省30%设备成本', slug: 'excavator-financing-save-30-percent' },
-  { title: '设备融资的税收优惠 2025', slug: 'tax-benefits-equipment-financing-2025' },
-  { title: '叉车租赁 vs 购买：完整指南', slug: 'forklift-leasing-vs-buying-guide' },
+  {
+    name: '税务优惠',
+    slug: 'tax-benefits',
+    count: allPosts.filter(p => p.title.includes('税') || p.title.includes('资本') || p.title.includes('津贴')).length,
+    icon: '📋'
+  },
 ];
 
 // Breadcrumb navigation
@@ -107,18 +109,18 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "设备融资博客 - 专家技巧与行业指南",
   "description": "来自马来西亚值得信赖的融资合作伙伴（成立于1985年）的设备融资、建筑业务管理和行业趋势专业见解。",
-  "url": "https://ingheng-credit.vercel.app/zh/blog",
+  "url": `${SITE_CONFIG.url}/zh/blog`,
   "publisher": {
     "@type": "Organization",
     "name": "永兴信贷有限公司",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://ingheng-credit.vercel.app/logo.png"
+      "url": `${SITE_CONFIG.url}/logo.png`
     }
   },
   "mainEntity": {
     "@type": "ItemList",
-    "itemListElement": featuredPosts.map((post, index) => ({
+    "itemListElement": displayFeaturedPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
@@ -245,11 +247,11 @@ const blogCollectionSchema = {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {featuredPosts.map((post) => (
-          <div class="card h-full flex flex-col group hover:shadow-2xl transition-shadow duration-300 relative">
+        {displayFeaturedPosts.map((post) => (
+          <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300 relative">
             {/* Featured Badge */}
             <div class="absolute top-4 right-4 z-10">
-              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-[6px_6px_0_#2D1810]">
                 精选
               </span>
             </div>
@@ -320,16 +322,16 @@ const blogCollectionSchema = {
         <!-- Main Content Area (Blog Posts) -->
         <div class="lg:col-span-2">
           <div class="mb-8 flex items-center justify-between">
-            <h2 class="text-2xl font-bold text-primary">最新文章</h2>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <span>显示 1-9 / 共52篇文章</span>
+            <h2 class="text-2xl font-black text-navy-900 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">所有文章</h2>
+            <div class="flex items-center gap-2 text-sm font-bold" style="color: #2D1810;">
+              <span>显示第 {startIndex + 1}-{Math.min(startIndex + POSTS_PER_PAGE, allPosts.length)} 篇，共 {allPosts.length} 篇文章</span>
             </div>
           </div>
 
           <!-- Blog Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {recentPosts.map((post) => (
-              <div class="card h-full flex flex-col group hover:shadow-xl transition-shadow duration-300">
+            {paginatedPosts.map((post) => (
+              <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300">
                 {/* Image Placeholder */}
                 <a href={`/zh/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
                   <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
@@ -372,47 +374,81 @@ const blogCollectionSchema = {
             ))}
           </div>
 
-          <!-- Pagination -->
-          <div class="flex justify-center gap-2">
-            <button disabled class="px-4 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed">
-              上一页
-            </button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">4</button>
-            <span class="px-4 py-2">...</span>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">6</button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark">
-              下一页
-            </button>
+          <!-- Pagination Controls -->
+          <div class="flex justify-center items-center gap-2">
+            {currentPage > 1 ? (
+              <a 
+                href={currentPage === 2 ? '/zh/blog' : `/zh/blog/page/${currentPage - 1}`}
+                class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+                style="box-shadow: 4px 4px 0 #1E3A8A;"
+              >
+                ← 上一页
+              </a>
+            ) : (
+              <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                ← 上一页
+              </button>
+            )}
+
+            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+              const page = i + 1;
+              const isCurrentPage = page === currentPage;
+              const pageUrl = page === 1 ? '/zh/blog' : `/zh/blog/page/${page}`;
+              
+              return isCurrentPage ? (
+                <button class="px-4 py-2 bg-[#D4A574] text-navy-900 border-3 border-navy-900 font-black" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                  {page}
+                </button>
+              ) : (
+                <a 
+                  href={pageUrl}
+                  class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+                  style="box-shadow: 4px 4px 0 #1E3A8A;"
+                >
+                  {page}
+                </a>
+              );
+            })}
+
+            {currentPage < totalPages ? (
+              <a 
+                href={`/zh/blog/page/${currentPage + 1}`}
+                class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+                style="box-shadow: 4px 4px 0 #1E3A8A;"
+              >
+                下一页 →
+              </a>
+            ) : (
+              <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                下一页 →
+              </button>
+            )}
+          </div>
+
+          <div class="text-center mt-6 text-sm text-gray-600 font-medium">
+            第 {currentPage} 页，共 {totalPages} 页 • 总共 {allPosts.length} 篇文章
           </div>
         </div>
 
         <!-- Sidebar -->
         <aside class="lg:col-span-1 space-y-8">
 
-          <!-- Newsletter Signup -->
-          <div class="sticky top-24">
-            <NewsletterSignup locale={lang} variant="boxed" />
-          </div>
-
           <!-- Categories List -->
-          <div class="card">
-            <div class="card-body">
-              <h3 class="text-xl font-bold text-primary mb-4">按类别浏览</h3>
+          <div class="sidebar-card-contrast">
+            <div class="p-8">
+              <h3 class="text-2xl font-black text-gray-900 mb-6 uppercase tracking-wider border-b-4 border-gray-900 pb-4">按类别浏览</h3>
               <ul class="space-y-3">
                 {categories.map((category) => (
                   <li>
                     <a
                       href={`/zh/blog/category/${category.slug}`}
-                      class="flex items-center justify-between group hover:text-primary transition-colors"
+                      class="flex items-center justify-between group hover:bg-gray-900 hover:text-white p-4 -mx-4 transition-all duration-300 border-2 border-transparent hover:border-gray-900"
                     >
-                      <span class="flex items-center gap-2">
-                        <span class="text-xl">{category.icon}</span>
-                        <span class="font-medium group-hover:underline">{category.name}</span>
+                      <span class="flex items-center gap-4">
+                        <span class="text-3xl">{category.icon}</span>
+                        <span class="font-black text-lg group-hover:text-white">{category.name}</span>
                       </span>
-                      <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                      <span class="text-sm font-black text-white bg-gray-900 group-hover:bg-white group-hover:text-gray-900 px-4 py-2 rounded-full border-2 border-gray-900">
                         {category.count}
                       </span>
                     </a>
@@ -423,18 +459,18 @@ const blogCollectionSchema = {
           </div>
 
           <!-- Popular Posts -->
-          <div class="card">
-            <div class="card-body">
-              <h3 class="text-xl font-bold text-primary mb-4">最受欢迎</h3>
-              <ul class="space-y-4">
+          <div class="sidebar-card-contrast">
+            <div class="p-8">
+              <h3 class="text-2xl font-black text-gray-900 mb-6 uppercase tracking-wider border-b-4 border-gray-900 pb-4">最受欢迎</h3>
+              <ul class="space-y-5">
                 {popularPosts.map((post, index) => (
-                  <li class="flex gap-3">
-                    <span class="text-2xl font-bold text-primary/20 flex-shrink-0">
+                  <li class="flex gap-5">
+                    <span class="text-xl font-black text-white bg-gray-900 flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-900">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <a
                       href={`/zh/blog/${post.slug}`}
-                      class="text-gray-700 hover:text-primary transition-colors font-medium leading-snug"
+                      class="text-gray-900 hover:text-black font-black leading-tight hover:underline transition-all duration-200 text-lg"
                     >
                       {post.title}
                     </a>
@@ -445,10 +481,10 @@ const blogCollectionSchema = {
           </div>
 
           <!-- Contact CTA -->
-          <div class="card bg-gradient-to-br from-primary to-secondary text-white">
-            <div class="card-body text-center">
-              <h3 class="text-2xl font-bold mb-3">需要融资建议？</h3>
-              <p class="mb-6 opacity-90">
+          <div class="sidebar-card-dark">
+            <div class="p-8 text-center">
+              <h3 class="text-2xl font-black text-white mb-6 uppercase tracking-wider border-b-4 border-white pb-4">需要融资建议？</h3>
+              <p class="mb-8 text-white font-bold text-lg leading-relaxed">
                 我们的专家随时准备帮助您找到最适合您业务的融资解决方案。
               </p>
               <CTAButton
@@ -458,8 +494,8 @@ const blogCollectionSchema = {
                 size="large"
                 icon="whatsapp"
               />
-              <p class="mt-4 text-sm opacity-75">
-                或致电：<a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-accent">{COMPANY_INFO.phone.display}</a>
+              <p class="mt-6 text-lg text-white font-black">
+                或致电：<a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-yellow-300 font-black">{COMPANY_INFO.phone.display}</a>
               </p>
             </div>
           </div>
@@ -476,7 +512,7 @@ const blogCollectionSchema = {
         准备好为您的设备融资了吗？
       </h2>
       <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-        加入4000多家信赖永兴信贷的企业。24小时内获得批准，利率低至2.88%起。
+        加入4000多家信赖永兴信贷的企业。快速内获得批准，利率低至6.5%起。
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <CTAButton
@@ -520,7 +556,7 @@ const blogCollectionSchema = {
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden;
+    @apply bg-white rounded-lg shadow-[4px_4px_0_#2D1810] overflow-hidden;
   }
 
   .card-body {
@@ -533,5 +569,16 @@ const blogCollectionSchema = {
 
   .section {
     @apply py-16 md:py-20;
+  }
+
+  /* High Contrast Sidebar Cards */
+  .sidebar-card-contrast {
+    @apply bg-white border-4 border-gray-900;
+    box-shadow: 8px 8px 0 #000000;
+  }
+
+  .sidebar-card-dark {
+    @apply bg-gray-900 border-4 border-gray-900;
+    box-shadow: 8px 8px 0 #000000;
   }
 </style>

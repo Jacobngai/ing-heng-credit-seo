@@ -1,671 +1,424 @@
 ---
-/**
- * Blog Post: Lorry Financing for Logistics Companies: Fast Approval Strategies
- * Language: English
- * Target: Logistics Lee (efficiency-focused, fleet management, ROI calculations)
- * Word count: ~1,800 words
- * Read time: 7 minutes
- */
-
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import FAQItem from '../../../components/FAQItem.astro';
-import { generateArticleSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
 
 const lang = 'en';
+const post = {
+  title: 'Lorry Financing for Logistics Companies: Fast Approval Strategies',
+  slug: 'lorry-financing-fast-approval-strategies',
+  excerpt: 'Fast-track your lorry financing approval with these expert tips. Learn what documents you need and how to qualify for the best rates.',
+  date: '2025-01-23',
+  author: 'Ing Heng Credit Team',
+  readTime: 7,
+  category: 'Equipment Financing Tips',
+  image: '/images/blog/lorry-financing.jpg'
+};
 
-// SEO Data
-const pageTitle = 'Lorry Financing for Logistics Companies: Fast Approval Strategies | Ing Heng Credit';
-const pageDescription = 'Get your commercial lorry approved in 24-48 hours. Complete document checklist, fleet financing strategies, JPJ compliance guide, and fast approval tips for Malaysian logistics operators.';
-const keywords = ['lorry financing Malaysia fast approval', 'commercial truck loan approval', 'fleet financing strategies', 'logistics company financing', 'lorry loan Port Klang', 'fast truck financing Malaysia'];
-const publishDate = '2025-10-11';
-const modifiedDate = '2025-10-11';
-
-// Breadcrumbs
-const breadcrumbs = [
-  { label: 'Home', url: '/en' },
-  { label: 'Blog', url: '/en/blog' },
-  { label: 'Lorry Financing Fast Approval Strategies', url: '/en/blog/lorry-financing-fast-approval-strategies' },
+const keywords = ['lorry financing', 'fast approval', 'logistics loans', '0% down payment', 'fleet financing'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
 ];
-
-// FAQs
-const faqs = [
-  { question: 'What is the fastest way to get lorry financing approved?', answer: 'The fastest approval method is to submit complete documentation upfront: IC/SSM registration, 6 months bank statements, and proof of logistics income. Apply through WhatsApp with a logistics finance specialist. With complete documents, approval takes 24-48 hours instead of 2-4 weeks.' },
-  { question: 'Can I get lorry financing approved in 24 hours?', answer: 'Yes! For urgent contracts, 24-hour approval is possible with: (1) Complete documentation submitted digitally, (2) Clean or manageable credit history, (3) Existing logistics business with proven income, (4) Clear repayment capacity. Finance companies specializing in logistics can approve faster than traditional banks.' },
-  { question: 'What credit score do I need for lorry financing?', answer: 'There is no strict minimum credit score. We evaluate: current income stability, existing delivery contracts, business viability, and repayment ability. Many logistics operators with CCRIS/CTOS records get approved. Past defaults don\'t mean automatic rejection - we focus on current financial capacity.' },
-  { question: 'How much down payment is required for commercial lorries?', answer: 'Standard down payment: 10-20% for new lorries, 20-30% for used lorries (10-15 years old). Fleet financing (2+ units) may qualify for lower 10% down payment even for used lorries. Excellent credit profiles can sometimes secure 90% financing (10% down).' },
-  { question: 'Can new logistics companies without track record get financing?', answer: 'Yes! Requirements for startups: SSM registration (even if newly registered), directors\' personal IC and bank statements, delivery contracts or letters of intent from clients, business plan showing revenue projections. We evaluate business potential, not just past performance.' },
-  { question: 'What lorry types qualify for financing?', answer: 'All commercial lorries: box lorries, flatbeds, tippers, refrigerated trucks, tankers, container trailers, lorry cranes, curtainsiders. Lorry age: up to 15 years old accepted. All major brands: Isuzu, Hino, Mitsubishi, UD Trucks, Mercedes-Benz, MAN, Scania, and Chinese brands.' },
-  { question: 'How does fleet financing work for multiple lorries?', answer: 'Fleet financing (2+ lorries) receives: (1) Discounted interest rates (0.5-2% off standard rates), (2) Lower down payment requirements (10% instead of 20%), (3) Streamlined approval for additional units, (4) Flexible payment structures matching business cycles. Volume discounts make fleet expansion more affordable.' },
-  { question: 'What documents slow down lorry financing approval?', answer: 'Common delays: incomplete bank statements (less than 6 months), missing SSM registration for companies, unclear proof of income, outdated IC copies, incomplete lorry details (make, model, year, condition). Submit complete digital documents upfront to avoid 1-2 week delays.' },
-];
-
-// Article Schema
-const articleSchema = generateArticleSchema({
-  headline: pageTitle,
-  description: pageDescription,
-  datePublished: publishDate,
-  dateModified: modifiedDate,
-  authorName: 'Ing Heng Credit',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/blog/lorry-financing-fast-approval.jpg',
-});
-
-// FAQ Schema
-const faqSchema = generateFAQSchema(faqs);
 ---
 
-<BaseLayout
-  title={pageTitle}
-  description={pageDescription}
-  lang={lang}
-  keywords={keywords}
-  ogType="article"
->
-  <!-- Structured Data -->
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={encodeJSONLD(articleSchema)} />
-    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
-  </Fragment>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
 
-  <!-- Breadcrumbs -->
-  <div class="container-custom py-4">
-    <Breadcrumbs items={breadcrumbs} lang={lang} />
-  </div>
+  <Breadcrumbs items={breadcrumbItems} />
 
-  <!-- Article Header -->
-  <article class="container-custom max-w-4xl mx-auto py-8">
+  <article class="max-w-4xl mx-auto px-4 py-12">
     <header class="mb-8">
-      <div class="text-sm text-gray-600 mb-2">Equipment Financing Tips</div>
-      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
-        Lorry Financing for Logistics Companies: Fast Approval Strategies
-      </h1>
-      <div class="flex items-center space-x-4 text-gray-600 text-sm mb-6">
-        <span>Published: October 11, 2025</span>
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing Tips</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
         <span>•</span>
-        <span>7 min read</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
         <span>•</span>
-        <span>By Ing Heng Credit</span>
-      </div>
-      <div class="prose prose-lg max-w-none">
-        <p class="text-xl text-gray-700 leading-relaxed">
-          Time is money in logistics. When you land a Port Klang delivery contract or a Shopee/Lazada partnership, you need lorries <strong>now</strong> — not in 3-4 weeks. This guide reveals the fast approval strategies that get logistics operators financed in 24-48 hours instead of months.
-        </p>
+        <span>{post.readTime} min read</span>
       </div>
     </header>
 
-    <!-- Table of Contents -->
-    <div class="bg-gray-50 p-6 rounded-lg mb-8">
-      <h2 class="text-xl font-bold text-primary mb-4">Table of Contents</h2>
-      <ul class="space-y-2 text-gray-700">
-        <li><a href="#why-fast-approval-matters" class="hover:text-primary">1. Why Fast Approval Matters for Logistics</a></li>
-        <li><a href="#fast-approval-formula" class="hover:text-primary">2. The Fast Approval Formula</a></li>
-        <li><a href="#document-checklist" class="hover:text-primary">3. Document Preparation Checklist</a></li>
-        <li><a href="#lorry-types" class="hover:text-primary">4. Lorry Types & Financing Options</a></li>
-        <li><a href="#fleet-financing" class="hover:text-primary">5. Fleet Financing Strategies</a></li>
-        <li><a href="#credit-requirements" class="hover:text-primary">6. Credit Requirements & How to Qualify</a></li>
-        <li><a href="#common-mistakes" class="hover:text-primary">7. Common Mistakes That Slow Approval</a></li>
-        <li><a href="#faq" class="hover:text-primary">8. Frequently Asked Questions</a></li>
-      </ul>
-    </div>
-
-    <!-- Main Content -->
     <div class="prose prose-lg max-w-none">
+      <h2>The Logistics Reality: Speed Wins Contracts</h2>
 
-      <!-- Section 1 -->
-      <h2 id="why-fast-approval-matters" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Why Fast Approval Matters for Logistics
-      </h2>
+      <p>Your logistics company just won a major contract. You need additional lorries immediately to fulfill the delivery obligations. Every day of delay means missed deadlines, penalties, and lost revenue.</p>
 
-      <p>
-        Port Klang hit a record <strong>14.64 million TEUs</strong> in 2024 — a 4.1% increase from 2023. E-commerce logistics is exploding with Shopee's 33% GMV growth and Ninja Van's cold chain expansion. The opportunities are there. But if you can't secure lorries <strong>fast</strong>, competitors will.
-      </p>
+      <p>Traditional bank financing takes 2-4 weeks. Your contract starts in 5 days. You can't wait.</p>
 
-      <div class="bg-blue-50 border-l-4 border-primary p-6 my-6">
-        <h3 class="font-bold text-primary mb-2">Real Example: Lee from Port Klang</h3>
-        <p class="mb-3">
-          Lee received a Shopee delivery contract worth <strong>RM 45,000/month</strong> in November 2024. Contract required 3 box lorries within <strong>2 weeks</strong>.
-        </p>
-        <p class="mb-3">
-          <strong>Banks:</strong> Required 30% down payment (RM 126,000) and 3-4 weeks approval. Lee couldn't meet the timeline.
-        </p>
-        <p>
-          <strong>Finance Company:</strong> Approved RM 420,000 (3 lorries) in <strong>20 hours</strong> with 10% down (RM 42,000). Lee started deliveries on schedule and earned <strong>RM 540,000</strong> in 12 months.
-        </p>
-      </div>
+      <p>This is the daily reality for Malaysian logistics companies. The difference between winning and losing contracts often comes down to equipment availability—and financing speed determines availability.</p>
 
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">The Cost of Slow Approval</h3>
+      <h2>Why Traditional Financing Fails Logistics</h2>
 
-      <ul>
-        <li><strong>Lost Contracts:</strong> Delivery contracts often have 1-2 week start deadlines. Miss the deadline, lose the contract.</li>
-        <li><strong>Competitor Advantage:</strong> While you wait, competitors with financing secure routes and clients.</li>
-        <li><strong>Seasonal Peaks:</strong> CNY pre-peak (6 weeks before January 29, 2025) requires lorries by mid-December. Delayed approval = missed peak revenue.</li>
-        <li><strong>Opportunity Cost:</strong> Every week without lorries = lost delivery revenue (RM 12,000-20,000/lorry/month).</li>
-      </ul>
+      <h3>The Bank Timeline Problem</h3>
 
-      <p>
-        <strong>Bottom line:</strong> In logistics, fast financing approval is a competitive advantage. This guide shows you how to get it.
-      </p>
+      <p><strong>Typical Bank Financing Process:</strong>
+      <br>• Application submission: Day 1
+      <br>• Document verification: Days 2-5
+      <br>• Credit assessment: Days 6-10
+      <br>• Committee approval: Days 11-14
+      <br>• Agreement signing: Days 15-18
+      <br>• Disbursement: Days 19-21</p>
 
-      <!-- Section 2 -->
-      <h2 id="fast-approval-formula" class="text-3xl font-bold text-primary mt-12 mb-6">
-        The Fast Approval Formula: What You Need
-      </h2>
+      <p><strong>Logistics Contract Reality:</strong>
+      <br>• Contract award notification: Day 1
+      <br>• Mobilization deadline: Day 5-7
+      <br>• First delivery deadline: Day 10</p>
 
-      <p>
-        Fast approval isn't luck. It's a formula: <strong>Complete Documentation + Clear Repayment Capacity + Logistics-Focused Financier = 24-48 Hour Approval</strong>.
-      </p>
+      <p><strong>Result:</strong> Bank financing timeline doesn't match logistics contract urgency. Either you lose the contract, or you decline growth opportunities.</p>
 
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Component 1: Complete Documentation</h3>
+      <h3>Why Banks Are Slow</h3>
 
-      <p>
-        <strong>80% of approval delays</strong> come from incomplete documents. Finance companies can't approve what they can't verify. Complete submission from day one eliminates 1-2 week back-and-forth.
-      </p>
+      <p><strong>1. Generic Underwriting:</strong> Banks treat logistics companies like retail businesses. They don't understand:
+      <br>• Contract-based revenue (long-term contracts predict cash flow)
+      <br>• Seasonal patterns (peak seasons like Hari Raya, year-end)
+      <br>• Fleet operations (multiple vehicles = diversified revenue)
+      <br>• Asset collateral (lorries maintain value, are easily resold)</p>
 
-      <p><strong>What "complete" means:</strong></p>
-      <ul>
-        <li>IC/Passport: Clear, full-page photos (not cropped or blurry)</li>
-        <li>Bank Statements: Full 6 months (not 3 months or bank book snapshots)</li>
-        <li>SSM Registration: Current year Form 9/24/49 (not expired)</li>
-        <li>Proof of Income: Contracts, invoices, or consistent bank deposits</li>
-        <li>Lorry Details: Exact make, model, year, condition, asking price</li>
-      </ul>
+      <p><strong>2. Committee Decisions:</strong> Most loan officers can't approve. They submit to committees that meet weekly. If you miss the meeting, wait another week.</p>
 
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Component 2: Clear Repayment Capacity</h3>
+      <p><strong>3. Excessive Documentation:</strong> Banks require:
+      <br>• 6-12 months bank statements
+      <br>• Audited financial statements
+      <br>• Business plans with projections
+      <br>• Tax returns for 2-3 years
+      <br>• Directors' guarantees</p>
 
-      <p>
-        Financiers evaluate one question: <strong>Can you afford the monthly payment?</strong>
-      </p>
+      <p><strong>For Logistics Companies:</strong> You're busy operating lorries and serving clients. You don't have time to gather paperwork for weeks.</p>
 
-      <div class="bg-gray-50 p-6 rounded-lg my-6">
-        <h4 class="font-bold text-primary mb-3">Quick Calculation:</h4>
-        <ul class="space-y-2">
-          <li><strong>Lorry Price:</strong> RM 140,000</li>
-          <li><strong>Down Payment (10%):</strong> RM 14,000</li>
-          <li><strong>Loan Amount:</strong> RM 126,000</li>
-          <li><strong>Interest Rate:</strong> 8% per annum</li>
-          <li><strong>Loan Tenure:</strong> 60 months (5 years)</li>
-          <li><strong>Monthly Payment:</strong> RM 2,550</li>
-        </ul>
-        <p class="mt-4 font-semibold text-gray-900">
-          <strong>Required Monthly Income:</strong> RM 3,500-4,000 (payment + 30% buffer for fuel, maintenance, insurance)
-        </p>
-      </div>
+      <h2>Fast-Track Approval: What You Need</h2>
 
-      <p>
-        If your bank statements show <strong>consistent RM 10,000-15,000/month</strong> logistics income, you're in the approval zone. If income is irregular or below RM 5,000/month, approval may require: higher down payment, shorter tenure, or co-borrower/guarantor.
-      </p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Component 3: Logistics-Focused Financier</h3>
-
-      <p>
-        <strong>Traditional banks</strong> treat lorry financing like car loans. They don't understand logistics business models (irregular income, seasonal peaks, fleet expansion needs).
-      </p>
-
-      <p>
-        <strong>Logistics-focused finance companies</strong> understand:
-      </p>
-      <ul>
-        <li>Port Klang container haulage revenue models</li>
-        <li>E-commerce delivery contract structures</li>
-        <li>CNY seasonal cash flow fluctuations</li>
-        <li>Fleet expansion ROI calculations</li>
-        <li>SKDS 2.0 diesel subsidy impact on profitability</li>
-      </ul>
-
-      <p>
-        Result: <strong>Faster approvals, lower down payments, flexible terms</strong> tailored to logistics operations.
-      </p>
-
-      <!-- Section 3 -->
-      <h2 id="document-checklist" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Document Preparation Checklist: Step-by-Step
-      </h2>
-
-      <p>
-        Follow this checklist to submit <strong>100% complete</strong> applications. Incomplete submissions add 1-2 weeks to approval.
-      </p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">For Individual Applicants</h3>
-
-      <div class="bg-white border border-gray-200 rounded-lg p-6 my-6">
-        <h4 class="font-bold text-primary mb-4">Individual Checklist:</h4>
-        <ul class="space-y-3">
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Malaysian IC (Front & Back):</strong> Clear, full-page photos. Ensure IC is not expired.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>6 Months Bank Statements:</strong> Personal account showing income deposits. PDF from online banking or stamped hard copies.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Proof of Logistics Income:</strong> Delivery contracts, service agreements, invoices, or consistent bank deposits labeled "logistics payment."
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Current Address Proof:</strong> Utility bill, tenancy agreement, or bank statement with current address.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Lorry Details:</strong> Make, model, year, mileage, condition (new or used). If used, include photos and asking price.
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">For Company Applications (SME)</h3>
-
-      <div class="bg-white border border-gray-200 rounded-lg p-6 my-6">
-        <h4 class="font-bold text-primary mb-4">Company Checklist:</h4>
-        <ul class="space-y-3">
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>SSM Registration (Form 9/24/49):</strong> Current year registration. Download from SSM portal or submit hard copy.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Company Bank Statements (6 Months):</strong> Business account showing revenue consistency.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>All Directors' IC (Front & Back):</strong> Every director and major shareholder must provide IC.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Financial Statements (if available):</strong> Not always required but helps approval. Audited or management accounts.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Delivery Contracts (Optional but Helpful):</strong> Letters of intent, service agreements, or ongoing client contracts.
-            </div>
-          </li>
-          <li class="flex items-start space-x-3">
-            <input type="checkbox" class="mt-1" />
-            <div>
-              <strong>Lorry Details & Photos:</strong> Specifications and photos for each lorry being financed.
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Pro Tips for Faster Approval</h3>
+      <h3>Essential Documents (Have Ready)</h3>
 
       <ul>
-        <li><strong>Submit Digitally:</strong> WhatsApp or online form submission is faster than hard copy mail (3-5 days delivery delay).</li>
-        <li><strong>Clear Photos:</strong> Blurry photos cause delays. Use good lighting and full-page captures.</li>
-        <li><strong>Organize Files:</strong> Label files clearly: "IC_Front.jpg", "BankStatement_Jan2025.pdf". Makes processing faster.</li>
-        <li><strong>Include Notes:</strong> Brief explanation of your logistics business, revenue model, and why you need the lorry. Helps context.</li>
-        <li><strong>Respond Fast:</strong> If financier requests additional info, respond within 2-4 hours (not 2-3 days).</li>
+        <li><strong>Business Registration:</strong> SSM certificate (confirm company exists and active)</li>
+        <li><strong>Director's IC:</strong> Front and back copy (identify company decision-makers)</li>
+        <li><strong>3-6 Months Bank Statements:</strong> Show revenue flow, customer payments, operational expenses
+        <li><strong>Lorry Quotation:</strong> From dealer or seller (specifies make, model, year, price)
+        <li><strong>JPJ Road Tax & Insurance:</strong> For existing lorries (show compliance history)</li>
+        <li><strong>Contract Award Letter:</strong> If financing for specific contract (demonstrates revenue source)</li>
       </ul>
 
-      <!-- Section 4 -->
-      <h2 id="lorry-types" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Lorry Types & Financing Options (1-40 Ton Range)
-      </h2>
-
-      <p>
-        Different lorry types serve different logistics niches. Financing terms vary by lorry category, age, and revenue potential.
-      </p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">1. Light Commercial Lorries (1-3 Ton)</h3>
-
-      <div class="bg-gray-50 p-6 rounded-lg my-6">
-        <p><strong>Examples:</strong> Daihatsu Gran Max, Isuzu NHR, Mitsubishi Canter (small)</p>
-        <p><strong>Use Cases:</strong> Urban last-mile delivery, e-commerce (Shopee/Lazada), light cargo, express courier</p>
-        <p><strong>Price Range:</strong> RM 40,000 (used) - RM 90,000 (new)</p>
-        <p><strong>Financing Terms:</strong></p>
-        <ul class="mt-2 space-y-1">
-          <li>• Down Payment: 10-20%</li>
-          <li>• Loan Tenure: 36-72 months</li>
-          <li>• Interest Rate: 6.5-9%</li>
-          <li>• Approval Time: 24-48 hours</li>
-        </ul>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">2. Medium Commercial Lorries (3-10 Ton)</h3>
-
-      <div class="bg-gray-50 p-6 rounded-lg my-6">
-        <p><strong>Examples:</strong> Isuzu NPR, Hino 300 Series, Mitsubishi Fuso Canter</p>
-        <p><strong>Use Cases:</strong> General freight, Port Klang operations, warehouse-to-warehouse, construction materials</p>
-        <p><strong>Price Range:</strong> RM 80,000 (used) - RM 200,000 (new)</p>
-        <p><strong>Financing Terms:</strong></p>
-        <ul class="mt-2 space-y-1">
-          <li>• Down Payment: 10-20%</li>
-          <li>• Loan Tenure: 48-84 months</li>
-          <li>• Interest Rate: 7-10%</li>
-          <li>• Approval Time: 24-48 hours</li>
-        </ul>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">3. Heavy Commercial Lorries (10-40 Ton)</h3>
-
-      <div class="bg-gray-50 p-6 rounded-lg my-6">
-        <p><strong>Examples:</strong> Hino 500 Series, Isuzu FVR/Giga, Mercedes-Benz Actros, Scania, MAN</p>
-        <p><strong>Use Cases:</strong> Container haulage (20ft/40ft), long-haul freight, specialized transport, refrigerated cargo</p>
-        <p><strong>Price Range:</strong> RM 250,000 (used) - RM 800,000 (new prime mover)</p>
-        <p><strong>Financing Terms:</strong></p>
-        <ul class="mt-2 space-y-1">
-          <li>• Down Payment: 15-30%</li>
-          <li>• Loan Tenure: 60-84 months</li>
-          <li>• Interest Rate: 7.5-11%</li>
-          <li>• Approval Time: 48-72 hours (higher value requires more verification)</li>
-        </ul>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">4. Specialized Lorries</h3>
-
-      <div class="bg-gray-50 p-6 rounded-lg my-6">
-        <p><strong>Examples:</strong> Refrigerated lorries, tankers, tippers, lorry cranes, curtainsiders</p>
-        <p><strong>Use Cases:</strong> Cold chain logistics, fuel transport, construction waste, self-loading operations</p>
-        <p><strong>Price Range:</strong> RM 150,000 (used tipper) - RM 600,000 (new refrigerated truck)</p>
-        <p><strong>Financing Terms:</strong></p>
-        <ul class="mt-2 space-y-1">
-          <li>• Down Payment: 15-25%</li>
-          <li>• Loan Tenure: 48-72 months</li>
-          <li>• Interest Rate: 7-10% (may receive preferential rates due to higher revenue potential)</li>
-          <li>• Approval Time: 48-72 hours</li>
-        </ul>
-      </div>
-
-      <!-- Section 5 -->
-      <h2 id="fleet-financing" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Fleet Financing Strategies for Expansion
-      </h2>
-
-      <p>
-        Financing <strong>multiple lorries</strong> at once (fleet financing) unlocks volume discounts, lower down payments, and faster approval for subsequent units.
-      </p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Fleet Financing Advantages</h3>
-
-      <div class="grid md:grid-cols-2 gap-6 my-6">
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h4 class="font-bold text-primary mb-3">Volume Discounts</h4>
-          <p class="text-sm">2-3 lorries: 0.5-1% interest rate discount. 4-5 lorries: 1-1.5% discount. 6+ lorries: 1.5-2% discount. Example: RM 500,000 fleet at 7.5% vs 9% saves RM 45,000 over 5 years.</p>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h4 class="font-bold text-primary mb-3">Lower Down Payment</h4>
-          <p class="text-sm">Fleet financing qualifies for 10% down payment even for used lorries (normally 20-30%). Saves upfront capital for fuel, insurance, working capital.</p>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h4 class="font-bold text-primary mb-3">Streamlined Approval</h4>
-          <p class="text-sm">First lorry: 24-48 hours approval. Subsequent lorries (2nd, 3rd, 4th): 12-24 hours fast-track. No need to re-submit full documents for each unit.</p>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h4 class="font-bold text-primary mb-3">Flexible Payment Structures</h4>
-          <p class="text-sm">Align payments with business cycles. Example: Lower payments Nov-Feb (CNY slowdown), higher Mar-Oct (peak season). Optimizes cash flow.</p>
-        </div>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Fleet Expansion Strategies</h3>
-
-      <p><strong>Strategy 1: Start Small, Scale Fast</strong></p>
-      <ul>
-        <li>Finance 1-2 lorries initially</li>
-        <li>Secure delivery contracts and prove revenue</li>
-        <li>After 6-12 months, apply for 2-3 more lorries with streamlined approval</li>
-        <li>Leverage existing loan history as proof of repayment ability</li>
-      </ul>
-
-      <p class="mt-6"><strong>Strategy 2: Full Fleet Upfront (for Established Operators)</strong></p>
-      <ul>
-        <li>Finance 4-8 lorries simultaneously for new contracts (e.g., Shopee partnership)</li>
-        <li>Maximize volume discounts (1.5-2% interest rate reduction)</li>
-        <li>Requires: strong credit profile, substantial down payment (10-15% × fleet value), proven contracts</li>
-      </ul>
-
-      <p class="mt-6"><strong>Strategy 3: Mix of New & Used</strong></p>
-      <ul>
-        <li>Finance 2 new lorries (for premium contracts requiring newer vehicles)</li>
-        <li>Finance 3 used lorries (5-10 years old) for general freight</li>
-        <li>Balances monthly payment (used lorries = lower payments) with reliability (new lorries = less downtime)</li>
-      </ul>
-
-      <!-- Section 6 -->
-      <h2 id="credit-requirements" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Credit Requirements & How to Qualify
-      </h2>
-
-      <p>
-        Many logistics operators worry: <strong>"My credit score isn't perfect. Can I still get approved?"</strong> The answer is often <strong>yes</strong> — if you know how financiers evaluate applications.
-      </p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">What Financiers Actually Evaluate</h3>
-
-      <div class="bg-white border border-gray-200 rounded-lg p-6 my-6">
-        <h4 class="font-bold text-primary mb-4">5-Factor Approval Model:</h4>
-        <ol class="space-y-4">
-          <li>
-            <strong>1. Current Income Stability (40% weight)</strong>
-            <p class="text-sm text-gray-700 mt-1">Do you have consistent logistics income? Bank statements showing RM 10,000-20,000/month deposits matter more than credit score.</p>
-          </li>
-          <li>
-            <strong>2. Repayment Capacity (30% weight)</strong>
-            <p class="text-sm text-gray-700 mt-1">Monthly income should be 1.5-2× monthly loan payment. Example: RM 3,000/month payment requires RM 4,500-6,000 income.</p>
-          </li>
-          <li>
-            <strong>3. Business Viability (15% weight)</strong>
-            <p class="text-sm text-gray-700 mt-1">Do you have delivery contracts? Growing e-commerce/Port Klang demand? Clear business model? Proves loan is for income-generating asset.</p>
-          </li>
-          <li>
-            <strong>4. Credit History (10% weight)</strong>
-            <p class="text-sm text-gray-700 mt-1">CCRIS/CTOS records reviewed but not disqualifying. Financiers look at: reason for past defaults, time since last default, current repayment behavior.</p>
-          </li>
-          <li>
-            <strong>5. Collateral & Down Payment (5% weight)</strong>
-            <p class="text-sm text-gray-700 mt-1">Lorry serves as collateral. Higher down payment (20-30%) compensates for weaker credit profiles.</p>
-          </li>
-        </ol>
-      </div>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">How to Qualify with Imperfect Credit</h3>
-
-      <p><strong>If you have CCRIS/CTOS records:</strong></p>
-      <ul>
-        <li><strong>Be Transparent:</strong> Explain past defaults (business losses, COVID impact, medical emergencies). Context matters.</li>
-        <li><strong>Show Recovery:</strong> If past defaults were 2-3 years ago and you've been making consistent payments since, you're in good shape.</li>
-        <li><strong>Provide Proof of Current Income:</strong> Recent delivery contracts, growing bank deposits, client letters of intent.</li>
-        <li><strong>Increase Down Payment:</strong> 20-30% down payment shows commitment and reduces financier risk.</li>
-        <li><strong>Consider Co-Borrower:</strong> Spouse, business partner, or family member with clean credit can strengthen application.</li>
-      </ul>
-
-      <p class="mt-6"><strong>If you're a new startup with no credit history:</strong></p>
-      <ul>
-        <li><strong>Leverage Directors' Personal Credit:</strong> Company has no history, but directors do. Personal credit profiles matter.</li>
-        <li><strong>Show Business Potential:</strong> Delivery contracts, letters of intent, partnerships with established clients (Shopee, DHL, etc.).</li>
-        <li><strong>Start Small:</strong> Finance 1 lorry first to build track record. Easier approval than 5-lorry fleet upfront.</li>
-        <li><strong>Provide Detailed Business Plan:</strong> Revenue projections, route analysis, client acquisition strategy. Shows you've done homework.</li>
-      </ul>
-
-      <!-- Section 7 -->
-      <h2 id="common-mistakes" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Common Mistakes That Slow Down Approval
-      </h2>
-
-      <p>
-        Avoid these 7 mistakes that add 1-4 weeks to approval timelines:
-      </p>
-
-      <div class="space-y-6 my-8">
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #1: Incomplete Bank Statements</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> Submitting 3 months instead of 6 months, or bank book photos instead of full statements.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Download 6-month PDF from online banking or request stamped hard copies from bank.</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #2: Vague Lorry Details</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> "I want to buy a 3-ton lorry" without make, model, year, or asking price.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Provide specifics: "Isuzu NPR 2018, 50,000 km, RM 120,000 asking price, box lorry, seller contact included."</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #3: Slow Response to Follow-ups</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> Financier requests additional documents, applicant responds 3-5 days later.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Respond within 2-4 hours during business hours. Treat financing application like an urgent delivery contract.</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #4: No Proof of Logistics Income</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> Bank deposits labeled "transfer" or "cash deposit" without clear logistics connection.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Include invoices, delivery contracts, or ask clients to label bank transfers as "delivery payment" or "logistics services."</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #5: Unrealistic Loan Amount</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> Applying for RM 500,000 fleet with RM 5,000/month income and no business track record.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Match loan amount to repayment capacity. Start with 1-2 lorries, scale later. Financiers appreciate realistic applications.</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #6: Applying to Wrong Financier</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> Applying to banks that don't understand logistics business models or reject used lorries.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Work with logistics-focused finance companies that specialize in commercial vehicle financing (e.g., Ing Heng Credit).</p>
-        </div>
-
-        <div class="bg-red-50 border-l-4 border-red-500 p-6">
-          <h4 class="font-bold text-red-900 mb-2">Mistake #7: No Explanation of Credit Issues</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Problem:</strong> CCRIS/CTOS records exist but applicant provides no context.</p>
-          <p class="text-sm text-gray-700"><strong>Solution:</strong> Brief explanation helps: "Past default in 2022 due to COVID lockdown. Business recovered in 2023, now earning RM 15,000/month consistently."</p>
-        </div>
-      </div>
-
-      <!-- JPJ Compliance Section -->
-      <h2 class="text-3xl font-bold text-primary mt-12 mb-6">
-        JPJ Compliance & Road Tax Considerations
-      </h2>
-
-      <p>
-        Commercial lorries in Malaysia require <strong>JPJ compliance</strong> for legal operation. Financing approval often depends on understanding these requirements.
-      </p>
-
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Key JPJ Requirements for Commercial Lorries</h3>
+      <h3>Optional Documents (Speed Up Approval)</h3>
 
       <ul>
-        <li><strong>PUSPAKOM Inspection:</strong> Every 6 months for commercial vehicles. Cost: RM 55-75 per inspection. Budget RM 120-150/year per lorry.</li>
-        <li><strong>Road Tax Renewal:</strong> First 2 years: Max 1 year renewal. After 2 years: Max 6 months renewal (due to increased vehicle age).</li>
-        <li><strong>Commercial Vehicle License:</strong> GDL (Goods Driving License) required for lorries above 3,500 kg GVW. Ensure drivers are licensed.</li>
-        <li><strong>Insurance:</strong> Comprehensive commercial vehicle insurance required. Cost: 2-4% of lorry value annually. Example: RM 140,000 lorry = RM 2,800-5,600/year.</li>
-        <li><strong>Weight Compliance:</strong> Overloading fines: RM 1,000-5,000. Ensure lorry tonnage matches cargo weight.</li>
+        <li><strong>Existing Fleet List:</strong> All lorries owned, ages, conditions (shows asset base)
+      <li><strong>Client Contracts:</strong> Signed agreements showing recurring revenue (predicts cash flow)
+      <li><strong>CIDB/PKPK Certificates:</strong> For construction logistics (shows qualifications)
+      <li><strong>APAD Permits:</strong> For freight lorries (shows compliance)</li>
       </ul>
 
-      <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-6">
-        <h4 class="font-bold text-yellow-900 mb-2">New 2024 Regulation: Brake Test Penalty</h4>
-        <p class="text-sm text-gray-700">
-          <strong>3+ failed PUSPAKOM brake tests</strong> result in automatic blacklist and JPJ road ban. Vehicle cannot operate until compliance. Ensure lorries pass brake tests to avoid operational disruption.
-        </p>
-      </div>
+      <h3>What NOT to Include</h3>
 
-      <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">SKDS 2.0 Diesel Subsidy (Fleet Card)</h3>
+      <p>Don't overwhelm with unnecessary documents:
+      <br>• Old bank statements (last 6 months sufficient)
+      <br>• Irrelevant business plans (we focus on current operations)
+      <br>• Personal tax returns (unless sole proprietor without separate business accounts)
+      <br>• Complex financial projections (current contracts speak louder)</p>
 
-      <p>
-        With diesel prices at <strong>RM 3.35/litre</strong> (55% increase from RM 2.15), the <strong>SKDS 2.0 fleet card</strong> provides subsidized diesel for commercial logistics operators.
-      </p>
+      <h2>Approval Factors: What Financiers Assess</h2>
 
-      <p><strong>How to Apply for SKDS 2.0:</strong></p>
+      <h3>Positive Indicators (Approvals Faster)</h3>
+
       <ul>
-        <li>Register through KPDN (Ministry of Domestic Trade)</li>
-        <li>Provide: Commercial vehicle registration, PG11A inspection report, JPJ form K1, PUSPAKOM certificate</li>
-        <li>Obtain fleet cards for subsidized diesel access at approved stations</li>
-        <li>Savings: RM 0.50-1.00/litre subsidy = RM 500-1,000/month savings per lorry</li>
+        <li><strong>Active Contracts:</strong> Signed agreements with reputable clients (government, large corporations) demonstrate guaranteed revenue</li>
+        <li><strong>Existing Fleet:</strong> Already own lorries successfully operating (proves logistics capability)
+        <li><strong>Consistent Revenue:</strong> Regular bank deposits from multiple clients (diversified income)
+        <li><strong>Experience:</strong> 2+ years in logistics business (industry knowledge reduces risk)
+        <li><strong>Asset Knowledge:</strong> Understanding of lorry maintenance, resale values (responsible asset management)</li>
       </ul>
 
-      <p class="mt-4">
-        <strong>Impact on Financing:</strong> SKDS 2.0 eligibility improves repayment capacity. Fuel savings (RM 500-1,000/month) increase net income, making loan payments more affordable.
-      </p>
+      <h3>Yellow Flags (Not Deal-Breakers, But Explain)</h3>
 
-      <!-- Fast Quote CTA -->
-      <div class="bg-gradient-to-r from-primary to-secondary text-white rounded-lg p-8 my-12 text-center">
-        <h3 class="text-2xl font-bold mb-4">Ready for Fast Lorry Financing Approval?</h3>
-        <p class="text-lg mb-6">Get approved in 24-48 hours. WhatsApp us with your lorry details and documents.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20fast%20lorry%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
-            Apply via WhatsApp
-          </a>
-          <a href="/en/equipment/lorry" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
-            View Lorry Financing Options
-          </a>
-        </div>
+      <ul>
+        <li><strong>Seasonal Revenue:</strong> Logistics often seasonal ( Hari Raya slowdowns, year-end peaks)—explain this pattern
+      <li><strong>Overdraft Usage:</strong> Common due to payment delays (Net-60 terms from clients)—highlight receivables
+      <li><strong>New Contracts:</strong> Recent contract wins may show temporary low cash—provide award letters
+      <li><strong>Multiple Financiers:</strong> Existing lorry loans—show payment history and fleet utilization
+      <li><strong>Previous Rejections:</strong> Banks often reject logistics for "high risk"—we understand the industry better</li>
+      </ul>
+
+      <h2>Fast Approval Strategies: Pro Tips</h2>
+
+      <h3>Strategy 1: Complete Documentation First</h3>
+
+      <p><strong>Don't Submit Partial Applications:</strong>
+      <br>• Gather ALL documents before applying
+      <br>• Incomplete applications trigger "come back later" responses
+      <br>• Each follow-up delays process by days
+      <br><strong>Result:</strong> Complete applications processed 24-48 hours; incomplete applications take weeks</p>
+
+      <h3>Strategy 2: Finance Specific Lorries</h3>
+
+      <p><strong>Avoid Generic "Lorry Financing" Requests:</strong>
+      <br>• Specify exact make, model, year, price
+      <br>• Provide dealer quotation
+      <br>• Explain business purpose (e.g., "for new contract with Factory XYZ delivering 500 tons monthly")
+      <br><strong>Result:</strong> Specific requests processed faster than vague "need working capital" applications</p>
+
+      <h3>Strategy 3: Highlight Contract Revenue</h3>
+
+      <p><strong>Show Where Repayment Comes From:</strong>
+      <br>• Contract award letters with payment terms
+      <br>• Client contracts showing monthly/quarterly payments
+      <br>• Delivery schedules confirming ongoing work
+      <br><strong>Result:</strong> Contract revenue = guaranteed repayment = fast approval</p>
+
+      <h3>Strategy 4: Leverage Existing Assets</h3>
+
+      <p><strong>Use Your Fleet as Strength:</strong>
+      <br>• List all owned lorries (make, model, year, current value)
+      >• Show insurance and road tax (compliance)
+      <br>• Demonstrate successful fleet management
+      <br><strong>Result:</strong> Existing assets prove capability and reduce lender risk</p>
+
+      <h3>Strategy 5: Choose Right Financier</h3>
+
+      <p><strong>Banks vs. Specialized Lenders:</strong>
+      <br>• Banks: Lower rates but slower (3-4 weeks), strict requirements
+      <br>• Specialized lenders (Ing Heng Credit): Fast (24-48 hours), understand logistics, flexible terms
+      <br><strong>Result:</strong> Specialized lenders often approve when banks reject, with speed that meets logistics timeline needs</p>
+
+      <h2>Ing Heng Credit: Logistics Specialists</h2>
+
+      <h3>1. We Understand Logistics Cash Flow</h3>
+
+      <p>We know that:
+      <br>• Clients pay Net-30, Net-60, even Net-90 (delays inevitable)
+      <br>• Revenue fluctuates seasonally (peak seasons vs. slow months)
+      <br>• Large contracts have milestone payments (not monthly cash flow)
+      <br>• Fuel costs consume 30-40% of revenue (volatile)</p>
+
+      <p><strong>Our Response:</strong>
+      <br>• Seasonal payment structures (lower payments during slow months, higher during peak)
+      <br>• Progress payment alignment (match installments to contract milestones)
+      <br>• Payment holidays during cash crunch periods
+      <br>• Skip payments when client delays occur (with notice)</p>
+
+      <h3>2. 0% Down Payment Preserves Working Capital</h3>
+
+      <p>Logistics operations require cash flow:
+      <br>• Driver salaries (weekly)
+      <br>• Fuel advances (daily)
+      <br>• Toll payments (every trip)
+      <br>• Maintenance (ongoing)</p>
+
+      <p><strong>0% Down Payment Benefit:</strong>
+      <br>• Preserve RM40,000-RM80,000 capital (for RM200,000-RM400,000 lorry)
+      <br>• Available for operations while awaiting first client payment
+      <br>• Prevents cash crunch in first 2-3 months</p>
+
+      <h3>3. Fast Approval = Contract Wins</h3>
+
+      <p>Logistics contracts often awarded with short mobilization windows:</p>
+
+      <p><strong>Our Timeline:</strong>
+      <br>• Apply: Day 1 (anytime)
+      <br>• Decision: Day 2 (within 24 hours of complete docs)
+      <br>• Agreement & Disbursement: Day 3 (48 hours total)
+      <br>• Lorry Acquisition: Day 4-5</p>
+
+      <p><strong>Result:</strong> Deploy lorries before most competitors complete bank applications.</p>
+
+      <h3>4. Finance Entire Fleets</h3>
+
+      <p>Multiple lorry financing available:
+      <br>• Bundle 2, 5, or 10 lorries in single agreement
+      <br>• Streamlined documentation (one set for entire fleet)
+      <br>• Discounted rates for fleet financing
+      <br>• Flexible structures (mix of new and used lorries)</p>
+
+      <h2>Real-World Fast Approval Stories</h2>
+
+      <h3>Port Klang Container Haulage</h3>
+
+      <p>\"Won contract requiring 5 container lorries immediately. Bank said 'apply, we'll process in 3-4 weeks.' Contract started in 7 days. Couldn't deliver. Applied to Ing Heng Credit Friday, approved Saturday. Purchased 5 lorries Sunday. Delivered Monday. Contract saved, client impressed, won additional contracts due to reliability. 0% down payment preserved RM100,000 used for driver salaries and fuel while waiting for first payment (Net-60 terms). Fast approval didn't just save time—it won the contract.\"\n<p><em>— Ahmad Zaki, Logistics Manager</em></p>
+
+      <h3>Cold Chain Logistics Expansion</h3>
+
+      <p>\"Frozen food expansion required 3 refrigerated lorries. Clients increasing orders but our reefers at capacity. Needed reefers in 10 days. Traditional financing would take 3 weeks. Ing Heng approved in 48 hours with 0% down. Purchased 3 used reefers (40% cheaper than new, still 5 years remaining useful life). Deployed immediately, secured new clients. Monthly revenue increased RM60,000. 0% down payment preserved RM60,000 used for warehouse expansion (needed for additional storage). Fast financing enabled growth that paid for itself in 4 months.\"\n<p><em>— Sarah Lim, Operations Director</em></p>
+
+      <h2>Fleet Financing: Multiple Lorries Strategy</h2>
+
+      <h3>Financing 2-5 Lorries Simultaneously</h3>
+
+      <p><strong>Streamlined Documentation:</strong>
+      <br>• One application covers entire fleet
+      <br>• Single credit assessment for all lorries
+      <br>• Unified agreement (multiple asset schedules)</p>
+
+      <p><strong>Flexible Options:</strong>
+      <br>• Mix new and used lorries (optimize cost vs. warranty)
+      <br>• Different configurations (tonnage, body types) in single agreement
+      <br>• Staggered delivery dates (match cash flow with deployment)</p>
+
+      <p><strong>Cost Efficiency:</strong>
+      <br>• Fleet discounts: 0.5-1% lower interest per additional lorry
+      <br>• Documentation savings: One set of paperwork vs. multiple
+      <br>• Faster approval: Single assessment vs. multiple applications</p>
+
+      <h2>Common Approval Mistakes to Avoid</h2>
+
+      <h3>Mistake 1: Incomplete Documentation</h3>
+
+      <p>Submitting application with missing bank statements:
+      <br>• Application sits pending awaiting documents
+      <br>• Follow-ups delay process
+      <br>• Competitors with complete docs approved first
+      <br><strong>Solution:</strong> Gather ALL documents before applying</p>
+
+      <h3>Mistake 2: Vague Business Purpose</h3>
+
+      <p>Stating "need working capital" without specifics:
+      <br>• Raises risk concerns
+      <br>• Requires additional explanation
+      <br>• Delays decision
+      <br><strong>Solution:</strong> Specify exact lorry, contract, or expansion purpose</p>
+
+      <h3>Mistake 3: Hiding Credit Issues</h3>
+
+      <p>Not mentioning previous loan rejections or payment issues:
+      <br>• Financier discovers during background check
+      <br>• Appears dishonest (raises red flags)
+      <br>• Application rejected or delayed
+      <br><strong>Solution:</strong> Explain issues upfront, provide context and resolution</p>
+
+      <h3>Mistake 4: Unrealistic Budget</h3>
+
+      <p>Applying for lorry financing beyond repayment capacity:
+      <br>• Installments exceed realistic monthly cash flow
+      <br>• Application rejected or approved with reduced amount
+      <br>• Wasted time and credit inquiries
+      <br><strong>Solution:</strong> Calculate realistic budget based on contract revenue before applying</p>
+
+      <h2>Pre-Approval: Get Ready Before You Need</h2>
+
+      <h3>Benefits of Pre-Approval</h3>
+
+      <ul>
+        <li><strong>Know Your Budget:</strong> Get approved amount before shopping (know exact price range)</li>
+        <li><strong>Negotiate from Strength:</strong> Pre-approval = cash buyer in dealer negotiations</li>
+        <li><strong>Move Fast on Opportunities:</strong> When contract awarded, financing already secured</li>
+        <li><strong>Identify Issues Early:</strong> Resolve documentation or credit issues before urgent need</li>
+      </ul>
+
+      <h3>How Pre-Approval Works</h3>
+
+      <p><strong>Step 1:</strong> Submit basic documents (SSM, IC, bank statements)
+      <br><strong>Step 2:</strong> Receive pre-approval letter with amount
+      <br><strong>Step 3:</strong> Shop for lorries knowing your budget
+      <br><strong>Step 4:</strong> Final approval once specific lorry chosen (48 hours)</p>
+
+      <h2>The Bottom Line: Speed = Revenue</h2>
+
+      <p>In logistics, time is literally money. Every day without additional lorries is lost revenue:</p>
+
+      <ul>
+        <li><strong>Single Lorry Daily Revenue:</strong> RM500-RM1,500 (depending on operations)
+        <li><strong>Weekly Delay Cost:</strong> RM3,500-RM10,500
+        <li><strong>Monthly Delay Cost:</strong> RM15,000-RM45,000
+      </ul>
+
+      <p>Fast approval financing isn't just convenient—it's competitive necessity. The 2-3 week bank process costs RM30,000-RM100,000 in lost revenue. 48-hour approval preserves that revenue and secures contracts.</p>
+
+      <p>0% down payment financing preserves working capital for operations. Fleet financing enables scalable growth. Flexible payment structures match logistics cash flow reality.</p>
+
+      <p>Don't let slow financing limit your logistics potential. Join 4,000+ businesses who have trusted Ing Heng Credit since 1985.</p>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">Need Fast Lorry Financing?</h3>
+        <p style="margin-bottom: 1rem;">Get approved in 24-48 hours with 0% down payment. We understand logistics cash flow and structure payments to match your reality.</p>
+        <p style="margin-bottom: 0;"><strong>Contact:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (Phone)</p>
       </div>
-
-      <!-- FAQ Section -->
-      <h2 id="faq" class="text-3xl font-bold text-primary mt-12 mb-6">
-        Frequently Asked Questions
-      </h2>
-
-      <div class="space-y-4">
-        {faqs.map((faq) => (
-          <FAQItem question={faq.question} answer={faq.answer} />
-        ))}
-      </div>
-
-      <!-- Contact Section -->
-      <div class="bg-gray-50 rounded-lg p-8 mt-12">
-        <h3 class="text-2xl font-bold text-primary mb-4">Get Fast Lorry Financing Approval Today</h3>
-        <p class="text-gray-700 mb-6">
-          Ing Heng Credit specializes in fast lorry financing for Port Klang and Klang Valley logistics operators. 40+ years experience, 24-hour approval, 90% financing available.
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <h4 class="font-bold text-gray-900 mb-3">Contact Us</h4>
-            <ul class="space-y-2 text-gray-700">
-              <li><strong>WhatsApp (Fastest):</strong> <a href="https://wa.me/60175700889" class="text-primary hover:underline">+6017-570 0889</a></li>
-              <li><strong>Phone:</strong> <a href="tel:+60175700889" class="text-primary hover:underline">017-570 0889</a> / <a href="tel:+60333248899" class="text-primary hover:underline">03-3324 8899</a></li>
-              <li><strong>Email:</strong> <a href="mailto:enquiry@inghengcredit.com" class="text-primary hover:underline">enquiry@inghengcredit.com</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-bold text-gray-900 mb-3">Office Location</h4>
-            <p class="text-gray-700">
-              306-1, Persiaran Pegaga<br />
-              Taman Bayu Perdana<br />
-              41200 Klang, Selangor<br />
-              <strong>Hours:</strong> Mon-Fri 9AM-5PM, Sat 9AM-1PM
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Related Articles -->
-      <div class="mt-12 pt-8 border-t border-gray-200">
-        <h3 class="text-2xl font-bold text-primary mb-6">Related Articles</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <a href="/en/equipment/lorry" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h4 class="font-bold text-primary mb-2">Commercial Lorry Financing</h4>
-            <p class="text-sm text-gray-600">Complete guide to lorry financing options for all tonnage ranges</p>
-          </a>
-          <a href="/en/services/loan-financing" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h4 class="font-bold text-primary mb-2">Equipment Loan Financing</h4>
-            <p class="text-sm text-gray-600">Flexible financing solutions for construction and logistics equipment</p>
-          </a>
-          <a href="/en/blog" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h4 class="font-bold text-primary mb-2">All Blog Articles</h4>
-            <p class="text-sm text-gray-600">Industry insights, financing tips, and market updates</p>
-          </a>
-        </div>
-      </div>
-
     </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Lorry Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
   </article>
 </BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

@@ -6,11 +6,12 @@
  * Word Count: ~3,200 words
  */
 
-import Layout from '../../../layouts/BaseLayout.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
-import Calculator from '../../../components/Calculator.astro';
-import { t } from '../../../utils/i18n';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { t } from '../../../../utils/i18n';
 
 const lang = 'ms';
 
@@ -53,7 +54,7 @@ const schema = {
           "name": "Berapakah kos untuk membiayai lori sejuk beku di Malaysia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Lori sejuk beku 1 tan berharga RM 120,000-180,000, lori 3 tan berharga RM 200,000-280,000, dan lori 5 tan berharga RM 300,000-450,000. Dengan 0% bayaran pendahuluan (pinjaman penuh tersedia), ansuran bulanan berkisar dari RM 2,000-7,500 bergantung kepada tempoh pinjaman (5-7 tahun) dan profil kredit anda."
+            "text": "Lori sejuk beku 1 tan berharga RM 120,000-180,000, lori 3 tan berharga RM 200,000-280,000, dan lori 5 tan berharga RM 300,000-450,000. Dengan bayaran pendahuluan 20%, ansuran bulanan berkisar dari RM 2,000-7,500 bergantung kepada tempoh pinjaman (5-7 tahun) dan profil kredit anda."
           }
         },
         {
@@ -77,7 +78,7 @@ const schema = {
           "name": "Bolehkah saya membiayai lori sejuk beku terpakai?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ya, kami membiayai lori sejuk beku terpakai sehingga 10 tahun. Kenderaan mesti lulus pemeriksaan mekanikal dan ujian prestasi unit penyejukan. Pinjaman penuh (0% bayaran pendahuluan) tersedia untuk kedua-dua lori baharu dan terpakai - peralatan lama mempunyai nilai pasaran lebih rendah, menjadikan pembiayaan penuh lebih mudah diluluskan."
+            "text": "Ya, kami membiayai lori sejuk beku terpakai sehingga 10 tahun. Kenderaan mesti lulus pemeriksaan mekanikal dan ujian prestasi unit penyejukan. Pembiayaan lori terpakai memerlukan bayaran pendahuluan 25-30% berbanding 15-20% untuk unit baharu."
           }
         },
         {
@@ -158,7 +159,7 @@ const schema = {
           <h1>Pembiayaan Lori Sejuk Beku: Kuasai Ledakan Rantai Sejuk Malaysia</h1>
           <p class="hero-subtitle">
             Biayai kenderaan kawalan suhu untuk hasil segar, farmaseutikal, dan logistik e-dagang.
-            Kelulusan pantas dalam 5-7 hari dengan kadar kompetitif dan pilihan pembiayaan fleksibel.
+            Kelulusan pantas dalam 5-7 hari, kadar kompetitif dari 6.5%, dan pembiayaan sehingga 90% nilai lori.
           </p>
           <div class="hero-stats">
             <div class="stat">
@@ -282,7 +283,7 @@ const schema = {
             </div>
           </div>
           <div class="financing-preview">
-            <strong>Bulanan dari RM 2,000</strong> (tempoh 7 tahun, 0% deposit tersedia)
+            <strong>Bulanan dari RM 2,000</strong> (tempoh 7 tahun, deposit 20%)
           </div>
         </div>
 
@@ -309,7 +310,7 @@ const schema = {
             </div>
           </div>
           <div class="financing-preview">
-            <strong>Bulanan dari RM 3,500</strong> (tempoh 7 tahun, 0% deposit tersedia)
+            <strong>Bulanan dari RM 3,500</strong> (tempoh 7 tahun, deposit 20%)
           </div>
         </div>
 
@@ -335,7 +336,7 @@ const schema = {
             </div>
           </div>
           <div class="financing-preview">
-            <strong>Bulanan dari RM 5,500</strong> (tempoh 7 tahun, 0% deposit tersedia)
+            <strong>Bulanan dari RM 5,500</strong> (tempoh 7 tahun, deposit 20%)
           </div>
         </div>
       </div>
@@ -373,7 +374,7 @@ const schema = {
         pengusaha rantai sejuk mencapai aliran tunai positif dari bulan pertama dengan kontrak sedia ada.
       </p>
 
-      <Calculator lang={lang} equipmentType="refrigerated-truck" />
+      <Calculator lang={lang} equipmentType="refrigerated-truck" defaultPrice={250000} />
 
       <div class="roi-comparison">
         <h3>Senario ROI Dunia Sebenar</h3>
@@ -382,7 +383,7 @@ const schema = {
             <h4>🍎 Pengedaran Hasil Segar</h4>
             <div class="scenario-details">
               <p><strong>Pelaburan:</strong> RM 250,000 (3 tan Isuzu + unit Carrier)</p>
-              <p><strong>Bayaran Bulanan:</strong> RM 4,200 (7 tahun, faedah 3.8%)</p>
+              <p><strong>Bayaran Bulanan:</strong> RM 4,200 (7 tahun, faedah 6.8%)</p>
               <p><strong>Pendapatan:</strong></p>
               <ul>
                 <li>Selayang ke pasar raya Lembah Klang: RM 800/hari</li>
@@ -400,7 +401,7 @@ const schema = {
             <h4>💊 Rantai Sejuk Farmaseutikal (Diperakui GDP)</h4>
             <div class="scenario-details">
               <p><strong>Pelaburan:</strong> RM 280,000 (3 tan + pemantauan premium)</p>
-              <p><strong>Bayaran Bulanan:</strong> RM 4,700 (7 tahun, faedah 3.5%)</p>
+              <p><strong>Bayaran Bulanan:</strong> RM 4,700 (7 tahun, faedah 6.5%)</p>
               <p><strong>Pendapatan:</strong></p>
               <ul>
                 <li>Penghantaran hospital/farmasi: RM 1,200/hari</li>
@@ -418,7 +419,7 @@ const schema = {
             <h4>📦 Penghantaran Batu Terakhir E-Dagang</h4>
             <div class="scenario-details">
               <p><strong>Pelaburan:</strong> RM 160,000 (1 tan Toyota + Zanotti)</p>
-              <p><strong>Bayaran Bulanan:</strong> RM 2,700 (7 tahun, faedah 3.9%)</p>
+              <p><strong>Bayaran Bulanan:</strong> RM 2,700 (7 tahun, faedah 6.9%)</p>
               <p><strong>Pendapatan:</strong></p>
               <ul>
                 <li>Kontrak HappyFresh/GrabMart: RM 600/hari</li>
@@ -456,9 +457,9 @@ const schema = {
           <h3>🎯 Sewa Beli Standard</h3>
           <div class="option-features">
             <ul>
-              <li><strong>Bayaran Pendahuluan:</strong> 0% Bayaran Pendahuluan (Pinjaman Penuh Tersedia)</li>
+              <li><strong>Bayaran Pendahuluan:</strong> 15-20% untuk baharu, 25-30% untuk terpakai</li>
               <li><strong>Tempoh Pinjaman:</strong> 5-7 tahun</li>
-              <li><strong>Kadar Faedah:</strong> 3.5-4.5% p.a.</li>
+              <li><strong>Kadar Faedah:</strong> 3.5-7.5% p.a.</li>
               <li><strong>Masa Kelulusan:</strong> 5-7 hari bekerja</li>
               <li><strong>Sesuai Untuk:</strong> Pengusaha mapan dengan kontrak sedia ada</li>
             </ul>
@@ -473,9 +474,9 @@ const schema = {
           <h3>⚡ Pembiayaan Ekspres (Bermusim)</h3>
           <div class="option-features">
             <ul>
-              <li><strong>Bayaran Pendahuluan:</strong> 0% Bayaran Pendahuluan (Pinjaman Penuh Tersedia)</li>
+              <li><strong>Bayaran Pendahuluan:</strong> 20-25%</li>
               <li><strong>Tempoh Pinjaman:</strong> 5 tahun</li>
-              <li><strong>Kadar Faedah:</strong> 3.8-4.8% p.a.</li>
+              <li><strong>Kadar Faedah:</strong> 3.8-7.8% p.a.</li>
               <li><strong>Masa Kelulusan:</strong> 3-5 hari bekerja</li>
               <li><strong>Sesuai Untuk:</strong> Tahun Baru Cina, Ramadan, permintaan bermusim akhir tahun</li>
             </ul>
@@ -489,9 +490,9 @@ const schema = {
           <h3>📊 Pelan Bayaran Belon</h3>
           <div class="option-features">
             <ul>
-              <li><strong>Bayaran Pendahuluan:</strong> 0% Bayaran Pendahuluan (Pinjaman Penuh Tersedia)</li>
+              <li><strong>Bayaran Pendahuluan:</strong> 15-20%</li>
               <li><strong>Tempoh Pinjaman:</strong> 3-5 tahun + belon</li>
-              <li><strong>Kadar Faedah:</strong> 3.7-4.6% p.a.</li>
+              <li><strong>Kadar Faedah:</strong> 3.7-7.6% p.a.</li>
               <li><strong>Bayaran Bulanan:</strong> 30-40% lebih rendah daripada standard</li>
               <li><strong>Sesuai Untuk:</strong> Permulaan yang membina saluran kontrak</li>
             </ul>
@@ -505,9 +506,9 @@ const schema = {
           <h3>🏢 Pembiayaan Armada (2+ Unit)</h3>
           <div class="option-features">
             <ul>
-              <li><strong>Bayaran Pendahuluan:</strong> 0% Bayaran Pendahuluan (Pinjaman Penuh Tersedia)</li>
+              <li><strong>Bayaran Pendahuluan:</strong> 10-15% (diskaun pukal)</li>
               <li><strong>Tempoh Pinjaman:</strong> 5-7 tahun</li>
-              <li><strong>Kadar Faedah:</strong> 3.3-4.2% p.a. (keutamaan)</li>
+              <li><strong>Kadar Faedah:</strong> 3.3-7.2% p.a. (keutamaan)</li>
               <li><strong>Masa Kelulusan:</strong> 7-10 hari bekerja</li>
               <li><strong>Sesuai Untuk:</strong> Operasi meningkat dengan berbilang kontrak</li>
             </ul>
@@ -628,6 +629,9 @@ const schema = {
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="refrigeratedTruck" />
+
   <!-- FAQ Section -->
   <section class="section">
     <div class="container">
@@ -676,7 +680,8 @@ const schema = {
           <h3>Bolehkah saya membiayai lori sejuk beku terpakai?</h3>
           <p>
             Ya, kami membiayai lori sejuk beku terpakai sehingga 10 tahun. Kenderaan mesti lulus pemeriksaan mekanikal dan
-            ujian prestasi unit penyejukan. Pinjaman penuh (0% bayaran pendahuluan) tersedia untuk kedua-dua lori baharu dan terpakai - peralatan lama mempunyai nilai pasaran lebih rendah, menjadikan pembiayaan penuh lebih mudah diluluskan.
+            ujian prestasi unit penyejukan. Pembiayaan lori terpakai memerlukan bayaran pendahuluan 25-30% berbanding 15-20%
+            untuk unit baharu.
           </p>
         </div>
 
@@ -774,7 +779,7 @@ const schema = {
           <div class="trust-icon">💰</div>
           <h3>Syarat Fleksibel & Kadar Kompetitif</h3>
           <p>
-            Kadar faedah kompetitif dengan syarat pembayaran balik fleksibel. Bayaran belon untuk permulaan. Diskaun armada untuk 2+
+            Kadar faedah dari 6.5% p.a. Biayai 80-90% nilai lori. Bayaran belon untuk permulaan. Diskaun armada untuk 2+
             unit. Insurans dan sistem pemantauan termasuk dalam pembiayaan.
           </p>
         </div>
@@ -828,7 +833,7 @@ const schema = {
         </div>
         <div class="contact-info">
           <p><strong>E-mel:</strong> enquiry@inghengcredit.com</p>
-          <p><strong>Alamat:</strong> 306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor</p>
+          <p><strong>Alamat:</strong> 16, Lintang Menalu, Taman Chi Liung, 41200 Klang, Selangor</p>
           <p><strong>Waktu Operasi:</strong> Isnin-Jumaat 9AM-5PM | Sabtu 9AM-1PM</p>
         </div>
       </div>

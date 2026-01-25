@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  title: 'Jaminan Penggantian 2026',
+  slug: 'jaminan-penggantian-2026',
+  excerpt: 'Trade-in guarantee untuk penggantian. 0% deposit. Value terjamin. Upgrade mudah.',
+  date: '2026-01-18',
+  author: 'Ing Heng Credit Team',
+  readTime: 4,
+  category: 'Penggantian & Naik Taraf',
+  image: '/images/blog/replacement-guarantee-2026.jpg'
+};
+
+const keywords = ['jaminan penggantian', 'replacement guarantee malaysia', '0% deposit', 'upgrade guarantee'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <Breadcrumbs items={breadcrumbItems} />
+    <article class="max-w-4xl mx-auto px-4 py-12">
+      <header class="mb-8">
+        <span class="text-sm font-semibold" style="color: #D4A574;">Penggantian & Naik Taraf</span>
+        <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+        <p class="text-gray-600 mt-4">{post.excerpt}</p>
+        <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+          <span>{post.author}</span>
+          <span>•</span>
+          <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <span>•</span>
+          <span>{post.readTime} min baca</span>
+        </div>
+      </header>
+
+      <div class="prose prose-lg max-w-none">
+        <h2>Jaminan Trade-in – Upgrade Tanpa Risau</h2>
+
+        <p>Beli peralatan dari kami? Nak upgrade 3-5 tahun kemudian? Kami berikan jaminan trade-in yang bagus.</p>
+
+        <h2>Apa Itu Jaminan Penggantian?</h2>
+
+        <ul>
+          <li>Beli peralatan dari kami hari ini</li>
+          <li>3-5 tahun kemudian, nak upgrade</li>
+          <li>Kami jamin trade-in value minimum</li>
+          <li>0% deposit untuk unit baru</li>
+          <li>Process mudah dan cepat</li>
+        </ul>
+
+        <h2>Contoh Jaminan</h2>
+
+        <p><strong>Excavator 20 tan – Beli RM200K hari ini</strong></p>
+        <ul>
+          <li>Tahun 5: Nak upgrade ke model baru</li>
+          <li>Market value mungkin RM80K-120K</li>
+          <li>Kami jamin minimum RM100K</li>
+          <li>Dapatkan RM100K trade-in + 0% deposit untuk baru</li>
+        </ul>
+
+        <h2>Bank vs Kami</h2>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+          <thead>
+            <tr style="background: #2D1810; color: #D4A574;">
+              <th style="padding: 1rem; border: 1px solid #D4A574; text-align: left;">Item</th>
+              <th style="padding: 1rem; border: 1px solid #D4A574; text-align: left;">Bank</th>
+              <th style="padding: 1rem; border: 1px solid #D4A574; text-align: left;">Kami</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;">Trade-in</td>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;">Tak ada guarantee</td>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;"><strong>Value dijamin</strong></td>
+            </tr>
+            <tr style="background: #F9FAFB;">
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;">Upgrade</td>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;">Proses baru</li>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;"><strong>Customer priority</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;">Deposit Baru</td>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;">10-20%</td>
+              <td style="padding: 1rem; border: 1px solid #E5E7EB;"><strong>0%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Syarat Jaminan</h2>
+
+        <ul>
+          <li>Servis mengikut schedule</li>
+          <li>Bayaran tepat pada masa</li>
+          <li>Peralatan dalam keadaan reasonable</li>
+          <li>Upgrade dari kami (repeat customer)</li>
+        </ul>
+
+        <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+          <h3 style="color: #2D1810; margin-top: 0;">Nak Jaminan Penggantian?</h3>
+          <p style="margin-bottom: 1rem;">Beli dari kami, dapat jaminan upgrade. 0% deposit untuk semua.</p>
+          <p style="margin-bottom: 0;"><strong>Contact:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (Telefon)</p>
+        </div>
+      </div>
+
+      <footer class="mt-12 pt-8 border-t">
+        <CTAButton text="Dapatkan Pembiayaan Sekarang" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+      </footer>
+    </article>
+  </BaseLayout>
+
+  <style>
+    h2 { color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 2rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 3px solid #D4A574; padding-bottom: 0.5rem; }
+    h3 { color: #8B6F47; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    p { line-height: 1.8; color: #374151; }
+    strong { color: #2D1810; font-weight: 700; }
+    ul { list-style: none; padding-left: 0; }
+    li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; line-height: 1.8; color: #374151; }
+    li::before { content: '✓'; position: absolute; left: 0; color: #D4A574; font-weight: bold; }
+  </style>

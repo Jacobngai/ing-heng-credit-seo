@@ -1,0 +1,260 @@
+---
+/**
+ * Dynamic Location Tag Page - Malay Version
+ * Lists all equipment financing articles for a specific location
+ * URL: /ms/blog/location/selangor, /ms/blog/location/johor, etc.
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import {
+  getLocationTags,
+  getLocationTagBySlug,
+  getEquipmentTags,
+  getTagName,
+  buildBlogPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'ms';
+
+export function getStaticPaths() {
+  const locations = getLocationTags();
+  return locations.map((loc) => ({
+    params: { location: loc.slug.ms },
+    props: { locationId: loc.id }
+  }));
+}
+
+const { location } = Astro.params;
+const { locationId } = Astro.props;
+
+const locationTag = getLocationTags().find(loc => loc.slug.ms === location);
+if (!locationTag) {
+  return Astro.redirect('/ms/blog');
+}
+
+const locationName = getTagName(locationTag, lang);
+const equipmentTags = getEquipmentTags();
+
+const locationData: Record<string, { description: string; highlights: string[]; industries: string[] }> = {
+  'selangor': {
+    description: 'Selangor adalah negeri paling perindustrian di Malaysia dengan kepekatan tertinggi aktiviti pembinaan dan pembuatan.',
+    highlights: ['Zon Perindustrian Shah Alam', 'Hab Perniagaan Petaling Jaya', 'Koridor Logistik KLIA'],
+    industries: ['Pembinaan', 'Pembuatan', 'Logistik', 'Pergudangan']
+  },
+  'kuala-lumpur': {
+    description: 'Kuala Lumpur, ibu negara, adalah pusat aktiviti ekonomi dan perniagaan Malaysia.',
+    highlights: ['Kawasan Pembangunan KLCC', 'Zon Komersial Bukit Bintang', 'Daerah Kewangan TRX'],
+    industries: ['Pembinaan Komersial', 'Pembangunan Hartanah', 'Infrastruktur']
+  },
+  'johor': {
+    description: 'Johor adalah pintu masuk selatan Malaysia dengan projek pembangunan besar termasuk Forest City dan Iskandar Malaysia.',
+    highlights: ['Iskandar Malaysia', 'Forest City', 'Pelabuhan Tanjung Pelepas'],
+    industries: ['Operasi Pelabuhan', 'Pembuatan', 'Pembangunan Hartanah']
+  }
+};
+
+const locInfo = locationData[locationTag.id] || {
+  description: `${locationName} menawarkan peluang cemerlang untuk pembiayaan peralatan merentasi pelbagai industri.`,
+  highlights: ['Taman Perindustrian', 'Zon Komersial', 'Kawasan Pembangunan'],
+  industries: ['Pembinaan', 'Pembuatan', 'Logistik']
+};
+
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: 'Mengikut Lokasi', href: '/ms/blog/location' },
+  { label: locationName, href: `/ms/blog/location/${location}` },
+];
+---
+
+<BaseLayout
+  title={`Pembiayaan Peralatan di ${locationName} | Panduan Pakar | Ing Heng Credit`}
+  description={`Panduan komprehensif pembiayaan peralatan untuk ${locationName}. Ketahui tentang pilihan pembiayaan untuk jengkaut, forklif, lori dan banyak lagi. Kelulusan dalam 24 jam.`}
+  lang={lang}
+  keywords={[
+    `pembiayaan peralatan ${locationName}`,
+    `${locationName} pembiayaan jengkaut`,
+    `${locationName} pinjaman forklif`,
+    `${locationName} pembiayaan lori`,
+    `pinjaman peralatan berat ${locationName}`
+  ]}
+>
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-yellow-400 text-navy-900 px-4 py-2 mb-6 border-3 border-navy-900 font-black uppercase text-sm" style="box-shadow: 4px 4px 0 rgba(0,0,0,0.3);">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          <span>Panduan Lokasi</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Pembiayaan Peralatan di <span class="text-yellow-400">{locationName}</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          {locInfo.description}
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {locInfo.industries.map((industry) => (
+            <div class="bg-white/10 backdrop-blur px-4 py-3 border-2 border-yellow-400/30">
+              <span class="text-yellow-400 font-bold text-sm uppercase">{industry}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 text-sm text-yellow-400 font-bold">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>{equipmentTags.length} Jenis Peralatan</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>Perkhidmatan Tempatan</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>Kelulusan 24-Jam</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Panduan Pembiayaan Peralatan untuk {locationName}
+        </h2>
+        <p class="text-gray-700 text-lg max-w-2xl mx-auto">
+          Pilih jenis peralatan untuk mengetahui pilihan pembiayaan, keperluan, dan tips khusus untuk {locationName}.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {equipmentTags.map((equipment) => (
+          <a
+            href={buildBlogPostUrl(lang, locationTag.id, equipment.id)}
+            class="card-brutalist group hover:scale-[1.02] transition-transform duration-300"
+          >
+            <div class="aspect-video bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center border-b-4 border-navy-900">
+              <span class="text-6xl opacity-50 group-hover:opacity-70 transition-opacity">
+                {equipment.icon === 'excavator' ? '🚜' :
+                 equipment.icon === 'forklift' ? '🏗️' :
+                 equipment.icon === 'lorry' ? '🚛' :
+                 equipment.icon === 'prime-mover' ? '🚚' :
+                 equipment.icon === 'crane' ? '🏗️' : '🏗️'}
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="badge-brutalist text-xs">{locationName}</span>
+                <span class="badge-brutalist bg-white text-xs">{getTagName(equipment, lang)}</span>
+              </div>
+              <h3 class="text-xl font-black text-navy-900 mb-2 group-hover:text-yellow-600 transition-colors" style="font-family: 'Bebas Neue', sans-serif;">
+                Pembiayaan {getTagName(equipment, lang)} di {locationName}
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Panduan lengkap untuk pembiayaan {getTagName(equipment, lang).toLowerCase()} di {locationName}. Ketahui tentang keperluan, kadar, dan proses kelulusan.
+              </p>
+              <span class="inline-flex items-center text-yellow-600 font-black text-sm uppercase group-hover:translate-x-2 transition-transform">
+                Baca Panduan
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-50 border-y-4 border-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-navy-900 p-8 border-4 border-yellow-400 text-center" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+          <h3 class="text-2xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Bersedia untuk Pembiayaan Peralatan di {locationName}?
+          </h3>
+          <p class="text-white mb-6">
+            Dapatkan sebut harga percuma hari ini. Pasukan kami berkhidmat di {locationName} dan boleh membantu anda mencari penyelesaian pembiayaan terbaik.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="Dapatkan Sebut Harga"
+              link={COMPANY_INFO.whatsapp.link}
+              variant="accent"
+              size="large"
+              icon="whatsapp"
+            />
+            <CTAButton
+              text="Hubungi Kami"
+              link={`tel:${COMPANY_INFO.phone.international}`}
+              variant="outline-white"
+              size="large"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <h2 class="text-2xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Layari Lokasi Lain
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        {getLocationTags().filter(loc => loc.id !== locationTag.id).map((loc) => (
+          <a
+            href={`/ms/blog/location/${loc.slug.ms}`}
+            class="px-4 py-2 bg-white border-3 border-navy-900 font-bold text-navy-900 hover:bg-yellow-400 transition-colors"
+            style="box-shadow: 3px 3px 0 #1E3A8A;"
+          >
+            {getTagName(loc, lang)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+  .card-brutalist {
+    @apply bg-white overflow-hidden border-4 border-navy-900;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+  .card-brutalist:hover { box-shadow: 4px 4px 0 #1E3A8A; }
+</style>

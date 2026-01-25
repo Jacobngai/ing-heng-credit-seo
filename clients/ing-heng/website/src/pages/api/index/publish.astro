@@ -1,0 +1,53 @@
+---
+// API endpoint for Google Indexing API
+// This allows programmatic URL submission for faster indexing
+// Reference: https://developers.google.com/search/docs/indexing-api/v3/quick-start
+
+export async function GET({ request }) {
+  const { url } = request.url.searchParams;
+
+  // Security check - only allow URLs from your own domain
+  const allowedDomains = [
+    'www.inghengcredit.com',
+    'www.kreditloan.my',
+    'www.inghengcredit.my'
+  ];
+
+  try {
+    const targetUrl = new URL(url);
+    if (!allowedDomains.includes(targetUrl.hostname)) {
+      return new Response(JSON.stringify({
+        error: 'Unauthorized: URL not from allowed domains'
+      }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  } catch (e) {
+    // Invalid URL format
+    return new Response(JSON.stringify({
+      error: 'Invalid URL format'
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // In a real implementation, you would:
+  // 1. Get OAuth2 token from Google
+  // 2. Call Google Indexing API
+  // 3. Return the result
+
+  // For now, return success response
+  return new Response(JSON.stringify({
+    message: 'Google Indexing API integration available',
+    url: url,
+    note: 'OAuth2 token required for actual submission',
+    documentation: 'https://developers.google.com/search/docs/indexing-api/v3/quick-start'
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+
+export const prerender = false;

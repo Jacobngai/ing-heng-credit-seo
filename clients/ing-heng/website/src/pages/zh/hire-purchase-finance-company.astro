@@ -1,0 +1,402 @@
+---
+/**
+ * 马来西亚领先分期付款融资公司 - 中文
+ * 目标："hire purchase finance company"中文关键词
+ * 焦点：公司权威，资产所有权收益，以所有权为导向的客户
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateOrganizationSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
+
+const lang = 'zh';
+
+// SEO Configuration
+const title = '马来西亚领先分期付款融资公司 | 资产融资专家 | Ing Heng Credit';
+const description = '马来西亚顶级分期付款融资公司，专门从事资产所有权融资。通过设备所有权建立股权vs租赁成本。快速审批，0%首付可用。';
+const keywords = [
+  '分期付款融资公司',
+  '资产融资公司',
+  '设备分期付款专家',
+  '资产所有权融资',
+  '马来西亚分期付款公司',
+  '设备所有权融资',
+  '通过设备建立资产',
+  '马来西亚分期付款专家',
+  '设备金融公司',
+  '资产所有权收益'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '分期付款融资公司', href: '/zh/hire-purchase-finance-company' }
+];
+
+// FAQ Data
+const faqs = [
+  {
+    question: '是什么让Ing Heng成为领先的分期付款融资公司？',
+    answer: '作为专门的分期付款融资公司，我们专注于为马来西亚企业提供资产所有权融资。与传统贷款机构不同，我们理解设备所有权能够建立长期财富。我们在资产融资方面的专业知识，结合灵活条件和竞争利率，使我们成为寻求拥有而非租赁设备的企业首选的分期付款融资公司。'
+  },
+  {
+    question: '分期付款融资公司与租赁公司有何不同？',
+    answer: '作为分期付款融资公司，我们通过结构化付款计划促进资产所有权。与保留设备所有权的租赁公司不同，分期付款融资公司帮助您通过每次付款建立股权。在您的付款期结束时，您完全拥有资产 - 为您的企业创造长期价值，而不是持续的租金费用。'
+  },
+  {
+    question: '您的分期付款融资公司专门从事哪些类型的资产？',
+    answer: '我们的分期付款融资公司专门从事建筑设备、物流车辆和工业机械。我们为挖掘机、推土机、卡车、叉车、起重机和其他商业资产提供融资。作为分期付款融资公司的专业知识意味着我们了解每种设备类型的收益潜力和运营要求。'
+  },
+  {
+    question: '为什么选择通过分期付款融资公司进行资产所有权？',
+    answer: '与分期付款融资公司合作意味着建立股权而不是永远支付租金费用。每月付款都有助于最终所有权。资产所有权提供操作控制、修改自由和长期价值保留。我们的分期付款融资公司帮助将设备费用转化为财富建设投资。'
+  },
+  {
+    question: '使用分期付款融资公司的所有权优势是什么？',
+    answer: '分期付款融资公司使立即操作控制与所有权收益相结合成为可能。您可以根据需要修改设备，在没有租赁限制的情况下运营，并建立企业股权。通过我们的分期付款融资公司进行资产所有权提供税收优惠、转售价值和摆脱租赁依赖的自由。'
+  },
+  {
+    question: '您的分期付款融资公司如何确保快速审批？',
+    answer: '作为经验丰富的分期付款融资公司，我们通过深厚的行业知识和强大的贷款机构关系简化了我们的审批流程。我们在资产评估和业务评估方面的专业知识使快速决策成为可能。我们的分期付款融资公司通过专注于设备可行性和业务潜力而非任意限制来维持优秀的审批率。'
+  }
+];
+
+// Organization Schema
+const organizationSchema = generateOrganizationSchema({
+  name: 'Ing Heng Credit - 马来西亚领先分期付款融资公司',
+  description: '专门从事马来西亚建筑设备、物流车辆和工业机械资产所有权融资的顶级分期付款融资公司。',
+  serviceType: '分期付款融资公司',
+  locale: 'zh',
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Organization Schema -->
+  <StructuredData schema={organizationSchema} />
+
+  <!-- FAQ Schema -->
+  <StructuredData schema={faqSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbItems} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚领先分期付款融资公司"
+    subtitle="资产融资专家 • 通过设备所有权建立股权 • 将租赁成本转化为财富建设投资"
+    ctaText="今天就建立设备股权"
+    ctaLink="/zh/contact"
+    ctaSecondaryText="WhatsApp资产专家"
+    ctaSecondaryLink="https://wa.me/60175700889"
+    lang={lang}
+    trustSignals={['资产所有权专家', '股权建设专注', '0%首付可用']}
+  />
+
+  <!-- Pain Point Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            厌倦了为别人建立资产吗？
+          </h2>
+          <div class="w-20 h-1 bg-accent mx-auto mb-8"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] border-l-4 border-red-500">
+              <h3 class="text-2xl font-bold text-primary mb-6">租赁陷阱</h3>
+              <div class="space-y-4 text-gray-700">
+                <p class="leading-relaxed">
+                  <strong>当您想拥有设备但现金流紧张，银行要求30%预付定金而您需要这些现金进行运营时，您是否感到在发展业务和保留营运资金之间左右为难？</strong>
+                </p>
+                <p class="leading-relaxed">
+                  <strong>当租赁公司限制您如何使用"他们的"设备，限制您的运营灵活性时，这种控制权的丧失是否让您的业务计划受挫？</strong>
+                </p>
+                <p class="leading-relaxed">
+                  当您计算出RM 15,000月租金超过3年等于RM 540,000 - 却没有任何东西可以证明这一点时，您的胃是否下沉，知道这些钱本可以彻底购买设备？
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-gradient-to-br from-primary to-secondary text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+              <h3 class="text-2xl font-bold mb-6">所有权解决方案</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1 flex-shrink-0">1</div>
+                  <p><strong>您的设备。</strong> 完全的操作控制和修改自由。</p>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1 flex-shrink-0">2</div>
+                  <p><strong>您的股权。</strong> 通过每次付款建立企业资产。</p>
+                </div>
+                <div class="flex items-start">
+                  <div class="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1 flex-shrink-0">3</div>
+                  <p><strong>您的财富。</strong> 将费用转化为投资回报。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Hire Purchase Finance Company Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            什么是分期付款融资公司？
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            资产所有权专家，将设备成本转化为财富建设投资
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] border-l-4 border-primary mb-8">
+            <h3 class="text-2xl font-bold text-primary mb-4">超越传统贷款</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              分期付款融资公司专门从事资产所有权融资 - 通过结构化付款计划帮助企业获得设备，最终实现所有权。与保留资产控制权的租赁公司或标准严格的银行不同，分期付款融资公司专注于资产的收益潜力和它们能够实现的业务增长。
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              作为马来西亚领先的分期付款融资公司，Ing Heng Credit理解设备所有权能够建立长期的企业财富。每次付款都有助于资产股权，创造租赁安排根本无法提供的价值。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h4 class="text-xl font-bold text-primary mb-3">分期付款融资公司的好处：</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-accent font-bold mr-2">✓</span>
+                  通过可管理的付款实现资产所有权
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent font-bold mr-2">✓</span>
+                  每次分期付款建立股权
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent font-bold mr-2">✓</span>
+                  完全的操作控制和自由
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent font-bold mr-2">✓</span>
+                  长期财富创造专注
+                </li>
+                <li class="flex items-start">
+                  <span class="text-accent font-bold mr-2">✓</span>
+                  用于规划的固定付款时间表
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h4 class="text-xl font-bold text-primary mb-3">传统租赁限制：</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-red-500 font-bold mr-2">✗</span>
+                  持续的租赁成本，没有股权
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 font-bold mr-2">✗</span>
+                  设备使用限制
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 font-bold mr-2">✗</span>
+                  没有资产价值积累
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 font-bold mr-2">✗</span>
+                  归还要求和条件
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 font-bold mr-2">✗</span>
+                  永久付款义务
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Asset Ownership Advantages Section -->
+  <section class="section-padding bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            资产所有权优势
+          </h2>
+          <p class="text-xl text-white/90 max-w-3xl mx-auto">
+            为什么通过我们的分期付款融资公司选择所有权而不是租赁
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div class="text-4xl mb-4">🏆</div>
+            <h3 class="text-xl font-bold mb-3">建立企业股权</h3>
+            <p class="text-white/90">
+              将月度设备成本转化为资产价值。每次付款建立股权而不是消失在租金费用中。
+            </p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-bold mb-3">运营自由</h3>
+            <p class="text-white/90">
+              修改、定制和操作设备，不受租赁公司限制。您的设备，您的规则，您的生产力。
+            </p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div class="text-4xl mb-4">📈</div>
+            <h3 class="text-xl font-bold mb-3">财富积累</h3>
+            <p class="text-white/90">
+              设备保持价值，可以出售或用作抵押品。所有权创造了租赁永远无法提供的选择。
+            </p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div class="text-4xl mb-4">⏰</div>
+            <h3 class="text-xl font-bold mb-3">固定付款时间表</h3>
+            <p class="text-white/90">
+              可预测的月付款，有明确的结束日期。没有意外的租金增加或永久付款义务。
+            </p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div class="text-4xl mb-4">💰</div>
+            <h3 class="text-xl font-bold mb-3">无气球付款</h3>
+            <p class="text-white/90">
+              与某些融资选择不同，我们的分期付款协议没有大额最终付款。整个过程中清晰、可管理的分期付款。
+            </p>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div class="text-4xl mb-4">🛡️</div>
+            <h3 class="text-xl font-bold mb-3">税务优势</h3>
+            <p class="text-white/90">
+              资产所有权提供折旧收益和租赁安排无法提供的潜在税务优势。
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <CTAButton
+            text="开始建立资产股权"
+            link="/zh/contact"
+            variant="accent"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            分期付款融资公司常见问题
+          </h2>
+          <p class="text-xl text-gray-600">
+            关于资产所有权融资的常见问题
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-gray-600 mb-6">
+            准备将设备成本转化为资产建设投资了吗？
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="开始资产所有权之旅"
+              link="/zh/contact"
+              variant="primary"
+              size="large"
+            />
+            <CTAButton
+              text="WhatsApp资产专家"
+              link="https://wa.me/60175700889"
+              variant="accent"
+              icon="whatsapp"
+              size="large"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            联系资产所有权专家
+          </h2>
+          <p class="text-xl text-gray-600">
+            讨论我们的分期付款融资公司如何帮助您建立设备股权
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: 3rem 0;
+    }
+  }
+</style>

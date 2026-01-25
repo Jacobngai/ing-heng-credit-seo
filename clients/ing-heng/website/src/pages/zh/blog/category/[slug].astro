@@ -1,0 +1,323 @@
+---
+/**
+ * Chinese Blog Category Pages (中文博客分类页面)
+ * Dynamic routes for blog categories
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO, SITE_CONFIG } from '../../../../../utils/constants';
+
+export async function getStaticPaths() {
+  const categories = [
+    'equipment-financing', 
+    'contractor-guides', 
+    'business-growth', 
+    'tax-compliance',
+    'government-tenders',
+    'crane-financing',
+    'fleet-financing',
+    'technology-equipment',
+    'tax-benefits'
+  ];
+  return categories.map(slug => ({
+    params: { slug }
+  }));
+}
+
+const lang = 'zh';
+const { slug } = Astro.params;
+
+// Define all categories
+const categoryMap = {
+  'equipment-financing': {
+    name: '设备融资贴士',
+    description: '马来西亚设备融资的专业技巧和指南',
+    icon: '🏗️'
+  },
+  'contractor-guides': {
+    name: '承包商指南',
+    description: '承包商和建筑企业的必备指南',
+    icon: '👷'
+  },
+  'business-growth': {
+    name: '企业增长策略',
+    description: '建筑或物流业务增长的策略',
+    icon: '📈'
+  },
+  'tax-compliance': {
+    name: '税务与合规',
+    description: '设备融资的税收优惠和合规信息',
+    icon: '📋'
+  },
+  'government-tenders': {
+    name: '政府招标',
+    description: '通过正确的设备融资赢得政府合同',
+    icon: '🏛️'
+  },
+  'crane-financing': {
+    name: '起重机融资',
+    description: '起重机和重型起重设备融资完整指南',
+    icon: '🏗️'
+  },
+  'fleet-financing': {
+    name: '车队融资',
+    description: '建立和融资您的商用车队',
+    icon: '🚚'
+  },
+  'technology-equipment': {
+    name: '科技设备',
+    description: '现代科技和智能设备融资',
+    icon: '💻'
+  },
+  'tax-benefits': {
+    name: '税收优惠',
+    description: '最大化设备融资的税收优势',
+    icon: '💰'
+  },
+};
+
+const category = categoryMap[slug];
+
+if (!category) {
+  return Astro.redirect('/zh/blog', 301);
+}
+
+// Map blog posts to their categories
+const allPosts = [
+  {
+    title: '2025年马来西亚设备融资完整指南',
+    excerpt: '详细了解建筑设备融资的所有知识，从租购到租赁选项。',
+    date: '2025-10-11',
+    slug: 'complete-guide-equipment-financing-malaysia',
+    category: '设备融资贴士',
+    readTime: 8,
+  },
+  {
+    title: '挖掘机融资：承包商如何节省30%设备成本',
+    excerpt: '探索经过验证的策略，通过智能融资降低挖掘机购置成本。',
+    date: '2025-10-10',
+    slug: 'excavator-financing-save-30-percent',
+    category: '承包商指南',
+    readTime: 6,
+  },
+  {
+    title: '物流公司货车融资：快速批准策略',
+    excerpt: '用这些专家技巧加快您的货车融资批准。',
+    date: '2025-10-09',
+    slug: 'lorry-financing-fast-approval-strategies',
+    category: '设备融资贴士',
+    readTime: 7,
+  },
+  {
+    title: '叉车租赁 vs 购买：哪个选项适合您的仓库？',
+    excerpt: '比较租赁与购买叉车的利弊。',
+    date: '2025-10-08',
+    slug: 'forklift-leasing-vs-buying-guide',
+    category: '企业增长策略',
+    readTime: 7,
+  },
+  {
+    title: '设备融资的税收优惠：2025年最大化您的扣除额',
+    excerpt: '了解马来西亚设备融资的税收优势。',
+    date: '2025-10-07',
+    slug: 'tax-benefits-equipment-financing-2025',
+    category: '税务与合规',
+    readTime: 8,
+  },
+  {
+    title: '建筑公司现金流管理：5个关键策略',
+    excerpt: '在融资昂贵建筑设备的同时掌握现金流管理。',
+    date: '2025-10-06',
+    slug: 'cash-flow-management-construction',
+    category: '企业增长策略',
+    readTime: 9,
+  },
+];
+
+// Filter posts by category
+const categoryPosts = allPosts.filter(post => post.category === category.name);
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: category.name, href: `/zh/blog/category/${slug}` },
+];
+---
+
+<BaseLayout
+  title={`${category.name} | 设备融资博客 | 永兴信贷`}
+  description={category.description}
+  lang={lang}
+  keywords={[category.name, '设备融资', '马来西亚']}
+>
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Category Header -->
+  <section class="section bg-gradient-to-br from-primary/5 via-white to-secondary/5">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <div class="text-6xl mb-4">{category.icon}</div>
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+        {category.name}
+      </h1>
+      <p class="text-xl leading-relaxed" style="color: #2D1810;">
+        {category.description}
+      </p>
+      <div class="mt-6 text-sm font-bold text-primary">
+        {categoryPosts.length} 篇文章
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Posts -->
+  <section class="section">
+    <div class="container-custom max-w-5xl mx-auto">
+      {categoryPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {categoryPosts.map((post) => (
+            <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300">
+              {/* Image Placeholder */}
+              <a href={`/zh/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
+                <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
+                  {category.icon}
+                </div>
+              </a>
+
+              <div class="card-body flex flex-col flex-grow">
+                {/* Category Badge */}
+                <div class="mb-3">
+                  <span class="badge badge-primary text-xs">{category.name}</span>
+                </div>
+
+                {/* Title */}
+                <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
+                  <a href={`/zh/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h3>
+
+                {/* Excerpt */}
+                <p class="mb-4 flex-grow line-clamp-3 leading-relaxed" style="color: #2D1810;">
+                  {post.excerpt}
+                </p>
+
+                {/* Footer */}
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200 text-sm">
+                  <time datetime={post.date} class="text-gray-500">
+                    {new Date(post.date).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' })}
+                  </time>
+                  <a
+                    href={`/zh/blog/${post.slug}`}
+                    class="text-secondary font-semibold hover:text-accent transition-colors"
+                  >
+                    阅读更多 →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="card p-12 text-center">
+          <div class="text-6xl mb-4">📝</div>
+          <h2 class="text-2xl font-bold text-primary mb-4">暂无文章</h2>
+          <p class="mb-6" style="color: #2D1810;">
+            我们正在为此类别添加内容。请稍后再回来查看或浏览其他类别。
+          </p>
+          <CTAButton
+            text="查看所有文章"
+            link="/zh/blog"
+            variant="primary"
+            size="medium"
+          />
+        </div>
+      )}
+
+      {/* Back to Blog */}
+      <div class="mt-12 text-center">
+        <a
+          href="/zh/blog"
+          class="inline-flex items-center gap-2 text-secondary font-semibold hover:text-accent transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          返回所有文章
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        准备好为您的设备融资了吗？
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        从马来西亚值得信赖的设备融资合作伙伴（成立于1985年）获得专业建议。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="立即获取免费报价"
+          link="/zh/contact"
+          variant="accent"
+          size="large"
+        />
+        <CTAButton
+          text="计算每月还款"
+          link="/zh/calculator"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-[4px_4px_0_#2D1810] overflow-hidden;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+</style>

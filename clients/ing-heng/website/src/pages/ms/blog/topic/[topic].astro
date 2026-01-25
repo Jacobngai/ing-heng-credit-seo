@@ -1,0 +1,280 @@
+---
+/**
+ * Dynamic Topic Tag Page - Malay
+ * URL: /ms/blog/topic/panduan-pembiayaan
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import {
+  getTopicTags,
+  getEquipmentTags,
+  getBrandTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'ms';
+
+export function getStaticPaths() {
+  const topics = getTopicTags();
+  return topics.map((topic) => ({
+    params: { topic: topic.slug.ms },
+    props: { topicId: topic.id }
+  }));
+}
+
+const { topic } = Astro.params;
+const { topicId } = Astro.props;
+
+const topicTag = getTopicTags().find(t => t.id === topicId);
+if (!topicTag) {
+  return Astro.redirect('/ms/blog');
+}
+
+const topicName = getTagName(topicTag, lang);
+const equipment = getEquipmentTags();
+const brands = getBrandTags().slice(0, 6);
+
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: 'Mengikut Topik', href: '/ms/blog' },
+  { label: topicName, href: `/ms/blog/topic/${topic}` }
+];
+
+// Topic-specific content (Malay)
+const topicContent: Record<string, { description: string; tips: string[]; relatedEquipment: string[] }> = {
+  'financing-guide': {
+    description: 'Panduan komprehensif untuk memahami pilihan pembiayaan peralatan, keperluan, dan proses di Malaysia.',
+    tips: [
+      'Bandingkan kadar dari beberapa pemberi pinjaman sebelum membuat keputusan',
+      'Fahami perbezaan antara sewa beli dan pajakan',
+      'Semak yuran tersembunyi dan penalti penyelesaian awal',
+      'Sediakan semua dokumen sebelum memohon untuk kelulusan lebih cepat'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'lorry', 'crane']
+  },
+  'buying-tips': {
+    description: 'Nasihat pakar tentang pembelian peralatan berat baru dan terpakai. Ketahui apa yang perlu dicari dan elakkan kesilapan yang mahal.',
+    tips: [
+      'Sentiasa periksa peralatan dengan teliti sebelum membeli',
+      'Sahkan sejarah penyelenggaraan untuk peralatan terpakai',
+      'Bandingkan harga dari beberapa peniaga',
+      'Pertimbangkan jumlah kos pemilikan, bukan hanya harga pembelian'
+    ],
+    relatedEquipment: ['excavator', 'bulldozer', 'wheel-loader', 'backhoe']
+  },
+  'industry-news': {
+    description: 'Ikuti perkembangan terkini berita dan trend dalam industri peralatan berat dan pembinaan Malaysia.',
+    tips: [
+      'Ikuti pengumuman infrastruktur kerajaan',
+      'Pantau laporan pertumbuhan sektor pembinaan',
+      'Jejaki trend harga peralatan',
+      'Kekal maklum tentang teknologi baru dalam peralatan'
+    ],
+    relatedEquipment: ['crane', 'bulldozer', 'road-roller', 'prime-mover']
+  },
+  'tax-benefits': {
+    description: 'Ketahui tentang potongan cukai, insentif, dan faedah yang tersedia untuk pembiayaan peralatan di Malaysia.',
+    tips: [
+      'Tuntut elaun modal atas pembelian peralatan',
+      'Fahami kelayakan elaun cukai pelaburan',
+      'Simpan dokumentasi yang betul untuk tujuan cukai',
+      'Rujuk profesional cukai untuk perancangan optimum'
+    ],
+    relatedEquipment: ['excavator', 'lorry', 'forklift', 'crane']
+  },
+  'business-growth': {
+    description: 'Strategi dan pandangan untuk mengembangkan perniagaan anda melalui pelaburan peralatan pintar dan pembiayaan.',
+    tips: [
+      'Labur dalam peralatan yang meningkatkan produktiviti',
+      'Masa pembelian anda dengan keperluan projek',
+      'Gunakan pembiayaan untuk mengekalkan modal kerja',
+      'Skalakan armada peralatan dengan pertumbuhan perniagaan'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'lorry', 'prime-mover']
+  },
+  'maintenance': {
+    description: 'Tips dan amalan terbaik untuk menyelenggara peralatan berat bagi memanjangkan jangka hayat dan mengurangkan masa henti.',
+    tips: [
+      'Ikut jadual penyelenggaraan pengilang',
+      'Latih pengendali tentang penggunaan peralatan yang betul',
+      'Simpan rekod penyelenggaraan terperinci',
+      'Tangani masalah awal sebelum ia menjadi pembaikan besar'
+    ],
+    relatedEquipment: ['excavator', 'bulldozer', 'wheel-loader', 'crane']
+  },
+  'used-equipment': {
+    description: 'Semua yang anda perlu tahu tentang membeli, membiayai, dan menilai peralatan berat terpakai.',
+    tips: [
+      'Semak umur peralatan dan bacaan meter jam',
+      'Periksa tanda-tanda haus dan kerosakan',
+      'Sahkan pemilikan dan hak milik yang jelas',
+      'Pertimbangkan pilihan pra-milik yang disahkan'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'lorry', 'backhoe']
+  },
+  'leasing-vs-buying': {
+    description: 'Bandingkan pilihan pajakan dan pembelian untuk membuat keputusan kewangan terbaik untuk keperluan peralatan anda.',
+    tips: [
+      'Pertimbangkan keperluan peralatan jangka panjang anda',
+      'Bandingkan jumlah kos sepanjang kitaran hayat peralatan',
+      'Nilaikan implikasi cukai setiap pilihan',
+      'Faktorkan tanggungjawab penyelenggaraan'
+    ],
+    relatedEquipment: ['excavator', 'forklift', 'crane', 'bulldozer']
+  }
+};
+
+const content = topicContent[topicId] || {
+  description: 'Terokai artikel dan sumber tentang topik ini.',
+  tips: ['Kekal maklum', 'Buat keputusan bijak', 'Rujuk pakar', 'Rancang lebih awal'],
+  relatedEquipment: ['excavator', 'forklift', 'lorry']
+};
+---
+
+<BaseLayout
+  title={`${topicName} | Sumber Pembiayaan Peralatan | Ing Heng Credit`}
+  description={content.description}
+  lang={lang}
+  keywords={[
+    `${topicName.toLowerCase()} Malaysia`,
+    `peralatan ${topicName.toLowerCase()}`,
+    `peralatan berat ${topicName.toLowerCase()}`,
+    'pembiayaan peralatan Malaysia'
+  ]}
+>
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-brutalist mb-6 inline-block">Topik</span>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          <span class="text-yellow-400">{topicName}</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          {content.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-3xl font-black text-navy-900 mb-6" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Tips Utama: {topicName}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {content.tips.map((tip, index) => (
+            <div class="bg-gray-50 border-4 border-navy-900 p-4" style="box-shadow: 4px 4px 0 #1E3A8A;">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-yellow-400 border-2 border-navy-900 flex items-center justify-center font-black text-navy-900 flex-shrink-0">
+                  {index + 1}
+                </div>
+                <p class="text-gray-700 font-medium">{tip}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Pembiayaan Peralatan Berkaitan
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {equipment.filter(e => content.relatedEquipment.includes(e.id)).map((equip) => (
+          <a href={buildBrandEquipmentPostUrl(lang, 'caterpillar', equip.id)} class="card-brutalist group">
+            <div class="p-6">
+              <div class="w-12 h-12 bg-yellow-400 border-3 border-navy-900 flex items-center justify-center mb-4" style="box-shadow: 3px 3px 0 #1E3A8A;">
+                <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-black text-navy-900 group-hover:text-yellow-600 transition-colors mb-2" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Pembiayaan {getTagName(equip, lang)}
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Biayai {getTagName(equip, lang).toLowerCase()} anda dengan kadar kompetitif.
+              </p>
+              <span class="inline-flex items-center text-yellow-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
+                Ketahui Lebih →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom">
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Jenama Popular Yang Kami Biayai
+      </h2>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        {brands.map((brand) => (
+          <a
+            href={`/ms/blog/brand/${brand.slug.ms}`}
+            class="px-6 py-3 bg-white border-4 border-navy-900 font-black text-navy-900 hover:bg-navy-900 hover:text-white transition-colors"
+            style="box-shadow: 4px 4px 0 #1E3A8A;"
+          >
+            {getTagName(brand, lang)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Perlukan Bantuan Pembiayaan Peralatan?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Pasukan kami mempunyai 40+ tahun pengalaman membantu perniagaan membiayai peralatan. Dapatkan konsultasi percuma hari ini.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Dapatkan Sebut Harga Percuma"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="Lihat Semua Topik"
+          link="/ms/blog"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist { @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900; box-shadow: 2px 2px 0 #1E3A8A; }
+  .card-brutalist { @apply bg-white overflow-hidden border-4 border-navy-900; box-shadow: 6px 6px 0 #1E3A8A; transition: all 0.3s ease; }
+  .card-brutalist:hover { box-shadow: 3px 3px 0 #1E3A8A; transform: translate(3px, 3px); }
+</style>

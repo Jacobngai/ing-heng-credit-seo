@@ -16,7 +16,6 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ShareButtons from '../components/ShareButtons.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
-import NewsletterSignup from '../components/NewsletterSignup.astro';
 import CTAButton from '../components/CTAButton.astro';
 import { generateArticleSchema, generateFAQSchema, encodeJSONLD } from '../utils/schema';
 import type { Locale } from '../utils/i18n';
@@ -198,9 +197,6 @@ const t = translations[locale];
           <div class="lg:sticky lg:top-24 space-y-8">
             <!-- Table of Contents -->
             <TableOfContents headings={headings} locale={locale} />
-
-            <!-- Newsletter Signup (Sidebar) -->
-            <NewsletterSignup locale={locale} variant="minimal" />
           </div>
         </aside>
       </div>
@@ -232,9 +228,9 @@ const t = translations[locale];
          'Bersedia untuk Membiayai Peralatan Anda?'}
       </h3>
       <p class="text-white/90 mb-6">
-        {locale === 'en' ? 'Get approved in 2 hours. No hidden fees. 40 years of trusted service.' :
-         locale === 'zh' ? '2小时快速批准。没有隐藏费用。40年信誉服务。' :
-         'Kelulusan dalam 2 jam. Tiada bayaran tersembunyi. 40 tahun perkhidmatan dipercayai.'}
+        {locale === 'en' ? 'Get approved quickly. No hidden fees. 40 years of trusted service.' :
+         locale === 'zh' ? '快速批准。没有隐藏费用。40年信誉服务。' :
+         'Kelulusan dengan cepat. Tiada bayaran tersembunyi. 40 tahun perkhidmatan dipercayai.'}
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <CTAButton
@@ -264,13 +260,6 @@ const t = translations[locale];
     tags={frontmatter.tags}
     limit={3}
   />
-
-  <!-- Newsletter Signup (Bottom) -->
-  <section class="bg-white py-12 lg:py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <NewsletterSignup locale={locale} variant="boxed" />
-    </div>
-  </section>
 
   <!-- Schema and Reading Progress Scripts -->
   <script>

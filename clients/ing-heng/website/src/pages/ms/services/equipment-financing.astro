@@ -1,0 +1,680 @@
+---
+/**
+ * Equipment Financing Service Page - Malay
+ * Target Keyword: "pembiayaan peralatan malaysia"
+ * Ultimate authority page for equipment financing with hyper-specific pain points
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import StructuredData from '../../../../components/StructuredData.astro';
+import { generateServicePageSchema, generateFAQSchema, generateOrganizationSchema } from '../../../../utils/schema';
+import { COMPANY_INFO, KEY_BENEFITS } from '../../../../utils/constants';
+
+const lang = 'ms';
+
+// SEO Configuration
+const title = 'Pembiayaan Peralatan Malaysia | Kelulusan Pantas | Ing Heng Credit';
+const description = 'Pakar pembiayaan peralatan di Malaysia. 0% deposit diperlukan. Pembiayaan peralatan 10+ tahun. Kelulusan pantas berbanding bank. Peralatan pembinaan, logistik & industri.';
+const keywords = [
+  'pembiayaan peralatan malaysia',
+  'pembiayaan peralatan pembinaan',
+  'pinjaman peralatan berat',
+  'pembiayaan mesin malaysia',
+  'pinjaman peralatan malaysia',
+  'pembiayaan excavator malaysia',
+  'pembiayaan lori malaysia',
+  'pembiayaan forklift malaysia',
+  'beli pajak peralatan malaysia',
+  'pinjaman peralatan pembinaan',
+  'pembiayaan peralatan industri',
+  'pembiayaan peralatan pantas',
+  'pembiayaan peralatan kredit buruk',
+  'pembiayaan peralatan sifar deposit'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Halaman Utama', href: '/ms' },
+  { label: 'Perkhidmatan', href: '/ms/services' },
+  { label: 'Pembiayaan Peralatan', href: '/ms/services/equipment-financing' }
+];
+
+// FAQ Schema Data
+const faqs = [
+  {
+    question: 'Jenis peralatan apa yang anda biayai di Malaysia?',
+    answer: 'Kami membiayai semua jenis peralatan perniagaan termasuk excavator, lori, forklift, kren, bulldozer, prime mover, container trailer, backhoe, wheel loader, dan mesin industri. Kami juga membiayai peralatan untuk operasi pembinaan, logistik, pembuatan, dan pergudangan.'
+  },
+  {
+    question: 'Adakah anda memerlukan deposit untuk pembiayaan peralatan?',
+    answer: 'Tiada deposit diperlukan! Kami menawarkan 100% pembiayaan untuk pembelian peralatan yang layak. Ini bermakna anda boleh memperoleh peralatan anda tanpa bayaran pendahuluan, mengekalkan modal kerja anda untuk operasi perniagaan.'
+  },
+  {
+    question: 'Berapa lama umur peralatan boleh untuk kelulusan pembiayaan?',
+    answer: 'Kami membiayai peralatan berumur 10+ tahun, tidak seperti bank yang biasanya menolak peralatan lama. Malah peralatan berumur 15 tahun boleh dibiayai jika diselenggara dengan baik. Kami menilai keadaan kerja dan daya maju perniagaan, bukan had umur yang sewenang-wenangnya.'
+  },
+  {
+    question: 'Seberapa pantas proses kelulusan berbanding bank?',
+    answer: 'Proses kelulusan kami jauh lebih pantas daripada bank tradisional. Sementara bank mengambil masa 2-4 minggu, kami memberikan respons pantas kepada permohonan anda dengan proses yang diperkemas dan pasukan berpengalaman.'
+  },
+  {
+    question: 'Dokumen apa yang diperlukan untuk permohonan pembiayaan peralatan?',
+    answer: 'Dokumen pendaftaran perniagaan asas, penyata kewangan (dipermudahkan untuk perniagaan kecil), sebut harga atau penilaian peralatan, dan pengenalan pengarah. Kami mengekalkan dokumentasi yang minimum dan mudah.'
+  },
+  {
+    question: 'Bolehkah syarikat dengan kredit buruk mendapat pembiayaan peralatan?',
+    answer: 'Ya, kami mempertimbangkan permohonan daripada syarikat dengan sejarah kredit yang mencabar. Kami memberi tumpuan kepada daya maju perniagaan, keadaan peralatan, dan potensi aliran tunai masa depan daripada hanya skor kredit masa lalu.'
+  },
+  {
+    question: 'Apakah tempoh pinjaman biasa untuk pembiayaan peralatan?',
+    answer: 'Tempoh fleksibel dari 12 hingga 60 bulan bergantung kepada jenis peralatan, umur, dan keperluan perniagaan. Kami menyesuaikan jadual pembayaran untuk memadankan corak aliran tunai perniagaan anda.'
+  },
+  {
+    question: 'Adakah anda membiayai peralatan baru dan terpakai?',
+    answer: 'Ya, kami membiayai peralatan baru dan terpakai. Sebenarnya, peralatan terpakai sering memberikan nilai yang lebih baik - biasanya 60% lebih murah daripada yang baru sambil mengekalkan produktiviti yang sangat baik selama bertahun-tahun.'
+  },
+  {
+    question: 'Bolehkah saya membiayai semula pinjaman peralatan sedia ada?',
+    answer: 'Ya, kami menawarkan pembiayaan semula untuk pinjaman peralatan sedia ada. Ini boleh membantu mengurangkan pembayaran bulanan, membebaskan aliran tunai, atau menyatukan beberapa pinjaman peralatan menjadi satu pembayaran yang boleh diuruskan.'
+  },
+  {
+    question: 'Industri apa yang anda layani untuk pembiayaan peralatan?',
+    answer: 'Kami melayani kontraktor pembinaan, syarikat logistik, perniagaan pembuatan, pengendali kuari, ladang kelapa sawit, pembangun hartanah, operasi pergudangan, dan mana-mana perniagaan yang memerlukan peralatan produktif.'
+  }
+];
+
+// Schema Data
+const organizationSchema = generateOrganizationSchema();
+const serviceSchema = generateServicePageSchema({
+  serviceName: 'Pembiayaan Peralatan Malaysia',
+  description: 'Solusi pembiayaan peralatan profesional untuk peralatan pembinaan, logistik, dan industri di Malaysia',
+  serviceType: 'Pembiayaan Peralatan',
+  minRate: '5.5',
+  maxRate: '12.0',
+  locale: lang
+});
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+>
+  <StructuredData schema={organizationSchema} />
+  <StructuredData schema={serviceSchema} />
+  <StructuredData schema={faqSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="bg-blue-50 border-b-3 border-navy-900">
+    <div class="container-custom py-4">
+      <Breadcrumbs items={breadcrumbItems} lang={lang} />
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero relative overflow-hidden bg-gradient-to-br from-primary to-secondary">
+    <div class="container-custom relative z-10 text-center py-20">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-display uppercase leading-tight mb-6 text-white">
+        Pembiayaan <span class="text-yellow-400">Peralatan Malaysia</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-white opacity-90 mb-8 max-w-4xl mx-auto leading-relaxed">
+        <strong class="text-yellow-400">0% deposit diperlukan.</strong> Biayai peralatan berumur 10+ tahun. 
+        Kelulusan pantas berbanding bank. Dapatkan peralatan anda hari ini.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-accent text-xl px-12 py-6">
+          Sebut Harga WhatsApp Sekarang
+        </a>
+        <a href="#calculator" class="btn btn-outline-white text-xl px-12 py-6">
+          Kira Pembayaran
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
+
+  <!-- Pain Points Section - Hyper-Specific -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Adakah Anda <span class="text-secondary">Mengalami Realiti Ini?</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Pain Point 1: Rental Dependency -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8 rounded-r-lg">
+          <div class="text-6xl mb-4">😣</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Panggilan Syarikat Sewa</h3>
+          <p class="text-gray-700 leading-relaxed text-lg mb-4">
+            Apabila syarikat sewa menelefon pada jam 5 petang berkata "kami perlukan excavator kembali esok pagi," 
+            dan anda mempunyai jadual penggalian penuh untuk tiga hartanah bertingkat, 
+            adakah anda merasakan <strong>panik di dada</strong> kerana tahu anda akan kehilangan kontrak RM 18,000?
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            <strong class="text-red-600">Peralatan anda. Jadual anda. Kawalan anda.</strong>
+          </p>
+        </div>
+
+        <!-- Pain Point 2: Monthly Rental Drain -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8 rounded-r-lg">
+          <div class="text-6xl mb-4">💸</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Cek RM 16,000</h3>
+          <p class="text-gray-700 leading-relaxed text-lg mb-4">
+            Apabila anda menulis cek sewa RM 16,000 setiap bulan untuk wheel loader di kuari anda, 
+            dan anda berjalan melepasi mesin berumur 12 tahun yang anda TIDAK miliki, 
+            adakah ia terasa seperti <strong>mencurahkan wang ke dalam lubang</strong> yang tidak pernah terisi?
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            <strong class="text-red-600">Bina ekuiti. Simpan keuntungan. Miliki aset anda.</strong>
+          </p>
+        </div>
+
+        <!-- Pain Point 3: Revenue Sharing -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8 rounded-r-lg">
+          <div class="text-6xl mb-4">📊</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Pembahagian Trak</h3>
+          <p class="text-gray-700 leading-relaxed text-lg mb-4">
+            Apabila anda mengira kos projek dan menyedari RM 15,000 akan pergi kepada kontraktor trak - bukan kepada anda - 
+            adakah <strong>bahu anda tegang</strong> memikirkan berapa kali anda telah membayar itu 
+            bukannya membina armada logistik anda sendiri?
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            <strong class="text-red-600">Ambil margin penuh. Henti memperkaya orang lain.</strong>
+          </p>
+        </div>
+
+        <!-- Pain Point 4: Bank Rejection -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8 rounded-r-lg">
+          <div class="text-6xl mb-4">❌</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Bank Berkata "Tidak"</h3>
+          <p class="text-gray-700 leading-relaxed text-lg mb-4">
+            Apabila pegawai bank berkata "maaf, Komatsu PC210 berumur 8 tahun ini terlalu tua untuk pembiayaan," 
+            dan anda tahu mesin tepat itu masih bekerja 12 jam sehari di kuari seluruh Selangor, 
+            adakah <strong>kekecewaan membakar di dada anda</strong> kerana tahu mereka tidak faham industri anda?
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            <strong class="text-red-600">Bank tolak peralatan lama. Kami kata ya.</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <div class="bg-gradient-to-r from-secondary to-primary p-8 rounded-xl shadow-[8px_8px_0_#2D1810] max-w-4xl mx-auto">
+          <h3 class="text-3xl font-display uppercase text-white mb-4">Henti Hidup Realiti Ini</h3>
+          <p class="text-xl text-white mb-6 leading-relaxed">
+            <strong>Miliki peralatan anda.</strong> Kawal operasi anda. Bina ekuiti perniagaan. 
+            Biayai sehingga 100% tanpa deposit diperlukan.
+          </p>
+          <a href="#benefits" class="btn btn-accent text-lg px-10 py-4 inline-block">
+            Lihat Bagaimana Kami Membantu
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Is Equipment Financing -->
+  <section class="section bg-blue-50" id="benefits">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Apakah <span class="text-secondary">Pembiayaan Peralatan?</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl leading-relaxed">
+          Pembiayaan peralatan adalah pinjaman perniagaan yang direka khas untuk membantu syarikat memperoleh peralatan produktif. 
+          Anda mendapat penggunaan segera peralatan sambil membuat pembayaran bulanan yang berpatutan untuk memilikinya sepenuhnya.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-3xl font-display uppercase text-navy-900 mb-6">Cara Ia Berfungsi</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="bg-yellow-400 border-3 border-navy-900 w-12 h-12 flex items-center justify-center mr-6 flex-shrink-0 shadow-[4px_4px_0_#2D1810]">
+                <span class="text-2xl font-bold text-navy-900">1</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-navy-900 mb-2">Pilih Peralatan Anda</h4>
+                <p class="text-gray-700 leading-relaxed">
+                  Pilih mana-mana peralatan perniagaan: excavator, lori, forklift, kren, atau mesin industri. 
+                  Baru atau terpakai, walaupun berumur 10+ tahun.
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 border-3 border-navy-900 w-12 h-12 flex items-center justify-center mr-6 flex-shrink-0 shadow-[4px_4px_0_#2D1810]">
+                <span class="text-2xl font-bold text-navy-900">2</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-navy-900 mb-2">Mohon Pembiayaan</h4>
+                <p class="text-gray-700 leading-relaxed">
+                  Hantar dokumen perniagaan asas. Kami pastikan ia mudah - tiada kertas kerja yang rumit atau proses yang panjang.
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 border-3 border-navy-900 w-12 h-12 flex items-center justify-center mr-6 flex-shrink-0 shadow-[4px_4px_0_#2D1810]">
+                <span class="text-2xl font-bold text-navy-900">3</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-navy-900 mb-2">Dapatkan Kelulusan Pantas</h4>
+                <p class="text-gray-700 leading-relaxed">
+                  Terima kelulusan jauh lebih pantas daripada bank. Kami faham keperluan perniagaan anda dan membuat keputusan dengan pantas.
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 border-3 border-navy-900 w-12 h-12 flex items-center justify-center mr-6 flex-shrink-0 shadow-[4px_4px_0_#2D1810]">
+                <span class="text-2xl font-bold text-navy-900">4</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-navy-900 mb-2">Miliki Peralatan Anda</h4>
+                <p class="text-gray-700 leading-relaxed">
+                  Buat pembayaran bulanan yang berpatutan sambil menggunakan peralatan untuk menjana pendapatan. 
+                  Bina ekuiti dengan setiap pembayaran sehingga anda memilikinya sepenuhnya.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border-3 border-navy-900 shadow-[8px_8px_0_#2D1810] p-8 rounded-lg">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-6 text-center">Kelebihan Utama</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <span class="text-green-500 text-2xl mr-4">✓</span>
+              <span class="text-gray-700 font-medium">0% deposit diperlukan - 100% pembiayaan tersedia</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-2xl mr-4">✓</span>
+              <span class="text-gray-700 font-medium">Peralatan berumur 10+ tahun diterima</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-2xl mr-4">✓</span>
+              <span class="text-gray-700 font-medium">Kelulusan pantas berbanding bank</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-2xl mr-4">✓</span>
+              <span class="text-gray-700 font-medium">Tempoh fleksibel 12-60 bulan</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-2xl mr-4">✓</span>
+              <span class="text-gray-700 font-medium">Bina ekuiti perniagaan, bukan perbelanjaan sewa</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-2xl mr-4">✓</span>
+              <span class="text-gray-700 font-medium">Faedah cukai dan kelebihan susut nilai</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types We Finance -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Peralatan Yang <span class="text-secondary">Kami Biayai</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+          Dari tapak pembinaan hingga gudang, kami membiayai semua jenis peralatan perniagaan produktif di seluruh Malaysia
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Construction Equipment -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 border-3 border-navy-900 shadow-[6px_6px_0_#2D1810] p-8 rounded-lg hover:shadow-[8px_8px_0_#2D1810] transition-all hover:-translate-y-1">
+          <div class="text-6xl mb-6 text-center">🚜</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4 text-center">Peralatan Pembinaan</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/excavator" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Excavator</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/bulldozer" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Bulldozer</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/crane" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Kren</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/wheel-loader" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Wheel Loader</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/backhoe" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Backhoe</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Logistics Equipment -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 border-3 border-navy-900 shadow-[6px_6px_0_#2D1810] p-8 rounded-lg hover:shadow-[8px_8px_0_#2D1810] transition-all hover:-translate-y-1">
+          <div class="text-6xl mb-6 text-center">🚛</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4 text-center">Peralatan Logistik</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/lorry" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Lori</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/prime-mover" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Prime Mover</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/container-trailer" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Container Trailer</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/refrigerated-truck" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Lori Sejuk</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <span class="text-gray-700">Pembiayaan Van Kargo</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Industrial Equipment -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 border-3 border-navy-900 shadow-[6px_6px_0_#2D1810] p-8 rounded-lg hover:shadow-[8px_8px_0_#2D1810] transition-all hover:-translate-y-1">
+          <div class="text-6xl mb-6 text-center">🏭</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4 text-center">Peralatan Industri</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <a href="/ms/equipment/forklift" class="text-gray-700 hover:text-secondary font-medium">Pembiayaan Forklift</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <span class="text-gray-700">Pembiayaan Generator</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <span class="text-gray-700">Pembiayaan Kompressor</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <span class="text-gray-700">Peralatan Pembuatan</span>
+            </li>
+            <li class="flex items-center">
+              <span class="text-secondary mr-3">▸</span>
+              <span class="text-gray-700">Mesin Pertanian</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-700 text-lg mb-6">
+          Tidak nampak jenis peralatan anda disenaraikan? Kami membiayai hampir semua peralatan perniagaan produktif.
+        </p>
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-primary text-lg px-10 py-4">
+          Tanya Tentang Peralatan Anda
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Over Banks & Rental -->
+  <section class="section bg-secondary text-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6">
+          Mengapa Pilih Kami Berbanding <span class="text-yellow-400">Bank & Sewa</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- vs Banks -->
+        <div class="bg-white/10 backdrop-blur-sm border-3 border-white/30 p-8 rounded-lg">
+          <h3 class="text-3xl font-display uppercase mb-6 text-yellow-400">LAWAN Bank Tradisional</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Umur Peralatan: Terima 10+ Tahun</h4>
+                <p class="text-white/80">Bank tolak peralatan melebihi 5 tahun. Kami biayai peralatan 10+ tahun yang masih produktif.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Kelajuan: Kelulusan Pantas vs 2-4 Minggu</h4>
+                <p class="text-white/80">Bank ambil masa minggu dengan proses yang rumit. Kami beri respons pantas dengan kelulusan yang diperkemas.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Dokumentasi: Mudah vs Rumit</h4>
+                <p class="text-white/80">Bank perlukan kertas kerja yang banyak. Kami pastikan mudah dengan dokumentasi minimum diperlukan.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Pengetahuan Industri: Pakar Peralatan</h4>
+                <p class="text-white/80">Bank tidak faham nilai peralatan. Kami tahu peralatan pembinaan dan logistik dengan mendalam.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- vs Rental -->
+        <div class="bg-white/10 backdrop-blur-sm border-3 border-white/30 p-8 rounded-lg">
+          <h3 class="text-3xl font-display uppercase mb-6 text-yellow-400">LAWAN Sewa Peralatan</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Pemilikan: Bina Ekuiti vs Perbelanjaan</h4>
+                <p class="text-white/80">Sewa adalah perbelanjaan tulen. Pembiayaan membina aset dan ekuiti perniagaan dengan setiap pembayaran.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Kawalan: Jadual Anda vs Jadual Mereka</h4>
+                <p class="text-white/80">Syarikat sewa tentukan ketersediaan. Anda kawal peralatan milik anda sepenuhnya.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Kos: Pembayaran Tetap vs Sewa Naik</h4>
+                <p class="text-white/80">Kos sewa meningkat tahunan. Pembiayaan mengunci pembayaran tetap sehingga anda milikinya.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-yellow-400 text-navy-900 w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1 text-lg font-bold flex-shrink-0">
+                ✓
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Faedah Cukai: Susut Nilai vs Perbelanjaan Tulen</h4>
+                <p class="text-white/80">Peralatan milik berikan faedah susut nilai. Sewa hanya perbelanjaan operasi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="section bg-blue-50" id="calculator">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Kira <span class="text-secondary">Pembayaran Bulanan</span> Anda
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+          Lihat betapa berpatutannya pemilikan peralatan. Laraskan nilai untuk memadankan peralatan dan situasi anda.
+        </p>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <Calculator 
+          lang={lang} 
+          equipmentType="Peralatan"
+          defaultPrice={200000}
+          minDownPayment={0}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Soalan Lazim <span class="text-secondary">Dijawab</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+          Dapatkan jawapan kepada soalan paling biasa tentang pembiayaan peralatan di Malaysia
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white border-3 border-navy-900 shadow-[4px_4px_0_#2D1810] rounded-lg overflow-hidden">
+            <details class="group">
+              <summary class="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+                <h3 class="text-lg font-bold text-navy-900 pr-4">{faq.question}</h3>
+                <span class="text-2xl text-secondary group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-gray-700 leading-relaxed" set:html={faq.answer}></p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-700 text-lg mb-6">
+          Ada lagi soalan? Pakar pembiayaan peralatan kami sedia membantu.
+        </p>
+        <a href="/ms/contact" class="btn btn-primary text-lg px-10 py-4">
+          Tanya Soalan Anda
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-gradient-to-br from-secondary to-primary text-white relative">
+    <div class="container-custom text-center">
+      <h2 class="text-4xl md:text-5xl font-display uppercase mb-6">
+        Henti <span class="text-yellow-400">Sewa.</span> Mula <span class="text-yellow-400">Miliki.</span>
+      </h2>
+      <p class="text-xl mb-8 text-white/90 max-w-4xl mx-auto leading-relaxed">
+        <strong>Peralatan anda. Jadual anda. Ekuiti anda.</strong> 
+        Dapatkan kelulusan untuk 100% pembiayaan tanpa deposit diperlukan. 
+        Walaupun peralatan berumur 10+ tahun diterima.
+      </p>
+      
+      <div class="bg-white/10 backdrop-blur-sm border-3 border-white/30 p-8 rounded-xl max-w-2xl mx-auto mb-8">
+        <h3 class="text-2xl font-display uppercase text-yellow-400 mb-4">Rundingan Percuma Termasuk:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          <div class="flex items-center">
+            <span class="text-yellow-400 mr-3 text-xl">▸</span>
+            <span>Penilaian nilai peralatan</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-yellow-400 mr-3 text-xl">▸</span>
+            <span>Perbandingan pilihan pembiayaan</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-yellow-400 mr-3 text-xl">▸</span>
+            <span>Kiraan pembayaran bulanan</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-yellow-400 mr-3 text-xl">▸</span>
+            <span>Semakan keperluan dokumen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-accent text-xl px-12 py-6">
+          WhatsApp Rundingan Percuma
+        </a>
+        <a href="/ms/contact" class="btn btn-outline-white text-xl px-12 py-6">
+          Dapatkan Sebut Harga Bertulis
+        </a>
+      </div>
+      
+      <div class="text-white/90">
+        <p class="text-lg">
+          Atau telefon kami terus: 
+          <a href={`tel:${COMPANY_INFO.phone.international}`} class="text-yellow-400 font-black hover:underline">
+            {COMPANY_INFO.phone.display}
+          </a>
+        </p>
+        <p class="text-sm mt-2">Tersedia dalam Bahasa Inggeris, Mandarin, dan Bahasa Malaysia</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Dapatkan <span class="text-secondary">Pembiayaan Peralatan</span> Anda
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 text-xl">
+          Isi borang di bawah dan pakar pembiayaan peralatan kami akan menghubungi anda dalam masa 24 jam
+        </p>
+      </div>
+      <div class="bg-blue-50 border-3 border-navy-900 shadow-[8px_8px_0_#2D1810] p-8 md:p-12 rounded-lg">
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

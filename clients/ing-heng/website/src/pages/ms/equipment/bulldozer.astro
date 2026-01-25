@@ -6,18 +6,20 @@
  * Cultural Focus: Respectful, government compliance, service-oriented, Bumiputera support
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Hero from '../../../components/Hero.astro';
-import BenefitCard from '../../../components/BenefitCard.astro';
-import StepCard from '../../../components/StepCard.astro';
-import ProductCard from '../../../components/ProductCard.astro';
-import FAQItem from '../../../components/FAQItem.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import Calculator from '../../../components/Calculator.astro';
-import TestimonialCard from '../../../components/TestimonialCard.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import TestimonialCard from '../../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
 
+import { SITE_CONFIG } from '../../../../utils/constants';
 const lang = 'ms';
 
 // SEO Data
@@ -38,7 +40,7 @@ const benefits = [
   { icon: 'percentage', title: 'Pembiayaan Sehingga RM 15 Juta', description: 'Pakej armada untuk kontraktor CIDB G7. Biayai 5-10 jentolak sekaligus.' },
   { icon: 'calendar', title: 'Tempoh Bayaran Fleksibel 36-84 Bulan', description: 'Selaraskan bayaran dengan jadual projek mega. Tempoh MRT3, ECRL, Pan Borneo.' },
   { icon: 'shield', title: 'Teknologi GPS & Pintar', description: 'Biayai jentolak berpandu GPS dengan kawalan mesin 3D. Kelebihan daya saing tender.' },
-  { icon: 'users', title: 'Pembiayaan LTV Fleksibel', description: '0% bayaran pendahuluan tersedia (Pinjaman Penuh) untuk pembelian armada. Simpan modal untuk deposit tender.' },
+  { icon: 'users', title: 'Bayaran Pendahuluan Dari 0%*', description: 'Bayaran pendahuluan minimum untuk pembelian armada. Pinjaman sehingga 100%* untuk pemohon layak. Simpan modal untuk deposit tender. *Tertakluk pada terma dan syarat' },
   { icon: 'lightning', title: 'Bayaran Berasaskan Projek', description: 'Struktur bayaran mengikut aliran tunai projek kerajaan dan jadual penahanan.' },
   { icon: 'clock', title: 'Sokongan Naik Taraf CIDB', description: 'Pakej peralatan direka untuk naik taraf kontraktor G6 ke G7. Tingkatkan kapasiti tender.' },
   { icon: 'shield', title: 'Maksimakan Faedah Cukai', description: 'Pengoptimuman elaun modal. Penstrukturan elaun awal 20% + tahunan 14%.' },
@@ -110,7 +112,7 @@ const testimonials = [
     name: 'Khairul Anuar bin Abdullah',
     company: 'KA Construction & Engineering',
     location: 'Perak',
-    testimonial: 'Memerlukan jentolak Komatsu D155 segera untuk penyerahan tender MRT3. Pemilikan peralatan mendapat 25 mata dalam penilaian teknikal. Ing Heng meluluskan pembiayaan RM 3.2 juta dalam 24 jam. Kami menunjukkan peralatan yang dimiliki dalam cadangan kami. Menang pakej kerja tanah RM 180 juta. ROI dicapai dalam 18 bulan.',
+    testimonial: 'Memerlukan jentolak Komatsu D155 segera untuk penyerahan tender MRT3. Pemilikan peralatan mendapat 25 mata dalam penilaian teknikal. Ing Heng meluluskan pembiayaan RM 3.2 juta dengan pantas. Kami menunjukkan peralatan yang dimiliki dalam cadangan kami. Menang pakej kerja tanah RM 180 juta. ROI dicapai dalam 18 bulan.',
     rating: 5,
   },
 ];
@@ -127,7 +129,7 @@ const faqs = [
   },
   {
     question: 'Apakah proses kelulusan untuk pembiayaan armada melebihi RM 5 juta?',
-    answer: 'Pembiayaan armada (RM 5 juta-15 juta) memerlukan: (1) Kewangan syarikat dan pendaftaran CIDB, (2) Dokumen tender atau anugerah kontrak yang disahkan, (3) Spesifikasi peralatan dan sebut harga pengedar, (4) Jaminan pengarah dan resolusi korporat. Garis masa kelulusan: 48-72 jam dari penyerahan dokumentasi lengkap. Kami menyelaras terus dengan pengedar peralatan (Tractors Malaysia/CAT, pengedar Komatsu) untuk penilaian dan pemeriksaan.'
+    answer: 'Pembiayaan armada (RM 5 juta-15 juta) memerlukan: (1) Kewangan syarikat dan pendaftaran CIDB, (2) Dokumen tender atau anugerah kontrak yang disahkan, (3) Spesifikasi peralatan dan sebut harga pengedar, (4) Jaminan pengarah dan resolusi korporat. Garis masa kelulusan: 48-7cepat dari penyerahan dokumentasi lengkap. Kami menyelaras terus dengan pengedar peralatan (Tractors Malaysia/CAT, pengedar Komatsu) untuk penilaian dan pemeriksaan.'
   },
   {
     question: 'Bolehkah anda menyusun bayaran mengikut aliran tunai projek kerajaan?',
@@ -135,7 +137,7 @@ const faqs = [
   },
   {
     question: 'Adakah anda membiayai jentolak terpakai untuk tender kerajaan?',
-    answer: 'Ya, kami membiayai jentolak terpakai sehingga 8 tahun untuk tujuan tender kerajaan. Namun, ambil perhatian bahawa pemarkahan tender kerajaan sering memihak kepada peralatan yang lebih baharu (umur peralatan <5 tahun mendapat markah lebih tinggi). Untuk projek mega (MRT3, ECRL), pelanggan biasanya memilih peralatan baharu atau 0-3 tahun untuk memaksimumkan daya saing tender. Peralatan terpakai (5-8 tahun) sesuai untuk projek yang lebih kecil atau unit armada sandaran.'
+    answer: 'Ya, kami membiayai jentolak terpakai sehingga 8 tahun untuk tujuan tender kerajaan. Namun, ambil perhatian bahawa pemarkahan tender kerajaan sering memihak kepada peralatan yang lebih baharu (umur peralatan &lt;5 tahun mendapat markah lebih tinggi). Untuk projek mega (MRT3, ECRL), pelanggan biasanya memilih peralatan baharu atau 0-3 tahun untuk memaksimumkan daya saing tender. Peralatan terpakai (5-8 tahun) sesuai untuk projek yang lebih kecil atau unit armada sandaran.'
   },
   {
     question: 'Apakah jenama jentolak yang diterima untuk pembiayaan tender kerajaan?',
@@ -151,7 +153,7 @@ const faqs = [
   },
   {
     question: 'Berapakah bayaran pendahuluan untuk pembiayaan armada jentolak?',
-    answer: '0% bayaran pendahuluan (Pinjaman Penuh) tersedia untuk pembiayaan armada jentolak. Kami boleh menyediakan pembiayaan penuh untuk kontraktor yang layak dengan: (1) Anugerah kontrak kerajaan yang disahkan, (2) Kewangan syarikat yang kukuh, (3) Pendaftaran CIDB G7. Ini memelihara modal untuk deposit tender dan bon pelaksanaan - kelebihan daya saing utama untuk bidaan projek mega.'
+    answer: 'Bayaran pendahuluan standard: 20-30% untuk pembiayaan armada (RM 5 juta+). Contoh: Armada RM 10 juta = RM 2 juta-3 juta bayaran pendahuluan. Kami boleh mengurangkan kepada 15-20% jika: (1) Anugerah kontrak kerajaan yang disahkan, (2) Kewangan syarikat yang kukuh, (3) Cagaran tambahan (harta). Untuk kontraktor CIDB G7 dengan rekod terbukti, kami telah meluluskan bayaran pendahuluan 15% (RM 1.5 juta pada armada RM 10 juta). Ini memelihara modal untuk deposit tender dan bon pelaksanaan.'
   },
   {
     question: 'Apakah kadar faedah untuk pembiayaan jentolak?',
@@ -203,7 +205,7 @@ const faqs = [
 const productSchema = generateProductSchema({
   name: 'Pembiayaan Jentolak untuk Tender Kerajaan Malaysia',
   description: 'Pembiayaan armada untuk kontraktor CIDB G7. Biayai jentolak berpandu GPS untuk projek mega MRT3, ECRL, Pan Borneo. Pembiayaan sehingga RM 15 juta. Kelulusan 48 jam.',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/bulldozer-financing.jpg',
+  imageUrl: `${SITE_CONFIG.url}/images/bulldozer-financing.jpg`,
   category: 'Financial Service - Heavy Equipment Financing',
   offers: {
     price: '5000000',
@@ -242,27 +244,26 @@ const faqSchema = generateFAQSchema(faqs);
     ctaLink="https://wa.me/60175700889?text=Salam!%20Saya%20ingin%20mendapatkan%20sebut%20harga%20untuk%20pembiayaan%20armada%20jentolak%20untuk%20tender%20kerajaan."
     ctaSecondaryText="Hubungi: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/bulldozer-hero.jpg"
     lang={lang}
     trustSignals={['40 Tahun Pengalaman', 'Pakar CIDB G7', 'Pembiayaan Armada RM 15J', 'Projek Mega Diluluskan']}
   />
 
   <!-- Problem/Solution Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           Kontraktor Besar Menghadapi Cabaran Pelaburan Peralatan
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           Anda telah dipendekkan untuk tender MRT3 atau Lebuh Raya Pan Borneo bernilai RM 500 juta. Tetapi pemarkahan pemilikan peralatan memerlukan penunjukan armada 5-10 jentolak (pelaburan RM 8 juta-12 juta). Bank mahukan bayaran pendahuluan 40%. Tarikh akhir penyerahan tender adalah 30 hari. Bagaimana anda bersaing?
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-red-600 font-bold text-lg mb-3">Cabaran Yang Dihadapi</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>Tender projek mega memerlukan peralatan yang dimiliki (20-30 mata pemarkahan)</span>
@@ -282,16 +283,16 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-green-600 font-bold text-lg mb-3">Penyelesaian Kami</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
               <span>Pembiayaan armada sehingga RM 15 juta dengan kelulusan 48 jam</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>0% bayaran pendahuluan tersedia (Pinjaman Penuh) - simpan modal untuk tender</span>
+              <span>Pembiayaan 80% LTV (hanya 20% bayaran pendahuluan diperlukan)</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
@@ -304,11 +305,11 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="font-bold text-lg mb-3 text-yellow-600">Kisah Kejayaan Sebenar</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">Dato' Syed dari Selangor</strong> memerlukan 5 jentolak CAT D8T (RM 6.2 juta) untuk tender mitigasi banjir.</p>
-            <p class="mb-3"><strong class="text-red-600">Bank mahukan bayaran pendahuluan 40% (RM 2.5 juta).</strong> Kami meluluskan dengan 0% bayaran pendahuluan (pinjaman penuh) dalam 36 jam.</p>
+            <p class="mb-3"><strong class="text-red-600">Bank mahukan bayaran pendahuluan 40% (RM 2.5 juta).</strong> Kami meluluskan dengan bayaran pendahuluan RM 1.2 juta (20%) dalam 36 jam.</p>
             <p class="font-semibold text-green-700">Beliau memenangi kontrak JPS RM 280 juta. Pemilikan peralatan mendapat 28/30 mata. ROI dalam 14 bulan.</p>
           </div>
         </div>
@@ -323,24 +324,24 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Projek Mega Yang Memerlukan Armada Jentolak Pada 2025
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           RM 70+ bilion dalam projek infrastruktur mencipta peluang yang belum pernah terjadi untuk kontraktor yang dilengkapi
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 mb-8">
         {megaProjects.map((project) => (
-          <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-l-4 border-primary">
+          <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-l-4 border-primary">
             <div class="flex justify-between items-start mb-4">
               <h3 class="text-2xl font-bold text-primary">{project.name}</h3>
-              <span class="text-lg font-bold text-secondary bg-accent px-3 py-1 rounded-full">{project.value}</span>
+              <span class="text-lg font-bold text-[#D4A574] bg-accent px-3 py-1 rounded-full">{project.value}</span>
             </div>
-            <p class="text-gray-700 leading-relaxed">{project.description}</p>
+            <p class="text-[#4F3E29] leading-relaxed">{project.description}</p>
           </div>
         ))}
       </div>
 
-      <div class="text-center bg-gray-50 border-l-4 border-primary p-6 rounded-lg">
+      <div class="text-center bg-[#F5F5DC] border-l-4 border-primary p-6 rounded-lg">
         <p class="text-lg text-gray-800">
           <strong>Pandangan Keperluan Peralatan:</strong> Tender kerajaan untuk projek ini biasanya memberikan 20-30 mata untuk pemilikan peralatan, 15-20 mata untuk teknologi GPS/pintar, dan 10-15 mata untuk pengurusan armada telematik. <span class="text-primary font-semibold">Pemilikan jentolak yang ditunjukkan boleh menjadi faktor penentu dalam memenangi kontrak RM 500 juta+.</span>
         </p>
@@ -349,13 +350,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Benefits Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Mengapa Kontraktor CIDB G7 Memilih Ing Heng Credit
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Pembiayaan khusus direka untuk kontraktor projek mega dan pakar tender kerajaan
         </p>
       </div>
@@ -376,19 +377,19 @@ const faqSchema = generateFAQSchema(faqs);
   <section class="section">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
-        <Calculator lang={lang} equipmentType="Armada Jentolak" defaultPrice={8000000} />
+        <Calculator lang={lang} equipmentType="Armada Jentolak" defaultPrice={1800000} />
       </div>
     </div>
   </section>
 
   <!-- How It Works -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Proses Pembiayaan Armada: Dari Permohonan Hingga Penyerahan Tender
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Proses berstruktur direka untuk tarikh akhir tender kerajaan
         </p>
       </div>
@@ -414,7 +415,7 @@ const faqSchema = generateFAQSchema(faqs);
         >
           Mulakan Permohonan Pembiayaan Armada
         </a>
-        <p class="text-gray-600 mt-4">Tarikh akhir tender kerajaan semakin hampir? Minta pemprosesan dipercepatkan 24 jam.</p>
+        <p class="text-[#4F3E29] mt-4">Tarikh akhir tender kerajaan semakin hampir? Minta pemprosesan dipercepatkan.</p>
       </div>
     </div>
   </section>
@@ -426,16 +427,16 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Jenis Jentolak Yang Kami Biayai Untuk Tender Kerajaan
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Dari padat D3K2 hingga berat D11T - Semua kategori jentolak untuk projek infrastruktur
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {bulldozerTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-t-4 border-primary">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow border-t-4 border-primary">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{equipment.description}</p>
+            <p class="text-[#4F3E29] text-sm leading-relaxed">{equipment.description}</p>
           </div>
         ))}
       </div>
@@ -445,12 +446,12 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">Jenama Yang Diterima Untuk Tender Kerajaan</h3>
         <div class="flex flex-wrap justify-center gap-4 mb-6">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full shadow-sm text-gray-700 font-medium border border-primary/20">
+            <span class="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium border border-primary/20">
               {brand}
             </span>
           ))}
         </div>
-        <div class="max-w-3xl mx-auto bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
+        <div class="max-w-3xl mx-auto bg-[#F5F5DC] p-6 rounded-lg border-l-4 border-primary">
           <p class="text-gray-800">
             <strong>Nota Spesifikasi Tender:</strong> Kebanyakan tender kerajaan menyatakan "setara dengan standard CAT/Komatsu." Kedua-dua jenama Jepun (Komatsu) dan Amerika (Caterpillar) mendapat markah sama dalam penilaian teknikal. Jenama China (Shantui, XCMG) adalah kos efektif tetapi mungkin mendapat markah 5-10% lebih rendah dalam beberapa penilaian tender.
           </p>
@@ -460,13 +461,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Kisah Kejayaan Kontraktor CIDB G7
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Pemaju utama yang memperoleh projek mega melalui pembiayaan peralatan strategik
         </p>
       </div>
@@ -492,7 +493,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Soalan Lazim
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Semua yang kontraktor besar perlu tahu tentang pembiayaan armada jentolak
         </p>
       </div>
@@ -506,7 +507,7 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         Bersedia Untuk Membiayai Armada Jentolak Anda Untuk Projek Mega?
@@ -555,16 +556,19 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="bulldozer" />
+
   <!-- Contact Form Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-2xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-primary mb-4">
             Minta Perundingan Pembiayaan Armada
           </h2>
-          <p class="text-gray-600">
-            Pakar pembiayaan CIDB G7 kami akan menghubungi anda dalam masa 2 jam semasa waktu perniagaan
+          <p class="text-[#4F3E29]">
+            Pakar pembiayaan CIDB G7 kami akan menghubungi anda dalam masa cepat semasa waktu perniagaan
           </p>
         </div>
         <ContactForm lang={lang} />

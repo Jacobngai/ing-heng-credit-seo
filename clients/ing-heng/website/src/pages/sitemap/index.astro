@@ -1,0 +1,189 @@
+---
+const DEFAULT_LOCALE = import.meta.env.DEFAULT_LOCALE || import.meta.env.PUBLIC_DEFAULT_LOCALE || 'en';
+const SITE_URL = import.meta.env.SITE_URL || import.meta.env.PUBLIC_SITE_URL || 'https://www.inghengcredit.com';
+
+// Important pages to highlight
+const importantPages = [
+  { url: `/${DEFAULT_LOCALE}/`, label: 'Home', priority: '1.0' },
+  { url: `/${DEFAULT_LOCALE}/about`, label: 'About Us', priority: '0.9' },
+  { url: `/${DEFAULT_LOCALE}/contact`, label: 'Contact', priority: '0.9' },
+  { url: `/${DEFAULT_LOCALE}/equipment`, label: 'Equipment Financing', priority: '0.9' },
+  { url: `/${DEFAULT_LOCALE}/services`, label: 'Services', priority: '0.9' },
+  { url: `/${DEFAULT_LOCALE}/calculator`, label: 'Loan Calculator', priority: '0.9' },
+  { url: `/${DEFAULT_LOCALE}/faq`, label: 'FAQ', priority: '0.8' },
+  { url: `/${DEFAULT_LOCALE}/blog`, label: 'Blog', priority: '0.8' },
+];
+---
+
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sitemap - Ing Heng Credit</title>
+    <meta name="description" content="HTML sitemap for Ing Heng Credit Malaysia - Equipment financing, business loans, and SME financing solutions." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={`${SITE_URL}/sitemap/`} />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>HTML Sitemap</h1>
+        <p>This page provides a human-readable overview of all pages on the Ing Heng Credit website. For search engines, please use our <a href={`${SITE_URL}/sitemap-index.xml`}>XML sitemap</a>.</p>
+      </header>
+
+      <section class="important-pages">
+        <h2>Important Pages</h2>
+        <ul>
+          {importantPages.map(page => (
+            <li>
+              <a href={page.url} priority={page.priority}>{page.label}</a>
+              <span class="priority">Priority: {page.priority}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="language-selector">
+        <h2>Select Language</h2>
+        <div class="language-buttons">
+          <a href={`${SITE_URL}/sitemap/en.html`} class={DEFAULT_LOCALE === 'en' ? 'active' : ''}>English</a>
+          <a href={`${SITE_URL}/sitemap/ms.html`} class={DEFAULT_LOCALE === 'ms' ? 'active' : ''}>Bahasa Melayu</a>
+          <a href={`${SITE_URL}/sitemap/zh.html`} class={DEFAULT_LOCALE === 'zh' ? 'active' : ''}>中文</a>
+        </div>
+      </section>
+
+      <section class="equipment-pages">
+        <h2>Equipment Pages</h2>
+        <ul>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/bulldozer`}>Bulldozer Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/crane`}>Crane Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/excavator`}>Excavator Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/forklift`}>Forklift Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/lorry`}>Lorry Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/prime-mover`}>Prime Mover Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/equipment/refrigerated-truck`}>Refrigerated Truck Financing</a></li>
+        </ul>
+      </section>
+
+      <section class="service-pages">
+        <h2>Service Pages</h2>
+        <ul>
+          <li><a href={`/${DEFAULT_LOCALE}/services/hire-purchase`}>Hire Purchase</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/services/loan-financing`}>Loan Financing</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/services/insurance`}>Insurance</a></li>
+        </ul>
+      </section>
+
+      <section class="resources">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href={`${SITE_URL}/sitemap-index.xml`}>XML Sitemap Index</a></li>
+          <li><a href={`${SITE_URL}/robots.txt`}>robots.txt</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/calculator`}>Loan Calculator</a></li>
+          <li><a href={`/${DEFAULT_LOCALE}/faq`}>FAQ</a></li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>Last updated: <time>{new Date().toISOString()}</time></p>
+        <p>Total pages listed: <strong>20+</strong></p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style is:inline>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  header {
+    border-bottom: 2px solid #b45309;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    color: #b45309;
+    margin: 0;
+  }
+  header p {
+    color: #666;
+    margin: 0.5rem 0 0;
+  }
+  header a {
+    color: #b45309;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  header a:hover {
+    text-decoration: underline;
+  }
+  section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+  h2 {
+    color: #b45309;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+  a {
+    color: #b45309;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  a:hover {
+    background-color: #f0f0f0;
+  }
+  a.active {
+    background-color: #b45309;
+    color: white;
+  }
+  .priority {
+    font-size: 0.75rem;
+    color: #999;
+    margin-left: 0.5rem;
+  }
+  .language-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .language-buttons a {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border: 2px solid #b45309;
+    background: white;
+    color: #b45309;
+  }
+  .language-buttons a:hover,
+  .language-buttons a.active {
+    background-color: #b45309;
+    color: white;
+  }
+  footer {
+    border-top: 2px solid #b45309;
+    padding-top: 1rem;
+    margin-top: 2rem;
+    color: #666;
+    text-align: center;
+  }
+  time {
+    font-weight: bold;
+  }
+</style>

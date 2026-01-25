@@ -1,0 +1,250 @@
+---
+/**
+ * Dynamic Brand Tag Page - English
+ * URL: /en/blog/brand/caterpillar
+ * Lists all equipment financing articles for a specific brand
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import {
+  getBrandTags,
+  getEquipmentTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'en';
+
+export function getStaticPaths() {
+  const brands = getBrandTags();
+  return brands.map((brand) => ({
+    params: { brand: brand.slug.en },
+    props: { brandId: brand.id }
+  }));
+}
+
+const { brand } = Astro.params;
+const { brandId } = Astro.props;
+
+const brandTag = getBrandTags().find(b => b.id === brandId);
+if (!brandTag) {
+  return Astro.redirect('/en/blog');
+}
+
+const brandName = getTagName(brandTag, lang);
+const equipment = getEquipmentTags();
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: 'By Brand', href: '/en/blog' },
+  { label: brandName, href: `/en/blog/brand/${brand}` }
+];
+
+// Brand-specific data
+const brandData: Record<string, { country: string; founded: string; specialty: string; description: string }> = {
+  'caterpillar': { country: 'USA', founded: '1925', specialty: 'Construction & Mining Equipment', description: 'World\'s leading manufacturer of construction and mining equipment.' },
+  'komatsu': { country: 'Japan', founded: '1921', specialty: 'Construction & Mining Equipment', description: 'Global leader in earthmoving equipment and mining machinery.' },
+  'hitachi': { country: 'Japan', founded: '1910', specialty: 'Excavators & Construction Machinery', description: 'Renowned for high-quality excavators and construction equipment.' },
+  'kobelco': { country: 'Japan', founded: '1930', specialty: 'Excavators', description: 'Specialist in hydraulic excavators with advanced technology.' },
+  'volvo': { country: 'Sweden', founded: '1832', specialty: 'Construction Equipment & Trucks', description: 'Premium construction equipment known for safety and efficiency.' },
+  'hyundai': { country: 'South Korea', founded: '1972', specialty: 'Heavy Equipment', description: 'Comprehensive range of construction and material handling equipment.' },
+  'sany': { country: 'China', founded: '1989', specialty: 'Heavy Machinery', description: 'One of the world\'s largest heavy equipment manufacturers.' },
+  'xcmg': { country: 'China', founded: '1943', specialty: 'Construction Machinery', description: 'Leading Chinese construction machinery manufacturer.' },
+  'doosan': { country: 'South Korea', founded: '1896', specialty: 'Heavy Equipment', description: 'Premium construction and compact equipment manufacturer.' },
+  'jcb': { country: 'UK', founded: '1945', specialty: 'Backhoes & Construction Equipment', description: 'British manufacturer famous for backhoe loaders and telehandlers.' }
+};
+
+const brandInfo = brandData[brandId] || { country: 'International', founded: 'N/A', specialty: 'Heavy Equipment', description: 'Quality equipment manufacturer.' };
+---
+
+<BaseLayout
+  title={`${brandName} Equipment Financing Malaysia | Rates from 2.88% | Ing Heng Credit`}
+  description={`Finance ${brandName} equipment in Malaysia. Excavators, forklifts, lorries & more. Competitive rates from 2.88% p.a., 0% down payment available. 40+ years experience.`}
+  lang={lang}
+  keywords={[
+    `${brandName} financing Malaysia`,
+    `${brandName} equipment loan`,
+    `finance ${brandName} excavator`,
+    `${brandName} forklift financing`,
+    `${brandName} heavy equipment loan`
+  ]}
+>
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-brutalist mb-6 inline-block">Brand Financing</span>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          <span class="text-yellow-400">{brandName}</span> Equipment Financing
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          Finance your {brandName} equipment with competitive rates starting from 2.88% p.a.
+          Choose from excavators, forklifts, lorries, and more.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-2xl mx-auto">
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">{brandInfo.country}</div>
+            <div class="text-sm text-gray-400">Origin</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">Since {brandInfo.founded}</div>
+            <div class="text-sm text-gray-400">Established</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">2.88%</div>
+            <div class="text-sm text-gray-400">Rate From</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">0%</div>
+            <div class="text-sm text-gray-400">Down Payment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-3xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          About {brandName}
+        </h2>
+        <p class="text-lg text-gray-600">
+          {brandInfo.description} At Ing Heng Credit, we specialize in financing {brandName} equipment
+          for businesses across Malaysia. With 40+ years of experience, we offer competitive rates and
+          flexible terms to help you acquire the equipment you need.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Finance {brandName} Equipment
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {equipment.map((equip) => (
+          <a href={buildBrandEquipmentPostUrl(lang, brandId, equip.id)} class="card-brutalist group">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-yellow-400 border-3 border-navy-900 flex items-center justify-center" style="box-shadow: 3px 3px 0 #1E3A8A;">
+                  <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-black text-navy-900 group-hover:text-yellow-600 transition-colors" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                    {brandName} {getTagName(equip, lang)}
+                  </h3>
+                </div>
+              </div>
+
+              <p class="text-gray-600 mb-4">
+                Finance your {brandName} {getTagName(equip, lang).toLowerCase()} with competitive rates and flexible terms.
+              </p>
+
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-yellow-600">From 2.88% p.a.</span>
+                <span class="inline-flex items-center text-yellow-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
+                  Learn More →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-black text-navy-900 mb-6 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Why Finance {brandName} with Ing Heng Credit?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="font-black text-lg text-navy-900 mb-2">Brand Expertise</h3>
+            <p class="text-gray-700">We understand {brandName} equipment values and can offer competitive financing tailored to your needs.</p>
+          </div>
+          <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="font-black text-lg text-navy-900 mb-2">Quick Approval</h3>
+            <p class="text-gray-700">Get approval within 24 hours. We know time is money in business.</p>
+          </div>
+          <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="font-black text-lg text-navy-900 mb-2">Flexible Terms</h3>
+            <p class="text-gray-700">Tenure up to 7 years with 0% down payment options for qualified applicants.</p>
+          </div>
+          <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="font-black text-lg text-navy-900 mb-2">New & Used</h3>
+            <p class="text-gray-700">We finance both new and used {brandName} equipment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Ready to Finance Your {brandName} Equipment?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Contact us today for a free quote. Our team is ready to help you get the equipment you need.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Get Free Quote"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="View All Brands"
+          link="/en/blog"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+
+  .card-brutalist {
+    @apply bg-white overflow-hidden border-4 border-navy-900;
+    box-shadow: 6px 6px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+
+  .card-brutalist:hover {
+    box-shadow: 3px 3px 0 #1E3A8A;
+    transform: translate(3px, 3px);
+  }
+</style>

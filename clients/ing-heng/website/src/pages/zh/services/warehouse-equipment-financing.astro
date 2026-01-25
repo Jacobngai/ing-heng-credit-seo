@@ -1,0 +1,605 @@
+---
+/**
+ * Warehouse Equipment Financing Page - Chinese
+ * TARGET: "仓库设备融资" keyword
+ * Complete financing solutions for warehouse and material handling equipment
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import ServiceCard from '../../../../components/ServiceCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import StructuredData from '../../../../components/StructuredData.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration - KEYWORD DOMINANT
+const title = '仓库设备融资马来西亚 | 叉车和物料搬运融资 | Ing Heng Credit';
+const description = '马来西亚仓库设备融资，包括叉车、托盘搬运车、输送机和物料搬运设备。0%首付，100%融资可用。仓库运营快速批准。';
+const keywords = [
+  '仓库设备融资',
+  '仓库设备融资马来西亚',
+  '仓库叉车融资',
+  '物料搬运设备贷款',
+  '仓库自动化融资',
+  '托盘搬运车融资马来西亚',
+  '输送机系统融资',
+  '前移式叉车仓库融资',
+  '仓库设备分期付款',
+  '物流设备融资'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '服务', href: '/zh/services' },
+  { label: '仓库设备融资', href: '/zh/services/warehouse-equipment-financing' }
+];
+
+// FAQ Data - Warehouse Specific
+const faqs = [
+  {
+    question: '您可以融资什么仓库设备？',
+    answer: '我们融资所有重要的仓库设备，包括叉车（电动、柴油、LPG）、前移式叉车、托盘搬运车、堆垛机、输送机系统、仓库货架、装卸平台设备、剪式升降机、自动分拣系统和仓库管理技术。新设备和二手设备都接受。'
+  },
+  {
+    question: '您提供0%首付的仓库设备融资吗？',
+    answer: '是的！我们为合格的仓库运营商提供0%首付的100%融资（受条款和条件约束）。这意味着您的叉车、输送机系统或其他仓库设备无需预付款。您的仓库可以立即运营，而不会耗尽营运资金。'
+  },
+  {
+    question: '您能融资10年以上的仓库设备吗？',
+    answer: '绝对可以！我们融资10年以上的仓库设备，甚至考虑更老的设备。我们评估工作状态和商业可行性，而不是任意的年龄限制。许多13-15年的叉车和仓库设备仍然非常有生产力，可以通过我们融资。'
+  },
+  {
+    question: '仓库设备融资多快能获得批准？',
+    answer: '我们为仓库设备融资提供快速批准。我们的简化流程专为需要快速获得设备的仓库运营商设计，无论是季节性高峰、合同履行还是业务扩张。文档最少，我们的团队了解仓库现金流模式。'
+  },
+  {
+    question: '您了解季节性仓库现金流吗？',
+    answer: '是的！我们专门从事仓库运营，了解季节性波动、高峰装货期、合同周期和库存管理现金流。我们的付款条款可以结构化以匹配您的仓库收入模式和季节性需求。'
+  },
+  {
+    question: '您能融资整套仓库设备包吗？',
+    answer: '绝对可以！我们将包括多台叉车、输送机系统、货架和自动化设备在内的完整仓库设置作为一个综合包进行融资。这非常适合新仓库设施或主要仓库扩建和升级。'
+  },
+  {
+    question: '如果我的租赁叉车在高峰期坏了怎么办？',
+    answer: '拥有您的仓库设备消除了租赁依赖。当您通过我们融资时，您控制维护计划，拥有备用设备选择，永远不会面临租赁公司说"最早的替换是下周"的噩梦在您最忙的时期。'
+  },
+  {
+    question: '相比仓库设备租赁我能节省多少？',
+    answer: '大多数仓库运营商相比长期租赁费用节省40-60%。与其永远支付每月RM 12,000+的租赁费，您可以拥有优质仓库设备并建立资产价值。您的月付款致力于所有权，而不是富裕租赁公司。'
+  },
+  {
+    question: '您融资仓库自动化设备吗？',
+    answer: '是的！我们融资现代仓库自动化，包括自动导航车辆（AGV）、输送机分拣系统、仓库管理软件硬件、条形码扫描系统、自动存储和检索系统，以及仓库运营机器人。'
+  },
+  {
+    question: '仓库设备融资需要什么文件？',
+    answer: '对于仓库运营商，我们需要：公司SSM注册、最近6个月银行对账单、董事身份证/护照、仓库租赁协议或财产所有权、设备报价，以及现有仓库合同或客户基础的证明。我们了解仓库业务文档。'
+  }
+];
+
+// Service Schema (Enhanced for Warehouse Equipment)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: '仓库设备融资',
+  description: '仓库设备融资综合解决方案，包括叉车、物料搬运系统和仓库自动化设备',
+  serviceType: '仓库设备融资',
+  minRate: '8.00',
+  maxRate: '18.00',
+  locale: 'zh',
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Service Page Schema -->
+  <StructuredData schema={servicePageSchema} />
+
+  <!-- FAQ Schema -->
+  <StructuredData schema={faqSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="bg-blue-50 border-b-3 border-navy-900">
+    <div class="container-custom py-4">
+      <Breadcrumbs items={breadcrumbItems} lang={lang} />
+    </div>
+  </div>
+
+  <!-- Hero Section - Hyper-Specific Pain Points -->
+  <section class="hero relative overflow-hidden">
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-display uppercase leading-tight mb-6">
+          仓库设备<span class="text-yellow-400">融资</span>
+        </h1>
+        <div class="text-xl md:text-2xl opacity-90 mb-8">
+          <p class="mb-4">当您租赁的叉车在高峰期装货时坏了，租赁公司说
+          <span class="text-yellow-400 font-bold">"最早的替换是下周"</span>时，
+          您是否感到胃部一沉，知道订单将延迟？</p>
+          
+          <p>当您计算<span class="text-yellow-400 font-bold">每月RM 12,000叉车租金</span>，
+          意识到您可以以更少的成本拥有它时，这是否感觉像往洞里倒钱？</p>
+        </div>
+        
+        <div class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg inline-block font-bold text-lg mb-8">
+          🏗️ 0%首付 • 100%融资 • 甚至10年以上设备都考虑
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-8 py-4">
+            WhatsApp：即时报价
+          </a>
+          <a href="/zh/contact" class="btn btn-outline-white text-xl px-8 py-4">
+            计算我的节省
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
+
+  <!-- Pain Point Articulation Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+            这听起来<span class="text-secondary">熟悉</span>吗？
+          </h2>
+          <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Pain Point 1 -->
+          <div class="bg-red-50 border-l-8 border-red-500 p-8 shadow-brutal-lg">
+            <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">租赁设备噩梦</h3>
+            <div class="text-gray-700 leading-relaxed space-y-4">
+              <p class="italic">"当租赁公司在下午5点打电话说'我们需要明天早上收回叉车'，
+              而您有三个集装箱将在早上6点到达时，您是否感到胸中恐慌，
+              知道您的仓库运营将停止？"</p>
+              
+              <p class="italic">"当您租赁的前移式叉车在最大客户的库存交付期间坏了，
+              您的员工在客户等待时手动搬运托盘，
+              您的胃是否下沉，知道这可能使您失去合同？"</p>
+            </div>
+          </div>
+
+          <!-- Pain Point 2 -->
+          <div class="bg-red-50 border-l-8 border-red-500 p-8 shadow-brutal-lg">
+            <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">每月租金流失</h3>
+            <div class="text-gray-700 leading-relaxed space-y-4">
+              <p class="italic">"当您开出每月RM 12,000+设备租赁支票，
+              走过您的仓库，知道3年后您并不拥有任何设备时，
+              您是否感到下巴的挫折，想着'我现在应该已经拥有这个了'？"</p>
+              
+              <p class="italic">"当您计算每年花在叉车租赁上的RM 144,000，
+              意识到这足以购买三台优质二手叉车时，
+              您的肩膀是否紧张，知道您在建设别人的生意？"</p>
+            </div>
+          </div>
+
+          <!-- Solution Bridge -->
+          <div class="lg:col-span-2 bg-green-50 border-l-8 border-green-500 p-8 shadow-brutal-xl text-center">
+            <h3 class="text-3xl font-display uppercase text-navy-900 mb-6">有更好的方法</h3>
+            <div class="text-xl text-gray-700 mb-6">
+              <p class="mb-4"><span class="font-bold text-green-700">您的设备。</span> <span class="font-bold text-green-700">您的时间表。</span> <span class="font-bold text-green-700">您的收入。</span></p>
+              <p><span class="font-bold text-green-700">建立资产。</span> <span class="font-bold text-green-700">保留利润。</span> <span class="font-bold text-green-700">控制运营。</span></p>
+            </div>
+            <a href="/zh/equipment/forklift" class="btn btn-primary text-xl px-8 py-4 inline-block">
+              了解仓库设备融资如何运作 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warehouse Equipment We Finance -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          我们融资的<span class="text-secondary">仓库设备</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl">
+          物料搬运、存储和自动化系统的完整仓库设备融资
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Forklifts -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">🏗️</div>
+            <h3 class="text-2xl font-display uppercase text-white">叉车</h3>
+            <p class="text-white">所有类型和载重</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• 电动叉车 (1-8吨)</li>
+              <li>• 柴油叉车 (1-25吨)</li>
+              <li>• LPG叉车 (1-15吨)</li>
+              <li>• 前移式叉车 (1.5-3吨)</li>
+              <li>• 拣货车</li>
+              <li>• 仓库堆垛机</li>
+            </ul>
+            <a href="/zh/equipment/forklift" class="btn btn-primary w-full mt-6 block text-center">
+              叉车融资 →
+            </a>
+          </div>
+        </div>
+
+        <!-- Material Handling -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">📦</div>
+            <h3 class="text-2xl font-display uppercase text-white">物料搬运</h3>
+            <p class="text-white">搬运升降设备</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• 托盘搬运车（手动电动）</li>
+              <li>• 手动堆垛机</li>
+              <li>• 平台车</li>
+              <li>• 油桶搬运车</li>
+              <li>• 剪式升降机</li>
+              <li>• 装卸平台</li>
+            </ul>
+            <a href="/zh/services/equipment-financing" class="btn btn-primary w-full mt-6 block text-center">
+              物料搬运融资 →
+            </a>
+          </div>
+        </div>
+
+        <!-- Conveyor Systems -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">🔄</div>
+            <h3 class="text-2xl font-display uppercase text-white">输送机系统</h3>
+            <p class="text-white">自动化流程解决方案</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• 带式输送机</li>
+              <li>• 滚筒输送机</li>
+              <li>• 分拣系统</li>
+              <li>• 自动导航车辆</li>
+              <li>• 气动输送机</li>
+              <li>• 装卸系统</li>
+            </ul>
+            <div class="btn btn-primary w-full mt-6 flex items-center justify-center cursor-default">
+              自动化融资可用
+            </div>
+          </div>
+        </div>
+
+        <!-- Storage Systems -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+          <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+            <div class="text-6xl mb-4">🏪</div>
+            <h3 class="text-2xl font-display uppercase text-white">存储系统</h3>
+            <p class="text-white">货架和组织</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-700 space-y-2 text-sm">
+              <li>• 托盘货架系统</li>
+              <li>• 驶入式货架</li>
+              <li>• 悬臂货架</li>
+              <li>• 自动存储/检索</li>
+              <li>• 夹层地板</li>
+              <li>• 仓库货架</li>
+            </ul>
+            <div class="btn btn-primary w-full mt-6 flex items-center justify-center cursor-default">
+              完整系统融资
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warehouse Equipment Financing Benefits -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          为什么选择我们的<span class="text-secondary">仓库设备融资</span>？
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl">
+          专为仓库运营和物料搬运企业设计的专业融资
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <BenefitCard
+          icon="percentage"
+          title="无需0%首付"
+          description="无需预付款。融资您仓库设备价值的100%。立即开始运营，不耗尽营运资金。"
+        />
+
+        <BenefitCard
+          icon="clock"
+          title="甚至10年以上设备"
+          description="我们融资10年以上的仓库设备，甚至考虑更老的设备。接受优质二手叉车和物料搬运设备。"
+        />
+
+        <BenefitCard
+          icon="lightning"
+          title="快速批准流程"
+          description="为仓库运营商设计的快速批准。我们了解季节性高峰和紧急设备更换需求。"
+        />
+
+        <BenefitCard
+          icon="calendar"
+          title="季节性付款灵活性"
+          description="与仓库现金流模式匹配的付款条款。我们了解高峰季、合同周期和库存管理。"
+        />
+
+        <BenefitCard
+          icon="users"
+          title="仓库专业知识"
+          description="我们的团队了解仓库运营、物料搬运工作流程和物流设备要求。"
+        />
+
+        <BenefitCard
+          icon="shield"
+          title="完整设备包"
+          description="将整套仓库设置融资，包括多台叉车、输送机、货架和自动化设备作为一个综合包。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section class="section bg-yellow-400">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-navy-900">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-8">
+          停止流失<span class="text-white">租赁费</span>
+        </h2>
+        
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-xl p-8 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div>
+              <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">租赁现实检查</h3>
+              <div class="space-y-4 text-gray-700">
+                <div class="flex justify-between">
+                  <span>每月叉车租赁：</span>
+                  <span class="font-bold text-red-600">RM 12,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>年度租赁成本：</span>
+                  <span class="font-bold text-red-600">RM 144,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>3年租赁总额：</span>
+                  <span class="font-bold text-red-600">RM 432,000</span>
+                </div>
+                <div class="flex justify-between border-t pt-2">
+                  <span class="font-bold">3年后设备所有权：</span>
+                  <span class="font-bold text-red-600">RM 0</span>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">融资现实</h3>
+              <div class="space-y-4 text-gray-700">
+                <div class="flex justify-between">
+                  <span>每月融资付款：</span>
+                  <span class="font-bold text-green-600">RM 8,500</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>年度融资成本：</span>
+                  <span class="font-bold text-green-600">RM 102,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>3年融资总额：</span>
+                  <span class="font-bold text-green-600">RM 306,000</span>
+                </div>
+                <div class="flex justify-between border-t pt-2">
+                  <span class="font-bold">3年后设备所有权：</span>
+                  <span class="font-bold text-green-600">RM 200,000+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 p-6 bg-green-100 border-l-8 border-green-500">
+            <div class="text-2xl font-bold text-green-800 mb-2">
+              您的节省：3年超过RM 126,000 + RM 200,000资产所有权
+            </div>
+            <p class="text-green-700">与其富裕租赁公司，您在生产性仓库资产中建立资产。</p>
+          </div>
+        </div>
+
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-primary text-xl px-8 py-4">
+          计算我的仓库设备节省 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Process -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          简单的<span class="text-secondary">申请流程</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+          4个简单步骤获得仓库设备融资批准
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">1</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">设备评估</h3>
+          <p class="text-gray-600 leading-relaxed">
+            确定您的仓库设备需求：叉车、输送机、物料搬运系统
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">2</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">快速申请</h3>
+          <p class="text-gray-600 leading-relaxed">
+            通过WhatsApp或在线提交仓库业务文档和设备报价
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">3</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">快速批准</h3>
+          <p class="text-gray-600 leading-relaxed">
+            通过我们专注仓库的融资专业知识快速获得批准
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md">
+            <span class="text-5xl font-display text-navy-900">4</span>
+          </div>
+          <h3 class="text-xl font-display uppercase text-navy-900 mb-3">设备交付</h3>
+          <p class="text-gray-600 leading-relaxed">
+            接收您的仓库设备并在运营时开始建立所有权
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+            仓库设备<span class="text-secondary">融资常见问题</span>
+          </h2>
+          <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+          <p class="text-gray-700 text-xl">
+            关于仓库设备融资您需要了解的一切
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-16 text-center">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-6">
+            准备拥有您的仓库设备？
+          </h3>
+          <p class="text-gray-600 mb-8 text-lg">
+            停止永远支付租赁费。今天开始建立仓库设备资产。
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-8 py-4">
+              WhatsApp：{COMPANY_INFO.phone.display}
+            </a>
+            <a href="/zh/contact" class="btn btn-primary text-xl px-8 py-4">
+              获取免费仓库设备报价
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Links -->
+  <section class="section bg-secondary text-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6">
+          相关<span class="text-yellow-400">设备融资</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-6xl mb-4">🏗️</div>
+          <h3 class="text-xl font-display uppercase mb-3">叉车融资</h3>
+          <p class="text-white/90 mb-4">所有仓库载重量和类型的专业叉车融资</p>
+          <a href="/zh/equipment/forklift" class="btn btn-outline-white">了解更多 →</a>
+        </div>
+
+        <div class="text-center">
+          <div class="text-6xl mb-4">🚚</div>
+          <h3 class="text-xl font-display uppercase mb-3">设备融资</h3>
+          <p class="text-white/90 mb-4">建筑和物流设备的完整设备融资</p>
+          <a href="/zh/services/equipment-financing" class="btn btn-outline-white">了解更多 →</a>
+        </div>
+
+        <div class="text-center">
+          <div class="text-6xl mb-4">🏗️</div>
+          <h3 class="text-xl font-display uppercase mb-3">起重机融资</h3>
+          <p class="text-white/90 mb-4">仓库和建筑用移动和塔式起重机融资</p>
+          <a href="/zh/equipment/crane" class="btn btn-outline-white">了解更多 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          获取您的免费<span class="text-secondary">仓库设备报价</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 text-xl">
+          填写下面的表格，我们的仓库设备融资专家将立即联系您
+        </p>
+      </div>
+      <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-xl p-8 md:p-12">
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+  }
+</style>

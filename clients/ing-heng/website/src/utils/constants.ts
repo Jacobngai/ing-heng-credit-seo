@@ -27,13 +27,13 @@ export const COMPANY_INFO = {
   email: 'enquiry@inghengcredit.com',
 
   address: {
-    street: 'No. 16, Lintang Menalu, Taman Chi Liung',
+    street: '16, Lintang Menalu, Taman Chi Liung',
     city: 'Klang',
     state: 'Selangor',
     postcode: '41200',
     country: 'Malaysia',
-    full: 'No. 16, Lintang Menalu, Taman Chi Liung, 41200 Klang, Selangor',
-    googleMapsUrl: 'https://maps.google.com/?q=No.+16,+Lintang+Menalu,+Taman+Chi+Liung,+41200+Klang,+Selangor',
+    full: '16, Lintang Menalu, Taman Chi Liung, 41200 Klang, Selangor',
+    googleMapsUrl: 'https://www.google.com/maps/dir//16,+Lintang+Menalu,+Taman+Chi+Liung,+41200+Klang,+Selangor/@3.0229391,101.3508286,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x31cdab4db39d6df9:0x71b2acd8e5bf24cf!2m2!1d101.4332306!2d3.0229422?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D',
   },
 
   // Social Media
@@ -64,9 +64,11 @@ export const COMPANY_INFO = {
 
 /**
  * Site Configuration
+ * Note: url will be overridden by environment variables at build time
+ * Default is set for English site
  */
 export const SITE_CONFIG = {
-  url: 'https://ingheng-credit.vercel.app',
+  url: 'https://www.inghengcredit.com',
   title: 'Ing Heng Credit & Leasing - Equipment Financing Malaysia',
   description: 'Premier equipment financing and leasing solutions in Malaysia. Fast approval for excavators, lorries, forklifts, and construction equipment.',
   defaultLocale: 'en',
@@ -197,9 +199,9 @@ export const KEY_BENEFITS = [
       ms: 'Kadar Kompetitif',
     },
     description: {
-      en: 'Industry-leading rates from 2.88% p.a.',
-      zh: '行业领先利率，从2.88%起',
-      ms: 'Kadar terkemuka industri dari 2.88% setahun',
+      en: 'Competitive rates starting from 6.5% p.a.',
+      zh: '具竞争力的利率从6.5%起',
+      ms: 'Kadar kompetitif bermula dari 6.5% setahun',
     },
   },
   {

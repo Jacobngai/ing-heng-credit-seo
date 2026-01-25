@@ -1,0 +1,202 @@
+---
+/**
+ * Dynamic Brand Tag Page - Chinese
+ * URL: /zh/blog/brand/卡特彼勒
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import {
+  getBrandTags,
+  getEquipmentTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'zh';
+
+export function getStaticPaths() {
+  const brands = getBrandTags();
+  return brands.map((brand) => ({
+    params: { brand: brand.slug.zh },
+    props: { brandId: brand.id }
+  }));
+}
+
+const { brand } = Astro.params;
+const { brandId } = Astro.props;
+
+const brandTag = getBrandTags().find(b => b.id === brandId);
+if (!brandTag) {
+  return Astro.redirect('/zh/blog');
+}
+
+const brandName = getTagName(brandTag, lang);
+const equipment = getEquipmentTags();
+
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: '按品牌', href: '/zh/blog' },
+  { label: brandName, href: `/zh/blog/brand/${brand}` }
+];
+
+const brandData: Record<string, { country: string; founded: string; specialty: string; description: string }> = {
+  'caterpillar': { country: '美国', founded: '1925', specialty: '建筑与采矿设备', description: '世界领先的建筑和采矿设备制造商。' },
+  'komatsu': { country: '日本', founded: '1921', specialty: '建筑与采矿设备', description: '土方设备和采矿机械的全球领导者。' },
+  'hitachi': { country: '日本', founded: '1910', specialty: '挖掘机与建筑机械', description: '以高品质挖掘机和建筑设备闻名。' },
+  'kobelco': { country: '日本', founded: '1930', specialty: '挖掘机', description: '液压挖掘机专家，拥有先进技术。' },
+  'volvo': { country: '瑞典', founded: '1832', specialty: '建筑设备与卡车', description: '以安全和效率著称的高端建筑设备。' },
+  'hyundai': { country: '韩国', founded: '1972', specialty: '重型设备', description: '全面的建筑和物料搬运设备。' },
+  'sany': { country: '中国', founded: '1989', specialty: '重型机械', description: '世界最大的重型设备制造商之一。' },
+  'xcmg': { country: '中国', founded: '1943', specialty: '建筑机械', description: '中国领先的建筑机械制造商。' },
+  'doosan': { country: '韩国', founded: '1896', specialty: '重型设备', description: '高端建筑和紧凑型设备制造商。' },
+  'jcb': { country: '英国', founded: '1945', specialty: '反铲挖掘机与建筑设备', description: '以反铲装载机和伸缩臂叉装车闻名的英国制造商。' }
+};
+
+const brandInfo = brandData[brandId] || { country: '国际', founded: 'N/A', specialty: '重型设备', description: '优质设备制造商。' };
+---
+
+<BaseLayout
+  title={`${brandName}设备融资马来西亚 | 利率2.88%起 | 盈亨信贷`}
+  description={`在马来西亚融资${brandName}设备。挖掘机、叉车、卡车等。年利率2.88%起，可享0%首付。`}
+  lang={lang}
+  keywords={[
+    `${brandName}融资马来西亚`,
+    `${brandName}设备贷款`,
+    `${brandName}租赁`
+  ]}
+>
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-brutalist mb-6 inline-block">品牌融资</span>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif;">
+          <span class="text-yellow-400">{brandName}</span>设备融资
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          以年利率2.88%起的优惠利率融资您的{brandName}设备。
+          可选择挖掘机、叉车、卡车等多种设备。
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-2xl mx-auto">
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">{brandInfo.country}</div>
+            <div class="text-sm text-gray-400">产地</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">{brandInfo.founded}年起</div>
+            <div class="text-sm text-gray-400">成立</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">2.88%</div>
+            <div class="text-sm text-gray-400">利率起</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">0%</div>
+            <div class="text-sm text-gray-400">首付</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-3xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+          关于{brandName}
+        </h2>
+        <p class="text-lg text-gray-600">
+          {brandInfo.description} 在盈亨信贷，我们专注于为马来西亚各地的企业提供{brandName}设备融资。
+          凭借40多年的经验，我们提供有竞争力的利率和灵活的条款，帮助您获得所需的设备。
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif;">
+        融资{brandName}设备
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {equipment.map((equip) => (
+          <a href={buildBrandEquipmentPostUrl(lang, brandId, equip.id)} class="card-brutalist group">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-yellow-400 border-3 border-navy-900 flex items-center justify-center" style="box-shadow: 3px 3px 0 #1E3A8A;">
+                  <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-black text-navy-900 group-hover:text-yellow-600 transition-colors" style="font-family: 'Bebas Neue', sans-serif;">
+                    {brandName} {getTagName(equip, lang)}
+                  </h3>
+                </div>
+              </div>
+
+              <p class="text-gray-600 mb-4">
+                以优惠利率和灵活条款融资您的{brandName} {getTagName(equip, lang)}。
+              </p>
+
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-yellow-600">年利率2.88%起</span>
+                <span class="inline-flex items-center text-yellow-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
+                  了解更多 →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+        准备融资您的{brandName}设备？
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        立即联系我们获取免费报价。我们的团队随时为您服务。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="获取报价"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="查看所有品牌"
+          link="/zh/blog"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist { @apply inline-block px-3 py-1 font-black bg-yellow-400 text-navy-900 border-2 border-navy-900; box-shadow: 2px 2px 0 #1E3A8A; }
+  .card-brutalist { @apply bg-white overflow-hidden border-4 border-navy-900; box-shadow: 6px 6px 0 #1E3A8A; transition: all 0.3s ease; }
+  .card-brutalist:hover { box-shadow: 3px 3px 0 #1E3A8A; transform: translate(3px, 3px); }
+</style>

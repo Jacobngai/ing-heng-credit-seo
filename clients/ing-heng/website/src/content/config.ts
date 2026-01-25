@@ -31,10 +31,19 @@ const blogCollection = defineCollection({
       'Equipment Financing',
       'Construction Equipment',
       'Logistics Equipment',
+      'Specialized Vehicle Financing',
       'Business Tips',
       'Industry News',
       'Case Studies',
-      'Financing Guides'
+      'Financing Guides',
+      'Personal Financing',
+      'Emergency Financing',
+      'Business Financing',
+      'Pembiayaan Peralatan',
+      'Panduan Pembiayaan',
+      'Tip Perniagaan',
+      '设备融资',
+      '融资指南'
     ]),
     tags: z.array(z.string()).default([]),
 

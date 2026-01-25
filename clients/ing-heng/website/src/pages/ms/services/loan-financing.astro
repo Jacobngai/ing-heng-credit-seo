@@ -4,24 +4,24 @@
  * Halaman Perkhidmatan Pembiayaan Pinjaman - Penyelesaian pinjaman perniagaan untuk PKS Malaysia
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Hero from '../../../components/Hero.astro';
-import BenefitCard from '../../../components/BenefitCard.astro';
-import ServiceCard from '../../../components/ServiceCard.astro';
-import FAQItem from '../../../components/FAQItem.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import CTAButton from '../../../components/CTAButton.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import Calculator from '../../../components/Calculator.astro';
-import StepCard from '../../../components/StepCard.astro';
-import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
-import StructuredData from '../../../components/StructuredData.astro';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import ServiceCard from '../../../../components/ServiceCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import StructuredData from '../../../../components/StructuredData.astro';
 
 const lang = 'ms';
 
 // SEO Configuration - Pengoptimuman 20 tahun kepakaran
 const title = 'Pembiayaan Pinjaman Perniagaan Malaysia | Pinjaman Peralatan PKS';
-const description = 'Pinjaman perniagaan pantas untuk pembelian peralatan di Malaysia. Modal kerja, pembiayaan peralatan & pinjaman pengembangan dengan kadar kelulusan 95%. Kadar kompetitif, pemprosesan 24 jam. Mohon sekarang!';
+const description = 'Pinjaman perniagaan pantas untuk pembelian peralatan di Malaysia. Modal kerja, pembiayaan peralatan & pinjaman pengembangan dengan kadar kompetitif. Pemprosesan cepat. Mohon sekarang!';
 const keywords = ['pinjaman perniagaan Malaysia', 'pembiayaan PKS', 'pinjaman peralatan Malaysia', 'pinjaman modal kerja', 'pinjaman pengembangan perniagaan', 'pembiayaan peralatan komersial', 'kredit perniagaan Malaysia', 'kelulusan pinjaman pantas'];
 
 // Breadcrumbs
@@ -35,19 +35,19 @@ const breadcrumbItems = [
 const faqs = [
   {
     question: 'Apakah jenis-jenis pinjaman perniagaan yang Tuan/Puan tawarkan?',
-    answer: 'Kami menawarkan tiga jenis pinjaman perniagaan utama: Pinjaman Pembiayaan Peralatan (untuk pembelian jentera dan kenderaan), Pinjaman Modal Kerja (untuk operasi harian dan aliran tunai), dan Pinjaman Pengembangan Perniagaan (untuk inisiatif pertumbuhan). Setiap jenis pinjaman disertakan dengan terma fleksibel antara 12 hingga 60 bulan dan kadar faedah kompetitif bermula dari 2.88% setahun.'
+    answer: 'Kami menawarkan tiga jenis pinjaman perniagaan utama: Pinjaman Pembiayaan Peralatan (untuk pembelian jentera dan kenderaan), Pinjaman Modal Kerja (untuk operasi harian dan aliran tunai), dan Pinjaman Pengembangan Perniagaan (untuk inisiatif pertumbuhan). Setiap jenis pinjaman disertakan dengan terma fleksibel antara 12 hingga 60 bulan dan kadar faedah 8-18% setahun (tertakluk kepada penilaian kredit).'
   },
   {
     question: 'Apakah syarat kelayakan untuk memohon pinjaman perniagaan?',
-    answer: 'Untuk layak memohon pinjaman perniagaan, syarikat Tuan/Puan mestilah didaftarkan di Malaysia (Sdn Bhd, Enterprise, atau Milikan Tunggal), beroperasi sekurang-kurangnya 6 bulan, dan mempunyai pendapatan atau hasil yang boleh disahkan. Kami memerlukan dokumentasi asas termasuk pendaftaran SSM, penyata bank (6 bulan), IC/pasport pengarah, dan penyata kewangan (jika ada). Kami mengekalkan kadar kelulusan 95%.'
+    answer: 'Untuk layak memohon pinjaman perniagaan, syarikat Tuan/Puan mestilah didaftarkan di Malaysia (Sdn Bhd, Enterprise, atau Milikan Tunggal), beroperasi sekurang-kurangnya 6 bulan, dan mempunyai pendapatan atau hasil yang boleh disahkan. Kami memerlukan dokumentasi asas termasuk pendaftaran SSM, penyata bank (6 bulan), IC/pasport pengarah, dan penyata kewangan (jika ada). Kami mengekalkan kadar kelulusan yang tinggi.'
   },
   {
     question: 'Berapa lama masa yang diperlukan untuk kelulusan dan pengeluaran pinjaman?',
-    answer: 'Kami memproses permohonan pinjaman dalam masa 24 jam dan memberikan keputusan kelulusan pada hari yang sama bagi kebanyakan kes. Setelah diluluskan, dana boleh dikeluarkan dalam masa 3-5 hari bekerja. Proses kami yang diperkemas direka khusus untuk PKS Malaysia yang memerlukan akses pantas kepada modal tanpa prosedur bank yang berlarutan.'
+    answer: 'Kami memproses permohonan pinjaman dengan cepat dan memberikan keputusan kelulusan yang pantas bagi kebanyakan kes. Setelah diluluskan, dana boleh dikeluarkan dalam masa 3-5 hari bekerja. Proses kami yang diperkemas direka khusus untuk PKS Malaysia yang memerlukan akses pantas kepada modal tanpa prosedur bank yang berlarutan.'
   },
   {
     question: 'Berapakah kadar faedah yang dikenakan untuk pinjaman perniagaan?',
-    answer: 'Kadar faedah pinjaman perniagaan kami bermula dari 2.88% setahun dan berbeza berdasarkan jumlah pinjaman, tempoh bayaran balik, profil kredit perniagaan, dan cagaran yang disediakan. Kami bekerjasama dengan pelbagai rakan kewangan untuk mendapatkan kadar paling kompetitif bagi situasi khusus Tuan/Puan. Semua kadar dan yuran didedahkan secara telus sebelum Tuan/Puan membuat komitmen.'
+    answer: 'Kadar faedah pinjaman perniagaan kami ialah 8-18% setahun (tertakluk kepada penilaian kredit) dan berbeza berdasarkan jumlah pinjaman, tempoh bayaran balik, profil kredit perniagaan, dan cagaran yang disediakan. Kami bekerjasama dengan pelbagai rakan kewangan untuk mendapatkan kadar paling kompetitif bagi situasi khusus Tuan/Puan. Semua kadar dan yuran didedahkan secara telus sebelum Tuan/Puan membuat komitmen.'
   },
   {
     question: 'Adakah saya perlu menyediakan cagaran untuk pinjaman perniagaan?',
@@ -80,8 +80,8 @@ const servicePageSchema = generateServicePageSchema({
   serviceName: 'Perkhidmatan Pembiayaan Pinjaman Perniagaan',
   description: 'Penyelesaian pinjaman perniagaan komprehensif termasuk pembiayaan peralatan, pinjaman modal kerja, dan pembiayaan pengembangan perniagaan untuk PKS Malaysia',
   serviceType: 'Pembiayaan Pinjaman Perniagaan',
-  minRate: '2.88',
-  maxRate: '15.00',
+  minRate: '8.00',
+  maxRate: '18.00',
   locale: 'ms',
 });
 
@@ -110,14 +110,13 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="Pembiayaan Pinjaman Perniagaan untuk Peralatan & Pertumbuhan"
-    subtitle="Kembangkan perniagaan Tuan/Puan dengan pembiayaan pantas dan fleksibel. Pinjaman peralatan, modal kerja, dan pembiayaan pengembangan dengan kadar kelulusan 95% dan pemprosesan 24 jam. Dapatkan sebut harga percuma hari ini!"
+    subtitle="Kembangkan perniagaan Tuan/Puan dengan pembiayaan pantas dan fleksibel. Pinjaman peralatan, modal kerja, dan pembiayaan pengembangan dengan kelulusan pantas dan pemprosesan cepat. Dapatkan sebut harga percuma hari ini!"
     ctaText="Mohon Pinjaman"
     ctaLink="/ms/contact"
     ctaSecondaryText="WhatsApp Kami"
     ctaSecondaryLink="https://wa.me/60175700889"
-    backgroundImage="/images/services/loan-financing-hero.jpg"
     lang={lang}
-    trustSignals={['Kelulusan 95%', 'Proses 24 Jam', 'Pinjaman RM 50K-5M']}
+    trustSignals={['Kelulusan Pantas', 'Proses Pantas', 'Pinjaman RM 50K-5M']}
   />
 
   <!-- What is Business Loan Financing Section -->
@@ -137,14 +136,14 @@ const faqSchema = generateFAQSchema(faqs);
           </p>
 
           <p class="text-gray-700 leading-relaxed mb-6">
-            Sama ada Tuan/Puan membeli jengkaut baru, mengembangkan armada lori, menaik taraf forklift gudang, atau memerlukan modal kerja untuk menguruskan aliran tunai bermusim, pembiayaan pinjaman perniagaan kami akan memberikan dana kepada Tuan/Puan dalam masa 3-5 hari dengan kadar faedah kompetitif bermula dari 2.88% setahun.
+            Sama ada Tuan/Puan membeli jengkaut baru, mengembangkan armada lori, menaik taraf forklift gudang, atau memerlukan modal kerja untuk menguruskan aliran tunai bermusim, pembiayaan pinjaman perniagaan kami akan memberikan dana kepada Tuan/Puan dalam masa 3-5 hari dengan kadar faedah kompetitif bermula dari 6.5% setahun.
           </p>
 
-          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-sm">
+          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-[2px_2px_0_#2D1810]">
             <h3 class="text-xl font-bold text-primary mb-3">Mengapa Memilih Pinjaman Perniagaan Berbanding Pembiayaan Tradisional?</h3>
             <ul class="space-y-3 text-gray-700">
-              <li><strong>Kelulusan Lebih Pantas:</strong> Pemprosesan 24 jam berbanding 2-4 minggu di bank</li>
-              <li><strong>Kadar Kelulusan Lebih Tinggi:</strong> Kadar kejayaan 95% dengan rangkaian pemberi pinjaman kami</li>
+              <li><strong>Kelulusan Lebih Pantas:</strong> Pemprosesan cepat berbanding 2-4 minggu di bank</li>
+              <li><strong>Kadar Kelulusan Lebih Tinggi:</strong> Kadar kejayaan yang tinggi dengan rangkaian pemberi pinjaman kami</li>
               <li><strong>Keperluan Fleksibel:</strong> Kami bekerjasama dengan perniagaan baru dan pelbagai profil kredit</li>
               <li><strong>Pelbagai Tujuan:</strong> Gabungkan pembiayaan peralatan dengan modal kerja dalam satu pinjaman</li>
               <li><strong>Kadar Kompetitif:</strong> Akses kepada pelbagai pembiaya memastikan syarat terbaik</li>
@@ -170,7 +169,7 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-primary">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-t-4 border-primary">
           <div class="text-primary text-5xl mb-4">🚜</div>
           <h3 class="text-2xl font-bold text-primary mb-4">Pinjaman Pembiayaan Peralatan</h3>
           <p class="text-gray-600 mb-6">
@@ -210,7 +209,7 @@ const faqSchema = generateFAQSchema(faqs);
           />
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-secondary">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-t-4 border-secondary">
           <div class="text-secondary text-5xl mb-4">💰</div>
           <h3 class="text-2xl font-bold text-primary mb-4">Pinjaman Modal Kerja</h3>
           <p class="text-gray-600 mb-6">
@@ -250,7 +249,7 @@ const faqSchema = generateFAQSchema(faqs);
           />
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-accent">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-t-4 border-accent">
           <div class="text-accent text-5xl mb-4">📈</div>
           <h3 class="text-2xl font-bold text-primary mb-4">Pinjaman Pengembangan Perniagaan</h3>
           <p class="text-gray-600 mb-6">
@@ -309,14 +308,14 @@ const faqSchema = generateFAQSchema(faqs);
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <BenefitCard
           icon="lightning"
-          title="Kelulusan 24 Jam"
-          description="Proses pantas permohonan Tuan/Puan dengan keputusan kelulusan pada hari yang sama. Tiada tempoh menunggu bank yang panjang."
+          title="Kelulusan Pantas"
+          description="Proses pantas permohonan Tuan/Puan dengan keputusan kelulusan yang cepat. Tiada tempoh menunggu bank yang panjang."
         />
 
         <BenefitCard
           icon="percentage"
-          title="Dari 2.88% Faedah"
-          description="Kadar kompetitif bermula dari 2.88% setahun. Kami dapatkan syarat terbaik melalui rangkaian pemberi pinjaman kami."
+          title="Kadar Faedah 8-18%"
+          description="Kadar faedah 8-18% setahun (tertakluk kepada penilaian kredit). Kami dapatkan syarat terbaik melalui rangkaian pemberi pinjaman kami."
         />
 
         <BenefitCard
@@ -325,11 +324,6 @@ const faqSchema = generateFAQSchema(faqs);
           description="Tempoh bayaran balik fleksibel diselaraskan dengan aliran tunai dan rancangan pertumbuhan perniagaan Tuan/Puan."
         />
 
-        <BenefitCard
-          icon="shield"
-          title="Kadar Kelulusan 95%"
-          description="Kadar kejayaan kelulusan terkemuka industri. Kami mencari penyelesaian pembiayaan untuk kebanyakan perniagaan."
-        />
 
         <BenefitCard
           icon="users"
@@ -373,7 +367,7 @@ const faqSchema = generateFAQSchema(faqs);
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <div class="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-[6px_6px_0_#2D1810]">
             1
           </div>
           <h3 class="text-2xl font-bold text-primary mb-4">Hantar Permohonan</h3>
@@ -383,17 +377,17 @@ const faqSchema = generateFAQSchema(faqs);
         </div>
 
         <div class="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-secondary to-accent text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
+          <div class="w-24 h-24 bg-gradient-to-br from-secondary to-accent text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-[6px_6px_0_#2D1810]">
             2
           </div>
-          <h3 class="text-2xl font-bold text-primary mb-4">Diluluskan dalam 24 Jam</h3>
+          <h3 class="text-2xl font-bold text-primary mb-4">Diluluskan Pantas</h3>
           <p class="text-gray-600 leading-relaxed">
-            Kami semak permohonan Tuan/Puan dan hantar kepada rangkaian pembiaya kami. Terima keputusan kelulusan dalam masa 24 jam dengan terma pinjaman dan kadar terperinci.
+            Kami semak permohonan Tuan/Puan dan hantar kepada rangkaian pembiaya kami. Terima keputusan kelulusan dengan cepat dengan terma pinjaman dan kadar terperinci.
           </p>
         </div>
 
         <div class="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-accent to-primary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
+          <div class="w-24 h-24 bg-gradient-to-br from-accent to-primary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-[6px_6px_0_#2D1810]">
             3
           </div>
           <h3 class="text-2xl font-bold text-primary mb-4">Terima Dana dalam 3-5 Hari</h3>
@@ -583,7 +577,7 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
           <h3 class="text-2xl font-bold text-primary mb-3">Pembiayaan Sewa Beli</h3>
           <p class="text-gray-600 mb-4">
             Miliki peralatan Tuan/Puan melalui ansuran bulanan yang berpatutan. Sesuai untuk jengkaut, lori, dan forklift dengan tempoh fleksibel 12-60 bulan.
@@ -595,7 +589,7 @@ const faqSchema = generateFAQSchema(faqs);
           />
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
           <h3 class="text-2xl font-bold text-primary mb-3">Insurans Peralatan</h3>
           <p class="text-gray-600 mb-4">
             Lindungi pelaburan peralatan berharga Tuan/Puan dengan perlindungan insurans komprehensif. Dapatkan ketenangan fikiran untuk jentera dan kenderaan Tuan/Puan.
@@ -618,21 +612,17 @@ const faqSchema = generateFAQSchema(faqs);
           Bersedia untuk Mengembangkan Perniagaan dengan Pinjaman?
         </h2>
         <p class="text-xl text-white/90 mb-8 leading-relaxed">
-          Sertai 500+ PKS Malaysia yang mempercayai Ing Heng Credit untuk pembiayaan perniagaan yang pantas dan fleksibel. Diluluskan dalam 24 jam dan dibiayai dalam masa 3-5 hari!
+          Sertai ratusan PKS Malaysia yang mempercayai Ing Heng Credit untuk pembiayaan perniagaan yang pantas dan fleksibel. Diluluskan dengan cepat dan dibiayai dalam masa 3-5 hari!
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-            <div class="text-4xl font-bold mb-2">24jam</div>
-            <div class="text-white/90">Masa Kelulusan</div>
+            <div class="text-4xl font-bold mb-2">Pantas</div>
+            <div class="text-white/90">Kelulusan</div>
           </div>
           <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-            <div class="text-4xl font-bold mb-2">95%</div>
-            <div class="text-white/90">Kadar Kelulusan</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-            <div class="text-4xl font-bold mb-2">2.88%</div>
-            <div class="text-white/90">Kadar Permulaan</div>
+            <div class="text-4xl font-bold mb-2">8-18%</div>
+            <div class="text-white/90">Kadar Faedah</div>
           </div>
         </div>
 
@@ -664,7 +654,7 @@ const faqSchema = generateFAQSchema(faqs);
             Dapatkan Sebut Harga Pinjaman Percuma
           </h2>
           <p class="text-xl text-gray-600">
-            Isi borang dan pakar kami akan menghubungi Tuan/Puan dalam masa 24 jam
+            Isi borang dan pakar kami akan menghubungi Tuan/Puan dengan segera
           </p>
           <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
         </div>

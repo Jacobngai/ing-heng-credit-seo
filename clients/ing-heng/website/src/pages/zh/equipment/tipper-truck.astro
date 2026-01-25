@@ -1,0 +1,242 @@
+---
+/**
+ * Tipper Truck Financing Landing Page - Mandarin Chinese
+ * Target: Construction companies, mining operations, waste management
+ * Keywords: 翻斗车融资, 自卸车贷款, 工程车辆融资
+ * Cultural Focus: Construction efficiency, hauling capacity, project logistics
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '翻斗车融资马来西亚 | 0%押金 | 永兴信贷 | 工程车辆专家';
+const pageDescription = '专业翻斗车融资服务。0%押金，100%融资，支持建筑和采矿运输。永兴信贷40年信誉，工程车辆专业融资。';
+const keywords = ['翻斗车融资', '自卸车贷款', '工程车辆融资', '运输设备融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '翻斗车融资', url: '/zh/equipment/tipper-truck' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'truck', title: '工程运输专家', description: '深入了解建筑和采矿运输需求，专门为翻斗车提供融资支持。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。快速扩大运输能力和项目承接。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '了解工程项目紧急性，快速处理车辆融资申请。24小时内决定。' },
+  { icon: 'calendar', title: '灵活期限', description: '12-84个月还款期，配合工程项目周期和运营现金流。' },
+  { icon: 'trending-up', title: '运输效率', description: '专业翻斗车显著提升土石方运输效率和项目进度。' },
+  { icon: 'shield', title: '耐用可靠', description: '重型设计确保在恶劣工况下长期稳定运行。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '翻斗车融资马来西亚',
+  description: '专业翻斗车融资，0%押金，支持建筑采矿运输。永兴信贷工程车辆专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/tipper-truck-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '180000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚翻斗车融资"
+    subtitle="0%押金 | 100%融资 | 工程专业 | 永兴信贷运输支持"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解翻斗车融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '工程专家']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          翻斗车融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为建筑和采矿公司提供翻斗车融资服务。支持马来西亚基建发展，提升土石方运输效率。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Tipper Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的翻斗车类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">标准翻斗车</h4>
+            <p class="text-[#4F3E29] mb-4">通用型自卸车，适合一般建筑工程。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">重型翻斗车</h4>
+            <p class="text-[#4F3E29] mb-4">大载重量，适合采矿和大型工程。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">侧卸翻斗车</h4>
+            <p class="text-[#4F3E29] mb-4">侧面倾卸，适合狭窄空间作业。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">半挂自卸车</h4>
+            <p class="text-[#4F3E29] mb-4">大容量运输，长途土石方运输。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">矿用自卸车</h4>
+            <p class="text-[#4F3E29] mb-4">专业采矿设计，超强承载能力。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">全地形翻斗车</h4>
+            <p class="text-[#4F3E29]">适应恶劣地形，越野能力强。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-brown-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">应用领域</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#8B6F47] mb-3">建筑工程</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 土方挖运工程</li>
+              <li>• 道路建设项目</li>
+              <li>• 基础设施开发</li>
+              <li>• 建筑垃圾清运</li>
+              <li>• 混凝土运输</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#8B6F47] mb-3">采矿作业</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 矿石运输</li>
+              <li>• 采石场作业</li>
+              <li>• 砂石料运输</li>
+              <li>• 废土清理</li>
+              <li>• 原料供应链</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Specifications -->
+      <div class="bg-gradient-to-r from-brown-500 to-amber-600 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">性能规格</h3>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">5-50吨</div>
+            <div class="font-semibold mb-2">载重范围</div>
+            <div class="text-sm opacity-90">根据型号不同</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">300-600马力</div>
+            <div class="font-semibold mb-2">发动机功率</div>
+            <div class="text-sm opacity-90">强劲动力</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">45°</div>
+            <div class="font-semibold mb-2">倾卸角度</div>
+            <div class="text-sm opacity-90">完全倾卸</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">100万公里</div>
+            <div class="font-semibold mb-2">设计里程</div>
+            <div class="text-sm opacity-90">超长寿命</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        投资翻斗车，提升运输效率
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷助您获得可靠翻斗车，提升土石方运输能力，加快工程进度。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请翻斗车融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="tipper-truck" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取翻斗车融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的工程车辆融资专家将为您服务
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

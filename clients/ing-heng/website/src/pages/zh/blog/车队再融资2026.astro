@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '车队再融资 2026 - 车队重组',
+  slug: '车队再融资2026',
+  excerpt: '2026年车队再融资。0%首付，100%融资，现有车队再融资。降低月供，改善现金流。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["车队再融资","车队重组","降低月供","车队现金流"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 车队再融资 2026
+
+## 车队再融资
+
+现有车队贷款压力:
+
+```
+高月供 → 现金流紧张 → 再融资 → 降低月供 → 改善现金流
+```
+
+## 再融资好处
+
+### 降低月供
+
+```
+现有: 月供RM 15,000(5台)
+再融资: 月供RM 10,000
+节省: RM 5,000/月
+```
+
+### 释放现金
+
+```
+车队价值: RM 300,000
+现有贷款: RM 150,000
+释放现金: RM 150,000
+```
+
+## 再融资车队
+
+| 车队 | 现有价值 | 可释放现金 |
+|------|---------|-----------|
+| 3台货车 | RM 150,000 | RM 75,000 |
+| 5台货车 | RM 250,000 | RM 125,000 |
+| 10台货车 | RM 500,000 | RM 250,000 |
+
+**立即申请: WhatsApp +60175700889**
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

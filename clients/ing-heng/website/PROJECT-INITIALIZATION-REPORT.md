@@ -210,8 +210,8 @@ website/
    - Multi-language option names and benefits
 
 5. **Key Benefits**:
-   - 24-hour approval
-   - Competitive rates (2.88% p.a.)
+   - Fast approval
+   - Competitive rates (from 6.5% p.a.)
    - Flexible terms (1-7 years)
    - Expert multilingual support
 

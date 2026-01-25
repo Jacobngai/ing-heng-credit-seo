@@ -1,0 +1,274 @@
+---
+/**
+ * Food Stall Financing Landing Page - Mandarin Chinese
+ * Target: Food entrepreneurs, hawker stall owners, mobile food business
+ * Keywords: 小贩摊位融资, 流动餐车贷款, 餐饮设备融资
+ * Cultural Focus: Food culture, entrepreneurship, community business
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '小贩摊位融资马来西亚 | 0%押金 | 永兴信贷 | 餐饮创业支持';
+const pageDescription = '专业小贩摊位融资服务。0%押金，100%融资，支持餐饮创业。永兴信贷40年信誉，餐饮业专业融资。';
+const keywords = ['小贩摊位融资', '流动餐车贷款', '餐饮设备融资', '小贩创业贷款'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '小贩摊位融资', url: '/zh/equipment/food-stall' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'utensils', title: '餐饮业专家', description: '专门服务餐饮创业者，了解小贩业务需求和经营模式。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。降低创业门槛，实现餐饮梦想。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '了解餐饮业急需设备的情况，快速处理申请。24小时内决定。' },
+  { icon: 'calendar', title: '灵活还款', description: '12-60个月期限，配合餐饮业现金流特点安排。' },
+  { icon: 'heart', title: '创业支持', description: '专门支持华人餐饮创业，传承美食文化。' },
+  { icon: 'shield', title: '设备保障', description: '协助选择符合卫生标准的餐饮设备。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '小贩摊位融资马来西亚',
+  description: '专业小贩摊位融资，0%押金，支持餐饮创业。永兴信贷餐饮业专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/food-stall-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '30000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚小贩摊位融资"
+    subtitle="0%押金 | 100%融资 | 创业支持 | 永兴信贷餐饮专业"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解小贩摊位融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '创业支持']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          小贩摊位融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为餐饮创业者提供小贩摊位融资服务。支持马来西亚美食文化传承，助您开创餐饮事业。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Food Stall Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的餐饮摊位类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">流动餐车</h4>
+            <p class="text-[#4F3E29] mb-4">完整厨房设备，可移动经营，适合多地点销售。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">固定摊位</h4>
+            <p class="text-[#4F3E29] mb-4">传统小贩中心摊位，包含所有厨房设备。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">快餐车</h4>
+            <p class="text-[#4F3E29] mb-4">专门设计的快餐制作设备，高效出餐。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">饮料摊位</h4>
+            <p class="text-[#4F3E29] mb-4">专业饮料制作设备，冷热饮品专用。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">烧烤摊位</h4>
+            <p class="text-[#4F3E29] mb-4">专业烧烤设备，炭火或电力烧烤。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">面食摊位</h4>
+            <p class="text-[#4F3E29]">面条制作专用设备，包含汤料保温。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equipment Categories -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-orange-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">融资设备类别</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-orange-600 mb-3">厨房设备</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 商用炉灶</li>
+              <li>• 油炸锅</li>
+              <li>• 蒸笼设备</li>
+              <li>• 烧烤炉</li>
+              <li>• 汤料保温锅</li>
+              <li>• 切菜机器</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-orange-600 mb-3">辅助设备</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 冷藏冷冻柜</li>
+              <li>• 洗碗设备</li>
+              <li>• 排气系统</li>
+              <li>• 收银系统</li>
+              <li>• 桌椅座位</li>
+              <li>• 招牌灯箱</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Support -->
+      <div class="bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">创业支持服务</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">RM 15K</div>
+            <div class="font-semibold mb-2">最低融资</div>
+            <div class="text-sm opacity-90">小额创业支持</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">免费</div>
+            <div class="font-semibold mb-2">执照咨询</div>
+            <div class="text-sm opacity-90">协助申请营业执照</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">24/7</div>
+            <div class="font-semibold mb-2">技术支持</div>
+            <div class="text-sm opacity-90">设备维护指导</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          成功创业故事
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          通过永兴信贷融资成功开创餐饮事业的真实案例
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <h3 class="text-lg font-bold text-primary mb-3">陈太太的鸡饭摊</h3>
+          <p class="text-[#4F3E29] mb-4">
+            吉隆坡的陈太太通过永兴信贷融资RM 45,000开设海南鸡饭摊。从家庭主妇到成功女老板，月收入超过RM 8,000。
+          </p>
+          <div class="text-green-600 font-semibold">
+            "永兴信贷让我实现了开店梦想，现在生意越来越好！"
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <h3 class="text-lg font-bold text-primary mb-3">阿明的烧烤档</h3>
+          <p class="text-[#4F3E29] mb-4">
+            新山的阿明用RM 35,000融资购买专业烧烤设备。现在每晚营业额超过RM 800，还计划开第二间分店。
+          </p>
+          <div class="text-green-600 font-semibold">
+            "设备品质好，客人都说我的烧烤最香！"
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        开创您的餐饮事业
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷助您实现餐饮梦想，从小贩摊位开始创业成功之路。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请小贩摊位融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="food-stall" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取餐饮创业融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的餐饮业融资专家将为您提供创业指导
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

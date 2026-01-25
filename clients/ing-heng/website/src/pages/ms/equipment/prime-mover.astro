@@ -7,22 +7,24 @@
  * Kiraan Perkataan: 3,000+ patah perkataan
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Hero from '../../../components/Hero.astro';
-import BenefitCard from '../../../components/BenefitCard.astro';
-import StepCard from '../../../components/StepCard.astro';
-import FAQItem from '../../../components/FAQItem.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import Calculator from '../../../components/Calculator.astro';
-import TestimonialCard from '../../../components/TestimonialCard.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import TestimonialCard from '../../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import { SITE_CONFIG } from '../../../../utils/constants';
 
 const lang = 'ms';
 
 // Data SEO - Dioptimumkan untuk pembiayaan prime mover Malaysia
-const pageTitle = 'Pembiayaan Prime Mover Pelabuhan Klang | Kelulusan 2 Jam | 90% Pembiayaan';
-const pageDescription = 'Pembiayaan prime mover pantas untuk operator haulage. Kelulusan 2 jam, 90% pembiayaan, pinjaman trak kontena untuk operator Pelabuhan Klang. Scania, Volvo, Mercedes diterima.';
+const pageTitle = 'Pembiayaan Prime Mover Pelabuhan Klang | Kelulusan Pantas | 90% Pembiayaan';
+const pageDescription = 'Pembiayaan prime mover pantas untuk operator haulage. Kelulusan cepat, 90% pembiayaan, pinjaman trak kontena untuk operator Pelabuhan Klang. Scania, Volvo, Mercedes diterima.';
 const keywords = ['pembiayaan prime mover Malaysia', 'pembiayaan trak kontena', 'pinjaman prime mover Pelabuhan Klang', 'pembiayaan trak berat', 'pembiayaan trailer Malaysia', 'pembiayaan haulage Pelabuhan Klang'];
 
 // Breadcrumbs
@@ -34,8 +36,8 @@ const breadcrumbs = [
 
 // Faedah - Pengurusan armada dan ROI fokus
 const benefits = [
-  { icon: 'clock', title: 'Kelulusan 2 Jam', description: 'Kelulusan pantas untuk kontrak jalur perkapalan mendesak. Lulus dalam 2 jam untuk peluang pengangkutan kontena.' },
-  { icon: 'percentage', title: '0% Bayaran Pendahuluan Tersedia', description: 'Pemohon yang layak boleh mendapat pembiayaan 100%. Simpan aliran tunai untuk diesel, penyelenggaraan dan kos operasi.' },
+  { icon: 'clock', title: 'Kelulusan Pantas', description: 'Kelulusan pantas untuk kontrak jalur perkapalan mendesak. Lulus dalam cepat untuk peluang pengangkutan kontena.' },
+  { icon: 'percentage', title: 'Sehingga 90% Pembiayaan', description: 'Hanya 10% bayaran pendahuluan. Simpan aliran tunai untuk diesel, penyelenggaraan dan kos operasi.' },
   { icon: 'calendar', title: 'Terma 12-84 Bulan', description: 'Terma bayaran fleksibel sehingga 7 tahun. Padankan bayaran dengan kitaran kontrak dan aliran pendapatan.' },
   { icon: 'shield', title: 'Trak Terpakai Diterima', description: 'Biayai prime mover terpakai sehingga 15 tahun. Semua jenama utama: Scania, Volvo, Mercedes, Hino, UD Trucks.' },
   { icon: 'users', title: 'Pembiayaan Armada', description: 'Kadar istimewa untuk 2+ trak. Kembangkan armada untuk dapatkan kontrak Maersk, MSC, CMA CGM. Diskaun volum tersedia.' },
@@ -48,7 +50,7 @@ const benefits = [
 const steps = [
   { stepNumber: 1, icon: 'contact', title: 'WhatsApp Kami', description: 'Hubungi pakar pembiayaan haulage kami. Dapatkan sebut harga segera berdasarkan model trak dan status kontrak.' },
   { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen', description: 'IC, 6 bulan penyata bank, SSM, kontrak jalur perkapalan (jika ada). Proses mudah.' },
-  { stepNumber: 3, icon: 'check', title: 'Kelulusan 2 Jam', description: 'Lulus dalam 2 jam untuk kes mendesak. Kelulusan standard: hari yang sama untuk permohonan lengkap.' },
+  { stepNumber: 3, icon: 'check', title: 'Kelulusan Pantas', description: 'Lulus dalam cepat untuk kes mendesak. Kelulusan standard: hari yang sama untuk permohonan lengkap.' },
   { stepNumber: 4, icon: 'clipboard', title: 'Tandatangan Perjanjian', description: 'Terma pinjaman telus. Tiada caj tersembunyi. Pilihan sistem penjejakan GPS untuk pematuhan.' },
   { stepNumber: 5, icon: 'truck', title: 'Dapatkan Prime Mover Anda', description: 'Terima dana dan ambil milikan. Mula angkut kontena segera. Pendapatan dari hari pertama.' },
 ];
@@ -59,37 +61,31 @@ const equipmentTypes = [
     name: 'Prime Mover 6x4 (Standard)',
     description: 'Konfigurasi paling biasa untuk pengangkutan kontena 20ft/40ft. Ideal untuk laluan Pelabuhan Klang-KL-Selangor. Jimat bahan api untuk operasi harian.',
     applications: 'Pengangkutan kontena, operasi Pelabuhan Klang, pengangkutan tempatan/serantau',
-    priceRange: 'RM 120,000 - RM 380,000'
   },
   {
     name: 'Prime Mover 6x2 (Ringan)',
     description: 'Berat lebih rendah, ekonomi bahan api lebih baik untuk pengangkutan kontena. Sempurna untuk operator laluan tetap yang mementingkan kos.',
     applications: 'Pergerakan kontena kosong/ringan, logistik bandar, operasi penjimatan bahan api',
-    priceRange: 'RM 100,000 - RM 280,000'
   },
   {
     name: 'Prime Mover 8x4 (Berat)',
     description: 'Konfigurasi berat untuk kargo berat, pengangkutan mesin, logistik projek. Tork tinggi untuk beban menuntut.',
     applications: 'Pengangkutan mesin berat, kargo besar, pengangkutan peralatan perlombongan',
-    priceRange: 'RM 280,000 - RM 650,000'
   },
   {
     name: 'Prime Mover Baharu (Euro 5)',
     description: 'Piawaian pelepasan terkini. Penyelenggaraan lebih rendah, penjimatan bahan api lebih baik, diutamakan jalur perkapalan. Ideal untuk kontrak jangka panjang.',
     applications: 'Semua operasi haulage, kontrak jalur perkapalan, pengangkutan jarak jauh',
-    priceRange: 'RM 280,000 - RM 650,000 (baharu)'
   },
   {
     name: 'Prime Mover Terpakai (5-10 Tahun)',
     description: 'Kebolehpercayaan terbukti pada kos lebih rendah. Sempurna untuk pengembangan armada atau operator kali pertama. Pembiayaan sehingga 85% tersedia.',
     applications: 'Pengembangan armada, pemilik-operator kali pertama, trak sandaran',
-    priceRange: 'RM 80,000 - RM 250,000'
   },
   {
     name: 'Prime Mover Terpakai (10-15 Tahun)',
     description: 'Kemasukan mesra bajet untuk operator haulage baharu. Baik untuk memulakan perniagaan kontena. Penyelenggaraan lebih tinggi tetapi bayaran bulanan mampu milik.',
     applications: 'Operator haulage permulaan, operasi sambilan, unit sandaran/berjaga',
-    priceRange: 'RM 40,000 - RM 120,000'
   },
 ];
 
@@ -102,7 +98,7 @@ const testimonials = [
     name: 'Ahmad bin Hassan',
     company: 'AH Transport Services',
     location: 'Pelabuhan Klang, Selangor',
-    testimonial: 'Perlukan 2 prime mover Scania segera untuk kontrak MSC. Bank tolak permohonan saya. Ing Heng Credit luluskan RM 540,000 dalam 2 jam dengan 0% bayaran pendahuluan - pinjaman penuh! Kini mengendalikan 6 trak dan perniagaan berkembang pesat. Perkhidmatan profesional dan amat membantu.',
+    testimonial: 'Perlukan 2 prime mover Scania segera untuk kontrak MSC. Bank tolak permohonan saya. Ing Heng Credit luluskan RM 540,000 dalam cepat dengan hanya RM 54,000 bayaran pendahuluan. Kini mengendalikan 6 trak dan perniagaan berkembang pesat. Perkhidmatan profesional dan amat membantu.',
     rating: 5,
   },
   {
@@ -129,23 +125,23 @@ const faqs = [
   },
   {
     question: 'Adakah anda tawarkan pembiayaan armada untuk beberapa prime mover?',
-    answer: 'Sudah tentu! Pembiayaan armada tersedia untuk 2 atau lebih prime mover dengan faedah istimewa: (1) Diskaun kadar faedah 0.5-1.5% untuk pembelian volum, (2) Bayaran disatukan tunggal untuk pengurusan aliran tunai lebih mudah, (3) Proses kelulusan lebih cepat untuk pengembangan armada, (4) Pinjaman penuh (0% bayaran pendahuluan) tersedia untuk pembiayaan armada. Sempurna untuk operator yang berkembang untuk memenuhi keperluan kontrak jalur perkapalan. Kami telah membiayai armada sehingga 20 trak untuk operator Pelabuhan Klang yang mantap.'
+    answer: 'Sudah tentu! Pembiayaan armada tersedia untuk 2 atau lebih prime mover dengan faedah istimewa: (1) Diskaun kadar faedah 0.5-1.5% untuk pembelian volum, (2) Bayaran disatukan tunggal untuk pengurusan aliran tunai lebih mudah, (3) Proses kelulusan lebih cepat untuk pengembangan armada, (4) Pilihan bayaran pendahuluan fleksibel (10-15% bergantung saiz armada). Sempurna untuk operator yang berkembang untuk memenuhi keperluan kontrak jalur perkapalan. Kami telah membiayai armada sehingga 20 trak untuk operator Pelabuhan Klang yang mantap.'
   },
   {
     question: 'Bagaimana jika saya ada kontrak jalur perkapalan?',
-    answer: 'Bagus sekali! Kontrak jalur perkapalan (Maersk, MSC, CMA CGM, Evergreen, dll.) meningkatkan peluang kelulusan dan terma dengan ketara. Faedah termasuk: (1) Jumlah pinjaman lebih tinggi dengan pembiayaan fleksibel, (2) Kadar faedah lebih baik (diskaun 0.5-1%), (3) Kelulusan lebih cepat (dalam 2 jam untuk kontrak mendesak), (4) Terma bayaran lebih panjang tersedia (sehingga 84 bulan). Serahkan surat kontrak atau pesanan pembelian anda bersama permohonan. Kami faham pendapatan berasaskan kontrak dan menstruktur pembiayaan sewajarnya.'
+    answer: 'Bagus sekali! Kontrak jalur perkapalan (Maersk, MSC, CMA CGM, Evergreen, dll.) meningkatkan peluang kelulusan dan terma dengan ketara. Faedah termasuk: (1) Jumlah pinjaman lebih tinggi (sehingga 90% vs 80% standard), (2) Kadar faedah lebih baik (diskaun 0.5-1%), (3) Kelulusan lebih cepat (dalam cepat untuk kontrak mendesak), (4) Terma bayaran lebih panjang tersedia (sehingga 84 bulan). Serahkan surat kontrak atau pesanan pembelian anda bersama permohonan. Kami faham pendapatan berasaskan kontrak dan menstruktur pembiayaan sewajarnya.'
   },
   {
     question: 'Bolehkah saya membiayai prime mover untuk operasi Pelabuhan Klang?',
-    answer: 'Ya! Kami pakar dalam pembiayaan pengangkutan kontena Pelabuhan Klang. Lebih 60% pelanggan prime mover kami beroperasi di kawasan Lembah Klang, Pelabuhan Klang, Westports, dan Northport. Kami faham: (1) Kitaran volum kontena Pelabuhan Klang (musim puncak Nov-Feb, perlahan monsun), (2) Keperluan kontrak jalur perkapalan, (3) Risiko detention dan demurrage, (4) Pematuhan penjejakan GPS untuk LPK (Lembaga Pelabuhan Klang). Pelan bayaran fleksibel kami sejajar dengan permintaan bermusim Pelabuhan Klang, membantu anda menguruskan aliran tunai semasa bulan perlahan.'
+    answer: 'Ya! Kami pakar dalam pembiayaan pengangkutan kontena Pelabuhan Klang. Lebih 60% pelanggan prime mover kami beroperasi di kawasan Lembah Klang, Pelabuhan Klang, Westports, dan Northport. Kami faham: (1) Kitaran volum kontena Pelabuhan Klang, (2) Keperluan kontrak jalur perkapalan, (3) Risiko detention dan demurrage, (4) Pematuhan penjejakan GPS untuk LPK (Lembaga Pelabuhan Klang). Terma pinjaman fleksibel kami membantu anda menguruskan aliran tunai perniagaan dengan lebih baik.'
   },
   {
     question: 'Apakah jenama prime mover yang anda terima?',
-    answer: 'Kami terima semua jenama utama: Trak Eropah (Scania, Volvo, Mercedes-Benz, MAN, DAF, Iveco), Trak Jepun (Hino, UD Trucks, Isuzu), dan Trak China (Foton, Shacman, Sinotruk). Jenama Eropah biasanya dapat terma pembiayaan lebih baik kerana nilai jualan semula lebih tinggi. 0% bayaran pendahuluan (pinjaman penuh) tersedia untuk semua jenama bergantung kepada keadaan. Kedua-dua trak baharu dan terpakai diterima. Kami menilai berdasarkan keadaan, perbatuan, rekod penyelenggaraan, dan nilai pasaran.'
+    answer: 'Kami terima semua jenama utama: Trak Eropah (Scania, Volvo, Mercedes-Benz, MAN, DAF, Iveco), Trak Jepun (Hino, UD Trucks, Isuzu), dan Trak China (Foton, Shacman, Sinotruk). Jenama Eropah biasanya dapat terma pembiayaan lebih baik kerana nilai jualan semula lebih tinggi. Untuk jenama China, kami mungkin perlukan bayaran pendahuluan 15-20%. Kedua-dua trak baharu dan terpakai diterima. Kami menilai berdasarkan keadaan, perbatuan, rekod penyelenggaraan, dan nilai pasaran.'
   },
   {
     question: 'Berapa lama masa kelulusan?',
-    answer: 'Kelulusan standard: Hari yang sama (dalam 6-8 jam) untuk permohonan lengkap. Kelulusan segera: 2 jam untuk operator dengan tarikh akhir kontrak segera atau peluang tender. Kami utamakan operator Pelabuhan Klang yang perlukan trak cepat untuk kontrak jalur perkapalan. Serahkan permohonan pagi, dapat kelulusan petang, dan ambil trak dalam 3-5 hari. Kelajuan ini penting untuk pengangkutan kontena di mana kontrak boleh menang atau kalah berdasarkan ketersediaan peralatan.'
+    answer: 'Kelulusan standard: Hari yang sama (dalam 6-8 jam) untuk permohonan lengkap. Kelulusan segera: cepat untuk operator dengan tarikh akhir kontrak segera atau peluang tender. Kami utamakan operator Pelabuhan Klang yang perlukan trak cepat untuk kontrak jalur perkapalan. Serahkan permohonan pagi, dapat kelulusan petang, dan ambil trak dalam 3-5 hari. Kelajuan ini penting untuk pengangkutan kontena di mana kontrak boleh menang atau kalah berdasarkan ketersediaan peralatan.'
   },
   {
     question: 'Apakah dokumen diperlukan untuk pembiayaan prime mover?',
@@ -157,11 +153,7 @@ const faqs = [
   },
   {
     question: 'Bagaimana jika saya ada kredit buruk atau isu CTOS?',
-    answer: 'Kami pakar dalam meluluskan permohonan yang bank tolak. Kredit buruk atau isu CTOS/CCRIS tidak bermakna penolakan automatik. Kami lihat: (1) Situasi kewangan semasa dan aliran tunai, (2) Kontrak atau pelanggan sedia ada, (3) Nilai dan keadaan trak (berfungsi sebagai cagaran), (4) Rekod perniagaan pengangkutan kontena. Ramai pelanggan berjaya sebelum ini ada masalah kredit. Nilai prime mover menjamin pinjaman, mengurangkan risiko. 0% bayaran pendahuluan masih mungkin walaupun ada isu kredit - hubungi kami untuk penilaian.'
-  },
-  {
-    question: 'Adakah anda tawarkan pelan bayaran bermusim untuk operator haulage?',
-    answer: 'Ya! Kami faham pengangkutan kontena ada musim puncak dan perlahan. Pilihan bayaran bermusim termasuk: (1) Bayaran lebih tinggi semasa musim puncak (lonjakan CNY Dis-Feb, akhir tahun Okt-Dis), (2) Bayaran lebih rendah semasa tempoh perlahan (bulan monsun, kelembapan lepas CNY), (3) Struktur bayaran belon dengan bayaran bulanan lebih rendah dan belon akhir, (4) Tempoh tangguh semasa perayaan utama apabila operasi perlahan. Fleksibiliti ini membantu operator Pelabuhan Klang mengekalkan aliran tunai positif sepanjang tahun walaupun turun naik pendapatan bermusim.'
+    answer: 'Kami pakar dalam meluluskan permohonan yang bank tolak. Kredit buruk atau isu CTOS/CCRIS tidak bermakna penolakan automatik. Kami lihat: (1) Situasi kewangan semasa dan aliran tunai, (2) Kontrak atau pelanggan sedia ada, (3) Nilai dan keadaan trak (berfungsi sebagai cagaran), (4) Rekod perniagaan pengangkutan kontena. Ramai pelanggan berjaya sebelum ini ada masalah kredit. Nilai prime mover menjamin pinjaman, mengurangkan risiko. Bayaran pendahuluan lebih tinggi (15-20%) mungkin diperlukan untuk isu kredit serius, tetapi kelulusan adalah mungkin.'
   },
   {
     question: 'Bolehkah saya membiayai semula pinjaman prime mover sedia ada?',
@@ -173,7 +165,7 @@ const faqs = [
   },
   {
     question: 'Berapakah kadar faedah anda?',
-    answer: 'Kadar faedah berkisar 6.5% hingga 11% setahun bergantung kepada: (1) Profil dan skor kredit (kredit lebih baik = kadar lebih rendah), (2) Tempoh pinjaman (terma lebih pendek = kadar lebih rendah), (3) Umur dan jenama trak (trak Eropah lebih baharu = kadar lebih rendah), (4) Kontrak sedia ada (kontrak jalur perkapalan dapat diskaun 0.5-1%). 0% bayaran pendahuluan (pinjaman penuh) tersedia - ini USP kami! Kadar kami kompetitif berbanding bank (8-13%) dan pembiayaan pengedar (9-15%). Pembiayaan armada dapat diskaun tambahan 0.5-1.5%. Hubungi kami untuk sebut harga peribadi berdasarkan situasi anda.'
+    answer: 'Kadar faedah berkisar 6.5% hingga 11% setahun bergantung kepada: (1) Profil dan skor kredit (kredit lebih baik = kadar lebih rendah), (2) Jumlah bayaran pendahuluan (pendahuluan lebih tinggi = kadar lebih rendah), (3) Tempoh pinjaman (terma lebih pendek = kadar lebih rendah), (4) Umur dan jenama trak (trak Eropah lebih baharu = kadar lebih rendah), (5) Kontrak sedia ada (kontrak jalur perkapalan dapat diskaun 0.5-1%). Kadar kami kompetitif berbanding bank (8-13%) dan pembiayaan pengedar (9-15%). Pembiayaan armada dapat diskaun tambahan 0.5-1.5%. Hubungi kami untuk sebut harga peribadi berdasarkan situasi anda.'
   },
   {
     question: 'Bolehkah saya sertakan pembiayaan trailer dalam pakej?',
@@ -185,11 +177,10 @@ const faqs = [
   },
   {
     question: 'Apa berlaku semasa musim monsun atau tempoh perlahan?',
-    answer: 'Kami faham pengangkutan kontena di Malaysia ada variasi bermusim. Penyelesaian termasuk: (1) Pelan bayaran bermusim (bayaran lebih rendah semasa monsun Nov-Feb), (2) Penangguhan bayaran (1-2 bulan semasa tempoh perlahan teruk), (3) Bayaran faedah sahaja buat sementara semasa krisis, (4) Tarikh bayaran fleksibel sejajar dengan kitaran perkapalan utama. Operator Pelabuhan Klang hadapi penurunan pendapatan 20-30% semasa monsun dan kelembapan lepas CNY. Pembiayaan kami sesuaikan realiti ini. Banyak bank tidak faham kemusiman haulage, tetapi kami faham.'
   },
   {
     question: 'Bolehkah warga asing mohon pembiayaan prime mover?',
-    answer: 'Ya, warga asing dengan permit kerja sah dan pendaftaran syarikat Malaysia boleh mohon. Keperluan: (1) Pasport sah dan permit kerja/visa MM2H, (2) Pendaftaran perniagaan Malaysia (SSM untuk Sdn Bhd atau Enterprise), (3) Penjamin tempatan (warganegara atau PR Malaysia), (4) 6 bulan penyata bank Malaysia. 0% bayaran pendahuluan (pinjaman penuh) juga tersedia untuk warga asing dengan profil kuat. Kadar kelulusan untuk warga asing: 80-85% (vs 95% untuk warganegara). Ramai pelabur asing dalam logistik/haulage telah berjaya membiayai armada melalui kami.'
+    answer: 'Ya, warga asing dengan permit kerja sah dan pendaftaran syarikat Malaysia boleh mohon. Keperluan: (1) Pasport sah dan permit kerja/visa MM2H, (2) Pendaftaran perniagaan Malaysia (SSM untuk Sdn Bhd atau Enterprise), (3) Penjamin tempatan (warganegara atau PR Malaysia), (4) 6 bulan penyata bank Malaysia, (5) Bayaran pendahuluan lebih tinggi (15-20% vs 10% untuk warganegara). Kadar kelulusan untuk warga asing: 80-85% (vs Industry-Leading untuk warganegara). Ramai pelabur asing dalam logistik/haulage telah berjaya membiayai armada melalui kami.'
   },
   {
     question: 'Kawasan mana di Malaysia yang anda layani?',
@@ -197,7 +188,7 @@ const faqs = [
   },
   {
     question: 'Berapa banyak yang boleh saya pinjam untuk prime mover?',
-    answer: 'Pinjaman minimum: RM 40,000 untuk trak terpakai lama (10-15 tahun). Pinjaman maksimum: RM 2,000,000 untuk pembiayaan armada atau trak baharu premium. Pilihan pembiayaan fleksibel berdasarkan keadaan dan umur trak. Jumlah pinjaman juga bergantung kepada pendapatan/hasil dan kapasiti bayaran balik anda. Bayaran bulanan patut mampan berdasarkan pendapatan haulage untuk aliran tunai sihat.'
+    answer: 'Pinjaman minimum: RM 40,000 untuk trak terpakai lama (10-15 tahun). Pinjaman maksimum: RM 2,000,000 untuk pembiayaan armada atau trak baharu premium. Pembiayaan biasa: 80-90% nilai trak (bayaran pendahuluan 10-20%). Untuk trak baharu: Sehingga 90% pembiayaan. Untuk terpakai 5-10 tahun: Sehingga 85% pembiayaan. Untuk terpakai 10-15 tahun: Sehingga 80% pembiayaan. Jumlah pinjaman juga bergantung kepada pendapatan/hasil dan kapasiti bayaran balik anda. Bayaran bulanan tidak patut melebihi 40% pendapatan haulage untuk operasi mampan.'
   },
   {
     question: 'Bolehkah saya tukar tambah prime mover lama saya?',
@@ -208,8 +199,8 @@ const faqs = [
 // Skema Produk
 const productSchema = generateProductSchema({
   name: 'Pembiayaan Prime Mover Malaysia - Pakar Pelabuhan Klang',
-  description: 'Pembiayaan prime mover pantas untuk operator pengangkutan kontena. Kelulusan 2 jam, pembiayaan fleksibel, diskaun armada tersedia. Khusus untuk pengangkutan kontena Pelabuhan Klang dengan terma bayaran fleksibel.',
-  imageUrl: 'https://ingheng-credit.vercel.app/images/prime-mover-financing.jpg',
+  description: 'Pembiayaan prime mover pantas untuk operator pengangkutan kontena. Kelulusan cepat, 90% pembiayaan, diskaun armada tersedia. Khusus untuk pengangkutan kontena Pelabuhan Klang dengan terma bayaran fleksibel.',
+  imageUrl: `${SITE_CONFIG.url}/images/prime-mover-financing.jpg`,
   category: 'Perkhidmatan Kewangan - Pembiayaan Kenderaan Komersial',
   offers: {
     price: '40000',
@@ -243,48 +234,47 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="Pembiayaan Prime Mover untuk Operator Kontena Pelabuhan Klang"
-    subtitle="Kelulusan 2 Jam | 90% Pembiayaan | Diskaun Armada | Pakar Pelabuhan Klang | Terma 12-84 Bulan"
+    subtitle="Kelulusan Pantas | 90% Pembiayaan | Diskaun Armada | Pakar Pelabuhan Klang | Terma 12-84 Bulan"
     ctaText="Dapatkan Sebut Harga Percuma via WhatsApp"
     ctaLink="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20mendapatkan%20sebut%20harga%20untuk%20pembiayaan%20prime%20mover."
     ctaSecondaryText="Hubungi: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/prime-mover-hero.jpg"
     lang={lang}
     trustSignals={['40 Tahun Pengalaman', 'Pakar Pelabuhan Klang', '4,000+ Operator Dibiayai', '90% Pembiayaan Tersedia']}
   />
 
   <!-- Port Klang Context Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           Pelabuhan Klang Berkembang Pesat - Adakah Anda Bersedia Kembangkan Armada?
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed mb-6">
+        <p class="text-xl text-[#4F3E29] leading-relaxed mb-6">
           Pelabuhan Klang mencapai 14.64 juta TEU pada 2024, kedudukan ke-10 global. Pengembangan Westports akan MENGGANDAKAN kapasiti kepada 28 juta TEU menjelang 2028. Ini mewujudkan peluang besar untuk operator pengangkutan kontena.
         </p>
         <div class="grid md:grid-cols-3 gap-6 text-center">
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
             <div class="text-4xl font-bold text-primary mb-2">14.64J</div>
-            <div class="text-gray-600">TEU Dikendalikan 2024</div>
-            <div class="text-sm text-green-600 mt-2">+4.1% Pertumbuhan</div>
+            <div class="text-[#4F3E29]">TEU Dikendalikan 2024</div>
+            <div class="text-sm text-green-600 mt-2">+7.1% Pertumbuhan</div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
             <div class="text-4xl font-bold text-primary mb-2">28J</div>
-            <div class="text-gray-600">TEU Sasaran menjelang 2028</div>
+            <div class="text-[#4F3E29]">TEU Sasaran menjelang 2028</div>
             <div class="text-sm text-green-600 mt-2">100% Peningkatan Kapasiti</div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
             <div class="text-4xl font-bold text-primary mb-2">RM 12.6B</div>
-            <div class="text-gray-600">Pelaburan Westports</div>
+            <div class="text-[#4F3E29]">Pelaburan Westports</div>
             <div class="text-sm text-green-600 mt-2">Pertumbuhan Jangka Panjang</div>
           </div>
         </div>
       </div>
 
-      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4">Maksudnya untuk Operator Haulage:</h3>
-        <ul class="space-y-3 text-gray-700">
+        <ul class="space-y-3 text-[#4F3E29]">
           <li class="flex items-start space-x-3">
             <span class="text-green-500 text-xl mt-1">✓</span>
             <span><strong>Volum kontena berganda = permintaan haulage berganda</strong> - Lebih banyak kontrak, lebih peluang pendapatan</span>
@@ -316,21 +306,21 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Problem/Solution Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           Operator Pengangkutan Kontena Hadapi Cabaran Pembiayaan Unik
         </h2>
-        <p class="text-xl text-gray-700 leading-relaxed">
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
           Anda ada kontrak jalur perkapalan bersedia. Tetapi bank minta bayaran pendahuluan 30%. Pengedar peralatan caj faedah 12-15%. Pesaing anda menang kontrak MSC dan Maersk kerana mereka punya 5-10 trak dan anda hanya 1-2. Kedengarannya biasa?
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-red-600 font-bold text-lg mb-3">Masalah Biasa</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>Bank perlukan bayaran pendahuluan 25-30%, kuras modal kerja</span>
@@ -354,20 +344,19 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="text-green-600 font-bold text-lg mb-3">Penyelesaian Kami</div>
-          <ul class="space-y-2 text-gray-700">
+          <ul class="space-y-2 text-[#4F3E29]">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>0% bayaran pendahuluan - Pinjaman Penuh tersedia (vs 20-30% bank). Simpan tunai untuk diesel dan operasi</span>
+              <span>Hanya 10% bayaran pendahuluan (vs 25-30% bank). Simpan tunai untuk diesel dan operasi</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>Kelulusan 2 jam untuk kontrak mendesak. Hari sama untuk permohonan standard</span>
+              <span>Kelulusan cepat untuk kontrak mendesak. Hari sama untuk permohonan standard</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>Pelan bayaran bermusim sejajar dengan kitaran kontena Pelabuhan Klang</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
@@ -380,32 +369,32 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
           <div class="font-bold text-lg mb-3 text-yellow-600">Kisah Kejayaan Sebenar</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">Ahmad dari Klang</strong> perlukan 3 prime mover Scania (RM 450,000 setiap satu) untuk kontrak MSC 5 tahun.</p>
-            <p class="mb-3"><strong class="text-red-600">Bank tolak.</strong> Kami luluskan pembiayaan armada RM 1.2J dalam 2 jam dengan 0% pendahuluan - pinjaman penuh!</p>
+            <p class="mb-3"><strong class="text-red-600">Bank tolak.</strong> Kami luluskan pembiayaan armada RM 1.2J dalam cepat dengan hanya RM 135,000 pendahuluan (10%).</p>
             <p class="font-semibold text-green-700">Hasil: Dapatkan kontrak MSC, perolehan RM 120,000 bulanan dari 3 trak, kembangkan ke 8 trak dalam 2 tahun. Pendapatan tahunan kini RM 1.8J.</p>
           </div>
         </div>
       </div>
 
       <!-- ROI Calculator Section -->
-      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
         <h3 class="text-2xl font-bold text-primary mb-4 text-center">Kira ROI Prime Mover Anda</h3>
         <div class="grid md:grid-cols-2 gap-6 text-sm">
           <div>
             <h4 class="font-bold text-gray-800 mb-2">Contoh Pelaburan (1 Trak):</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• Scania 6x4 terpakai (8 tahun): RM 180,000</li>
-              <li>• Bayaran pendahuluan (0% - Pinjaman Penuh): RM 0</li>
+              <li>• Bayaran pendahuluan (10%): RM 18,000</li>
               <li>• Bayaran bulanan (48 bulan): RM 4,200</li>
               <li>• Jumlah kos faedah: RM 19,600</li>
             </ul>
           </div>
           <div>
             <h4 class="font-bold text-gray-800 mb-2">Potensi Pendapatan (Pelabuhan Klang):</h4>
-            <ul class="space-y-1 text-gray-700">
+            <ul class="space-y-1 text-[#4F3E29]">
               <li>• Kadar per perjalanan: RM 180-280 (kontena 40ft)</li>
               <li>• Perjalanan harian: 2 perjalanan (Pelabuhan-KL balik)</li>
               <li>• Pendapatan bulanan (25 hari): RM 9,000-14,000</li>
@@ -429,7 +418,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Mengapa Operator Pelabuhan Klang Pilih Ing Heng Credit
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Kami faham pengangkutan kontena dan reka pembiayaan khusus untuk operator Pelabuhan Klang
         </p>
       </div>
@@ -447,12 +436,12 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-primary mb-4">Kira Bayaran Bulanan Anda</h2>
-          <p class="text-gray-600">Anggarkan bayaran bulanan pembiayaan prime mover berdasarkan harga trak dan tempoh pinjaman</p>
+          <p class="text-[#4F3E29]">Anggarkan bayaran bulanan pembiayaan prime mover berdasarkan harga trak dan tempoh pinjaman</p>
         </div>
         <Calculator lang={lang} equipmentType="Prime Mover" defaultPrice={180000} />
       </div>
@@ -466,7 +455,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Dapatkan Prime Mover Anda dalam 5 Langkah Mudah
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Dari permohonan hingga angkut kontena secepat 3-5 hari
         </p>
       </div>
@@ -492,31 +481,30 @@ const faqSchema = generateFAQSchema(faqs);
         >
           Mula Permohonan Anda Sekarang
         </a>
-        <p class="text-sm text-gray-600 mt-3">Dapat kelulusan dalam 2 jam | Sebut harga tanpa kewajipan</p>
+        <p class="text-sm text-[#4F3E29] mt-3">Dapat kelulusan dalam cepat | Sebut harga tanpa kewajipan</p>
       </div>
     </div>
   </section>
 
   <!-- Equipment Types -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Jenis Prime Mover yang Kami Biayai
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Semua konfigurasi dari 6x2 ringan hingga 8x4 trak berat
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {equipmentTypes.map((equipment) => (
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
             <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
-            <p class="text-gray-600 mb-3">{equipment.description}</p>
-            <div class="text-sm text-gray-700 space-y-1">
+            <p class="text-[#4F3E29] mb-3">{equipment.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-1">
               <p><strong>Aplikasi:</strong> {equipment.applications}</p>
-              <p><strong>Julat Harga:</strong> <span class="text-primary font-semibold">{equipment.priceRange}</span></p>
             </div>
           </div>
         ))}
@@ -527,24 +515,24 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">Jenama Prime Mover Diterima</h3>
         <div class="flex flex-wrap justify-center gap-4">
           {acceptedBrands.map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium hover:shadow-md transition-shadow">
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-gray-600 mt-4">Kedua-dua trak baharu dan terpakai diterima. Jenama Eropah, Jepun, dan China dibiayai.</p>
+        <p class="text-[#4F3E29] mt-4">Kedua-dua trak baharu dan terpakai diterima. Jenama Eropah, Jepun, dan China dibiayai.</p>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Kisah Kejayaan dari Operator Pelabuhan Klang
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Operator kontena sebenar yang kembangkan armada dengan pembiayaan kami
         </p>
       </div>
@@ -564,13 +552,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- FAQ Section -->
-  <section class="section bg-gray-50">
+  <section class="section bg-[#F5F5DC]">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           Soalan Lazim Tentang Pembiayaan Prime Mover
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="text-xl text-[#4F3E29]">
           Segala yang operator Pelabuhan Klang perlu tahu tentang membiayai prime mover
         </p>
       </div>
@@ -584,13 +572,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Final CTA Section -->
-  <section class="section bg-secondary text-white">
+  <section class="section bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         Bersedia untuk Kembangkan Armada dan Tumbuhkan Perniagaan Haulage Anda?
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Pelabuhan Klang menggandakan kapasiti menjelang 2028. Sekarang masa untuk posisikan armada anda untuk pertumbuhan besar-besaran. Mohon hari ini dan lulus dalam 2 jam. Sertai 4,000+ operator haulage yang pilih Ing Heng Credit.
+        Pelabuhan Klang menggandakan kapasiti menjelang 2028. Sekarang masa untuk posisikan armada anda untuk pertumbuhan besar-besaran. Mohon hari ini dan lulus dalam cepat. Sertai 4,000+ operator haulage yang pilih Ing Heng Credit.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -621,7 +609,7 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Kelulusan 2 Jam Tersedia</span>
+          <span>Kelulusan Pantas Tersedia</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -633,6 +621,9 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="primeMover" />
+
   <!-- Contact Form Section -->
   <section class="section">
     <div class="container-custom">
@@ -641,8 +632,8 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             Atau Isi Borang Permohonan Dalam Talian Kami
           </h2>
-          <p class="text-gray-600">
-            Kami akan hubungi anda dalam 2 jam semasa waktu perniagaan (Isnin-Jumaat 9AM-5PM, Sabtu 9AM-1PM)
+          <p class="text-[#4F3E29]">
+            Kami akan hubungi anda dalam cepat semasa waktu perniagaan (Isnin-Jumaat 9AM-5PM, Sabtu 9AM-1PM)
           </p>
         </div>
         <ContactForm lang={lang} />

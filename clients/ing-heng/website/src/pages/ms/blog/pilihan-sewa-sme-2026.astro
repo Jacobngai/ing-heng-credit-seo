@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  title: 'Pilihan Sewa SME 2026',
+  slug: 'pilihan-sewa-sme-2026',
+  excerpt: 'Sewa vs beli untuk SME. 0% deposit. Pinjaman penuh 100%. Panduan buat keputusan sewa atau beli.',
+  date: '2026-01-16',
+  author: 'Ing Heng Credit Team',
+  readTime: 5,
+  category: 'Pertumbuhan SME',
+  image: '/images/blog/sme-lease-option-2026.jpg'
+};
+
+const keywords = ['sewa vs beli sme', 'lease vs buy sme malaysia', '0% deposit', 'pembiayaan'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <Breadcrumbs items={breadcrumbItems} />
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Pertumbuhan SME</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min baca</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Beli Atau Sewa? Buat Keputusan Yang Bijak.</h2>
+
+      <p>SME sering keliru: patut sewa atau beli peralatan? Kedua-dua ada kelebihan dan kekurangan.</p>
+
+      <h2>Beli (Hire Purchase)</h2>
+
+      <h3>Kelebihan Beli:</h3>
+      <ul>
+        <li>Milik milik – hujungnya aset anda</li>
+        <li>Flexibility – guna sepuh hati</li>
+        <li>Tax benefits – claim capital allowance</li>
+        <li>No restriction – modifikasi ikut suka</li>
+      </ul>
+
+      <h3>Kekurangan Beli:</h3>
+      <ul>
+        <li>Maintenance cost – anda tanggung</li>
+        <li>Depreciation – nilai turun</li>
+        <li>Obsolescence risk – technology change</li>
+      </ul>
+
+      <h2>Sewa (Lease)</h2>
+
+      <h3>Kelebihan Sewa:</h3>
+      <ul>
+        <li>Low upfront – tiada deposit besar</li>
+        <li>Maintenance included – selalunya</li>
+        <li>Upgrade easy – tukar model baru</li>
+        <li>Off-balance sheet – kadang kala</li>
+      </ul>
+
+      <h3>Kekurangan Sewa:</h3>
+        <ul>
+        <li>Monthly lebih tinggi – dari beli</li>
+        <li>Tiada ownership – hujungnya return</li>
+        <li>Restrictions – tak boleh modifikasi</li>
+        <li>Penalty early termination</li>
+      </ul>
+
+      <h2>Pengiraan: Excavator RM300,000</h2>
+
+      <p><strong>Beli (5 tahun, 6%):</strong></p>
+      <ul>
+        <li>Deposit 0%: RM0</li>
+        <li>Angsuran: RM5,800 sebulan</li>
+        <li>Total: RM348,000</li>
+        <li>Aset: Anda miliki</li>
+      </ul>
+
+      <p><strong>Sewa (5 tahun):</strong></p>
+      <ul>
+        <li>Deposit: RM10,000</li>
+        <li>Sewa: RM6,500 sebulan</li>
+        <li>Total: RM400,000</li>
+        <li>Aset: Return (tiada milik)</li>
+      </ul>
+
+      <h2>Kenapa Beli Biasanya Lebih Bagus?</h2>
+
+      <ul>
+        <li>Long term – lebih jimat</li>
+        <li>Asset value – anda bina equity</li>
+        <li>Flexibility – guna apa saja</li>
+        <li>0% deposit kami – buat beli macam sewa</li>
+      </ul>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">SME Nak Beli Atau Sewa?</h3>
+        <p style="margin-bottom: 1rem;">Kami boleh advisikan yang terbaik. 0% deposit untuk beli. WhatsApp kami.</p>
+        <p style="margin-bottom: 0;"><strong>Contact:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (Telefon)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Dapatkan Pembiayaan Sekarang" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 { color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 2rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 3px solid #D4A574; padding-bottom: 0.5rem; }
+  h3 { color: #8B6F47; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+  p { line-height: 1.8; color: #374151; }
+  strong { color: #2D1810; font-weight: 700; }
+  ul { list-style: none; padding-left: 0; }
+  li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; line-height: 1.8; color: #374151; }
+  li::before { content: '✓'; position: absolute; left: 0; color: #D4A574; font-weight: bold; }
+</style>

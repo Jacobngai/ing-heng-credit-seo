@@ -1,494 +1,161 @@
 ---
 /**
- * Halaman Tentang Kami - Bahasa Malaysia
- * Halaman Tentang Kami B2B profesional untuk syarikat pembiayaan peralatan
- * Sasaran: Pemilik perniagaan, kontraktor, pembuat keputusan
- * Kata kunci: pembiayaan peralatan Malaysia, pembiayaan beli sewa, syarikat kewangan berlesen
+ * About Page - Malay
+ * Maklumat syarikat dan sejarah
  */
 
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
-import BenefitCard from '../../components/BenefitCard.astro';
-import CTAButton from '../../components/CTAButton.astro';
-import StructuredData from '../../components/StructuredData.astro';
-import { generateOrganizationSchema } from '../../utils/schema';
-import { COMPANY_INFO } from '../../utils/constants';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+// import { t } from '../../../utils/i18n';
 
 const lang = 'ms';
-const organizationSchema = generateOrganizationSchema();
-
-// Data SEO
-const pageTitle = 'Tentang Kami - Pembiayaan Peralatan Malaysia Sejak 1985 | Ing Heng Credit';
-const pageDescription = 'Rakan kongsi pembiayaan peralatan yang dipercayai sejak 1985. Berlesen KPKT, kadar kelulusan 95%, pengalaman 40+ tahun. Berkhidmat kepada 4,000+ syarikat dalam pembinaan, logistik & pembuatan.';
-const keywords = [
-  'pembiayaan peralatan Malaysia',
-  'pembiayaan beli sewa',
-  'syarikat kewangan berlesen Malaysia',
-  'pajakan peralatan Klang',
-  'pembiayaan peralatan pembinaan',
-  'berlesen KPKT',
-  'pembiayaan perniagaan Malaysia'
-];
-
-// Pencapaian Penting
-const milestones = [
-  { year: '1985', title: 'Ditubuhkan', description: 'Ditubuhkan di Klang, Selangor untuk berkhidmat kepada perniagaan tempatan' },
-  { year: '1995', title: 'Berlesen KPKT', description: 'Menerima lesen perkhidmatan kewangan rasmi daripada kerajaan Malaysia' },
-  { year: '2005', title: '1,000 Pelanggan', description: 'Mencapai pencapaian berkhidmat kepada 1,000+ perniagaan di seluruh Malaysia' },
-  { year: '2015', title: 'Pengembangan Armada', description: 'Mengembangkan perkhidmatan termasuk peralatan logistik dan pengangkutan' },
-  { year: '2020', title: 'Transformasi Digital', description: 'Melancarkan permohonan dalam talian dan perkhidmatan WhatsApp untuk kelulusan lebih pantas' },
-  { year: '2025', title: '40 Tahun Kukuh', description: 'Meraikan 40 tahun kepercayaan dengan 4,000+ syarikat dibiayai' },
-];
-
-// Nilai Teras
-const values = [
-  {
-    icon: 'shield',
-    title: 'Kepercayaan & Integriti',
-    description: 'Kami membina hubungan jangka panjang berdasarkan kejujuran, ketelusan dan urusan yang adil. Tiada yuran tersembunyi, tiada caj mengejut.'
-  },
-  {
-    icon: 'lightning',
-    title: 'Kelajuan & Kecekapan',
-    description: 'Proses kelulusan pantas kerana kami faham masa adalah wang. Pemprosesan cekap tanpa menjejaskan kualiti.'
-  },
-  {
-    icon: 'users',
-    title: 'Pelanggan Dahulu',
-    description: 'Kejayaan anda adalah kejayaan kami. Kami menyesuaikan penyelesaian mengikut keperluan perniagaan anda.'
-  },
-  {
-    icon: 'check-badge',
-    title: 'Kepakaran & Pengalaman',
-    description: '40 tahun pengetahuan industri. Kami memahami cabaran anda dan menyediakan penyelesaian yang berkesan.'
-  }
-];
-
-// Kepakaran Pasukan
-const expertise = [
-  {
-    title: 'Pakar Peralatan Pembinaan',
-    description: 'Pemahaman mendalam tentang keperluan pembiayaan jengkaut, jentolak, penggelek jalan dan jentera berat.'
-  },
-  {
-    title: 'Pakar Pembiayaan Logistik',
-    description: 'Pengetahuan khusus dalam pembiayaan lori, trak dan armada untuk perniagaan pengangkutan.'
-  },
-  {
-    title: 'Penasihat Peralatan Perindustrian',
-    description: 'Panduan pakar untuk pembiayaan forklift, penjana, pemampat dan peralatan gudang.'
-  },
-  {
-    title: 'Penilaian Kredit & Risiko',
-    description: 'Proses penilaian yang adil dengan kadar kelulusan 95%. Kami meluluskan permohonan yang ditolak pihak lain.'
-  }
-];
-
-// Mengapa Pilih Kami
-const whyChooseUs = [
-  { icon: 'clock', title: 'Kelulusan Pantas', description: 'Pemprosesan cekap dengan keputusan segera untuk kes mendesak' },
-  { icon: 'percentage', title: 'Kadar Kelulusan 95%', description: 'Kadar kelulusan terkemuka industri - kami lebih kerap berkata "YA"' },
-  { icon: 'shield', title: 'Berlesen KPKT', description: 'Penyedia perkhidmatan kewangan yang diluluskan kerajaan sejak 1995' },
-  { icon: 'calendar', title: 'Tempoh Fleksibel 12-60 Bulan', description: 'Pelan pembayaran disesuaikan mengikut aliran tunai anda' },
-  { icon: 'users', title: '4,000+ Syarikat Berkhidmat', description: 'Dipercayai oleh perniagaan di seluruh Malaysia selama 40 tahun' },
-  { icon: 'location', title: 'Lokasi Lembah Klang', description: 'Lokasi mudah melayani KL, Selangor, dan seluruh negara' },
-];
-
-// Kawasan Perkhidmatan
-const serviceAreas = [
-  'Lembah Klang (Klang, Shah Alam, Petaling Jaya)',
-  'Kuala Lumpur & Selangor',
-  'Johor Bahru & Rantau Selatan',
-  'Pulau Pinang & Rantau Utara',
-  'Kuantan & Pantai Timur',
-  'Sabah & Sarawak (Malaysia Timur)',
-  'Semua Negeri Malaysia',
-  'Permohonan Jarak Jauh melalui WhatsApp'
-];
+const pageTitle = 'Tentang Kami - 40+ Tahun Pengalaman Pembiayaan Peralatan | Ing Heng Credit';
+const pageDescription = 'Syarikat pembiayaan peralatan terkemuka di Malaysia sejak 1985. Deposit 0%, pembiayaan 100% untuk peralatan pembinaan, logistik dan industri.';
+const keywords = ['pembiayaan peralatan Malaysia', 'sejarah Ing Heng Credit', 'pinjaman peralatan pembinaan', 'tentang Ing Heng', 'syarikat pajakan peralatan'];
 ---
 
-<BaseLayout
-  title={pageTitle}
-  description={pageDescription}
-  lang={lang}
-  keywords={keywords}
-  ogType="website"
->
-  <StructuredData schema={organizationSchema} />
-
-  <!-- Bahagian Hero -->
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <!-- Hero Section -->
   <Hero
-    title="40 Tahun Kepercayaan dalam Pembiayaan Peralatan"
-    subtitle="Sejak 1985, Ing Heng Credit Telah Menjadi Rakan Kongsi Dipercayai Malaysia untuk Pembiayaan Peralatan Pembinaan, Logistik & Perindustrian"
-    ctaText="Dapatkan Sebut Harga Percuma"
-    ctaLink="/ms/contact"
-    ctaSecondaryText="WhatsApp Kami"
-    ctaSecondaryLink={COMPANY_INFO.whatsapp.link}
+    title="40+ Tahun Kecemerlangan Pembiayaan Peralatan"
+    subtitle="Sejak 1985, memperkasakan perniagaan Malaysia dengan penyelesaian pembiayaan peralatan pintar"
+    backgroundImage="/images/hero/about.jpg"
     lang={lang}
-    trustSignals={['Ditubuhkan 1985', 'Berlesen KPKT', 'Kadar Kelulusan 95%', '4,000+ Syarikat Dibiayai']}
-    backgroundImage="/images/about-hero.jpg"
   />
 
-  <!-- Pengenalan Syarikat -->
-  <section class="section bg-white">
+  <!-- Breadcrumbs -->
+  <Breadcrumbs 
+    items={[
+      { label: 'Laman Utama', href: `/${lang}/` },
+      { label: 'Tentang Kami', href: `/${lang}/about` }
+    ]}
+  />
+
+  <!-- Company Story Section -->
+  <section class="section py-16 bg-white">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Tentang Ing Heng Credit & Leasing
-          </h2>
-          <div class="w-20 h-1 bg-accent mx-auto mb-8"></div>
-          <p class="text-xl text-gray-700 leading-relaxed">
-            Selama lebih <strong>40 tahun</strong>, Ing Heng Credit & Leasing Sdn Bhd telah membantu perniagaan Malaysia memperoleh peralatan yang mereka perlukan untuk berjaya. Daripada kontraktor kecil kepada syarikat logistik besar, kami telah membiayai lebih <strong>4,000 perniagaan</strong> merentasi sektor pembinaan, logistik dan pembuatan.
+        <h2 class="text-4xl font-black mb-8 text-[#2D1810] text-center">Kisah Kami</h2>
+        
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-6">
+          <p>
+            <strong>Ing Heng Credit & Leasing Sdn Bhd</strong> telah menjadi nama terpercaya dalam pembiayaan peralatan sejak 1985. Selama lebih empat dekad, kami telah membantu ribuan kontraktor Malaysia, syarikat logistik, dan pengeluar memperoleh peralatan yang mereka perlukan untuk mengembangkan perniagaan mereka.
           </p>
-        </div>
+          
+          <p>
+            Diasaskan atas prinsip bahawa <strong>setiap perniagaan berhak mendapat akses kepada pembiayaan peralatan berkualiti</strong>, kami telah merevolusikan cara PKS Malaysia memperoleh jentera pembinaan, kenderaan komersial, dan peralatan industri.
+          </p>
 
-        <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <div class="bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-lg">
-            <h3 class="text-2xl font-bold text-primary mb-4">Misi Kami</h3>
-            <p class="text-gray-700 leading-relaxed">
-              Untuk memperkasakan perniagaan Malaysia dengan penyelesaian pembiayaan peralatan yang pantas, mampu milik dan fleksibel yang memacu pertumbuhan dan kejayaan. Kami percaya setiap perniagaan layak mendapat akses kepada peralatan berkualiti, tanpa mengira saiz atau rekod kredit.
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-br from-secondary/5 to-accent/10 p-8 rounded-lg">
-            <h3 class="text-2xl font-bold text-primary mb-4">Visi Kami</h3>
-            <p class="text-gray-700 leading-relaxed">
-              Untuk menjadi rakan kongsi pembiayaan peralatan yang paling dipercayai dan berpusatkan pelanggan di Malaysia, terkenal dengan kelajuan, fleksibiliti dan komitmen kami yang teguh untuk membantu perniagaan berkembang maju melalui penyelesaian kewangan yang mudah diakses.
-            </p>
-          </div>
-        </div>
-
-        <!-- Statistik Pantas -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-            <div class="text-5xl font-bold text-primary mb-2">40+</div>
-            <div class="text-gray-600 font-medium">Tahun Pengalaman</div>
-          </div>
-          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-            <div class="text-5xl font-bold text-primary mb-2">4,000+</div>
-            <div class="text-gray-600 font-medium">Syarikat Dibiayai</div>
-          </div>
-          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-            <div class="text-5xl font-bold text-primary mb-2">95%</div>
-            <div class="text-gray-600 font-medium">Kadar Kelulusan</div>
-          </div>
-          <div class="text-center bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-            <div class="text-5xl font-bold text-primary mb-2">⚡</div>
-            <div class="text-gray-600 font-medium">Kelulusan Pantas</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sejarah Syarikat & Pencapaian -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Perjalanan Kami: 40 Tahun Kecemerlangan
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Daripada perkhidmatan kewangan tempatan Klang kepada rakan kongsi dipercayai seluruh negara
-        </p>
-      </div>
-
-      <div class="max-w-5xl mx-auto">
-        <div class="space-y-8">
-          {milestones.map((milestone, index) => (
-            <div class="flex gap-6 items-start">
-              <div class="flex-shrink-0 w-24 text-right">
-                <div class="text-3xl font-bold text-primary">{milestone.year}</div>
-              </div>
-              <div class="flex-shrink-0 w-1 bg-accent rounded-full"></div>
-              <div class="flex-1 bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-bold text-primary mb-2">{milestone.title}</h3>
-                <p class="text-gray-700">{milestone.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mengapa Pilih Kami -->
-  <section class="section bg-white">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Mengapa Pilih Ing Heng Credit?
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Kami bukan sekadar syarikat pembiayaan - kami adalah rakan kongsi pertumbuhan perniagaan anda
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {whyChooseUs.map((benefit) => (
-          <BenefitCard
-            icon={benefit.icon}
-            title={benefit.title}
-            description={benefit.description}
-          />
-        ))}
-      </div>
-
-      <!-- Sorotan Tambahan -->
-      <div class="max-w-4xl mx-auto bg-gradient-to-r from-primary to-secondary text-white p-8 rounded-lg">
-        <h3 class="text-2xl font-bold mb-6 text-center">Apa yang Membezakan Kami?</h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
+          <div class="bg-[#F5F1EB] p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal my-8">
+            <h3 class="text-2xl font-bold mb-4 text-[#8B6F47]">Kelebihan Daya Saing Kami</h3>
             <ul class="space-y-3">
-              <li class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Kami meluluskan permohonan yang ditolak bank</span>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Deposit 0% Tersedia</strong> - Pembiayaan sehingga 100% nilai peralatan</span>
               </li>
-              <li class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Bayaran pendahuluan rendah hanya 10%</span>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Peralatan Berumur 10+ Tahun Diterima</strong> - Kami menilai keadaan, bukan hanya umur</span>
               </li>
-              <li class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Pembiayaan peralatan terpakai sehingga 10 tahun</span>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Kelulusan Pantas</strong> - Jauh lebih cepat daripada bank tradisional</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Terma Fleksibel</strong> - Pelan pembayaran disesuaikan dengan aliran tunai anda</span>
               </li>
             </ul>
           </div>
-          <div>
-            <ul class="space-y-3">
-              <li class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Pelan pembayaran bermusim untuk kontraktor</span>
-              </li>
-              <li class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Perkhidmatan pelbagai bahasa (Inggeris, Mandarin, Melayu)</span>
-              </li>
-              <li class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>Tiada penalti pembayaran awal</span>
-              </li>
-            </ul>
-          </div>
+
+          <p>
+            Tidak seperti bank yang fokus pada skor kredit sempurna dan peralatan baru sahaja, kami memahami realiti perniagaan Malaysia. Kami tahu bahawa excavator berumur 10 tahun yang diselenggara dengan baik boleh sama produktifnya dengan yang baru. Kami memahami bahawa memelihara modal kerja adalah penting untuk pertumbuhan perniagaan.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Nilai Teras -->
-  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5">
+  <!-- Mission & Vision -->
+  <section class="section py-16 bg-[#F5F1EB]">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Nilai Teras Kami
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Prinsip yang membimbing setiap keputusan yang kami buat
-        </p>
-      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Mission -->
+        <div class="bg-white p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal">
+          <h3 class="text-2xl font-black mb-4 text-[#8B6F47]">Misi Kami</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Untuk memperkasakan PKS Malaysia dengan penyelesaian pembiayaan peralatan yang boleh diakses dan fleksibel yang membolehkan pertumbuhan perniagaan tanpa menjejaskan aliran tunai. Kami percaya setiap perniagaan yang layak berhak mendapat peralatan yang mereka perlukan untuk berjaya.
+          </p>
+        </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {values.map((value) => (
-          <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
-            <BenefitCard
-              icon={value.icon}
-              title={value.title}
-              description={value.description}
-            />
-          </div>
-        ))}
+        <!-- Vision -->
+        <div class="bg-white p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal">
+          <h3 class="text-2xl font-black mb-4 text-[#8B6F47]">Visi Kami</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Menjadi rakan kongsi pembiayaan peralatan paling dipercayai di Malaysia, dikenali kerana memahami keperluan perniagaan sebenar, meluluskan peralatan yang ditolak oleh pihak lain, dan menyokong usahawan dalam membina perusahaan yang berjaya.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Kepakaran Pasukan -->
-  <section class="section bg-white">
+  <!-- Why Choose Us -->
+  <section class="section py-16 bg-white">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Pasukan & Kepakaran Kami
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Pakar industri yang memahami keperluan perniagaan anda
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {expertise.map((expert) => (
-          <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-lg shadow-md border-l-4 border-primary">
-            <h3 class="text-xl font-bold text-primary mb-3">{expert.title}</h3>
-            <p class="text-gray-700 leading-relaxed">{expert.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Lesen & Pensijilan -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Lesen & Pensijilan
-          </h2>
-          <p class="text-xl text-gray-600">
-            Sepenuhnya berlesen dan dikawal selia untuk perlindungan anda
-          </p>
+      <h2 class="text-4xl font-black mb-12 text-[#2D1810] text-center">Mengapa Perniagaan Malaysia Memilih Kami</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Experience -->
+        <div class="text-center">
+          <div class="text-5xl font-black text-[#8B6F47] mb-4">40+</div>
+          <h3 class="text-xl font-bold mb-2 text-[#2D1810]">Tahun Pengalaman</h3>
+          <p class="text-gray-700">Membiayai peralatan sejak 1985, kami memahami keperluan unik setiap industri</p>
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <div class="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 class="text-xl font-bold text-primary mb-4">Syarikat Kewangan Berlesen KPKT</h3>
-              <p class="text-gray-700 mb-4">
-                Ing Heng Credit & Leasing Sdn Bhd berlesen oleh Kementerian Perumahan dan Kerajaan Tempatan (KPKT) untuk menyediakan perkhidmatan kewangan di Malaysia.
-              </p>
-              <ul class="space-y-2 text-gray-700">
-                <li class="flex items-start space-x-2">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Berlesen sejak 1995</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Pematuhan peraturan sepenuhnya</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Audit kerajaan berkala</span>
-                </li>
-              </ul>
-            </div>
+        <!-- Businesses Helped -->
+        <div class="text-center">
+          <div class="text-5xl font-black text-[#8B6F47] mb-4">4000+</div>
+          <h3 class="text-xl font-bold mb-2 text-[#2D1810]">Perniagaan Dibiayai</h3>
+          <p class="text-gray-700">Dari excavator tunggal hingga armada lengkap, kami telah membantu perniagaan semua saiz</p>
+        </div>
 
-            <div>
-              <h3 class="text-xl font-bold text-primary mb-4">Keahlian Industri</h3>
-              <ul class="space-y-2 text-gray-700">
-                <li class="flex items-start space-x-2">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Persatuan Perkhidmatan Kewangan Malaysia</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Dewan Perniagaan Selangor</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span>Persatuan Pajakan Peralatan Malaysia</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <!-- Equipment Value -->
+        <div class="text-center">
+          <div class="text-5xl font-black text-[#8B6F47] mb-4">RM500J+</div>
+          <h3 class="text-xl font-bold mb-2 text-[#2D1810]">Peralatan Dibiayai</h3>
+          <p class="text-gray-700">Setengah bilion ringgit dalam peralatan membantu perniagaan Malaysia berkembang</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Kawasan Perkhidmatan -->
-  <section class="section bg-white">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Kawasan Perkhidmatan Di Seluruh Malaysia
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Beribu pejabat di Klang, berkhidmat kepada perniagaan seluruh negara
-        </p>
-      </div>
-
-      <div class="max-w-4xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-4 mb-8">
-          {serviceAreas.map((area) => (
-            <div class="flex items-center space-x-3 bg-gray-50 p-4 rounded-lg">
-              <svg class="w-6 h-6 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-              <span class="text-gray-700 font-medium">{area}</span>
-            </div>
-          ))}
-        </div>
-
-        <div class="bg-blue-50 border-l-4 border-primary p-6 rounded-lg">
-          <h3 class="font-bold text-primary mb-2">Pejabat Klang Kami</h3>
-          <p class="text-gray-700 mb-3">
-            <strong>Alamat:</strong> {COMPANY_INFO.address.full}
-          </p>
-          <p class="text-gray-700 mb-3">
-            <strong>Telefon:</strong> <a href={`tel:${COMPANY_INFO.phone.international}`} class="text-primary hover:underline">{COMPANY_INFO.phone.display}</a> / {COMPANY_INFO.phone.office}
-          </p>
-          <p class="text-gray-700 mb-3">
-            <strong>WhatsApp:</strong> <a href={COMPANY_INFO.whatsapp.link} class="text-primary hover:underline">{COMPANY_INFO.phone.display}</a>
-          </p>
-          <p class="text-gray-700 mb-4">
-            <strong>E-mel:</strong> <a href={`mailto:${COMPANY_INFO.email}`} class="text-primary hover:underline">{COMPANY_INFO.email}</a>
-          </p>
-          <a
-            href={COMPANY_INFO.address.googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center text-primary font-medium hover:underline"
-          >
-            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-            </svg>
-            Dapatkan Arah di Google Maps
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seruan Bertindak -->
-  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
+  <!-- Contact CTA -->
+  <section class="section py-16 bg-[#8B6F47] text-white">
     <div class="container-custom text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        Bersedia untuk Bekerjasama dengan Syarikat Pembiayaan Peralatan Paling Dipercayai di Malaysia?
-      </h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk kelulusan pantas, kadar kompetitif dan perkhidmatan cemerlang. Dapatkan sebut harga percuma anda hari ini.
-      </p>
+      <h2 class="text-4xl font-black mb-4">Sedia untuk Membiayai Peralatan Anda?</h2>
+      <p class="text-xl mb-8 opacity-90">Sertai ribuan perniagaan Malaysia yang mempercayai Ing Heng Credit</p>
+      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <CTAButton
-          text="Sebut Harga Percuma di WhatsApp"
-          link={COMPANY_INFO.whatsapp.link}
-          variant="accent"
-          size="large"
-          icon="whatsapp"
+          href={COMPANY_INFO.whatsapp.link}
+          text="WhatsApp Kami Sekarang"
+          variant="whatsapp"
+          lang={lang}
         />
         <CTAButton
-          text="Lihat Perkhidmatan Kami"
-          link="/ms/services"
-          variant="outline-white"
-          size="large"
+          href={`/${lang}/contact`}
+          text="Hubungi Kami"
+          variant="secondary"
+          lang={lang}
         />
-      </div>
-      <div class="mt-8 text-sm opacity-80">
-        <p>Atau hubungi kami terus: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-accent">{COMPANY_INFO.phone.display}</a></p>
       </div>
     </div>
   </section>
+
+  <!-- Contact Form -->
+  <ContactForm lang={lang} />
 </BaseLayout>

@@ -1,0 +1,160 @@
+{
+  "$ref": "#/definitions/equipment",
+  "definitions": {
+    "equipment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Excavator",
+            "Lorry",
+            "Forklift",
+            "Crane",
+            "Bulldozer",
+            "Road Roller",
+            "Dump Truck",
+            "Concrete Mixer",
+            "Other Construction",
+            "Other Logistics"
+          ]
+        },
+        "brand": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "specifications": {
+          "type": "object",
+          "properties": {
+            "capacity": {
+              "type": "string"
+            },
+            "weight": {
+              "type": "string"
+            },
+            "power": {
+              "type": "string"
+            },
+            "dimensions": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "priceRange": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string",
+              "default": "MYR"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "additionalProperties": false
+        },
+        "financingOptions": {
+          "type": "object",
+          "properties": {
+            "leasingAvailable": {
+              "type": "boolean",
+              "default": true
+            },
+            "hirePurchaseAvailable": {
+              "type": "boolean",
+              "default": true
+            },
+            "minDownPayment": {
+              "type": "string"
+            },
+            "maxTenure": {
+              "type": "string"
+            },
+            "interestRateFrom": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "featuredImage": {
+          "type": "string"
+        },
+        "video": {
+          "type": "string"
+        },
+        "metaTitle": {
+          "type": "string"
+        },
+        "metaDescription": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "popular": {
+          "type": "boolean",
+          "default": false
+        },
+        "locale": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh",
+            "ms"
+          ]
+        },
+        "available": {
+          "type": "boolean",
+          "default": true
+        },
+        "productSchema": {
+          "type": "boolean",
+          "default": true
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "category",
+        "featuredImage",
+        "locale"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

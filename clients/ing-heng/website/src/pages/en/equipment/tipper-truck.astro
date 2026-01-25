@@ -1,0 +1,355 @@
+---
+/**
+ * Tipper Truck (Dump Truck) Financing Landing Page - English
+ * Target: Sand/gravel contractors, earthwork operators, construction material transport
+ * Keywords: tipper truck financing Malaysia, dump truck loan, sand truck financing
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../../utils/constants';
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Used Tipper Truck Financing Malaysia | Stop Outsourcing Trucking';
+const pageDescription = 'Stop losing RM 15k-20k per project to trucking contractors. Finance used tippers 10+ years old. 0% deposit option. Complete full projects yourself.';
+const keywords = ['tipper truck financing Malaysia', 'dump truck loan', 'contractor tipper financing', 'used tipper financing', 'Nissan tipper loan', 'excavation trucking', 'soil removal equipment'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Tipper Truck', url: '/en/equipment/tipper-truck' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'percentage', title: '0% Deposit Option', description: '100% financing available. Keep working capital for diesel, maintenance, and business operations.' },
+  { icon: 'shield', title: 'Equipment 10+ Years Old Accepted', description: 'Nissan, Hino, Isuzu, UD - all major brands. We assess condition, not arbitrary age limits.' },
+  { icon: 'users', title: 'Small Contractors Welcome', description: 'Already have excavator? Add tipper to complete full projects. Stop paying RM 350-400 per load to truckers.' },
+  { icon: 'clock', title: 'Repair Cost Financing', description: 'Hydraulic system needs repair? We can include repair costs in your loan amount.' },
+  { icon: 'calendar', title: 'Flexible 12-84 Month Terms', description: 'Payment plans that match your business cash flow. Start with longer terms, pay off early with no penalty.' },
+  { icon: 'clock', title: 'Fast Approval', description: 'Quick decisions for time-sensitive opportunities. Get approved and start hauling soil yourself.' },
+];
+
+// FAQs
+const faqs = [
+  { question: 'Can I finance a 10-year-old tipper truck?', answer: 'YES! We accept used tipper trucks 10+ years old. Equipment must be in working condition with functional hydraulic system. We assess condition over arbitrary age limits.' },
+  { question: 'I already have an excavator. Can I add a tipper to my operations?', answer: 'Absolutely! This is exactly who we serve. Excavation contractors who want to stop outsourcing soil removal. Keep trucking revenue in-house instead of paying RM 350-400 per load to external truckers.' },
+  { question: 'What if the hydraulic system needs repair?', answer: 'We can include repair costs in your loan amount. Combine the equipment cost and repair costs, and we finance the total. You get a fully operational truck ready to haul.' },
+  { question: 'How much do contractors typically save by owning vs outsourcing?', answer: 'A typical foundation project needs 40-50 truckloads of soil removal. External truckers charge RM 350-400 per load, totaling RM 14,000-20,000. When you own the tipper, this becomes your revenue instead of your expense.' },
+  { question: 'What tipper brands do you accept?', answer: 'We accept all major brands: Japanese (Nissan, Hino, Isuzu, UD Trucks, Mitsubishi Fuso), European (Mercedes-Benz, MAN, Volvo), and Chinese (Dongfeng, Foton, Shacman). Nissan and Hino are most popular due to parts availability.' },
+  { question: 'Why are tipper trucks good for 15-20 years?', answer: 'Tippers are mechanically simple. A hydraulic cylinder lifts the bed. That is the main moving part. With regular maintenance (oil changes, greasing, cylinder seals), tippers last much longer than banks realize. Many 15-year-old tippers still make daily deliveries.' },
+  { question: 'Do I need a company (SSM) to apply?', answer: 'Not required but recommended. Individuals can apply using IC and bank statements. However, having SSM registration improves approval chances and may secure better rates.' },
+  { question: 'Can I finance a tipper if I have CCRIS/CTOS records?', answer: 'Yes! We accept applicants with credit issues. Past defaults do not mean automatic rejection. We evaluate your current situation, business plan, and ability to service the loan.' },
+  { question: 'How long does approval take?', answer: 'We provide fast approval decisions from complete application. Contact us for a personalized quote and timeline.' },
+  { question: 'What is the interest rate for used tipper financing?', answer: 'Interest rates are competitive and depend on factors including credit profile, down payment amount, loan term, tipper age and condition, and business experience. Contact us for a personalized quote.' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Used Tipper Truck Financing Malaysia',
+  description: 'Finance used Nissan, Hino, Isuzu tipper trucks for sand and gravel transport. 10+ years old accepted. Affordable monthly payments for contractors.',
+  imageUrl: `${SITE_CONFIG.url}/images/tipper-truck-financing.jpg`,
+  category: 'Financial Service - Commercial Vehicle Financing',
+  offers: {
+    price: '30000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Stop Losing RM 15k-20k Per Project to Trucking Contractors"
+    subtitle="Finance used tippers. Do soil removal yourself. Keep trucking revenue in-house. Equipment 10+ years old accepted. 0% deposit option. Malaysian contractors welcome."
+    ctaText="Get Free Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20tipper%20truck%20financing."
+    ctaSecondaryText="Call Now: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years Experience', 'Equipment 10+ Years Old Accepted', 'Small Contractors Welcome', 'Fast Approval']}
+  />
+
+  <!-- Direct Copywriting Story -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-8 md:p-12 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <div class="prose prose-lg max-w-none">
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              You're an excavation contractor in Malaysia.
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              You just finished a site preparation project. 3 days of work. Excavated 400 cubic meters of soil.
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              Now you need to remove it. You call the trucking contractor.
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              "RM 400 per load. You need 45 loads."
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              You calculate: RM 18,000. Almost half your project profit.
+            </p>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
+              <p class="text-lg text-red-800 mb-2">
+                <strong>When you hand over that RM 18,000 check - for work that took the trucker 2 days while you worked 3 days excavating - do your shoulders tense up?</strong>
+              </p>
+              <p class="text-red-800 mb-0">
+                When you watch his Nissan tipper drive away with YOUR money, do you think: "I did the hard work. He's taking RM 18,000 for just trucking"?
+              </p>
+            </div>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              You've done this 15 times this year. That's RM 270,000 paid to truckers.
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              That money could've bought you THREE used tippers.
+            </p>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              But instead, you're making trucking contractors rich while you do the excavation work.
+            </p>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6">
+              <p class="text-lg text-red-800 mb-0">
+                <strong>When you calculate your project margins and see "Trucking cost: RM 18,000" eating into profits, does it feel like bleeding money?</strong>
+              </p>
+            </div>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              You found a used Nissan 6-wheel tipper. 10 years old. Hydraulics functional. Engine clean.
+            </p>
+
+            <div class="bg-gray-100 border-l-4 border-gray-500 p-4 my-6">
+              <p class="text-lg text-gray-800 mb-0">
+                <strong>Banks reject. "10 years old? Too risky."</strong>
+              </p>
+            </div>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              But you know tippers. Simple machines. Hydraulic cylinder lifts the bed. That's it. They last 15-20 years.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
+              <p class="text-lg text-green-800 mb-2">
+                <strong>We approve equipment 10+ years old.</strong>
+              </p>
+              <p class="text-green-800 mb-0">
+                Do the trucking yourself. Keep those RM 18,000 margins in YOUR business.
+              </p>
+            </div>
+
+            <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+              Your excavation. Your trucking. Your complete profits.
+            </p>
+
+            <div class="bg-primary text-white p-6 rounded-lg my-6">
+              <p class="text-xl font-bold mb-2">That's controlling the full job.</p>
+              <p class="text-lg mb-0">
+                Complete project revenue, yours to keep. Full job control, start to finish. Build contractor capabilities, not dependencies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Malaysian Excavation Contractors Choose Ing Heng Credit
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Complete project revenue, yours to keep. Full job control, start to finish. Build contractor capabilities, not dependencies.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tipper Truck Brands -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Tipper Truck Brands We Finance
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          All major brands from Japanese to European models
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <ul class="space-y-3 text-[#4F3E29]">
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>Nissan 6-Wheel Tippers</strong> - Most popular sand truck among Malaysian contractors. Reliable hydraulic system, 5-8 cubic meter capacity. Parts availability excellent nationwide.</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>Hino Dump Trucks</strong> - Premium Japanese quality, fuel-efficient engine. Strong resale value. Popular for construction material transport across Malaysia.</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>Isuzu Tipper Lorries</strong> - Durable workhorse for heavy hauling. Excellent for earthwork and soil removal. Lower maintenance costs than European brands.</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>UD (Nissan Diesel) Tippers</strong> - Powerful engine for steep terrain. Used in quarries and mining operations nationwide. Robust build quality.</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>Mitsubishi Fuso Tippers</strong> - Compact 4-wheel tippers for urban deliveries. Good fuel economy for small haulers across Malaysia.</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>Mercedes-Benz, MAN, Volvo</strong> - Premium European quality. Superior comfort for long-distance hauling.</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-primary text-xl font-bold">•</span>
+            <span><strong>Chinese Brands</strong> - Dongfeng, Foton, Shacman. Affordable options for budget-conscious operators.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Everything you need to know about tipper truck financing
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="tipper-truck" />
+
+  <!-- Contact Form Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Ready to Control the Full Job?
+          </h2>
+          <p class="text-[#4F3E29] text-lg mb-6">
+            Complete project revenue, yours to keep. Full job control, start to finish. Build contractor capabilities, not dependencies. Equipment 10+ years old accepted. 0% deposit option available.
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Or Contact Us Directly
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Join Malaysian excavation contractors who control the full job. Your excavation. Your trucking. Your complete profits.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20tipper%20truck%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>No Obligation Quote</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Fast Approval</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Equipment 10+ Years Old Accepted</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

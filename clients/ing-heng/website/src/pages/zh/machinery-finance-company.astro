@@ -1,0 +1,352 @@
+---
+/**
+ * 机械融资公司 - Chinese
+ * TARGET KEYWORD: machinery finance company (Currently #44 - MUST reach page 1)
+ * MISSION: Position Ing Heng as the leading machinery finance company for industrial clients
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+import { generateOrganizationSchema, generateFAQSchema, generateProductSchema } from '../../../utils/schema';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const title = '马来西亚领先机械融资公司 | 工业设备专家';
+const description = '马来西亚可信赖的机械融资公司，专业从事工业设备融资。数控机床、生产线、制造设备 - 我们全部融资，提供0%首付选项。';
+const keywords = [
+  '机械融资公司',
+  '工业设备融资公司',
+  '数控融资专家',
+  '制造设备融资',
+  '生产线融资',
+  '工业机械贷款',
+  '技术融资马来西亚',
+  '机械融资专家',
+  '设备融资专家',
+  '工业融资解决方案'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '机械融资公司', href: '/zh/machinery-finance-company' }
+];
+
+// FAQ Data for Schema
+const faqs = [
+  {
+    question: '您的融资公司专门从事哪些类型的机械？',
+    answer: '作为专业的机械融资公司，我们融资所有工业设备，包括数控机床、注塑机、生产线、制造设备、自动化系统和技术升级。我们了解机械价值，接受10年以上的设备。'
+  },
+  {
+    question: '您是否为银行拒绝的老旧工业机械提供融资？',
+    answer: '是的！与拒绝超过5年机械的传统银行不同，我们的机械融资公司专门处理老旧工业设备。我们评估机器状况和商业可行性，而非任意的年限限制。我们经常为10-15年的数控机床和生产设备提供融资。'
+  },
+  {
+    question: '机械融资需要多少首付？',
+    answer: '我们的机械融资公司提供0%首付选项，高达100%融资。这使制造商能够获得必要的生产设备而不耗尽营运资金，保持现金流用于运营和增长。'
+  },
+  {
+    question: '您的审批流程与银行在机械融资方面有何不同？',
+    answer: '作为工业设备融资公司，我们比银行更了解机械价值和商业运营。我们评估设备状况、商业潜力和行业知识，而非遵循僵化的银行公式。这为优质机械带来更快的审批。'
+  },
+  {
+    question: '您是否为工业4.0和自动化升级提供融资？',
+    answer: '当然！我们的机械融资公司专门从事技术融资，包括工业4.0升级、自动化系统、物联网设备和智能制造解决方案。我们了解这些投资推动竞争优势和运营效率。'
+  }
+];
+
+const organizationSchema = generateOrganizationSchema();
+const faqSchema = generateFAQSchema(faqs);
+const productSchema = generateProductSchema({
+  name: '机械融资解决方案',
+  description: '数控机床、生产线和制造技术的综合工业设备融资',
+  category: '金融服务',
+  brand: COMPANY_INFO.shortName,
+  offers: {
+    price: '优惠利率从6.5%年利率起',
+    currency: 'MYR',
+    availability: '有库存',
+    validFrom: new Date().toISOString(),
+  }
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+>
+  <StructuredData schema={organizationSchema} />
+  <StructuredData schema={faqSchema} />
+  <StructuredData schema={productSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="bg-blue-50 border-b-3 border-navy-900">
+    <div class="container-custom py-4">
+      <Breadcrumbs items={breadcrumbItems} lang={lang} />
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero relative overflow-hidden">
+    <div class="container-custom relative z-10 text-center py-20">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-display uppercase leading-tight mb-6 text-white">
+        马来西亚领先 <span class="text-yellow-400">机械融资</span> 公司
+      </h1>
+      <p class="text-xl md:text-2xl text-white opacity-90 mb-8 max-w-4xl mx-auto">
+        工业设备专家 • 数控融资专家 • 制造技术合作伙伴
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-12 py-6">
+          获取工业设备报价
+        </a>
+        <a href="/zh/calculator" class="btn btn-outline-white text-xl px-12 py-6">
+          计算机械付款
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
+
+  <!-- Pain Points Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          当银行不懂 <span class="text-secondary">工业设备</span> 时
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Pain Point 1: Equipment Age Rejection -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">"太旧"的问题</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            当您的生产线设备出现故障，银行说"我们不为超过5年的机械提供融资"，但您知道那台德国制造的数控机床还有10年以上的使用寿命，您是否对他们对工业设备质量的无知感到沮丧？
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ 我们机械融资公司的解决方案：</p>
+            <p class="text-gray-700">我们评估设备状况和商业潜力，而非任意的年限限制。我们经常为10-15年的工业机械提供融资，这些机械仍然高度生产。</p>
+          </div>
+        </div>
+
+        <!-- Pain Point 2: Competitive Pressure -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">工业4.0竞争差距</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            当竞争对手升级到工业4.0自动化，而您的贷款申请在银行官僚机构中卡了8周，看着市场份额流失时，这种竞争压力是否让您焦虑不安？
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ 我们机械融资公司的解决方案：</p>
+            <p class="text-gray-700">快速批准技术升级和自动化系统。我们了解这些投资推动竞争优势，不会延迟您的现代化进程。</p>
+          </div>
+        </div>
+
+        <!-- Pain Point 3: Cash Flow Impact -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">营运资金耗尽</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            当您需要RM 800,000用于生产设备但银行要求30%首付时，看着RM 240,000从您的营运资金账户流出，知道运营将缺乏现金，是否让您的胃部紧张？
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ 我们机械融资公司的解决方案：</p>
+            <p class="text-gray-700">0%首付选项，高达100%融资。在获得必要生产设备的同时保持营运资金用于运营。</p>
+          </div>
+        </div>
+
+        <!-- Pain Point 4: Equipment Expertise Gap -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">银行设备无知</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            当银行贷款官员问"数控机床值多少钱？"同时按废金属价格评估您的RM 1.2百万瑞士精密设备时，他们的工业无知是否让您血压飙升？
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ 我们机械融资公司的解决方案：</p>
+            <p class="text-gray-700">工业设备专家，了解机械价值、技术生命周期和制造业务运营。我们说您的语言。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Authority Section -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          马来西亚工业设备 <span class="text-secondary">融资专家</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl">
+          作为专业的机械融资公司，我们理解工业设备不仅仅是资产——它们是制造卓越和竞争优势的心脏。
+        </p>
+      </div>
+
+      <!-- Authority Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- CNC Machinery Specialists -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg p-8">
+          <div class="text-6xl mb-6 text-center">🔧</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">数控机械专家</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            瑞士、德国、日本精密设备融资专家。我们比任何银行更了解Mazak、DMG Mori、Haas的价值和技术生命周期。
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">多轴加工中心</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">车削和铣削机械</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">精密磨削设备</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Production Line Financing -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg p-8">
+          <div class="text-6xl mb-6 text-center">🏭</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">生产线专家</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            从注塑到装配自动化的完整制造系统融资。我们资助整个生产能力升级。
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">注塑系统</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">装配线自动化</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">质量控制设备</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Technology Upgrade Partners -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg p-8">
+          <div class="text-6xl mb-6 text-center">🚀</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">技术合作伙伴</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            工业4.0转型融资，包括物联网集成、智能传感器和自动化监控系统，推动竞争优势。
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">物联网设备</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">自动化监控系统</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">智能制造解决方案</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Manufacturing Sectors -->
+      <div class="bg-white border-3 border-navy-900 shadow-brutal-xl p-8">
+        <h3 class="text-3xl font-display uppercase text-navy-900 mb-8 text-center">我们服务的制造业</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">⚙️</div>
+            <p class="font-black text-navy-900">汽车零部件</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🏗️</div>
+            <p class="font-black text-navy-900">建筑组件</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">📱</div>
+            <p class="font-black text-navy-900">电子制造</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🍽️</div>
+            <p class="font-black text-navy-900">食品加工</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🧪</div>
+            <p class="font-black text-navy-900">化学处理</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">📦</div>
+            <p class="font-black text-navy-900">包装系统</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🔩</div>
+            <p class="font-black text-navy-900">精密工程</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">⚡</div>
+            <p class="font-black text-navy-900">电气设备</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-secondary text-white relative" style="border-top: 8px solid #FBBF24;">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6">
+        准备好为您的 <span class="text-yellow-500">工业设备</span> 融资了吗？
+      </h2>
+      <p class="text-xl mb-12 text-white opacity-90 max-w-4xl mx-auto">
+        加入马来西亚领先的机械融资公司。获得数控机床、生产线和制造技术融资的专家指导，提供0%首付选项。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-12 py-6">
+          WhatsApp工业设备报价
+        </a>
+        <a href="/zh/contact" class="btn btn-outline-white text-xl px-12 py-6">
+          获取机械融资报价
+        </a>
+      </div>
+      <div class="mt-8 text-white">
+        <p class="text-lg">
+          致电我们的机械融资专家：
+          <a href={`tel:${COMPANY_INFO.phone.international}`} class="text-yellow-400 font-black hover:underline" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            {COMPANY_INFO.phone.display}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          获取您的 <span class="text-secondary">机械融资</span> 报价
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 text-xl">
+          联系马来西亚领先的机械融资公司，获得专业的工业设备融资解决方案
+        </p>
+      </div>
+      <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-xl p-8 md:p-12">
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

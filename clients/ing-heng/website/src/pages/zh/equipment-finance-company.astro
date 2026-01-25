@@ -1,0 +1,463 @@
+---
+/**
+ * Equipment Finance Company Authority Page - Chinese
+ * Target Keyword: "设备融资公司" (Equipment finance company in Chinese)
+ * Target Audience: 企业主、承包商、马来西亚决策者
+ * Purpose: Establish ultimate authority as Malaysia's premier equipment finance company
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+import { generateOrganizationSchema, generateFAQSchema } from '../../../utils/schema';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Data - Targeting "设备融资公司"
+const pageTitle = '马来西亚最值得信赖的设备融资公司自1985年 | Ing Heng Credit';
+const pageDescription = '马来西亚领先的设备融资公司。自1985年获KPKT许可，为4,000+公司提供服务。0%首付可用，快速批准，为10+年设备提供融资。';
+const keywords = [
+  '设备融资公司',
+  '马来西亚设备融资公司',
+  '设备金融公司马来西亚',
+  '马来西亚持牌设备融资机构',
+  'KPKT持牌设备融资公司',
+  '建筑设备融资公司',
+  '马来西亚设备租赁公司',
+  '工业设备融资公司',
+  '设备分期付款公司',
+  '马来西亚机械融资公司'
+];
+
+// Company Authority Sections
+const companyStats = [
+  { number: '40+', label: '年经验', sublabel: '自1985年' },
+  { number: '4,000+', label: '公司融资', sublabel: '全马来西亚' },
+  { number: '0%', label: '最低首付', sublabel: '100%融资可用' },
+  { number: '10+', label: '年设备年龄', sublabel: '银行拒绝时' }
+];
+
+// Why Choose Us Over Banks
+const bankComparisons = [
+  {
+    title: '设备年龄接受',
+    bank: '银行拒绝3-5年设备',
+    us: '我们为10+年设备融资',
+    icon: 'calendar'
+  },
+  {
+    title: '首付要求',
+    bank: '银行要求20-30%首付',
+    us: '0%首付可用 - 100%融资',
+    icon: 'cash'
+  },
+  {
+    title: '批准时间',
+    bank: '银行需要2-4周批准',
+    us: '紧急情况快速批准',
+    icon: 'clock'
+  },
+  {
+    title: '信贷要求',
+    bank: '银行有严格信贷标准',
+    us: '灵活评估 - 我们批准银行拒绝的',
+    icon: 'check-badge'
+  }
+];
+
+// Service Coverage Areas
+const coverageAreas = [
+  '巴生谷（总部）',
+  '吉隆坡和雪兰莪',
+  '新山和南部地区',
+  '槟城和北部地区',
+  '关丹和东海岸',
+  '沙巴和沙捞越',
+  '马来西亚所有州',
+  '通过WhatsApp远程申请'
+];
+
+// Industry Specializations
+const specializations = [
+  {
+    title: '建筑设备',
+    description: '挖掘机、推土机、轮式装载机、起重机、压路机、压实机',
+    icon: 'cog'
+  },
+  {
+    title: '物流设备',
+    description: '牵引车、集装箱拖车、自卸车、配送卡车',
+    icon: 'truck'
+  },
+  {
+    title: '工业设备',
+    description: '叉车、发电机、空压机、数控机床、生产线',
+    icon: 'wrench-screwdriver'
+  },
+  {
+    title: '专用车辆',
+    description: '冷藏车、餐车、移动起重机、挖掘装载机',
+    icon: 'wrench'
+  }
+];
+
+// Trust Signals & Credentials
+const credentials = [
+  {
+    title: '自1985年KPKT持牌',
+    description: '马来西亚房屋和地方政府部完全许可',
+    icon: 'shield'
+  },
+  {
+    title: '法规遵从',
+    description: '定期政府审计和完全法规遵从',
+    icon: 'check-badge'
+  },
+  {
+    title: '行业协会会员',
+    description: '马来西亚金融服务协会会员',
+    icon: 'users'
+  },
+  {
+    title: '全马来西亚覆盖',
+    description: '许可在所有马来西亚州和领土经营',
+    icon: 'location'
+  }
+];
+
+// FAQ Schema for Equipment Finance Company (Chinese)
+const faqs = [
+  {
+    question: 'Ing Heng作为设备融资公司与银行有什么区别？',
+    answer: '作为专业的设备融资公司，我们专注于设备融资。与银行不同，我们批准高达10+年的设备，提供0%首付选择，并有更快的批准流程。我们比一般银行更了解设备价值和商业运营。'
+  },
+  {
+    question: '您的设备融资公司在马来西亚有许可证吗？',
+    answer: '是的，Ing Heng Credit & Leasing是在KPKT（房屋和地方政府部）完全许可的设备融资公司，自1985年起。我们受监管并遵守所有马来西亚金融服务要求。'
+  },
+  {
+    question: '您的融资公司涵盖什么类型的设备？',
+    answer: '我们的设备融资公司专门从事建筑设备（挖掘机、推土机、起重机）、物流设备（牵引车、卡车、拖车）和工业设备（叉车、发电机、数控机床）。我们为新设备和二手设备提供融资。'
+  },
+  {
+    question: '您的设备融资公司经营多长时间了？',
+    answer: 'Ing Heng自1985年起作为设备融资公司经营，为我们在马来西亚设备融资领域提供了超过40年的经验。我们已经成功为马来西亚超过4,000家公司提供融资。'
+  }
+];
+
+// Generate Schema
+const organizationSchema = generateOrganizationSchema();
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <StructuredData schema={organizationSchema} />
+  <StructuredData schema={faqSchema} />
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚最值得信赖的设备融资公司自1985年"
+    subtitle="当银行因为机械8年的年龄而拒绝您的设备融资申请时，您是否感到沮丧，明知设备运行完美但年龄限制了他们的放贷？作为马来西亚领先的设备融资公司，我们批准银行拒绝的申请。"
+    ctaText="获取设备融资报价"
+    ctaLink="/zh/contact"
+    ctaSecondaryText="WhatsApp联系我们"
+    ctaSecondaryLink={COMPANY_INFO.whatsapp.link}
+    lang={lang}
+    trustSignals={['1985年KPKT持牌', '40+年经验', '快速批准', '4,000+公司融资']}
+  />
+
+  <!-- Pain Point & Solution -->
+  <section class="section bg-[#F5F1EC]">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <!-- Pain Points -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-12">
+          <div class="bg-white p-8 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <h2 class="text-2xl font-black uppercase text-[#8B6F47] mb-6 border-b-2 border-[#D4A574] pb-2">当银行说不时...</h2>
+            <ul class="space-y-4 text-[#4F3E29]">
+              <li class="flex items-start space-x-3">
+                <div class="w-2 h-2 bg-[#8B6F47] rounded-full mt-2 flex-shrink-0"></div>
+                <span class="font-medium">当传统放贷机构需要2-4周批准而您的项目截止日期在下个月时，那种时间压力是否让您夜不能寐？</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <div class="w-2 h-2 bg-[#8B6F47] rounded-full mt-2 flex-shrink-0"></div>
+                <span class="font-medium">当您找到完美的8年挖掘机但银行仅因年龄拒绝时，您是否感到沮丧，明知它状况极佳？</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <div class="w-2 h-2 bg-[#8B6F47] rounded-full mt-2 flex-shrink-0"></div>
+                <span class="font-medium">当银行要求30%首付而您需要现金用于运营时，您是否胸闷，想到现金流限制？</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-gradient-to-r from-[#8B6F47] to-[#6B5437] text-white p-8 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <h2 class="text-2xl font-black uppercase mb-6 text-[#F5F5DC] border-b-2 border-[#D4A574] pb-2">我们说是！</h2>
+            <ul class="space-y-4">
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-[#D4A574] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" stroke="white" stroke-width="1">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="font-bold">快速批准流程 - 当您急需设备时，我们快速响应</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-[#D4A574] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" stroke="white" stroke-width="1">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="font-bold">设备年龄不限制我们 - 我们根据工作状况为10+年机械融资</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <svg class="w-6 h-6 text-[#D4A574] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" stroke="white" stroke-width="1">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="font-bold">0%首付可用 - 融资高达100%设备价值以保持营运资本</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Authority Stats -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#8B6F47] mb-4">
+          马来西亚领先的设备融资公司
+        </h2>
+        <p class="text-xl text-[#4F3E29] max-w-3xl mx-auto font-medium">
+          四十年设备融资经验，跨越建筑、物流和工业领域
+        </p>
+      </div>
+
+      <!-- Authority Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        {companyStats.map((stat) => (
+          <div class="text-center bg-white p-6 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="text-4xl md:text-5xl font-black text-[#8B6F47] mb-2">{stat.number}</div>
+            <div class="text-[#4F3E29] font-bold uppercase text-sm tracking-tight">{stat.label}</div>
+            <div class="text-[#4F3E29] text-xs mt-1">{stat.sublabel}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Company Description -->
+      <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-black uppercase text-[#8B6F47] mb-6 text-center">关于Ing Heng Credit & Leasing</h3>
+        <p class="text-[#4F3E29] leading-relaxed font-medium mb-6 text-lg">
+          成立于<strong class="font-black text-[#8B6F47]">1985年</strong>，Ing Heng Credit & Leasing Sdn Bhd已发展成为马来西亚最值得信赖的设备融资公司。作为<strong class="font-black text-[#8B6F47]">KPKT持牌金融服务提供商</strong>，我们专门为建筑、物流和工业企业提供设备融资。
+        </p>
+        <p class="text-[#4F3E29] leading-relaxed font-medium text-lg">
+          与将设备融资视为副业的银行不同，我们是专业的设备融资公司，了解机械价值、商业周期以及马来西亚依赖设备企业面临的独特挑战。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Over Banks -->
+  <section class="section bg-[#F5F1EC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#8B6F47] mb-4">
+          设备融资公司 vs 传统银行
+        </h2>
+        <p class="text-xl text-[#4F3E29] max-w-3xl mx-auto font-medium">
+          为什么选择专业设备融资公司而非一般银行服务？
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {bankComparisons.map((comparison) => (
+          <div class="bg-white p-6 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="flex items-center space-x-3 mb-4">
+              <BenefitCard
+                icon={comparison.icon}
+                title={comparison.title}
+                description=""
+              />
+            </div>
+            
+            <!-- Bank Approach -->
+            <div class="mb-4 p-4 bg-red-50 border-l-4 border-red-400 rounded">
+              <h4 class="font-black text-red-700 text-sm uppercase tracking-tight mb-2">🏦 传统银行：</h4>
+              <p class="text-red-600 font-medium text-sm">{comparison.bank}</p>
+            </div>
+
+            <!-- Our Approach -->
+            <div class="p-4 bg-green-50 border-l-4 border-[#8B6F47] rounded">
+              <h4 class="font-black text-[#8B6F47] text-sm uppercase tracking-tight mb-2">✅ Ing Heng设备融资：</h4>
+              <p class="text-[#4F3E29] font-medium text-sm">{comparison.us}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Specializations -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#8B6F47] mb-4">
+          设备融资公司专业领域
+        </h2>
+        <p class="text-xl text-[#4F3E29] max-w-3xl mx-auto font-medium">
+          跨多种设备类别的深度专业知识
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {specializations.map((spec) => (
+          <div class="bg-white p-6 rounded-lg border-3 border-[#2D1810] border-l-[6px] border-l-[#8B6F47] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="flex items-start space-x-4">
+              <BenefitCard
+                icon={spec.icon}
+                title=""
+                description=""
+              />
+              <div>
+                <h3 class="text-xl font-black uppercase text-[#8B6F47] mb-3">{spec.title}</h3>
+                <p class="text-[#4F3E29] leading-relaxed font-medium">{spec.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Equipment Categories -->
+      <div class="mt-12 max-w-4xl mx-auto bg-gradient-to-r from-[#8B6F47] to-[#6B5437] text-white p-8 rounded-lg border-3 border-[#2D1810] shadow-[8px_8px_0_#2D1810]">
+        <h3 class="text-2xl font-black uppercase mb-6 text-center text-[#F5F5DC]">我们融资的设备</h3>
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div>
+            <h4 class="font-black text-[#D4A574] mb-3 uppercase">建筑类</h4>
+            <ul class="space-y-2">
+              <li>• 挖掘机（各种规格）</li>
+              <li>• 推土机</li>
+              <li>• 轮式装载机</li>
+              <li>• 移动起重机</li>
+              <li>• 压路机</li>
+              <li>• 压实机</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-black text-[#D4A574] mb-3 uppercase">物流类</h4>
+            <ul class="space-y-2">
+              <li>• 牵引车</li>
+              <li>• 集装箱拖车</li>
+              <li>• 自卸车</li>
+              <li>• 配送卡车</li>
+              <li>• 冷藏车</li>
+              <li>• 专用拖车</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-black text-[#D4A574] mb-3 uppercase">工业类</h4>
+            <ul class="space-y-2">
+              <li>• 叉车</li>
+              <li>• 发电机</li>
+              <li>• 空压机</li>
+              <li>• 数控机床</li>
+              <li>• 生产线</li>
+              <li>• 工厂设备</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Licensing & Credentials -->
+  <section class="section bg-[#F5F1EC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#8B6F47] mb-4">
+          持牌和受监管的设备融资公司
+        </h2>
+        <p class="text-xl text-[#4F3E29] max-w-3xl mx-auto font-medium">
+          完全法规遵从，让您安心
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {credentials.map((credential) => (
+          <div class="bg-white p-6 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="flex items-start space-x-4">
+              <BenefitCard
+                icon={credential.icon}
+                title=""
+                description=""
+              />
+              <div>
+                <h3 class="text-lg font-black uppercase text-[#8B6F47] mb-3">{credential.title}</h3>
+                <p class="text-[#4F3E29] leading-relaxed font-medium">{credential.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#8B6F47] mb-4">
+          设备融资公司常见问题
+        </h2>
+        <p class="text-xl text-[#4F3E29] max-w-3xl mx-auto font-medium">
+          关于我们设备融资公司服务的常见问题
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white p-6 rounded-lg border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <h3 class="text-lg font-black uppercase text-[#8B6F47] mb-3">{faq.question}</h3>
+            <p class="text-[#4F3E29] leading-relaxed font-medium">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section bg-gradient-to-r from-[#8B6F47] to-[#6B5437] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-6 text-[#F5F5DC]">
+        选择马来西亚最值得信赖的设备融资公司
+      </h2>
+      <p class="text-xl mb-8 max-w-3xl mx-auto font-bold">
+        40+年经验，4,000+公司融资，1985年KPKT持牌。银行说不时，我们说是。今天就获得设备融资批准。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="获取设备融资报价"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="致电设备融资团队"
+          link={`tel:${COMPANY_INFO.phone.international}`}
+          variant="outline-white"
+          size="large"
+          icon="phone"
+        />
+      </div>
+      <div class="mt-8 text-sm">
+        <p class="font-bold">专业设备融资公司 | 持牌受监管 | 快速批准可用</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

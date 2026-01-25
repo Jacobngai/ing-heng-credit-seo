@@ -1,82 +1,100 @@
 ---
 /**
- * Malay Blog Index Page (Halaman Indeks Blog Bahasa Melayu)
+ * Malay Blog Index Page - HYBRID ARCHITECTURE (Halaman Indeks Blog Bahasa Melayu)
  * Equipment Financing Blog - Expert Tips & Industry Guides
  * SEO: Informational, Service-focused, Knowledge-sharing
  * Cultural Tone: Respectful, service-oriented, professional with government/authority references
+ *
+ * ARCHITECTURE: Auto-discovers blog posts from BOTH:
+ * 1. Existing .astro files (src/pages/ms/blog/*.astro)
+ * 2. New markdown files (src/content/blogs/ms/*.md)
  */
 
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import BlogCard from '../../../components/BlogCard.astro';
-import NewsletterSignup from '../../../components/NewsletterSignup.astro';
-import CTAButton from '../../../components/CTAButton.astro';
-import { COMPANY_INFO } from '../../../utils/constants';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import BlogCard from '../../../../components/BlogCard.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+import { SITE_CONFIG } from '../../../../utils/constants';
 
 const lang = 'ms';
 
-// Blog categories (Bahasa Melayu)
+// 🔥 AUTO-DISCOVER .md blog posts (Content Collections)
+const allMdPosts = await getCollection('blogs');
+const allPosts = allMdPosts
+  .filter(post => post.data.locale === lang)
+  .map(post => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,  // Remove locale folder prefix
+    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
+    author: post.data.author,
+    category: post.data.category,
+    readTime: post.data.readingTime || 5,
+    featured: post.data.featured,
+    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
+  }));
+
+// 🔥 SORT by date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.date).valueOf() - new Date(a.date).valueOf()
+);
+
+// 🔥 FEATURED posts (auto-selected from featured flag, limit 3)
+const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
+
+// If no featured posts, use the 3 most recent
+const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
+
+// 🔥 PAGINATION SETUP
+const POSTS_PER_PAGE = 12;
+const currentPage = 1; // This would come from URL params in a real pagination system
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const paginatedPosts = sortedPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+// 🔥 POPULAR posts (for sidebar - use first 8)
+const popularPosts = sortedPosts.slice(0, 8).map(p => ({ title: p.title, slug: p.slug }));
+
+// 🔥 DYNAMIC category counts (updated for new blog structure)
 const categories = [
-  { name: 'Tips Pembiayaan Peralatan', slug: 'equipment-financing', count: 12, icon: '🏗️' },
-  { name: 'Berita & Trend Industri', slug: 'industry-news', count: 8, icon: '📰' },
-  { name: 'Panduan Kontraktor', slug: 'contractor-guides', count: 10, icon: '👷' },
-  { name: 'Pertumbuhan Perniagaan', slug: 'business-growth', count: 7, icon: '📈' },
-  { name: 'Cukai & Pematuhan', slug: 'tax-compliance', count: 6, icon: '📋' },
-  { name: 'Penyelenggaraan Peralatan', slug: 'equipment-maintenance', count: 9, icon: '🔧' },
-];
-
-// Featured blog posts (Artikel Pilihan)
-const featuredPosts = [
   {
-    title: 'Panduan Lengkap Pembiayaan Peralatan di Malaysia 2025',
-    excerpt: 'Ketahui segala-galanya tentang pembiayaan peralatan pembinaan, dari beli sewa hingga pilihan pajakan. Temui kaedah pembiayaan yang terbaik untuk perniagaan anda.',
-    date: '2025-10-11',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'complete-guide-equipment-financing-malaysia',
-    image: '/images/blog/equipment-financing-guide.jpg',
-    category: 'Tips Pembiayaan Peralatan',
-    readTime: 8,
+    name: 'Pembiayaan Peralatan',
+    slug: 'equipment-financing',
+    count: allPosts.filter(p => p.category === 'Equipment Financing').length,
+    icon: '🏗️'
   },
   {
-    title: 'Pembiayaan Jengkaut: Bagaimana Kontraktor Boleh Jimat 30% Kos Peralatan',
-    excerpt: 'Temui strategi terbukti untuk mengurangkan kos pemerolehan jengkaut melalui pembiayaan pintar. Kajian kes sebenar dari kontraktor Malaysia yang berjaya.',
-    date: '2025-10-10',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'excavator-financing-save-30-percent',
-    image: '/images/blog/excavator-financing.jpg',
-    category: 'Panduan Kontraktor',
-    readTime: 6,
+    name: 'Tender Kerajaan',
+    slug: 'government-tenders', 
+    count: allPosts.filter(p => p.title.includes('Kerajaan') || p.title.includes('CIDB') || p.title.includes('MRT') || p.title.includes('ECRL') || p.title.includes('Pan Borneo')).length,
+    icon: '🏛️'
   },
   {
-    title: 'Pembiayaan Lori untuk Syarikat Logistik: Strategi Kelulusan Pantas',
-    excerpt: 'Percepatkan kelulusan pembiayaan lori anda dengan tip pakar ini. Ketahui dokumen yang diperlukan dan cara mendapat kadar terbaik untuk perniagaan logistik anda.',
-    date: '2025-10-09',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'lorry-financing-fast-approval-strategies',
-    image: '/images/blog/lorry-financing.jpg',
-    category: 'Tips Pembiayaan Peralatan',
-    readTime: 7,
+    name: 'Pembiayaan Kren',
+    slug: 'crane-financing',
+    count: allPosts.filter(p => p.title.includes('Kren') || p.title.includes('Menara') || p.title.includes('Mudah Alih')).length,
+    icon: '🏗️'
   },
-];
-
-// Recent blog posts (Artikel Terkini - Only posts that actually exist)
-const recentPosts = [
   {
-    title: 'Faedah Cukai Pembiayaan Peralatan: Maksimumkan Potongan Anda 2025',
-    excerpt: 'Fahami kelebihan cukai pembiayaan peralatan di Malaysia. Pelajari cara menuntut elaun modal dan kurangkan beban cukai anda secara sah.',
-    date: '2025-10-07',
-    author: 'Pasukan Ing Heng Credit',
-    slug: 'tax-benefits-equipment-financing-2025',
-    category: 'Cukai & Pematuhan',
+    name: 'Pembiayaan Armada', 
+    slug: 'fleet-financing',
+    count: allPosts.filter(p => p.title.includes('Armada') || p.title.includes('Pukal') || p.title.includes('Unit') || p.title.includes('Multi')).length,
+    icon: '🚛'
   },
-];
-
-// Popular posts for sidebar (Artikel Popular)
-const popularPosts = [
-  { title: 'Panduan Lengkap Pembiayaan Peralatan Malaysia 2025', slug: 'complete-guide-equipment-financing-malaysia' },
-  { title: 'Pembiayaan Jengkaut: Jimat 30% Kos Peralatan', slug: 'excavator-financing-save-30-percent' },
-  { title: 'Faedah Cukai Pembiayaan Peralatan 2025', slug: 'tax-benefits-equipment-financing-2025' },
-  { title: 'Pajakan Forklift vs Pembelian: Panduan Lengkap', slug: 'forklift-leasing-vs-buying-guide' },
+  {
+    name: 'Peralatan Teknologi',
+    slug: 'technology-equipment',
+    count: allPosts.filter(p => p.title.includes('GPS') || p.title.includes('Pintar') || p.title.includes('3D') || p.title.includes('IoT')).length,
+    icon: '🔧'
+  },
+  {
+    name: 'Faedah Cukai',
+    slug: 'tax-benefits',
+    count: allPosts.filter(p => p.title.includes('Cukai') || p.title.includes('Modal') || p.title.includes('Elaun')).length,
+    icon: '📋'
+  },
 ];
 
 // Breadcrumb navigation
@@ -91,18 +109,18 @@ const blogCollectionSchema = {
   "@type": "CollectionPage",
   "name": "Blog Pembiayaan Peralatan - Tips Pakar & Panduan Industri",
   "description": "Wawasan pakar tentang pembiayaan peralatan, pengurusan perniagaan pembinaan, dan trend industri dari rakan kongsi pembiayaan terpercaya Malaysia sejak 1985.",
-  "url": "https://ingheng-credit.vercel.app/ms/blog",
+  "url": `${SITE_CONFIG.url}/ms/blog`,
   "publisher": {
     "@type": "Organization",
     "name": "Ing Heng Credit & Leasing Sdn Bhd",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://ingheng-credit.vercel.app/logo.png"
+      "url": `${SITE_CONFIG.url}/logo.png`
     }
   },
   "mainEntity": {
     "@type": "ItemList",
-    "itemListElement": featuredPosts.map((post, index) => ({
+    "itemListElement": displayFeaturedPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
@@ -229,11 +247,11 @@ const blogCollectionSchema = {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {featuredPosts.map((post) => (
-          <div class="card h-full flex flex-col group hover:shadow-2xl transition-shadow duration-300 relative">
+        {displayFeaturedPosts.map((post) => (
+          <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300 relative">
             {/* Featured Badge */}
             <div class="absolute top-4 right-4 z-10">
-              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-[6px_6px_0_#2D1810]">
                 PILIHAN
               </span>
             </div>
@@ -304,16 +322,16 @@ const blogCollectionSchema = {
         <!-- Main Content Area (Blog Posts) -->
         <div class="lg:col-span-2">
           <div class="mb-8 flex items-center justify-between">
-            <h2 class="text-2xl font-bold text-primary">Artikel Terkini</h2>
-            <div class="flex items-center gap-2 text-sm text-gray-600">
-              <span>Menunjukkan 1-9 daripada 52 artikel</span>
+            <h2 class="text-2xl font-black text-navy-900 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">Semua Artikel</h2>
+            <div class="flex items-center gap-2 text-sm font-bold" style="color: #2D1810;">
+              <span>Menunjukkan {startIndex + 1}-{Math.min(startIndex + POSTS_PER_PAGE, allPosts.length)} daripada {allPosts.length} artikel</span>
             </div>
           </div>
 
           <!-- Blog Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {recentPosts.map((post) => (
-              <div class="card h-full flex flex-col group hover:shadow-xl transition-shadow duration-300">
+            {paginatedPosts.map((post) => (
+              <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300">
                 {/* Image Placeholder */}
                 <a href={`/ms/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
                   <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
@@ -356,47 +374,81 @@ const blogCollectionSchema = {
             ))}
           </div>
 
-          <!-- Pagination -->
-          <div class="flex justify-center gap-2">
-            <button disabled class="px-4 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed">
-              Sebelum
-            </button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">4</button>
-            <span class="px-4 py-2">...</span>
-            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">6</button>
-            <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark">
-              Seterusnya
-            </button>
+          <!-- Pagination Controls -->
+          <div class="flex justify-center items-center gap-2">
+            {currentPage > 1 ? (
+              <a 
+                href={currentPage === 2 ? '/ms/blog' : `/ms/blog/page/${currentPage - 1}`}
+                class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+                style="box-shadow: 4px 4px 0 #1E3A8A;"
+              >
+                ← Sebelumnya
+              </a>
+            ) : (
+              <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                ← Sebelumnya
+              </button>
+            )}
+
+            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+              const page = i + 1;
+              const isCurrentPage = page === currentPage;
+              const pageUrl = page === 1 ? '/ms/blog' : `/ms/blog/page/${page}`;
+              
+              return isCurrentPage ? (
+                <button class="px-4 py-2 bg-[#D4A574] text-navy-900 border-3 border-navy-900 font-black" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                  {page}
+                </button>
+              ) : (
+                <a 
+                  href={pageUrl}
+                  class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+                  style="box-shadow: 4px 4px 0 #1E3A8A;"
+                >
+                  {page}
+                </a>
+              );
+            })}
+
+            {currentPage < totalPages ? (
+              <a 
+                href={`/ms/blog/page/${currentPage + 1}`}
+                class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+                style="box-shadow: 4px 4px 0 #1E3A8A;"
+              >
+                Seterusnya →
+              </a>
+            ) : (
+              <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                Seterusnya →
+              </button>
+            )}
+          </div>
+
+          <div class="text-center mt-6 text-sm text-gray-600 font-medium">
+            Halaman {currentPage} daripada {totalPages} • {allPosts.length} jumlah artikel
           </div>
         </div>
 
         <!-- Sidebar -->
         <aside class="lg:col-span-1 space-y-8">
 
-          <!-- Newsletter Signup -->
-          <div class="sticky top-24">
-            <NewsletterSignup locale={lang} variant="boxed" />
-          </div>
-
           <!-- Categories List -->
-          <div class="card">
-            <div class="card-body">
-              <h3 class="text-xl font-bold text-primary mb-4">Lihat Mengikut Kategori</h3>
+          <div class="sidebar-card-contrast">
+            <div class="p-8">
+              <h3 class="text-2xl font-black text-gray-900 mb-6 uppercase tracking-wider border-b-4 border-gray-900 pb-4">Lihat Mengikut Kategori</h3>
               <ul class="space-y-3">
                 {categories.map((category) => (
                   <li>
                     <a
                       href={`/ms/blog/category/${category.slug}`}
-                      class="flex items-center justify-between group hover:text-primary transition-colors"
+                      class="flex items-center justify-between group hover:bg-gray-900 hover:text-white p-4 -mx-4 transition-all duration-300 border-2 border-transparent hover:border-gray-900"
                     >
-                      <span class="flex items-center gap-2">
-                        <span class="text-xl">{category.icon}</span>
-                        <span class="font-medium group-hover:underline">{category.name}</span>
+                      <span class="flex items-center gap-4">
+                        <span class="text-3xl">{category.icon}</span>
+                        <span class="font-black text-lg group-hover:text-white">{category.name}</span>
                       </span>
-                      <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                      <span class="text-sm font-black text-white bg-gray-900 group-hover:bg-white group-hover:text-gray-900 px-4 py-2 rounded-full border-2 border-gray-900">
                         {category.count}
                       </span>
                     </a>
@@ -407,18 +459,18 @@ const blogCollectionSchema = {
           </div>
 
           <!-- Popular Posts -->
-          <div class="card">
-            <div class="card-body">
-              <h3 class="text-xl font-bold text-primary mb-4">Paling Popular</h3>
-              <ul class="space-y-4">
+          <div class="sidebar-card-contrast">
+            <div class="p-8">
+              <h3 class="text-2xl font-black text-gray-900 mb-6 uppercase tracking-wider border-b-4 border-gray-900 pb-4">Paling Popular</h3>
+              <ul class="space-y-5">
                 {popularPosts.map((post, index) => (
-                  <li class="flex gap-3">
-                    <span class="text-2xl font-bold text-primary/20 flex-shrink-0">
+                  <li class="flex gap-5">
+                    <span class="text-xl font-black text-white bg-gray-900 flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-900">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <a
                       href={`/ms/blog/${post.slug}`}
-                      class="text-gray-700 hover:text-primary transition-colors font-medium leading-snug"
+                      class="text-gray-900 hover:text-black font-black leading-tight hover:underline transition-all duration-200 text-lg"
                     >
                       {post.title}
                     </a>
@@ -429,10 +481,10 @@ const blogCollectionSchema = {
           </div>
 
           <!-- Contact CTA -->
-          <div class="card bg-gradient-to-br from-primary to-secondary text-white">
-            <div class="card-body text-center">
-              <h3 class="text-2xl font-bold mb-3">Perlukan Nasihat Pembiayaan?</h3>
-              <p class="mb-6 opacity-90">
+          <div class="sidebar-card-dark">
+            <div class="p-8 text-center">
+              <h3 class="text-2xl font-black text-white mb-6 uppercase tracking-wider border-b-4 border-white pb-4">Perlukan Nasihat Pembiayaan?</h3>
+              <p class="mb-8 text-white font-bold text-lg leading-relaxed">
                 Pakar kami sedia membantu anda mencari penyelesaian pembiayaan terbaik untuk perniagaan anda.
               </p>
               <CTAButton
@@ -442,8 +494,8 @@ const blogCollectionSchema = {
                 size="large"
                 icon="whatsapp"
               />
-              <p class="mt-4 text-sm opacity-75">
-                Atau hubungi: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-accent">{COMPANY_INFO.phone.display}</a>
+              <p class="mt-6 text-lg text-white font-black">
+                Atau hubungi: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-yellow-300 font-black">{COMPANY_INFO.phone.display}</a>
               </p>
             </div>
           </div>
@@ -460,7 +512,7 @@ const blogCollectionSchema = {
         Bersedia untuk Membiayai Peralatan Anda?
       </h2>
       <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan mereka. Dapatkan kelulusan dalam 24 jam dengan kadar kompetitif dari 2.88% setahun.
+        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan mereka. Dapatkan kelulusan pantas dengan kadar kompetitif dari 6.5% setahun.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <CTAButton
@@ -504,7 +556,7 @@ const blogCollectionSchema = {
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden;
+    @apply bg-white rounded-lg shadow-[4px_4px_0_#2D1810] overflow-hidden;
   }
 
   .card-body {
@@ -517,5 +569,16 @@ const blogCollectionSchema = {
 
   .section {
     @apply py-16 md:py-20;
+  }
+
+  /* High Contrast Sidebar Cards */
+  .sidebar-card-contrast {
+    @apply bg-white border-4 border-gray-900;
+    box-shadow: 8px 8px 0 #000000;
+  }
+
+  .sidebar-card-dark {
+    @apply bg-gray-900 border-4 border-gray-900;
+    box-shadow: 8px 8px 0 #000000;
   }
 </style>

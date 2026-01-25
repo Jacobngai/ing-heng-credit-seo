@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  title: 'Peralatan SME Urgent 2026',
+  slug: 'peralatan-sme-urgent-2026',
+  excerpt: 'Peralatan urgent untuk SME. 0% deposit. Kelulusan 24 jam. Untuk keperluan mendesak perniagaan.',
+  date: '2026-01-16',
+  author: 'Ing Heng Credit Team',
+  readTime: 4,
+  category: 'Pertumbuhan SME',
+  image: '/images/blog/sme-urgent-equipment-2026.jpg'
+};
+
+const keywords = ['peralatan urgent', 'urgent equipment malaysia', '0% deposit', 'kelulusan pantas'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <Breadcrumbs items={breadcrumbItems} />
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Pertumbuhan SME</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min baca</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Urgent! Perlukan Peralatan Hari Ini.</h2>
+
+      <p>Kontrak dah menang. Kena mulakan esok. Excavator rosak. Klient marah. Situasi urgent.</p>
+
+      <p>Bank ambil 4-6 minggu. Anda tak boleh tunggu.</p>
+
+      <p>Kami boleh luluskan dalam 24-48 jam.</p>
+
+      <h2>Situasi Urgent Yang Biasa</h2>
+
+      <ul>
+        <li>Menang tender – kena mulakan segera</li>
+        <li>Peralatan breakdown – perlu replacement cepat</li>
+        <li>Pelanggan urgent – last minute request</li>
+        <li>Projek tiba-tiba – client rush</li>
+        <li>Seasonal demand – demand tinggi musim tertentu</li>
+      </ul>
+
+      <h2>Bank vs Kami Untuk Situasi Urgent</h2>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+        <thead>
+          <tr style="background: #2D1810; color: #D4A574;">
+            <th style="padding: 1rem; border: 1px solid #D4A574; text-align: left;">Item</th>
+            <th style="padding: 1rem; border: 1px solid #D4A574; text-align: left;">Bank</th>
+            <th style="padding: 1rem; border: 1px solid #D4A574; text-align: left;">Kami</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;">Kelulusan Urgent</td>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;">Tiada</td>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;"><strong>24-48 jam</strong></td>
+          </tr>
+          <tr style="background: #F9FAFB;">
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;">Deposit</td>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;">10-20%</td>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;"><strong>0%</strong></td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;">Weekend Processing</td>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;">Tidak</td>
+            <td style="padding: 1rem; border: 1px solid #E5E7EB;"><strong>Ya</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Proses Urgent Kami</h2>
+
+      <h3>Hari 1: Permohonan</h3>
+      <p>WhatsApp dokumen kami. Kami assess terus.</p>
+
+      <h3>Hari 2: Kelulusan</h3>
+      <p>Dalam 24 jam, keputusan keluar. Dokumen siap.</p>
+
+      <h3>Hari 3: Release</h3>
+      <p>Dana disburse ke penjual. Anda terima peralatan.</p>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">Situasi Urgent? Kami Boleh Bantu.</h3>
+        <p style="margin-bottom: 1rem;">Kelulusan 24 jam. 0% deposit. WhatsApp kami sekarang untuk urgent.</p>
+        <p style="margin-bottom: 0;"><strong>Contact:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (Telefon)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Dapatkan Pembiayaan Sekarang" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 { color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 2rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 3px solid #D4A574; padding-bottom: 0.5rem; }
+  h3 { color: #8B6F47; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+  p { line-height: 1.8; color: #374151; }
+  strong { color: #2D1810; font-weight: 700; }
+  ul { list-style: none; padding-left: 0; }
+  li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; line-height: 1.8; color: #374151; }
+  li::before { content: '✓'; position: absolute; left: 0; color: #D4A574; font-weight: bold; }
+</style>
