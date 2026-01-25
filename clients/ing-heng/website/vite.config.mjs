@@ -6,12 +6,10 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
+        // Don't chunk .astro files - Astro handles them specially
         manualChunks(id) {
-          // Group common imports
-          if (id.includes('/components/') || id.includes('/layouts/')) {
-            return 'astro-components';
-          }
-          if (id.includes('/utils/')) {
+          // Only chunk JS/TS utils, NOT Astro components
+          if (id.includes('/utils/') && !id.includes('.astro')) {
             return 'astro-utils';
           }
         },
