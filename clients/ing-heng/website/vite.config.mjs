@@ -5,15 +5,6 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
-      output: {
-        // Don't chunk .astro files - Astro handles them specially
-        manualChunks(id) {
-          // Only chunk JS/TS utils, NOT Astro components
-          if (id.includes('/utils/') && !id.includes('.astro')) {
-            return 'astro-utils';
-          }
-        },
-      },
       // Increase memory for large builds
       maxParallelFileOps: 50,
     },
