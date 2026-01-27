@@ -97,6 +97,19 @@ const categories = [
   },
 ];
 
+// Calculate pagination pages for index (page 1)
+const paginationPages = [];
+const maxPagesToShow = 5;
+if (totalPages <= maxPagesToShow) {
+  for (let i = 1; i <= totalPages; i++) paginationPages.push(i);
+} else {
+  for (let i = 1; i <= maxPagesToShow; i++) paginationPages.push(i);
+  if (totalPages > maxPagesToShow) {
+    paginationPages.push('...');
+    paginationPages.push(totalPages);
+  }
+}
+
 // Breadcrumb navigation
 const breadcrumbItems = [
   { label: '首页', href: '/zh' },
@@ -375,32 +388,32 @@ const blogCollectionSchema = {
           </div>
 
           <!-- Pagination Controls -->
-          <div class="flex justify-center items-center gap-2">
-            {currentPage > 1 ? (
-              <a 
-                href={currentPage === 2 ? '/zh/blog' : `/zh/blog/page/${currentPage - 1}`}
-                class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
-                style="box-shadow: 4px 4px 0 #1E3A8A;"
-              >
-                ← 上一页
-              </a>
-            ) : (
-              <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
-                ← 上一页
-              </button>
-            )}
+          {totalPages > 1 && (
+          <nav aria-label="分页" class="flex justify-center items-center gap-2">
+            {/* Previous button */}
+            <a href="/zh/blog/page/2"
+              class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+              style="box-shadow: 4px 4px 0 #1E3A8A;"
+            >
+              ← 上一页
+            </a>
 
-            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              const page = i + 1;
-              const isCurrentPage = page === currentPage;
+            {/* Page numbers with sliding window - show 5 pages centered around current (page 1) */}
+            {paginationPages.map((page, index) => {
+              if (page === '...') {
+                return <span key={`ellipsis-${index}`} class="px-2 text-gray-500">...</span>;
+              }
+
+              const isCurrentPage = page === 1;
               const pageUrl = page === 1 ? '/zh/blog' : `/zh/blog/page/${page}`;
-              
+
               return isCurrentPage ? (
-                <button class="px-4 py-2 bg-[#D4A574] text-navy-900 border-3 border-navy-900 font-black" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <button key={page} class="px-4 py-2 bg-[#D4A574] text-navy-900 border-3 border-navy-900 font-black" style="box-shadow: 4px 4px 0 #1E3A8A;">
                   {page}
                 </button>
               ) : (
-                <a 
+                <a
+                  key={page}
                   href={pageUrl}
                   class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
                   style="box-shadow: 4px 4px 0 #1E3A8A;"
@@ -410,20 +423,15 @@ const blogCollectionSchema = {
               );
             })}
 
-            {currentPage < totalPages ? (
-              <a 
-                href={`/zh/blog/page/${currentPage + 1}`}
-                class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
-                style="box-shadow: 4px 4px 0 #1E3A8A;"
-              >
-                下一页 →
-              </a>
-            ) : (
-              <button disabled class="px-4 py-2 border-3 border-navy-900 text-navy-900 opacity-50 cursor-not-allowed bg-gray-100" style="box-shadow: 4px 4px 0 #1E3A8A;">
-                下一页 →
-              </button>
-            )}
-          </div>
+            {/* Next button */}
+            <a href="/zh/blog/page/2"
+              class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
+              style="box-shadow: 4px 4px 0 #1E3A8A;"
+            >
+              下一页 →
+            </a>
+          </nav>
+          )}
 
           <div class="text-center mt-6 text-sm text-gray-600 font-medium">
             第 {currentPage} 页，共 {totalPages} 页 • 总共 {allPosts.length} 篇文章

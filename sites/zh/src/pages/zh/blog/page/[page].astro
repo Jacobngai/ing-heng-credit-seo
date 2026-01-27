@@ -60,48 +60,38 @@ const paginatedPosts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 // Popular posts for sidebar
 const popularPosts = allPosts.slice(0, 8).map(p => ({ title: p.title, slug: p.slug }));
 
-// Calculate pages to show in pagination
+// Calculate pages to show in pagination - 5 pages centered around current page
 const pagesToShow = [];
-const maxPagesToShow = 7; // Show up to 7 page numbers at once
+const maxPagesToShow = 5; // Show exactly 5 page numbers centered around current page
 
 if (totalPages <= maxPagesToShow) {
-  // Show all pages if total is 7 or less
+  // Show all pages if total is 5 or less
   for (let i = 1; i <= totalPages; i++) pagesToShow.push(i);
 } else {
-  // Always include first page
-  pagesToShow.push(1);
-  
-  // Calculate range around current page
-  let startPage = Math.max(2, currentPage - 2);
-  let endPage = Math.min(totalPages - 1, currentPage + 2);
-  
-  // Adjust if we're near the beginning
-  if (currentPage <= 4) {
-    endPage = Math.min(5, totalPages - 1);
+  // Calculate a window of 5 pages centered around current page
+  let startPage = Math.max(1, Math.min(currentPage - 2, totalPages - maxPagesToShow + 1));
+  let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+  // Add ellipsis before if needed
+  if (startPage > 1) {
+    pagesToShow.push(1);
+    if (startPage > 2) {
+      pagesToShow.push('...');
+    }
   }
-  
-  // Adjust if we're near the end
-  if (currentPage >= totalPages - 3) {
-    startPage = Math.max(2, totalPages - 4);
-  }
-  
-  // Add ellipsis if needed before range
-  if (startPage > 2) {
-    pagesToShow.push('...');
-  }
-  
-  // Add the range of pages
+
+  // Add the range of pages (5 pages total, or fewer near edges)
   for (let i = startPage; i <= endPage; i++) {
     pagesToShow.push(i);
   }
-  
-  // Add ellipsis if needed after range
-  if (endPage < totalPages - 1) {
-    pagesToShow.push('...');
+
+  // Add ellipsis after if needed
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
+      pagesToShow.push('...');
+    }
+    pagesToShow.push(totalPages);
   }
-  
-  // Always include last page
-  pagesToShow.push(totalPages);
 }
 
 // Categories

@@ -62,6 +62,19 @@ const categories = [
   { name: 'Business Growth', slug: 'business-growth', icon: '📈' },
   { name: 'Tax Compliance', slug: 'tax-compliance', icon: '📋' },
 ];
+
+// Calculate pagination pages for index (page 1)
+const paginationPages = [];
+const maxPagesToShow = 5;
+if (totalPages <= maxPagesToShow) {
+  for (let i = 1; i <= totalPages; i++) paginationPages.push(i);
+} else {
+  for (let i = 1; i <= maxPagesToShow; i++) paginationPages.push(i);
+  if (totalPages > maxPagesToShow) {
+    paginationPages.push('...');
+    paginationPages.push(totalPages);
+  }
+}
 ---
 
 <BaseLayout
@@ -253,19 +266,43 @@ const categories = [
           </div>
 
           <!-- Pagination -->
-          <div class="pagination">
-            <button disabled class="pagination-button pagination-button-disabled">Previous</button>
-            {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => (
-              <button
-                class={`pagination-button ${i === 0 ? 'pagination-button-active' : 'pagination-button-inactive'}`}
-              >
-                {i + 1}
-              </button>
-            ))}
-            {totalPages > 5 && <span class="pagination-ellipsis">...</span>}
-            {totalPages > 5 && <button class="pagination-button pagination-button-inactive">{totalPages}</button>}
-            <button class="pagination-button pagination-button-active">Next</button>
-          </div>
+          {totalPages > 1 && (
+          <nav aria-label="Pagination" class="pagination">
+            {/* Previous button */}
+            <a href="/en/blog/page/2" class="pagination-button pagination-button-active">
+              Previous
+            </a>
+
+            {/* Page numbers with sliding window - show 5 pages centered around current (page 1) */}
+            {paginationPages.map((page, index) => {
+              if (page === '...') {
+                return <span key={`ellipsis-${index}`} class="pagination-ellipsis">...</span>;
+              }
+
+              const isCurrentPage = page === 1;
+              const pageUrl = page === 1 ? '/en/blog' : `/en/blog/page/${page}`;
+
+              return isCurrentPage ? (
+                <button key={page} class="pagination-button pagination-button-active">
+                  {page}
+                </button>
+              ) : (
+                <a
+                  key={page}
+                  href={pageUrl}
+                  class="pagination-button pagination-button-inactive"
+                >
+                  {page}
+                </a>
+              );
+            })}
+
+            {/* Next button */}
+            <a href="/en/blog/page/2" class="pagination-button pagination-button-active">
+              Next
+            </a>
+          </nav>
+          )}
         </div>
 
         <!-- Sidebar -->
