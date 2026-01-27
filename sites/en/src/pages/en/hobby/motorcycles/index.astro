@@ -1,0 +1,367 @@
+---
+/**
+ * Motorcycles Category Page - English
+ * Motorcycle financing category landing page
+ * SEO: Motorcycle financing Malaysia, Harley Davidson financing, classic bike loan
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import HobbyHero from '../../../../components/HobbyHero.astro';
+import HobbyCard from '../../../../components/HobbyCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Motorcycle Financing Malaysia | Harley Davidson, Classic & Vintage Bikes';
+const pageDescription = 'Finance your dream motorcycle. Harley Davidson, Japanese vintage, European bikes. No age limit, up to RM1 million. Fast approval for big bikes.';
+const keywords = [
+  'motorcycle financing Malaysia',
+  'Harley Davidson financing',
+  'vintage motorcycle loan',
+  'big bike financing',
+  'classic motorcycle loan',
+  'Ducati financing',
+  'old motorcycle loan Malaysia',
+  'superbike financing',
+  'Honda CB financing',
+  'Kawasaki Z1 financing'
+];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Hobby Financing', url: '/en/hobby' },
+  { label: 'Motorcycles', url: '/en/hobby/motorcycles' },
+];
+
+// Subcategory Cards
+const subcategoryCards = [
+  {
+    title: 'Harley-Davidson',
+    description: 'American V-twin freedom on two wheels. From classic touring to modern performance.',
+    icon: '🇺🇸',
+    href: '#',
+    items: ['Touring Models', 'Softail', 'Dyna', 'Sportster', 'Classic Shovelhead', 'Panhead']
+  },
+  {
+    title: 'Japanese Vintage',
+    description: 'Golden era Japanese classics. Honda CB, Kawasaki Z, Yamaha XS - the icons.',
+    icon: '🇯🇵',
+    href: '#',
+    items: ['Honda CB750', 'Kawasaki Z1', 'Yamaha XS650', 'Suzuki GS', 'Honda NSR', 'Kawasaki H2']
+  },
+  {
+    title: 'European Bikes',
+    description: 'Italian passion and German precision. Ducati, BMW, Triumph, and more.',
+    icon: '🇪🇺',
+    href: '#',
+    items: ['Ducati', 'BMW', 'Triumph', 'MV Agusta', 'Bimota', 'Norton']
+  }
+];
+
+// Popular Models
+const popularModels = [
+  {
+    name: 'Harley Davidson Touring',
+    priceRange: 'RM150K - RM300K',
+    description: 'The ultimate touring motorcycle. American freedom and long-haul comfort.',
+    features: ['V-Twin Engine', 'Touring Comfort', 'American Heritage', 'Resale Value']
+  },
+  {
+    name: 'Honda CB750',
+    priceRange: 'RM50K - RM150K',
+    description: 'The bike that launched the superbike era. A true collector\'s piece.',
+    features: ['Inline-Four', 'Timeless Design', 'Historic Significance', 'Classic Status']
+  },
+  {
+    name: 'Ducati Superbike',
+    priceRange: 'RM100K - RM250K',
+    description: 'Italian passion and racing DNA. Desmo power and exotic style.',
+    features: ['L-Twin Engine', 'Desmo Valve', 'Racing Heritage', 'Exotic Design']
+  },
+  {
+    name: 'Kawasaki Z1 900',
+    priceRange: 'RM80K - RM200K',
+    description: 'The original superbike. Japanese muscle from the 70s.',
+    features: ['903cc Engine', 'Air-Cooled', 'Four Cylinders', 'Collector Grade']
+  },
+  {
+    name: 'BMW R90S',
+    priceRange: 'RM60K - RM150K',
+    description: 'German engineering meets classic cafe racer style.',
+    features: ['Boxer Engine', 'Shaft Drive', 'German Quality', 'Rare Find']
+  },
+  {
+    name: 'Triumph Bonneville',
+    priceRange: 'RM40K - RM100K',
+    description: 'British classic that defined cafe racer culture.',
+    features: ['Parallel Twin', 'British Heritage', 'Timeless Style', 'Cult Following']
+  }
+];
+
+// Financing Details
+const financingDetails = [
+  {
+    icon: 'dollar-sign',
+    title: 'Up to RM1 Million',
+    description: 'Finance your dream motorcycle with loans up to RM1,000,000 for high-value bikes.'
+  },
+  {
+    icon: 'infinity',
+    title: 'No Age Limit',
+    description: 'We finance vintage motorcycles from any era. Classic bikes welcome.'
+  },
+  {
+    icon: 'calendar',
+    title: 'Flexible Tenure 1-7 Years',
+    description: 'Choose repayment terms that match your financial situation.'
+  },
+  {
+    icon: 'search',
+    title: 'Specialist Assessment',
+    description: 'Our experts assess real collector value, not book value.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Can I finance a 20+ year old motorcycle?',
+    answer: 'Yes! Unlike banks that typically refuse motorcycles older than 10-15 years, we have no age limit. We specialize in financing vintage and classic motorcycles from any era, from 70s Honda CB750s to classic Harley Davidson models.'
+  },
+  {
+    question: 'What is the maximum loan amount for motorcycle financing?',
+    answer: 'We offer financing up to RM1,000,000 for motorcycles and superbikes. This covers everything from entry-level classics to high-end European superbikes and investment-grade collector motorcycles.'
+  },
+  {
+    question: 'Do you finance Harley Davidson motorcycles?',
+    answer: 'Yes! We are specialists in Harley Davidson financing. We finance touring models, Softail, Dyna, Sportster, and even classic Shovelhead and Panhead models. Our team understands Harley values and the American V-twin market.'
+  },
+  {
+    question: 'Can I finance imported motorcycles?',
+    answer: 'Yes! We finance imported motorcycles from Japan, USA, and Europe. Our team understands import documentation, foreign market values, and specific requirements for bringing bikes into Malaysia. Whether it\'s a JDM import or American classic, we can help.'
+  },
+  {
+    question: 'What documents do I need for motorcycle financing?',
+    answer: 'Documentation is straightforward: IC (NRIC), 6 months bank statements, proof of income. For the motorcycle, we need registration documents, import papers (if applicable), and any service or restoration records. We keep it simple.'
+  },
+  {
+    question: 'Can I finance a motorcycle for restoration?',
+    answer: 'We can finance completed and running motorcycles. For restoration projects, we can discuss options based on the projected value after restoration. Contact us to discuss your specific project bike and situation.'
+  },
+  {
+    question: 'Do you finance superbikes and sport bikes?',
+    answer: 'Yes! We finance all types of motorcycles including superbikes from Ducati, BMW, Kawasaki Ninja, Yamaha R1, Honda CBR, and more. Whether it\'s a modern superbike or a classic vintage bike, we can help.'
+  },
+  {
+    question: 'Can I finance multiple motorcycles?',
+    answer: 'Yes! We offer multi-bike financing for collectors and enthusiasts. Whether you\'re building a collection or financing bikes for family members, we can structure financing to suit your needs. Contact us for custom multi-bike quotes.'
+  }
+];
+
+// ItemList Schema
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Motorcycle Categories',
+  description: 'Motorcycle financing categories including Harley Davidson, Japanese Vintage, and European Bikes',
+  itemListElement: subcategoryCards.map((card, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: card.title,
+      description: card.description,
+    }
+  }))
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(itemListSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <HobbyHero
+    lang={lang}
+    title="Motorcycle Financing Malaysia"
+    subtitle="Hobby Financing"
+    description="Two-Wheeled Dreams Funded. We finance vintage and classic motorcycles that banks reject."
+    features={['Up to RM1 Million', 'No Age Limit', 'Fast Approval']}
+    backgroundColor="beige"
+  />
+
+  <!-- Subcategory Cards -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Motorcycle <span class="text-secondary">Categories</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          From Harley Davidson to Japanese vintage icons, find your dream ride
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {subcategoryCards.map((card) => (
+          <HobbyCard
+            lang={lang}
+            title={card.title}
+            description={card.description}
+            icon={card.icon}
+            href={card.href}
+            items={card.items}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Models Section -->
+  <section class="section bg-[#F5F1EB]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Popular <span class="text-secondary">Motorcycles</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Iconic bikes that enthusiasts dream about
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {popularModels.map((model) => (
+          <div class="bg-white border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6">
+              <h3 class="text-2xl font-display uppercase text-white mb-2">{model.name}</h3>
+              <p class="text-[#D4A574] font-bold text-lg">{model.priceRange}</p>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4 leading-relaxed">{model.description}</p>
+              <ul class="space-y-2">
+                {model.features.map((feature) => (
+                  <li class="text-sm text-gray-600 flex items-center space-x-2">
+                    <div class="w-4 h-4 bg-[#D4A574] flex-shrink-0"></div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing Details -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Financing <span class="text-secondary">Details</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Flexible terms designed for motorcycle enthusiasts
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {financingDetails.map((detail) => (
+          <div class="text-center p-6 bg-[#F5F1EB] border-3 border-[#2D1810]">
+            <div class="text-4xl mb-4">{detail.icon === 'dollar-sign' && '💰'}{detail.icon === 'infinity' && '♾️'}{detail.icon === 'calendar' && '📅'}{detail.icon === 'search' && '🔍'}</div>
+            <h3 class="text-lg font-display uppercase text-[#2D1810] mb-2">{detail.title}</h3>
+            <p class="text-sm text-gray-600">{detail.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F1EB]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked <span class="text-secondary">Questions</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Motorcycle financing questions answered
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#2D1810] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-white">
+        Ready to Finance Your <span class="text-[#D4A574]">Dream Ride</span>?
+      </h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Stop letting banks crush your dream. Get fast approval for your Harley, Ducati, or vintage motorcycle.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20motorcycle%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-[#2D1810] px-8 py-4 font-black uppercase tracking-wider border-3 border-white hover:bg-[#D4A574] hover:border-[#D4A574] transition-all inline-flex items-center gap-2"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp Now
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="bg-transparent text-white px-8 py-4 font-black uppercase tracking-wider border-3 border-white hover:bg-white hover:text-[#2D1810] transition-all"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
