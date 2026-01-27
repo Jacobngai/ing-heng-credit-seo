@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'en';
+const post = {
+  title: 'Kuching Equipment Financing 2026',
+  slug: 'kuching-equipment-financing-2026',
+  excerpt: 'Equipment financing in Kuching 2026. Sarawak construction, timber, palm oil equipment loans.',
+  date: '2026-01-06',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Equipment Financing',
+  image: '/images/blog/kuching.jpg'
+};
+
+const keywords = ["machinery-financing","kuching","sarawak"],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# Kuching Equipment Financing 2026
+
+Equipment financing in Kuching and Sarawak for construction and resource industries in 2026.
+
+## Sarawak Development 2026
+
+**Key Industries:**
+- Timber processing
+- Palm oil
+- Construction
+- **Equipment demand steady**
+
+## 2026 Kuching Equipment
+
+**Financing Available:**
+- Heavy machinery
+- Logging equipment
+- Construction vehicles
+- **Sarawak delivery**
+
+## Kuching Interest Rates
+
+| Equipment | Rate | Term |
+|-----------|------|------|
+| **Heavy** | 5.0-5.5% | 5-6 years |
+| **Vehicles** | 4.8-5.3% | 5 years |
+
+## Get Kuching Equipment
+
+Sarawak business? Apply for Kuching equipment financing.
+
+---
+
+**East Malaysia overview?** See [Regional Equipment East Malaysia](/blog/regional-equipment-2026-east-malaysia).
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

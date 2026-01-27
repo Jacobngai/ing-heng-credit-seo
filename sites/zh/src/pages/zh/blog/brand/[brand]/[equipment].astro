@@ -1,0 +1,434 @@
+---
+/**
+ * Dynamic Blog Post: Brand + Equipment Financing - Chinese
+ * URL: /zh/blog/品牌/卡特彼勒/挖掘机
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+import { generateFAQSchema } from '../../../../utils/schema';
+import {
+  getBrandTags,
+  getEquipmentTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  buildBrandTagUrl,
+  type Locale
+} from '../../../../utils/blog-tags';
+
+const lang: Locale = 'zh';
+
+export function getStaticPaths() {
+  const brands = getBrandTags();
+  const equipment = getEquipmentTags();
+  const paths = [];
+
+  for (const brand of brands) {
+    for (const equip of equipment) {
+      paths.push({
+        params: {
+          brand: brand.slug.zh,
+          equipment: equip.slug.zh
+        },
+        props: {
+          brandId: brand.id,
+          equipmentId: equip.id
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { brand, equipment } = Astro.params;
+const { brandId, equipmentId } = Astro.props;
+
+const brandTag = getBrandTags().find(b => b.id === brandId);
+const equipmentTag = getEquipmentTags().find(e => e.id === equipmentId);
+
+if (!brandTag || !equipmentTag) {
+  return Astro.redirect('/zh/blog');
+}
+
+const brandName = getTagName(brandTag, lang);
+const equipmentName = getTagName(equipmentTag, lang);
+
+// Equipment-specific data (Chinese)
+const equipmentData: Record<string, { priceRange: string; tenure: string; downPayment: string; uses: string[] }> = {
+  'excavator': { priceRange: 'RM 150,000 - RM 800,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['建筑工程', '采矿作业', '土地清理', '地基工程'] },
+  'forklift': { priceRange: 'RM 50,000 - RM 300,000', tenure: '最长5年', downPayment: '可0%首付', uses: ['仓储物流', '制造业', '物流运输', '零售业'] },
+  'lorry': { priceRange: 'RM 80,000 - RM 500,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['物流运输', '建筑工程', '农业运输', '零售配送'] },
+  'prime-mover': { priceRange: 'RM 200,000 - RM 600,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['港口运输', '长途运输', '重型货物', '集装箱运输'] },
+  'crane': { priceRange: 'RM 300,000 - RM 2,000,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['建筑工程', '港口作业', '重型吊装', '基础设施'] },
+  'bulldozer': { priceRange: 'RM 400,000 - RM 1,500,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['土地清理', '采矿作业', '道路建设', '场地准备'] },
+  'backhoe': { priceRange: 'RM 150,000 - RM 500,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['挖掘作业', '沟渠开挖', '景观绿化', '公用设施'] },
+  'wheel-loader': { priceRange: 'RM 200,000 - RM 800,000', tenure: '最长7年', downPayment: '可0%首付', uses: ['物料搬运', '采矿作业', '建筑工程', '采石场作业'] },
+  'road-roller': { priceRange: 'RM 100,000 - RM 400,000', tenure: '最长5年', downPayment: '可0%首付', uses: ['道路建设', '铺路作业', '压实作业', '基础设施'] }
+};
+
+const equipInfo = equipmentData[equipmentId] || {
+  priceRange: 'RM 100,000 - RM 500,000',
+  tenure: '最长7年',
+  downPayment: '可0%首付',
+  uses: ['建筑工程', '制造业', '物流运输']
+};
+
+// Brand-specific info (Chinese)
+const brandData: Record<string, { country: string; quality: string }> = {
+  'caterpillar': { country: '美国', quality: '高端' },
+  'komatsu': { country: '日本', quality: '高端' },
+  'hitachi': { country: '日本', quality: '高端' },
+  'kobelco': { country: '日本', quality: '高端' },
+  'volvo': { country: '瑞典', quality: '高端' },
+  'hyundai': { country: '韩国', quality: '优质' },
+  'sany': { country: '中国', quality: '性价比' },
+  'xcmg': { country: '中国', quality: '性价比' },
+  'doosan': { country: '韩国', quality: '优质' },
+  'jcb': { country: '英国', quality: '高端' }
+};
+
+const brandInfo = brandData[brandId] || { country: '国际', quality: '优质' };
+
+// FAQs (Chinese)
+const faqs = [
+  {
+    question: `如何融资${brandName}${equipmentName}？`,
+    answer: `在盈亨信贷融资${brandName}${equipmentName}非常简单。您需要准备：公司注册文件（SSM）、3个月银行对账单、董事身份证复印件以及${brandName}${equipmentName}报价单。通过WhatsApp发送您的文件，24小时内获得批准。`
+  },
+  {
+    question: `${brandName}${equipmentName}融资利率是多少？`,
+    answer: `我们的${brandName}${equipmentName}融资利率从年利率2.88%起。${brandName}设备通常保值良好，有助于获得更优惠的利率。联系我们获取个性化报价。`
+  },
+  {
+    question: `${brandName}${equipmentName}可以0%首付吗？`,
+    answer: `是的，符合条件的申请人可以享受0%首付融资${brandName}${equipmentName}。${brandName}的${brandInfo.quality}品牌声誉通常有助于获得批准。具体资格取决于公司的信用状况。`
+  },
+  {
+    question: `你们是否为二手${brandName}${equipmentName}提供融资？`,
+    answer: `是的，我们为新旧${brandName}${equipmentName}都提供融资。${brandName}设备以耐用性著称，使二手设备成为可行的选择。具体要求可能因设备年份和状况而异。`
+  },
+  {
+    question: `${brandName}${equipmentName}融资审批需要多长时间？`,
+    answer: `完整申请可在24小时内获得批准。${brandName}设备在马来西亚广为人知，评估流程简便。批准后通常在3-5个工作日内完成全额放款。`
+  }
+];
+
+const breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: '按品牌', href: '/zh/blog' },
+  { label: brandName, href: `/zh/blog/品牌/${brand}` },
+  { label: equipmentName, href: `/zh/blog/品牌/${brand}/${equipment}` }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": `${brandName}${equipmentName}融资马来西亚：完整指南`,
+  "description": `在马来西亚融资${brandName}${equipmentName}。了解申请要求、年利率2.88%起、可选0%首付。`,
+  "author": { "@type": "Organization", "name": "盈亨信贷有限公司" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "盈亨信贷有限公司",
+    "logo": { "@type": "ImageObject", "url": "https://www.inghengcredit.my/logo.png" }
+  },
+  "datePublished": "2025-01-22",
+  "dateModified": "2025-01-22"
+};
+
+const articleDate = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={`${brandName}${equipmentName}融资马来西亚 | 利率2.88%起 | 盈亨信贷`}
+  description={`在马来西亚融资您的${brandName}${equipmentName}。年利率2.88%起，可0%首付，24小时批准。40多年经验。`}
+  lang={lang}
+  keywords={[
+    `${brandName}${equipmentName}融资`,
+    `${brandName}${equipmentName}贷款马来西亚`,
+    `融资${brandName}${equipmentName}`,
+    `${brandName}设备融资`,
+    `购买${brandName}${equipmentName}马来西亚`
+  ]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(generateFAQSchema(faqs))} />
+
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap gap-2 mb-6">
+          <a href={`/zh/blog/品牌/${brand}`} class="badge-brutalist text-xs hover:bg-yellow-300 transition-colors">
+            {brandName}
+          </a>
+          <span class="badge-brutalist bg-white text-xs">{equipmentName}</span>
+          <span class="badge-brutalist bg-green-400 text-xs">融资指南</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" style="font-family: 'Bebas Neue', sans-serif;">
+          <span class="text-yellow-400">{brandName}</span>{equipmentName}融资马来西亚
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          融资{brandName}{equipmentName}完整指南。了解申请要求、优惠利率以及如何在24小时内获得批准。
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400 text-sm border-t border-white/20 pt-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span>更新于 {new Date(articleDate).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span>阅读时间 8 分钟</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{equipInfo.priceRange}</div>
+          <div class="text-sm font-bold text-navy-900/70">价格范围</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">年利率2.88%起</div>
+          <div class="text-sm font-bold text-navy-900/70">融资利率</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{equipInfo.tenure}</div>
+          <div class="text-sm font-bold text-navy-900/70">贷款期限</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{brandInfo.country}</div>
+          <div class="text-sm font-bold text-navy-900/70">品牌产地</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 prose prose-lg max-w-none">
+
+          <h2 class="text-3xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">
+            为什么选择{brandName}{equipmentName}？
+          </h2>
+
+          <p>
+            {brandName}是来自{brandInfo.country}的{brandInfo.quality}品牌，以质量和可靠性著称。
+            他们的{equipmentName}因良好的保值率和配件供应而成为马来西亚企业的热门选择。
+          </p>
+
+          <p>
+            {brandName}{equipmentName}通常用于：
+          </p>
+
+          <ul>
+            {equipInfo.uses.map((use) => (
+              <li><strong>{use}</strong> - 马来西亚各地需求旺盛</li>
+            ))}
+          </ul>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif;">
+            {brandName}{equipmentName}融资要求
+          </h2>
+
+          <div class="bg-gray-50 border-4 border-navy-900 p-6 my-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="text-xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+              所需文件
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>公司注册文件（SSM）</strong> - 表格9和24/49或商业登记证</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>银行对账单</strong> - 最近3个月公司银行对账单</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>身份证复印件</strong> - 所有董事/合伙人的MyKad</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>{brandName}{equipmentName}报价单</strong> - 来自授权经销商或卖家</span>
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif;">
+            常见问题
+          </h2>
+
+          <div class="space-y-6 my-8">
+            {faqs.map((faq) => (
+              <div class="bg-gray-50 border-3 border-navy-900 p-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <h3 class="font-bold text-lg text-navy-900 mb-2">{faq.question}</h3>
+                <p class="text-gray-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+
+            <div class="bg-navy-900 border-4 border-yellow-400 p-6" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+              <h3 class="text-xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+                融资您的{brandName}{equipmentName}
+              </h3>
+              <ul class="space-y-2 text-white text-sm mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>24小时审批</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>可0%首付</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>年利率2.88%起</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>新旧设备均可</span>
+                </li>
+              </ul>
+              <CTAButton
+                text="立即WhatsApp咨询"
+                link={COMPANY_INFO.whatsapp.link}
+                variant="accent"
+                size="large"
+                icon="whatsapp"
+                fullWidth={true}
+              />
+            </div>
+
+            <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+                其他{brandName}设备
+              </h3>
+              <ul class="space-y-2">
+                {getEquipmentTags().filter(e => e.id !== equipmentId).slice(0, 5).map((equip) => (
+                  <li>
+                    <a
+                      href={buildBrandEquipmentPostUrl(lang, brandId, equip.id)}
+                      class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors border-b border-gray-200 last:border-0"
+                    >
+                      <span class="font-medium">{brandName} {getTagName(equip, lang)}</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+                其他品牌
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {getBrandTags().filter(b => b.id !== brandId).slice(0, 6).map((b) => (
+                  <a
+                    href={buildBrandEquipmentPostUrl(lang, b.id, equipmentId)}
+                    class="px-3 py-1 bg-white border-2 border-navy-900 text-sm font-bold hover:bg-yellow-400 transition-colors"
+                    style="box-shadow: 2px 2px 0 #1E3A8A;"
+                  >
+                    {getTagName(b, lang)}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+        准备融资您的{brandName}{equipmentName}？
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        年利率2.88%起，24小时内获得批准。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="获取免费报价"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="查看所有{brandName}"
+          link={`/zh/blog/品牌/${brand}`}
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+
+  .prose h2 { @apply mt-12 mb-4; }
+  .prose p { @apply mb-4 text-gray-700 leading-relaxed; }
+  .prose ul { @apply my-4 space-y-2; }
+  .prose li { @apply text-gray-700; }
+  .prose strong { @apply text-navy-900; }
+</style>

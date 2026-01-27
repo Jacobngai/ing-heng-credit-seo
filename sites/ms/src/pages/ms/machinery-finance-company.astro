@@ -1,0 +1,352 @@
+---
+/**
+ * Syarikat Pembiayaan Jentera - Malay
+ * TARGET KEYWORD: machinery finance company (Currently #44 - MUST reach page 1)
+ * MISSION: Position Ing Heng as the leading machinery finance company for industrial clients
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { generateOrganizationSchema, generateFAQSchema, generateProductSchema } from '../../utils/schema';
+import { COMPANY_INFO } from '../../utils/constants';
+
+const lang = 'ms';
+
+// SEO Configuration
+const title = 'Syarikat Pembiayaan Jentera Terkemuka Malaysia | Pakar Peralatan Industri';
+const description = 'Syarikat pembiayaan jentera terpercaya Malaysia yang pakar dalam pembiayaan peralatan industri. Mesin CNC, talian pengeluaran, peralatan pembuatan - kami membiayai semuanya dengan pilihan 0% deposit.';
+const keywords = [
+  'syarikat pembiayaan jentera',
+  'syarikat pembiayaan peralatan industri',
+  'pakar pembiayaan CNC',
+  'pembiayaan peralatan pembuatan',
+  'pembiayaan talian pengeluaran',
+  'pinjaman jentera industri',
+  'pembiayaan teknologi Malaysia',
+  'pakar pembiayaan jentera',
+  'pakar pembiayaan peralatan',
+  'penyelesaian pembiayaan industri'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Syarikat Pembiayaan Jentera', href: '/ms/machinery-finance-company' }
+];
+
+// FAQ Data for Schema
+const faqs = [
+  {
+    question: 'Apakah jenis jentera yang syarikat pembiayaan anda khusus?',
+    answer: 'Sebagai syarikat pembiayaan jentera khusus, kami membiayai semua peralatan industri termasuk mesin CNC, mesin acuan suntikan, talian pengeluaran, peralatan pembuatan, sistem automatik, dan naik taraf teknologi. Kami memahami nilai jentera dan menerima peralatan sehingga 10+ tahun.'
+  },
+  {
+    question: 'Adakah anda membiayai jentera industri lama yang ditolak bank?',
+    answer: 'Ya! Tidak seperti bank tradisional yang menolak jentera berusia lebih 5 tahun, syarikat pembiayaan jentera kami mengkhusus dalam peralatan industri lama. Kami menilai keadaan mesin dan daya maju perniagaan, bukan had umur sewenang-wenangnya. Kami kerap membiayai mesin CNC dan peralatan pengeluaran berusia 10-15 tahun.'
+  },
+  {
+    question: 'Apakah deposit yang diperlukan untuk pembiayaan jentera?',
+    answer: 'Syarikat pembiayaan jentera kami menawarkan pilihan 0% deposit dengan sehingga 100% pembiayaan tersedia. Ini membolehkan pengeluar memperoleh peralatan pengeluaran penting tanpa menghabiskan modal kerja, mengekalkan aliran tunai untuk operasi dan pertumbuhan.'
+  },
+  {
+    question: 'Bagaimanakah proses kelulusan anda berbeza daripada bank untuk pembiayaan jentera?',
+    answer: 'Sebagai syarikat pembiayaan peralatan industri, kami memahami nilai jentera dan operasi perniagaan lebih baik daripada bank. Kami menilai keadaan peralatan, potensi perniagaan, dan pengetahuan industri berbanding mengikut formula perbankan yang tegar. Ini menghasilkan kelulusan yang lebih pantas untuk jentera berkualiti.'
+  },
+  {
+    question: 'Adakah anda menyediakan pembiayaan untuk naik taraf Industri 4.0 dan automatik?',
+    answer: 'Sudah tentu! Syarikat pembiayaan jentera kami mengkhusus dalam pembiayaan teknologi termasuk naik taraf Industri 4.0, sistem automatik, peralatan berkebolehan IoT, dan penyelesaian pembuatan pintar. Kami memahami pelaburan ini mendorong kelebihan daya saing dan kecekapan operasi.'
+  }
+];
+
+const organizationSchema = generateOrganizationSchema();
+const faqSchema = generateFAQSchema(faqs);
+const productSchema = generateProductSchema({
+  name: 'Penyelesaian Pembiayaan Jentera',
+  description: 'Pembiayaan peralatan industri komprehensif untuk mesin CNC, talian pengeluaran, dan teknologi pembuatan',
+  category: 'Perkhidmatan Kewangan',
+  brand: COMPANY_INFO.shortName,
+  offers: {
+    price: 'Kadar kompetitif dari 6.5% p.a.',
+    currency: 'MYR',
+    availability: 'Dalam Stok',
+    validFrom: new Date().toISOString(),
+  }
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+>
+  <StructuredData schema={organizationSchema} />
+  <StructuredData schema={faqSchema} />
+  <StructuredData schema={productSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="bg-blue-50 border-b-3 border-navy-900">
+    <div class="container-custom py-4">
+      <Breadcrumbs items={breadcrumbItems} lang={lang} />
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero relative overflow-hidden">
+    <div class="container-custom relative z-10 text-center py-20">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-display uppercase leading-tight mb-6 text-white">
+        Syarikat <span class="text-yellow-400">Pembiayaan Jentera</span> Terkemuka Malaysia
+      </h1>
+      <p class="text-xl md:text-2xl text-white opacity-90 mb-8 max-w-4xl mx-auto">
+        Pakar Peralatan Industri • Pakar Pembiayaan CNC • Rakan Teknologi Pembuatan
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-12 py-6">
+          Dapatkan Sebut Harga Peralatan Industri
+        </a>
+        <a href="/ms/calculator" class="btn btn-outline-white text-xl px-12 py-6">
+          Kira Bayaran Jentera
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
+
+  <!-- Pain Points Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Bila Bank Tidak Faham <span class="text-secondary">Peralatan Industri</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Pain Point 1: Equipment Age Rejection -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Masalah "Terlalu Tua"</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            Bila peralatan talian pengeluaran anda rosak dan bank berkata "kami tidak membiayai jentera berusia lebih 5 tahun," tetapi anda tahu CNC buatan Jerman itu masih ada 10+ tahun hayat, adakah anda rasa kecewa dengan kejahilan mereka tentang kualiti peralatan industri?
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ PENYELESAIAN SYARIKAT PEMBIAYAAN JENTERA KAMI:</p>
+            <p class="text-gray-700">Kami menilai keadaan peralatan dan potensi perniagaan, bukan had umur sewenang-wenangnya. Kami kerap membiayai jentera industri berusia 10-15 tahun yang masih sangat produktif.</p>
+          </div>
+        </div>
+
+        <!-- Pain Point 2: Competitive Pressure -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Jurang Persaingan Industri 4.0</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            Bila pesaing menaik taraf ke automatik Industri 4.0 sementara permohonan pinjaman anda terjebak dalam birokrasi bank selama 8 minggu, adakah tekanan persaingan itu menyakitkan bila anda melihat bahagian pasaran hilang?
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ PENYELESAIAN SYARIKAT PEMBIAYAAN JENTERA KAMI:</p>
+            <p class="text-gray-700">Kelulusan pantas untuk naik taraf teknologi dan sistem automatik. Kami memahami pelaburan ini mendorong kelebihan daya saing dan tidak akan melambatkan pemodenan anda.</p>
+          </div>
+        </div>
+
+        <!-- Pain Point 3: Cash Flow Impact -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Kehabisan Modal Kerja</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            Bila anda perlukan RM 800,000 untuk peralatan pengeluaran tetapi bank menuntut deposit 30%, adakah melihat RM 240,000 meninggalkan akaun modal kerja anda membuatkan perut mengencang kerana operasi akan kekurangan tunai?
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ PENYELESAIAN SYARIKAT PEMBIAYAAN JENTERA KAMI:</p>
+            <p class="text-gray-700">Pilihan deposit 0% dengan sehingga 100% pembiayaan tersedia. Kekalkan modal kerja untuk operasi sambil memperoleh peralatan pengeluaran penting.</p>
+          </div>
+        </div>
+
+        <!-- Pain Point 4: Equipment Expertise Gap -->
+        <div class="bg-red-50 border-l-8 border-red-500 p-8">
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Kejahilan Peralatan Banker</h3>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            Bila pegawai pinjaman bank bertanya "berapa nilai mesin CNC?" sambil menilai peralatan ketepatan buatan Switzerland RM 1.2 juta anda pada harga logam buruk, adakah kejahilan industri mereka membuatkan tekanan darah anda naik?
+          </p>
+          <div class="bg-white border-3 border-navy-900 p-6 shadow-brutal-md">
+            <p class="text-secondary font-black text-lg mb-2">✓ PENYELESAIAN SYARIKAT PEMBIAYAAN JENTERA KAMI:</p>
+            <p class="text-gray-700">Pakar peralatan industri yang memahami nilai jentera, kitaran hayat teknologi, dan operasi perniagaan pembuatan. Kami bercakap bahasa anda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Authority Section -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+          Pakar Pembiayaan Peralatan <span class="text-secondary">Industri Malaysia</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 max-w-4xl mx-auto text-xl">
+          Sebagai syarikat pembiayaan jentera khusus, kami faham bahawa peralatan industri bukan sekadar aset—ia adalah jantung kecemerlangan pembuatan dan kelebihan daya saing.
+        </p>
+      </div>
+
+      <!-- Authority Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- CNC Machinery Specialists -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg p-8">
+          <div class="text-6xl mb-6 text-center">🔧</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Pakar Jentera CNC</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Pakar pembiayaan peralatan ketepatan Switzerland, Jerman, Jepun. Kami memahami nilai Mazak, DMG Mori, Haas dan kitaran hayat teknologi lebih baik daripada mana-mana bank.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Pusat pemesinan berbilang-paksi</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Mesin bubut dan kisar</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Peralatan pencanai ketepatan</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Production Line Financing -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg p-8">
+          <div class="text-6xl mb-6 text-center">🏭</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Pakar Talian Pengeluaran</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Pembiayaan sistem pembuatan lengkap dari acuan suntikan hingga automatik pemasangan. Kami membiayai naik taraf keseluruhan keupayaan pengeluaran.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Sistem acuan suntikan</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Automatik talian pemasangan</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Peralatan kawalan kualiti</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Technology Upgrade Partners -->
+        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg p-8">
+          <div class="text-6xl mb-6 text-center">🚀</div>
+          <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Rakan Teknologi</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Pembiayaan transformasi Industri 4.0 termasuk integrasi IoT, sensor pintar, dan sistem pemantauan automatik yang mendorong kelebihan daya saing.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Peralatan berkebolehan IoT</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Sistem pemantauan automatik</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-secondary mr-3 text-xl mt-1">▸</span>
+              <span class="text-gray-700">Penyelesaian pembuatan pintar</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Manufacturing Sectors -->
+      <div class="bg-white border-3 border-navy-900 shadow-brutal-xl p-8">
+        <h3 class="text-3xl font-display uppercase text-navy-900 mb-8 text-center">Sektor Pembuatan Yang Kami Layani</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">⚙️</div>
+            <p class="font-black text-navy-900">Bahagian Automotif</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🏗️</div>
+            <p class="font-black text-navy-900">Komponen Pembinaan</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">📱</div>
+            <p class="font-black text-navy-900">Pembuatan Elektronik</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🍽️</div>
+            <p class="font-black text-navy-900">Pemprosesan Makanan</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🧪</div>
+            <p class="font-black text-navy-900">Pemprosesan Kimia</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">📦</div>
+            <p class="font-black text-navy-900">Sistem Pembungkusan</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">🔩</div>
+            <p class="font-black text-navy-900">Kejuruteraan Ketepatan</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">⚡</div>
+            <p class="font-black text-navy-900">Peralatan Elektrik</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-secondary text-white relative" style="border-top: 8px solid #FBBF24;">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6">
+        Bersedia Membiayai <span class="text-yellow-500">Peralatan Industri</span> Anda?
+      </h2>
+      <p class="text-xl mb-12 text-white opacity-90 max-w-4xl mx-auto">
+        Sertai syarikat pembiayaan jentera terkemuka Malaysia. Dapatkan panduan pakar untuk mesin CNC, talian pengeluaran, dan pembiayaan teknologi pembuatan dengan pilihan deposit 0%.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+        <a href={COMPANY_INFO.whatsapp.link} class="btn btn-secondary text-xl px-12 py-6">
+          WhatsApp Sebut Harga Peralatan Industri
+        </a>
+        <a href="/ms/contact" class="btn btn-outline-white text-xl px-12 py-6">
+          Dapatkan Sebut Harga Pembiayaan Jentera
+        </a>
+      </div>
+      <div class="mt-8 text-white">
+        <p class="text-lg">
+          Hubungi pakar pembiayaan jentera kami:
+          <a href={`tel:${COMPANY_INFO.phone.international}`} class="text-yellow-400 font-black hover:underline" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            {COMPANY_INFO.phone.display}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-white">
+    <div class="container-custom max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Dapatkan Sebut Harga <span class="text-secondary">Pembiayaan Jentera</span> Anda
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-gray-700 text-xl">
+          Hubungi syarikat pembiayaan jentera terkemuka Malaysia untuk penyelesaian pembiayaan peralatan industri pakar
+        </p>
+      </div>
+      <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-xl p-8 md:p-12">
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

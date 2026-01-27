@@ -1,0 +1,113 @@
+---
+/**
+ * Quilting Machine Financing Landing Page - Malay
+ * Sasaran: Pengusaha tekstil, home industry, garment manufacturers
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { SITE_CONFIG, COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Pembiayaan Mesin Quilting Malaysia - Deposit 0% | Industrial Quilting Machine';
+const pageDescription = 'Pembiayaan mesin quilting dengan deposit 0%. Long arm quilting machine, computerized quilting machine, industrial quilting equipment. Kelulusan untuk home industry.';
+const keywords = ['pembiayaan mesin quilting', 'industrial quilting machine', 'long arm quilting Malaysia', 'computerized quilting machine', 'textile machine loan'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Mesin Quilting', url: '/ms/equipment/quilting-machine' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <!-- Hero Section -->
+  <Hero
+    title="Pembiayaan Mesin Quilting - Deposit 0%"
+    subtitle="Long arm quilting, computerized quilting dengan pembiayaan 100%"
+    backgroundImage="/images/hero/quilting-machine.jpg"
+    lang={lang}
+  />
+
+  <!-- Breadcrumbs -->
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Main Content -->
+  <section class="section py-16 bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-black mb-8 text-[#2D1810] text-center">
+          Mesin Quilting Untuk Home Industry
+        </h2>
+        
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-6">
+          <p>
+            <strong>Mahu memulakan perniagaan quilting atau mengembangkan home industry?</strong> Kami menawarkan pembiayaan mesin quilting dengan <strong>deposit 0% dan pembiayaan sehingga 100%</strong> nilai peralatan.
+          </p>
+          
+          <p>
+            Long arm quilting machine, computerized quilting machine untuk pengeluaran selimut, comforter, produk tekstil berkualiti tinggi.
+          </p>
+
+          <div class="bg-[#F5F1EB] p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal my-8">
+            <h3 class="text-2xl font-bold mb-4 text-[#8B6F47]">Jenis Mesin Quilting</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Long Arm Quilting Machine</strong> - Untuk quilting profesional</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Computerized Quilting</strong> - Pattern automation untuk produktiviti</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Multi-Needle Quilting</strong> - High speed production machine</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Industrial Quilting Line</strong> - Complete production setup</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section py-16 bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-4xl font-black mb-4">Mulakan Home Industry Quilting</h2>
+      <p class="text-xl mb-8 opacity-90">Peralatan tekstil untuk pengusaha kreatif</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          href={COMPANY_INFO.whatsapp.link}
+          text="WhatsApp Kami"
+          variant="whatsapp"
+          lang={lang}
+        />
+        <CTAButton
+          href={`/${lang}/contact`}
+          text="Mohon Sekarang"
+          variant="secondary"
+          lang={lang}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment -->
+  <RelatedEquipment lang={lang} currentEquipment="quilting-machine" />
+
+  <!-- Contact Form -->
+  <ContactForm lang={lang} />
+</BaseLayout>

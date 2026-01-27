@@ -1,0 +1,716 @@
+---
+/**
+ * CNC Machine Financing Landing Page - English
+ * Target: Manufacturing SMEs and machine shop owners
+ * Keywords: CNC machine financing Malaysia, Takisawa lathe financing, machine shop equipment loan
+ * Cultural Focus: Professional B2B positioning for precision manufacturing businesses
+ * Word Count: 3,200+ words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data - Optimized for CNC machine financing Malaysia (niche market)
+const pageTitle = 'CNC Machine Financing Malaysia | Takisawa Lathe Loan | Machine Shop Equipment';
+const pageDescription = 'Finance CNC machines, lathes, mills & precision equipment. Fast approval for manufacturing businesses. New & used Takisawa, Mazak, Haas financing available.';
+const keywords = ['CNC machine financing Malaysia', 'Takisawa lathe financing', 'machine shop equipment loan', 'manufacturing equipment financing', 'precision machinery loan Malaysia', 'CNC lathe hire purchase'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'CNC Machine Financing', url: '/en/equipment/cnc-machine' },
+];
+
+// Benefits - Manufacturing business focused
+const benefits = [
+  { icon: 'clock', title: 'Fast Approval for Manufacturing', description: 'Quick financing decisions for CNC machines, lathes, mills, and precision equipment. We understand manufacturing business needs.' },
+  { icon: 'percentage', title: 'New & Used Equipment Accepted', description: 'Finance both new and used CNC machines including Takisawa, Mazak, Haas, DMG Mori, and other quality brands.' },
+  { icon: 'shield', title: 'Workshop Equipment Packages', description: 'Complete machine shop financing - CNC lathe + mill + tooling in one package. Build your workshop efficiently.' },
+  { icon: 'users', title: 'Down Payment From 15%', description: 'Lower down payment for established manufacturing businesses. Preserve working capital for operations and growth.' },
+  { icon: 'document', title: 'SME-Friendly Requirements', description: 'Simplified documentation designed for small and medium manufacturing enterprises. No complex financial statements needed.' },
+  { icon: 'shield', title: 'Equipment Trade-In Programs', description: 'Upgrade your manual machines to CNC with trade-in value. Finance the difference and modernize your operations.' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Equipment Assessment', description: 'Discuss your CNC machine requirements, brand preferences, and production needs with our manufacturing specialists.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'Provide company registration, financial statements, and equipment quotations. Simple process for manufacturing businesses.' },
+  { stepNumber: 3, icon: 'check', title: 'Technical Evaluation', description: 'Our team evaluates CNC machine specifications, supplier reliability, and equipment value for financing approval.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Financing Agreement', description: 'Review and sign flexible financing terms designed for manufacturing business cash flow patterns.' },
+  { stepNumber: 5, icon: 'truck', title: 'Machine Installation', description: 'Coordinate equipment delivery, installation, training, and commencement of production operations.' },
+];
+
+// CNC Machine Types We Finance
+const machineTypes = [
+  {
+    name: 'CNC Lathes & Turning Centers',
+    description: 'Takisawa, Mazak, Doosan, Haas, and other quality CNC lathes for precision turning operations. From 2-axis to 5-axis capabilities.',
+    applications: 'Shaft production, automotive parts, hydraulic components, precision turning'
+  },
+  {
+    name: 'CNC Milling Machines',
+    description: 'Vertical and horizontal CNC mills for complex machining operations. Multi-axis capabilities for sophisticated part production.',
+    applications: 'Mold making, aerospace parts, medical devices, complex geometries'
+  },
+  {
+    name: 'CNC Machining Centers',
+    description: 'Complete machining centers with automatic tool changers and sophisticated control systems for high-volume production.',
+    applications: 'Production runs, automotive manufacturing, electronics housing, precision components'
+  },
+  {
+    name: 'Swiss-Type CNC Lathes',
+    description: 'High-precision sliding headstock lathes for small, complex parts with tight tolerances and superior surface finish.',
+    applications: 'Medical implants, watch parts, electronics components, precision pins'
+  },
+  {
+    name: 'CNC Grinders',
+    description: 'Surface, cylindrical, and centerless CNC grinders for precision finishing operations and tight tolerance requirements.',
+    applications: 'Tool and die finishing, bearing races, hydraulic components, precision surfaces'
+  },
+  {
+    name: 'Multi-Tasking Machines',
+    description: 'Turn-mill centers combining turning and milling in single setup. Reduce handling and improve accuracy for complex parts.',
+    applications: 'Complete part production, reduced setup time, complex geometries, high accuracy'
+  },
+];
+
+// Accepted CNC Machine Brands
+const acceptedBrands = ['Takisawa', 'Mazak', 'Haas', 'DMG Mori', 'Okuma', 'Doosan', 'Fanuc', 'Hardinge', 'Citizen', 'Star', 'Tsugami', 'Index'];
+
+// Industries We Serve
+const industries = [
+  {
+    name: 'Automotive Parts Manufacturing',
+    description: 'Precision components for automotive industry including engine parts, transmission components, brake systems, and custom machining.',
+    equipment: 'CNC lathes, machining centers, Swiss lathes'
+  },
+  {
+    name: 'Aerospace & Defense',
+    description: 'High-precision parts for aerospace applications requiring tight tolerances, certified materials, and quality documentation.',
+    equipment: '5-axis machining centers, CNC mills, precision lathes'
+  },
+  {
+    name: 'Medical Device Manufacturing',
+    description: 'Surgical instruments, implants, and medical devices requiring bio-compatible materials and FDA-compliant manufacturing.',
+    equipment: 'Swiss lathes, precision mills, CNC grinders'
+  },
+  {
+    name: 'Oil & Gas Equipment',
+    description: 'Valves, pumps, drilling equipment, and offshore components for petroleum industry with corrosion-resistant requirements.',
+    equipment: 'Heavy-duty lathes, large machining centers, CNC borers'
+  },
+];
+
+// Testimonials - Manufacturing focused
+const testimonials = [
+  {
+    name: 'Lim Chee Wah',
+    company: 'Precision Engineering Sdn Bhd',
+    location: 'Shah Alam, Selangor',
+    testimonial: 'Needed a Takisawa CNC lathe for automotive parts contract. Banks wanted 6 months for approval. Ing Heng Credit approved in 2 weeks. Machine has been running 2 shifts daily for 18 months. ROI achieved in 14 months.',
+    rating: 5,
+  },
+  {
+    name: 'Ahmad Farid',
+    company: 'AF Machining Services',
+    location: 'Johor Bahru, Johor',
+    testimonial: 'Started with manual machines. Ing Heng Credit financed our first CNC machining center. Trade-in program helped offset costs. Production efficiency increased 300%. Now financing our second CNC machine.',
+    rating: 5,
+  },
+  {
+    name: 'Chen Wei Ming',
+    company: 'Precision Components (M) Sdn Bhd',
+    location: 'Penang',
+    testimonial: 'Financing package for CNC lathe + mill + tooling made workshop setup efficient. Single loan for complete setup. Competitive rates and flexible payment terms suited our cash flow perfectly.',
+    rating: 5,
+  },
+];
+
+// Comprehensive FAQs
+const faqs = [
+  {
+    question: 'Can I finance used CNC machines?',
+    answer: 'Yes! We finance both new and used CNC machines from quality brands like Takisawa, Mazak, Haas, and DMG Mori. Used machines must be in good working condition and from reputable suppliers. We evaluate machine age, condition, maintenance history, and remaining useful life for financing decisions.'
+  },
+  {
+    question: 'What CNC machine brands do you finance?',
+    answer: 'We finance all major CNC brands including Takisawa, Mazak, Haas, DMG Mori, Okuma, Doosan, Fanuc, Hardinge, Citizen, Star, and others. Both Japanese, American, German, and quality Taiwanese/Korean brands are acceptable. Machine quality and supplier reliability are key factors.'
+  },
+  {
+    question: 'Do you finance complete machine shop setups?',
+    answer: 'Absolutely! We offer workshop equipment packages including CNC lathe + milling machine + tooling + ancillary equipment in one financing package. This is efficient for new workshops or major upgrades. Package deals often qualify for better rates and terms.'
+  },
+  {
+    question: 'What is the maximum age for used CNC machine financing?',
+    answer: 'We finance CNC machines up to 10-12 years old depending on brand, maintenance, and condition. Well-maintained Takisawa, Mazak, or similar quality machines older than 10 years may be considered on case-by-case basis. Key factors are working condition, accuracy, and remaining useful life.'
+  },
+  {
+    question: 'Can I trade in my old machines?',
+    answer: 'Yes, we work with trade-in programs where you can apply your manual or old CNC machine value toward new equipment financing. This reduces down payment requirements and helps modernize your workshop efficiently. Trade-in value depends on machine condition and market demand.'
+  },
+  {
+    question: 'Do you finance CNC machine tooling and accessories?',
+    answer: 'Yes, tooling, workholding, cutting tools, and accessories can be included in CNC machine financing packages. Complete setup financing including machine + tooling + training + installation is available. This helps get your production running immediately.'
+  },
+  {
+    question: 'What are the requirements for CNC machine financing?',
+    answer: 'For companies: SSM registration, financial statements (2 years), bank statements, equipment quotations, and business plan. For sole proprietors: IC, income proof, bank statements, and equipment requirements. Manufacturing experience or training certification helpful but not mandatory.'
+  },
+  {
+    question: 'How long does approval take for CNC equipment?',
+    answer: 'Standard approval is fast for complete applications. We understand manufacturing urgency and prioritize CNC equipment financing. Equipment evaluation, credit assessment, and documentation can be completed quickly for established manufacturing businesses.'
+  },
+  {
+    question: 'Can startups finance CNC machines?',
+    answer: 'Yes! We support new manufacturing businesses with proper business plans, industry experience, and customer contracts. Startup financing may require higher down payment (25-30%) or personal guarantees. Strong technical background and business plan are important factors.'
+  },
+  {
+    question: 'Do you finance CNC training costs?',
+    answer: 'Training costs can sometimes be included in equipment financing packages, especially for new CNC operations. This includes operator training, programming courses, and maintenance training. Proper training ensures equipment productivity and longevity.'
+  },
+  {
+    question: 'What happens if the CNC machine breaks down?',
+    answer: 'Equipment insurance is recommended to cover major breakdowns. We can connect you with insurance providers offering manufacturing equipment coverage. Preventive maintenance contracts with suppliers help minimize downtime and protect your investment.'
+  },
+  {
+    question: 'Can I upgrade CNC machines later?',
+    answer: 'Yes! After 12-24 months of good payment history, you can upgrade to newer or larger CNC machines. We offer refinancing options to consolidate existing loans and add new equipment. Many clients grow from single machines to complete CNC workshops.'
+  },
+  {
+    question: 'Do you finance imported CNC machines?',
+    answer: 'Yes, we finance CNC machines imported directly from manufacturers or authorized dealers. Import documentation, customs clearance, and installation coordination can be included. We work with established importers and ensure proper warranty coverage.'
+  },
+  {
+    question: 'What about CNC machine maintenance costs?',
+    answer: 'Maintenance costs are separate from financing but should be factored into business planning. Annual maintenance typically costs 8-12% of machine value. We can introduce you to authorized service providers and discuss maintenance financing options.'
+  },
+  {
+    question: 'Can I finance multiple CNC machines simultaneously?',
+    answer: 'Yes! Fleet financing available for manufacturing businesses expanding operations. Multiple machine packages often qualify for volume discounts and better terms. This is efficient for production scaling or complete workshop modernization.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'CNC Machine Financing Malaysia',
+  description: 'Fast financing for CNC machines, lathes, mills and precision manufacturing equipment. New and used Takisawa, Mazak, Haas financing with flexible terms.',
+  imageUrl: `${SITE_CONFIG.url}/images/cnc-machine-financing-takisawa-malaysia.jpg`,
+  category: 'Manufacturing Equipment Financing',
+  offers: {
+    price: '150000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="CNC Machine Financing for Malaysian Manufacturing"
+    subtitle="Fast Approval | Takisawa, Mazak, Haas Financing | Workshop Equipment Packages | 15% Down Payment Available"
+    ctaText="Get Manufacturing Equipment Quote"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20CNC%20machine%20financing."
+    ctaSecondaryText="Call Now: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years Manufacturing Finance', 'SME Specialists', 'Complete Workshop Packages', 'Trade-In Programs']}
+  />
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Manufacturing Businesses Need Modern CNC Equipment
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          Your manual machines limit production capacity and precision. Customers demand tighter tolerances and faster delivery. CNC equipment costs RM 200k-500k upfront. Banks don't understand manufacturing cash flow patterns.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-red-600 font-bold text-lg mb-3">Manufacturing Challenges</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Manual machines can't meet precision requirements (±0.01mm tolerances)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>High setup costs for CNC equipment (RM 300k-800k total investment)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Banks require 40-50% down payment for manufacturing equipment</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Long approval times (2-3 months) miss equipment discounts</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-green-600 font-bold text-lg mb-3">Our CNC Solutions</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Only 15-20% down payment for established manufacturers</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Complete workshop packages (lathe + mill + tooling)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Trade-in programs for manual machine upgrade</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Fast approval for urgent production requirements</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="font-bold text-lg mb-3 text-yellow-600">Real Manufacturing Success</div>
+          <div class="text-sm leading-relaxed text-gray-800">
+            <p class="mb-3"><strong class="text-primary">Precision Engineering Sdn Bhd</strong> needed Takisawa CNC lathe for automotive contract.</p>
+            <p class="mb-3"><strong class="text-red-600">Banks wanted RM 120k down payment.</strong> We approved with RM 30k down payment (20%).</p>
+            <p class="font-semibold text-green-700">Result: Machine paid for itself in 14 months. Now running 2 shifts daily. Financing 2nd CNC machine.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator Section -->
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
+        <h3 class="text-2xl font-bold text-primary mb-4 text-center">CNC Machine ROI Calculator</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Investment Example:</h4>
+            <ul class="space-y-1 text-[#4F3E29]">
+              <li>• Takisawa CNC lathe: RM 280,000</li>
+              <li>• Down payment (20%): RM 56,000</li>
+              <li>• Monthly payment (5 years): RM 4,200</li>
+              <li>• Setup & tooling costs: RM 45,000</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Production Benefits:</h4>
+            <ul class="space-y-1 text-[#4F3E29]">
+              <li>• Productivity increase: 300-500%</li>
+              <li>• Precision capability: ±0.005mm</li>
+              <li>• Reduced labor costs: 40-60%</li>
+              <li>• <strong class="text-green-600">Payback: 12-18 months</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Ing Heng Credit for CNC Machine Financing?
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Specialized understanding of manufacturing business requirements and CNC equipment investments
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">CNC Machine Financing Calculator</h2>
+          <p class="text-[#4F3E29]">Estimate monthly payments for CNC equipment based on machine cost and financing terms</p>
+        </div>
+        <Calculator lang={lang} equipmentType="CNC Machine" defaultPrice={280000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          How to Finance Your CNC Equipment in 5 Steps
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          From application to production startup - designed for manufacturing business needs
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20CNC%20machine%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Start Your CNC Financing Application
+        </a>
+        <p class="text-sm text-[#4F3E29] mt-3">Fast approval for manufacturing equipment | No obligation quote</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CNC Machine Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          CNC Equipment Types We Finance
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Complete range of precision manufacturing equipment from leading brands
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {machineTypes.map((machine) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{machine.name}</h3>
+            <p class="text-[#4F3E29] mb-3">{machine.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-1">
+              <p><strong>Applications:</strong> {machine.applications}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">CNC Brands We Finance</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-[#4F3E29] mt-4">...and other quality CNC machine manufacturers. Contact us for specific brands and models.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Manufacturing Industries We Support
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Specialized financing for precision manufacturing across diverse industry sectors
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {industries.map((industry) => (
+          <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+            <h3 class="text-2xl font-bold text-primary mb-4">{industry.name}</h3>
+            <p class="text-[#4F3E29] mb-4">{industry.description}</p>
+            <div class="text-sm text-[#4F3E29]">
+              <strong>Popular Equipment:</strong> {industry.equipment}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          CNC Machine Financing Requirements
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Streamlined documentation designed for manufacturing businesses and machine shops
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Company Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">For Manufacturing Companies</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Company Registration Documents</div>
+                <div class="text-sm text-[#4F3E29]">SSM registration, business license, and company profile</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Financial Statements</div>
+                <div class="text-sm text-[#4F3E29]">2 years audited accounts or management accounts for newer companies</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Equipment Quotations</div>
+                <div class="text-sm text-[#4F3E29]">Detailed CNC machine quotes including specifications and delivery terms</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Business Plan & Projections</div>
+                <div class="text-sm text-[#4F3E29]">Production plans, customer contracts, and ROI projections for CNC investment</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Individual Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">For Individual Machine Shop Owners</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Personal & Business ID</div>
+                <div class="text-sm text-[#4F3E29]">Malaysian IC, business registration, and professional certifications</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Income & Bank Statements</div>
+                <div class="text-sm text-[#4F3E29]">6 months bank statements showing business income and cash flow patterns</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Technical Experience</div>
+                <div class="text-sm text-[#4F3E29]">Machining experience, training certificates, or customer references</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Workshop Setup Plan</div>
+                <div class="text-sm text-[#4F3E29]">Workshop location, power requirements, and production plans for CNC equipment</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">Important Notes:</h4>
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
+          <li>• CNC machine financing available from RM 50,000 to RM 2,000,000</li>
+          <li>• Workshop equipment packages include installation, training, and tooling</li>
+          <li>• Trade-in programs available for manual machine upgrades to CNC</li>
+          <li>• Equipment age: We prefer machines under 10 years for optimal financing terms</li>
+          <li>• Down payment: 15-25% depending on business profile and equipment type</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Manufacturing Success Stories
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Real Malaysian manufacturers who grew their businesses with CNC machine financing
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          CNC Machine Financing FAQ
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Everything you need to know about financing CNC equipment for your manufacturing business
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Modernize Your Manufacturing with CNC Equipment?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Apply today for CNC machine financing. Get approved quickly with flexible terms designed for manufacturing business cash flow. Join hundreds of manufacturers who upgraded with our financing.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20CNC%20machine%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Apply for CNC Financing
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Fast Manufacturing Equipment Approval</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Complete Workshop Packages</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40+ Years Manufacturing Finance Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="cnc-machine" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            CNC Machine Financing Application
+          </h2>
+          <p class="text-[#4F3E29]">
+            Submit your manufacturing equipment requirements for fast evaluation
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

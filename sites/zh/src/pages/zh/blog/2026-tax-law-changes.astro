@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '2026年税法变更',
+  slug: '2026-tax-law-changes',
+  excerpt: '2026年税法变更指南。了解影响设备融资的税务变更。0%首付，100%全款融资。',
+  date: '2026-01-22',
+  author: 'Ing Heng Credit Team',
+  readTime: 5,
+  category: '税务规划',
+  image: '/images/blog/2026-tax-law-changes.jpg'
+};
+
+const keywords = ['机械融资', 'equipment financing malaysia', '0% down payment', 'heavy equipment loan'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/zh' },
+  { label: 'Blog', href: '/zh/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">税务规划</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+      <h2>2026年税法变更</h2>
+      <p>了解2026年影响设备融资的税务变更。</p>
+
+      <h3>2026年主要税务变更</h3>
+      <ul>
+        <li>公司税率调整</li>
+        <li>资本津贴更新</li>
+        <li>数字化税务申报</li>
+        <li>环保设备优惠</li>
+      </ul>
+
+      <h3>对设备融资的影响</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>变更</th>
+            <th>影响</th>
+            <th>建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>税率调整</td>
+            <td>税务负担变化</td>
+            <td>重新评估融资</td>
+          </tr>
+          <tr>
+            <td>津贴更新</td>
+            <td>更多优惠</td>
+            <td>申请新津贴</td>
+          </tr>
+          <tr>
+            <td>数字化</td>
+            <td>更方便申报</td>
+            <td>升级系统</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>如何应对变更?</h3>
+      <ul>
+        <li>了解新规定</li>
+        <li>咨询税务顾问</li>
+        <li>更新记录系统</li>
+        <li>规划设备购买</li>
+      </ul>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">2026年税法变更?</h3>
+        <p style="margin-bottom: 1rem;">0%首付。100%全款。无年龄限制。快速24小时审批。立即获得批准。</p>
+        <p style="margin-bottom: 0;"><strong>联系方式:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (电话)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="立即获取融资" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #D4A574;
+  }
+
+  th {
+    background: #F5F0E8;
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  br {
+    display: none;
+  }
+</style>

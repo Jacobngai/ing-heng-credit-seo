@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '旧设备再融资 2026 - 老设备融资',
+  slug: '旧设备再融资2026',
+  excerpt: '2026年旧设备再融资。0%首付，100%融资，已拥有老设备再融资释放现金。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["旧设备再融资","老设备融资","拥有设备融资","设备现金"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 旧设备再融资 2026
+
+## 旧设备再融资
+
+已拥有的旧设备可以再融资:
+
+```
+拥有旧设备 → 再融资 → 释放现金 → 用于新设备
+```
+
+## 再融资价值
+
+| 设备 | 年龄 | 现有价值 | 可释放现金 |
+|------|------|---------|-----------|
+| 叉车 | 5-8年 | RM 10,000-15,000 | RM 8,000-12,000 |
+| 货车 | 8-10年 | RM 20,000-40,000 | RM 15,000-30,000 |
+| 挖掘机 | 10年+ | RM 30,000-60,000 | RM 20,000-40,000 |
+
+**立即申请: WhatsApp +60175700889**
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

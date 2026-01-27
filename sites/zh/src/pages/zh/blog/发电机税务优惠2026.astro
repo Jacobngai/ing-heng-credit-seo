@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '发电机税务优惠 2026 - 发电机津贴',
+  slug: '发电机税务优惠2026',
+  excerpt: '2026年发电机税务优惠。资本津贴、利息抵税。备用发电机税务。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["发电机税务优惠","发电机津贴","备用电力","发电机税务"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 发电机税务优惠 2026
+
+## 发电机税务
+
+购买发电机享受税务优惠:
+
+```
+购买发电机 → 资本津贴20% → 利息抵税 → 税节省
+```
+
+## 税务优惠
+
+| 优惠类型 | 金额 | 税节省 |
+|---------|------|-------|
+| 资本津贴 | 20%×RM 50,000 | RM 2,400/年 |
+| 利息抵税 | RM 3,000/年 | RM 720/年 |
+| 总节省 | | RM 3,120/年 |
+
+**立即申请: WhatsApp +60175700889**
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

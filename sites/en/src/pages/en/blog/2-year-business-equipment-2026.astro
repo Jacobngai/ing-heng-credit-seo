@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'en';
+const post = {
+  title: '2-Year Business Equipment 2026',
+  slug: '2-year-business-equipment-2026',
+  excerpt: '2-year business equipment financing 2026. Established business equipment loans with better terms.',
+  date: '2026-01-07',
+  author: 'Ing Heng Credit Team',
+  readTime: 5,
+  category: 'Established Business',
+  image: '/images/blog/2-year-business.jpg'
+};
+
+const keywords = ['2-year business', 'equipment financing', 'established business', 'bank terms'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Established Business</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Why 2-Year Business Equipment Financing 2026?</h2>
+      <p>Business operating 2 years? Near-bank terms available for equipment financing in 2026.</p>
+
+      <h2>2-Year Business Advantage</h2>
+
+      <p><strong>Established Position:</strong></p>
+      <ul>
+        <li>24 months operation proven</li>
+        <li>2-year financial history</li>
+        <li>Survival demonstrated</li>
+        <li>Growth patterns clear</li>
+        <li><strong>80-90% approval rate</strong></li>
+      </ul>
+
+      <h2>2026 2-Year Terms</h2>
+
+      <p><strong>Bank-Competitive:</strong></p>
+      <ul>
+        <li>0-10% down payment</li>
+        <li>4.5-5.5% interest</li>
+        <li>5-7 year terms</li>
+        <li>Large amounts possible</li>
+        <li><strong>Similar to bank terms</strong></li>
+      </ul>
+
+      <h2>Real 2-Year Approvals</h2>
+
+      <p><strong>Case:</strong> Logistics - 2 years<br>
+      <strong>Need:</strong> 3 lorries<br>
+      <strong>Financing:</strong> RM 360,000, 0% down<br>
+      <strong>Approved:</strong> 24 hours</p>
+
+      <h2>2-Year Documentation</h2>
+
+      <p><strong>Required:</strong></p>
+      <ul>
+        <li>24 months bank statements</li>
+        <li>2-year financial summary</li>
+        <li>Tax returns (if any)</li>
+        <li><strong>Strong approval profile</strong></li>
+      </ul>
+
+      <h2>Get 2-Year Equipment</h2>
+
+      <p>Business 2 years old? Apply for bank-competitive equipment financing.</p>
+
+      <hr />
+
+      <p><strong>Less established?</strong> See <a href="/blog/1-year-business-equipment-2026">1-Year Business Equipment</a>.</p>
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href={`/${lang}/contact`}>Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

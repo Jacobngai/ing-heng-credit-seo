@@ -1,0 +1,274 @@
+---
+/**
+ * Helicopter Financing Landing Page - Mandarin Chinese
+ * Target: Aviation companies, emergency services, tourism operators
+ * Keywords: 直升机融资, 直升机贷款, 航空设备融资
+ * Cultural Focus: Aviation industry, emergency services, tourism
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '直升机融资马来西亚 | 0%押金 | 永兴信贷 | 航空专业融资';
+const pageDescription = '专业直升机融资服务。0%押金，100%融资，支持航空业务发展。永兴信贷40年信誉，航空设备专业融资。';
+const keywords = ['直升机融资', '直升机贷款', '航空设备融资', '航空业融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '直升机融资', url: '/zh/equipment/helicopter' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'plane', title: '航空业专家', description: '深入了解航空业法规和需求，专门为直升机业务提供融资支持。' },
+  { icon: 'percentage', title: '高额融资额度', description: '最高可融资数千万令吉，支持各种规模的航空项目。' },
+  { icon: 'clock', title: '专业审批', description: '专业航空融资团队，了解行业特殊性，提供专业服务。' },
+  { icon: 'calendar', title: '长期融资', description: '最长10年还款期，配合航空设备的使用周期。' },
+  { icon: 'shield', title: '保险配套', description: '协助安排航空保险和风险管理方案。' },
+  { icon: 'award', title: '国际认证', description: '支持符合国际航空标准的直升机设备。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '直升机融资马来西亚',
+  description: '专业直升机融资，支持航空业务发展。永兴信贷航空设备专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/helicopter-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '5000000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚直升机融资"
+    subtitle="航空专业融资 | 高额度支持 | 永兴信贷航空业专家"
+    ctaText="WhatsApp专业咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解直升机融资服务。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '航空专家']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          直升机融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为航空业提供直升机融资服务。支持马来西亚航空业发展，包括紧急救援、观光旅游和商业运输。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Helicopter Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的直升机类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">轻型直升机</h4>
+            <p class="text-[#4F3E29] mb-4">2-4座，适合培训、观光和私人使用。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">中型直升机</h4>
+            <p class="text-[#4F3E29] mb-4">5-15座，商业运输和紧急救援。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">重型直升机</h4>
+            <p class="text-[#4F3E29] mb-4">15座以上，大型货物运输和海上平台。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">救援直升机</h4>
+            <p class="text-[#4F3E29] mb-4">医疗救援专用，配备医疗设备。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">观光直升机</h4>
+            <p class="text-[#4F3E29] mb-4">旅游业专用，大视野设计。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">多用途直升机</h4>
+            <p class="text-[#4F3E29]">可配置不同任务，灵活应用。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-blue-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">应用领域</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-blue-600 mb-3">商业应用</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 观光旅游服务</li>
+              <li>• 商业客运服务</li>
+              <li>• 企业高管运输</li>
+              <li>• 海上平台运输</li>
+              <li>• 货物运输服务</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-blue-600 mb-3">专业服务</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 紧急医疗救援</li>
+              <li>• 搜索救援任务</li>
+              <li>• 消防救援支援</li>
+              <li>• 电力线路巡检</li>
+              <li>• 航空摄影测量</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financing Details -->
+      <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">融资详情</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">RM 5M+</div>
+            <div class="font-semibold mb-2">融资额度</div>
+            <div class="text-sm opacity-90">根据设备价值</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">120个月</div>
+            <div class="font-semibold mb-2">最长期限</div>
+            <div class="text-sm opacity-90">灵活还款安排</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">专业</div>
+            <div class="font-semibold mb-2">审批团队</div>
+            <div class="text-sm opacity-90">航空业专家</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety & Compliance -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          安全与合规要求
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          确保所有融资的直升机符合国际航空安全标准
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <h3 class="text-lg font-bold text-red-600 mb-4">安全认证要求</h3>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li>• 适航证书 (Certificate of Airworthiness)</li>
+            <li>• 维护记录完整</li>
+            <li>• 定期安全检查</li>
+            <li>• 飞行员执照认证</li>
+            <li>• 航空保险覆盖</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <h3 class="text-lg font-bold text-green-600 mb-4">营运许可</h3>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li>• 商业运营许可证</li>
+            <li>• 航空运输许可</li>
+            <li>• 环境合规证明</li>
+            <li>• 噪音标准认证</li>
+            <li>• 飞行路线批准</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        投资航空业，开拓天空商机
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷航空融资专家助您实现航空事业梦想，开创天空中的商业机遇。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请直升机融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp咨询
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="helicopter" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取直升机融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的航空融资专家将为您提供专业咨询
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

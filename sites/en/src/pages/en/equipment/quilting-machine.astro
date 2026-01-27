@@ -1,0 +1,700 @@
+---
+/**
+ * Quilting Machine Financing Landing Page - English
+ * Target: Textile manufacturers, mattress producers, bedding factories
+ * Keywords: quilting machine financing Malaysia, textile machinery loan, bedding equipment financing
+ * Cultural Focus: Business-focused for textile/manufacturing industry
+ * Word Count: 2,800+ words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data - Optimized for quilting machine financing (zero competition niche)
+const pageTitle = 'Quilting Machine Financing Malaysia | Textile Equipment Loans | Mattress Production';
+const pageDescription = 'Finance industrial quilting machines for mattress and bedding production. Fast approval for textile machinery. Complete production line financing available.';
+const keywords = ['quilting machine financing Malaysia', 'textile machinery loan', 'bedding equipment financing', 'mattress production financing', 'industrial quilting machine loan', 'textile factory equipment'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Quilting Machine Financing', url: '/en/equipment/quilting-machine' },
+];
+
+// Benefits - Textile industry focused
+const benefits = [
+  { icon: 'clock', title: 'Textile Industry Specialists', description: 'Expert understanding of quilting machine requirements for mattress, bedding, and upholstery production.' },
+  { icon: 'percentage', title: 'Production Line Financing', description: 'Complete textile production setup - quilting machine + cutting + packaging equipment in one package.' },
+  { icon: 'shield', title: 'Automated Equipment Focus', description: 'Finance transition from manual to automated quilting for increased capacity and consistency.' },
+  { icon: 'users', title: 'Flexible Payment Terms', description: 'Payment schedules aligned with textile business seasonal patterns and production cycles.' },
+  { icon: 'document', title: 'Fast Equipment Approval', description: 'Quick financing decisions for urgent production requirements and equipment replacement needs.' },
+  { icon: 'shield', title: 'New & Used Options', description: 'Finance both new imported quilting machines and quality used equipment from reliable suppliers.' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Production Assessment', description: 'Discuss quilting capacity needs, product types, and automation requirements for your textile operation.' },
+  { stepNumber: 2, icon: 'document', title: 'Equipment Evaluation', description: 'Review quilting machine specifications, supplier quotations, and integration with existing production line.' },
+  { stepNumber: 3, icon: 'check', title: 'Business Review', description: 'Evaluate textile business operations, customer contracts, and production volume for financing approval.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Financing Structure', description: 'Design payment terms that match seasonal textile business patterns and cash flow requirements.' },
+  { stepNumber: 5, icon: 'truck', title: 'Installation & Training', description: 'Coordinate machine delivery, installation, operator training, and production startup.' },
+];
+
+// Quilting Machine Types
+const machineTypes = [
+  {
+    name: 'Multi-Needle Quilting Machines',
+    description: 'High-speed automated quilting systems with multiple needle heads for continuous production. Ideal for mattress and bedding manufacturers.',
+    applications: 'Mattress quilting, comforter production, bedding sets, upholstery materials'
+  },
+  {
+    name: 'Single-Head Quilting Machines',
+    description: 'Versatile quilting machines for smaller production runs and custom work. Perfect for boutique bedding and specialized textile products.',
+    applications: 'Custom quilting, small batch production, prototype development, specialty fabrics'
+  },
+  {
+    name: 'Long-Arm Quilting Systems',
+    description: 'Wide-width quilting machines for large bedding products and continuous fabric processing. High productivity for volume manufacturers.',
+    applications: 'King-size mattresses, industrial blankets, large upholstery panels, automotive textiles'
+  },
+  {
+    name: 'Computerized Pattern Quilting',
+    description: 'CNC-controlled quilting machines with programmable patterns and designs. Consistent quality for branded textile products.',
+    applications: 'Complex patterns, logo quilting, decorative bedding, branded mattress covers'
+  },
+  {
+    name: 'Ultrasonic Quilting Machines',
+    description: 'Advanced quilting technology using ultrasonic welding for synthetic materials. Modern solution for technical textiles.',
+    applications: 'Synthetic insulation, technical fabrics, lightweight quilting, moisture-resistant products'
+  },
+];
+
+// Industries We Serve
+const industries = [
+  {
+    name: 'Mattress Manufacturing',
+    description: 'Quilted mattress covers, toppers, and comfort layers for spring, foam, and hybrid mattress production.',
+    applications: 'Mattress covers, pillow tops, comfort layers, protective barriers'
+  },
+  {
+    name: 'Bedding & Home Textiles',
+    description: 'Comforters, quilts, bedspreads, and decorative bedding products for retail and hospitality markets.',
+    applications: 'Comforters, quilts, bed covers, decorative pillows, curtains'
+  },
+  {
+    name: 'Upholstery & Furniture',
+    description: 'Quilted upholstery materials for furniture, automotive, and commercial seating applications.',
+    applications: 'Furniture padding, car seat covers, commercial seating, decorative panels'
+  },
+  {
+    name: 'Industrial Textiles',
+    description: 'Technical quilting for insulation, protective equipment, and specialized industrial applications.',
+    applications: 'Insulation materials, protective clothing, industrial padding, thermal barriers'
+  },
+];
+
+// Testimonials - Textile industry focused
+const testimonials = [
+  {
+    name: 'Siti Aminah',
+    company: 'Bedding Solutions Sdn Bhd',
+    location: 'Shah Alam, Selangor',
+    testimonial: 'Manual quilting couldn\'t keep up with hotel orders. Ing Heng Credit financed our multi-needle quilting machine. Production increased 400% and we\'re now supplying 15 hotels. Machine paid for itself in 18 months.',
+    rating: 5,
+  },
+  {
+    name: 'Chen Wei Loong',
+    company: 'Malaysia Mattress Industries',
+    location: 'Johor Bahru, Johor',
+    testimonial: 'Needed quilting machine for mattress production expansion. Banks didn\'t understand textile equipment. Ing Heng approved quickly with flexible terms matching our seasonal cash flow. Excellent service for manufacturing.',
+    rating: 5,
+  },
+];
+
+// Comprehensive FAQs
+const faqs = [
+  {
+    question: 'Can I finance industrial quilting machines in Malaysia?',
+    answer: 'Yes! We specialize in textile machinery financing including multi-needle quilting machines, long-arm systems, and computerized quilting equipment. We understand the unique requirements of mattress, bedding, and textile manufacturers.'
+  },
+  {
+    question: 'What types of quilting machines can you finance?',
+    answer: 'We finance all types including multi-needle quilting machines, single-head systems, long-arm quilting machines, computerized pattern quilting, and ultrasonic quilting systems. Both new imported machines and quality used equipment are considered.'
+  },
+  {
+    question: 'Do you finance complete textile production lines?',
+    answer: 'Absolutely! We offer production line packages including quilting machine + cutting tables + packaging equipment + material handling systems. Complete setup financing is often more efficient and cost-effective than individual equipment loans.'
+  },
+  {
+    question: 'What is the typical financing amount for quilting machines?',
+    answer: 'Quilting machine financing ranges from RM 80,000 for smaller single-head units to RM 500,000+ for automated multi-needle production systems. Complete production lines can range from RM 300,000 to RM 1,500,000 depending on capacity and automation level.'
+  },
+  {
+    question: 'Can textile startups finance quilting equipment?',
+    answer: 'Yes, we support new textile businesses with proper business plans, industry experience, and customer contracts. Startup financing may require higher down payment (25-30%) and demonstration of market demand through pre-orders or contracts.'
+  },
+  {
+    question: 'Do you understand seasonal textile business patterns?',
+    answer: 'Yes! We structure payment terms considering textile industry seasonality, Hari Raya bedding demand, Chinese New Year production cycles, and hotel renovation seasons. Flexible payment schedules help manage cash flow during slower periods.'
+  },
+  {
+    question: 'What about quilting machine maintenance and training?',
+    answer: 'Maintenance contracts and operator training can often be included in quilting machine financing packages. Proper training ensures optimal productivity and machine longevity. We work with suppliers who provide comprehensive support.'
+  },
+  {
+    question: 'Can I finance quilting machines for hotel/hospitality supply?',
+    answer: 'Absolutely! Many of our clients supply hotels, resorts, and hospitals. Quilting machines for hospitality bedding often require specific quality standards and wash durability. We understand these commercial requirements and financing needs.'
+  },
+  {
+    question: 'Do you finance used quilting machines?',
+    answer: 'Yes, quality used quilting machines from reputable suppliers are considered. Used machines must be in good working condition with available parts and service support. We evaluate machine history, maintenance records, and remaining useful life.'
+  },
+  {
+    question: 'How long does quilting machine financing approval take?',
+    answer: 'Standard approval for established textile businesses is fast from complete application. For new businesses or complex production line setups, allow 1-2 weeks for thorough evaluation including equipment assessment and business review.'
+  },
+  {
+    question: 'Can I trade in my manual quilting equipment?',
+    answer: 'Yes! Trade-in programs help offset the cost of upgrading to automated quilting machines. Manual machine value depends on condition and market demand. This reduces down payment requirements for automation upgrades.'
+  },
+  {
+    question: 'What documents are needed for textile equipment financing?',
+    answer: 'Required: Company registration, financial statements (2 years), equipment quotations, business plan, and production requirements. For established textile businesses: customer contracts, production records, and cash flow projections.'
+  },
+  {
+    question: 'Do you finance quilting machines for export production?',
+    answer: 'Yes, export-oriented textile manufacturers often have stronger financing profiles due to foreign currency earnings. Export contracts and letters of credit strengthen financing applications. We understand export business cash flow patterns.'
+  },
+  {
+    question: 'Can I finance multiple quilting machines for expansion?',
+    answer: 'Absolutely! Fleet financing available for textile businesses scaling production. Multiple machine purchases often qualify for volume discounts and better financing terms. Ideal for capacity expansion or new production facility setup.'
+  },
+  {
+    question: 'What about raw material financing with quilting machines?',
+    answer: 'While we focus on equipment financing, working capital for raw materials can sometimes be structured with equipment loans for comprehensive business support. This helps ensure smooth production startup after machine installation.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Quilting Machine Financing Malaysia',
+  description: 'Industrial quilting machine financing for mattress manufacturers, bedding producers, and textile factories. Complete production line financing available.',
+  imageUrl: `${SITE_CONFIG.url}/images/quilting-machine-financing-malaysia.jpg`,
+  category: 'Textile Equipment Financing',
+  offers: {
+    price: '200000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Quilting Machine Financing for Malaysian Textile Manufacturers"
+    subtitle="Mattress Production | Bedding Manufacturing | Complete Production Lines | Fast Approval for Textile Equipment"
+    ctaText="Get Textile Equipment Financing Quote"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20quilting%20machine%20financing."
+    ctaSecondaryText="Call Now: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years Equipment Finance', 'Textile Industry Specialists', 'Production Line Packages', 'Fast Textile Business Approval']}
+  />
+
+  <!-- Industry Overview Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Modernize Your Textile Production with Automated Quilting
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed mb-8">
+          Manual quilting limits production capacity and consistency. Hotels demand faster delivery. Mattress manufacturers need higher volumes. Quilting machines cost RM 200k-800k upfront. We finance textile equipment with terms designed for manufacturing cash flow.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+            <div class="text-2xl font-bold text-primary mb-2">400% Faster</div>
+            <div class="text-[#4F3E29]">Production speed vs manual quilting</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+            <div class="text-2xl font-bold text-primary mb-2">15-20%</div>
+            <div class="text-[#4F3E29]">Down payment for established textile businesses</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+            <div class="text-2xl font-bold text-primary mb-2">12-18 Months</div>
+            <div class="text-[#4F3E29]">Typical payback period for quilting automation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Ing Heng Credit for Textile Equipment Financing?
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Specialized understanding of textile manufacturing needs and quilting machine investments
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quilting Machine Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Quilting Equipment Types We Finance
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Complete range of quilting systems for mattress, bedding, and textile production
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {machineTypes.map((machine) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{machine.name}</h3>
+            <p class="text-[#4F3E29] mb-3">{machine.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-1">
+              <p><strong>Applications:</strong> {machine.applications}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Textile Industries We Support
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Quilting machine financing across diverse textile and manufacturing sectors
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {industries.map((industry) => (
+          <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+            <h3 class="text-2xl font-bold text-primary mb-4">{industry.name}</h3>
+            <p class="text-[#4F3E29] mb-4">{industry.description}</p>
+            <div class="text-sm text-[#4F3E29]">
+              <strong>Products:</strong> {industry.applications}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">Quilting Machine Financing Calculator</h2>
+          <p class="text-[#4F3E29]">Estimate monthly payments for textile equipment based on machine cost and financing terms</p>
+        </div>
+        <Calculator lang={lang} equipmentType="Quilting Machine" defaultPrice={350000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          How to Finance Your Quilting Equipment
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Streamlined process designed for textile manufacturing business requirements
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20quilting%20machine%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Apply for Textile Equipment Financing
+        </a>
+        <p class="text-sm text-[#4F3E29] mt-3">Fast approval for textile manufacturers | Production line packages available</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Case Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Quilting Machine Investment ROI Analysis
+          </h2>
+          <p class="text-xl text-[#4F3E29]">
+            How automated quilting transforms textile business profitability and growth
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+            <h3 class="text-xl font-bold text-primary mb-4">Manual Quilting Limitations</h3>
+            <ul class="space-y-3 text-[#4F3E29]">
+              <li class="flex items-start space-x-3">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Production: 5-8 pieces per day maximum</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Quality: Inconsistent patterns and tension</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Labor: High skilled worker costs (RM 120-150/day)</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-red-500 mt-1">✗</span>
+                <span>Scaling: Cannot meet hotel/retail order volumes</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+            <h3 class="text-xl font-bold text-primary mb-4">Automated Quilting Benefits</h3>
+            <ul class="space-y-3 text-[#4F3E29]">
+              <li class="flex items-start space-x-3">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Production: 30-50 pieces per day achievable</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Quality: Consistent patterns and professional finish</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Labor: 1 operator manages automated system</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <span class="text-green-500 mt-1">✓</span>
+                <span>Scaling: Handle large commercial contracts</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ROI Calculation -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6 text-center">Investment ROI Example</h3>
+          <div class="grid md:grid-cols-3 gap-8 text-sm">
+            <div>
+              <h4 class="font-bold text-gray-800 mb-3">Investment</h4>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• Multi-needle quilting machine: RM 350,000</li>
+                <li>• Down payment (20%): RM 70,000</li>
+                <li>• Monthly payment (5 years): RM 5,600</li>
+                <li>• Installation & training: RM 15,000</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800 mb-3">Monthly Production Increase</h4>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• From 200 to 1,000 pieces/month</li>
+                <li>• Additional revenue: RM 40,000/month</li>
+                <li>• Reduced labor costs: RM 8,000/month</li>
+                <li>• Total monthly benefit: RM 48,000</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800 mb-3">Return Analysis</h4>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• Monthly net benefit: RM 42,400</li>
+                <li>• Machine payment: RM 5,600</li>
+                <li>• <strong class="text-green-600">Net monthly profit: RM 36,800</strong></li>
+                <li>• <strong class="text-green-600">ROI payback: 10-12 months</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Textile Manufacturing Success Stories
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Real Malaysian textile businesses that grew with quilting machine financing
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Textile Equipment Financing Requirements
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Documentation designed for textile manufacturing and bedding production businesses
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Established Business -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">For Established Textile Manufacturers</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Company Registration & Licenses</div>
+                <div class="text-sm text-[#4F3E29]">SSM registration, manufacturing license, and textile industry permits</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Financial Performance</div>
+                <div class="text-sm text-[#4F3E29]">2-3 years financial statements showing textile business operations and cash flow</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Customer Contracts & Orders</div>
+                <div class="text-sm text-[#4F3E29]">Existing customer base, hotel contracts, or retail purchase orders</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- New Business -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">For New Textile Ventures</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Business Plan & Market Analysis</div>
+                <div class="text-sm text-[#4F3E29]">Comprehensive plan showing textile market opportunity and production strategy</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Industry Experience</div>
+                <div class="text-sm text-[#4F3E29]">Textile manufacturing background, technical knowledge, or relevant experience</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Initial Capital & Commitments</div>
+                <div class="text-sm text-[#4F3E29]">Down payment capability and preliminary customer interest or pre-orders</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional Requirements -->
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">Additional Requirements:</h4>
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
+          <li>• Equipment quotations with detailed specifications and delivery terms</li>
+          <li>• Production facility details (space, power, ventilation requirements)</li>
+          <li>• Insurance capability for textile equipment and business operations</li>
+          <li>• Supplier credentials and after-sales service availability</li>
+          <li>• Environmental and safety compliance for textile manufacturing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Quilting Machine Financing FAQ
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Comprehensive answers about textile equipment financing and quilting machine investments
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Automate Your Textile Production with Quilting Machines?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Apply today for quilting machine financing. Fast approval for textile manufacturers with flexible terms designed for seasonal business patterns. Join manufacturers who scaled with automated quilting.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20quilting%20machine%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Apply for Textile Equipment Financing
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Fast Textile Equipment Approval</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Complete Production Line Packages</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40+ Years Manufacturing Finance Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="quilting-machine" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Textile Equipment Financing Application
+          </h2>
+          <p class="text-[#4F3E29]">
+            Submit your quilting machine requirements for fast evaluation
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

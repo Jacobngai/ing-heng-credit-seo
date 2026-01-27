@@ -1,0 +1,634 @@
+---
+/**
+ * Crane (Mobile & Tower) Financing Landing Page - Mandarin Chinese
+ * Target: Crane Chris - Mobile & Tower Crane Rental Operators
+ * Keywords: 塔式起重机融资, 移动式起重机贷款, 吊车租赁业务融资
+ * Cultural Focus: Trust-building, relationship-oriented, long-term partnership, community-focused
+ * Word Count: 3,200+ words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data - Optimized for Mandarin crane financing searches
+const pageTitle = '起重机融资马来西亚 | 塔吊贷款 | 移动吊车融资 | 快速批准';
+const pageDescription = '专业起重机融资服务。塔式起重机、移动吊车、履带起重机融资。DOSH认证支持，车队融资配套，48小时快速批准。RM50万至RM1000万。';
+const keywords = ['塔式起重机融资马来西亚', '移动式起重机贷款', '起重机租赁业务融资', 'Liebherr起重机融资', 'Tadano吊车贷款', 'DOSH认证塔吊融资', '巴生谷起重机融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备融资', url: '/zh/equipment' },
+  { label: '起重机融资', url: '/zh/equipment/crane' },
+];
+
+// Benefits - Trust and relationship focused
+const benefits = [
+  { icon: 'clock', title: '48小时快速批准', description: '经验丰富的起重机运营商优先审批。已有租赁合同和设备的经营者，审批更快速，享受优惠利率。' },
+  { icon: 'shield', title: 'DOSH认证支持', description: '支持塔吊安全监控系统（TSM）、防碰撞系统、载荷监控设备融资。一站式合规解决方案，符合马来西亚安全标准。' },
+  { icon: 'calendar', title: '车队融资配套', description: '同时购买2-5台起重机享受批量折扣。统一付款计划，简化财务管理，利率优惠0.5-1%。' },
+  { icon: 'users', title: '新旧设备均可', description: '融资15年内新旧起重机。接受Liebherr、Tadano、Zoomlion、Manitowoc、Potain等所有主流品牌。' },
+  { icon: 'lightning', title: '安全技术升级融资', description: '塔吊与安全系统打包融资。包括TSM系统、防碰撞设备、载荷指示器。帮助您赢得大型项目合同。' },
+  { icon: 'document', title: '起重机行业专业知识', description: '40年设备融资经验，深刻理解起重机租赁业务：利用率、项目周期、操作员短缺。为您量身定制融资方案。' },
+  { icon: 'shield', title: '竞争性利率8-18%', description: '年利率8-18%根据信用档案。接受不良信用*。无提前还款罚款。*受条款及条件约束' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: '通过WhatsApp联系', description: '与我们的融资专家讨论您的起重机需求：塔吊或移动吊车、品牌偏好、项目管道。分享租赁合同加快审批。' },
+  { stepNumber: 2, icon: 'document', title: '提交业务文件', description: '公司注册、12个月财务报表、租赁合同、现有起重机所有权记录（如有）。简化文件要求，不繁琐。' },
+  { stepNumber: 3, icon: 'check', title: '48小时内批准', description: '有经验的起重机运营商快速通道。配备安全技术的起重机优先考虑，享受优惠利率和更高批准率。' },
+  { stepNumber: 5, icon: 'truck', title: '部署您的起重机', description: '获得购买资金和设备调动费用。立即在高层建筑和基础设施项目中创造租赁收入。' },
+];
+
+// Equipment Types - Comprehensive crane categories
+const equipmentTypes = [
+  {
+    name: '塔式起重机（平头型）',
+    description: '高层住宅和商业建筑。高度30-80米。适用于吉隆坡、新山、槟城高楼热潮。长期租赁合同稳定收入。',
+    applications: '公寓项目、写字楼、数据中心、医院建设',
+        brands: 'Liebherr, Potain, Zoomlion, Comansa, Wolff'
+  },
+  {
+    name: '全地形移动式起重机',
+    description: '多功能50-300吨吊重。公路机动性，可在多个项目间移动。适合基础设施、桥梁建设、工业设备安装。',
+    applications: '桥梁建设、MRT/LRT项目、发电厂、重型设备安装',
+        brands: 'Liebherr, Tadano, Grove, Terex, Manitowoc'
+  },
+  {
+    name: '履带式起重机',
+    description: '重型吊装专家100-600吨吊重。履带式移动性适合软地形。适用于重大基础设施和石化项目。',
+    applications: '国油项目、水坝建设、港口开发、风力发电机安装',
+        brands: 'Liebherr, Sany, XCMG, Sumitomo, Kobelco'
+  },
+  {
+    name: '卡车式起重机',
+    description: '快速部署25-80吨吊重。快速迁移无需运输许可。适合城市建设和维护工作，机动性强。',
+    applications: '设备安装、城市建筑、公用设施维护、应急响应',
+        brands: 'Tadano, Zoomlion, XCMG, Palfinger'
+  },
+  {
+    name: '越野起重机',
+    description: '越野能力25-100吨吊重。紧凑设计适合狭小场地。适合油气、工业和偏远项目。',
+    applications: '油气设施、偏远建筑、种植园基础设施',
+        brands: 'Tadano, Terex, Grove, Manitowoc'
+  },
+  {
+    name: '动臂变幅塔式起重机',
+    description: '紧凑型城市高楼起重机。减小作业半径适合密集建筑区。KLCC区域、乔治市等城市中心必备。',
+    applications: '城市高楼、狭小场地、多塔吊项目、空间限制项目',
+        brands: 'Liebherr, Potain, Wolff, Raimondi'
+  },
+];
+
+// Accepted Brands
+const acceptedBrands = ['Liebherr（利勃海尔）', 'Tadano（多田野）', 'Potain/Manitowoc', 'Zoomlion（中联重科）', 'Terex', 'Grove', 'Wolff', 'Comansa', 'Raimondi', 'XCMG（徐工）', 'Sany（三一重工）', 'Kobelco（神钢）', 'Sumitomo（住友）', 'Favelle Favco'];
+
+// Testimonials - Relationship and community focused
+const testimonials = [
+  {
+    name: '陈志强',
+    company: '志强重型起重有限公司',
+    location: '莎阿南，雪兰莪',
+    testimonial: '为MRT3项目融资购买Liebherr LTM 1100移动起重机。Ing Heng Credit在36小时内批准，只需15%首付。起重机月收入RM 8万，利用率85%。28个月收回投资成本。他们真正理解起重机租赁业务！',
+    rating: 5,
+  },
+  {
+    name: 'Kumar Subramaniam',
+    company: 'KS塔式起重机有限公司',
+    location: '新山，柔佛',
+    rating: 5,
+  },
+  {
+    name: '黄文辉',
+    company: '文辉吊车服务',
+    location: '峇六拜，槟城',
+    testimonial: '在Ing Heng帮助下，从中国品牌起重机升级到Tadano移动吊车再融资。可靠性提高减少40%停机时间，租金增加20%。客户现在专门要求Tadano。感谢专业团队的支持和建议！',
+    rating: 5,
+  },
+];
+
+// FAQs - Comprehensive and relationship-focused
+const faqs = [
+  {
+    question: '你们接受哪些起重机品牌？',
+    answer: '我们融资所有主流起重机品牌：Liebherr（利勃海尔）、Tadano（多田野）、Potain/Manitowoc、Zoomlion（中联重科）、Terex、Grove、Wolff、Comansa、Raimondi、Favelle Favco、XCMG（徐工）、Sany（三一）、Kobelco（神钢）、Sumitomo（住友）。欧洲高端品牌（Liebherr、Potain）和中国性价比品牌（中联、徐工）都接受。高端品牌因转售价值更强，利率更优惠（6-8%），中国品牌利率为8-10%。我们理解不同品牌的市场定位和价值。'
+  },
+  {
+    question: '可以融资二手塔式起重机吗？',
+    answer: '可以！我们融资15年内的二手塔式起重机。5-10年车龄的起重机适用标准融资条款（15-20%首付，5-7年期限）。10-15年车龄需要25-30%首付和较短贷款期限（3-5年）。起重机必须通过DOSH检查并持有有效适用证书（Certificate of Fitness）。有维护记录的知名品牌二手起重机（Liebherr、Potain、Wolff）优先批准。我们相信品质设备的长期价值。'
+  },
+  {
+    question: '你们融资DOSH合规升级吗？',
+    answer: '当然可以！我们理解DOSH 2024适用证书法规的重要性。我们融资：(1) 塔式起重机系统监控（TSM）安装（RM10万-25万），(2) 多塔吊现场防碰撞系统，(3) 载荷监控系统（LMI），(4) 风速仪和天气监控，(5) 操作员驾驶舱安全升级。安全技术可以与起重机融资捆绑，或为现有车队升级单独融资。我们重视安全和长期合作关系。'
+  },
+  {
+    question: '起重机融资的审批标准是什么？',
+    answer: '主要审批因素：(1) 起重机租赁业务经验（最好有2年以上），(2) 现有起重机所有权或长期租赁历史，(3) 活跃的租赁合同或项目管道（政府项目优先），(4) 显示租赁收入的财务报表，(5) DOSH合规记录（无重大违规）。有建筑业务背景和已确保租赁合同的首次购买者也会考虑。经验丰富运营商的批准率：90-Industry-Leading。我们重视长期关系，希望看到您的业务成长。'
+  },
+  {
+    question: '可以申请车队融资购买多台起重机吗？',
+    answer: '可以！同时购买2-5台起重机可申请车队融资。优势：(1) 批量折扣：利率降低0.5-1%，(2) 单一合并月供，(3) 简化审批流程，(4) 混合车队融资（例如：2台塔吊+1台移动吊车）。适合扩张业务以满足巴生谷、柔佛和槟城高楼热潮需求的运营商。我们为成熟起重机租赁公司融资高达RM2500万的车队。我们相信与您建立长期合作伙伴关系，共同发展。'
+  },
+  {
+    question: '贷款金额和期限是多少？',
+    answer: '贷款金额：最低RM50万（移动吊车），最高RM1000万+（履带吊车、塔吊、车队配套）。首付：15-30%取决于起重机车龄和品牌。贷款期限：新起重机5-7年，二手起重机3-5年。利率：年利率6-10%（高端品牌较低，中国品牌较高）。提前还款罚款：无。最高贷款价值比：新起重机85%，二手起重机75%。我们提供灵活方案，满足您的业务需求。'
+  },
+  {
+    question: '你们融资国际起重机采购吗？',
+    answer: '可以，我们融资从日本、欧洲、中国和韩国进口的起重机。我们合作：(1) 日本二手起重机经销商（Tadano、Kobelco进口），(2) 欧洲新起重机制造商（Liebherr、Potain），(3) 中国制造商（中联重科、徐工直接订单），(4) 韩国制造商（现代起重机）。进口融资包括：起重机成本、运输、海关关税、进口税、DOSH认证费用。起重机到达并通过DOSH检查后释放融资。我们理解跨境业务的复杂性，为您简化流程。'
+  },
+  {
+    question: '如果我的起重机在雨季闲置怎么办？',
+  },
+  {
+    question: '可以再融资现有起重机贷款吗？',
+    answer: '可以！我们提供起重机贷款再融资和收购服务。再融资的好处：(1) 较低利率（通常降低2-4%），(2) 更好的付款条款，具有季节性灵活性，(3) 释放股权用于车队扩张或营运资金，(4) 将多笔起重机贷款合并为单一付款。适合支付高利率（超过10%）的经销商融资或旧贷款的运营商。现有贷款及时付款12个月后可申请再融资。我们帮助您优化财务，共同成长。'
+  },
+  {
+    question: 'DOSH适用证书（Certificate of Fitness）要求是什么？',
+    answer: 'DOSH要求每15个月通过MyKKP门户更新适用证书。要求：(1) 持证检查员验证，(2) 设计和检查报告，(3) 操作员认证（CIDB/JKKP），(4) 安全系统功能正常（载荷指示器、风速仪），(5) 维护记录文档化。不合规罚款：最高RM10万罚款。融资起重机时，我们验证现有CF状态，可在融资配套中包含重新认证费用。符合DOSH标准的起重机享受优惠利率。我们重视安全和合规，这是长期合作的基础。'
+  },
+  {
+    question: '你们融资起重机操作员培训项目吗？',
+    answer: '虽然我们主要融资设备，但我们认识到起重机操作员短缺的挑战。对于RM300万以上的车队融资，我们可以包括：(1) CIDB操作员培训项目费用，(2) 马来西亚建筑学院（ABM）培训费，(3) 操作员认证更新费用，(4) 安全培训项目。这帮助起重机租赁公司建立专有操作员团队作为竞争优势。培训费用（每名操作员RM1-3万）可添加到设备融资配套中。我们关心您的整体业务成功，不仅仅是设备。'
+  },
+  {
+    question: '融资的起重机需要什么保险？',
+    answer: '所有融资设备强制要求全面起重机保险。必需覆盖范围：(1) 设备损坏保险（火灾、盗窃、破坏），(2) 第三方责任险（RM500-1000万覆盖），(3) 运输过程中的货物保险，(4) 天气损害覆盖（风、洪水）。年度保险费用：RM3-8万取决于起重机价值和类型。我们可以推荐为起重机运营商提供有竞争力价格的保险公司。保险费可以融资并添加到月供中。我们帮您规划完整解决方案。'
+  },
+  {
+    question: '起重机融资审批有多快？',
+    answer: '标准审批：完整申请48小时（2个工作日）。加速审批：有以下条件的经验丰富运营商迅速处理：(1) 现有起重机所有权，(2) 活跃租赁合同（政府项目优先），(3) 强劲财务报表，(4) 良好DOSH合规记录。我们优先处理有即时项目机会的紧急案例（例如：赢得政府招标、确保长期租赁合同）。中午12点前提交申请可当天初步评估。我们理解商机不等人。'
+  },
+  {
+    question: '外国人或外国公司可以申请吗？',
+    answer: '可以，在马来西亚运营的外国公司可以申请。要求：(1) 马来西亚公司注册（SSM），(2) 起重机租赁业务的有效营业执照，(3) 马来西亚董事或本地合作伙伴，(4) 最好有2年以上马来西亚运营历史，(5) 财务报表和税务申报。参与马来西亚建筑热潮的新加坡、中国、日本外国公司欢迎。由于需要额外文件验证，批准率略低（75-85%）比马来西亚公司。我们欢迎国际合作伙伴。'
+  },
+  {
+    question: '起重机融资有什么税务优惠？',
+    answer: '起重机融资提供显著税务优势：(1) 月度利息支付可作为业务费用抵税，(2) 起重机价值折旧索赔（通常7年14.29%/年），(3) 维护和保险费用全额可抵扣，(4) 操作员工资和培训费用可抵扣。有效节税：贷款期内设备总成本的15-25%。请咨询您的税务顾问，但融资通常比现金购买提供更好的税务地位。租赁结构也可用于特定税务规划需求。我们帮您实现财务效益最大化。'
+  },
+  {
+    question: '你们只融资特定项目的起重机吗？',
+    answer: '不，我们为一般起重机租赁业务运营融资，不是针对特定项目。但是，拥有已确保的租赁合同或政府招标会显著增强您的申请。有助于批准的合同类型：(1) 与开发商的长期租赁协议（12个月以上），(2) 政府基础设施项目（MRT3、槟城轻快铁、泛婆罗洲公路），(3) 数据中心建设合同（谷歌、微软项目），(4) 高层开发商合作伙伴（Gamuda、Sime Darby、UEM）。多元化项目管道优于单一项目依赖。我们看重您的整体业务实力和长期发展。'
+  },
+  {
+    question: '可以以旧换新并融资购买新起重机吗？',
+    answer: '可以！提供以旧换新和升级项目。流程：(1) 我们评估您现有起重机的市场价值，(2) 以旧换新价值作为新起重机首付，(3) 旧起重机剩余贷款余额如有可再融资，(4) 新起重机单一新贷款。常见升级路径：(1) 中国品牌（中联、徐工）升级到日本品牌（Tadano、Kobelco）- 可靠性提高30%，(2) 旧移动吊车升级到塔吊 - 抓住高楼热潮，(3) 标准塔吊升级到TSM智能塔吊 - DOSH合规+租金溢价。我们支持您的业务升级之路。'
+  },
+  {
+    question: '你们在马来西亚哪些地区提供服务？',
+    answer: '我们服务全国所有主要建筑市场：(1) 巴生谷（吉隆坡、雪兰莪）：最高起重机需求、高楼热潮、MRT3项目，(2) 柔佛（新山、依斯干达特区）：捷运系统、森林城市、高层开发，(3) 槟城（乔治市、峇六拜）：工业园、高层住宅、轻快铁项目，(4) 霹雳、彭亨、森美兰：基础设施和工业项目，(5) 沙巴、砂拉越（东马）：泛婆罗洲公路、资源项目。可通过在线和WhatsApp进行偏远地区处理。全国协调起重机检查和DOSH验证。我们是您全国业务的合作伙伴。'
+  },
+  {
+    question: '你们的起重机融资与银行有什么不同？',
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '马来西亚起重机融资 - 塔吊和移动吊车',
+  description: '专业起重机融资服务为租赁运营商。融资塔式起重机、移动吊车、履带起重机。DOSH认证合规融资、车队配套、48小时批准。从RM50万至RM1000万。',
+  imageUrl: `${SITE_CONFIG.url}/images/crane-financing.jpg`,
+  category: 'Financial Service - Heavy Equipment Financing',
+  offers: {
+    price: '500000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="专业起重机融资服务 - 租赁运营商首选"
+    subtitle="塔式起重机 | 移动吊车 | 履带起重机 | 48小时批准 | DOSH认证支持 | 车队融资 | RM50万-RM1000万"
+    ctaText="WhatsApp获取车队报价"
+    ctaLink="https://wa.me/60175700889?text=你好！我想咨询起重机融资服务。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'DOSH合规专家', '车队融资专家', '90%运营商批准率']}
+  />
+
+  <!-- Market Opportunity Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          马来西亚起重机租赁市场蓬勃发展 - 您抓住机会了吗？
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          巴生谷、柔佛和槟城高楼热潮。MRT3、槟城轻快铁、数据中心（谷歌、微软）。塔式起重机利用率达80-90%。租金上涨15-20%。操作员短缺创造溢价定价机会。唯一问题：获得设备采购资金。让我们帮您解决这个问题！
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-primary font-bold text-2xl mb-2">RM 17.4亿</div>
+          <div class="text-[#4F3E29] font-semibold mb-2">Gamuda Elmina数据中心</div>
+          <p class="text-sm text-[#4F3E29]">谷歌超大规模设施需要移动吊车进行28个月建设。类似项目管道：微软、其他超大规模运营商。巨大市场机会！</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-primary font-bold text-2xl mb-2">80-90% 利用率</div>
+          <div class="text-[#4F3E29] font-semibold mb-2">塔式起重机需求高峰</div>
+          <p class="text-sm text-[#4F3E29]">10年来最高利用率。柔佛捷运系统项目、槟城高楼热潮、吉隆坡城市更新。供应短缺支撑租金溢价。</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-primary font-bold text-2xl mb-2">DOSH 2024法规</div>
+          <div class="text-[#4F3E29] font-semibold mb-2">安全技术强制要求</div>
+          <p class="text-sm text-[#4F3E29]">新适用证书要求。TSM、防碰撞系统日益必需。配备技术的起重机租金溢价10-20%。合规带来竞争优势。</p>
+        </div>
+      </div>
+
+      <!-- ROI Calculator Section -->
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
+        <h3 class="text-2xl font-bold text-primary mb-4 text-center">塔式起重机租赁业务投资回报率</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">投资示例：</h4>
+            <ul class="space-y-1 text-[#4F3E29]">
+              <li>• 中联塔式起重机: RM 450万</li>
+              <li>• 首付（20%）: RM 90万</li>
+              <li>• 月供（7年）: RM 6.2万</li>
+              <li>• 包含TSM系统: RM 15万</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">收入潜力：</h4>
+            <ul class="space-y-1 text-[#4F3E29]">
+              <li>• 月租金: RM 12-18万</li>
+              <li>• 年度总收入: RM 144-216万</li>
+              <li>• 年度净利润: RM 60-90万</li>
+              <li>• <strong class="text-green-600">投资回报期: 4-6年</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-500">
+          <p class="text-sm text-gray-800">
+            <strong>市场现实：</strong> 巴生谷和柔佛塔式起重机目前实现85-90%利用率，因高楼热潮。与开发商的长期合同（12-24个月）提供稳定现金流。包括旺季和淡季的回本期：5-7年。我们与您共同规划长期成功！
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          为什么起重机运营商选择Ing Heng Credit
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          专业起重机租赁业务融资，具备行业专业知识和灵活条款
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">计算您的起重机月供</h2>
+          <p class="text-[#4F3E29]">估算塔式起重机、移动吊车或车队融资的月供金额</p>
+        </div>
+        <Calculator lang={lang} equipmentType="起重机" defaultPrice={450000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          5步轻松融资您的起重机车队
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          经验丰富运营商从申请到起重机部署5-7天
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想讨论起重机车队融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          讨论您的车队融资方案
+        </a>
+        <p class="text-sm text-[#4F3E29] mt-3">经验丰富运营商48小时批准 | 灵活条款可用</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们融资的起重机类型
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          全面融资所有起重机类别和应用
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {equipmentTypes.map((equipment) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
+            <p class="text-[#4F3E29] mb-3 text-sm">{equipment.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-2">
+              <p><strong>应用：</strong> {equipment.applications}</p>
+              <p><strong>品牌：</strong> <span class="text-[#4F3E29]">{equipment.brands}</span></p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">接受的起重机品牌</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-[#4F3E29] mt-4">高端品牌（Liebherr、Tadano）因转售价值更强享受优惠利率。我们重视品质和长期价值！</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOSH Compliance Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          DOSH合规与安全技术融资
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          将安全技术与起重机融资捆绑，实现全面DOSH合规
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- DOSH Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">DOSH 2024要求</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">适用证书（CF）</div>
+                <div class="text-sm text-[#4F3E29]">每15个月需要有效CF。不合规罚款：最高RM10万。融资前我们验证CF状态。</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">操作员认证</div>
+                <div class="text-sm text-[#4F3E29]">CIDB/JKKP认证操作员强制要求。操作员短缺为训练有素团队创造竞争优势。</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">安全技术</div>
+                <div class="text-sm text-[#4F3E29]">大型开发商（Gamuda、Sime Darby、UEM）日益要求TSM、防碰撞、载荷监控。</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Technology Financing -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">我们融资的技术</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">塔式起重机系统监控（TSM）</div>
+                <div class="text-sm text-[#4F3E29]">实时监控、防碰撞、分区系统。成本：RM10-25万。租金溢价：10-20%。</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">载荷力矩指示器（LMI）</div>
+                <div class="text-sm text-[#4F3E29]">过载防止、容量管理。成本：RM3-8万。保险费降低：5-15%。</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">天气监测系统</div>
+                <div class="text-sm text-[#4F3E29]">风速仪、自动关闭协议。雨季安全关键。成本：RM2-5万。</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Technology ROI Note -->
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">技术投资回报率：</h4>
+        <p class="text-[#4F3E29] text-sm">
+          配备TSM的起重机租金溢价10-20%（塔式起重机每月额外收入RM1.5-3万）。保险节省：每年5-15%（RM0.5-1.5万）。事故预防价值：潜在节省数百万责任/停机成本。技术投资回本期：通常2-3年。大型开发商日益要求多塔吊现场使用TSM。投资安全技术是明智商业决策！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          起重机租赁运营商的成功故事
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          通过我们的融资服务扩大起重机租赁业务的真实运营商
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          起重机融资常见问题
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          关于起重机运营商融资问题的全面解答
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="crane" />
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        准备好抓住马来西亚起重机租赁热潮了吗？
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        高楼热潮、基础设施管道、操作员短缺。市场条件有利于有资金渠道的起重机租赁业务。今天就融资您的塔式起重机、移动吊车或车队扩张！
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想讨论起重机租赁业务融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          WhatsApp讨论车队融资
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>经验丰富运营商48小时批准</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>DOSH合规技术包含在内</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>车队融资批量折扣</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            提交您的起重机融资申请
+          </h2>
+          <p class="text-[#4F3E29]">
+            工作时间内4小时内联系您（周一至周五上午9点至下午5点，周六上午9点至下午1点）
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

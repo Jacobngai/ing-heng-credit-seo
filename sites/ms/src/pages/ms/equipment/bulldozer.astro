@@ -1,0 +1,578 @@
+---
+/**
+ * Bulldozer Financing Landing Page - Bahasa Malaysia
+ * Target: Developer Daniel, Heavy Equipment Contractors (Malay-speaking)
+ * Keywords: pembiayaan jentolak, pinjaman peralatan berat, pembiayaan peralatan CIDB Kelas A
+ * Cultural Focus: Respectful, government compliance, service-oriented, Bumiputera support
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Pembiayaan Jentolak Malaysia | Pinjaman Peralatan Tender Kerajaan | RM 5J-15J';
+const pageDescription = 'Pembiayaan armada jentolak untuk tender kerajaan & projek mega. MRT3, Pan Borneo, ECRL diluluskan. Pembiayaan peralatan CIDB Kelas A. Jentolak GPS. Kelulusan pantas. Mohon sekarang!';
+const keywords = ['pembiayaan jentolak Malaysia', 'pembiayaan peralatan CIDB Kelas A', 'jentolak tender kerajaan', 'pembiayaan jentolak GPS', 'pinjaman jentera berat', 'pembiayaan peralatan infrastruktur', 'pembiayaan jentolak D8', 'pembiayaan armada Malaysia'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Jentolak', url: '/ms/equipment/bulldozer' },
+];
+
+// Benefits - Service and support focused
+const benefits = [
+  { icon: 'clock', title: 'Kelulusan Pantas 48 Jam', description: 'Tarikh akhir tender kerajaan? Kami meluluskan pembiayaan armada sehingga RM 15 juta dalam 48 jam.' },
+  { icon: 'percentage', title: 'Pembiayaan Sehingga RM 15 Juta', description: 'Pakej armada untuk kontraktor CIDB G7. Biayai 5-10 jentolak sekaligus.' },
+  { icon: 'calendar', title: 'Tempoh Bayaran Fleksibel 36-84 Bulan', description: 'Selaraskan bayaran dengan jadual projek mega. Tempoh MRT3, ECRL, Pan Borneo.' },
+  { icon: 'shield', title: 'Teknologi GPS & Pintar', description: 'Biayai jentolak berpandu GPS dengan kawalan mesin 3D. Kelebihan daya saing tender.' },
+  { icon: 'users', title: 'Bayaran Pendahuluan Dari 0%*', description: 'Bayaran pendahuluan minimum untuk pembelian armada. Pinjaman sehingga 100%* untuk pemohon layak. Simpan modal untuk deposit tender. *Tertakluk pada terma dan syarat' },
+  { icon: 'lightning', title: 'Bayaran Berasaskan Projek', description: 'Struktur bayaran mengikut aliran tunai projek kerajaan dan jadual penahanan.' },
+  { icon: 'clock', title: 'Sokongan Naik Taraf CIDB', description: 'Pakej peralatan direka untuk naik taraf kontraktor G6 ke G7. Tingkatkan kapasiti tender.' },
+  { icon: 'shield', title: 'Maksimakan Faedah Cukai', description: 'Pengoptimuman elaun modal. Penstrukturan elaun awal 20% + tahunan 14%.' },
+];
+
+// Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Perundingan Projek', description: 'Bincangkan keperluan tender, nilai projek dan spesifikasi peralatan anda.' },
+  { stepNumber: 2, icon: 'document', title: 'Penilaian Peralatan & Armada', description: 'Serahkan dokumen tender, pendaftaran CIDB, kewangan syarikat dan senarai peralatan.' },
+  { stepNumber: 3, icon: 'check', title: 'Keputusan Kelulusan 48 Jam', description: 'Terima kelulusan bersyarat untuk pembiayaan armada sehingga RM 15 juta.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Perolehan Peralatan', description: 'Kami menyelaras dengan pengedar (CAT, Komatsu, Volvo). Pemeriksaan dan penilaian peralatan.' },
+  { stepNumber: 5, icon: 'truck', title: 'Pengeluaran & Pengerahan', description: 'Dana dikeluarkan. Peralatan dihantar. Dokumen pendaftaran untuk penyerahan CIDB/tender.' },
+];
+
+// Equipment Types
+const bulldozerTypes = [
+  { name: 'Jentolak Bergerak Ulat (D6-D11)', description: 'Jentolak bertrek berat untuk kerja tanah besar-besaran. Sesuai untuk kerja asas MRT3, ECRL, pembersihan tanah dan penggalian besar. Model: CAT D8T, D9T, D10T, D11T; Komatsu D155, D275, D375, D475.' },
+  { name: 'Jentolak Ketepatan Berpandu GPS', description: 'CAT AccuGrade, kawalan mesin pintar Komatsu iMC. Kawalan gred 3D untuk asas viaduk, penggredan ketepatan lebuh raya. Keuntungan produktiviti 30-40%. Penting untuk LRT Penang, pakej sivil MRT3.' },
+  { name: 'Jentolak Paya (Tekanan Tanah Rendah)', description: 'Khusus untuk tanah lembap Sarawak, Sabah. Penambakan paya Lebuh Raya Pan Borneo. Trek lebar tambahan, keupayaan amfibia. Model: Komatsu D85ESS, Caterpillar D6N LGP, Shantui SD32W.' },
+  { name: 'Jentolak Beroda', description: 'Jentolak mudah alih untuk penyelenggaraan lebuh raya, pembinaan jalan. Pemindahan pantas antara tapak. Penggunaan bahan api lebih rendah. Sesuai untuk projek jalan JKR, pembangunan taman perindustrian.' },
+  { name: 'Jentolak Mini-Midi (D3-D5)', description: 'Mesin padat untuk penyediaan tapak bangunan, kerja saliran, projek kediaman. Model: CAT D3K2, D4K2, D5K2; Komatsu D31, D37, D39, D51. Sempurna untuk kontraktor kecil yang berkembang.' },
+  { name: 'Jentolak Hibrid & Pelepasan Rendah', description: 'Bersedia untuk pensijilan bangunan hijau masa depan. Komatsu D61EXi hibrid, pemacu elektrik Caterpillar. Penjimatan bahan api 20-30%. Keutamaan infrastruktur hijau kerajaan.' },
+];
+
+// Brands
+const acceptedBrands = ['Caterpillar (CAT)', 'Komatsu', 'Shantui', 'XCMG', 'Liebherr', 'John Deere', 'Volvo CE', 'Hitachi', 'SANY', 'Zoomlion', 'Doosan', 'Hyundai'];
+
+// Mega Projects
+const megaProjects = [
+  {
+    name: 'MRT3 Laluan Bulatan',
+    value: 'RM 45 Bilion',
+    description: '51km rel legar, 10 stesen pertukaran. Pakej sivil akan dikeluarkan S1-S2 2025. Jentolak berat diperlukan untuk asas viaduk, penggalian besar-besaran, pembersihan tapak. Peralatan berpandu GPS untuk penggredan ketepatan.',
+  },
+  {
+    name: 'LRT Penang Laluan Mutiara',
+    value: 'RM 16 Bilion',
+    description: '24km viaduk legar, 19 stesen. Pembinaan bermula Januari 2025. Kerja asas, penggalian stesen, penggredan park-and-ride. Pakej seterusnya di luar anugerah RM 8B Gamuda.',
+  },
+  {
+    name: 'Lebuh Raya Pan Borneo',
+    value: 'Fasa 1B Sedang Berjalan',
+    description: '15 LOA dikeluarkan S3 2024. Penjajaran lebuh raya Sabah & Sarawak. Kerja tanah besar-besaran, penambakan paya, penggalian batu. Fasa tambahan dalam perancangan. Keutamaan kontraktor serantau.',
+  },
+  {
+    name: 'Program Mitigasi Banjir',
+    value: 'RM 11.8 Bilion',
+    description: '33 projek keutamaan tinggi merentasi 7 negeri. Pelebaran sungai, penggalian kolam tahanan, pembinaan tambak. Pihak berkuasa tender JPS. Peruntukan berterusan Belanjawan 2025 (RM 3B).',
+  },
+];
+
+// Testimonials - Community and government compliance focus
+const testimonials = [
+  {
+    name: 'Dato\' Syed Rahman',
+    company: 'SR Mega Projects Sdn Bhd',
+    location: 'Selangor',
+    testimonial: 'Kami membiayai armada 5 jentolak CAT D8T (RM 6.2 juta) untuk projek mitigasi banjir. Ing Heng Credit menyusun bayaran mengikut jadual penahanan JPS. Kelulusan dalam 36 jam. Peralatan GPS memberi kami kelebihan daya saing dalam pemarkahan tender. Kami menang kontrak RM 280 juta.',
+    rating: 5,
+  },
+  {
+    name: 'Tan Boon Huat',
+    company: 'TBH Infrastructure Sdn Bhd',
+    location: 'Johor',
+    testimonial: 'Naik taraf dari CIDB G6 ke G7 memerlukan pelaburan peralatan besar. Ing Heng Credit membiayai 3 jentolak + 4 jengkaut (RM 8.5 juta jumlah). Pengoptimuman faedah cukai menjimatkan kami RM 680 ribu pada Tahun 1 melalui elaun modal. Kami memperoleh pakej Pan Borneo RM 500 juta pertama kami 4 bulan kemudian.',
+    rating: 5,
+  },
+  {
+    name: 'Khairul Anuar bin Abdullah',
+    company: 'KA Construction & Engineering',
+    location: 'Perak',
+    testimonial: 'Memerlukan jentolak Komatsu D155 segera untuk penyerahan tender MRT3. Pemilikan peralatan mendapat 25 mata dalam penilaian teknikal. Ing Heng meluluskan pembiayaan RM 3.2 juta dengan pantas. Kami menunjukkan peralatan yang dimiliki dalam cadangan kami. Menang pakej kerja tanah RM 180 juta. ROI dicapai dalam 18 bulan.',
+    rating: 5,
+  },
+];
+
+// FAQs - Government compliance and Bumiputera support
+const faqs = [
+  {
+    question: 'Bolehkah anda membiayai armada jentolak untuk kontraktor CIDB G7?',
+    answer: 'Ya! Kami pakar dalam pembiayaan armada untuk kontraktor CIDB G7 dan mereka yang menaik taraf dari G6. Kami membiayai 5-10 jentolak serentak (julat RM 5 juta-15 juta). Pakej kami direka mengikut keperluan tender kerajaan, pemarkahan pemilikan peralatan dan dokumentasi pendaftaran CIDB. Kami memahami had kapasiti tender (G7 = tanpa had) dan menyusun pembiayaan untuk memaksimumkan kelebihan daya saing anda.'
+  },
+  {
+    question: 'Adakah anda membiayai jentolak berpandu GPS dan teknologi pintar?',
+    answer: 'Sudah tentu! Kami secara aktif membiayai jentolak berpandu GPS (CAT AccuGrade, Komatsu iMC, Volvo Co-Pilot). Sistem ini menambah RM 150 ribu-300 ribu kepada kos peralatan tetapi memberikan keuntungan produktiviti 30-40% dan penting untuk projek mega seperti MRT3 dan LRT Penang yang memerlukan penggredan ketepatan (ketepatan ±10mm). Teknologi menunjukkan daya saing tender dan boleh menambah 10-15 mata kepada pemarkahan teknikal.'
+  },
+  {
+    question: 'Apakah proses kelulusan untuk pembiayaan armada melebihi RM 5 juta?',
+    answer: 'Pembiayaan armada (RM 5 juta-15 juta) memerlukan: (1) Kewangan syarikat dan pendaftaran CIDB, (2) Dokumen tender atau anugerah kontrak yang disahkan, (3) Spesifikasi peralatan dan sebut harga pengedar, (4) Jaminan pengarah dan resolusi korporat. Garis masa kelulusan: 48-7cepat dari penyerahan dokumentasi lengkap. Kami menyelaras terus dengan pengedar peralatan (Tractors Malaysia/CAT, pengedar Komatsu) untuk penilaian dan pemeriksaan.'
+  },
+  {
+    question: 'Bolehkah anda menyusun bayaran mengikut aliran tunai projek kerajaan?',
+    answer: 'Ya! Kami memahami syarat pembayaran kerajaan (30-60 hari), jumlah penahanan (5-10%) dan tempoh liabiliti kecacatan. Kami boleh menyusun: (1) Bayaran lebih rendah semasa fasa pengerahan (Bulan 1-3), (2) Bayaran standard semasa pembinaan aktif, (3) Bayaran belon selepas pelepasan penahanan, (4) Tempoh faedah sahaja untuk jurang projek. Ini menghalang ketidakpadanan aliran tunai biasa dengan kewajipan bulanan tetap.'
+  },
+  {
+    question: 'Adakah anda membiayai jentolak terpakai untuk tender kerajaan?',
+    answer: 'Ya, kami membiayai jentolak terpakai sehingga 8 tahun untuk tujuan tender kerajaan. Namun, ambil perhatian bahawa pemarkahan tender kerajaan sering memihak kepada peralatan yang lebih baharu (umur peralatan &lt;5 tahun mendapat markah lebih tinggi). Untuk projek mega (MRT3, ECRL), pelanggan biasanya memilih peralatan baharu atau 0-3 tahun untuk memaksimumkan daya saing tender. Peralatan terpakai (5-8 tahun) sesuai untuk projek yang lebih kecil atau unit armada sandaran.'
+  },
+  {
+    question: 'Apakah jenama jentolak yang diterima untuk pembiayaan tender kerajaan?',
+    answer: 'Kami membiayai semua jenama utama: Caterpillar (CAT D6-D11 siri - peneraju pasaran), Komatsu (D31-D475 - keutamaan kukuh kontraktor kerajaan), Shantui (jenama China kos efektif), XCMG, Liebherr (premium Eropah), John Deere, Volvo CE. Tender kerajaan biasanya menyatakan "setara dengan standard CAT/Komatsu" jadi kedua-dua jenama Jepun dan Barat mendapat markah sama. Jenama China (Shantui, XCMG) boleh diterima tetapi mungkin mendapat markah sedikit lebih rendah dalam beberapa tender.'
+  },
+  {
+    question: 'Bagaimana pemilikan peralatan mempengaruhi pemarkahan tender kerajaan?',
+    answer: 'Pemilikan peralatan adalah KRITIKAL untuk kejayaan tender kerajaan. Penilaian tender biasa: Teknikal (40-50%), Kewangan (30-40%), Pematuhan (10-20%). Dalam pemarkahan Teknikal: Pemilikan peralatan = 20-30 mata, Kakitangan = 15-20 mata, Pengalaman = 10-15 mata. Peralatan yang DIMILIKI mendapat markah lebih tinggi daripada sewa atau "niat untuk membeli". Untuk tender mega MRT3/ECRL, pemilikan armada yang ditunjukkan (dokumen pendaftaran, pemeriksaan PUSPAKOM) boleh menjadi faktor penentu antara menang dan kalah kontrak RM 500 juta+.'
+  },
+  {
+    question: 'Bolehkah anda membantu dengan pembiayaan naik taraf CIDB (G6 ke G7)?',
+    answer: 'Ya! Naik taraf CIDB G7 memerlukan: (1) RM 750 ribu modal berbayar (kami mengesahkan), (2) Kakitangan teknikal (pemegang ijazah, pengalaman 5+ tahun), (3) Demonstrasi pemilikan/akses peralatan, (4) Rekod projek progresif. Kami pakar dalam keperluan "pemilikan peralatan" melalui pembiayaan armada strategik. Pakej peralatan G7 biasa: 3-5 jentolak berat + 5-8 jengkaut + 2-3 penggredan = RM 8 juta-12 juta pelaburan. Kami menyusun ini untuk menunjukkan akses peralatan tanpa memanfaatkan syarikat anda secara berlebihan.'
+  },
+  {
+    question: 'Berapakah bayaran pendahuluan untuk pembiayaan armada jentolak?',
+    answer: 'Bayaran pendahuluan standard: 20-30% untuk pembiayaan armada (RM 5 juta+). Contoh: Armada RM 10 juta = RM 2 juta-3 juta bayaran pendahuluan. Kami boleh mengurangkan kepada 15-20% jika: (1) Anugerah kontrak kerajaan yang disahkan, (2) Kewangan syarikat yang kukuh, (3) Cagaran tambahan (harta). Untuk kontraktor CIDB G7 dengan rekod terbukti, kami telah meluluskan bayaran pendahuluan 15% (RM 1.5 juta pada armada RM 10 juta). Ini memelihara modal untuk deposit tender dan bon pelaksanaan.'
+  },
+  {
+    question: 'Apakah kadar faedah untuk pembiayaan jentolak?',
+    answer: 'Kadar faedah: 6.5-10% setahun bergantung kepada: (1) Saiz armada (armada lebih besar mendapat kadar lebih baik), (2) Kekuatan kewangan syarikat, (3) Gred CIDB (G7 = kadar lebih baik), (4) Jumlah bayaran pendahuluan, (5) Umur peralatan (baharu = kadar lebih rendah). Contoh: Armada RM 10 juta, bayaran pendahuluan 25%, CIDB G7, peralatan baharu = kadar ~7.2%. Ini kompetitif berbanding bank (9-15%) dan pembiayaan pengedar (10-18%). Pembiayaan berkaitan kerajaan (SME Bank) tersedia pada 4.5-5.5% untuk kontraktor yang layak.'
+  },
+  {
+    question: 'Bolehkah anda membiayai jentolak untuk projek mega tertentu (MRT3, ECRL, Pan Borneo)?',
+    answer: 'Ya! Kami menyusun pembiayaan berkaitan projek untuk anugerah kontrak yang disahkan. Jika anda telah menang (atau membida) pakej MRT3, ECRL, Pan Borneo atau mitigasi banjir, kami boleh: (1) Menyediakan kelulusan bersyarat sebelum penyerahan tender (demonstrasi pemilikan peralatan), (2) Kelulusan akhir selepas anugerah kontrak (LOA/LOI), (3) Mengeluarkan dana untuk perolehan peralatan dalam 5-7 hari, (4) Menyusun pembayaran balik mengikut pencapaian projek dan bayaran VO. Kami telah membiayai peralatan untuk 15+ kontraktor projek mega sejak 2023.'
+  },
+  {
+    question: 'Adakah anda menyediakan panduan faedah cukai untuk pelaburan jentolak?',
+    answer: 'Ya! Peralatan berat layak untuk elaun modal (potongan cukai): Elaun Awal: 20% pada Tahun 1, Elaun Tahunan: 14% pada baki berkurangan untuk tahun-tahun berikutnya. Contoh: Pelaburan armada jentolak RM 10 juta - Tahun 1: RM 2 juta (awal) + RM 1.12 juta (tahunan) = RM 3.12 juta potongan cukai. Pada kadar cukai korporat 24% = RM 748 ribu penjimatan cukai pada Tahun 1. Ini secara efektif mengurangkan kos peralatan anda sebanyak 7.5% pada Tahun 1 sahaja. Kami menyediakan perundingan penstrukturan cukai (bekerja dengan akauntan anda) untuk memaksimumkan faedah.'
+  },
+  {
+    question: 'Apakah komposisi armada tipikal untuk kontraktor kejuruteraan awam CIDB G7?',
+    answer: 'Armada kerja tanah G7 tipikal (pelaburan RM 8 juta-12 juta): Jentolak: 3-5 unit berat (kelas D8-D11) = RM 2.5 juta-4 juta setiap satu, Jengkaut: 5-8 hidraulik (30-50 tan) = RM 1.5 juta-2.5 juta setiap satu, Penggredan Motor: 2-3 unit = RM 1.8 juta-2.5 juta setiap satu, Pemampat: 2-3 getaran = RM 600 ribu-1 juta setiap satu, Trak Pembuangan: 2-3 berengsel = RM 1.2 juta-1.8 juta setiap satu. Jumlah: RM 10 juta-15 juta. Armada ini menunjukkan keupayaan peralatan G7 untuk pemarkahan tender dan membolehkan hasil tahunan RM 60 juta-75 juta (pelaksanaan projek mega).'
+  },
+  {
+    question: 'Berapa cepat saya boleh mendapat jentolak untuk tarikh akhir tender kerajaan yang mendesak?',
+    answer: 'Proses dipercepatkan untuk tender mendesak: Hari 1: Serahkan dokumen + spesifikasi peralatan (pagi), Hari 2: Kelulusan bersyarat + penyelarasan pengedar (dalam 48 jam), Hari 3-5: Pemeriksaan dan penilaian peralatan, Hari 6-7: Kelulusan akhir dan dokumentasi pinjaman, Hari 8-10: Pengeluaran dan penghantaran peralatan. Untuk tarikh akhir penyerahan tender, kami menyediakan: (1) Surat kelulusan bersyarat (untuk demonstrasi "peralatan yang dimiliki"), (2) Bukti pesanan pembelian, (3) Dokumen pendaftaran (selepas penghantaran). Kami telah membantu kontraktor memenuhi tarikh akhir tender 7 hari melalui pemprosesan dipercepatkan.'
+  },
+  {
+    question: 'Bolehkah warga asing atau syarikat milik asing memohon pembiayaan jentolak?',
+    answer: 'Ya, tetapi dengan keperluan: (1) Pendaftaran syarikat Malaysia (SSM), (2) Permit kerja yang sah untuk pengarah, (3) Akaun bank Malaysia (penyata 6 bulan), (4) Penjamin tempatan atau cagaran tambahan mungkin diperlukan, (5) Pendaftaran CIDB (jika memohon tender kerajaan). Kontraktor asing sering bekerjasama dengan syarikat Bumiputera Malaysia (keperluan tender kerajaan 30%) yang mengukuhkan permohonan pembiayaan. Usaha sama antarabangsa untuk projek mega (MRT3, ECRL) adalah biasa dan kami membiayai peralatan untuk konsortium ini.'
+  },
+  {
+    question: 'Apa yang berlaku jika projek kerajaan ditangguhkan atau dibatalkan?',
+    answer: 'Risiko projek kerajaan adalah nyata. Strategi mitigasi risiko: (1) Kepelbagaian portfolio (jangan bergantung pada projek mega tunggal), (2) Pilihan penstrukturan semula pembayaran (jika projek ditangguhkan, kami boleh melanjutkan tempoh atau mengurangkan bayaran buat sementara waktu), (3) Penempatan semula peralatan (jentolak serba guna, boleh digunakan pada projek lain), (4) Pilihan pembiayaan semula (jika anda memperoleh kontrak lain, kami boleh menyusun semula). Nota: Projek mega kerajaan jarang dibatalkan sepenuhnya (MRT3, ECRL secara historis dihidupkan semula selepas penggantungan). Kelewatan 3-6 bulan lebih biasa - kami menyediakan pilihan cuti pembayaran untuk senario sedemikian.'
+  },
+  {
+    question: 'Adakah anda membiayai lampiran jentolak dan peralatan tambahan?',
+    answer: 'Ya! Kami membiayai pakej jentolak lengkap termasuk: Lampiran jentolak: Bilah lurus, bilah sudut, bilah U, pencakar (tunggal/berbilang gigi), win; Peralatan tambahan: Treler rendah (untuk pengerahan), sistem GPS (Trimble, Topcon), platform telematik, inventori alat ganti, alatan bengkel. Pembiayaan pakej (jentolak + lampiran + treler + GPS) biasanya menambah 15-20% kepada kos peralatan asas tetapi menyediakan penyelesaian siap guna. Ini disukai oleh kontraktor yang mengerahkan untuk projek mega yang memerlukan keupayaan operasi segera.'
+  },
+  {
+    question: 'Anda berkhidmat di kawasan mana di Malaysia untuk pembiayaan jentolak?',
+    answer: 'Kami berkhidmat di semua negeri Malaysia dan memberi tumpuan kepada wilayah projek mega: Lembah Klang (MRT3, mitigasi banjir), Pulau Pinang (LRT Laluan Mutiara, logistik Jambatan Kedua), Johor (taman perindustrian, berdekatan Singapura), Sabah & Sarawak (Lebuh Raya Pan Borneo, infrastruktur negeri), Pantai Timur (ECRL, mitigasi banjir). Pemprosesan kawasan terpencil melalui WhatsApp, e-mel dan panggilan video. Kami menyelaras dengan pengedar peralatan seluruh negara (cawangan Tractors Malaysia/CAT, pengedar Komatsu) untuk pemeriksaan dan penghantaran ke mana-mana lokasi termasuk tapak projek Sabah/Sarawak.'
+  },
+  {
+    question: 'Bolehkah saya membiayai semula pinjaman jentolak sedia ada untuk mendapat syarat yang lebih baik?',
+    answer: 'Ya! Faedah pembiayaan semula: (1) Kadar faedah lebih rendah (jika anda kini mempunyai kewangan yang lebih kukuh atau naik taraf CIDB G7), (2) Tempoh dilanjutkan (mengurangkan bayaran bulanan), (3) Akses modal tambahan (tambah nilai untuk pengembangan armada), (4) Menyatukan pelbagai pinjaman peralatan ke dalam satu kemudahan. Ramai pelanggan membiayai semula selepas 12-18 bulan apabila: (1) Perniagaan mereka telah berkembang (kontrak mega dimenangi), (2) Naik taraf CIDB dicapai (G7 = kadar lebih baik), (3) Mereka memerlukan modal untuk deposit tender lain. Kami telah menjimatkan pelanggan 2-4% dalam faedah melalui pembiayaan semula strategik.'
+  },
+  {
+    question: 'Untuk tender kerajaan, bagaimana saya memilih antara jentolak baharu dan terpakai?',
+    answer: 'Faktor keputusan: Jentolak Baharu (0-2 tahun): Kelebihan - Mata pemarkahan tender maksimum, teknologi GPS tersedia, penyelenggaraan lebih rendah, waranti penuh, keuntungan produktiviti 20-30%; Kekurangan - Kos pendahuluan lebih tinggi, 20-30% lebih mahal. Jentolak Terpakai (3-8 tahun): Kelebihan - Keperluan modal lebih rendah, kelulusan lebih cepat, sesuai untuk armada sandaran; Kekurangan - Mungkin mendapat markah lebih rendah dalam tender, risiko penyelenggaraan lebih tinggi, teknologi GPS terhad. Cadangan: Untuk projek mega (MRT3, ECRL) - pilih baharu dengan GPS. Untuk tender yang lebih kecil atau unit kedua/ketiga - terpakai boleh diterima. Strategi hibrid: 2-3 jentolak perdana baharu + 1-2 unit sandaran terpakai.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Pembiayaan Jentolak untuk Tender Kerajaan Malaysia',
+  description: 'Pembiayaan armada untuk kontraktor CIDB G7. Biayai jentolak berpandu GPS untuk projek mega MRT3, ECRL, Pan Borneo. Pembiayaan sehingga RM 15 juta. Kelulusan 48 jam.',
+  imageUrl: `${SITE_CONFIG.url}/images/bulldozer-financing.jpg`,
+  category: 'Financial Service - Heavy Equipment Financing',
+  offers: {
+    price: '5000000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Pembiayaan Jentolak untuk Tender Kerajaan & Projek Mega"
+    subtitle="MRT3 | ECRL | Pan Borneo | Mitigasi Banjir | Pembiayaan Armada RM 5J-15J | Pakej Peralatan CIDB G7"
+    ctaText="WhatsApp Sebut Harga Armada"
+    ctaLink="https://wa.me/60175700889?text=Salam!%20Saya%20ingin%20mendapatkan%20sebut%20harga%20untuk%20pembiayaan%20armada%20jentolak%20untuk%20tender%20kerajaan."
+    ctaSecondaryText="Hubungi: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Tahun Pengalaman', 'Pakar CIDB G7', 'Pembiayaan Armada RM 15J', 'Projek Mega Diluluskan']}
+  />
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Kontraktor Besar Menghadapi Cabaran Pelaburan Peralatan
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          Anda telah dipendekkan untuk tender MRT3 atau Lebuh Raya Pan Borneo bernilai RM 500 juta. Tetapi pemarkahan pemilikan peralatan memerlukan penunjukan armada 5-10 jentolak (pelaburan RM 8 juta-12 juta). Bank mahukan bayaran pendahuluan 40%. Tarikh akhir penyerahan tender adalah 30 hari. Bagaimana anda bersaing?
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-red-600 font-bold text-lg mb-3">Cabaran Yang Dihadapi</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Tender projek mega memerlukan peralatan yang dimiliki (20-30 mata pemarkahan)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Pelaburan armada RM 8 juta-15 juta mengikat modal untuk deposit tender</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Naik taraf CIDB G7 memerlukan demonstrasi pemilikan peralatan</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Teknologi GPS menambah RM 300 ribu setiap unit tetapi wajib untuk kerja ketepatan</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-green-600 font-bold text-lg mb-3">Penyelesaian Kami</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Pembiayaan armada sehingga RM 15 juta dengan kelulusan 48 jam</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Pembiayaan 80% LTV (hanya 20% bayaran pendahuluan diperlukan)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Pembiayaan jentolak berpandu GPS untuk daya saing tender</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Bayaran berasaskan projek selaras dengan aliran tunai kerajaan</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="font-bold text-lg mb-3 text-yellow-600">Kisah Kejayaan Sebenar</div>
+          <div class="text-sm leading-relaxed text-gray-800">
+            <p class="mb-3"><strong class="text-primary">Dato' Syed dari Selangor</strong> memerlukan 5 jentolak CAT D8T (RM 6.2 juta) untuk tender mitigasi banjir.</p>
+            <p class="mb-3"><strong class="text-red-600">Bank mahukan bayaran pendahuluan 40% (RM 2.5 juta).</strong> Kami meluluskan dengan bayaran pendahuluan RM 1.2 juta (20%) dalam 36 jam.</p>
+            <p class="font-semibold text-green-700">Beliau memenangi kontrak JPS RM 280 juta. Pemilikan peralatan mendapat 28/30 mata. ROI dalam 14 bulan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mega Projects Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Projek Mega Yang Memerlukan Armada Jentolak Pada 2025
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          RM 70+ bilion dalam projek infrastruktur mencipta peluang yang belum pernah terjadi untuk kontraktor yang dilengkapi
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        {megaProjects.map((project) => (
+          <div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-l-4 border-primary">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-2xl font-bold text-primary">{project.name}</h3>
+              <span class="text-lg font-bold text-[#D4A574] bg-accent px-3 py-1 rounded-full">{project.value}</span>
+            </div>
+            <p class="text-[#4F3E29] leading-relaxed">{project.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center bg-[#F5F5DC] border-l-4 border-primary p-6 rounded-lg">
+        <p class="text-lg text-gray-800">
+          <strong>Pandangan Keperluan Peralatan:</strong> Tender kerajaan untuk projek ini biasanya memberikan 20-30 mata untuk pemilikan peralatan, 15-20 mata untuk teknologi GPS/pintar, dan 10-15 mata untuk pengurusan armada telematik. <span class="text-primary font-semibold">Pemilikan jentolak yang ditunjukkan boleh menjadi faktor penentu dalam memenangi kontrak RM 500 juta+.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Mengapa Kontraktor CIDB G7 Memilih Ing Heng Credit
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Pembiayaan khusus direka untuk kontraktor projek mega dan pakar tender kerajaan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <Calculator lang={lang} equipmentType="Armada Jentolak" defaultPrice={1800000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Proses Pembiayaan Armada: Dari Permohonan Hingga Penyerahan Tender
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Proses berstruktur direka untuk tarikh akhir tender kerajaan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Salam!%20Saya%20ingin%20membincangkan%20pembiayaan%20armada%20jentolak%20untuk%20projek%20mega%20kerajaan."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Mulakan Permohonan Pembiayaan Armada
+        </a>
+        <p class="text-[#4F3E29] mt-4">Tarikh akhir tender kerajaan semakin hampir? Minta pemprosesan dipercepatkan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Jenis Jentolak Yang Kami Biayai Untuk Tender Kerajaan
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Dari padat D3K2 hingga berat D11T - Semua kategori jentolak untuk projek infrastruktur
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {bulldozerTypes.map((equipment) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow border-t-4 border-primary">
+            <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
+            <p class="text-[#4F3E29] text-sm leading-relaxed">{equipment.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">Jenama Yang Diterima Untuk Tender Kerajaan</h3>
+        <div class="flex flex-wrap justify-center gap-4 mb-6">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium border border-primary/20">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <div class="max-w-3xl mx-auto bg-[#F5F5DC] p-6 rounded-lg border-l-4 border-primary">
+          <p class="text-gray-800">
+            <strong>Nota Spesifikasi Tender:</strong> Kebanyakan tender kerajaan menyatakan "setara dengan standard CAT/Komatsu." Kedua-dua jenama Jepun (Komatsu) dan Amerika (Caterpillar) mendapat markah sama dalam penilaian teknikal. Jenama China (Shantui, XCMG) adalah kos efektif tetapi mungkin mendapat markah 5-10% lebih rendah dalam beberapa penilaian tender.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Kisah Kejayaan Kontraktor CIDB G7
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Pemaju utama yang memperoleh projek mega melalui pembiayaan peralatan strategik
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Soalan Lazim
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Semua yang kontraktor besar perlu tahu tentang pembiayaan armada jentolak
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Bersedia Untuk Membiayai Armada Jentolak Anda Untuk Projek Mega?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Pakej sivil MRT3 akan dikeluarkan S1-S2 2025. Pan Borneo Fasa 1B sedang berjalan. Tender mitigasi banjir berterusan. Pemilikan peralatan = daya saing tender. Mohon hari ini untuk kelulusan bersyarat 48 jam.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Salam!%20Saya%20ingin%20membincangkan%20pembiayaan%20armada%20jentolak%20untuk%20projek%20mega%20kerajaan%20(MRT3/ECRL/Pan%20Borneo)."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          WhatsApp: Sebut Harga Pembiayaan Armada
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Hubungi: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Pembiayaan RM 5J-15J</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Kelulusan 48 Jam</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Pakar CIDB G7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="bulldozer" />
+
+  <!-- Contact Form Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Minta Perundingan Pembiayaan Armada
+          </h2>
+          <p class="text-[#4F3E29]">
+            Pakar pembiayaan CIDB G7 kami akan menghubungi anda dalam masa cepat semasa waktu perniagaan
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

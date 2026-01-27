@@ -1,0 +1,591 @@
+---
+/**
+ * Hire Purchase Financing Service Page - English
+ * Comprehensive service page for hire purchase equipment financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
+
+const lang = 'en';
+
+// SEO Configuration
+const title = 'Hire Purchase Financing Malaysia | Equipment HP Loan | Ing Heng Credit';
+const description = 'Flexible hire purchase financing for excavators, lorries, forklifts & construction equipment in Malaysia. Fast processing, flexible terms up to 60 months. Get instant quote!';
+const keywords = ['hire purchase Malaysia', 'equipment financing', 'excavator hire purchase', 'lorry financing', 'forklift HP loan', 'construction equipment financing', 'heavy machinery hire purchase', 'asset financing Malaysia'];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Services', href: '/en/services' },
+  { label: 'Hire Purchase Financing', href: '/en/services/hire-purchase' }
+];
+
+// FAQ Data
+const faqs = [
+  {
+    question: 'What is hire purchase financing?',
+    answer: 'Hire purchase is a financing method where you pay for equipment through monthly installments while using it for your business. Once all payments are complete, ownership of the equipment transfers to you. It\'s ideal for businesses that need equipment immediately but prefer to spread the cost over time.'
+  },
+  {
+    question: 'What equipment can be financed through hire purchase?',
+    answer: 'We finance a wide range of equipment including excavators, bulldozers, backhoes, road rollers, lorries, container trucks, forklifts, cranes, generators, and other construction and logistics equipment. Both new and used equipment (up to 10 years old) are accepted.'
+  },
+  {
+    question: 'What is your approval rate and how long does it take?',
+    answer: 'We maintain a strong approval rate and process applications quickly. Once approved, funds can be disbursed within 3-5 working days. Our streamlined process requires minimal documentation and our team works efficiently to get you equipped quickly.'
+  },
+  {
+    question: 'How long are the payment terms?',
+    answer: 'We offer flexible payment terms ranging from 12 to 60 months (1 to 5 years). The term length depends on the equipment type, age, and your business needs. Longer terms mean lower monthly payments, while shorter terms mean you own the equipment faster.'
+  },
+  {
+    question: 'What documents are required for hire purchase application?',
+    answer: 'Required documents include: Company SSM registration, latest 6 months bank statements, IC/passport of directors, business financial statements (if available), quotation or invoice for the equipment, and equipment specifications. Our team will guide you through the documentation process.'
+  },
+  {
+    question: 'Can I finance used equipment?',
+    answer: 'Yes! We finance both new and used equipment. For used equipment, we typically accept machinery up to 10 years old, subject to condition assessment. The age and condition of equipment may affect the loan amount and terms offered.'
+  },
+  {
+    question: 'Is a down payment required?',
+    answer: 'No! We offer 0% deposit with 100% financing available for qualified applicants (subject to terms and conditions). This means zero upfront payment needed. Equipment ownership is accessible to all businesses without requiring any deposit. This is our major competitive advantage.'
+  },
+  {
+    question: 'What happens if I miss a payment?',
+    answer: 'We understand that businesses face cash flow challenges. If you anticipate payment difficulty, contact us immediately. We can work out payment arrangements or restructuring options. Late payments may incur charges, and consistent default could result in equipment repossession as per agreement terms.'
+  },
+  {
+    question: 'Can I settle the hire purchase early?',
+    answer: 'Yes, early settlement is allowed and encouraged. You can pay off the remaining balance at any time, and we\'ll provide a settlement statement. Early settlement may involve administrative fees, but you\'ll save on future interest charges. Contact us for your settlement quote.'
+  },
+  {
+    question: 'How do I apply for hire purchase financing?',
+    answer: 'Simply call us at 017-570 0889, WhatsApp us, or fill out our online contact form. Our financing specialists will discuss your equipment needs, explain available options, and guide you through the application process. We make it quick and easy to get your business equipped.'
+  }
+];
+
+// Service Schema (Enhanced)
+const servicePageSchema = generateServicePageSchema({
+  serviceName: 'Equipment Hire Purchase Financing',
+  description: 'Flexible hire purchase financing for excavators, lorries, forklifts, and construction equipment with fast processing and flexible terms',
+  serviceType: 'Equipment Hire Purchase',
+  minRate: '8.00',
+  maxRate: '18.00',
+  locale: 'en',
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Service Page Schema (Enhanced) -->
+  <StructuredData schema={servicePageSchema} />
+
+  <!-- FAQ Schema -->
+  <StructuredData schema={faqSchema} />
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbItems} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Hire Purchase Equipment Financing"
+    subtitle="Own your equipment through flexible monthly payments. Fast approval, competitive rates, and terms up to 60 months. Get your business equipped today!"
+    ctaText="Get Free Quote"
+    ctaLink="/en/contact"
+    ctaSecondaryText="WhatsApp Us"
+    ctaSecondaryLink="https://wa.me/60175700889"
+    lang={lang}
+    trustSignals={['Fast Approval', 'Quick Processing', '500+ Happy Clients']}
+  />
+
+  <!-- What is Hire Purchase Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            What is Hire Purchase Financing?
+          </h2>
+          <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Hire purchase (HP) is an asset financing solution that allows businesses and individuals to acquire essential equipment through manageable monthly installments. Instead of paying the full cost upfront, you spread the payment over 1 to 5 years while using the equipment to generate revenue for your business.
+          </p>
+
+          <p class="text-gray-700 leading-relaxed mb-6">
+            This financing method is particularly popular for construction equipment, logistics vehicles, and industrial machinery where the equipment's immediate use creates cash flow to service the monthly payments. Upon completion of all installments, full ownership transfers to you automatically.
+          </p>
+
+          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-[2px_2px_0_#2D1810]">
+            <h3 class="text-xl font-bold text-primary mb-3">How Hire Purchase Works:</h3>
+            <ol class="space-y-3 text-gray-700">
+              <li><strong>1. Choose Your Equipment:</strong> Select the machinery or vehicle your business needs</li>
+              <li><strong>2. Apply for Financing:</strong> Submit a simple application with basic documentation</li>
+              <li><strong>3. Get Approved Fast:</strong> Receive approval quickly (strong approval rate)</li>
+              <li><strong>4. Zero Deposit Option:</strong> 0% deposit available with 100% financing (subject to terms and conditions)</li>
+              <li><strong>5. Use & Pay Monthly:</strong> Start using equipment immediately while making monthly payments</li>
+              <li><strong>6. Own the Equipment:</strong> After final payment, equipment ownership transfers to you</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Our Hire Purchase Financing?
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          We've helped over 500 Malaysian businesses acquire the equipment they need to grow
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <BenefitCard
+          icon="lightning"
+          title="Quick Approval"
+          description="Get your application approved quickly. Our streamlined process means minimal waiting time and fast equipment delivery."
+        />
+
+        <BenefitCard
+          icon="percentage"
+          title="Competitive Interest Rates"
+          description="Interest rates 8-18% per annum (subject to credit assessment). We work with multiple financiers to get you the best possible terms."
+        />
+
+        <BenefitCard
+          icon="calendar"
+          title="Flexible Payment Terms"
+          description="Choose repayment periods from 12 to 60 months. Customize your payment schedule to match your cash flow and business cycle."
+        />
+
+        <BenefitCard
+          icon="shield"
+          title="High Approval Rate"
+          description="With our extensive lender network and expertise, we maintain one of the highest approval rates in the industry."
+        />
+
+        <BenefitCard
+          icon="users"
+          title="Multilingual Support"
+          description="Our team serves you in English, Mandarin, and Bahasa Malaysia. Get assistance in your preferred language."
+        />
+
+        <BenefitCard
+          icon="clock"
+          title="0% Deposit | 100% Financing"
+          description="Zero upfront payment required with 100% financing available for qualified applicants (subject to terms and conditions). Equipment ownership accessible to all businesses."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="New & Used Equipment"
+          description="Finance both brand new and pre-owned equipment up to 10 years old. Quality assets at prices that fit your budget."
+        />
+
+        <BenefitCard
+          icon="default"
+          title="No Hidden Fees"
+          description="Transparent pricing with all fees disclosed upfront. No surprises, just honest financing solutions."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment We Finance Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Equipment We Finance
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          From construction to logistics, we finance the equipment that drives your business forward
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+          <div class="text-primary text-4xl mb-4">🚜</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Construction Equipment</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Excavators (1-40 tons)</li>
+            <li>• Bulldozers</li>
+            <li>• Backhoe Loaders</li>
+            <li>• Road Rollers</li>
+            <li>• Wheel Loaders</li>
+            <li>• Skid Steer Loaders</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+          <div class="text-primary text-4xl mb-4">🚛</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Logistics Vehicles</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Lorries & Trucks</li>
+            <li>• Container Trucks</li>
+            <li>• Prime Movers</li>
+            <li>• Cargo Vans</li>
+            <li>• Trailer Trucks</li>
+            <li>• Dump Trucks</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+          <div class="text-primary text-4xl mb-4">🏗️</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Lifting Equipment</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Forklifts (1-25 tons)</li>
+            <li>• Mobile Cranes</li>
+            <li>• Tower Cranes</li>
+            <li>• Reach Stackers</li>
+            <li>• Aerial Work Platforms</li>
+            <li>• Scissor Lifts</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+          <div class="text-primary text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold text-primary mb-3">Power & Others</h3>
+          <ul class="text-gray-600 space-y-2">
+            <li>• Generators (10-500kVA)</li>
+            <li>• Air Compressors</li>
+            <li>• Concrete Mixers</li>
+            <li>• Welding Machines</li>
+            <li>• Compactors</li>
+            <li>• Industrial Equipment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-gray-600 mb-6">
+          Don't see your equipment listed? We finance a wide range of commercial and industrial assets.
+        </p>
+        <CTAButton
+          text="Inquire About Your Equipment"
+          link="/en/contact"
+          variant="primary"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          How to Apply for Hire Purchase
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Our simple 4-step process gets you equipped in no time
+        </p>
+        <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            1
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Contact Us</h3>
+          <p class="text-gray-600">
+            Call, WhatsApp, or email us with your equipment needs. Our specialists respond within hours.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-[#8B6F47] text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            2
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Submit Documents</h3>
+          <p class="text-gray-600">
+            Provide basic business documents and equipment quotation. We guide you through the entire process.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            3
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Get Approved</h3>
+          <p class="text-gray-600">
+            Receive approval quickly. We'll present the best financing terms available for you.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+            4
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Get Your Equipment</h3>
+          <p class="text-gray-600">
+            Sign the agreement, pay down payment, and receive your equipment. Start generating revenue immediately!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section-padding bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Application Requirements
+          </h2>
+          <p class="text-xl text-white/90 max-w-2xl mx-auto">
+            Simple documentation for fast processing
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4 flex items-center">
+              <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+              </svg>
+              For Companies (Sdn Bhd)
+            </h3>
+            <ul class="space-y-3 text-white/90">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                SSM Company Registration (Form 9 & 49)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Latest 6 months bank statements
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Directors' IC/Passport copies
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Financial statements (if available)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Equipment quotation/invoice
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4 flex items-center">
+              <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+              </svg>
+              For Individuals/Sole Proprietors
+            </h3>
+            <ul class="space-y-3 text-white/90">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                IC/Passport copy
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Latest 6 months bank statements
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Business registration (if applicable)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Income proof (payslips/EPF statement)
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Equipment quotation/invoice
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <p class="text-white/90 mb-4">
+            Our team will guide you through the documentation process and can assist with any missing paperwork.
+          </p>
+          <CTAButton
+            text="Start Your Application"
+            link="/en/contact"
+            variant="accent"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-xl text-gray-600">
+            Everything you need to know about hire purchase financing
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={index === 0}
+            />
+          ))}
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-gray-600 mb-6">
+            Have more questions? Our financing specialists are here to help.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <CTAButton
+              text="Call Us Now"
+              link="tel:+60175700889"
+              variant="primary"
+              icon="phone"
+            />
+            <CTAButton
+              text="WhatsApp Us"
+              link="https://wa.me/60175700889"
+              variant="accent"
+              icon="whatsapp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-primary via-secondary to-accent text-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Ready to Get Your Equipment?
+        </h2>
+        <p class="text-xl text-white/90 mb-8 leading-relaxed">
+          Join 500+ Malaysian businesses that trust Ing Heng Credit for their equipment financing needs. Get approved fast with our industry-leading approval rate.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">Quick</div>
+            <div class="text-white/90">Approval Time</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">500+</div>
+            <div class="text-white/90">Happy Clients</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton
+            text="Apply Now"
+            link="/en/contact"
+            variant="accent"
+            size="large"
+          />
+          <CTAButton
+            text="WhatsApp: 017-570 0889"
+            link="https://wa.me/60175700889"
+            variant="outline-white"
+            size="large"
+            icon="whatsapp"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section-padding">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Get Your Free Quote Today
+          </h2>
+          <p class="text-xl text-gray-600">
+            Fill out the form below and our financing specialists will contact you promptly
+          </p>
+          <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
+        </div>
+
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-padding {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding: 3rem 0;
+    }
+  }
+</style>

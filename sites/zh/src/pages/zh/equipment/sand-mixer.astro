@@ -1,0 +1,242 @@
+---
+/**
+ * Sand Mixer Financing Landing Page - Mandarin Chinese
+ * Target: Construction companies, concrete producers, foundries
+ * Keywords: 沙浆搅拌机融资, 混凝土设备贷款, 建筑机械融资
+ * Cultural Focus: Construction efficiency, concrete quality, building standards
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '沙浆搅拌机融资马来西亚 | 0%押金 | 永兴信贷 | 建筑设备专家';
+const pageDescription = '专业沙浆搅拌机融资服务。0%押金，100%融资，支持建筑施工业务。永兴信贷40年信誉，建筑设备专业融资。';
+const keywords = ['沙浆搅拌机融资', '混凝土设备贷款', '建筑机械融资', '搅拌设备融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '沙浆搅拌机融资', url: '/zh/equipment/sand-mixer' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'hammer', title: '建筑业专家', description: '深入了解建筑施工需求，专门为搅拌设备提供融资支持。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。快速提升施工效率和混凝土质量。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '了解建筑业紧急需求，快速处理设备融资申请。24小时内决定。' },
+  { icon: 'calendar', title: '灵活期限', description: '12-84个月还款期，配合建筑项目周期和现金流。' },
+  { icon: 'trending-up', title: '效率提升', description: '机械化搅拌显著提升施工效率和混凝土一致性。' },
+  { icon: 'shield', title: '质量保证', description: '标准化搅拌确保混凝土质量，符合建筑标准要求。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '沙浆搅拌机融资马来西亚',
+  description: '专业沙浆搅拌机融资，0%押金，支持建筑施工业务。永兴信贷建筑设备专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/sand-mixer-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '60000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚沙浆搅拌机融资"
+    subtitle="0%押金 | 100%融资 | 建筑专业 | 永兴信贷施工支持"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解沙浆搅拌机融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '建筑专家']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          沙浆搅拌机融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为建筑承包商提供沙浆搅拌机融资服务。提升施工效率，确保混凝土质量，助您承接更多项目。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Mixer Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的搅拌机类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">强制式搅拌机</h4>
+            <p class="text-[#4F3E29] mb-4">高质量混凝土搅拌，适合预制构件。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">自落式搅拌机</h4>
+            <p class="text-[#4F3E29] mb-4">经济型选择，适合一般建筑项目。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">双卧轴搅拌机</h4>
+            <p class="text-[#4F3E29] mb-4">高效搅拌，适合大批量生产。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">行星式搅拌机</h4>
+            <p class="text-[#4F3E29] mb-4">均匀搅拌，适合特殊混凝土。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">移动式搅拌机</h4>
+            <p class="text-[#4F3E29] mb-4">现场搅拌，适合多工地作业。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">干粉砂浆搅拌机</h4>
+            <p class="text-[#4F3E29]">专用干混砂浆生产设备。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-gray-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">应用领域</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-gray-600 mb-3">建筑工程</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 住宅建设项目</li>
+              <li>• 商业建筑施工</li>
+              <li>• 基础设施建设</li>
+              <li>• 道路工程项目</li>
+              <li>• 桥梁隧道工程</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-gray-600 mb-3">专业生产</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 预制构件厂</li>
+              <li>• 商品混凝土站</li>
+              <li>• 干粉砂浆厂</li>
+              <li>• 水泥制品厂</li>
+              <li>• 建材生产企业</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Specifications -->
+      <div class="bg-gradient-to-r from-gray-500 to-blue-500 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">技术规格</h3>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">0.25-3m³</div>
+            <div class="font-semibold mb-2">容量范围</div>
+            <div class="text-sm opacity-90">根据型号不同</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">30-150s</div>
+            <div class="font-semibold mb-2">搅拌周期</div>
+            <div class="text-sm opacity-90">高效作业</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">95%+</div>
+            <div class="font-semibold mb-2">搅拌均匀度</div>
+            <div class="text-sm opacity-90">质量保证</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">10年+</div>
+            <div class="font-semibold mb-2">使用寿命</div>
+            <div class="text-sm opacity-90">耐用可靠</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        投资搅拌设备，提升施工质量
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷助您获得高效搅拌设备，确保混凝土质量，提升项目竞争力。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请沙浆搅拌机融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="sand-mixer" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取沙浆搅拌机融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的建筑设备融资专家将为您服务
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

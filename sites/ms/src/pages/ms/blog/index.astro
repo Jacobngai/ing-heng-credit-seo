@@ -1,0 +1,617 @@
+---
+/**
+ * Malay Blog Index Page - Updated with Live Site Design
+ * Equipment Financing Blog - Expert Tips & Industry Guides
+ */
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+
+// Get blog posts from Content Collections
+const allMdPosts = await getCollection('blogs');
+const allPosts = allMdPosts
+  .filter(post => post.data.locale === lang)
+  .map(post => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,
+    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
+    author: post.data.author,
+    category: post.data.category,
+    readTime: post.data.readingTime || 5,
+    featured: post.data.featured,
+    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
+  }));
+
+// Sort by date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.date).valueOf() - new Date(a.date).valueOf()
+);
+
+// Featured posts
+const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
+const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
+
+// Pagination
+const POSTS_PER_PAGE = 12;
+const currentPage = 1;
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+const paginatedPosts = sortedPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+// Category icons
+const categoryIcons: Record<string, string> = {
+  'equipment-financing-tips': '🏗️',
+  'industry-news-trends': '📰',
+  'contractor-guides': '👷',
+  'business-growth': '📈',
+  'tax-compliance': '📋',
+  'equipment-maintenance': '🔧',
+};
+
+// Categories
+const categories = [
+  { name: 'Equipment Financing', slug: 'equipment-financing-tips', icon: '🏗️' },
+  { name: 'Industry News', slug: 'industry-news-trends', icon: '📰' },
+  { name: 'Contractor Guides', slug: 'contractor-guides', icon: '👷' },
+  { name: 'Business Growth', slug: 'business-growth', icon: '📈' },
+  { name: 'Tax Compliance', slug: 'tax-compliance', icon: '📋' },
+];
+---
+
+<BaseLayout
+  title="Blog Pembiayaan Peralatan Malaysia | Tips Pakar | Ing Heng"
+  description="Wawasan pakar mengenai pembiayaan peralatan, pengurusan perniagaan pembinaan, dan tren industri dari rakan pembiayaan yang dipercayai di Malaysia sejak 1985."
+  lang={lang}
+  keywords={[
+    'blog pembiayaan peralatan',
+    'tips peralatan pembinaan',
+    'panduan pembiayaan Malaysia',
+    'tips pembiayaan ekskavator',
+    'panduan pembiayaan lori',
+    'nasihat pinjaman perniagaan',
+    'pajakan peralatan Malaysia',
+    'tips kewangan kontraktor'
+  ]}
+>
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs
+        items={[
+          { label: 'Utama', href: `/${lang}/` },
+          { label: 'Blog', href: `/${lang}/blog` }
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Hero Section - Navy Blue with Yellow Text -->
+  <section class="hero-section bg-navy-900">
+    <div class="container-custom text-center">
+      <h1 class="hero-title text-yellow-400">
+        Wawasan Pembiayaan Peralatan & Panduan Pakar
+      </h1>
+      <p class="hero-subtitle">
+        Pelajari dari 40+ tahun kepakaran pembiayaan peralatan. Tips praktikal, wawasan industri, dan strategi terbukti untuk membantu perniagaan pembinaan, logistik, atau pembuatan anda berkembang maju.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="search-bar max-w-2xl mx-auto">
+        <div class="relative">
+          <input
+            type="search"
+            placeholder="Cari artikel tentang pembiayaan, peralatan, tips perniagaan..."
+            class="search-input"
+            aria-label="Cari siaran blog"
+          />
+          <button
+            type="button"
+            class="search-button"
+            aria-label="Cari"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Trust Signals -->
+      <div class="trust-signals">
+        <div class="trust-item">
+          <svg class="trust-icon" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4" clip-rule="evenodd" />
+          </svg>
+          <span>40+ Tahun Pengalaman</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-icon" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4" clip-rule="evenodd" />
+          </svg>
+          <span>4,000+ Syarikat Dibantu</span>
+        </div>
+        <div class="trust-item">
+          <svg class="trust-icon" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4" clip-rule="evenodd" />
+          </svg>
+          <span>Lesen KPKT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Navigation -->
+  <section class="category-nav">
+    <div class="container-custom">
+      <div class="category-grid">
+        {categories.map((category) => (
+          <a
+            href={`/${lang}/blog/category/${category.slug}`}
+            class="category-link"
+          >
+            <span class="category-icon">{category.icon}</span>
+            <span class="category-name">{category.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Posts Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Artikel Pilihan</h2>
+        <p class="section-subtitle">
+          Panduan kami yang paling popular dan berkesan untuk membantu anda membuat keputusan pembiayaan yang lebih bijak
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {displayFeaturedPosts.map((post) => (
+          <div class="blog-card">
+            <a href={`/${lang}/blog/${post.slug}`} class="card-image-link">
+              <div class="card-image-placeholder">
+                {categories.find(c => c.name === post.category)?.icon || '📝'}
+              </div>
+            </a>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="category-badge">{post.category}</span>
+                <span class="read-time">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {post.readTime} min baca
+                </span>
+              </div>
+              <h3 class="card-title">
+                <a href={`/${lang}/blog/${post.slug}`}>
+                  {post.title}
+                </a>
+              </h3>
+              <p class="card-excerpt">{post.excerpt}</p>
+              <div class="card-footer">
+                <time datetime={post.date}>
+                  {new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+                <a href={`/${lang}/blog/${post.slug}`} class="read-more">
+                  Baca Lagi →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Blog Grid -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <div class="mb-8">
+            <h2 class="section-title-inline">Artikel Terkini</h2>
+            <span class="post-count">Menunjukkan {Math.min(POSTS_PER_PAGE, allPosts.length)} daripada {allPosts.length} artikel</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {paginatedPosts.map((post) => (
+              <div class="blog-card-sm">
+                <a href={`/${lang}/blog/${post.slug}`} class="card-image-link">
+                  <div class="card-image-placeholder-sm">
+                    {categories.find(c => c.name === post.category)?.icon || '📝'}
+                  </div>
+                </a>
+                <div class="card-content-sm">
+                  <span class="category-badge-sm">{post.category}</span>
+                  <h3 class="card-title-sm">
+                    <a href={`/${lang}/blog/${post.slug}`}>
+                      {post.title}
+                    </a>
+                  </h3>
+                  <p class="card-excerpt-sm">{post.excerpt}</p>
+                  <div class="card-footer-sm">
+                    <time datetime={post.date} class="text-sm">
+                      {new Date(post.date).toLocaleDateString('ms-MY', { month: 'short', day: 'numeric' })}
+                    </time>
+                    <a href={`/${lang}/blog/${post.slug}`} class="read-more-sm">
+                      Baca Lagi →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button disabled class="pagination-button pagination-button-disabled">Sebelumnya</button>
+            {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => (
+              <button
+                class={`pagination-button ${i === 0 ? 'pagination-button-active' : 'pagination-button-inactive'}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+            {totalPages > 5 && <span class="pagination-ellipsis">...</span>}
+            {totalPages > 5 && <button class="pagination-button pagination-button-inactive">{totalPages}</button>}
+            <button class="pagination-button pagination-button-active">Seterusnya</button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <!-- CTA -->
+          <div class="sidebar-cta">
+            <h3 class="sidebar-title">Perlu Nasihat Pembiayaan?</h3>
+            <p>Pakar kami sedia membantu anda mencari penyelesaian pembiayaan yang sempurna untuk perniagaan anda.</p>
+            <CTAButton
+              text="WhatsApp Kami Sekarang"
+              link={COMPANY_INFO.whatsapp.link}
+              variant="accent"
+              size="large"
+              icon="whatsapp"
+            />
+            <p class="sidebar-phone">
+              Atau hubungi: <a href={`tel:${COMPANY_INFO.phone.international}`}>{COMPANY_INFO.phone.display}</a>
+            </p>
+          </div>
+
+          <!-- Categories -->
+          <div class="sidebar-widget">
+            <h3 class="sidebar-title">Layari Mengikut Kategori</h3>
+            <ul class="category-list">
+              {categories.map((category) => (
+                <li>
+                  <a href={`/${lang}/blog/category/${category.slug}`} class="category-link-sm">
+                    <span class="category-icon">{category.icon}</span>
+                    <span>{category.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+
+  .hero-section {
+    @apply py-20 md:py-24;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight;
+    text-transform: uppercase;
+  }
+
+  .hero-subtitle {
+    @apply text-xl text-white leading-relaxed mb-8 max-w-4xl mx-auto;
+  }
+
+  .search-bar {
+    @apply relative;
+  }
+
+  .search-input {
+    @apply w-full px-6 py-4 pr-12 border-4 border-yellow-400 bg-white focus:border-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-400/20;
+    box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);
+    font-size: 1rem;
+  }
+
+  .search-button {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 bg-yellow-400 text-navy-900 p-3 hover:bg-yellow-300 font-bold;
+    box-shadow: 4px 4px 0 rgba(30, 58, 138, 0.3);
+  }
+
+  .trust-signals {
+    @apply flex flex-wrap justify-center gap-6 mt-8;
+  }
+
+  .trust-item {
+    @apply flex items-center gap-2;
+    @apply text-sm text-yellow-400 font-bold;
+  }
+
+  .trust-icon {
+    @apply w-5 h-5 text-yellow-400;
+  }
+
+  .bg-navy-900 {
+    background-color: #0F172A;
+  }
+
+  .text-yellow-400 {
+    color: #FBBF24;
+  }
+
+  .category-nav {
+    @apply py-6 bg-white border-y-4 border-navy-900;
+  }
+
+  .category-grid {
+    @apply flex flex-wrap justify-center gap-4;
+  }
+
+  .category-link {
+    @apply flex items-center gap-2 px-6 py-3 bg-white border-3 border-navy-900 hover:bg-yellow-400 hover:text-navy-900 transition-all;
+    @apply font-bold;
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  .category-icon {
+    @apply text-xl;
+  }
+
+  .category-name {
+    @apply font-bold;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-black text-navy-900 mb-4;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .section-subtitle {
+    @apply text-gray-700 text-lg;
+  }
+
+  .section-title-inline {
+    @apply text-2xl font-black text-navy-900;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .post-count {
+    @apply text-sm text-gray-700 font-bold;
+  }
+
+  .blog-card {
+    @apply bg-white overflow-hidden border-4 border-navy-900 shadow-brutal-lg;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s;
+  }
+
+  .blog-card:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  .blog-card-sm {
+    @apply bg-white overflow-hidden border-4 border-navy-900 shadow-brutal-md;
+    box-shadow: 6px 6px 0 #1E3A8A;
+    transition: all 0.3s;
+  }
+
+  .blog-card-sm:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  .card-image-link {
+    @apply block overflow-hidden aspect-video bg-gradient-to-br from-yellow-100 to-yellow-200;
+    @apply border-b-4 border-navy-900;
+  }
+
+  .card-image-placeholder {
+    @apply absolute inset-0 flex items-center justify-center text-6xl opacity-30;
+  }
+
+  .card-image-placeholder-sm {
+    @apply relative aspect-video bg-gradient-to-br from-yellow-100 to-yellow-200;
+    @apply border-b-3 border-navy-900;
+    @apply flex items-center justify-center text-5xl opacity-30;
+  }
+
+  .card-content {
+    @apply p-6;
+  }
+
+  .card-content-sm {
+    @apply p-6;
+  }
+
+  .card-meta {
+    @apply flex items-center justify-between text-sm text-gray-700 mb-3;
+  }
+
+  .category-badge {
+    @apply inline-block px-3 py-1 text-xs font-black uppercase;
+    @apply bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 3px 3px 0 #1E3A8A;
+  }
+
+  .category-badge-sm {
+    @apply inline-block px-2 py-1 text-xs font-black uppercase;
+    @apply bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+
+  .read-time {
+    @apply flex items-center gap-1;
+  }
+
+  .card-title {
+    @apply text-2xl font-black text-navy-900 mb-3 group-hover:text-yellow-600;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .card-title a {
+    @apply text-navy-900;
+    text-decoration: none;
+  }
+
+  .card-title-sm {
+    @apply text-xl font-black text-navy-900 mb-3 group-hover:text-yellow-600;
+    font-family: 'Bebas Neue', sans-serif;
+    @apply line-clamp-2;
+  }
+
+  .card-title-sm a {
+    @apply text-navy-900;
+    text-decoration: none;
+  }
+
+  .card-excerpt {
+    @apply text-gray-700 mb-4 leading-relaxed;
+  }
+
+  .card-excerpt-sm {
+    @apply text-gray-700 mb-4 line-clamp-3;
+  }
+
+  .card-footer {
+    @apply flex items-center justify-between pt-4 border-t-3 border-navy-900 text-sm;
+  }
+
+  .card-footer-sm {
+    @apply flex items-center justify-between pt-4 border-t-3 border-navy-900 text-sm;
+  }
+
+  .read-more {
+    @apply text-yellow-600 font-black hover:text-navy-900 transition-colors;
+    @apply uppercase text-sm;
+    text-decoration: none;
+  }
+
+  .read-more-sm {
+    @apply text-yellow-600 font-black hover:text-[#2D1810] transition-colors;
+    @apply uppercase;
+    text-decoration: none;
+  }
+
+  .pagination {
+    @apply flex justify-center gap-2;
+  }
+
+  .pagination-button {
+    @apply px-4 py-2 border border-gray-300 rounded-lg;
+    @apply font-semibold transition-all;
+  }
+
+  .pagination-button-active {
+    @apply bg-primary text-white;
+  }
+
+  .pagination-button-disabled {
+    @apply text-gray-400 cursor-not-allowed;
+  }
+
+  .pagination-button-inactive {
+    @apply border border-gray-300 hover:bg-gray-50;
+  }
+
+  .pagination-ellipsis {
+    @apply px-4 py-2;
+  }
+
+  .sidebar {
+    @apply space-y-8;
+  }
+
+  .sidebar-cta {
+    @apply bg-gradient-to-r from-navy-900 to-navy-800 text-white p-8;
+    @apply border-4 border-yellow-400;
+  }
+
+  .sidebar-title {
+    @apply text-xl font-bold mb-4;
+  }
+
+  .sidebar-phone {
+    @apply mt-4 text-sm;
+  }
+
+  .sidebar-phone a {
+    @apply text-yellow-400 underline hover:text-yellow-300;
+    text-decoration: none;
+  }
+
+  .sidebar-widget {
+    @apply bg-white border-4 border-navy-900 p-6;
+  }
+
+  .category-list {
+    @apply space-y-3;
+  }
+
+  .category-link-sm {
+    @apply flex items-center justify-between;
+    @apply text-gray-700 hover:text-primary transition-colors;
+    text-decoration: none;
+  }
+
+  .border-navy-900 {
+    border-color: #1E3A8A;
+  }
+
+  .shadow-brutal-lg {
+    box-shadow: 8px 8px 0 rgba(30, 58, 138, 0.3);
+  }
+
+  .shadow-brutal-md {
+    box-shadow: 6px 6px 0 rgba(30, 58, 138, 0.3);
+  }
+
+  .text-primary {
+    color: #1E3A8A;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,434 @@
+---
+/**
+ * Dynamic Blog Post: Brand + Equipment Financing - Malay
+ * URL: /ms/blog/jenama/caterpillar/jengkaut
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import { generateFAQSchema } from '../../../../../utils/schema';
+import {
+  getBrandTags,
+  getEquipmentTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  buildBrandTagUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'ms';
+
+export function getStaticPaths() {
+  const brands = getBrandTags();
+  const equipment = getEquipmentTags();
+  const paths = [];
+
+  for (const brand of brands) {
+    for (const equip of equipment) {
+      paths.push({
+        params: {
+          brand: brand.slug.ms,
+          equipment: equip.slug.ms
+        },
+        props: {
+          brandId: brand.id,
+          equipmentId: equip.id
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { brand, equipment } = Astro.params;
+const { brandId, equipmentId } = Astro.props;
+
+const brandTag = getBrandTags().find(b => b.id === brandId);
+const equipmentTag = getEquipmentTags().find(e => e.id === equipmentId);
+
+if (!brandTag || !equipmentTag) {
+  return Astro.redirect('/ms/blog');
+}
+
+const brandName = getTagName(brandTag, lang);
+const equipmentName = getTagName(equipmentTag, lang);
+
+// Equipment-specific data (Malay)
+const equipmentData: Record<string, { priceRange: string; tenure: string; downPayment: string; uses: string[] }> = {
+  'excavator': { priceRange: 'RM 150,000 - RM 800,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Pembinaan', 'Perlombongan', 'Pembersihan Tanah', 'Kerja Asas'] },
+  'forklift': { priceRange: 'RM 50,000 - RM 300,000', tenure: 'Sehingga 5 tahun', downPayment: '0% tersedia', uses: ['Pergudangan', 'Pembuatan', 'Logistik', 'Runcit'] },
+  'lorry': { priceRange: 'RM 80,000 - RM 500,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Logistik', 'Pembinaan', 'Pertanian', 'Penghantaran Runcit'] },
+  'prime-mover': { priceRange: 'RM 200,000 - RM 600,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Pengangkutan Pelabuhan', 'Pengangkutan Jarak Jauh', 'Kargo Berat', 'Pengangkutan Kontena'] },
+  'crane': { priceRange: 'RM 300,000 - RM 2,000,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Pembinaan', 'Operasi Pelabuhan', 'Angkat Berat', 'Infrastruktur'] },
+  'bulldozer': { priceRange: 'RM 400,000 - RM 1,500,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Pembersihan Tanah', 'Perlombongan', 'Pembinaan Jalan', 'Penyediaan Tapak'] },
+  'backhoe': { priceRange: 'RM 150,000 - RM 500,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Penggalian', 'Parit', 'Landskap', 'Kerja Utiliti'] },
+  'wheel-loader': { priceRange: 'RM 200,000 - RM 800,000', tenure: 'Sehingga 7 tahun', downPayment: '0% tersedia', uses: ['Pengendalian Bahan', 'Perlombongan', 'Pembinaan', 'Operasi Kuari'] },
+  'road-roller': { priceRange: 'RM 100,000 - RM 400,000', tenure: 'Sehingga 5 tahun', downPayment: '0% tersedia', uses: ['Pembinaan Jalan', 'Turapan', 'Pemadatan', 'Infrastruktur'] }
+};
+
+const equipInfo = equipmentData[equipmentId] || {
+  priceRange: 'RM 100,000 - RM 500,000',
+  tenure: 'Sehingga 7 tahun',
+  downPayment: '0% tersedia',
+  uses: ['Pembinaan', 'Pembuatan', 'Logistik']
+};
+
+// Brand-specific info
+const brandData: Record<string, { country: string; quality: string }> = {
+  'caterpillar': { country: 'USA', quality: 'Premium' },
+  'komatsu': { country: 'Jepun', quality: 'Premium' },
+  'hitachi': { country: 'Jepun', quality: 'Premium' },
+  'kobelco': { country: 'Jepun', quality: 'Premium' },
+  'volvo': { country: 'Sweden', quality: 'Premium' },
+  'hyundai': { country: 'Korea Selatan', quality: 'Berkualiti' },
+  'sany': { country: 'China', quality: 'Nilai' },
+  'xcmg': { country: 'China', quality: 'Nilai' },
+  'doosan': { country: 'Korea Selatan', quality: 'Berkualiti' },
+  'jcb': { country: 'UK', quality: 'Premium' }
+};
+
+const brandInfo = brandData[brandId] || { country: 'Antarabangsa', quality: 'Berkualiti' };
+
+// FAQs (Malay)
+const faqs = [
+  {
+    question: `Bagaimana untuk membiayai ${equipmentName.toLowerCase()} ${brandName}?`,
+    answer: `Membiayai ${equipmentName.toLowerCase()} ${brandName} dengan Ing Heng Credit adalah mudah. Anda perlukan: Dokumen pendaftaran syarikat (SSM), penyata bank 3 bulan, salinan IC pengarah, dan sebut harga ${equipmentName.toLowerCase()} ${brandName}. WhatsApp dokumen anda dan dapatkan kelulusan dalam 24 jam.`
+  },
+  {
+    question: `Apakah kadar faedah untuk pembiayaan ${equipmentName.toLowerCase()} ${brandName}?`,
+    answer: `Kadar pembiayaan ${equipmentName.toLowerCase()} ${brandName} kami bermula dari 2.88% setahun (kadar rata). Peralatan ${brandName} biasanya mengekalkan nilai dengan baik, yang boleh membantu mendapatkan kadar kompetitif. Hubungi kami untuk sebut harga peribadi.`
+  },
+  {
+    question: `Bolehkah saya mendapat 0% bayaran pendahuluan untuk ${equipmentName.toLowerCase()} ${brandName}?`,
+    answer: `Ya, 0% bayaran pendahuluan tersedia untuk pemohon yang layak membiayai ${equipmentName.toLowerCase()} ${brandName}. Reputasi ${brandInfo.quality.toLowerCase()} ${brandName} sering membantu kelulusan. Kelayakan bergantung pada profil kredit syarikat anda.`
+  },
+  {
+    question: `Adakah anda membiayai ${equipmentName.toLowerCase()} ${brandName} terpakai?`,
+    answer: `Ya, kami membiayai ${equipmentName.toLowerCase()} ${brandName} baru dan terpakai. Peralatan ${brandName} terkenal dengan ketahanan, menjadikan unit terpakai pilihan yang baik. Keperluan mungkin berbeza berdasarkan umur dan keadaan.`
+  },
+  {
+    question: `Berapa lama kelulusan pembiayaan ${equipmentName.toLowerCase()} ${brandName}?`,
+    answer: `Kami memberikan kelulusan dalam 24 jam untuk permohonan lengkap. Peralatan ${brandName} terkenal di Malaysia, jadi penilaian adalah mudah. Pengeluaran penuh biasanya berlaku dalam 3-5 hari perniagaan selepas kelulusan.`
+  }
+];
+
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: 'Mengikut Jenama', href: '/ms/blog' },
+  { label: brandName, href: `/ms/blog/jenama/${brand}` },
+  { label: equipmentName, href: `/ms/blog/jenama/${brand}/${equipment}` }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": `Pembiayaan ${equipmentName} ${brandName} Malaysia: Panduan Lengkap`,
+  "description": `Biayai ${equipmentName.toLowerCase()} ${brandName} di Malaysia. Keperluan, kadar dari 2.88% setahun, pilihan 0% bayaran pendahuluan tersedia.`,
+  "author": { "@type": "Organization", "name": "Ing Heng Credit & Leasing Sdn Bhd" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": { "@type": "ImageObject", "url": "https://www.kreditloan.my/logo.png" }
+  },
+  "datePublished": "2025-01-22",
+  "dateModified": "2025-01-22"
+};
+
+const articleDate = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={`Pembiayaan ${equipmentName} ${brandName} Malaysia | Dari 2.88% | Ing Heng Credit`}
+  description={`Biayai ${equipmentName.toLowerCase()} ${brandName} anda di Malaysia. Kadar dari 2.88% setahun, 0% bayaran pendahuluan tersedia, kelulusan 24 jam. 40+ tahun pengalaman.`}
+  lang={lang}
+  keywords={[
+    `pembiayaan ${equipmentName.toLowerCase()} ${brandName}`,
+    `pinjaman ${equipmentName.toLowerCase()} ${brandName} Malaysia`,
+    `biayai ${equipmentName.toLowerCase()} ${brandName}`,
+    `pembiayaan peralatan ${brandName}`,
+    `beli ${equipmentName.toLowerCase()} ${brandName} Malaysia`
+  ]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(generateFAQSchema(faqs))} />
+
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap gap-2 mb-6">
+          <a href={`/ms/blog/jenama/${brand}`} class="badge-brutalist text-xs hover:bg-yellow-300 transition-colors">
+            {brandName}
+          </a>
+          <span class="badge-brutalist bg-white text-xs">{equipmentName}</span>
+          <span class="badge-brutalist bg-green-400 text-xs">Panduan Pembiayaan</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Pembiayaan <span class="text-yellow-400">{equipmentName}</span> {brandName} Malaysia
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Panduan lengkap untuk membiayai {equipmentName.toLowerCase()} {brandName} anda. Ketahui tentang keperluan, kadar kompetitif, dan cara mendapat kelulusan dalam 24 jam.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400 text-sm border-t border-white/20 pt-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span>Dikemas kini {new Date(articleDate).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span>8 min bacaan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{equipInfo.priceRange}</div>
+          <div class="text-sm font-bold text-navy-900/70">Julat Harga</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">Dari 2.88% setahun</div>
+          <div class="text-sm font-bold text-navy-900/70">Kadar Faedah</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{equipInfo.tenure}</div>
+          <div class="text-sm font-bold text-navy-900/70">Tempoh</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{brandInfo.country}</div>
+          <div class="text-sm font-bold text-navy-900/70">Asal Jenama</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 prose prose-lg max-w-none">
+
+          <h2 class="text-3xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Mengapa Pilih {equipmentName} {brandName}?
+          </h2>
+
+          <p>
+            {brandName} adalah jenama peringkat {brandInfo.quality.toLowerCase()} dari {brandInfo.country}, terkenal dengan kualiti dan kebolehpercayaan.
+            {equipmentName} mereka adalah pilihan popular untuk perniagaan di Malaysia kerana nilai jualan semula yang baik dan ketersediaan alat ganti.
+          </p>
+
+          <p>
+            {equipmentName} {brandName} biasanya digunakan untuk:
+          </p>
+
+          <ul>
+            {equipInfo.uses.map((use) => (
+              <li><strong>{use}</strong> - Permintaan tinggi di seluruh Malaysia</li>
+            ))}
+          </ul>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Keperluan Pembiayaan {equipmentName} {brandName}
+          </h2>
+
+          <div class="bg-gray-50 border-4 border-navy-900 p-6 my-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="text-xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+              Dokumen Diperlukan
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Pendaftaran Syarikat (SSM)</strong> - Borang 9 & 24/49 atau Sijil Pendaftaran Perniagaan</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Penyata Bank</strong> - Penyata bank syarikat 3 bulan terkini</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Salinan IC</strong> - MyKad semua pengarah/rakan kongsi</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Sebut Harga {equipmentName} {brandName}</strong> - Dari peniaga sah atau penjual</span>
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Soalan Lazim
+          </h2>
+
+          <div class="space-y-6 my-8">
+            {faqs.map((faq) => (
+              <div class="bg-gray-50 border-3 border-navy-900 p-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <h3 class="font-bold text-lg text-navy-900 mb-2">{faq.question}</h3>
+                <p class="text-gray-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+
+            <div class="bg-navy-900 border-4 border-yellow-400 p-6" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+              <h3 class="text-xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Biayai {equipmentName} {brandName} Anda
+              </h3>
+              <ul class="space-y-2 text-white text-sm mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Kelulusan 24 jam</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>0% bayaran pendahuluan tersedia</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Kadar dari 2.88% setahun</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Peralatan baru & terpakai</span>
+                </li>
+              </ul>
+              <CTAButton
+                text="WhatsApp Kami Sekarang"
+                link={COMPANY_INFO.whatsapp.link}
+                variant="accent"
+                size="large"
+                icon="whatsapp"
+                fullWidth={true}
+              />
+            </div>
+
+            <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Peralatan {brandName} Lain
+              </h3>
+              <ul class="space-y-2">
+                {getEquipmentTags().filter(e => e.id !== equipmentId).slice(0, 5).map((equip) => (
+                  <li>
+                    <a
+                      href={buildBrandEquipmentPostUrl(lang, brandId, equip.id)}
+                      class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors border-b border-gray-200 last:border-0"
+                    >
+                      <span class="font-medium">{brandName} {getTagName(equip, lang)}</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Jenama Lain
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {getBrandTags().filter(b => b.id !== brandId).slice(0, 6).map((b) => (
+                  <a
+                    href={buildBrandEquipmentPostUrl(lang, b.id, equipmentId)}
+                    class="px-3 py-1 bg-white border-2 border-navy-900 text-sm font-bold hover:bg-yellow-400 transition-colors"
+                    style="box-shadow: 2px 2px 0 #1E3A8A;"
+                  >
+                    {getTagName(b, lang)}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Bersedia untuk Membiayai {equipmentName} {brandName} Anda?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Dapatkan kelulusan dalam 24 jam dengan kadar kompetitif dari 2.88% setahun.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Dapatkan Sebut Harga Percuma"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="Lihat Semua {brandName}"
+          link={`/ms/blog/jenama/${brand}`}
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+
+  .prose h2 { @apply mt-12 mb-4; }
+  .prose p { @apply mb-4 text-gray-700 leading-relaxed; }
+  .prose ul { @apply my-4 space-y-2; }
+  .prose li { @apply text-gray-700; }
+  .prose strong { @apply text-navy-900; }
+</style>

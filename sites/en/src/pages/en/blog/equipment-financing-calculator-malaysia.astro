@@ -1,0 +1,545 @@
+---
+/**
+ * Equipment Financing Calculator Malaysia - English
+ * Target: All personas (Contractor Ahmad, Logistics Lee, Warehouse William)
+ * Category: Business Tips
+ * Word Count: 1,800+ words
+ * Read Time: 6 minutes
+ * Cultural Focus: Professional, practical, calculation-focused, budgeting
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateArticleSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Equipment Financing Calculator Malaysia: Calculate Your Monthly Payments';
+const pageDescription = 'Free equipment financing calculator for Malaysia. Calculate monthly payments for excavators, lorries, forklifts. Compare hire purchase vs leasing costs instantly.';
+const keywords = ['equipment financing calculator', 'monthly payment calculator', 'equipment loan calculator', 'budgeting', 'financing calculator Malaysia', 'hire purchase calculator', 'excavator financing calculator', 'lorry loan calculator', 'forklift payment calculator'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Blog', url: '/en/blog' },
+  { label: 'Equipment Financing Calculator', url: '/en/blog/equipment-financing-calculator-malaysia' },
+];
+
+// Article metadata
+const articleMeta = {
+  title: 'Equipment Financing Calculator Malaysia: Calculate Your Monthly Payments',
+  author: 'Ing Heng Credit & Leasing',
+  datePublished: '2025-12-28',
+  dateModified: '2025-12-28',
+  readTime: 6,
+  category: 'Business Tips',
+};
+
+// Why Use Calculator Benefits
+const calculatorBenefits = [
+  { icon: 'calculator', title: 'Budget with Confidence', description: 'Know your exact monthly payment before you apply. Plan your cash flow with accurate payment estimates.' },
+  { icon: 'chart', title: 'Compare Financing Options', description: 'Test different down payments, loan terms, and interest rates. Find the best option for your business budget.' },
+  { icon: 'clock', title: 'Save Time', description: 'Get instant payment calculations. No need to wait for quotes from multiple lenders.' },
+  { icon: 'money', title: 'Maximize Affordability', description: 'Adjust variables to find the most affordable payment. See how down payment affects monthly cost immediately.' },
+];
+
+// How to Use Calculator Steps
+const calculatorSteps = [
+  { stepNumber: 1, icon: 'tag', title: 'Enter Equipment Price', description: 'Type the total cost of the equipment you want to finance. Include all taxes and fees in the price.' },
+  { stepNumber: 2, icon: 'money', title: 'Set Down Payment', description: 'Enter your down payment amount (typically 10-30% of equipment price). Use the slider or type the amount directly.' },
+  { stepNumber: 3, icon: 'percentage', title: 'Choose Interest Rate', description: 'Select estimated interest rate (7.5-12% p.a. for most equipment). Your actual rate depends on credit profile.' },
+  { stepNumber: 4, icon: 'calendar', title: 'Select Loan Term', description: 'Choose loan tenure: 12, 24, 36, 48, or 60 months. Longer terms mean lower monthly payments but more total interest.' },
+  { stepNumber: 5, icon: 'calculator', title: 'View Results', description: 'See your monthly payment, total interest cost, and total amount payable. Compare different scenarios instantly.' },
+];
+
+// Payment Reduction Strategies
+const reductionStrategies = [
+  { icon: 'trending-up', title: 'Increase Down Payment', description: 'Higher down payment reduces loan amount and monthly payment. Save 10-15% on monthly cost by paying 30% down instead of 10%.' },
+  { icon: 'calendar', title: 'Choose Shorter Loan Term', description: 'Shorter term means less total interest. 36-month loan costs 30% less in interest than 60-month loan (but higher monthly payment).' },
+  { icon: 'shield', title: 'Improve Credit Score', description: 'Better credit qualifies for lower interest rates. Improve score by paying bills on time and reducing existing debt.' },
+  { icon: 'tag', title: 'Buy Used Equipment', description: 'Used equipment costs 40-60% less than new. Lower purchase price means lower monthly payments and faster payoff.' },
+  { icon: 'handshake', title: 'Negotiate Equipment Price', description: 'Lower equipment price reduces financing amount. Every RM10,000 saved reduces monthly payment by RM200-350 (depending on term).' },
+];
+
+// FAQ Data
+const faqs = [
+  {
+    question: 'How accurate is the financing calculator?',
+    answer: 'Our calculator provides accurate estimates based on standard hire purchase formulas used in Malaysia. It calculates your monthly payment using the loan amount (equipment price minus down payment), interest rate, and loan tenure. However, final rates may vary based on your credit profile, equipment age, and specific lender terms. Use the calculator as a budgeting guide, then contact Ing Heng Credit for actual approval rates and exact payment amounts. We provide personalized quotes within 1 business day.'
+  },
+  {
+    question: 'What factors affect my monthly payment?',
+    answer: 'Four main factors affect monthly payment: (1) Equipment Price - Higher price means higher monthly payment. Every RM10,000 increase adds RM200-350 to monthly payment. (2) Down Payment - Larger down payment reduces loan amount and monthly cost. 30% down vs 10% down can save RM150-300/month. (3) Interest Rate - Lower rates reduce monthly payment. 1% rate reduction saves RM50-150/month on RM100,000 loan. (4) Loan Term - Longer term spreads payments over more months. 60-month vs 36-month term reduces monthly payment by 30-40% but costs more in total interest.'
+  },
+  {
+    question: 'Should I choose a longer or shorter loan term?',
+    answer: 'It depends on your cash flow and business goals: Choose Shorter Term (12-36 months) if: You have strong monthly cash flow. You want to pay less total interest (save 20-40%). You want to own equipment faster. You plan to sell or upgrade equipment soon. Choose Longer Term (48-60 months) if: You need lower monthly payments for cash flow. You are starting a new business with uncertain income. You want to preserve working capital. The equipment will last 10+ years. Example: RM200,000 excavator, 10% down, 9% interest: 36 months = RM5,738/month, RM26,568 total interest. 60 months = RM3,735/month, RM44,100 total interest. Savings: RM2,003/month but RM17,532 more interest over time.'
+  },
+  {
+    question: 'What is the difference between calculator results and actual approval?',
+    answer: 'Calculator provides estimates. Actual approval may differ based on: (1) Credit Profile - Calculator assumes standard rates (7.5-12%). Your actual rate depends on credit score, payment history, and existing debt. Good credit = lower rate. Poor credit = higher rate. (2) Equipment Age - New equipment qualifies for best rates. Used equipment (5-10 years old) typically adds 1-3% to interest rate. (3) Insurance Requirements - Most lenders require equipment insurance. Insurance premium adds RM100-500/month to total cost. (4) Processing Fees - Some lenders charge 1-2% processing fee. Calculator does not include these fees. At Ing Heng Credit, we provide accurate quotes reflecting your actual approval terms. Use calculator for budgeting, then apply for exact payment amounts.'
+  },
+  {
+    question: 'Can I use the calculator for any equipment type?',
+    answer: 'Yes! The calculator works for all types of business equipment: Construction Equipment - Excavators, bulldozers, cranes, concrete mixers, backhoes. Logistics Vehicles - Lorries (1-10 ton), prime movers, trailers, refrigerated trucks. Warehouse Equipment - Forklifts (electric/diesel), reach stackers, pallet jacks. Manufacturing Machinery - CNC machines, injection molding, lathes, presses. Food Equipment - Commercial ovens, refrigeration, food trucks. Just enter your equipment price and adjust settings. The calculation formula is the same for all equipment types. Interest rates may vary slightly by equipment category (construction equipment typically 7.5-10%, commercial vehicles 8-11%, specialized equipment 9-12%). Use the interest rate slider to test different scenarios.'
+  },
+];
+
+// Example Calculations Data
+const examples = [
+  {
+    title: 'Excavator Financing Example',
+    equipment: 'Hitachi ZX135US-6 Excavator',
+    price: 'RM 280,000',
+    downPayment: 'RM 42,000 (15%)',
+    loanAmount: 'RM 238,000',
+    interestRate: '8.5% p.a.',
+    term: '48 months',
+    monthlyPayment: 'RM 5,892',
+    totalInterest: 'RM 44,816',
+    totalPayable: 'RM 282,816',
+  },
+  {
+    title: 'Lorry Financing Example',
+    equipment: 'Hino 300 Series 3-Ton Lorry',
+    price: 'RM 120,000',
+    downPayment: 'RM 18,000 (15%)',
+    loanAmount: 'RM 102,000',
+    interestRate: '9.5% p.a.',
+    term: '60 months',
+    monthlyPayment: 'RM 2,149',
+    totalInterest: 'RM 26,940',
+    totalPayable: 'RM 128,940',
+  },
+  {
+    title: 'Forklift Financing Example',
+    equipment: 'Toyota 8FG25 Forklift (2.5 Ton)',
+    price: 'RM 65,000',
+    downPayment: 'RM 9,750 (15%)',
+    loanAmount: 'RM 55,250',
+    interestRate: '8.0% p.a.',
+    term: '36 months',
+    monthlyPayment: 'RM 1,737',
+    totalInterest: 'RM 7,282',
+    totalPayable: 'RM 62,532',
+  },
+];
+
+// Generate structured data
+const articleSchema = generateArticleSchema({
+  title: pageTitle,
+  description: pageDescription,
+  author: 'Ing Heng Credit & Leasing',
+  datePublished: '2025-12-28',
+  dateModified: '2025-12-28',
+  url: `${SITE_CONFIG.siteUrl}/en/blog/equipment-financing-calculator-malaysia`,
+  imageUrl: `${SITE_CONFIG.siteUrl}/images/equipment-financing-calculator.jpg`,
+});
+
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(articleSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <Breadcrumbs items={breadcrumbs} lang={lang} />
+
+  <!-- Hero Section -->
+  <Hero
+    title="Equipment Financing Calculator Malaysia"
+    subtitle="Calculate Your Monthly Payments Instantly"
+    description="Free equipment financing calculator for excavators, lorries, forklifts, and more. Get accurate payment estimates in seconds. Plan your budget with confidence."
+    lang={lang}
+  />
+
+  <!-- Article Metadata -->
+  <div class="container-custom py-4">
+    <div class="flex flex-wrap gap-4 text-sm text-stone-600">
+      <span>By {articleMeta.author}</span>
+      <span>•</span>
+      <span>Published: {articleMeta.datePublished}</span>
+      <span>•</span>
+      <span>{articleMeta.readTime} min read</span>
+      <span>•</span>
+      <span class="px-3 py-1 bg-primary-light text-primary rounded-full">{articleMeta.category}</span>
+    </div>
+  </div>
+
+  <!-- Introduction -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="prose prose-lg max-w-4xl mx-auto">
+        <p class="lead text-xl text-stone-700 mb-6">
+          Planning to finance equipment for your business? Our free equipment financing calculator helps you estimate monthly payments quickly.
+          You'll know exactly what to budget before you apply.
+        </p>
+
+        <p>
+          When you're buying an excavator, lorry, or forklift, knowing your monthly payment is critical.
+          Our calculator gives you instant estimates based on equipment price, down payment, interest rate, and loan term.
+        </p>
+
+        <p>
+          Whether you're a contractor in Klang, a logistics operator in Johor, or a manufacturer in Penang, this calculator works for all equipment types.
+          Use it to compare different financing scenarios and find the most affordable option for your business.
+        </p>
+
+        <div class="my-8 p-6 bg-primary-light border-l-4 border-primary rounded">
+          <p class="text-lg font-semibold mb-2">Try Our Calculator Now</p>
+          <p class="mb-4">Get instant payment estimates for your equipment financing. No signup required. 100% free.</p>
+          <CTAButton href="/en/calculator" text="Use Calculator" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Use a Financing Calculator -->
+  <section class="section bg-stone-50">
+    <div class="container-custom">
+      <h2 class="section-title text-center">Why Use a Financing Calculator?</h2>
+      <p class="section-subtitle text-center max-w-2xl mx-auto mb-12">
+        An equipment financing calculator is an essential tool for business owners. Here's why you need it before applying for financing.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {calculatorBenefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Use Our Calculator -->
+  <section class="section">
+    <div class="container-custom">
+      <h2 class="section-title text-center">How to Use Our Calculator (Step-by-Step)</h2>
+      <p class="section-subtitle text-center max-w-2xl mx-auto mb-12">
+        Follow these 5 simple steps to calculate your equipment financing payment. Takes less than 2 minutes.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calculatorSteps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <CTAButton href="/en/calculator" text="Start Calculating Now" size="large" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Understanding Your Results -->
+  <section class="section bg-stone-50">
+    <div class="container-custom">
+      <h2 class="section-title">Understanding Your Results</h2>
+
+      <div class="prose prose-lg max-w-4xl mx-auto">
+        <p>
+          After you enter your information, the calculator shows three important numbers. Here's what each one means and why it matters for your business budget.
+        </p>
+
+        <h3>1. Monthly Payment</h3>
+        <p>
+          This is the amount you'll pay every month. It includes both principal (loan amount) and interest.
+          Make sure this fits comfortably in your monthly cash flow. A good rule: monthly payment should not exceed 20% of your monthly revenue.
+        </p>
+
+        <h3>2. Total Interest Cost</h3>
+        <p>
+          This is the total interest you'll pay over the entire loan term. Lower interest rates and shorter loan terms reduce this amount.
+          For example, a 36-month loan costs 30-40% less in total interest than a 60-month loan.
+        </p>
+
+        <h3>3. Total Amount Payable</h3>
+        <p>
+          This is your loan amount plus total interest. It's the complete cost of financing (not including down payment).
+          Use this to calculate your total investment and compare against equipment ROI.
+        </p>
+
+        <div class="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded">
+          <p class="font-semibold mb-2">Important Note:</p>
+          <p>
+            Calculator results are estimates only. Your actual approval amount and interest rate depend on your credit profile,
+            equipment age, and lender assessment. Contact <a href="/en/contact" class="text-primary hover:text-primary-dark underline">Ing Heng Credit</a> for accurate quotes based on your specific situation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Factors That Affect Monthly Payment -->
+  <section class="section">
+    <div class="container-custom">
+      <h2 class="section-title">What Affects Your Monthly Payment?</h2>
+
+      <div class="prose prose-lg max-w-4xl mx-auto">
+        <p>
+          Four main factors determine your monthly payment amount. Understanding these helps you adjust your financing to fit your budget.
+        </p>
+
+        <h3>1. Equipment Price</h3>
+        <p>
+          Higher equipment price means higher monthly payment. For every RM 10,000 increase in price, expect monthly payment to increase by RM 200-350
+          (depending on loan term and interest rate). Consider buying quality used equipment to reduce cost by 40-60%.
+        </p>
+
+        <h3>2. Down Payment Amount</h3>
+        <p>
+          Larger down payment reduces your loan amount and monthly payment. Paying 30% down instead of 10% can save you RM 150-300 per month.
+          However, don't drain your working capital completely. Keep 3-6 months of operating expenses in reserve.
+        </p>
+
+        <h3>3. Interest Rate</h3>
+        <p>
+          Interest rate is based on your credit score, equipment age, and lender policy. In Malaysia, rates typically range from 7.5% to 12% per annum for equipment financing.
+          Every 1% reduction in interest rate saves RM 50-150 per month on a RM 100,000 loan.
+        </p>
+
+        <h3>4. Loan Term Length</h3>
+        <p>
+          Longer loan terms spread payments over more months, reducing monthly cost but increasing total interest paid.
+          Shorter terms mean higher monthly payment but less interest overall. Choose based on your cash flow and equipment lifespan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Example Calculations -->
+  <section class="section bg-stone-50">
+    <div class="container-custom">
+      <h2 class="section-title text-center">Example Calculations</h2>
+      <p class="section-subtitle text-center max-w-2xl mx-auto mb-12">
+        See real examples of monthly payments for popular equipment types. Use these as reference for your own calculations.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {examples.map((example) => (
+          <div class="bg-white p-6 rounded-lg shadow-brutal border-2 border-dark">
+            <h3 class="text-xl font-bold text-dark mb-4">{example.title}</h3>
+
+            <div class="space-y-3 text-sm">
+              <div class="border-b border-stone-200 pb-2">
+                <p class="text-stone-600">Equipment</p>
+                <p class="font-semibold">{example.equipment}</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-stone-600 text-xs">Equipment Price</p>
+                  <p class="font-semibold">{example.price}</p>
+                </div>
+                <div>
+                  <p class="text-stone-600 text-xs">Down Payment</p>
+                  <p class="font-semibold">{example.downPayment}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-stone-600 text-xs">Interest Rate</p>
+                  <p class="font-semibold">{example.interestRate}</p>
+                </div>
+                <div>
+                  <p class="text-stone-600 text-xs">Loan Term</p>
+                  <p class="font-semibold">{example.term}</p>
+                </div>
+              </div>
+
+              <div class="bg-primary-light p-3 rounded mt-4">
+                <p class="text-xs text-stone-600 mb-1">Monthly Payment</p>
+                <p class="text-2xl font-bold text-primary">{example.monthlyPayment}</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 text-xs">
+                <div>
+                  <p class="text-stone-600">Total Interest</p>
+                  <p class="font-semibold">{example.totalInterest}</p>
+                </div>
+                <div>
+                  <p class="text-stone-600">Total Payable</p>
+                  <p class="font-semibold">{example.totalPayable}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-lg mb-4">Calculate your own equipment financing payment</p>
+        <CTAButton href="/en/calculator" text="Use Calculator" size="large" />
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Reduce Monthly Payments -->
+  <section class="section">
+    <div class="container-custom">
+      <h2 class="section-title text-center">5 Strategies to Reduce Monthly Payments</h2>
+      <p class="section-subtitle text-center max-w-2xl mx-auto mb-12">
+        Want to lower your monthly payment? Use these proven strategies to make equipment financing more affordable.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reductionStrategies.slice(0, 3).map((strategy) => (
+          <BenefitCard
+            icon={strategy.icon}
+            title={strategy.title}
+            description={strategy.description}
+          />
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
+        {reductionStrategies.slice(3).map((strategy) => (
+          <BenefitCard
+            icon={strategy.icon}
+            title={strategy.title}
+            description={strategy.description}
+          />
+        ))}
+      </div>
+
+      <div class="mt-8 prose prose-lg max-w-4xl mx-auto">
+        <p>
+          Test these strategies using our calculator. Change down payment, loan term, and interest rate to see immediate impact on monthly payment.
+          Find the combination that works best for your business budget.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator vs Actual Approval -->
+  <section class="section bg-stone-50">
+    <div class="container-custom">
+      <h2 class="section-title">Calculator vs Actual Approval: What's Different?</h2>
+
+      <div class="prose prose-lg max-w-4xl mx-auto">
+        <p>
+          The calculator gives you a starting estimate. Your actual approval may differ based on several factors.
+          Here's what causes the difference and what to expect.
+        </p>
+
+        <h3>Factors That May Change Your Rate</h3>
+
+        <h4>1. Credit Profile Review</h4>
+        <p>
+          The calculator uses a standard interest rate range (7.5-12% p.a.). Your actual rate depends on your credit score, payment history,
+          and existing debt levels. Good credit history qualifies for lower rates. CCRIS issues or bankruptcy may increase rates by 1-3%.
+        </p>
+
+        <h4>2. Equipment Age and Condition</h4>
+        <p>
+          New equipment gets the best rates. Used equipment (5-10 years old) typically adds 1-3% to your interest rate.
+          Very old equipment (10+ years) may require special approval or higher down payment. The calculator assumes standard equipment age.
+        </p>
+
+        <h4>3. Insurance Requirements</h4>
+        <p>
+          Most lenders require comprehensive equipment insurance. Insurance premium adds RM 100-500 per month to your total cost
+          (depending on equipment value and coverage). The calculator does not include insurance costs in monthly payment.
+        </p>
+
+        <h4>4. Processing Fees and Charges</h4>
+        <p>
+          Some lenders charge processing fees (typically 1-2% of loan amount), stamp duty, or legal fees.
+          These one-time costs are not included in the calculator but affect your initial investment.
+        </p>
+
+        <div class="my-8 p-6 bg-blue-50 border-l-4 border-blue-500 rounded">
+          <p class="font-semibold mb-2">Get Accurate Quotes from Ing Heng Credit</p>
+          <p>
+            Use the calculator for budgeting and planning. When you're ready to apply, contact us for personalized quotes
+            that reflect your actual credit profile and equipment details. We provide accurate payment amounts within 1 business day.
+          </p>
+          <div class="mt-4">
+            <CTAButton href="/en/contact" text="Request Accurate Quote" />
+          </div>
+        </div>
+
+        <h3>Why Calculator Estimates Are Still Valuable</h3>
+        <p>
+          Even though actual approval may differ slightly, the calculator is valuable for:
+        </p>
+        <ul>
+          <li>Initial budgeting and cash flow planning</li>
+          <li>Comparing different equipment price points</li>
+          <li>Understanding how down payment affects monthly cost</li>
+          <li>Testing different loan term scenarios</li>
+          <li>Deciding if financing fits your business budget</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <h2 class="section-title text-center">Frequently Asked Questions</h2>
+      <p class="section-subtitle text-center max-w-2xl mx-auto mb-12">
+        Common questions about using our equipment financing calculator and understanding your results.
+      </p>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-primary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Calculate Your Monthly Payment?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Use our free equipment financing calculator now. Get instant payment estimates for excavators, lorries, forklifts, and more.
+        No signup required.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <CTAButton href="/en/calculator" text="Use Calculator Now" variant="secondary" size="large" />
+        <CTAButton href="/en/contact" text="Talk to Financing Expert" variant="outline" size="large" />
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-primary-light">
+        <p class="text-lg">
+          <strong>Need personalized help?</strong> Our team provides accurate quotes based on your specific situation.
+        </p>
+        <p class="mt-2">
+          WhatsApp: <a href="https://wa.me/60175700889" class="underline hover:text-accent">+60 17-570 0889</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <ContactForm lang={lang} />
+</BaseLayout>

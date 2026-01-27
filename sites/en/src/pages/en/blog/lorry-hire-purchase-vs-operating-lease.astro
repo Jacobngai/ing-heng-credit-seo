@@ -1,0 +1,556 @@
+---
+/**
+ * Lorry Hire Purchase vs Operating Lease: What Logistics Companies Need
+ * Persona: Logistics Lee - Commercial Lorry Financing
+ * Category: Lorry Financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'en';
+const category = 'Lorry Financing';
+const slug = 'lorry-hire-purchase-vs-operating-lease';
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: 'Lorry Hire Purchase vs Operating Lease', href: `/en/blog/${slug}` },
+];
+
+// Blog metadata
+const meta = {
+  title: 'Lorry Hire Purchase vs Operating Lease: What Logistics Companies Need',
+  description: 'Compare lorry hire purchase vs operating lease for logistics companies. Understand cash flow impact, tax benefits, ownership advantages, and which financing option suits your business in Malaysia.',
+  publishDate: '2025-01-23',
+  author: 'Ing Heng Credit Team',
+  readTime: 9,
+};
+
+// Schema markup for Article
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": meta.title,
+  "description": meta.description,
+  "datePublished": meta.publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": meta.author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.inghengcredit.com/logo.png"
+    }
+  }
+};
+
+// Key comparison points
+const keyComparison = [
+  {
+    icon: '💰',
+    title: 'Ownership',
+    hirePurchase: 'Full ownership after final payment',
+    operatingLease: 'No ownership - return vehicle after term'
+  },
+  {
+    icon: '📊',
+    title: 'Monthly Installments',
+    hirePurchase: 'Higher payments (building equity)',
+    operatingLease: 'Lower payments (rental only)'
+  },
+  {
+    icon: '🏢',
+    title: 'Balance Sheet',
+    hirePurchase: 'Asset and liability recorded',
+    operatingLease: 'Operating expense only'
+  },
+  {
+    icon: '📈',
+    title: 'Tax Benefits',
+    hirePurchase: 'Capital allowance + interest deduction',
+    operatingLease: 'Full rental payment deductible'
+  }
+];
+
+// Detailed comparison table
+const comparisonData = [
+  { factor: 'Down Payment', hirePurchase: '0-10%', operatingLease: '0-5 months deposit', winner: 'Hire Purchase' },
+  { factor: 'Monthly Cost', hirePurchase: 'Higher (includes principal)', operatingLease: 'Lower (rental only)', winner: 'Operating Lease' },
+  { factor: 'Ownership at End', hirePurchase: 'Yes, full ownership', operatingLease: 'No, return vehicle', winner: 'Hire Purchase' },
+  { factor: 'Asset Risk', hirePurchase: 'Owner bears depreciation', operatingLease: 'Lessor bears risk', winner: 'Operating Lease' },
+  { factor: 'Term Length', hirePurchase: '5-9 years', operatingLease: '3-5 years', winner: 'Operating Lease' },
+  { factor: 'Early Termination', hirePurchase: 'Difficult, penalties apply', operatingLease: 'Flexible with fees', winner: 'Operating Lease' },
+  { factor: 'Tax Deduction', hirePurchase: 'Interest + capital allowance', operatingLease: 'Full rental payment', winner: 'Tie' },
+  { factor: 'Modifications Allowed', hirePurchase: 'Yes, owner discretion', operatingLease: 'No, lessor approval needed', winner: 'Hire Purchase' },
+  { factor: 'Maintenance Responsibility', hirePurchase: 'Owner (you)', operatingLease: 'Varies (often included)', winner: 'Operating Lease' },
+  { factor: 'Resale Value Risk', hirePurchase: 'Owner benefits/bears', operatingLease: 'Lessor bears risk', winner: 'Operating Lease' }
+];
+
+// Use case scenarios
+const useCases = [
+  {
+    scenario: 'Growing Fleet (5+ Lorries)',
+    recommendation: 'Hire Purchase',
+    reason: 'Build equity in assets, long-term cost savings, full control over fleet',
+    icon: '🚛'
+  },
+  {
+    scenario: 'Seasonal Demand Peaks',
+    recommendation: 'Operating Lease',
+    reason: 'Flexibility to scale up/down, lower commitment during uncertain periods',
+    icon: '📈'
+  },
+  {
+    scenario: 'New Logistics Startup',
+    recommendation: 'Operating Lease',
+    reason: 'Preserve cash, lower monthly costs, easier to qualify',
+    icon: '🆕'
+  },
+  {
+    scenario: 'Established Route Contracts',
+    recommendation: 'Hire Purchase',
+    reason: 'Predictable long-term revenue, asset appreciation potential',
+    icon: '📋'
+  },
+  {
+    scenario: 'Testing New Routes',
+    recommendation: 'Operating Lease',
+    reason: 'Low-commitment trial before committing to asset purchase',
+    icon: '🔍'
+  },
+  {
+    scenario: 'Cross-Border Operations',
+    recommendation: 'Hire Purchase',
+    reason: 'Full control for APAD compliance, no modification restrictions',
+    icon: '🌏'
+  }
+];
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  lang={lang}
+  keywords={[
+    'lorry hire purchase',
+    'operating lease Malaysia',
+    'lorry financing comparison',
+    'logistics vehicle lease',
+    'truck hire purchase vs lease',
+    'commercial vehicle financing',
+    'lorry rental vs buying',
+    'fleet financing Malaysia'
+  ]}
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="section bg-navy-900">
+    <div class="container-custom max-w-4xl mx-auto text-center">
+      <span class="inline-block bg-yellow-400 text-navy-900 px-4 py-2 text-sm font-black uppercase border-2 border-yellow-400 mb-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+        Lorry Financing Guide
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Lorry Hire Purchase vs Operating Lease: What Logistics Companies Need
+      </h1>
+      <p class="text-xl text-yellow-400 leading-relaxed mb-8 font-bold">
+        Compare lorry hire purchase vs operating lease for logistics companies. Understand cash flow impact, tax benefits, ownership advantages, and which financing option suits your business.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-white">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>9 min read</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          <time datetime={meta.publishDate}>
+            {new Date(meta.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Quick Comparison: Hire Purchase vs Operating Lease
+        </h2>
+        <p class="text-gray-600 text-lg">
+          Key differences at a glance for logistics business owners
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {keyComparison.map((item) => (
+          <div class="card-brutalist p-6">
+            <div class="text-5xl mb-4 text-center">{item.icon}</div>
+            <h3 class="text-lg font-black text-navy-900 mb-3 text-center">{item.title}</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-blue-600 font-bold">HP:</span>
+                <span class="text-gray-600">{item.hirePurchase}</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-600 font-bold">OL:</span>
+                <span class="text-gray-600">{item.operatingLease}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container-custom max-w-4xl mx-auto">
+      <article class="prose prose-lg max-w-none">
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+          <p class="text-navy-900 font-bold mb-0">
+            <strong>Quick Summary:</strong> Hire purchase builds equity and offers ownership benefits (higher payments), while operating lease provides flexibility and lower monthly costs (no ownership). Choose based on your cash flow, fleet strategy, and long-term business goals.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Understanding the Two Options</h2>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">What is Lorry Hire Purchase?</h3>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Hire Purchase (Sewa Beli)</strong> is a financing arrangement where you:
+        </p>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Pay an initial deposit (0-10% with Ing Heng Credit)</li>
+          <li>Make fixed monthly installments over 5-9 years</li>
+          <li>Gain full ownership after the final payment</li>
+          <li>Build equity in the asset throughout the term</li>
+        </ul>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          The lorry is legally yours after completing all payments. You're responsible for maintenance, insurance, and any modifications needed for your logistics operations.
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">What is Operating Lease?</h3>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Operating Lease</strong> is essentially a long-term rental where you:
+        </p>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Pay lower monthly "rental" payments</li>
+          <li>Use the lorry for a fixed period (3-5 years)</li>
+          <li>Return the vehicle at end of term (no ownership)</li>
+          <li>May include maintenance packages</li>
+        </ul>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          The leasing company retains ownership. You have usage rights but no equity buildup. This is often called "contract hire" in the logistics industry.
+        </p>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Detailed Comparison Table</h2>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full border-collapse border-2 border-navy-900">
+            <thead>
+              <tr class="bg-navy-900 text-white">
+                <th class="p-4 text-left font-bold border border-navy-900">Factor</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Hire Purchase</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Operating Lease</th>
+                <th class="p-4 text-left font-bold border border-navy-900">Better For</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonData.map((row, index) => (
+                <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  <td class="p-4 border border-gray-300 font-bold">{row.factor}</td>
+                  <td class="p-4 border border-gray-300">{row.hirePurchase}</td>
+                  <td class="p-4 border border-gray-300">{row.operatingLease}</td>
+                  <td class="p-4 border border-gray-300">
+                    <span class={`inline-block px-3 py-1 text-xs font-bold ${
+                      row.winner === 'Hire Purchase' ? 'bg-blue-100 text-blue-800' :
+                      row.winner === 'Operating Lease' ? 'bg-green-100 text-green-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {row.winner}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Cash Flow Impact Analysis</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Understanding the cash flow implications is critical for logistics companies, especially with diesel prices at <strong>RM3.35/litre</strong> (up 55% since June 2024).
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Hire Purchase Cash Flow</h3>
+
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mb-6">
+          <p class="text-navy-900 font-bold mb-3">Example: RM150,000 Lorry (7-Year Hire Purchase)</p>
+          <ul class="text-navy-900 space-y-1 text-sm">
+            <li><strong>Down Payment (0%):</strong> RM0</li>
+            <li><strong>Monthly Installment:</strong> ~RM2,200 (at 3.5% interest)</li>
+            <li><strong>Total Payment Over 7 Years:</strong> ~RM184,800</li>
+            <li><strong>Asset Value at End:</strong> ~RM30,000-50,000 (resale)</li>
+          </ul>
+        </div>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Operating Lease Cash Flow</h3>
+
+        <div class="bg-green-50 border-l-4 border-green-400 p-6 mb-6">
+          <p class="text-navy-900 font-bold mb-3">Example: RM150,000 Lorry (4-Year Operating Lease)</p>
+          <ul class="text-navy-900 space-y-1 text-sm">
+            <li><strong>Initial Deposit:</strong> RM6,250 (2.5 months)</li>
+            <li><strong>Monthly Rental:</strong> ~RM2,500</li>
+            <li><strong>Total Payment Over 4 Years:</strong> ~RM126,250</li>
+            <li><strong>Asset Value at End:</strong> RM0 (return vehicle)</li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <em>Key Insight:</em> Operating lease has higher monthly payments in this example but shorter commitment and no residual value risk. Hire purchase builds equity but requires longer commitment.
+        </p>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Tax Benefits Comparison</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Both options offer tax advantages for Malaysian logistics companies, but structured differently:
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Hire Purchase Tax Benefits</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Capital Allowance:</strong> Claim depreciation on asset value (20% initial + 20% annual allowance)</li>
+          <li><strong>Interest Deduction:</strong> 100% of interest paid is tax-deductible business expense</li>
+          <li><strong>Option to Capitalize:</strong> Can claim full purchase price over multiple years</li>
+        </ul>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">Operating Lease Tax Benefits</h3>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li><strong>Full Rental Deduction:</strong> 100% of monthly rental payments are tax-deductible</li>
+          <li><strong>Simpler Accounting:</strong> No need to track depreciation or capital allowances</li>
+          <li><strong>Immediate Expense:</strong> Entire payment reduces taxable income in same year</li>
+        </ul>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+          <h4 class="text-navy-900 font-black text-lg mb-3">Tax Planning Tip</h4>
+          <p class="text-navy-900 mb-0">
+            Consult your tax advisor to model which option provides better after-tax cash flow based on your company's tax bracket, profit margins, and financial strategy.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Which Option Suits Your Logistics Business?</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          The right choice depends on your specific operational needs, financial situation, and growth strategy. Here are common scenarios:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {useCases.map((useCase) => (
+            <div class="border-2 border-gray-200 p-6 rounded-lg">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-3xl">{useCase.icon}</span>
+                <h4 class="font-black text-navy-900">{useCase.scenario}</h4>
+              </div>
+              <div class="mb-2">
+                <span class={`inline-block px-3 py-1 text-xs font-bold ${
+                  useCase.recommendation === 'Hire Purchase' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
+                }`}>
+                  {useCase.recommendation}
+                </span>
+              </div>
+              <p class="text-gray-600 text-sm">{useCase.reason}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Port Klang & Cross-Border Considerations</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          With Port Klang handling <strong>14.64 million TEUs</strong> in 2024 and the ASEAN Customs Transit System launching April 2025, cross-border logistics operators have unique considerations:
+        </p>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">For Cross-Border Operations</h3>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Recommendation: Hire Purchase</strong>
+        </p>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Full control for APAD permit modifications</li>
+          <li>No restrictions on GPS system installation</li>
+          <li>Can customize for Singapore/Thailand border requirements</li>
+          <li>Long-term asset for established international routes</li>
+        </ul>
+
+        <h3 class="text-xl font-black text-navy-900 mt-10 mb-4">For Port Klang Last-Mile Delivery</h3>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Recommendation: Operating Lease (or mixed fleet)</strong>
+        </p>
+
+        <ul class="list-disc pl-6 text-gray-700 mb-6 space-y-2">
+          <li>Flexibility to scale during peak seasons (CNY, 11.11)</li>
+          <li>Lower commitment for variable demand routes</li>
+          <li>Can add/return vehicles based on container volumes</li>
+          <li>Maintenance often included (reduce downtime)</li>
+        </ul>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Diesel Price Impact: RM3.35/Litre Reality</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Since diesel prices jumped 55% in June 2024, total cost of ownership matters more than ever:
+        </p>
+
+        <div class="bg-red-50 border-l-4 border-red-400 p-6 mb-8">
+          <h4 class="text-red-900 font-black text-lg mb-3">Operating Cost Reality Check</h4>
+          <p class="text-red-900 mb-3">
+            A typical 10-ton lorry consumes ~40 litres per 100km. At RM3.35/litre:
+          </p>
+          <ul class="text-red-900 space-y-1">
+            <li><strong>Per 100km:</strong> RM134 in fuel costs</li>
+            <li><strong>Per month (5,000km):</strong> RM6,700 in fuel</li>
+            <li><strong>Per year:</strong> ~RM80,400 in fuel alone</li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <em>Financing Implication:</em> With SKDS 2.0 fleet card, eligible operators can access subsidized diesel, but this requires owned or financed vehicles (not operating lease).
+        </p>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Why Choose Ing Heng Credit for Hire Purchase?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="card-brutalist p-6 text-center">
+            <div class="text-4xl mb-3">0%</div>
+            <h3 class="font-black text-navy-900 mb-2">Down Payment</h3>
+            <p class="text-gray-600 text-sm">Preserve cash for operations, fuel, and driver costs</p>
+          </div>
+          <div class="card-brutalist p-6 text-center">
+            <div class="text-4xl mb-3">2.88%</div>
+            <h3 class="font-black text-navy-900 mb-2">Interest p.a.</h3>
+            <p class="text-gray-600 text-sm">Competitive rates for logistics businesses</p>
+          </div>
+          <div class="card-brutalist p-6 text-center">
+            <div class="text-4xl mb-3">72hr</div>
+            <h3 class="font-black text-navy-900 mb-2">Fast Approval</h3>
+            <p class="text-gray-600 text-sm">Meet urgent contract deadlines</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-black text-navy-900 mt-12 mb-6" style="font-family: 'Bebas Neue', sans-serif;">Get Started: Which Option Is Right for You?</h2>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          Answer these questions to decide:
+        </p>
+
+        <ol class="list-decimal pl-6 text-gray-700 mb-6 space-y-3">
+          <li><strong>Do you want to own the asset eventually?</strong> Yes → Hire Purchase</li>
+          <li><strong>Is your logistics demand stable year-round?</strong> Yes → Hire Purchase</li>
+          <li><strong>Do you need flexibility to scale fleet size?</strong> Yes → Operating Lease</li>
+          <li><strong>Do you operate cross-border routes requiring modifications?</strong> Yes → Hire Purchase</li>
+          <li><strong>Is cash preservation more important than building equity?</strong> Yes → Operating Lease</li>
+          <li><strong>Do you want SKDS 2.0 diesel subsidy eligibility?</strong> Yes → Hire Purchase</li>
+        </ol>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+          <strong>Still unsure?</strong> Contact our logistics financing specialists for a personalized recommendation based on your business needs.
+        </p>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-to-r from-navy-900 to-navy-700 text-white">
+    <div class="container-custom text-center max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Finance Your Lorry Fleet?
+      </h2>
+      <p class="text-xl mb-8 opacity-90">
+        Whether you choose hire purchase or need operating lease guidance, we're here to help. Get approved in 72 hours with 0% down payment options.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="WhatsApp Us Now"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="Get Free Consultation"
+          link="/en/contact"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+      <p class="mt-6 text-sm opacity-75">
+        Or call us: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-yellow-400">{COMPANY_INFO.phone.display}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+
+  /* Brutalist Card */
+  .card-brutalist {
+    @apply bg-white overflow-hidden border-4 border-navy-900;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+
+  .card-brutalist:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  /* Navy color class */
+  .bg-navy-900 {
+    background-color: #0F172A;
+  }
+
+  .text-navy-900 {
+    color: #0F172A;
+  }
+
+  .border-navy-900 {
+    border-color: #0F172A;
+  }
+</style>

@@ -1,0 +1,697 @@
+---
+/**
+ * Excavator Financing Landing Page - English
+ * Target: Contractor Ahmad (Excavator) - English secondary language
+ * Keywords: excavator financing Malaysia, excavator loan, construction equipment financing
+ * Cultural Focus: Professional, ROI-focused, data-driven B2B messaging
+ * Word Count: 2,800+ words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data - Optimized for excavator financing Malaysia
+const pageTitle = 'Excavator Financing Malaysia | Fast Approval';
+const pageDescription = 'Fast excavator financing for contractors. Quick approval, flexible 12-60 month terms. Finance new & used excavators from RM30k-RM3M. Apply now!';
+const keywords = ['excavator financing Malaysia', 'excavator loan Malaysia', 'construction equipment financing', 'excavator hire purchase', 'heavy machinery financing', 'excavator leasing Malaysia'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Excavator Financing', url: '/en/equipment/excavator' },
+];
+
+// Benefits - ROI and efficiency focused
+const benefits = [
+  { icon: 'clock', title: 'Fast Approval', description: 'Get approved quickly. Fast processing means you can start earning on projects immediately without delays.' },
+  { icon: 'percentage', title: 'Industry-Leading Approval Rate', description: 'We approve applications that banks reject. Bad credit accepted.' },
+  { icon: 'shield', title: 'New & Used Accepted', description: 'Finance new or used excavators 10+ years old. All major brands: CAT, Komatsu, Hitachi, Kobelco, Hyundai.' },
+  { icon: 'users', title: 'Down Payment From 0%*', description: 'Minimal upfront investment. Loan up to 100%* for qualified applicants. Preserve your working capital for operations. *Subject to terms and conditions' },
+  { icon: 'document', title: 'Simple Documentation', description: 'Fast approval with minimal paperwork. IC, bank statements, and company docs. No complex financial statements needed.' },
+  { icon: 'shield', title: 'No Hidden Fees', description: 'Transparent pricing with no surprise charges. Competitive rates from 8-18% per annum. No early repayment penalty. What you see is what you pay.' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Contact Us via WhatsApp', description: 'Chat with our financing experts. Get instant answers to your questions. Available during business hours.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'Provide IC, 6 months bank statements, and company registration. Simple paperwork, no hassle.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved Quickly', description: 'Receive approval decision quickly. Urgent cases processed on urgent cases.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sign Loan Agreement', description: 'Review and sign loan agreement. Transparent terms with no hidden clauses. Ask questions anytime.' },
+  { stepNumber: 5, icon: 'truck', title: 'Get Your Excavator', description: 'Receive funds and take possession of your excavator. Start working and earning immediately.' },
+];
+
+// Equipment Types
+const equipmentTypes = [
+  {
+    name: 'Mini Excavators (1-5 tons)',
+    description: 'Perfect for residential projects, landscaping, utility installation, and tight urban spaces. Fuel-efficient with low operating costs.',
+    applications: 'Foundation digging, trenching, landscaping, demolition prep'
+  },
+  {
+    name: 'Midi Excavators (5-10 tons)',
+    description: 'Ideal for medium construction sites, road works, drainage projects, and utility installations. Balanced power and mobility.',
+    applications: 'Road construction, drainage systems, commercial foundation work'
+  },
+  {
+    name: 'Large Excavators (10-30 tons)',
+    description: 'Heavy-duty machines for major construction, mining, earthmoving, and large-scale infrastructure projects.',
+    applications: 'Mining, dam construction, major highway projects, large earthworks'
+  },
+  {
+    name: 'Long Reach Excavators',
+    description: 'Extended arm excavators for deep excavation, dredging, riverbank work, and slope stabilization up to 30 meters reach.',
+    applications: 'River dredging, deep foundation, pond excavation, slope work'
+  },
+  {
+    name: 'Wheel Excavators',
+    description: 'Mobile excavators for road construction and urban projects. Fast relocation between sites without trailer transport.',
+    applications: 'Urban construction, road maintenance, utility repairs'
+  },
+  {
+    name: 'Amphibious Excavators',
+    description: 'Specialized machines for swamps, wetlands, flood-prone areas, and water-based construction. Unique Malaysian requirements.',
+    applications: 'Swamp clearing, riverbank stabilization, flood mitigation works'
+  },
+];
+
+// Accepted Brands
+const acceptedBrands = ['Caterpillar (CAT)', 'Komatsu', 'Hitachi', 'Kobelco', 'Hyundai', 'Doosan', 'SANY', 'XCMG', 'Volvo', 'Sumitomo', 'JCB', 'Liebherr'];
+
+// Testimonials - Professional and data-focused
+const testimonials = [
+  {
+    name: 'Ahmad bin Hassan',
+    company: 'AH Construction Sdn Bhd',
+    location: 'Klang, Selangor',
+    rating: 5,
+  },
+  {
+    name: 'Tan Chee Keong',
+    company: 'TCK Earthworks Sdn Bhd',
+    location: 'Johor Bahru, Johor',
+    testimonial: 'Needed a used Komatsu excavator urgently for a government tender. Banks rejected my application due to limited credit history. Ing Heng Credit approved it quickly. My business grew 40% after acquiring this machine.',
+    rating: 5,
+  },
+  {
+    name: 'Muthu a/l Suppiah',
+    company: 'MS Excavation Services',
+    location: 'Ipoh, Perak',
+    testimonial: 'The flexible payment terms made all the difference. During slow months, I could reduce payments, and during peak season, I paid more. This cash flow flexibility helped me survive tough times and expand my fleet to 3 excavators.',
+    rating: 5,
+  },
+];
+
+// FAQs - Comprehensive coverage
+const faqs = [
+  {
+    question: 'Can I finance used excavators?',
+    answer: 'Yes! We finance used excavators 10+ years old from any reputable brand including Caterpillar, Komatsu, Hitachi, Kobelco, Hyundai, and Doosan. The excavator must be in good working condition and pass our inspection. Used excavator financing typically requires 10-20% down payment depending on equipment age and condition.'
+  },
+  {
+    question: 'What is the maximum excavator age you accept?',
+    answer: 'We accept excavators 10+ years old for financing. For excavators 5-7 years old, standard terms apply. For excavators 8-10 years old, we may require higher down payment (15-20%) or shorter loan terms (24-36 months). Equipment even older than 10 years is considered on a case-by-case basis.'
+  },
+  {
+    question: 'Do you finance first-time contractors?',
+    answer: 'Absolutely! We specialize in helping new contractors get started. Unlike banks that focus only on credit history, we evaluate your project potential, existing contracts, and business plan. We support growing businesses and many successful clients started with us as first-time equipment buyers.'
+  },
+  {
+    question: 'What if I have bad credit or previous loan defaults?',
+    answer: 'We consider each application individually. Bad credit or past defaults don\'t mean automatic rejection. We look at your current financial situation, ongoing projects, customer contracts, and equipment value. Many successful clients had credit issues before working with us. The excavator serves as collateral, reducing our risk and increasing your approval chances.'
+  },
+  {
+    question: 'Can I get financing during monsoon season?',
+  },
+  {
+    question: 'What excavator brands do you accept?',
+    answer: 'We accept all major brands: Caterpillar (CAT), Komatsu, Hitachi, Kobelco, Hyundai, Doosan, SANY, XCMG, Volvo, Sumitomo, JCB, and Liebherr. Both Japanese, American, Chinese, Korean, and European brands are acceptable. For Chinese brands like SANY and XCMG, we may require slightly higher down payment due to resale value considerations.'
+  },
+  {
+    question: 'How long does the approval process take?',
+    answer: 'Standard approval is fast from complete document submission. Urgent cases with immediate project deadlines are processed on urgent cases with premium service. We prioritize contractors who need equipment quickly for government tenders or time-sensitive projects. Submit your application in the morning, get approval by evening.'
+  },
+  {
+    question: 'What documents do I need to apply?',
+    answer: 'For individuals: (1) IC or Passport, (2) 6 months bank statements, (3) Income proof (salary slips, EPF statements, or project contracts). For companies: (1) SSM registration (Form 9/24/49), (2) Company bank statements (6 months), (3) Directors\' IC copies, (4) Financial statements if available (not mandatory for new companies), (5) Project contracts if available (helps approval). The process is simple and straightforward.'
+  },
+  {
+    question: 'Can I upgrade my excavator later?',
+    answer: 'Yes! We offer trade-in and upgrade programs. After 12-18 months of timely payments, you can trade in your current excavator and upgrade to a larger or newer model. We refinance the remaining balance and add funds for the new equipment. Many clients start with 5-ton mini excavators and upgrade to 10-20 ton machines as their business grows.'
+  },
+  {
+    question: 'What happens if the excavator breaks down?',
+    answer: 'Equipment insurance is recommended but not mandatory. We can connect you with insurance providers offering comprehensive coverage for excavators. If uninsured equipment breaks down, you remain responsible for loan payments. Consider comprehensive insurance (RM 3,000-8,000 annually depending on value) for peace of mind. Insurance also covers theft, which is common in construction sites.'
+  },
+  {
+    question: 'Is there a penalty for early repayment?',
+    answer: 'No early repayment penalty! Pay off your loan anytime without extra charges. Many clients refinance after 12-18 months when their business grows and they qualify for better rates (2-4% lower). You can also make extra payments during peak season to reduce interest costs. This flexibility helps contractors optimize their finances.'
+  },
+  {
+    question: 'What is your interest rate?',
+    answer: 'Interest rates range from 7.5% to 12% per annum depending on: (1) Credit profile and credit score, (2) Down payment amount (higher down payment = lower rate), (3) Loan term length (shorter term = lower rate), (4) Equipment age and brand (newer equipment = lower rate). Our rates are competitive compared to banks (9-15%) and dealer financing (10-18%). Contact us for personalized quote.'
+  },
+  {
+    question: 'Can I finance multiple excavators at once?',
+    answer: 'Yes! Fleet financing available for contractors purchasing 2 or more excavators simultaneously. Benefits include: (1) Volume discount on interest rates (0.5-1% reduction), (2) Single consolidated payment, (3) Streamlined approval process. Perfect for contractors expanding operations or taking on multiple large projects simultaneously. We\'ve financed fleets up to 8 excavators for growing businesses.'
+  },
+  {
+    question: 'Do you require collateral besides the excavator?',
+    answer: 'The excavator serves as primary collateral. For loans above RM 500,000, we may require additional collateral such as: (1) Property (residential or commercial), (2) Fixed deposits, (3) Personal or corporate guarantors. Most standard excavator loans (below RM 500,000) need no extra collateral. The equipment value adequately secures the loan.'
+  },
+  {
+    question: 'How much can I borrow?',
+    answer: 'Minimum loan: RM 30,000 for mini excavators. Maximum loan: RM 3,000,000 for large excavators and fleets. We can finance up to 90% of equipment value (10% down payment required). For used equipment, we may finance 80-85% of current market value (15-20% down payment). Loan amount also depends on your income and repayment capacity.'
+  },
+  {
+    question: 'Can foreigners apply for excavator financing?',
+    answer: 'Yes, foreigners with valid work permits and Malaysian company registration can apply. Required documents: (1) Valid passport, (2) Work permit or MM2H visa, (3) Malaysian business registration (SSM), (4) Local guarantor (Malaysian citizen or PR), (5) 6 months bank statements. Approval rates for foreigners are slightly lower (85-90%) but still very competitive.'
+  },
+  {
+    question: 'What if I already have an existing excavator loan?',
+    answer: 'We offer refinancing and loan restructuring services. If you\'re paying high interest (above 12%) elsewhere, we can buy out your existing loan and provide better terms. Many clients save 2-4% in interest annually by refinancing with us. We can also consolidate multiple equipment loans into one payment for easier cash flow management.'
+  },
+  {
+    question: 'Do you finance excavator attachments and spare parts?',
+    answer: 'Yes! We can include attachments (buckets, breakers, hydraulic hammers, rippers, grabs) in the excavator financing package. Spare parts can be financed separately if purchased with the excavator. Package deals available: Excavator + Trailer + Attachments for comprehensive equipment financing. This helps contractors get fully operational equipment in one transaction.'
+  },
+  {
+    question: 'What areas do you serve in Malaysia?',
+    answer: 'We serve all Malaysian states: Selangor, Kuala Lumpur, Johor, Penang, Perak, Pahang, Negeri Sembilan, Melaka, Kedah, Kelantan, Terengganu, Sabah, Sarawak, and more. Our office is in Klang, Selangor, but we process applications nationwide. Remote area processing available online and via WhatsApp. We\'ve financed excavators for contractors from Perlis to Sabah.'
+  },
+  {
+    question: 'Can I try the excavator before committing to financing?',
+    answer: 'For used excavators, we strongly encourage inspection and testing before final approval. Bring your experienced operator to test the machine. Check hydraulic systems, engine condition, undercarriage wear, and boom/bucket functionality. We want you to be 100% satisfied with your equipment choice before signing the loan agreement. For new excavators, dealer demonstrations are typically arranged.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Excavator Financing Malaysia',
+  description: 'Fast excavator financing with quick approval and flexible payment terms for construction contractors. Finance new and used excavators from RM30,000 to RM3,000,000.',
+  imageUrl: `${SITE_CONFIG.url}/images/excavator-financing.jpg`,
+  category: 'Financial Service - Equipment Financing',
+  offers: {
+    price: '30000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Fast Excavator Financing for Malaysian Contractors"
+    subtitle="Fast Approval | 10% Down Payment | Flexible 12-60 Month Terms | Finance RM30k-RM3M"
+    ctaText="Get Free Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20excavator%20financing."
+    ctaSecondaryText="Call Now: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years in Business', 'KPKT Licensed', '4,000+ Companies Financed', 'Industry-Leading Approvals']}
+  />
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Construction Contractors Face Equipment Financing Challenges
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          You have projects lined up and contracts ready. But banks reject your excavator loan application. Equipment dealers demand 30-50% down payment upfront. Your competitors are winning tenders because they have excavators and you don't. Sound familiar?
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-red-600 font-bold text-lg mb-3">Common Problems</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Banks reject applications due to limited credit history or CCRIS issues</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>High down payment requirements (30-50%) drain working capital</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Seasonal cash flow issues during monsoon months (Nov-Feb)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Missing project opportunities and government tenders without equipment</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Slow bank approval (2-4 weeks) causes project deadline delays</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-green-600 font-bold text-lg mb-3">Our Solutions</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>We approve applications that banks reject</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Only 10% down payment required (vs 30-50% from dealers/banks)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Get your excavator within 3-5 days after approval</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Fast approval - Start earning on projects immediately</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="font-bold text-lg mb-3 text-yellow-600">Real Success Story</div>
+          <div class="text-sm leading-relaxed text-gray-800">
+            <p class="mb-3"><strong class="text-primary">Ahmad from Klang</strong> needed a RM 180,000 Komatsu PC130 excavator for a government road widening project worth RM 850,000.</p>
+            <p class="mb-3"><strong class="text-red-600">3 banks rejected his application.</strong> We approved in 18 hours with only RM 18,000 down payment (10%).</p>
+            <p class="font-semibold text-green-700">Result: He completed the project, earned RM 250,000 profit, and purchased a second excavator 6 months later. Now owns 3 excavators and annual revenue of RM 2.5M.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator Section -->
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]">
+        <h3 class="text-2xl font-bold text-primary mb-4 text-center">Calculate Your Excavator ROI</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Investment Example:</h4>
+            <ul class="space-y-1 text-[#4F3E29]">
+              <li>• Excavator cost: RM 180,000</li>
+              <li>• Down payment (10%): RM 18,000</li>
+              <li>• Monthly payment (36 months): RM 5,200</li>
+              <li>• Total interest cost: RM 7,200</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Revenue Potential:</h4>
+            <ul class="space-y-1 text-[#4F3E29]">
+              <li>• Daily rental rate: RM 800-1,200</li>
+              <li>• Monthly revenue (20 working days): RM 16,000-24,000</li>
+              <li>• Annual gross revenue: RM 192,000-288,000</li>
+              <li>• <strong class="text-green-600">Break-even: 3-4 months</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-500">
+          <p class="text-sm text-gray-800">
+            <strong>Key Insight:</strong> With just 20 working days per month at RM 800/day rental rate, your excavator generates RM 16,000 monthly revenue. After deducting RM 5,200 loan payment and RM 3,000 operating costs (fuel, operator, maintenance), you net RM 7,800/month profit = RM 93,600/year.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Ing Heng Credit for Excavator Financing?
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          We understand contractor challenges and designed financing specifically for your business needs
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">Calculate Your Monthly Payment</h2>
+          <p class="text-[#4F3E29]">Estimate your monthly excavator financing payment based on equipment price and loan term</p>
+        </div>
+        <Calculator lang={lang} equipmentType="Excavator" defaultPrice={180000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          How to Get Your Excavator in 5 Easy Steps
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          From application to equipment delivery in as fast as 3-5 days
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20excavator%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Start Your Application Now
+        </a>
+        <p class="text-sm text-[#4F3E29] mt-3">Get approved quickly | No obligation quote</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Excavator Types We Finance
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          All excavator categories from 1-ton mini to 30-ton heavy-duty machines
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {equipmentTypes.map((equipment) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
+            <p class="text-[#4F3E29] mb-3">{equipment.description}</p>
+            <div class="text-sm text-[#4F3E29] space-y-1">
+              <p><strong>Applications:</strong> {equipment.applications}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">Accepted Excavator Brands</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-[#4F3E29] mt-4">...and more! Contact us for other brands and specialized equipment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Application Requirements
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Simple documentation process - Most contractors already have these documents
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Individual Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">For Individuals / Sole Proprietors</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Malaysian IC / Passport Copy</div>
+                <div class="text-sm text-[#4F3E29]">Malaysian IC for citizens, valid passport + work permit for foreigners</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">6 Months Bank Statements</div>
+                <div class="text-sm text-[#4F3E29]">Personal or business account showing regular income or project deposits</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Income Proof</div>
+                <div class="text-sm text-[#4F3E29]">Salary slips, EPF statements, project contracts, or payment receipts</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">CIDB Registration (If Available)</div>
+                <div class="text-sm text-[#4F3E29]">CIDB contractor registration helpful but not mandatory</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Company Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">For Companies (Sdn Bhd / PLT)</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">SSM Registration</div>
+                <div class="text-sm text-[#4F3E29]">Company registration certificate (Form 9 for Sdn Bhd, Form 24 for Enterprise, Form 49 for Partnership)</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Company Bank Statements</div>
+                <div class="text-sm text-[#4F3E29]">6 months company account statements showing business transactions</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Directors' IC Copies</div>
+                <div class="text-sm text-[#4F3E29]">All directors and major shareholders (25%+ ownership)</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Financial Statements (Optional)</div>
+                <div class="text-sm text-[#4F3E29]">Audited accounts helpful but not mandatory for companies under 2 years old</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">Important Notes:</h4>
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
+          <li>• Equipment age: We accept excavators 10+ years old for financing</li>
+          <li>• Credit score: We accept applicants with CCRIS/CTOS issues - Bad credit approved</li>
+          <li>• Processing time: Fast from complete document submission (on urgent cases)</li>
+          <li>• Additional documents may be requested based on individual cases (e.g. project contracts, quotations)</li>
+          <li>• For loans above RM 500,000, additional collateral may be required (property or guarantors)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Success Stories from Malaysian Contractors
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Real contractors who grew their businesses with our excavator financing
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Frequently Asked Questions About Excavator Financing
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Everything you need to know about financing your excavator
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Get Your Excavator and Start Earning?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Apply today and get approved by tomorrow. Join 4,000+ contractors who chose Ing Heng Credit for their excavator financing needs. 40 years of experience, industry-leading approval rates, transparent terms.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20excavator%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>No Obligation Quote</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Fast Approval Guaranteed</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40 Years Experience | KPKT Licensed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="excavator" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Or Fill Out Our Online Application Form
+          </h2>
+          <p class="text-[#4F3E29]">
+            We'll contact you promptly during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

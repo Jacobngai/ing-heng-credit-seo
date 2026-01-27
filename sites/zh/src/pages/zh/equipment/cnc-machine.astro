@@ -1,0 +1,244 @@
+---
+/**
+ * CNC Machine Financing Landing Page - Mandarin Chinese
+ * Target: Manufacturing companies, precision engineering businesses
+ * Keywords: CNC机床融资, 数控机床贷款, 制造设备融资
+ * Cultural Focus: Technology advancement, precision, business growth
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = 'CNC机床融资马来西亚 | 0%押金 | 永兴信贷 | 制造业专家';
+const pageDescription = '专业CNC机床融资服务。0%押金，100%融资，支持制造业升级。永兴信贷40年信誉，专业制造业融资。';
+const keywords = ['CNC机床融资', '数控机床贷款', '制造设备融资', '精密加工设备'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: 'CNC机床融资', url: '/zh/equipment/cnc-machine' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'cog', title: '制造业专业', description: '深入了解制造业需求，专门为CNC机床升级提供融资支持。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。加速制造设备现代化进程。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '专业团队快速处理，了解制造业时间敏感性。48小时内决定。' },
+  { icon: 'calendar', title: '灵活期限', description: '12-84个月还款期。根据设备折旧和回收期安排。' },
+  { icon: 'trending-up', title: '技术升级支持', description: '支持从传统加工向数控技术升级，提升竞争力。' },
+  { icon: 'shield', title: '设备保值', description: '高品质CNC机床保值性好，降低融资风险。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'CNC机床融资马来西亚',
+  description: '专业CNC机床融资，0%押金，支持制造业技术升级。永兴信贷专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/cnc-machine-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '150000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚CNC机床融资"
+    subtitle="0%押金 | 100%融资 | 制造业升级 | 永兴信贷专业支持"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解CNC机床融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '制造业专家']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          CNC机床融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为制造业提供CNC机床融资服务。支持企业技术升级，提升生产效率和产品质量。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- CNC Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的CNC机床类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">CNC铣床</h4>
+            <p class="text-[#4F3E29] mb-4">精密铣削加工，适用于复杂零件制造。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">CNC车床</h4>
+            <p class="text-[#4F3E29] mb-4">高精度旋转加工，适用于轴类零件。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">CNC加工中心</h4>
+            <p class="text-[#4F3E29] mb-4">多功能加工，一次装夹完成多道工序。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">CNC钻攻中心</h4>
+            <p class="text-[#4F3E29] mb-4">高速钻孔攻丝，适用于批量生产。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">五轴加工中心</h4>
+            <p class="text-[#4F3E29] mb-4">复杂曲面加工，航空航天级精度。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">CNC磨床</h4>
+            <p class="text-[#4F3E29]">精密磨削，实现最高表面质量。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brands & Technology -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-blue-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">支持的品牌与技术</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-blue-600 mb-3">国际品牌</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• HAAS (美国)</li>
+              <li>• FANUC (日本)</li>
+              <li>• MAZAK (日本)</li>
+              <li>• DMG MORI (德日合资)</li>
+              <li>• OKUMA (日本)</li>
+              <li>• MAKINO (日本)</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-blue-600 mb-3">技术特点</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 高精度位置控制</li>
+              <li>• 自动换刀系统</li>
+              <li>• 在线测量功能</li>
+              <li>• 远程监控能力</li>
+              <li>• 工业4.0就绪</li>
+              <li>• 节能环保设计</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Benefits -->
+      <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">投资回报优势</h3>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">3-5倍</div>
+            <div class="font-semibold mb-2">效率提升</div>
+            <div class="text-sm opacity-90">相比传统加工</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">±0.01mm</div>
+            <div class="font-semibold mb-2">加工精度</div>
+            <div class="text-sm opacity-90">高质量产品</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">50%</div>
+            <div class="font-semibold mb-2">人工节省</div>
+            <div class="text-sm opacity-90">降低生产成本</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">24/7</div>
+            <div class="font-semibold mb-2">连续生产</div>
+            <div class="text-sm opacity-90">提高产能</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        投资CNC机床，提升制造竞争力
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷助您实现制造业升级，获得更高效率和更大利润空间。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请CNC机床融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="cnc-machine" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取CNC机床融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的制造业融资专家将为您量身定制方案
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

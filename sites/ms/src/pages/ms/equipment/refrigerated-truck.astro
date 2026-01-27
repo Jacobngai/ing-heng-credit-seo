@@ -1,0 +1,1492 @@
+---
+/**
+ * Pembiayaan Lori Sejuk Beku / Peralatan Rantai Bekalan Sejuk - Bahasa Malaysia
+ * Target: Pengusaha logistik rantai sejuk, pengedar makanan, pengangkutan halal
+ * Focus: Service-focused, professional, halal compliance, government suppliers
+ * Word Count: ~3,200 words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Calculator from '../../../components/Calculator.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { t } from '../../../utils/i18n';
+
+const lang = 'ms';
+
+// Schema markup for SEO
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Pembiayaan Lori Sejuk Beku Malaysia",
+      "description": "Pembiayaan kenderaan rantai bekalan sejuk profesional untuk hasil segar, farmaseutikal dan logistik e-dagang. Kelulusan pantas, kadar kompetitif, penyelesaian pengangkutan kawalan suhu.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Ing Heng Credit"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "MYR",
+        "price": "150000",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Ing Heng Credit"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Apakah pembiayaan lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pembiayaan lori sejuk beku adalah pinjaman peralatan khusus yang membolehkan pengusaha logistik rantai sejuk memperolehi kenderaan kawalan suhu untuk mengangkut barang mudah rosak. Ini termasuk pembiayaan untuk casis lori, unit penyejukan (Carrier, Thermo King), dan sistem pemantauan suhu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Berapakah kos untuk membiayai lori sejuk beku di Malaysia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lori sejuk beku 1 tan berharga RM 120,000-180,000, lori 3 tan berharga RM 200,000-280,000, dan lori 5 tan berharga RM 300,000-450,000. Dengan bayaran pendahuluan 20%, ansuran bulanan berkisar dari RM 2,000-7,500 bergantung kepada tempoh pinjaman (5-7 tahun) dan profil kredit anda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah julat suhu yang dapat dikekalkan oleh lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lori sejuk beku standard mengekalkan suhu dari -25°C (makanan beku) hingga +5°C (hasil segar). Unit pelbagai suhu boleh mengekalkan zon berbeza: beku (-18°C), sejuk (0-5°C), dan ambien (15-20°C) dalam kenderaan yang sama."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Berapa lama kelulusan pembiayaan lori sejuk beku mengambil masa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pra-kelulusan dalam masa 24-48 jam, kelulusan penuh dalam masa 5-7 hari bekerja. Lebih pantas daripada bank tradisional (3-4 minggu). Kami memahami keperluan mendesak perniagaan rantai sejuk, terutamanya semasa musim puncak seperti Tahun Baru Cina, Ramadan, dan akhir tahun."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bolehkah saya membiayai lori sejuk beku terpakai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ya, kami membiayai lori sejuk beku terpakai sehingga 10 tahun. Kenderaan mesti lulus pemeriksaan mekanikal dan ujian prestasi unit penyejukan. Pembiayaan lori terpakai memerlukan bayaran pendahuluan 25-30% berbanding 15-20% untuk unit baharu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah dokumen yang diperlukan untuk pembiayaan lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Diperlukan: IC/pasport, penyata bank 3-6 bulan, penyata KWSP, pendaftaran perniagaan (jika syarikat), pendaftaran kenderaan sedia ada (jika ada), sebut harga pembekal. Untuk logistik farmaseutikal: pensijilan GDP atau bukti permohonan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Adakah pensijilan HACCP diperlukan untuk pembiayaan lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pensijilan HACCP tidak wajib untuk kelulusan pembiayaan, tetapi ia meningkatkan peluang kelulusan dan mendapat kadar yang lebih baik. Pengusaha yang diperakui HACCP layak untuk kontrak premium (pasar raya, farmaseutikal) yang mengukuhkan keupayaan pembayaran balik."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah ROI untuk pelaburan lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dengan kontrak pasar raya: 18-24 bulan pulang modal. Pengedaran hasil segar: 24-30 bulan. Rantai sejuk farmaseutikal: 15-20 bulan (kadar premium). Purata pendapatan harian: RM 400-800 setiap lori. Musim puncak (Tahun Baru Cina, Ramadan) boleh menggandakan pendapatan bulanan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bolehkah pedagang hasil segar bekerja sendiri mendapat pembiayaan lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ya, kami pakar dalam pembiayaan bekerja sendiri dan PKS. Keperluan: 2+ tahun dalam perniagaan hasil segar, bukti pendapatan konsisten (penyata bank), kontrak pelanggan sedia ada (diutamakan tetapi tidak wajib), rujukan industri dari pasaran Selayang/Klang."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah jenama penyejukan yang boleh saya biayai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kami membiayai semua jenama utama: Carrier Transicold, Thermo King, Zanotti, Dongin, dan Hubbard. Casis lori: Isuzu, Hino, Fuso, Mercedes, Toyota. Kami menyediakan nasihat perbandingan jenama berdasarkan jenis kargo dan laluan anda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Adakah anda membiayai sistem GPS dan pemantauan suhu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ya, kami membiayai penyelesaian rantai sejuk lengkap termasuk penjejakan GPS (RM 800-1,500), perakam data suhu (RM 500-2,000), dan kos pemasangan. Sistem ini penting untuk pematuhan HACCP dan kontrak premium."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah tempoh pinjaman biasa untuk pembiayaan lori sejuk beku?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tempoh standard: 5-7 tahun untuk lori baharu, 3-5 tahun untuk lori terpakai. Tempoh lebih lama (sehingga 7 tahun) mengurangkan ansuran bulanan tetapi meningkatkan jumlah faedah. Kami mengesyorkan memadankan tempoh pinjaman dengan panjang kontrak anda untuk aliran tunai optimum."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Pembiayaan Lori Sejuk Beku Malaysia - Pinjaman Kenderaan Rantai Sejuk"
+  description="Biayai lori sejuk beku untuk hasil segar, farmaseutikal & logistik e-dagang. Kelulusan pantas, kadar kompetitif, pembiayaan RM 150k-450k. Carrier, Thermo King, Isuzu. WhatsApp: 017-5700889"
+  lang={lang}
+  schema={schema}
+>
+  <Header lang={lang} currentPath="/ms/equipment/refrigerated-truck" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Pembiayaan Lori Sejuk Beku: Kuasai Ledakan Rantai Sejuk Malaysia</h1>
+          <p class="hero-subtitle">
+            Biayai kenderaan kawalan suhu untuk hasil segar, farmaseutikal, dan logistik e-dagang.
+            Kelulusan pantas dalam 5-7 hari, kadar kompetitif dari 6.5%, dan pembiayaan sehingga 90% nilai lori.
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">RM 222.28 Bilion</span>
+              <span class="stat-label">Pasaran Rantai Sejuk 2024</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">11% CAGR</span>
+              <span class="stat-label">Pertumbuhan Hingga 2030</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">18-24 Bulan</span>
+              <span class="stat-label">Tempoh Pulangan ROI</span>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a href="https://wa.me/60175700889?text=Saya%20berminat%20dengan%20pembiayaan%20lori%20sejuk%20beku" class="btn btn-primary">
+              📱 WhatsApp: 017-5700889
+            </a>
+            <a href="#calculator" class="btn btn-secondary">Kira Bayaran</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-placeholder">
+            🚚❄️
+            <p>Penyelesaian Rantai Sejuk Profesional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Opportunity Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Mengapa Melabur dalam Lori Sejuk Beku Sekarang?</h2>
+      <p class="section-intro">
+        Pasaran logistik rantai sejuk Malaysia mengalami pertumbuhan yang tidak pernah berlaku sebelum ini. Penghantaran
+        makanan e-dagang mencecah USD 1.5 bilion pada 2024, pasar raya berkembang secara agresif, dan rantai sejuk
+        farmaseutikal dijangka mencapai USD 2.5 bilion menjelang akhir 2025. <strong>Permintaan untuk pengangkutan
+        kawalan suhu tidak pernah setinggi ini.</strong>
+      </p>
+
+      <div class="opportunity-grid">
+        <div class="opportunity-card">
+          <div class="opportunity-icon">📦</div>
+          <h3>Ledakan E-Dagang</h3>
+          <p>
+            Pasaran runcit dalam talian USD 2.5 bilion pada 2025 (pertumbuhan 12.8%). Platform seperti HappyFresh,
+            MyGroser, GrabMart, dan AEON myAEON2go memerlukan rakan penghantaran rantai sejuk yang boleh dipercayai.
+            Penghantaran batu terakhir membayar kadar premium (RM 25-40 setiap penghantaran vs RM 15-25 untuk kargo kering).
+          </p>
+          <div class="opportunity-stat">Peningkatan volum 300-400% semasa musim perayaan</div>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="opportunity-icon">🏪</div>
+          <h3>Pengembangan Pasar Raya</h3>
+          <p>
+            AEON membuka cawangan baharu (MITEC menjelang akhir 2025, Setia City Mall dibuka Mac 2024). Village Grocer
+            berkembang ke Johor (IOI Mall Kulai). Hasil segar dan produk import premium memerlukan penghantaran kawalan
+            suhu harian. Kontrak jangka panjang menyediakan sumber pendapatan yang stabil.
+          </p>
+          <div class="opportunity-stat">Nilai kontrak bulanan RM 5,000-15,000 setiap cawangan</div>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="opportunity-icon">💊</div>
+          <h3>Pasaran Premium Farmaseutikal</h3>
+          <p>
+            Sektor farmaseutikal USD 2.5 bilion menjelang akhir 2025. Pensijilan GDP (Amalan Pengedaran Baik) wajib
+            sejak 2012. Pengedaran vaksin dan ubat sensitif suhu memerlukan rantai sejuk yang diperakui. Kadar premium:
+            40-60% lebih tinggi daripada logistik hasil segar.
+          </p>
+          <div class="opportunity-stat">Tahan kemelesetan, aliran pendapatan stabil</div>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="opportunity-icon">🍴</div>
+          <h3>Pertumbuhan Rangkaian Restoran</h3>
+          <p>
+            Pasaran perkhidmatan makanan dijangka mencapai USD 27.5 bilion menjelang 2030 (CAGR 13.26%). Revolusi dapur
+            awan berkembang 16% setiap tahun. QSR Brands (KFC, Pizza Hut) mengembangkan rantaian bekalan. Penyimpanan
+            sejuk berpusat ke berbilang cawangan mewujudkan laluan penghantaran yang cekap.
+          </p>
+          <div class="opportunity-stat">Penghantaran pelbagai cawangan = pendapatan lebih tinggi setiap perjalanan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Overview Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Jenis & Spesifikasi Lori Sejuk Beku</h2>
+      <p class="section-intro">
+        Kami membiayai semua jenis kenderaan rantai sejuk dari van 1 tan hingga lori 5 tan. Pilih berdasarkan volum
+        kargo, keperluan suhu, dan laluan penghantaran anda.
+      </p>
+
+      <div class="equipment-comparison">
+        <div class="comparison-card">
+          <h3>Van Chiller 1 Tan</h3>
+          <div class="price-range">RM 120,000 - 180,000</div>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-label">Kapasiti:</span>
+              <span class="spec-value">1,000-1,200 kg</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Suhu:</span>
+              <span class="spec-value">-5°C hingga +5°C</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Casis:</span>
+              <span class="spec-value">Isuzu D-Max, Toyota Hilux</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Sesuai Untuk:</span>
+              <span class="spec-value">Penghantaran bandar, batu terakhir e-dagang, restoran kecil</span>
+            </div>
+          </div>
+          <div class="financing-preview">
+            <strong>Bulanan dari RM 2,000</strong> (tempoh 7 tahun, deposit 20%)
+          </div>
+        </div>
+
+        <div class="comparison-card featured">
+          <div class="badge">Paling Popular</div>
+          <h3>Lori Sejuk Beku 3 Tan</h3>
+          <div class="price-range">RM 200,000 - 280,000</div>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-label">Kapasiti:</span>
+              <span class="spec-value">3,000-3,500 kg</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Suhu:</span>
+              <span class="spec-value">-25°C hingga +5°C (pelbagai zon)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Casis:</span>
+              <span class="spec-value">Isuzu NPR, Hino 300 Series</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Sesuai Untuk:</span>
+              <span class="spec-value">Bekalan pasar raya, borong hasil segar, pengedaran farmaseutikal</span>
+            </div>
+          </div>
+          <div class="financing-preview">
+            <strong>Bulanan dari RM 3,500</strong> (tempoh 7 tahun, deposit 20%)
+          </div>
+        </div>
+
+        <div class="comparison-card">
+          <h3>Lori Reefer 5 Tan</h3>
+          <div class="price-range">RM 300,000 - 450,000</div>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-label">Kapasiti:</span>
+              <span class="spec-value">5,000-6,000 kg</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Suhu:</span>
+              <span class="spec-value">-25°C hingga +15°C (3 zon)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Casis:</span>
+              <span class="spec-value">Isuzu FRR, Hino 500 Series, Fuso</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Sesuai Untuk:</span>
+              <span class="spec-value">Pengedaran jarak jauh, import/eksport, katering berskala besar</span>
+            </div>
+          </div>
+          <div class="financing-preview">
+            <strong>Bulanan dari RM 5,500</strong> (tempoh 7 tahun, deposit 20%)
+          </div>
+        </div>
+      </div>
+
+      <div class="refrigeration-brands">
+        <h3>Jenama Unit Penyejukan yang Kami Biayai</h3>
+        <div class="brand-grid">
+          <div class="brand-item">
+            <strong>Carrier Transicold</strong>
+            <p>Peneraju industri, kebolehpercayaan terbukti, rangkaian perkhidmatan cemerlang di Malaysia</p>
+          </div>
+          <div class="brand-item">
+            <strong>Thermo King</strong>
+            <p>Prestasi premium, keupayaan pelbagai suhu, kecekapan bahan api</p>
+          </div>
+          <div class="brand-item">
+            <strong>Zanotti</strong>
+            <p>Kejuruteraan Itali, kos efektif, sesuai untuk iklim tropika</p>
+          </div>
+          <div class="brand-item">
+            <strong>Dongin Thermo</strong>
+            <p>Teknologi Korea, harga kompetitif, kehadiran Malaysia yang berkembang</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section class="section section-light" id="calculator">
+    <div class="container">
+      <h2>Kira ROI Lori Sejuk Beku Anda</h2>
+      <p class="section-intro">
+        Lihat dengan tepat berapa banyak yang anda akan perolehi berbanding bayaran pinjaman bulanan anda. Kebanyakan
+        pengusaha rantai sejuk mencapai aliran tunai positif dari bulan pertama dengan kontrak sedia ada.
+      </p>
+
+      <Calculator lang={lang} equipmentType="refrigerated-truck" defaultPrice={250000} />
+
+      <div class="roi-comparison">
+        <h3>Senario ROI Dunia Sebenar</h3>
+        <div class="scenario-grid">
+          <div class="scenario-card">
+            <h4>🍎 Pengedaran Hasil Segar</h4>
+            <div class="scenario-details">
+              <p><strong>Pelaburan:</strong> RM 250,000 (3 tan Isuzu + unit Carrier)</p>
+              <p><strong>Bayaran Bulanan:</strong> RM 4,200 (7 tahun, faedah 6.8%)</p>
+              <p><strong>Pendapatan:</strong></p>
+              <ul>
+                <li>Selayang ke pasar raya Lembah Klang: RM 800/hari</li>
+                <li>Hari operasi: 25 hari/bulan</li>
+                <li>Kasar bulanan: RM 20,000</li>
+                <li>Bahan api & penyelenggaraan: RM 4,500</li>
+                <li>Bersih sebelum pinjaman: RM 15,500</li>
+              </ul>
+              <p class="roi-result"><strong>Keuntungan Bersih: RM 11,300/bulan</strong></p>
+              <p class="payback"><strong>Tempoh Pulangan: 22 bulan</strong></p>
+            </div>
+          </div>
+
+          <div class="scenario-card highlight">
+            <h4>💊 Rantai Sejuk Farmaseutikal (Diperakui GDP)</h4>
+            <div class="scenario-details">
+              <p><strong>Pelaburan:</strong> RM 280,000 (3 tan + pemantauan premium)</p>
+              <p><strong>Bayaran Bulanan:</strong> RM 4,700 (7 tahun, faedah 6.5%)</p>
+              <p><strong>Pendapatan:</strong></p>
+              <ul>
+                <li>Penghantaran hospital/farmasi: RM 1,200/hari</li>
+                <li>Hari operasi: 22 hari/bulan</li>
+                <li>Kasar bulanan: RM 26,400</li>
+                <li>Bahan api & penyelenggaraan: RM 4,200</li>
+                <li>Bersih sebelum pinjaman: RM 22,200</li>
+              </ul>
+              <p class="roi-result"><strong>Keuntungan Bersih: RM 17,500/bulan</strong></p>
+              <p class="payback"><strong>Tempoh Pulangan: 16 bulan</strong></p>
+            </div>
+          </div>
+
+          <div class="scenario-card">
+            <h4>📦 Penghantaran Batu Terakhir E-Dagang</h4>
+            <div class="scenario-details">
+              <p><strong>Pelaburan:</strong> RM 160,000 (1 tan Toyota + Zanotti)</p>
+              <p><strong>Bayaran Bulanan:</strong> RM 2,700 (7 tahun, faedah 6.9%)</p>
+              <p><strong>Pendapatan:</strong></p>
+              <ul>
+                <li>Kontrak HappyFresh/GrabMart: RM 600/hari</li>
+                <li>Hari operasi: 26 hari/bulan</li>
+                <li>Kasar bulanan: RM 15,600</li>
+                <li>Bahan api & penyelenggaraan: RM 3,200</li>
+                <li>Bersih sebelum pinjaman: RM 12,400</li>
+              </ul>
+              <p class="roi-result"><strong>Keuntungan Bersih: RM 9,700/bulan</strong></p>
+              <p class="payback"><strong>Tempoh Pulangan: 16 bulan</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="roi-note">
+          <strong>Bonus Musim Puncak:</strong> Semasa Tahun Baru Cina, Ramadan, dan cuti akhir tahun, pengusaha rantai
+          sejuk melaporkan peningkatan pendapatan 150-300%. Kadar premium semasa musim perayaan boleh mengurangkan
+          tempoh pulangan sebanyak 4-6 bulan.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing Options Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Pilihan Pembiayaan Fleksibel</h2>
+      <p class="section-intro">
+        Kami memahami aliran tunai perniagaan rantai sejuk. Pilih struktur pembiayaan yang sesuai dengan saluran
+        kontrak dan corak permintaan bermusim anda.
+      </p>
+
+      <div class="financing-options-grid">
+        <div class="option-card">
+          <h3>🎯 Sewa Beli Standard</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>Bayaran Pendahuluan:</strong> 15-20% untuk baharu, 25-30% untuk terpakai</li>
+              <li><strong>Tempoh Pinjaman:</strong> 5-7 tahun</li>
+              <li><strong>Kadar Faedah:</strong> 3.5-7.5% p.a.</li>
+              <li><strong>Masa Kelulusan:</strong> 5-7 hari bekerja</li>
+              <li><strong>Sesuai Untuk:</strong> Pengusaha mapan dengan kontrak sedia ada</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=Saya%20berminat%20dengan%20sewa%20beli%20standard" class="btn-link">
+            Mohon Sekarang →
+          </a>
+        </div>
+
+        <div class="option-card featured">
+          <div class="badge">Kelulusan Pantas</div>
+          <h3>⚡ Pembiayaan Ekspres (Bermusim)</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>Bayaran Pendahuluan:</strong> 20-25%</li>
+              <li><strong>Tempoh Pinjaman:</strong> 5 tahun</li>
+              <li><strong>Kadar Faedah:</strong> 3.8-7.8% p.a.</li>
+              <li><strong>Masa Kelulusan:</strong> 3-5 hari bekerja</li>
+              <li><strong>Sesuai Untuk:</strong> Tahun Baru Cina, Ramadan, permintaan bermusim akhir tahun</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=Saya%20perlukan%20pembiayaan%20lori%20sejuk%20beku%20ekspres" class="btn-link">
+            Mohon Sekarang →
+          </a>
+        </div>
+
+        <div class="option-card">
+          <h3>📊 Pelan Bayaran Belon</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>Bayaran Pendahuluan:</strong> 15-20%</li>
+              <li><strong>Tempoh Pinjaman:</strong> 3-5 tahun + belon</li>
+              <li><strong>Kadar Faedah:</strong> 3.7-7.6% p.a.</li>
+              <li><strong>Bayaran Bulanan:</strong> 30-40% lebih rendah daripada standard</li>
+              <li><strong>Sesuai Untuk:</strong> Permulaan yang membina saluran kontrak</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=Beritahu%20saya%20tentang%20pilihan%20bayaran%20belon" class="btn-link">
+            Ketahui Lebih Lanjut →
+          </a>
+        </div>
+
+        <div class="option-card">
+          <h3>🏢 Pembiayaan Armada (2+ Unit)</h3>
+          <div class="option-features">
+            <ul>
+              <li><strong>Bayaran Pendahuluan:</strong> 10-15% (diskaun pukal)</li>
+              <li><strong>Tempoh Pinjaman:</strong> 5-7 tahun</li>
+              <li><strong>Kadar Faedah:</strong> 3.3-7.2% p.a. (keutamaan)</li>
+              <li><strong>Masa Kelulusan:</strong> 7-10 hari bekerja</li>
+              <li><strong>Sesuai Untuk:</strong> Operasi meningkat dengan berbilang kontrak</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/60175700889?text=Saya%20perlukan%20pembiayaan%20armada%20untuk%20beberapa%20lori" class="btn-link">
+            Dapatkan Sebut Harga →
+          </a>
+        </div>
+      </div>
+
+      <div class="financing-extras">
+        <h3>Liputan Pembiayaan Tambahan</h3>
+        <div class="extras-grid">
+          <div class="extra-item">
+            <span class="extra-icon">🛰️</span>
+            <strong>Sistem GPS & Pemantauan</strong>
+            <p>Biayai RM 800-3,500 untuk penjejakan, pengelogan suhu, dokumentasi pematuhan</p>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">🛡️</span>
+            <strong>Insurans Komprehensif</strong>
+            <p>Sertakan insurans tahun pertama dalam pembiayaan (nilai RM 8,000-15,000)</p>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">🔧</span>
+            <strong>Pakej Penyelenggaraan</strong>
+            <p>Pembiayaan pakej servis 3 tahun pilihan (unit penyejukan kritikal)</p>
+          </div>
+          <div class="extra-item">
+            <span class="extra-icon">📋</span>
+            <strong>Sokongan Pensijilan</strong>
+            <p>Kos pensijilan HACCP/GDP boleh dimasukkan dalam pembiayaan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Proses Permohonan: 5 Langkah Mudah</h2>
+      <p class="section-intro">
+        Proses kelulusan yang pantas dan telus direka untuk pengusaha rantai sejuk. Kami memahami keperluan mendesak
+        bermusim dan keperluan aliran tunai perniagaan.
+      </p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Perundingan Awal (15 minit)</h3>
+            <p>
+              WhatsApp kami di 017-5700889 atau hubungi 03-3324 8899. Bincangkan model perniagaan rantai sejuk anda,
+              kontrak sedia ada, pasaran sasaran (hasil segar, farmaseutikal, e-dagang). Kami akan mengesyorkan saiz
+              lori dan struktur pembiayaan optimum.
+            </p>
+            <div class="step-info">Apa yang perlu disediakan: Pendapatan bulanan kasar, kontrak sedia ada (jika ada), jenama peralatan pilihan</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Serahkan Permohonan (Hari yang sama)</h3>
+            <p>
+              Sediakan dokumen yang diperlukan melalui WhatsApp atau e-mel. Kami menerima salinan imbasan untuk semakan
+              awal. Dokumen yang diperlukan: IC/pasport, penyata bank 3-6 bulan, penyata KWSP, pendaftaran perniagaan,
+              sebut harga pembekal untuk lori yang dipilih.
+            </p>
+            <div class="step-info">Tambahan untuk farmaseutikal: Pensijilan GDP atau bukti permohonan</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Pra-Kelulusan (24-48 Jam)</h3>
+            <p>
+              Penilaian kredit dan analisis kemampuan selesai. Surat pra-kelulusan dikeluarkan dengan kadar faedah
+              indikatif, jumlah pinjaman, dan bayaran bulanan. Tiada kewajipan untuk meneruskan pada peringkat ini.
+            </p>
+            <div class="step-info">Kelulusan bersyarat dikeluarkan untuk pengusaha bermusim dengan bukti saluran kontrak</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Kelulusan Akhir & Dokumentasi (3-4 Hari)</h3>
+            <p>
+              Pemeriksaan kenderaan lengkap (jika lori terpakai), finalisasi insurans, sediakan perjanjian pinjaman.
+              Pengesahan pembekal dan penyelarasan garis masa penghantaran. Penyerahan dan pengesahan dokumen asal.
+            </p>
+            <div class="step-info">Kami menyelaras terus dengan pembekal lori untuk memperkemaskan proses</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Pengeluaran & Penghantaran (1-2 Hari)</h3>
+            <p>
+              Tandatangan perjanjian pinjaman, bayar deposit, dana dikeluarkan kepada pembekal. Pemindahan pendaftaran
+              kenderaan (jika terpakai) atau pendaftaran baharu. Pemasangan sistem GPS dan pemantauan suhu diaturkan.
+              Ambil lori sejuk beku anda dan mula menjana pendapatan.
+            </p>
+            <div class="step-info">Jumlah garis masa: 5-7 hari bekerja dari permohonan hingga penghantaran lori</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-cta">
+        <a href="https://wa.me/60175700889?text=Saya%20bersedia%20untuk%20memulakan%20permohonan%20pembiayaan%20lori%20sejuk%20beku%20saya" class="btn btn-primary">
+          Mulakan Permohonan Anda Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="refrigeratedTruck" />
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Soalan Lazim</h2>
+      <p class="section-intro">
+        Dapatkan jawapan kepada soalan lazim tentang pembiayaan lori sejuk beku, operasi rantai sejuk, dan jangkaan ROI.
+      </p>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Apakah pembiayaan lori sejuk beku?</h3>
+          <p>
+            Pembiayaan lori sejuk beku adalah pinjaman peralatan khusus yang membolehkan pengusaha logistik rantai sejuk
+            memperolehi kenderaan kawalan suhu untuk mengangkut barang mudah rosak. Ini termasuk pembiayaan untuk casis
+            lori, unit penyejukan (Carrier, Thermo King), dan sistem pemantauan suhu.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Berapakah kos untuk membiayai lori sejuk beku di Malaysia?</h3>
+          <p>
+            Lori sejuk beku 1 tan berharga RM 120,000-180,000, lori 3 tan berharga RM 200,000-280,000, dan lori 5 tan
+            berharga RM 300,000-450,000. Dengan bayaran pendahuluan 20%, ansuran bulanan berkisar dari RM 2,000-7,500
+            bergantung kepada tempoh pinjaman (5-7 tahun) dan profil kredit anda.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Apakah julat suhu yang dapat dikekalkan oleh lori sejuk beku?</h3>
+          <p>
+            Lori sejuk beku standard mengekalkan suhu dari -25°C (makanan beku) hingga +5°C (hasil segar). Unit pelbagai
+            suhu boleh mengekalkan zon berbeza: beku (-18°C), sejuk (0-5°C), dan ambien (15-20°C) dalam kenderaan yang sama.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Berapa lama kelulusan pembiayaan lori sejuk beku mengambil masa?</h3>
+          <p>
+            Pra-kelulusan dalam masa 24-48 jam, kelulusan penuh dalam masa 5-7 hari bekerja. Lebih pantas daripada bank
+            tradisional (3-4 minggu). Kami memahami keperluan mendesak perniagaan rantai sejuk, terutamanya semasa musim
+            puncak seperti Tahun Baru Cina, Ramadan, dan akhir tahun.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Bolehkah saya membiayai lori sejuk beku terpakai?</h3>
+          <p>
+            Ya, kami membiayai lori sejuk beku terpakai sehingga 10 tahun. Kenderaan mesti lulus pemeriksaan mekanikal dan
+            ujian prestasi unit penyejukan. Pembiayaan lori terpakai memerlukan bayaran pendahuluan 25-30% berbanding 15-20%
+            untuk unit baharu.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Apakah dokumen yang diperlukan untuk pembiayaan lori sejuk beku?</h3>
+          <p>
+            Diperlukan: IC/pasport, penyata bank 3-6 bulan, penyata KWSP, pendaftaran perniagaan (jika syarikat), pendaftaran
+            kenderaan sedia ada (jika ada), sebut harga pembekal. Untuk logistik farmaseutikal: pensijilan GDP atau bukti
+            permohonan.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Adakah pensijilan HACCP diperlukan untuk pembiayaan lori sejuk beku?</h3>
+          <p>
+            Pensijilan HACCP tidak wajib untuk kelulusan pembiayaan, tetapi ia meningkatkan peluang kelulusan dan mendapat
+            kadar yang lebih baik. Pengusaha yang diperakui HACCP layak untuk kontrak premium (pasar raya, farmaseutikal)
+            yang mengukuhkan keupayaan pembayaran balik.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Apakah ROI untuk pelaburan lori sejuk beku?</h3>
+          <p>
+            Dengan kontrak pasar raya: 18-24 bulan pulang modal. Pengedaran hasil segar: 24-30 bulan. Rantai sejuk
+            farmaseutikal: 15-20 bulan (kadar premium). Purata pendapatan harian: RM 400-800 setiap lori. Musim puncak
+            (Tahun Baru Cina, Ramadan) boleh menggandakan pendapatan bulanan.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Bolehkah pedagang hasil segar bekerja sendiri mendapat pembiayaan lori sejuk beku?</h3>
+          <p>
+            Ya, kami pakar dalam pembiayaan bekerja sendiri dan PKS. Keperluan: 2+ tahun dalam perniagaan hasil segar,
+            bukti pendapatan konsisten (penyata bank), kontrak pelanggan sedia ada (diutamakan tetapi tidak wajib), rujukan
+            industri dari pasaran Selayang/Klang.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Apakah jenama penyejukan yang boleh saya biayai?</h3>
+          <p>
+            Kami membiayai semua jenama utama: Carrier Transicold, Thermo King, Zanotti, Dongin, dan Hubbard. Casis lori:
+            Isuzu, Hino, Fuso, Mercedes, Toyota. Kami menyediakan nasihat perbandingan jenama berdasarkan jenis kargo dan
+            laluan anda.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Adakah anda membiayai sistem GPS dan pemantauan suhu?</h3>
+          <p>
+            Ya, kami membiayai penyelesaian rantai sejuk lengkap termasuk penjejakan GPS (RM 800-1,500), perakam data suhu
+            (RM 500-2,000), dan kos pemasangan. Sistem ini penting untuk pematuhan HACCP dan kontrak premium.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Apakah tempoh pinjaman biasa untuk pembiayaan lori sejuk beku?</h3>
+          <p>
+            Tempoh standard: 5-7 tahun untuk lori baharu, 3-5 tahun untuk lori terpakai. Tempoh lebih lama (sehingga 7 tahun)
+            mengurangkan ansuran bulanan tetapi meningkatkan jumlah faedah. Kami mengesyorkan memadankan tempoh pinjaman dengan
+            panjang kontrak anda untuk aliran tunai optimum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals Section -->
+  <section class="section section-light">
+    <div class="container">
+      <h2>Mengapa Pengusaha Rantai Sejuk Memilih Ing Heng Credit</h2>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">⚡</div>
+          <h3>Proses Kelulusan Pantas</h3>
+          <p>
+            Kelulusan 5-7 hari berbanding 3-4 minggu di bank. Kami memahami keperluan mendesak bermusim - puncak Tahun
+            Baru Cina, Ramadan, akhir tahun memerlukan penempatan pantas. Pra-kelulusan dalam masa 48 jam untuk pemohon
+            yang layak.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">🎯</div>
+          <h3>Pakar Rantai Sejuk</h3>
+          <p>
+            Kami memahami margin hasil segar, pematuhan farmaseutikal, kontrak e-dagang. Bukan sekadar pembiaya peralatan
+            - kami tahu model perniagaan anda, corak bermusim, dan jangkaan ROI.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">💰</div>
+          <h3>Syarat Fleksibel & Kadar Kompetitif</h3>
+          <p>
+            Kadar faedah dari 6.5% p.a. Biayai 80-90% nilai lori. Bayaran belon untuk permulaan. Diskaun armada untuk 2+
+            unit. Insurans dan sistem pemantauan termasuk dalam pembiayaan.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">🤝</div>
+          <h3>Mesra PKS & Bekerja Sendiri</h3>
+          <p>
+            Pedagang pasaran Selayang, pengusaha pelabuhan Klang, pengedar hasil segar bebas - kami bekerjasama dengan
+            pengusaha bekerja sendiri yang ditolak oleh bank. Rujukan industri lebih dihargai daripada skor kredit sempurna.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">📊</div>
+          <h3>Penilaian Berasaskan Kontrak</h3>
+          <p>
+            Kontrak pasar raya sedia ada, perjanjian platform e-dagang, perjanjian pengedaran farmaseutikal mengukuhkan
+            permohonan anda. Kami membiayai berdasarkan potensi pendapatan, bukan sekadar sejarah kredit.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">🛠️</div>
+          <h3>Sokongan Menyeluruh</h3>
+          <p>
+            Penyelarasan pembekal peralatan, pengaturan insurans, pemasangan sistem GPS, panduan pensijilan HACCP. Kami
+            membantu anda beroperasi dengan cepat dengan semua keperluan pematuhan dipenuhi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Bersedia untuk Menggerakkan Perniagaan Rantai Sejuk Anda?</h2>
+        <p>
+          Sertai ledakan logistik rantai sejuk. Biayai lori sejuk beku anda hari ini dan mula memperoleh kadar premium
+          daripada pasar raya, platform e-dagang, dan pengedar farmaseutikal.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/60175700889?text=Saya%20bersedia%20untuk%20membiayai%20lori%20sejuk%20beku%20saya" class="btn btn-primary-large">
+            📱 WhatsApp: 017-5700889
+          </a>
+          <a href="tel:0333248899" class="btn btn-secondary-large">
+            📞 Hubungi: 03-3324 8899
+          </a>
+        </div>
+        <div class="contact-info">
+          <p><strong>E-mel:</strong> enquiry@inghengcredit.com</p>
+          <p><strong>Alamat:</strong> 16, Lintang Menalu, Taman Chi Liung, 41200 Klang, Selangor</p>
+          <p><strong>Waktu Operasi:</strong> Isnin-Jumaat 9AM-5PM | Sabtu 9AM-1PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+  /* Reuse all styles from English/Chinese versions */
+  /* Styles are identical across all three language versions */
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #cbd5e1;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-image-placeholder {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  .hero-image-placeholder p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: white;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-light {
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    font-size: 1.125rem;
+    color: #475569;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  /* Opportunity Grid */
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .opportunity-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .opportunity-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .opportunity-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+
+  .opportunity-card p {
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .opportunity-stat {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #1e40af;
+    font-size: 0.875rem;
+  }
+
+  /* Equipment Comparison */
+  .equipment-comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .comparison-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .comparison-card.featured {
+    border: 2px solid #3b82f6;
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: 1rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .comparison-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .price-range {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+  }
+
+  .spec-list {
+    margin-bottom: 1.5rem;
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .spec-label {
+    font-weight: 600;
+    color: #475569;
+  }
+
+  .spec-value {
+    color: #1e293b;
+    text-align: right;
+  }
+
+  .financing-preview {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #0c4a6e;
+  }
+
+  /* Brand Grid */
+  .refrigeration-brands {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+  }
+
+  .refrigeration-brands h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .brand-item {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .brand-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .brand-item p {
+    font-size: 0.875rem;
+    color: #64748b;
+  }
+
+  /* ROI Scenarios */
+  .roi-comparison {
+    margin-top: 3rem;
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .scenario-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .scenario-card.highlight {
+    border: 2px solid #10b981;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  }
+
+  .scenario-card h4 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+
+  .scenario-details ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .scenario-details li {
+    color: #475569;
+    margin-bottom: 0.5rem;
+  }
+
+  .roi-result {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #10b981;
+    margin-top: 1rem;
+  }
+
+  .payback {
+    font-weight: 600;
+    color: #3b82f6;
+  }
+
+  .roi-note {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-top: 2rem;
+    border-left: 4px solid #f59e0b;
+  }
+
+  /* Financing Options */
+  .financing-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .option-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .option-card.featured {
+    border: 2px solid #10b981;
+  }
+
+  .option-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+
+  .option-features ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .option-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+  }
+
+  .btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn-link:hover {
+    color: #2563eb;
+  }
+
+  .financing-extras {
+    margin-top: 3rem;
+  }
+
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .extra-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .extra-icon {
+    font-size: 2rem;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    max-width: 800px;
+    margin: 3rem auto;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+  }
+
+  .step-content p {
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .step-info {
+    background: #f1f5f9;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+    font-style: italic;
+  }
+
+  .process-cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  /* FAQ Grid */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-item h3 {
+    font-size: 1.125rem;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-item p {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  /* Trust Grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .trust-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .trust-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .trust-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+  }
+
+  .trust-card p {
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.25rem;
+    color: #dbeafe;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-large {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-secondary-large {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary-large:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .contact-info {
+    margin-top: 2rem;
+    color: #dbeafe;
+  }
+
+  .contact-info p {
+    margin: 0.5rem 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .opportunity-grid,
+    .equipment-comparison,
+    .scenario-grid,
+    .financing-options-grid,
+    .extras-grid,
+    .faq-grid,
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .brand-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-text h1 {
+      font-size: 1.75rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

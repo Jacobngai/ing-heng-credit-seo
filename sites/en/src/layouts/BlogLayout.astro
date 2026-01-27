@@ -1,0 +1,335 @@
+---
+/**
+ * BlogLayout - Layout for Blog Posts (English only)
+ * Extends BaseLayout with blog-specific features:
+ * - Article schema markup
+ * - Breadcrumbs
+ * - Reading time and publish date
+ * - Share buttons
+ * - Table of contents
+ * - Related posts
+ * - Newsletter signup
+ */
+
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import CTAButton from '../components/CTAButton.astro';
+import { generateArticleSchema, generateFAQSchema, encodeJSONLD } from '../utils/schema';
+import type { Locale } from '../utils/i18n';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  frontmatter: CollectionEntry<'blogs'>['data'];
+  headings: { depth: number; slug: string; text: string }[];
+  slug: string;
+}
+
+const { frontmatter, headings, slug } = Astro.props;
+
+// Hardcode to English
+const locale: Locale = 'en';
+
+// Format date
+const publishDate = new Date(frontmatter.publishDate);
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Calculate reading time if not provided
+const readingTime = frontmatter.readingTime || 8;
+
+// Breadcrumb items
+const breadcrumbs = [
+  { label: 'Home', href: `/${locale}` },
+  { label: 'Blog', href: `/${locale}/blog` },
+  { label: frontmatter.title, href: `/${locale}/blog/${slug}` }
+];
+
+// Generate Article Schema
+const articleSchema = generateArticleSchema({
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  image: frontmatter.ogImage || '/images/default-blog.jpg',
+  datePublished: frontmatter.publishDate.toString(),
+  dateModified: frontmatter.updatedDate?.toString() || frontmatter.publishDate.toString(),
+  author: frontmatter.author,
+  keywords: frontmatter.keywords
+});
+
+// Generate FAQ Schema if FAQ data exists
+let faqSchema;
+if (frontmatter.faqSchema && frontmatter.faqSchema.length > 0) {
+  faqSchema = generateFAQSchema(frontmatter.faqSchema);
+}
+
+// English translations
+const t = {
+  publishedOn: 'Published on',
+  updatedOn: 'Updated on',
+  readingTime: 'min read',
+  writtenBy: 'Written by',
+  category: 'Category',
+  tags: 'Tags',
+  share: 'Share this article'
+};
+---
+
+<BaseLayout
+  title={frontmatter.metaTitle || `${frontmatter.title} | Ing Heng Credit Blog`}
+  description={frontmatter.metaDescription || frontmatter.description}
+  lang={locale}
+  image={frontmatter.ogImage}
+  ogType="article"
+  publishedTime={frontmatter.publishDate.toString()}
+  modifiedTime={frontmatter.updatedDate?.toString()}
+  keywords={frontmatter.keywords}
+>
+  <!-- Article Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(articleSchema)} slot="head" />
+
+  <!-- FAQ Schema (if exists) -->
+  {faqSchema && (
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} slot="head" />
+  )}
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar fixed top-0 left-0 h-1 bg-primary z-50 transition-all duration-300" style="width: 0%"></div>
+
+  <!-- Breadcrumbs -->
+  <div class="bg-gray-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <Breadcrumbs items={breadcrumbs} locale={locale} />
+    </div>
+  </div>
+
+  <!-- Article Header -->
+  <header class="bg-white py-8 lg:py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Category Badge -->
+      {frontmatter.category && (
+        <a
+          href={`/${locale}/blog/category/${frontmatter.category.toLowerCase().replace(/\s+/g, '-')}`}
+          class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full hover:bg-primary/20 transition-colors mb-4"
+        >
+          {frontmatter.category}
+        </a>
+      )}
+
+      <!-- Title -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+        {frontmatter.title}
+      </h1>
+
+      <!-- Description -->
+      <p class="text-xl text-gray-600 mb-6">
+        {frontmatter.description}
+      </p>
+
+      <!-- Meta Info -->
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 pb-6 border-b border-gray-200">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <time datetime={frontmatter.publishDate.toString()}>
+            {t.publishedOn} {formattedDate}
+          </time>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>{readingTime} {t.readingTime}</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          <span>{t.writtenBy} {frontmatter.author}</span>
+        </div>
+      </div>
+
+      <!-- Share Buttons (Top) -->
+      <div class="mt-6">
+        <ShareButtons title={frontmatter.title} locale={locale} />
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Content -->
+  <div class="bg-white pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Main Content -->
+        <article class="lg:col-span-8 prose prose-lg max-w-none">
+          <slot />
+        </article>
+
+        <!-- Sidebar (TOC) -->
+        <aside class="lg:col-span-4">
+          <div class="lg:sticky lg:top-24 space-y-8">
+            <!-- Table of Contents -->
+            <TableOfContents headings={headings} locale={locale} />
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tags Section -->
+  {frontmatter.tags && frontmatter.tags.length > 0 && (
+    <section class="bg-gray-50 py-8">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-sm font-semibold text-gray-700 mb-3">{t.tags}:</h3>
+        <div class="flex flex-wrap gap-2">
+          {frontmatter.tags.map((tag: string) => (
+            <span class="inline-block px-3 py-1 bg-white text-gray-700 text-sm rounded-full border border-gray-200 hover:border-primary hover:text-primary transition-colors">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-r from-primary to-primary-dark py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-2xl font-bold text-white mb-4">
+        Ready to Finance Your Equipment?
+      </h3>
+      <p class="text-white/90 mb-6">
+        Get approved quickly. No hidden fees. 40 years of trusted service.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <CTAButton
+          variant="secondary"
+          href={`https://wa.me/60175700889?text=${encodeURIComponent('I read your blog about ' + frontmatter.title)}`}
+          icon="whatsapp"
+          locale={locale}
+        >
+          WhatsApp Us Now
+        </CTAButton>
+        <CTAButton
+          variant="outline-white"
+          href={`/${locale}/contact`}
+          locale={locale}
+        >
+          Contact Us
+        </CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  <RelatedPosts
+    currentSlug={slug}
+    locale={locale}
+    category={frontmatter.category}
+    tags={frontmatter.tags}
+    limit={3}
+  />
+
+  <!-- Schema and Reading Progress Scripts -->
+  <script>
+    // Reading progress bar
+    window.addEventListener('scroll', () => {
+      const article = document.querySelector('article');
+      const progressBar = document.querySelector('.reading-progress-bar') as HTMLElement;
+
+      if (!article || !progressBar) return;
+
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      const progress = ((scrollTop - articleTop + windowHeight) / articleHeight) * 100;
+      const clampedProgress = Math.min(Math.max(progress, 0), 100);
+
+      progressBar.style.width = `${clampedProgress}%`;
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  /* Blog Post Prose Styles */
+  .prose {
+    @apply text-gray-800;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold text-gray-900 mt-12 mb-4 scroll-mt-24;
+  }
+
+  .prose h3 {
+    @apply text-xl font-bold text-gray-900 mt-8 mb-3 scroll-mt-24;
+  }
+
+  .prose h4 {
+    @apply text-lg font-semibold text-gray-900 mt-6 mb-2 scroll-mt-24;
+  }
+
+  .prose p {
+    @apply mb-6 leading-relaxed;
+  }
+
+  .prose a {
+    @apply text-primary hover:text-primary-dark underline underline-offset-2 transition-colors;
+  }
+
+  .prose ul, .prose ol {
+    @apply mb-6 pl-6;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose strong {
+    @apply font-bold text-gray-900;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-6 py-2 italic text-gray-700 my-6 bg-gray-50 rounded-r;
+  }
+
+  .prose code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800;
+  }
+
+  .prose pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-gray-100;
+  }
+
+  .prose table {
+    @apply w-full border-collapse my-6;
+  }
+
+  .prose th {
+    @apply bg-gray-100 border border-gray-300 px-4 py-2 text-left font-semibold;
+  }
+
+  .prose td {
+    @apply border border-gray-300 px-4 py-2;
+  }
+
+  .prose img {
+    @apply rounded-lg my-8;
+  }
+
+  .prose hr {
+    @apply my-12 border-gray-300;
+  }
+</style>

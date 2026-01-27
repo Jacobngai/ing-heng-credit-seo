@@ -1,0 +1,382 @@
+---
+/**
+ * Used Prime Mover Financing Landing Page - English
+ * Target: Container trailer owners hiring drivers with trucks or renting trucks
+ * Keywords: used prime mover financing Malaysia, Volvo prime mover loan, container transport financing
+ * Focus: Real business scenario - stop losing 40% revenue to driver splits or RM 10k/month rentals
+ * Word Count: ~1,500 words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Prime Mover Financing Malaysia | Stop Losing 40% Revenue | 0% Deposit';
+const pageDescription = 'Own your prime movers instead of hiring drivers with trucks or renting. Stop losing 40% revenue splits or RM 10k/month rental fees. Finance used Volvo, Scania 10+ years old. 0% deposit, bad credit OK.';
+const keywords = ['prime mover financing Malaysia', 'used prime mover loan', 'container transport financing', 'container trailer business financing', 'logistics business financing'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Prime Mover Financing', url: '/en/equipment/prime-mover' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'percentage', title: '0% Deposit Option*', description: 'Finance up to 100%* of equipment value. Start operations immediately. Build equity from day one. *Subject to terms and conditions' },
+  { icon: 'shield', title: '10+ Years Old Accepted', description: 'Used Volvo FL10, 12 years old, 950k km? Banks reject. We approve. Your business grows with quality equipment regardless of age.' },
+  { icon: 'chart', title: 'Full Revenue Control', description: '100% revenue stays in your business. Full operational control, your decisions. Hire salaried drivers, build your logistics company.' },
+  { icon: 'lightning', title: 'Fast Approval', description: 'Quick decisions on quality equipment. Your trailers stay productive. Your contracts stay fulfilled. Your business keeps growing.' },
+  { icon: 'document', title: 'Bad Credit Accepted', description: 'Equipment value secures loan. Your active operations prove capability. Your business future matters more than credit history.' },
+  { icon: 'calendar', title: 'Flexible Terms', description: '12-84 month terms aligned with your transport cycles. Predictable payments. Manageable cash flow. Sustainable growth.' },
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Why should I own trucks instead of hiring drivers with their own trucks?',
+    answer: 'Revenue control. Hiring owner-operator drivers means splitting 60/40. They take 40% because they own the truck. Over time, you pay more than the truck costs. Example: RM 12,000 per trip revenue. You keep RM 7,200, driver takes RM 4,800. That RM 4,800 per trip could pay for your own truck. After 20 trips, you\'ve paid enough to buy a used prime mover. But with driver splits, you keep paying 40% forever. Own your trucks = 100% revenue is yours.'
+  },
+  {
+    question: 'How much am I losing by renting prime movers?',
+    answer: 'RM 10,000 per month per truck. Forever. That\'s RM 120,000 per year. In 3 years, you pay RM 360,000 in rental fees. For that amount, you could own 2-3 used prime movers. Worse: rental prices increase. Companies raise rates without notice. During peak season, rates jump even higher. Your costs are unpredictable. Owning means fixed monthly payments. After loan is paid off, the truck is yours. Rental fees never stop.'
+  },
+  {
+    question: 'Do you finance 10+ year old prime movers?',
+    answer: 'Yes. We finance equipment 10+ years old regularly. Banks reject anything over 5 years. We assess actual condition, not just age. Used Volvo FL10: 12 years old, 950,000 km. Banks say finished. We check engine compression, transmission, maintenance records. Properly maintained Volvos run 1.5 million km. That truck has 500,000+ km of productive life left. We approve based on condition and your business needs.'
+  },
+  {
+    question: 'What if I have bad credit?',
+    answer: 'Bad credit accepted. We evaluate: (1) Equipment value as collateral (2) Your existing trailer business operations (3) Current contracts or regular customers (4) Realistic financing request. Many logistics operators have credit issues from business challenges. We focus on your current business strength, not past credit problems. Active trailer operations + quality truck = approved.'
+  },
+  {
+    question: 'What happens if drivers quit when I hire owner-operators?',
+    answer: 'Your operations stop. This is the real risk of depending on driver-owned trucks. Driver gets better offer, takes his truck, you lose capacity. Your trailers sit idle. You scramble to find replacement. During this time, you turn down jobs. Customers go to competitors. When you own the trucks, drivers are replaceable. Truck breaks down, you rent temporary replacement. Driver quits, you hire new driver. Your operations continue. Control means business stability.'
+  },
+  {
+    question: 'Should I buy used Volvo/Scania or new Chinese brand?',
+    answer: 'Used European truck offers better business value. (1) Longevity: Volvo/Scania built for 1 million+ km lifespan. Chinese trucks often need major overhaul at 500k km. (2) Resale value: European trucks retain value. After 5 years, you recover more capital. (3) Reliability: Less downtime means more revenue. Your trailers stay busy. (4) Total cost: Higher initial quality costs less over time than frequent repairs. (5) Driver preference: Better cabins, less fatigue, easier to hire good drivers.'
+  },
+  {
+    question: 'How do I calculate if owning trucks makes sense?',
+    answer: 'Simple math. Current situation: Hiring driver with truck = losing 40% per trip. Or renting = RM 10,000/month fixed cost. Owning: Finance payment might be RM 6,000-8,000/month depending on truck age and price. But you keep 100% revenue. Hire salaried driver (RM 4,000-5,000/month). Total cost similar to rental. Difference: After loan paid off, truck is yours. Revenue becomes pure profit (minus driver salary and maintenance). This is how you build a fleet.'
+  },
+  {
+    question: 'What if the truck breaks down?',
+    answer: 'This happens to all trucks - owned, rented, or driver-owned. Difference is control. When you own: You choose the workshop. You decide on spare parts quality. You control repair timeline. You maintain relationships with mechanics who prioritize your trucks. When renting: Rental company fixes it, but you still pay rental during downtime. When hiring owner-operators: Driver decides everything. You have no control. Could take weeks. Smart ownership: Buy quality European brand with good parts availability. Build relationship with trusted workshop. Keep basic spares. Downtime is minimized.'
+  },
+  {
+    question: 'Can I start with one truck and expand?',
+    answer: 'Yes. This is the standard growth path. Start: Finance 1 used prime mover. Match with your existing trailer. Hire salaried driver. Keep 100% revenue. Year 1-2: Build payment record. Show consistent operations. Year 2-3: Finance second truck. Now you have 2 prime movers, 2 trailers, 2 drivers. Year 3-5: Third truck. More capacity, more revenue. Better negotiating power with customers. Many successful logistics companies started exactly this way. One owned truck is better than depending on hired trucks forever.'
+  },
+  {
+    question: 'What documentation do I need?',
+    answer: 'Business documents, not personal only. (1) Company: SSM registration, company bank statements (6 months). (2) Operations proof: Customer contracts, delivery orders, regular clients. (3) Truck details: Seller contact, specifications, registration card, inspection photos. (4) Personal: IC, director\'s personal bank statements. What we DON\'T need: Complex financial projections, certified statements, property ownership proof. We understand logistics business. Your existing trailer operations prove you know the business.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Prime Mover Financing Malaysia - Stop Revenue Loss',
+  description: 'Finance used prime movers for trailer owners. Stop losing 40% revenue to driver splits or RM 10k/month rentals. Volvo, Scania 10+ years old accepted. Zero deposit option, 100% financing.',
+  imageUrl: `${SITE_CONFIG.url}/images/prime-mover-financing.jpg`,
+  category: 'Financial Service - Commercial Vehicle Financing',
+  offers: {
+    price: '120000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Prime Mover Financing - Stop Losing 40% Revenue to Driver Splits"
+    subtitle="Own your trucks instead of hiring drivers with their own or renting. Finance used Volvo, Scania, Mercedes 10+ years old. 0% deposit, 100% financing. Full revenue control."
+    ctaText="Get Free Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20finance%20prime%20movers%20for%20my%20trailer%20business."
+    ctaSecondaryText="Call Now: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years in Business', 'Zero Deposit Option', 'Bad Credit Accepted', '10+ Years Old Equipment Accepted']}
+  />
+
+  <!-- Direct Story Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-8 md:p-12 rounded-lg shadow-[6px_6px_0_#2D1810] border-4 border-[#D4A574]">
+          <div class="prose prose-lg max-w-none text-[#4F3E29] space-y-4">
+            <p class="text-xl font-bold text-primary">You own 3 container trailers.</p>
+
+            <p>But you don't own prime movers. You hire owner-operator drivers.</p>
+
+            <p>Every trip: Revenue RM 1,000.</p>
+
+            <p>You split: 60/40.</p>
+
+            <p>You get RM 600. The driver gets RM 400... because HE owns the truck and you don't.</p>
+
+            <p>At the end of the month, you calculate:</p>
+            <ul class="list-disc pl-6">
+              <li>Total revenue: RM 30,000</li>
+              <li>Driver's share: RM 12,000</li>
+              <li>Your share: RM 18,000</li>
+            </ul>
+
+            <p>When you transfer that RM 12,000 to the driver, does it sting?</p>
+
+            <p>You own the trailers. You found the clients. You manage the operations.</p>
+
+            <p>But RM 12,000 goes to him every month - RM 144,000 per year - just because he owns the truck.</p>
+
+            <p class="text-xl font-bold text-primary">When you see his new car, his renovated house, and you realize YOU paid for it with those 40% splits... does your jaw tighten?</p>
+
+            <p>Or maybe you rent prime movers. RM 10,000 per month.</p>
+
+            <p>When drivers quit, your trailers sit idle. You're scrambling to find trucks. Your clients call someone else.</p>
+
+            <p>That helplessness - when your business success depends on hired drivers or rental companies - does it keep you up at night?</p>
+
+            <p class="text-xl font-bold text-primary">You found a used Volvo FL10. 12 years old. 950,000 km on odometer.</p>
+
+            <p>Banks laugh. "950k km? That truck is finished."</p>
+
+            <p>But you've seen Volvos. They run 1.5 million km with proper maintenance.</p>
+
+            <p><strong>We approve equipment 10+ years old. High mileage considered if maintained.</strong></p>
+
+            <p>Own your trucks. Hire SALARIED drivers.</p>
+
+            <p>100% of transport revenue: Yours to keep.</p>
+
+            <p>Full operational control. No more splits. No more dependencies.</p>
+
+            <p class="text-xl font-bold text-primary border-t-2 border-[#D4A574] pt-4">That's real business ownership.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Ing Heng Credit?
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          We understand logistics business. Banks don't.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types - Bullet Format -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Prime Mover Brands We Finance
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Quality trucks that last - from European to Japanese
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-primary mb-4">Premium European Brands</h3>
+            <ul class="space-y-3 text-[#4F3E29]">
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Volvo FL10, FM, FH</strong> - Built for 1M+ km lifespan</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Scania R420, R440, R480</strong> - Legendary reliability</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Mercedes Actros, Axor</strong> - Premium comfort</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>MAN TGX, TGA</strong> - German engineering</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>DAF XF, CF</strong> - European quality</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-primary mb-4">Japanese & Asian Brands</h3>
+            <ul class="space-y-3 text-[#4F3E29]">
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Hino 700-series</strong> - Affordable, reliable</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>UD Quester, Quon</strong> - Popular choice</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Isuzu Giga</strong> - Budget-friendly</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Nissan Diesel</strong> - Good parts availability</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="text-primary font-bold">•</span>
+                <span><strong>Import Reconditioned</strong> - Japan/Europe imports</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t-2 border-[#D4A574] text-center">
+          <p class="text-[#4F3E29] font-semibold">
+            Both local used and import reconditioned accepted. Equipment 10+ years old considered.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Everything you need to know
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="primeMover" />
+
+  <!-- Contact Form Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Get Free Quote - No Obligation
+          </h2>
+          <p class="text-[#4F3E29]">
+            WhatsApp us or fill form below. We respond during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Take Control of Your Operations?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Own your prime movers. Keep 100% revenue. Control your operations completely. Finance used Volvo, Scania 10+ years old. Bad credit accepted. Build your logistics empire from Malaysian routes nationwide.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20used%20prime%20mover%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          WhatsApp Us Now
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Zero Deposit Option</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Bad Credit Accepted</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40 Years in Business</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

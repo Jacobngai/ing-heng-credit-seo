@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  title: 'Peralatan Pembinaan Pra-CNY 2026 - Persediaan Kontraktor',
+  slug: 'peralatan-pembinaan-pra-cny-2026',
+  excerpt: 'Peralatan pembinaan pra-CNY 2026 - persediaan kontraktor untuk peak season. Bank ambil 2-4 minggu. Ing Heng tawarkan 0% deposit, 100% pinjaman dengan kelulusan 24-48 jam.',
+  date: '2026-01-05',
+  author: 'Pasukan Ing Heng Credit',
+  readTime: 5,
+  category: 'Pembiayaan Jentera',
+  image: '/images/blog/excavator-financing.jpg'
+};
+
+const keywords = ['peralatan pembinaan', 'pra-CNY', 'kontraktor CNY', '0% deposit', 'excavator'];
+const breadcrumbItems = [
+  { label: 'Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/ms/blog/${post.slug}` }
+];
+---
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Pembiayaan Jentera</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min bacaan</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Peralatan Pembinaan Pra-CNY: Ready untuk Peak Season</h2>
+
+      <p>Kontraktor tahu CNY adalah masa paling sibuk. Client mahu projek siap sebelum cuti. Renovation rumah, jalan raya, infrastruktur - semua perlu siap.</p>
+
+      <p>Pastikan armada anda ready dengan pembiayaan pantas dari Ing Heng.</p>
+
+      <h2>Jenis Peralatan Pembinaan untuk Pra-CNY</h2>
+
+      <p><strong>Eskavator (5-20 ton):</strong> Untuk kerja tanah, footing, foundation, drainage.</p>
+      <p><strong>Backhoe:</strong> Versatile untuk site terhad.</p>
+      <p><strong>Bulldozer:</strong> Leveling tanah, clearing site.</p>
+      <p><strong>Roller:</strong> Jalan raya, parking lot.</p>
+
+      <h2>Bank vs Ing Heng: Pra-CNY 2026</h2>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+        <thead>
+          <tr style="background: #2D1810; color: white;">
+            <th style="padding: 1rem; text-align: left;">Ciri-ciri</th>
+            <th style="padding: 1rem; text-align: center;">Bank</th>
+            <th style="padding: 1rem; text-align: center;">Ing Heng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;"><strong>Kelulusan</strong></td>
+            <td style="padding: 1rem; text-align: center; color: #dc2626;">2-4 minggu</td>
+            <td style="padding: 1rem; text-align: center; color: #16a34a;"><strong>24-48 jam</strong></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd; background: #f9fafb;">
+            <td style="padding: 1rem;"><strong>Down Payment</strong></td>
+            <td style="padding: 1rem; text-align: center;">10-20%</td>
+            <td style="padding: 1rem; text-align: center;"><strong>0%</strong></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;"><strong>Pinjaman</strong></td>
+            <td style="padding: 1rem; text-align: center;">90%</td>
+            <td style="padding: 1rem; text-align: center;"><strong>100%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Hubungi Kami Hari Ini</h2>
+
+      <p>Peralatan pembinaan pra-CNY 2026 - ready sebelum peak season.</p>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">Pra-CNY? Act Now</h3>
+        <p style="margin-bottom: 0;"><strong>Hubungi:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (Telefon)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Dapatkan Peralatan Pra-CNY" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 { color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 2rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 3px solid #D4A574; padding-bottom: 0.5rem; }
+  p { line-height: 1.8; color: #374151; }
+  strong { color: #2D1810; font-weight: 700; }
+</style>

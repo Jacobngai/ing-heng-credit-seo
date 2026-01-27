@@ -1,0 +1,113 @@
+---
+/**
+ * Chemical Tank Financing Landing Page - Malay
+ * Sasaran: Syarikat kimia, kilang, pengusaha logistik bahan kimia
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { SITE_CONFIG, COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Pembiayaan Tangki Kimia Malaysia - Deposit 0% | ISO Tank';
+const pageDescription = 'Pembiayaan tangki kimia dan ISO tank dengan deposit 0%. Tangki keluli tahan karat, tangki berjaket, tangki bertekanan. Pembiayaan 100% tersedia.';
+const keywords = ['pembiayaan tangki kimia', 'ISO tank Malaysia', 'tangki keluli pembiayaan', 'chemical tank loan', 'tangki bertekanan'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Tangki Kimia', url: '/ms/equipment/chemical-tank' },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <!-- Hero Section -->
+  <Hero
+    title="Pembiayaan Tangki Kimia - Deposit 0%"
+    subtitle="ISO tank, tangki keluli tahan karat dengan pembiayaan 100%"
+    backgroundImage="/images/hero/chemical-tank.jpg"
+    lang={lang}
+  />
+
+  <!-- Breadcrumbs -->
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Main Content -->
+  <section class="section py-16 bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-black mb-8 text-[#2D1810] text-center">
+          Pembiayaan Tangki Kimia Untuk Industri
+        </h2>
+        
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-6">
+          <p>
+            <strong>Perlukan tangki kimia untuk operasi kilang atau logistik?</strong> Kami menawarkan pembiayaan tangki kimia dengan <strong>deposit 0% dan pembiayaan sehingga 100%</strong> nilai peralatan.
+          </p>
+          
+          <p>
+            Sama ada tangki ISO untuk pengangkutan atau tangki simpanan statik untuk kilang, kami memahami keperluan industri kimia Malaysia.
+          </p>
+
+          <div class="bg-[#F5F1EB] p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal my-8">
+            <h3 class="text-2xl font-bold mb-4 text-[#8B6F47]">Jenis Tangki Yang Dibiayai</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>ISO Tank Container</strong> - Untuk pengangkutan kimia antarabangsa</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Tangki Keluli Tahan Karat</strong> - SS304/SS316 untuk bahan korosif</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Tangki Berjaket</strong> - Dengan kawalan suhu untuk bahan sensitif</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-[#8B6F47] mr-3">✓</span>
+                <span><strong>Tangki Bertekanan</strong> - Untuk gas dan cecair bertekanan</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section py-16 bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-4xl font-black mb-4">Dapatkan Pembiayaan Tangki Kimia</h2>
+      <p class="text-xl mb-8 opacity-90">Kelulusan pantas untuk peralatan industri</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          href={COMPANY_INFO.whatsapp.link}
+          text="WhatsApp Kami"
+          variant="whatsapp"
+          lang={lang}
+        />
+        <CTAButton
+          href={`/${lang}/contact`}
+          text="Hubungi Kami"
+          variant="secondary"
+          lang={lang}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment -->
+  <RelatedEquipment lang={lang} currentEquipment="chemical-tank" />
+
+  <!-- Contact Form -->
+  <ContactForm lang={lang} />
+</BaseLayout>

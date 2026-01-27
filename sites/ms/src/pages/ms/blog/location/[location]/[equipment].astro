@@ -1,0 +1,397 @@
+---
+/**
+ * Dynamic Blog Post: Equipment Financing by Location - Malay Version
+ * URL: /ms/blog/location/selangor/jengkaut
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import { generateFAQSchema } from '../../../../../utils/schema';
+import {
+  getLocationTags,
+  getEquipmentTags,
+  getTagName,
+  buildBlogPostUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'ms';
+
+export function getStaticPaths() {
+  const locations = getLocationTags();
+  const equipment = getEquipmentTags();
+  const paths = [];
+
+  for (const loc of locations) {
+    for (const equip of equipment) {
+      paths.push({
+        params: {
+          location: loc.slug.ms,
+          equipment: equip.slug.ms
+        },
+        props: {
+          locationId: loc.id,
+          equipmentId: equip.id
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { location, equipment } = Astro.params;
+const { locationId, equipmentId } = Astro.props;
+
+const locationTag = getLocationTags().find(loc => loc.id === locationId);
+const equipmentTag = getEquipmentTags().find(eq => eq.id === equipmentId);
+
+if (!locationTag || !equipmentTag) {
+  return Astro.redirect('/ms/blog');
+}
+
+const locationName = getTagName(locationTag, lang);
+const equipmentName = getTagName(equipmentTag, lang);
+
+const equipmentData: Record<string, { priceRange: string; tenure: string; downPayment: string; uses: string[] }> = {
+  'excavator': {
+    priceRange: 'RM 150,000 - RM 800,000',
+    tenure: 'Sehingga 7 tahun',
+    downPayment: '0% tersedia',
+    uses: ['Pembinaan', 'Perlombongan', 'Pembersihan Tanah', 'Kerja Asas']
+  },
+  'forklift': {
+    priceRange: 'RM 50,000 - RM 300,000',
+    tenure: 'Sehingga 5 tahun',
+    downPayment: '0% tersedia',
+    uses: ['Pergudangan', 'Pembuatan', 'Logistik', 'Runcit']
+  },
+  'lorry': {
+    priceRange: 'RM 80,000 - RM 500,000',
+    tenure: 'Sehingga 7 tahun',
+    downPayment: '0% tersedia',
+    uses: ['Logistik', 'Pembinaan', 'Pertanian', 'Penghantaran Runcit']
+  },
+  'prime-mover': {
+    priceRange: 'RM 200,000 - RM 600,000',
+    tenure: 'Sehingga 7 tahun',
+    downPayment: '0% tersedia',
+    uses: ['Pengangkutan Pelabuhan', 'Pengangkutan Jarak Jauh', 'Kargo Berat', 'Pengangkutan Kontena']
+  }
+};
+
+const equipInfo = equipmentData[equipmentTag.id] || {
+  priceRange: 'RM 100,000 - RM 500,000',
+  tenure: 'Sehingga 7 tahun',
+  downPayment: '0% tersedia',
+  uses: ['Pembinaan', 'Pembuatan', 'Logistik']
+};
+
+const faqs = [
+  {
+    question: `Bagaimana untuk memohon pembiayaan ${equipmentName.toLowerCase()} di ${locationName}?`,
+    answer: `Memohon pembiayaan ${equipmentName.toLowerCase()} di ${locationName} adalah mudah dengan Ing Heng Credit. Anda perlukan: Dokumen pendaftaran syarikat (SSM), penyata bank 3 bulan, salinan IC pengarah. WhatsApp dokumen anda dan dapatkan kelulusan dalam 24 jam.`
+  },
+  {
+    question: `Apakah kadar faedah untuk pembiayaan ${equipmentName.toLowerCase()} di ${locationName}?`,
+    answer: `Kadar pembiayaan ${equipmentName.toLowerCase()} kami di ${locationName} bermula dari 2.88% setahun kadar rata. Kadar akhir bergantung pada profil syarikat, sejarah kredit, dan model ${equipmentName.toLowerCase()}. Hubungi kami untuk sebut harga peribadi.`
+  },
+  {
+    question: `Bolehkah syarikat baru mendapat pembiayaan ${equipmentName.toLowerCase()} di ${locationName}?`,
+    answer: `Ya! Kami membiayai syarikat baru (kurang dari 2 tahun) untuk ${equipmentName.toLowerCase()} di ${locationName}. Keperluan mungkin termasuk bayaran pendahuluan lebih tinggi atau jaminan peribadi, tetapi kami berusaha mencari penyelesaian untuk semua perniagaan yang layak.`
+  },
+  {
+    question: `Adakah 0% bayaran pendahuluan untuk ${equipmentName.toLowerCase()} di ${locationName}?`,
+    answer: `Ya, 0% bayaran pendahuluan tersedia untuk pemohon yang layak di ${locationName}. Kelayakan bergantung pada profil kredit syarikat anda dan nilai ${equipmentName.toLowerCase()}.`
+  }
+];
+
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: 'Mengikut Lokasi', href: '/ms/blog/location' },
+  { label: locationName, href: `/ms/blog/location/${location}` },
+  { label: equipmentName, href: `/ms/blog/location/${location}/${equipment}` }
+];
+
+const articleDate = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={`Pembiayaan ${equipmentName} di ${locationName} | Panduan Lengkap | Ing Heng Credit`}
+  description={`Panduan lengkap pembiayaan ${equipmentName.toLowerCase()} di ${locationName}. Ketahui keperluan, kadar dari 2.88% setahun, pilihan 0% bayaran pendahuluan, dan dapatkan kelulusan dalam 24 jam.`}
+  lang={lang}
+  keywords={[
+    `pembiayaan ${equipmentName.toLowerCase()} ${locationName}`,
+    `pinjaman ${equipmentName.toLowerCase()} ${locationName}`,
+    `sewa beli ${equipmentName.toLowerCase()} ${locationName}`
+  ]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(generateFAQSchema(faqs))} />
+
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap gap-2 mb-6">
+          <a href={`/ms/blog/location/${location}`} class="badge-brutalist text-xs hover:bg-yellow-300 transition-colors">
+            {locationName}
+          </a>
+          <span class="badge-brutalist bg-white text-xs">{equipmentName}</span>
+          <span class="badge-brutalist bg-green-400 text-xs">Panduan Pembiayaan</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Pembiayaan {equipmentName} di <span class="text-yellow-400">{locationName}</span>: Panduan Lengkap
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Semua yang anda perlu tahu tentang pembiayaan {equipmentName.toLowerCase()} di {locationName}. Dari keperluan hingga kelulusan, dapatkan panduan pakar disokong oleh 40+ tahun pengalaman industri.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400 text-sm border-t border-white/20 pt-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span>Dikemaskini {new Date(articleDate).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span>8 minit bacaan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">
+            {equipInfo.priceRange}
+          </div>
+          <div class="text-sm font-bold text-navy-900/70">Julat Harga</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">
+            Dari 2.88% setahun
+          </div>
+          <div class="text-sm font-bold text-navy-900/70">Kadar Faedah</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">
+            {equipInfo.tenure}
+          </div>
+          <div class="text-sm font-bold text-navy-900/70">Tempoh</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">
+            {equipInfo.downPayment}
+          </div>
+          <div class="text-sm font-bold text-navy-900/70">Bayaran Pendahuluan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 prose prose-lg max-w-none">
+
+          <h2 class="text-3xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Mengapa Membiayai {equipmentName} di {locationName}?
+          </h2>
+
+          <p>
+            {locationName} adalah salah satu wilayah paling aktif di Malaysia untuk perniagaan.
+            Sama ada anda mengembangkan operasi atau memulakan projek baru, mempunyai peralatan yang betul adalah penting untuk kejayaan.
+          </p>
+
+          <p>
+            {equipmentName} adalah peralatan penting untuk perniagaan di {locationName} yang terlibat dalam:
+          </p>
+
+          <ul>
+            {equipInfo.uses.map((use) => (
+              <li><strong>{use}</strong> - Permintaan tinggi di kawasan {locationName}</li>
+            ))}
+          </ul>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Keperluan Pembiayaan {equipmentName} di {locationName}
+          </h2>
+
+          <div class="bg-gray-50 border-4 border-navy-900 p-6 my-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="text-xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+              Dokumen Diperlukan
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Pendaftaran Syarikat (SSM)</strong> - Borang 9 & 24/49 atau Sijil Pendaftaran Perniagaan</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Penyata Bank</strong> - Penyata bank syarikat 3 bulan terkini</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Salinan IC</strong> - MyKad semua pengarah/rakan kongsi</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Sebut Harga {equipmentName}</strong> - Dari pengedar atau penjual</span>
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Soalan Lazim
+          </h2>
+
+          <div class="space-y-6 my-8">
+            {faqs.map((faq) => (
+              <div class="bg-gray-50 border-3 border-navy-900 p-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <h3 class="font-bold text-lg text-navy-900 mb-2">{faq.question}</h3>
+                <p class="text-gray-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+
+            <div class="bg-navy-900 border-4 border-yellow-400 p-6" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+              <h3 class="text-xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Dapatkan Pembiayaan {equipmentName} Hari Ini
+              </h3>
+              <ul class="space-y-2 text-white text-sm mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Kelulusan 24-jam</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>0% bayaran pendahuluan tersedia</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Kadar dari 2.88% setahun</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Melayani {locationName}</span>
+                </li>
+              </ul>
+              <CTAButton
+                text="WhatsApp Kami Sekarang"
+                link={COMPANY_INFO.whatsapp.link}
+                variant="accent"
+                size="large"
+                icon="whatsapp"
+                fullWidth={true}
+              />
+            </div>
+
+            <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Peralatan Lain di {locationName}
+              </h3>
+              <ul class="space-y-2">
+                {getEquipmentTags().filter(e => e.id !== equipmentTag.id).slice(0, 5).map((equip) => (
+                  <li>
+                    <a
+                      href={buildBlogPostUrl(lang, locationTag.id, equip.id)}
+                      class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors border-b border-gray-200 last:border-0"
+                    >
+                      <span class="font-medium">{getTagName(equip, lang)}</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Bersedia untuk Membiayai {equipmentName} di {locationName}?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Sertai ribuan perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan peralatan mereka.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Dapatkan Sebut Harga Percuma"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="Kira Bayaran"
+          link="/ms/calculator"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+  .prose h2 { @apply mt-12 mb-4; }
+  .prose p { @apply mb-4 text-gray-700 leading-relaxed; }
+  .prose ul { @apply my-4 space-y-2; }
+  .prose li { @apply text-gray-700; }
+  .prose strong { @apply text-navy-900; }
+</style>

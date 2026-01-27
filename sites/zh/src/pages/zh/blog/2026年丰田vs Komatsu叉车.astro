@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '2026年丰田vs Komatsu叉车比较 - 日系品牌选择',
+  slug: '2026年丰田vs Komatsu叉车比较',
+  excerpt: '2026年丰田vs Komatsu叉车融资比较。0%首付，100%全额贷款，两大日系叉车品牌融资方案对比。',
+  date: '2026-01-10',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '叉车',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["丰田叉车","Komatsu叉车","叉车比较","叉车品牌"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 2026年丰田vs Komatsu叉车比较 - 日系品牌选择
+
+## 丰田 vs Komatsu叉车
+
+### 特点对比
+
+| 特点 | 丰田 | Komatsu |
+|------|------|---------|
+| 耐用性 | 很高 | 很高 |
+| 维护成本 | 较低 | 较低 |
+| 转售价值 | 高 | 高 |
+| 零件供应 | 充足 | 充足 |
+| 二手价格 | RM 18,000-25,000 | RM 15,000-22,000 |
+| 银行首付 | RM 1,800-5,000 | RM 1,500-4,400 |
+| 盈恒首付 | RM 0 | RM 0 |
+
+## 选择建议
+
+**选丰田如果:**
+- 预算充足
+- 追求品质
+- 长期持有
+
+**选Komatsu如果:**
+- 预算有限
+- 性价比优先
+- 实用主义
+
+## 盈恒优势
+
+- 两个品牌都0%首付
+- 100%融资
+- 48小时审批
+- 无设备年限
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '中小企业租赁选项 2026 - 租赁vs购买',
+  slug: '中小企业租赁选项2026',
+  excerpt: '2026年中小企业设备租赁选项。分期付款vs经营租赁，SME选择最佳方案。0%首付，100%融资。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["中小企业租赁选项","租赁vs购买","设备租赁","分期付款"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+# 中小企业租赁选项 2026
+
+## SME设备选择
+
+租赁还是购买?
+
+```
+分析需求 → 比较选项 → 选择最佳 → 开始融资
+```
+
+## 选项对比
+
+### 分期付款(Hire Purchase)
+
+```
+所有权: 是(付款完成后)
+首付: 0%(Ing Heng)
+期限: 最长7年
+税务: 利息抵税
+适合: 长期使用
+```
+
+### 经营租赁(Operating Lease)
+
+```
+所有权: 否
+首付: 0%
+期限: 1-5年
+税务: 租金抵税
+适合: 短期使用
+```
+
+## SME选择指南
+
+### 选择分期付款
+
+- 需要长期使用设备
+- 想要拥有设备
+- 想要建立资产
+- 5年以上使用
+
+### 选择经营租赁
+
+- 短期项目需要
+- 不想拥有设备
+- 想要灵活升级
+- 1-3年使用
+
+## 设备选择
+
+| 设备 | 推荐 | 原因 |
+|------|------|------|
+| 叉车 | 分期付款 | 长期使用 |
+| 货车 | 分期付款 | 核心资产 |
+| 挖掘机 | 分期付款 | 长期使用 |
+| 临时设备 | 租赁 | 短期需求 |
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**SME租赁，选择Ing Heng**
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

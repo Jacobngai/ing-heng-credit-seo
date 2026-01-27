@@ -1,0 +1,562 @@
+---
+/**
+ * 货车融资服务页面 - 中文
+ * 目标客户：物流李（Logistics Lee），物流业者，车队经理
+ * 关键词：货车融资马来西亚，巴生港货车贷款，中小企业货车融资
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '商用货车融资服务 | 巴生港物流业者专属 | 快速批准';
+const pageDescription = '专为巴生港物流业者提供货车融资服务。快速批准，90%融资额度，灵活还款计划。箱型货车、平板车、油罐车、拖车融资。立即申请！';
+const keywords = ['货车融资马来西亚', '巴生港货车贷款', '商用车辆融资', '车队融资方案', '中小企业货车贷款', '物流公司融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备融资', url: '/zh/equipment' },
+  { label: '货车融资', url: '/zh/equipment/lorry' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: '快速批准', description: '紧急合同不用等，当天申请隔天批准。巴生港配送合同即刻签约。' },
+  { icon: 'percentage', title: '首付从0%起*', description: '符合条件者首付从0%起*。可贷款至100%*。保留营运资金用于柴油和业务周转。*受条款及条件约束' },
+  { icon: 'calendar', title: '灵活12-84个月还款', description: '配合您的车队营运规划。根据收入周期调整月供额度。' },
+  { icon: 'shield', title: '新旧货车皆可', description: '接受15年车龄货车融资。五十铃、日野、三菱、UD等所有主要品牌。' },
+  { icon: 'users', title: '车队融资方案', description: '多辆货车享特惠利率。扩大车队规模，提升配送能力和营收。' },
+  { icon: 'lightning', title: '季节性还款计划', description: '农历新年旺季、开斋节高峰期，可调整月供配合现金流管理。' },
+  { icon: 'clock', title: '以旧换新服务', description: '旧货车换新车，提升燃油效率。可协助转贷至更优惠利率。' },
+  { icon: 'shield', title: '透明收费标准', description: '无隐藏费用，利率清晰，还款计划明确。华人生意讲究信誉和透明度。' },
+];
+
+// Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'WhatsApp咨询', description: '发送货车需求至我们的WhatsApp。物流融资专员即刻回复。' },
+  { stepNumber: 2, icon: 'document', title: '提交文件', description: '身份证、银行月结单、公司注册（如有）。数字化简易提交流程。' },
+  { stepNumber: 3, icon: 'check', title: '快速信贷决策', description: '快速信贷决策。通过WhatsApp或电话通知批准结果。' },
+  { stepNumber: 4, icon: 'clipboard', title: '签署贷款合约', description: '审核条款并完成文件。可安排在巴生港或雪隆区见面签约。' },
+  { stepNumber: 5, icon: 'truck', title: '开走您的货车', description: '资金到账，即刻取车。立即开始配送业务，赚取收入。' },
+];
+
+// Lorry Types
+const lorryTypes = [
+  { name: '箱型货车（封闭式）', description: '密闭货物保护，适合一般货运、电商配送、贵重物品运输。城市最后一英里配送首选。' },
+  { name: '平板货车', description: '多功能载运，适合建材运输、机械搬运、超大货物。巴生港作业必备车型。' },
+  { name: '倾卸货车（翻斗车）', description: '自动卸货，运载沙石、碎石、建筑废料。基建项目和土地开发需求旺盛。' },
+  { name: '冷藏货车（冷链车）', description: '温控运输，适合冷链物流。配合Ninja Cold和电商生鲜配送需求增长。' },
+  { name: '油罐车', description: '液体运输，包括柴油、棕油、化学品。专业作业配合稳定合约收入。' },
+  { name: '集装箱拖车（拖头）', description: '巴生港货柜拖运专用。配合巴生港2024年1,464万TEU创纪录，货柜拖运需求强劲。20尺、40尺货柜高收入潜力。' },
+  { name: '吊臂车（随车吊）', description: '自装卸能力，适合机械、钢材、建材运输。专业运输收取溢价运费。' },
+  { name: '侧帘货车', description: '侧面装卸便利，适合栈板货物。仓对仓货运效率高。' },
+];
+
+// Accepted Brands
+const acceptedBrands = ['五十铃（Isuzu）', '日野（Hino）', '三菱扶桑（Mitsubishi Fuso）', 'UD卡车', '日产柴油（Nissan Diesel）', '大发（Daihatsu）', '奔驰（Mercedes-Benz）', '曼恩（MAN）', '斯堪尼亚（Scania）', '东风', '福田', '解放（FAW）'];
+
+// Testimonials - Chinese-Malaysian specific
+const testimonials = [
+  {
+    name: '李宗伟（Lee Chong Wei）',
+    company: 'LCW物流有限公司',
+    location: '巴生港，雪兰莪',
+    testimonial: '接到Shopee合约急需3辆箱型货车。银行拒绝我的申请，Ing Heng Credit在20小时内批准全部3辆，90%融资只需10%首期。现在已经营运8辆货车，都是和他们合作的。最佳合作伙伴，值得信赖！',
+    rating: 5,
+  },
+  {
+    name: '黄金发（Wong Kim Fatt）',
+    company: '发记运输',
+    location: '巴生，雪兰莪',
+    testimonial: '家族物流生意做了25年。通过转贷，将整个车队从旧货车升级到新五十铃车款。光是省下的柴油费就足够支付升级成本。服务专业，讲信用，值得长期合作。老板很了解我们华人做生意的方式。',
+    rating: 5,
+  },
+  {
+    name: 'Rajendran a/l Muthu',
+    company: 'Raja货运服务',
+    location: '莎亚南，雪兰莪',
+    testimonial: '从一辆二手平板货车起步，现在经营5辆货车专跑巴生港货柜拖运。农历新年淡季时的灵活还款计划帮助很大。强力推荐给中小企业物流业者。',
+    rating: 5,
+  },
+];
+
+// FAQs - Mandarin specific
+const faqs = [
+  { question: '可以融资二手货车吗？', answer: '可以！我们接受15年车龄以内的二手货车融资。较旧车辆（10-15年）可能需要较高首期（20-30%）或较短贷款期限（36-48个月）。货车必须保持良好操作状态并通过基本检查。' },
+  { question: '接受的货车最高车龄是多少？', answer: '我们接受15年车龄以内的商用货车。但是10-15年车龄的货车通常获得70-80%融资额度（20-30%首期），贷款期限较短（36-48个月）。' },
+  { question: '可以融资冷藏车和油罐车这类专业货车吗？', answer: '当然可以！我们融资所有货车类型，包括冷藏车、油罐车、倾卸车、吊臂车、集装箱拖车。专业车辆因收入潜力较高，可能获得优惠利率。' },
+  { question: '可以为多辆货车申请车队融资吗？', answer: '绝对可以！2辆或以上货车的车队融资可享受优惠利率。我们为扩展业务的物流公司提供批量融资配套。批量折扣利率可降低0.5%至2%。' },
+  { question: '没有公司注册（SSM）怎么办？个人可以申请吗？', answer: '可以！个人申请者使用身份证、银行月结单、物流收入证明（配送合约、服务协议）即可申请。但是，公司注册（SSM）可提高批准机会并可能获得更优惠利率。' },
+  { question: '刚成立的物流公司可以获得融资吗？', answer: '可以！我们支持新成立的物流企业。要求包括：SSM注册、董事身份证、3-6个月银行月结单、配送合约或客户意向书。我们评估业务可行性，不仅看信用记录。' },
+  { question: '接受什么货车品牌？', answer: '我们接受所有主要品牌：日系（五十铃、日野、三菱扶桑、UD卡车、日产柴油）、欧系（奔驰、曼恩、斯堪尼亚）、中国品牌（东风、福田、解放）。本地组装和进口货车皆可。' },
+  { question: '季节性还款灵活度如何运作？', answer: '对于面临农历新年工厂停工、开斋节淡季或雨季影响的物流业者，我们提供弹性还款结构。例如：淡季11月至2月较低月供（每月RM 2,000），旺季3月至10月较高月供（每月RM 3,500）。' },
+  { question: '可以转贷现有货车贷款以获得更好利率吗？', answer: '可以！如果您目前支付高利率（超过10%），我们可以协助转贷。流程包括：结清原贷款、车辆所有权转移、新贷款合约。许多客户每年节省2-4%利息。' },
+  { question: '货车融资的利率是多少？', answer: '年利率范围为6.5%至11%，取决于：信用状况、首期金额（10-30%）、贷款期限（12-84个月）、货车车龄和状况、车队规模。中小企业物流业者享有竞争力利率。' },
+  { question: '需要多少首期？', answer: '标准首期：新货车10-20%，二手货车（10-15年）20-30%。车队融资即使是二手货车也可能获得较低首期（10%）。首期有时可根据信用状况协商。' },
+  { question: '需要提交哪些文件？', answer: '个人申请：身份证、6个月银行月结单、收入证明。公司申请：SSM注册、公司银行月结单（6个月）、董事身份证、财务报表（如有）、配送合约（可选但有帮助）。' },
+  { question: '如果有CCRIS或CTOS记录可以申请吗？', answer: '可以！我们接受有信用问题的申请者。CCRIS/CTOS记录不代表自动拒绝。我们审核当前收入、现有合约、还款能力。许多曾有违约记录的客户获得批准。' },
+  { question: '你们为巴生港的集装箱拖车和拖头提供融资吗？', answer: '当然！我们专门为巴生港作业的集装箱拖车和拖头提供融资。巴生港2024年创下1,464万TEU记录，货柜拖运需求强劲。20尺和40尺货柜作业融资条件具竞争力。' },
+  { question: '外国人可以申请货车融资吗？', answer: '可以，持有效马来西亚工作准证、公司注册（SSM）和本地营运的外国人可申请。额外要求：护照、工作准证、马来西亚业务地址，可能需要本地董事/担保人。' },
+  { question: '如果货车在贷款期间故障怎么办？', answer: '无论货车状况如何，您仍需负责贷款还款。我们强烈建议购买涵盖故障、事故、失窃的综合保险。我们可协助连接商用车辆保险提供商。' },
+  { question: '提前还款有罚款吗？', answer: '没有提前还款罚款！您可随时结清贷款，无需额外费用。许多客户在业务增长或为车队扩展转贷时提前还款。' },
+  { question: '可以以旧货车换购新车型吗？', answer: '可以！我们提供以旧换新计划。评估旧货车价值，结清剩余贷款（如有），融资新货车。许多业者从旧车型（10-15年）升级到燃油效率更高的新货车。' },
+  { question: '最高贷款额度是多少？', answer: '最低贷款：RM 40,000。最高贷款：车队融资RM 5,000,000。单辆货车融资通常介于RM 80,000（二手3吨）至RM 800,000（新拖头/集装箱拖车）。' },
+  { question: '从申请到放款整个流程需要多长时间？', answer: '标准时间线：快速批准决策，3-5天完成文件和放款。紧急情况（如即时合约需求）可加快至1-2天（需完整文件）。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '马来西亚商用货车融资服务',
+  description: '快速商用货车融资，专为巴生港和雪隆区物流业者设计。车队解决方案，支持中小企业扩展。',
+  imageUrl: `${SITE_CONFIG.url}/images/lorry-financing.jpg`,
+  category: '金融服务 - 商用车辆融资',
+  offers: {
+    price: '40000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="巴生港物流业者专属商用货车融资"
+    subtitle="快速批准 | 90%高额融资 | 车队融资方案 | 新旧货车皆可接受"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想咨询货车融资。"
+    ctaSecondaryText="致电：017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年信誉经验', '巴生港专家', '车队融资专业', '当天批准']}
+  />
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          物流业者面临车队融资难题
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          巴生港2024年创下1,464万TEU记录。电商配送需求激增。您有合约却缺货车。银行要求30-50%首期。无法扩展车队以满足需求。竞争对手抢走商机，您却在等待批准。
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-red-600 font-bold text-lg mb-3">遇到的问题</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>高首期阻碍车队扩展（30-50%）</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>银行拒绝中小企业物流公司</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>批准缓慢失去时效性合约</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>农历新年现金流影响营运</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-green-600 font-bold text-lg mb-3">我们的解决方案</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>只需10-20%首期即可</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>支持新成立物流企业</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>快速批准紧急合约</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>灵活季节性还款计划</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="font-bold text-lg mb-3 text-yellow-600">真实案例</div>
+          <div class="text-sm leading-relaxed text-gray-800">
+            <p class="mb-3"><strong class="text-primary">巴生港的李先生</strong>接到Shopee/Lazada合约，需要3辆箱型货车，月收入RM 45,000。</p>
+            <p class="mb-3"><strong class="text-red-600">银行拒绝他的申请。</strong>我们在20小时内批准RM 420,000（3辆货车），10%首期。</p>
+            <p class="font-semibold text-green-700">他在12个月内赚取RM 540,000，车队扩展至8辆货车。现在是Ninja Van顶级合作伙伴。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          为什么物流业者选择Ing Heng Credit？
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          专为巴生港和雪隆区物流企业设计的货车融资服务
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <Calculator lang={lang} equipmentType="货车" defaultPrice={200000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          5个简单步骤取得您的货车
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          从申请到开走货车，最快3-5天完成
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请货车融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          立即开始申请
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lorry Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          我们融资的商用货车类型
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          从1吨小货车到30吨拖头，所有货车类型皆可融资
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {lorryTypes.map((lorry) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{lorry.name}</h3>
+            <p class="text-[#4F3E29] text-sm">{lorry.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">接受的货车品牌</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-[#4F3E29] mt-4">...还有更多品牌！联系我们咨询其他品牌。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          申请所需文件
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          简单文件流程 - 大多数物流业者已有这些文件
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Individual Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">个人申请</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">身份证 / 护照副本</div>
+                <div class="text-sm text-[#4F3E29]">马来西亚身份证或有效护照（含工作准证）</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">6个月银行月结单</div>
+                <div class="text-sm text-[#4F3E29]">个人账户显示收入稳定性</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">物流收入证明</div>
+                <div class="text-sm text-[#4F3E29]">配送合约、服务协议或发票</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Company Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">公司申请</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">SSM公司注册</div>
+                <div class="text-sm text-[#4F3E29]">公司注册证书（Form 9/24/49）</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">公司银行月结单</div>
+                <div class="text-sm text-[#4F3E29]">6个月公司账户月结单</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">董事身份证副本</div>
+                <div class="text-sm text-[#4F3E29]">所有公司董事和股东</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">配送合约（可选）</div>
+                <div class="text-sm text-[#4F3E29]">客户协议可加强申请</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">重要提示：</h4>
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
+          <li>• 货车车龄：接受15年以内车龄</li>
+          <li>• 信用记录：接受CCRIS/CTOS记录</li>
+          <li>• 处理时间：文件完整后快速处理</li>
+          <li>• 车队融资：2辆以上享特惠利率</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          物流业者成功案例
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          真实客户通过我们的货车融资服务实现业务增长
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          常见问题解答
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          关于货车融资您需要了解的一切
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="lorry" />
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        准备好扩展您的车队了吗？
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        今天申请，明天批准。加入4,000+信任Ing Heng Credit的物流业者，实现车队融资目标。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请货车融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电：017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>免费咨询</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>快速批准</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>巴生港专家</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            或填写在线表格
+          </h2>
+          <p class="text-[#4F3E29]">
+            营业时间内快速内联系您
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

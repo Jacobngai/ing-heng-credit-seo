@@ -1,0 +1,434 @@
+---
+/**
+ * Dynamic Blog Post: Brand + Equipment Financing - English
+ * URL: /en/blog/brand/caterpillar/excavator
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../../utils/constants';
+import { generateFAQSchema } from '../../../../../utils/schema';
+import {
+  getBrandTags,
+  getEquipmentTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  buildBrandTagUrl,
+  type Locale
+} from '../../../../../utils/blog-tags';
+
+const lang: Locale = 'en';
+
+export function getStaticPaths() {
+  const brands = getBrandTags();
+  const equipment = getEquipmentTags();
+  const paths = [];
+
+  for (const brand of brands) {
+    for (const equip of equipment) {
+      paths.push({
+        params: {
+          brand: brand.slug.en,
+          equipment: equip.slug.en
+        },
+        props: {
+          brandId: brand.id,
+          equipmentId: equip.id
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { brand, equipment } = Astro.params;
+const { brandId, equipmentId } = Astro.props;
+
+const brandTag = getBrandTags().find(b => b.id === brandId);
+const equipmentTag = getEquipmentTags().find(e => e.id === equipmentId);
+
+if (!brandTag || !equipmentTag) {
+  return Astro.redirect('/en/blog');
+}
+
+const brandName = getTagName(brandTag, lang);
+const equipmentName = getTagName(equipmentTag, lang);
+
+// Equipment-specific data
+const equipmentData: Record<string, { priceRange: string; tenure: string; downPayment: string; uses: string[] }> = {
+  'excavator': { priceRange: 'RM 150,000 - RM 800,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Construction', 'Mining', 'Land Clearing', 'Foundation Work'] },
+  'forklift': { priceRange: 'RM 50,000 - RM 300,000', tenure: 'Up to 5 years', downPayment: '0% available', uses: ['Warehousing', 'Manufacturing', 'Logistics', 'Retail'] },
+  'lorry': { priceRange: 'RM 80,000 - RM 500,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Logistics', 'Construction', 'Agriculture', 'Retail Delivery'] },
+  'prime-mover': { priceRange: 'RM 200,000 - RM 600,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Port Haulage', 'Long-distance Transport', 'Heavy Cargo', 'Container Transport'] },
+  'crane': { priceRange: 'RM 300,000 - RM 2,000,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Construction', 'Port Operations', 'Heavy Lifting', 'Infrastructure'] },
+  'bulldozer': { priceRange: 'RM 400,000 - RM 1,500,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Land Clearing', 'Mining', 'Road Construction', 'Site Preparation'] },
+  'backhoe': { priceRange: 'RM 150,000 - RM 500,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Excavation', 'Trenching', 'Landscaping', 'Utility Work'] },
+  'wheel-loader': { priceRange: 'RM 200,000 - RM 800,000', tenure: 'Up to 7 years', downPayment: '0% available', uses: ['Material Handling', 'Mining', 'Construction', 'Quarry Operations'] },
+  'road-roller': { priceRange: 'RM 100,000 - RM 400,000', tenure: 'Up to 5 years', downPayment: '0% available', uses: ['Road Construction', 'Paving', 'Compaction', 'Infrastructure'] }
+};
+
+const equipInfo = equipmentData[equipmentId] || {
+  priceRange: 'RM 100,000 - RM 500,000',
+  tenure: 'Up to 7 years',
+  downPayment: '0% available',
+  uses: ['Construction', 'Manufacturing', 'Logistics']
+};
+
+// Brand-specific info
+const brandData: Record<string, { country: string; quality: string }> = {
+  'caterpillar': { country: 'USA', quality: 'Premium' },
+  'komatsu': { country: 'Japan', quality: 'Premium' },
+  'hitachi': { country: 'Japan', quality: 'Premium' },
+  'kobelco': { country: 'Japan', quality: 'Premium' },
+  'volvo': { country: 'Sweden', quality: 'Premium' },
+  'hyundai': { country: 'South Korea', quality: 'Quality' },
+  'sany': { country: 'China', quality: 'Value' },
+  'xcmg': { country: 'China', quality: 'Value' },
+  'doosan': { country: 'South Korea', quality: 'Quality' },
+  'jcb': { country: 'UK', quality: 'Premium' }
+};
+
+const brandInfo = brandData[brandId] || { country: 'International', quality: 'Quality' };
+
+// FAQs
+const faqs = [
+  {
+    question: `How do I finance a ${brandName} ${equipmentName.toLowerCase()}?`,
+    answer: `Financing a ${brandName} ${equipmentName.toLowerCase()} with Ing Heng Credit is simple. You need: Company registration documents (SSM), 3 months bank statements, IC copy of directors, and a quotation for the ${brandName} ${equipmentName.toLowerCase()}. WhatsApp us your documents and get approval within 24 hours.`
+  },
+  {
+    question: `What is the interest rate for ${brandName} ${equipmentName.toLowerCase()} financing?`,
+    answer: `Our ${brandName} ${equipmentName.toLowerCase()} financing rates start from 2.88% p.a. flat rate. ${brandName} equipment typically holds value well, which can help secure competitive rates. Contact us for a personalized quote.`
+  },
+  {
+    question: `Can I get 0% down payment for a ${brandName} ${equipmentName.toLowerCase()}?`,
+    answer: `Yes, 0% down payment is available for qualified applicants financing ${brandName} ${equipmentName.toLowerCase()}s. ${brandName}'s ${brandInfo.quality.toLowerCase()} reputation often helps with approval. Eligibility depends on your company's credit profile.`
+  },
+  {
+    question: `Do you finance used ${brandName} ${equipmentName.toLowerCase()}s?`,
+    answer: `Yes, we finance both new and used ${brandName} ${equipmentName.toLowerCase()}s. ${brandName} equipment is known for durability, making used units a viable option. Requirements may vary based on age and condition.`
+  },
+  {
+    question: `How long does ${brandName} ${equipmentName.toLowerCase()} financing approval take?`,
+    answer: `We provide approval within 24 hours for complete applications. ${brandName} equipment is well-known in Malaysia, so valuations are straightforward. Full disbursement typically occurs within 3-5 business days after approval.`
+  }
+];
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: 'By Brand', href: '/en/blog' },
+  { label: brandName, href: `/en/blog/brand/${brand}` },
+  { label: equipmentName, href: `/en/blog/brand/${brand}/${equipment}` }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": `${brandName} ${equipmentName} Financing Malaysia: Complete Guide`,
+  "description": `Finance a ${brandName} ${equipmentName.toLowerCase()} in Malaysia. Requirements, rates from 2.88% p.a., 0% down payment options available.`,
+  "author": { "@type": "Organization", "name": "Ing Heng Credit & Leasing Sdn Bhd" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": { "@type": "ImageObject", "url": "https://www.inghengcredit.com/logo.png" }
+  },
+  "datePublished": "2025-01-22",
+  "dateModified": "2025-01-22"
+};
+
+const articleDate = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={`${brandName} ${equipmentName} Financing Malaysia | From 2.88% | Ing Heng Credit`}
+  description={`Finance your ${brandName} ${equipmentName.toLowerCase()} in Malaysia. Rates from 2.88% p.a., 0% down payment available, 24-hour approval. 40+ years experience.`}
+  lang={lang}
+  keywords={[
+    `${brandName} ${equipmentName.toLowerCase()} financing`,
+    `${brandName} ${equipmentName.toLowerCase()} loan Malaysia`,
+    `finance ${brandName} ${equipmentName.toLowerCase()}`,
+    `${brandName} equipment financing`,
+    `buy ${brandName} ${equipmentName.toLowerCase()} Malaysia`
+  ]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(generateFAQSchema(faqs))} />
+
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap gap-2 mb-6">
+          <a href={`/en/blog/brand/${brand}`} class="badge-brutalist text-xs hover:bg-yellow-300 transition-colors">
+            {brandName}
+          </a>
+          <span class="badge-brutalist bg-white text-xs">{equipmentName}</span>
+          <span class="badge-brutalist bg-green-400 text-xs">Financing Guide</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          <span class="text-yellow-400">{brandName}</span> {equipmentName} Financing Malaysia
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Complete guide to financing your {brandName} {equipmentName.toLowerCase()}. Learn about requirements, competitive rates, and how to get approved in 24 hours.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400 text-sm border-t border-white/20 pt-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span>Updated {new Date(articleDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span>8 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{equipInfo.priceRange}</div>
+          <div class="text-sm font-bold text-navy-900/70">Price Range</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">From 2.88% p.a.</div>
+          <div class="text-sm font-bold text-navy-900/70">Interest Rate</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{equipInfo.tenure}</div>
+          <div class="text-sm font-bold text-navy-900/70">Tenure</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{brandInfo.country}</div>
+          <div class="text-sm font-bold text-navy-900/70">Brand Origin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 prose prose-lg max-w-none">
+
+          <h2 class="text-3xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Why Choose {brandName} {equipmentName}?
+          </h2>
+
+          <p>
+            {brandName} is a {brandInfo.quality.toLowerCase()}-tier brand from {brandInfo.country}, known for quality and reliability.
+            Their {equipmentName.toLowerCase()}s are popular choices for businesses in Malaysia due to excellent resale value and parts availability.
+          </p>
+
+          <p>
+            A {brandName} {equipmentName.toLowerCase()} is commonly used for:
+          </p>
+
+          <ul>
+            {equipInfo.uses.map((use) => (
+              <li><strong>{use}</strong> - Strong demand across Malaysia</li>
+            ))}
+          </ul>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            {brandName} {equipmentName} Financing Requirements
+          </h2>
+
+          <div class="bg-gray-50 border-4 border-navy-900 p-6 my-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="text-xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+              Required Documents
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Company Registration (SSM)</strong> - Form 9 & 24/49 or Business Registration Certificate</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Bank Statements</strong> - Latest 3 months company bank statements</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>IC Copy</strong> - MyKad of all directors/partners</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>{brandName} {equipmentName} Quotation</strong> - From authorized dealer or seller</span>
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Frequently Asked Questions
+          </h2>
+
+          <div class="space-y-6 my-8">
+            {faqs.map((faq) => (
+              <div class="bg-gray-50 border-3 border-navy-900 p-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <h3 class="font-bold text-lg text-navy-900 mb-2">{faq.question}</h3>
+                <p class="text-gray-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+
+            <div class="bg-navy-900 border-4 border-yellow-400 p-6" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+              <h3 class="text-xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Finance Your {brandName} {equipmentName}
+              </h3>
+              <ul class="space-y-2 text-white text-sm mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>24-hour approval</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>0% down payment available</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Rates from 2.88% p.a.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>New & used equipment</span>
+                </li>
+              </ul>
+              <CTAButton
+                text="WhatsApp Us Now"
+                link={COMPANY_INFO.whatsapp.link}
+                variant="accent"
+                size="large"
+                icon="whatsapp"
+                fullWidth={true}
+              />
+            </div>
+
+            <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Other {brandName} Equipment
+              </h3>
+              <ul class="space-y-2">
+                {getEquipmentTags().filter(e => e.id !== equipmentId).slice(0, 5).map((equip) => (
+                  <li>
+                    <a
+                      href={buildBrandEquipmentPostUrl(lang, brandId, equip.id)}
+                      class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors border-b border-gray-200 last:border-0"
+                    >
+                      <span class="font-medium">{brandName} {getTagName(equip, lang)}</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Other Brands
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {getBrandTags().filter(b => b.id !== brandId).slice(0, 6).map((b) => (
+                  <a
+                    href={buildBrandEquipmentPostUrl(lang, b.id, equipmentId)}
+                    class="px-3 py-1 bg-white border-2 border-navy-900 text-sm font-bold hover:bg-yellow-400 transition-colors"
+                    style="box-shadow: 2px 2px 0 #1E3A8A;"
+                  >
+                    {getTagName(b, lang)}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Ready to Finance Your {brandName} {equipmentName}?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Get approved in 24 hours with competitive rates from 2.88% p.a.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Get Free Quote"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="View All {brandName}"
+          link={`/en/blog/brand/${brand}`}
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 2px 2px 0 #1E3A8A;
+  }
+
+  .prose h2 { @apply mt-12 mb-4; }
+  .prose p { @apply mb-4 text-gray-700 leading-relaxed; }
+  .prose ul { @apply my-4 space-y-2; }
+  .prose li { @apply text-gray-700; }
+  .prose strong { @apply text-navy-900; }
+</style>
