@@ -8,6 +8,7 @@ import type { Locale } from '../utils/i18n';
 import { t } from '../utils/i18n';
 import { NAV_LINKS, COMPANY_INFO, EQUIPMENT_NAV_ITEMS } from '../utils/constants';
 import EquipmentDropdown from './EquipmentDropdown.astro';
+import HobbyDropdown from './HobbyDropdown.astro';
 
 interface Props {
   lang: Locale;
@@ -57,6 +58,11 @@ function isActive(href: string): boolean {
           // Use dropdown for equipment
           if (link.hasDropdown && link.href === '/equipment') {
             return <EquipmentDropdown lang={lang} currentPath={currentPath} />;
+          }
+
+          // Use dropdown for hobby
+          if (link.hasDropdown && link.href === '/hobby') {
+            return <HobbyDropdown lang={lang} currentPath={currentPath} />;
           }
 
           return (
@@ -164,6 +170,62 @@ function isActive(href: string): boolean {
                       >
                         <span class="mr-2">{item.icon}</span>
                         {t(item.label, lang)}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
+          // Hobby menu with submenu
+          if (link.hasDropdown && link.href === '/hobby') {
+            const { HOBBY_NAV_ITEMS } = await import('../utils/constants');
+            return (
+              <div class="mobile-submenu-wrapper">
+                <button
+                  type="button"
+                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-4 py-3 rounded-md text-base font-bold transition-colors ${
+                    active
+                      ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                      : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47] hover:border-2 hover:border-[#D4A574]'
+                  }`}
+                  style="min-height: 48px;"
+                  aria-expanded="false"
+                  aria-controls="mobile-hobby-submenu"
+                  data-menu="hobby"
+                >
+                  <span>{t(link.label, lang)}</span>
+                  <svg
+                    class="w-5 h-5 transition-transform duration-200 submenu-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="mobile-hobby-submenu" class="hidden pl-4 mt-1 space-y-1">
+                  {HOBBY_NAV_ITEMS.map((item) => {
+                    const hobbyHref = `/${lang}${item.href}`;
+                    const hobbyActive = currentPath.includes(item.href) && item.href !== '/hobby';
+
+                    return (
+                      <a
+                        href={hobbyHref}
+                        class={`block px-4 py-3 rounded-md text-sm font-bold transition-colors ${
+                          hobbyActive
+                            ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                            : 'text-[#6B5437] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
+                        } ${item.comingSoon ? 'opacity-60' : ''}`}
+                        style="min-height: 48px; display: flex; align-items: center;"
+                        {...item.comingSoon && { 'aria-disabled': 'true', 'tabindex': '-1' }}
+                      >
+                        <span class="mr-2">{item.icon}</span>
+                        {t(item.label, lang)}
+                        {item.comingSoon && (
+                          <span class="ml-auto text-xs bg-gray-400 text-white px-2 py-0.5 rounded">Soon</span>
+                        )}
                       </a>
                     );
                   })}

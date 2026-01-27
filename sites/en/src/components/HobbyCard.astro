@@ -1,0 +1,287 @@
+---
+/**
+ * Hobby Card Component
+ * Card for displaying hobby categories with icon, title, and description
+ */
+
+import type { Locale } from '../utils/i18n';
+import { t } from '../utils/i18n';
+
+interface Props {
+  lang: Locale;
+  title?: string;
+  titleKey?: string;
+  description?: string;
+  descriptionKey?: string;
+  icon?: string;
+  href?: string;
+  items?: string[];
+  badge?: string;
+  comingSoon?: boolean;
+}
+
+const { lang, title, titleKey, description, descriptionKey, icon, href, items, badge, comingSoon } = Astro.props;
+
+const cardTitle = title || (titleKey ? t(titleKey, lang) : '');
+const cardDescription = description || (descriptionKey ? t(descriptionKey, lang) : '');
+const cardIcon = icon || '📋';
+const cardHref = href || '#';
+const cardBadge = badge || '';
+const isComingSoon = comingSoon || false;
+const hasItems = items && items.length > 0;
+---
+
+{cardHref !== '#' ? (
+  <a
+    href={cardHref}
+    class={`hobby-card ${isComingSoon ? 'coming-soon' : ''}`}
+    {...isComingSoon && { 'aria-disabled': 'true', 'tabindex': '-1' }}
+  >
+    <div class="hobby-card-inner">
+      <div class="hobby-card-header">
+        <span class="hobby-card-icon">{cardIcon}</span>
+        <div class="hobby-card-title-group">
+          <h3 class="hobby-card-title">{cardTitle}</h3>
+          {cardBadge && (
+            <span class={`hobby-card-badge badge-${cardBadge}`}>
+              {cardBadge}
+            </span>
+          )}
+          {isComingSoon && (
+            <span class="hobby-card-badge badge-coming-soon">
+              Coming Soon
+            </span>
+          )}
+        </div>
+      </div>
+
+      {cardDescription && (
+        <p class="hobby-card-description">
+          {cardDescription}
+        </p>
+      )}
+
+      {hasItems && (
+        <ul class="hobby-card-items">
+          {items.map((item) => (
+            <li class="hobby-card-item">{item}</li>
+          ))}
+        </ul>
+      )}
+
+      {!isComingSoon && (
+        <div class="hobby-card-footer">
+          <span class="hobby-card-cta">View More</span>
+          <svg class="hobby-card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      )}
+    </div>
+  </a>
+) : (
+  <div class={`hobby-card ${isComingSoon ? 'coming-soon' : ''}`}>
+    <div class="hobby-card-inner">
+      <div class="hobby-card-header">
+        <span class="hobby-card-icon">{cardIcon}</span>
+        <div class="hobby-card-title-group">
+          <h3 class="hobby-card-title">{cardTitle}</h3>
+          {cardBadge && (
+            <span class={`hobby-card-badge badge-${cardBadge}`}>
+              {cardBadge}
+            </span>
+          )}
+          {isComingSoon && (
+            <span class="hobby-card-badge badge-coming-soon">
+              Coming Soon
+            </span>
+          )}
+        </div>
+      </div>
+
+      {cardDescription && (
+        <p class="hobby-card-description">
+          {cardDescription}
+        </p>
+      )}
+
+      {hasItems && (
+        <ul class="hobby-card-items">
+          {items.map((item) => (
+            <li class="hobby-card-item">{item}</li>
+          ))}
+        </ul>
+      )}
+
+      {!isComingSoon && (
+        <div class="hobby-card-footer">
+          <span class="hobby-card-cta">View More</span>
+          <svg class="hobby-card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
+<style>
+  .hobby-card {
+    display: block;
+    background: white;
+    border: 3px solid #6B5437;
+    border-radius: 0;
+    box-shadow: 4px 4px 0 #6B5437;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    height: 100%;
+  }
+
+  .hobby-card:not(.coming-soon):hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #6B5437;
+  }
+
+  .hobby-card:not(.coming-soon):hover .hobby-card-cta {
+    color: #8B6F47;
+  }
+
+  .hobby-card:not(.coming-soon):hover .hobby-card-arrow {
+    transform: translateX(4px);
+  }
+
+  .hobby-card.coming-soon {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .hobby-card-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 100%;
+  }
+
+  .hobby-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hobby-card-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .hobby-card-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+  }
+
+  .hobby-card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #4A3A28;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hobby-card-badge {
+    font-size: 0.6875rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .badge-popular {
+    background: #D4A574;
+    color: white;
+    border: 2px solid #6B5437;
+    box-shadow: 2px 2px 0 #6B5437;
+  }
+
+  .badge-new {
+    background: #10B981;
+    color: white;
+    border: 2px solid #065F46;
+    box-shadow: 2px 2px 0 #065F46;
+  }
+
+  .badge-coming-soon {
+    background: #94a3b8;
+    color: white;
+    border: 2px solid #64748b;
+    box-shadow: 2px 2px 0 #64748b;
+  }
+
+  .hobby-card-description {
+    font-size: 0.9375rem;
+    color: #64748b;
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .hobby-card-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .hobby-card-item {
+    font-size: 0.8125rem;
+    color: #6B5437;
+    background: #F5F1EB;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #D4A574;
+  }
+
+  .hobby-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid #F5F1EB;
+  }
+
+  .hobby-card-cta {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: #6B5437;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+
+  .hobby-card-arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6B5437;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hobby-card-inner {
+      padding: 1.25rem;
+    }
+
+    .hobby-card-icon {
+      font-size: 2rem;
+    }
+
+    .hobby-card-title {
+      font-size: 1.125rem;
+    }
+  }
+</style>
