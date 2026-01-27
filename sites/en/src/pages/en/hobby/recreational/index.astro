@@ -1,0 +1,371 @@
+---
+/**
+ * Recreational Category Page - English
+ * Recreational vehicle financing category landing page
+ * SEO: RV financing Malaysia, motorhome financing, ATV loan, golf cart financing
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import HobbyHero from '../../../../components/HobbyHero.astro';
+import HobbyCard from '../../../../components/HobbyCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Recreational Vehicle Financing Malaysia | RV, Motorhome, ATV, Golf Cart';
+const pageDescription = 'Finance your dream RV, motorhome, ATV, or golf cart. No age limit, up to RM1 million. Fast approval for recreational vehicle enthusiasts.';
+const keywords = [
+  'RV financing Malaysia',
+  'motorhome financing Malaysia',
+  'ATV financing',
+  'UTV financing',
+  'golf cart financing',
+  'campervan financing',
+  'caravan financing',
+  'recreational vehicle loan',
+  'offroad vehicle financing',
+  'quad bike financing'
+];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Hobby Financing', url: '/en/hobby' },
+  { label: 'Recreational Vehicles', url: '/en/hobby/recreational' },
+];
+
+// Subcategory Cards
+const subcategoryCards = [
+  {
+    title: 'Motorhomes',
+    description: 'Home on wheels for adventures and camping. From campervans to full-size motorhomes.',
+    icon: '🏕️',
+    href: '#',
+    items: ['Class A Motorhome', 'Class B Campervan', 'Class C RV', 'Caravan', 'Travel Trailer']
+  },
+  {
+    title: 'ATV/UTV',
+    description: 'Off-road adventure vehicles for work and play. Conquer any terrain.',
+    icon: '🏔️',
+    href: '#',
+    items: ['ATV Quad Bike', 'UTV Side-by-Side', 'Utility Vehicle', 'Offroad Buggy', 'Dune Buggy']
+  },
+  {
+    title: 'Golf Carts',
+    description: 'Practical and fun vehicles for golf courses, resorts, and private communities.',
+    icon: '⛳',
+    href: '#',
+    items: ['Golf Cart', 'Utility Cart', 'Electric Cart', 'Custom Golf Cart', 'Street Legal Cart']
+  }
+];
+
+// Popular Models
+const popularModels = [
+  {
+    name: 'Class A Motorhome',
+    priceRange: 'RM400K - RM900K',
+    description: 'Luxury motorhome with all amenities for extended travel adventures.',
+    features: ['Full Amenities', 'Sleeping Capacity', 'Kitchen & Bath', 'Luxury Living']
+  },
+  {
+    name: 'Campervan Conversion',
+    priceRange: 'RM150K - RM350K',
+    description: 'Versatile campervan perfect for weekend getaways and road trips.',
+    features: ['Easy to Drive', 'Compact Design', 'Flexible Layout', 'Fuel Efficient']
+  },
+  {
+    name: 'High-Performance ATV',
+    priceRange: 'RM40K - RM120K',
+    description: 'Powerful quad bike for off-road trails and adventure riding.',
+    features: ['Offroad Capability', 'Powerful Engine', 'Agile Handling', 'Adventure Ready']
+  },
+  {
+    name: 'Utility UTV Side-by-Side',
+    priceRange: 'RM60K - RM180K',
+    description: 'Workhorse and play vehicle. Perfect for farms, estates, and recreation.',
+    features: ['Multi-Passenger', 'Cargo Capacity', 'Versatile Use', 'Towing Capability']
+  },
+  {
+    name: 'Luxury Golf Cart',
+    priceRange: 'RM30K - RM80K',
+    description: 'Premium golf cart with custom features for resorts and estates.',
+    features: ['Custom Features', 'Comfort Ride', 'Quiet Operation', 'Street Legal Option']
+  },
+  {
+    name: 'Travel Trailer Caravan',
+    priceRange: 'RM80K - RM250K',
+    description: 'Towable home away from home for camping adventures.',
+    features: ['Towable Design', 'Living Space', 'Lightweight Option', 'Easy Storage']
+  }
+];
+
+// Financing Details
+const financingDetails = [
+  {
+    icon: 'dollar-sign',
+    title: 'Up to RM1 Million',
+    description: 'Finance your dream RV or recreational vehicle with loans up to RM1,000,000.'
+  },
+  {
+    icon: 'infinity',
+    title: 'No Age Limit',
+    description: 'We finance used RVs and recreational vehicles from any era. Vintage models welcome.'
+  },
+  {
+    icon: 'calendar',
+    title: 'Flexible Tenure 1-7 Years',
+    description: 'Choose repayment terms that match your financial situation.'
+  },
+  {
+    icon: 'search',
+    title: 'Specialist Assessment',
+    description: 'Our experts assess real market value for recreational vehicles.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Can I finance a used RV or motorhome?',
+    answer: 'Yes! Unlike banks that typically refuse RVs older than 10-15 years, we have no age limit. We finance used motorhomes, campervans, caravans, and travel trailers from any era. Our team understands the RV market and values.'
+  },
+  {
+    question: 'What is the maximum loan amount for recreational vehicle financing?',
+    answer: 'We offer financing up to RM1,000,000 for recreational vehicles. This covers everything from entry-level ATVs and golf carts to luxury motorhomes and custom RVs. Higher values may be considered on a case-by-case basis.'
+  },
+  {
+    question: 'Do you finance ATVs and UTVs?',
+    answer: 'Yes! We finance all types of off-road vehicles including ATVs, quad bikes, UTVs, side-by-sides, utility vehicles, and offroad buggies. Whether it\'s for recreation, farm use, or adventure, we can help you get off-road faster.'
+  },
+  {
+    question: 'Can I finance golf carts?',
+    answer: 'Yes! We finance golf carts and utility carts for personal use, resorts, golf courses, and private communities. From standard golf carts to custom luxury models, we can help you get the right vehicle for your needs.'
+  },
+  {
+    question: 'What documents do I need for RV financing?',
+    answer: 'Documentation is straightforward: IC (NRIC), 6 months bank statements, proof of income. For the RV or vehicle, we need registration documents, ownership papers, insurance, and any service or maintenance records. We keep it simple to get you on the road faster.'
+  },
+  {
+    question: 'Can I finance imported RVs and recreational vehicles?',
+    answer: 'Yes! We finance imported RVs, campervans, and recreational vehicles from various countries. Our team understands import documentation, foreign market values, and Malaysian registration requirements. Whether you\'re importing a Japanese campervan or American RV, we can help.'
+  },
+  {
+    question: 'Do you require special insurance for recreational vehicles?',
+    answer: 'Yes, appropriate insurance is required as part of our financing package. For RVs, we can help arrange comprehensive motorhome insurance. For ATVs, UTVs, and golf carts, we can arrange specialized coverage. Insurance is arranged separately through our network of insurance partners.'
+  },
+  {
+    question: 'Can I finance recreational vehicles for business use?',
+    answer: 'Yes! We finance recreational vehicles for both personal and business use. This includes ATVs and UTVs for farms and plantations, golf carts for resorts and courses, and RVs for tourism businesses. Contact us to discuss business financing options.'
+  },
+  {
+    question: 'What is the typical approval time for recreational vehicle financing?',
+    answer: 'Fast approval process with quick turnaround. Our specialist team understands the recreational vehicle market, so we can assess and approve applications more efficiently than traditional banks that don\'t understand ATVs, RVs, and golf carts. Get your decision faster and start your adventures sooner.'
+  }
+];
+
+// ItemList Schema
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Recreational Vehicle Categories',
+  description: 'Recreational vehicle financing categories including Motorhomes, ATV/UTV, and Golf Carts',
+  itemListElement: subcategoryCards.map((card, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: card.title,
+      description: card.description,
+    }
+  }))
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(itemListSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <HobbyHero
+    lang={lang}
+    title="Recreational Vehicle Financing Malaysia"
+    subtitle="Hobby Financing"
+    description="Adventure Awaits. We finance RVs, motorhomes, ATVs, golf carts, and recreational vehicles that banks reject."
+    features={['Up to RM1 Million', 'No Age Limit', 'Fast Approval']}
+    backgroundColor="beige"
+  />
+
+  <!-- Subcategory Cards -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Recreational <span class="text-secondary">Categories</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          From motorhomes to ATVs, find your adventure vehicle
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {subcategoryCards.map((card) => (
+          <HobbyCard
+            lang={lang}
+            title={card.title}
+            description={card.description}
+            icon={card.icon}
+            href={card.href}
+            items={card.items}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Models Section -->
+  <section class="section bg-[#F5F1EB]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Popular <span class="text-secondary">Vehicles</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Recreational vehicles that enthusiasts dream about
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {popularModels.map((model) => (
+          <div class="bg-white border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6">
+              <h3 class="text-2xl font-display uppercase text-white mb-2">{model.name}</h3>
+              <p class="text-[#D4A574] font-bold text-lg">{model.priceRange}</p>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4 leading-relaxed">{model.description}</p>
+              <ul class="space-y-2">
+                {model.features.map((feature) => (
+                  <li class="text-sm text-gray-600 flex items-center space-x-2">
+                    <div class="w-4 h-4 bg-[#D4A574] flex-shrink-0"></div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing Details -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Financing <span class="text-secondary">Details</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Flexible terms designed for recreational vehicle enthusiasts
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {financingDetails.map((detail) => (
+          <div class="text-center p-6 bg-[#F5F1EB] border-3 border-[#2D1810]">
+            <div class="text-4xl mb-4">{detail.icon === 'dollar-sign' && '💰'}{detail.icon === 'infinity' && '♾️'}{detail.icon === 'calendar' && '📅'}{detail.icon === 'search' && '🔍'}</div>
+            <h3 class="text-lg font-display uppercase text-[#2D1810] mb-2">{detail.title}</h3>
+            <p class="text-sm text-gray-600">{detail.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F1EB]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked <span class="text-secondary">Questions</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Recreational vehicle financing questions answered
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#2D1810] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-white">
+        Ready for Your Next <span class="text-[#D4A574]">Adventure</span>?
+      </h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Stop letting banks crush your dream. Get fast approval for your RV, ATV, golf cart, or recreational vehicle.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20recreational%20vehicle%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-[#2D1810] px-8 py-4 font-black uppercase tracking-wider border-3 border-white hover:bg-[#D4A574] hover:border-[#D4A574] transition-all inline-flex items-center gap-2"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp Now
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="bg-transparent text-white px-8 py-4 font-black uppercase tracking-wider border-3 border-white hover:bg-white hover:text-[#2D1810] transition-all"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
