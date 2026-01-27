@@ -15,7 +15,7 @@ keywords:
 - pembiayaan import kereta mewah
 - pembiayaan kelulusan LTA
 - pinjaman Tesla Model S
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - Tesla
 - kenderaan elektrik

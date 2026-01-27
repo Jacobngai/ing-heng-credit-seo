@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2025      8 min read
-  #  3-Ton Lorry Financing Malaysia: Complete Guide for Small Logistics Operators 
-
-  Get 3-ton lorry financing in Malaysia with 0% deposit and 100% loan amount. Fast approval for delivery businesses, local distributors, and logistics startups. 
-
-     By Ing Heng Credit &amp; Leasing     # 3-Ton Lorry Financing Malaysia: Your Path to Business Independence
 
 When you’re running a small delivery business in Malaysia, watching other logistics operators load their OWN 3-ton lorries while you’re stuck paying rental fees month after month, does that create a knot in your stomach knowing you’re building someone else’s business instead of your own?
 

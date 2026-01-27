@@ -1,0 +1,416 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+// SIMPLE WORDS REPLACEMENTS
+// "Produce 10x More Content" → "Write More, Faster"
+// "Content takes forever to produce" → "Writing is slow"
+// "Expensive" → "Costs too much"
+// "Inconsistent quality" → "Quality goes up and down"
+// "AI-Assisted Drafting" → "AI Writes First Draft"
+// "Expert Human Editing" → "Human Fixes Everything"
+
+const problems = [
+  'Writing takes too long (3-4 weeks per piece)',
+  'Costs a lot (RM 2K-5K per article)',
+  'Quality changes with each writer',
+  'Sounds generic, not like you',
+  'Not ready for Google from day one'
+];
+
+const solution = [
+  {
+    title: 'AI Writes First Draft',
+    description: 'AI creates a solid start. We just need to fix and polish. Saves 80% of the time.',
+    icon: '⚡'
+  },
+  {
+    title: 'Human Makes It Perfect',
+    description: 'Our team fixes every word. Sounds like you. Reads well. Accurate.',
+    icon: '✍️'
+  },
+  {
+    title: 'Google-Ready from Day One',
+    description: 'Keywords, titles, links - all done while writing. Not added later.',
+    icon: '🎯'
+  },
+  {
+    title: 'Sounds Like You',
+    description: 'We learn your style. Every piece matches your voice. Not robot talk.',
+    icon: '🎨'
+  }
+];
+
+const contentTypes = [
+  {
+    type: 'Long Blog Posts',
+    length: '2,000-3,000 words',
+    timeline: '2-3 days',
+    price: 'RM 800-1,200',
+    bestFor: 'Ranking for specific search terms, showing you know your stuff'
+  },
+  {
+    type: 'Service Pages',
+    length: '1,000-1,500 words',
+    timeline: '1-2 days',
+    price: 'RM 500-800',
+    bestFor: 'Turning visitors into leads, explaining what you sell'
+  },
+  {
+    type: 'Big Guides',
+    length: '4,000-6,000 words',
+    timeline: '5-7 days',
+    price: 'RM 2,000-3,500',
+    bestFor: 'Main hub pages, complete guides, getting other sites to link to you'
+  },
+  {
+    type: 'Case Studies',
+    length: '1,500-2,000 words',
+    timeline: '3-5 days',
+    price: 'RM 1,000-1,500',
+    bestFor: 'Showing proof, helping sales, building trust'
+  },
+  {
+    type: 'FAQ Pages',
+    length: '800-1,200 words',
+    timeline: '1 day',
+    price: 'RM 400-600',
+    bestFor: 'Voice search, Google quick answers, customer support'
+  },
+  {
+    type: 'Sales Pages',
+    length: '600-1,000 words',
+    timeline: '1-2 days',
+    price: 'RM 600-900',
+    bestFor: 'Ads, getting more sign-ups, collecting leads'
+  }
+];
+
+const process = [
+  {
+    step: 1,
+    title: 'You Tell Us What to Write',
+    description: 'Topic, keywords, main points. We check what competitors write.',
+    duration: '2-4 hours'
+  },
+  {
+    step: 2,
+    title: 'AI Creates First Draft',
+    description: 'AI writes a solid start. Good structure. Covers the main points.',
+    duration: '4-6 hours'
+  },
+  {
+    step: 3,
+    title: 'Human Makes It Great',
+    description: 'Expert editors fix facts, improve flow, match your voice. This matters most.',
+    duration: '6-8 hours'
+  },
+  {
+    step: 4,
+    title: 'Get It Ready for Google',
+    description: 'Final check for keywords, titles, links, and how easy it is to read.',
+    duration: '2-3 hours'
+  },
+  {
+    step: 5,
+    title: 'You Review. We Fix.',
+    description: 'You read it. We fix what you don\'t like. Usually done in 1-2 rounds.',
+    duration: '4-6 hours'
+  }
+];
+
+const qualityStandards = [
+  {
+    standard: 'Original Work',
+    description: 'Passes copy checks. No stealing. No copy-paste.',
+    icon: '✓'
+  },
+  {
+    standard: 'True Facts',
+    description: 'Humans check facts. We don\'t publish AI mistakes.',
+    icon: '✓'
+  },
+  {
+    standard: 'Your Voice',
+    description: 'Sounds like your brand. Not generic robot text.',
+    icon: '✓'
+  },
+  {
+    standard: 'Google-Ready',
+    description: 'Keywords, structure, titles - all built in from start.',
+    icon: '✓'
+  },
+  {
+    standard: 'Gets Action',
+    description: 'Every piece tells readers what to do next.',
+    icon: '✓'
+  },
+  {
+    standard: 'Works on Phone',
+    description: 'Short parts. Clear headings. Easy to read anywhere.',
+    icon: '✓'
+  }
+];
+
+const comparison = {
+  traditional: {
+    method: 'Traditional Agency',
+    timeline: '3-4 weeks per piece',
+    cost: 'RM 2,000-5,000',
+    volume: '2-4 pieces/month',
+    quality: 'Changes per writer',
+    seo: 'Added later (if at all)',
+    revision: 'Slow changes'
+  },
+  resultMarketing: {
+    method: 'Result Marketing (AI + Human)',
+    timeline: '2-3 days per piece',
+    cost: 'RM 800-1,200',
+    volume: '20-30 pieces/month',
+    quality: 'Same great quality',
+    seo: 'Built in from start',
+    revision: 'Same-day changes'
+  }
+};
+
+const comparisonRows = Object.keys(comparison.traditional)
+  .filter(key => key !== 'method')
+  .map(key => ({
+    label: key.replace(/_/g, ' '),
+    traditional: comparison.traditional[key as keyof typeof comparison.traditional],
+    resultMarketing: comparison.resultMarketing[key as keyof typeof comparison.resultMarketing]
+  }));
+---
+
+<BaseLayout
+  title="Write More Content, Faster | Result Marketing"
+  description="AI starts the draft. Humans make it perfect. Get 20-30 pieces monthly at half the cost. Simple, fast, still good quality."
+  locale={lang}
+>
+  <!-- Hero Section - SIMPLE WORDS -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Content Writing</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Write More. Pay Less. Still Great Quality.
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          AI writes the first draft. Our team fixes and polishes.
+          <br><br>
+          <strong>Get 20-30 pieces each month. Pay 50-70% less. Quality stays high.</strong>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Get a Free Sample
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            Check Prices
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-6 text-center text-white">
+          Why Content Writing is Hard
+        </h2>
+        <div class="card p-8 border-accent-500/50">
+          <p class="text-lg mb-4 text-white">
+            Most agencies write like it's 2010. Slow. Expensive. Quality goes up and down.
+          </p>
+          <ul class="space-y-2">
+            {problems.map(problem => (
+              <li class="flex items-start gap-3">
+                <span class="text-accent-500 text-xl flex-shrink-0">✗</span>
+                <span class="text-secondary-300">{problem}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Solution -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          How We Do It Different
+        </h2>
+        <p class="text-lg text-secondary-400">
+          AI for speed. Humans for quality. Best of both.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {solution.map(item => (
+          <div class="card">
+            <div class="text-4xl mb-4">{item.icon}</div>
+            <h3 class="text-xl font-black mb-3 text-white">{item.title}</h3>
+            <p class="text-secondary-400">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Types & Pricing -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          What We Write & What It Costs
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Clear prices. No hidden fees. Buy more, pay less per piece.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {contentTypes.map(content => (
+          <div class="card">
+            <h3 class="text-lg font-black mb-3 text-white">{content.type}</h3>
+            <div class="space-y-2 mb-4">
+              <div class="flex justify-between text-sm">
+                <span class="text-secondary-400">Length:</span>
+                <span class="font-medium">{content.length}</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-secondary-400">Timeline:</span>
+                <span class="font-medium">{content.timeline}</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-secondary-400">Price:</span>
+                <span class="font-black text-accent-500">{content.price}</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-secondary-700">
+              <p class="text-sm text-secondary-400">
+                <strong>Best for:</strong> {content.bestFor}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Process -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          How We Write Your Content
+        </h2>
+        <p class="text-lg text-secondary-400">
+          From your idea to finished piece: 2-3 days for most work
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {process.map((item) => (
+          <div class="card">
+            <div class="flex gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-white font-black text-lg flex items-center justify-center">
+                  {item.step}
+                </div>
+              </div>
+              <div class="flex-1">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-lg font-black text-white">{item.title}</h3>
+                  <span class="text-sm text-secondary-500">{item.duration}</span>
+                </div>
+                <p class="text-secondary-400">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Standards -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          What You Get Every Time
+        </h2>
+        <p class="text-lg text-secondary-400">
+          These rules never change. Every piece. Always.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {qualityStandards.map(item => (
+          <div class="card">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl text-success-500">{item.icon}</span>
+              <h3 class="font-black text-white">{item.standard}</h3>
+            </div>
+            <p class="text-sm text-secondary-400">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Old Way vs. Our Way
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto overflow-x-auto">
+        <table class="w-full card overflow-hidden">
+          <thead>
+            <tr class="bg-dark border-b-2 border-accent-500/50">
+              <th class="px-6 py-4 text-left font-black text-white">What</th>
+              <th class="px-6 py-4 text-left font-black text-secondary-400">Old Way</th>
+              <th class="px-6 py-4 text-left font-black text-accent-500">Our Way</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row, idx) => (
+              <tr class={idx % 2 === 0 ? 'bg-dark' : 'bg-secondary-900'}>
+                <td class="px-6 py-4 font-bold text-white capitalize">{row.label}</td>
+                <td class="px-6 py-4 text-secondary-400">{row.traditional}</td>
+                <td class="px-6 py-4 text-accent-500 font-black">{row.resultMarketing}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Get One Free Sample
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300">
+          Not sure? We'll write one piece for free. Judge the quality yourself.
+          <br>
+          <strong>No tricks. No pressure.</strong>
+        </p>
+        <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+          Request Free Sample
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

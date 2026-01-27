@@ -18,12 +18,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      9 min read
-  #  Smart Construction Equipment &amp; IoT Financing Malaysia 
-
-  Finance IoT-enabled construction equipment in Malaysia. Learn how connected machinery increases efficiency 35% and reduces downtime. 0% deposit financing available. 
-
-     By Ing Heng Credit &amp; Leasing     # Smart Construction Equipment &amp; IoT Financing Malaysia: Connected Machinery Revolution
 
 When your excavator breaks down at 2 PM on a critical project, and you discover it could have been prevented if you knew the hydraulic filter was 90% clogged, do you feel that sinking sensation in your stomach knowing this repair will cost RM15,000 and delay the project by 3 days? IoT-enabled construction equipment eliminates this scenario by monitoring your machine’s health in real-time.
 

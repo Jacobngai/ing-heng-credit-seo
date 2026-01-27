@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import WhatsAppCTA from '../../../../components/industries/WhatsAppCTA.astro';
+
+const lang = 'en';
+
+// All pages with category tags
+const allPages = [
+  { title: 'Property Developers', slug: 'property-developers', icon: '🏢', category: 'Property Developers', categoryIcon: '🏢' },
+  { title: 'Pocket Development', slug: 'property-developers/pocket-development', icon: '🏭', category: 'Property Developers', categoryIcon: '🏢' },
+  { title: 'Shoplot', slug: 'property-developers/shoplot', icon: '🏪', category: 'Property Developers', categoryIcon: '🏢' },
+  { title: 'Residential', slug: 'property-developers/residential', icon: '🏠', category: 'Property Developers', categoryIcon: '🏢' },
+  { title: 'Scaffold Rental', slug: 'best-marketing-for-scaffold-rental', icon: '🪜', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Generator Rental', slug: 'best-marketing-for-generator-rental', icon: '⚡', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Machinery Rental', slug: 'best-marketing-for-machinery-rental', icon: '🏭', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Forklift Rental', slug: 'best-marketing-for-forklift-rental', icon: '🔥', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Lorry Rental', slug: 'best-marketing-for-lorry-rental', icon: '🚛', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Excavator Rental', slug: 'best-marketing-for-excavator-rental', icon: '🏗️', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Crane Rental', slug: 'best-marketing-for-crane-rental', icon: '🏗️', category: 'Equipment Rental', categoryIcon: '🔧' },
+  { title: 'Bulldozer Rental', slug: 'best-marketing-for-bulldozer-rental', icon: '🚜', category: 'Equipment Rental', categoryIcon: '🔧' },
+  // Sub-Contractors & Specialist Trades (12 pages)
+  { title: 'Security Contractors', slug: 'subcontractors/best-marketing-for-security-contractors', icon: '🛡️', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Landscaping Contractors', slug: 'subcontractors/best-marketing-for-landscaping-contractors', icon: '🌿', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Plumbing Contractors', slug: 'subcontractors/best-marketing-for-plumbing-contractors', icon: '🚿', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Precast Concrete Contractors', slug: 'subcontractors/best-marketing-for-precast-concrete-contractors', icon: '🧱', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Renovation Contractors', slug: 'subcontractors/best-marketing-for-renovation-contractors', icon: '🔨', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Carpentry Contractors', slug: 'subcontractors/best-marketing-for-carpentry-contractors', icon: '🪚', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Roofing Contractors', slug: 'subcontractors/best-marketing-for-roofing-contractors', icon: '🏠', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Piling Contractors', slug: 'subcontractors/best-marketing-for-piling-contractors', icon: '🏗️', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Bricklaying Contractors', slug: 'subcontractors/best-marketing-for-bricklaying-contractors', icon: '🧱', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Fire Protection Contractors', slug: 'subcontractors/best-marketing-for-fire-protection-contractors', icon: '🔥', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Glazing Contractors', slug: 'subcontractors/best-marketing-for-glazing-contractors', icon: '🪟', category: 'Sub-Contractors', categoryIcon: '👷' },
+  { title: 'Demolition Contractors', slug: 'subcontractors/best-marketing-for-demolition-contractors', icon: '💥', category: 'Sub-Contractors', categoryIcon: '👷' },
+  // Building Materials Suppliers (20 pages)
+  { title: 'Cement & Concrete Suppliers', slug: 'building-materials/cement-concrete-suppliers', icon: '🧱', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Sand & Aggregates Suppliers', slug: 'building-materials/sand-aggregates-suppliers', icon: '🏖️', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Steel & Metal Suppliers', slug: 'building-materials/steel-metal-suppliers', icon: '🔩', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Bricks & Blocks Suppliers', slug: 'building-materials/bricks-blocks-suppliers', icon: '🧱', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Roofing Materials Suppliers', slug: 'building-materials/roofing-materials-suppliers', icon: '🏠', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Timber & Wood Suppliers', slug: 'building-materials/timber-wood-suppliers', icon: '🪵', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Tiles & Flooring Suppliers', slug: 'building-materials/tiles-flooring-suppliers', icon: '🟫', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Paint & Finishing Suppliers', slug: 'building-materials/paint-finishing-suppliers', icon: '🎨', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Glass & Aluminum Suppliers', slug: 'building-materials/glass-aluminum-suppliers', icon: '🪟', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Plumbing Materials Suppliers', slug: 'building-materials/plumbing-materials-suppliers', icon: '🚿', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Electrical Materials Suppliers', slug: 'building-materials/electrical-materials-suppliers', icon: '⚡', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Hardware & Tools Suppliers', slug: 'building-materials/hardware-tools-suppliers', icon: '🔧', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Insulation Materials Suppliers', slug: 'building-materials/insulation-materials-suppliers', icon: '🛡️', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Waterproofing Suppliers', slug: 'building-materials/waterproofing-materials-suppliers', icon: '💧', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Doors & Windows Suppliers', slug: 'building-materials/doors-windows-suppliers', icon: '🚪', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Kitchen & Bathroom Fixtures', slug: 'building-materials/kitchen-bathroom-fixtures-suppliers', icon: '🚽', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Construction Chemicals Suppliers', slug: 'building-materials/construction-chemicals-suppliers', icon: '⚗️', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Scaffolding & Formwork Suppliers', slug: 'building-materials/scaffolding-formwork-suppliers', icon: '🪜', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Safety Equipment & PPE Suppliers', slug: 'building-materials/safety-equipment-ppe-suppliers', icon: '⛑️', category: 'Building Materials', categoryIcon: '🏗️' },
+  { title: 'Modular & Prefab Suppliers', slug: 'building-materials/modular-prefab-suppliers', icon: '🏭', category: 'Building Materials', categoryIcon: '🏗️' }
+];
+---
+<BaseLayout
+  title="Construction Industry SEO Malaysia | Equipment Rental & Property Developers"
+  description="SEO services for construction industry in Malaysia. Equipment rental, property developers, sub-contractors. Problem-aware keywords in 3 languages. 24 pages live."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Construction Industry</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Win Buyers From Google and AI Search
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          Our AIEO + local SEO system targets niche terms like <strong>"how much to rent forklift for 1 day"</strong> so construction companies find you first.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%20run%20a%20construction%20business.%20Interested%20in%20your%20marketing." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Try RM399 Trial
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            See Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Construction SEO Story -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-8 md:p-12">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-4xl">🏗️</span>
+            <h2 class="text-2xl md:text-3xl font-black text-white">Why I Focus on Construction SEO</h2>
+          </div>
+
+          <div class="space-y-6 text-secondary-300">
+            <p class="text-lg">
+              Before starting Result Marketing, I worked in tech development with <strong class="text-white">many construction clients</strong>. That experience taught me something important about how this industry works.
+            </p>
+
+            <div class="bg-secondary-900/50 border-l-4 border-accent-500 p-6 rounded-r">
+              <h3 class="font-bold text-white mb-3">The Real Decision Maker</h3>
+              <p>
+                In construction, the boss usually <strong class="text-accent-400">doesn't choose suppliers</strong>. The <strong class="text-accent-400">project manager</strong> does. And project managers? They change constantly.
+              </p>
+            </div>
+
+            <div class="bg-secondary-900/50 border-l-4 border-accent-500 p-6 rounded-r">
+              <h3 class="font-bold text-white mb-3">The Staff Turnover Reality</h3>
+              <p>
+                Construction has high staff turnover. When a project leaves, a new project manager joins. They need suppliers. They don't know anyone. So what do they do?
+              </p>
+              <p class="mt-2 text-xl font-bold text-accent-400">
+                They Google it.
+              </p>
+            </div>
+
+            <div class="bg-secondary-900/50 border-l-4 border-accent-500 p-6 rounded-r">
+              <h3 class="font-bold text-white mb-3">Why Construction SEO Always Works</h3>
+              <ul class="space-y-2 mt-3">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent-400 mt-1">✓</span>
+                  <span><strong class="text-white">People keep changing</strong> — New project managers = new searches every month</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent-400 mt-1">✓</span>
+                  <span><strong class="text-white">Your website stays</strong> — Unlike staff, your SEO is always there, 24/7</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent-400 mt-1">✓</span>
+                  <span><strong class="text-white">Demand never decreases</strong> — Construction always needs suppliers</span>
+                </li>
+              </ul>
+            </div>
+
+            <p class="text-lg font-bold text-white text-center pt-4">
+              This is why construction SEO is an investment that keeps paying dividends.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Pages -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <h2 class="text-2xl md:text-4xl font-black mb-8 text-center text-white">
+        All Construction Pages
+      </h2>
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-4">
+        {allPages.map((page, index) => (
+          <a
+            href={`/${lang}/industries/construction/${page.slug}/`}
+            class="card p-4 flex items-center gap-3 hover:border-accent-500/50 transition-all duration-300 group"
+          >
+            <span class="text-2xl">{page.icon}</span>
+            <div class="flex-1">
+              <h3 class="text-base font-black text-white group-hover:text-accent-400 transition-colors">
+                {page.title}
+              </h3>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-xs text-secondary-500">{page.categoryIcon} {page.category}</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-accent-500 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Language Advantage -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <h2 class="text-2xl md:text-4xl font-black mb-8 text-center text-white">
+        Malaysians Speak 3 Languages
+      </h2>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-lg text-secondary-400 mb-8 text-center">
+          English-only websites miss 67% of construction buyers.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card p-6">
+            <h3 class="text-lg font-black mb-2 text-accent-400">Malay (Bahasa Melayu)</h3>
+            <p class="text-sm text-secondary-400">CIDB contractors, logistics managers, transport operators</p>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-lg font-black mb-2 text-accent-400">Chinese (中文)</h3>
+            <p class="text-sm text-secondary-400">Business owners, procurement decisions, investors</p>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-lg font-black mb-2 text-accent-400">English</h3>
+            <p class="text-sm text-secondary-400">Corporate clients, MNCs, international projects</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Ready to Get More Construction Customers?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          Problem-aware keywords. 3 languages. AI engine optimization.
+          <br>
+          <strong>RM 1,200/month. All included.</strong>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%20run%20a%20construction%20business.%20Interested%20in%20your%20marketing." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Try RM399 Trial
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            See Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Industries -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <a href="/en/industries" class="btn btn-secondary">
+          ← Back to All Industries
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

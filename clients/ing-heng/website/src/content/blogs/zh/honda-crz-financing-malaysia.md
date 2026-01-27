@@ -1,7 +1,7 @@
 ---
 title: "本田CRZ融资马来西亚 - 混合动力跑车0%首付贷款"
 description: "在马来西亚获得本田CRZ融资，提供0%首付选项。获批这款稀有混合动力跑车，正在升值中。为经典汽车爱好者提供专家指导。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

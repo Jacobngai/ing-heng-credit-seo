@@ -1,0 +1,552 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  "title": "Pajak vs Beli Peralatan Malaysia: Panduan Keputusan Lengkap 2024",
+  "slug": "equipment-lease-vs-buy-malaysia",
+  "excerpt": "Bandingkan pajak dan pembelian peralatan di Malaysia. Ketahui pilihan yang menawarkan aliran tunai lebih baik, faedah cukai, dan ROI. Analisis pakar untuk keputusan perniagaan.",
+  "date": "2024-12-22T00:00:00.000Z",
+  "author": "Ing Heng Credit & Leasing Sdn Bhd      Laman Utama  Tentang Kami  Perkhidmatan    Peralatan            🏗️ Semua Peralatan    Lihat katalog peralatan lengkap kami         🚜 Jengkaut  Paling Popular    Jengkaut mini hingga besar untuk pembinaan         🚛 Lori Komersial  Kelulusan Pantas    Logistik & pengangkutan barang         🏭 Forklift    Peralatan gudang & perindustrian         🏗️ Kren Mudah Alih    Angkatan berat & pembinaan         🚚 Prime Mover    Pengangkutan treler & barang         🚜 Jentolak    Kerja tanah & pembukaan tanah         🧊 Lori Peti Sejuk    Logistik rantaian sejuk dan pengangkutan terkawal suhu          Lihat katalog peralatan lengkap kami  Hubungi Kami →\n      document.addEventListener(\"DOMContentLoaded\",()=>{const e=document.querySelector(\".equipment-dropdown-trigger\"),d=document.querySelector(\".equipment-dropdown-menu\"),n=document.querySelector(\".equipment-dropdown-wrapper\");e&&d&&n&&(e.addEventListener(\"click\",t=>{t.preventDefault(),t.stopPropagation();const r=e.getAttribute(\"aria-expanded\")===\"true\";e.setAttribute(\"aria-expanded\",(!r).toString())}),document.addEventListener(\"click\",t=>{n.contains(t.target)||e.setAttribute(\"aria-expanded\",\"false\")}),document.addEventListener(\"keydown\",t=>{t.key===\"Escape\"&&e.getAttribute(\"aria-expanded\")===\"true\"&&(e.setAttribute(\"aria-expanded\",\"false\"),e.focus())}),n.addEventListener(\"mouseenter\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"true\")}),n.addEventListener(\"mouseleave\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"false\")}))}); Blog  Hubungi          🇲🇾           🇬🇧 English    🇨🇳 中文    🇲🇾 Bahasa Melayu        \n  // Language switcher dropdown functionality - Enhanced version\n  (function() {\n    'use strict';\n\n    function initLanguageSwitcher() {\n      // Find ALL language switchers on the page (desktop + mobile)\n      const switchers = document.querySelectorAll('[data-language-switcher]');\n\n      switchers.forEach(function(switcher) {\n        const button = switcher.querySelector('#language-menu-button');\n        const menu = switcher.querySelector('#language-menu');\n        const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n        if (!button || !menu) {\n          console.warn('Language switcher: Missing button or menu element');\n          return;\n        }\n\n        // Remove any existing listeners (prevent duplicates)\n        const newButton = button.cloneNode(true);\n        button.parentNode.replaceChild(newButton, button);\n\n        // Toggle dropdown on button click\n        newButton.addEventListener('click', function(e) {\n          e.preventDefault();\n          e.stopPropagation();\n\n          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';\n          const newState = !isExpanded;\n\n          // Close all other language switchers first\n          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {\n            if (otherSwitcher !== switcher) {\n              const otherButton = otherSwitcher.querySelector('#language-menu-button');\n              const otherMenu = otherSwitcher.querySelector('#language-menu');\n              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');\n\n              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');\n              if (otherMenu) otherMenu.classList.add('hidden');\n              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';\n            }\n          });\n\n          // Toggle current switcher\n          newButton.setAttribute('aria-expanded', newState.toString());\n          menu.classList.toggle('hidden', !newState);\n\n          // Rotate arrow\n          if (arrow) {\n            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';\n          }\n\n          console.log('Language switcher toggled:', newState ? 'open' : 'closed');\n        });\n      });\n\n      // Close all dropdowns when clicking outside\n      document.addEventListener('click', function(e) {\n        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');\n\n        if (!clickedInsideSwitcher) {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (button) button.setAttribute('aria-expanded', 'false');\n            if (menu) menu.classList.add('hidden');\n            if (arrow) arrow.style.transform = 'rotate(0deg)';\n          });\n        }\n      });\n\n      // Close dropdowns on ESC key\n      document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape') {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (menu && !menu.classList.contains('hidden')) {\n              if (button) {\n                button.setAttribute('aria-expanded', 'false');\n                button.focus();\n              }\n              menu.classList.add('hidden');\n              if (arrow) arrow.style.transform = 'rotate(0deg)';\n            }\n          });\n        }\n      });\n\n      console.log('Language switcher initialized:', switchers.length, 'instance(s)');\n    }\n\n    // Run when DOM is ready\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);\n    } else {\n      initLanguageSwitcher();\n    }\n\n    // Re-initialize after view transitions (for Astro)\n    document.addEventListener('astro:page-load', initLanguageSwitcher);\n  })();\n       Sembang di WhatsApp",
+  "readTime": 7,
+  "category": "Financing Guides",
+  "image": "https://www.kreditloan.my\n/images/og-default.jpg"
+};
+
+const keywords = "pajak vs beli peralatan Malaysia, pajak peralatan vs pembelian, perbandingan pembiayaan peralatan, pajak atau beli peralatan Malaysia, keputusan peralatan perniagaan",
+  breadcrumbItems = [
+  {
+    "label": "Blog",
+    "href": "/ms/blog"
+  }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Financing Guides</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h1 id="pajak-vs-beli-peralatan-malaysia-panduan-keputusan-lengkap-2024">Pajak vs Beli Peralatan Malaysia: Panduan Keputusan Lengkap 2024</h1>
+<p>Memutuskan sama ada untuk memajak atau membeli peralatan di Malaysia memberi kesan yang besar kepada kewangan perniagaan anda. Kedua-dua pilihan mempunyai kelebihan yang berbeza bergantung kepada aliran tunai, situasi cukai, dan matlamat perniagaan anda. Panduan komprehensif ini membandingkan setiap aspek untuk membantu anda membuat pilihan yang tepat.</p>
+<h2 id="ringkasan-perbandingan-pantas">Ringkasan Perbandingan Pantas</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Faktor</th><th>Pajak Peralatan</th><th>Pembelian Peralatan</th></tr></thead><tbody><tr><td><strong>Kos Pendahuluan</strong></td><td>Deposit rendah hingga sifar</td><td>Harga penuh atau deposit</td></tr><tr><td><strong>Perbelanjaan Bulanan</strong></td><td>Bayaran pajak tetap</td><td>Bayaran pinjaman (jika dibiayai)</td></tr><tr><td><strong>Faedah Cukai</strong></td><td>Bayaran pajak boleh ditolak</td><td>Elaun susut nilai</td></tr><tr><td><strong>Pemilikan</strong></td><td>Pemberi pajak memiliki peralatan</td><td>Anda memiliki peralatan</td></tr><tr><td><strong>Penyelenggaraan</strong></td><td>Selalunya termasuk</td><td>Tanggungjawab anda</td></tr><tr><td><strong>Kesan Aliran Tunai</strong></td><td>Memelihara modal kerja</td><td>Pengeluaran tunai awal tinggi</td></tr></tbody></table>
+<h2 id="memahami-pajak-peralatan-di-malaysia">Memahami Pajak Peralatan di Malaysia</h2>
+<p>Pajak peralatan membenarkan perniagaan menggunakan peralatan tanpa membelinya secara langsung. Anda membuat pembayaran bulanan untuk menggunakan peralatan dalam tempoh yang dipersetujui, sama seperti menyewa.</p>
+<h3 id="cara-pajak-peralatan-berfungsi">Cara Pajak Peralatan Berfungsi</h3>
+<p><strong>Pajak Operasi</strong>: Anda menggunakan peralatan untuk sebahagian daripada hayat berguna. Di akhir pajak, anda mengembalikan peralatan, naik taraf, atau kadang-kadang membeli pada nilai pasaran saksama.</p>
+<p><strong>Pajak Kewangan</strong>: Berstruktur lebih seperti pinjaman. Anda biasanya memiliki peralatan di akhir pajak untuk jumlah nominal. Tempoh pajak meliputi sebahagian besar hayat berguna peralatan.</p>
+<h3 id="terma-pajak-peralatan-biasa-di-malaysia">Terma Pajak Peralatan Biasa di Malaysia</h3>
+<ul>
+<li><strong>Peralatan Pembinaan</strong>: 3-7 tahun</li>
+<li><strong>Jentera Pembuatan</strong>: 5-10 tahun</li>
+<li><strong>Kenderaan Komersial</strong>: 2-5 tahun</li>
+<li><strong>Peralatan Pejabat</strong>: 2-4 tahun</li>
+<li><strong>Perkakasan Teknologi</strong>: 2-3 tahun</li>
+</ul>
+<h3 id="kelebihan-pajak-peralatan">Kelebihan Pajak Peralatan</h3>
+<p><strong>Memelihara Modal Kerja</strong>: Tiada bayaran pendahuluan yang besar bermakna anda menyimpan tunai untuk operasi, inventori, atau pelaburan lain. Ini meningkatkan kedudukan aliran tunai anda dengan ketara.</p>
+<p><strong>Pilihan 0% Deposit</strong>: Ramai pemberi pajak menawarkan pajak sifar deposit, menjadikan peralatan boleh diakses serta-merta tanpa pengeluaran tunai. Ini mempercepatkan pertumbuhan perniagaan dan garis masa projek.</p>
+<p><strong>Kos Bulanan Boleh Diramal</strong>: Bayaran pajak tetap membantu dengan belanjawan dan perancangan kewangan. Anda tahu tepat berapa kos peralatan setiap bulan sepanjang tempoh pajak.</p>
+<p><strong>Penyelenggaraan Termasuk</strong>: Banyak pajak termasuk penyelenggaraan, pembaikan, dan kadang-kadang insurans. Ini mengurangkan kos tidak dijangka dan memastikan peralatan kekal beroperasi.</p>
+<p><strong>Kelebihan Cukai</strong>: Bayaran pajak biasanya boleh ditolak cukai sepenuhnya sebagai perbelanjaan perniagaan. Ini memberikan faedah cukai segera berbanding dengan jadual susut nilai.</p>
+<p><strong>Naik Taraf Teknologi</strong>: Tempoh pajak yang lebih pendek membenarkan naik taraf peralatan tetap. Kekal terkini dengan teknologi tanpa pelaburan penggantian yang besar.</p>
+<p><strong>Luar Kunci Kira-Kira</strong>: Pajak operasi mungkin tidak muncul sebagai hutang dalam penyata kewangan. Ini memelihara kapasiti peminjaman untuk keperluan perniagaan lain.</p>
+<h3 id="kelemahan-pajak-peralatan">Kelemahan Pajak Peralatan</h3>
+<p><strong>Jumlah Kos Lebih Tinggi</strong>: Sepanjang hayat penuh peralatan, pajak biasanya memerlukan kos lebih tinggi daripada pembelian. Caj faedah dan keuntungan pemberi pajak meningkatkan jumlah perbelanjaan.</p>
+<p><strong>Tiada Pemilikan</strong>: Anda tidak pernah memiliki aset melainkan berstruktur sebagai pajak kewangan. Tiada pembinaan ekuiti atau tangkapan nilai jual semula di akhir kontrak.</p>
+<p><strong>Pembayaran Berterusan</strong>: Bayaran bulanan berterusan sepanjang tempoh pajak tanpa mengira penggunaan peralatan. Ini mencipta overhed tetap walaupun semasa tempoh perlahan.</p>
+<p><strong>Sekatan Penggunaan</strong>: Perjanjian pajak mungkin mengehadkan jam penggunaan, pengubahsuaian, atau skop operasi. Melebihi had mencetuskan caj tambahan.</p>
+<p><strong>Kos Penamatan Awal</strong>: Memecahkan perjanjian pajak awal selalunya melibatkan penalti yang besar. Ini mengurangkan fleksibiliti jika keperluan perniagaan berubah.</p>
+<p><strong>Keperluan Kredit</strong>: Skor kredit yang baik dan penyata kewangan diperlukan untuk terma pajak yang menguntungkan. Kredit buruk mengakibatkan kadar atau deposit yang lebih tinggi.</p>
+<h2 id="memahami-pembelian-peralatan-di-malaysia">Memahami Pembelian Peralatan di Malaysia</h2>
+<p>Membeli peralatan bermaksud anda memiliki aset serta-merta (atau selepas pembayaran pinjaman). Anda boleh menggunakan, mengubah suai, atau menjual peralatan mengikut keperluan perniagaan.</p>
+<h3 id="pilihan-pembiayaan-pembelian-peralatan">Pilihan Pembiayaan Pembelian Peralatan</h3>
+<p><strong>Pinjaman Jangka Bank</strong>: Pembiayaan tradisional dengan kadar faedah tetap atau berubah. Terma biasanya 3-10 tahun bergantung kepada jenis peralatan dan nilai.</p>
+<p><strong>Sewa Beli</strong>: Peralatan berfungsi sebagai cagaran. Kadar lebih rendah daripada pinjaman tanpa cagaran tetapi pemilikan dipindahkan hanya selepas pembayaran penuh.</p>
+<p><strong>Pinjaman Khusus Peralatan</strong>: Sesetengah pemberi pinjaman pakar dalam jenis peralatan tertentu (pembinaan, pembuatan, kenderaan). Selalunya menawarkan kadar dan terma yang kompetitif.</p>
+<p><strong>Pembiayaan Islam</strong>: Pilihan patuh Syariah seperti Murabahah atau Ijarah. Tersedia dari bank Islam dan institusi kewangan.</p>
+<h3 id="kelebihan-pembelian-peralatan">Kelebihan Pembelian Peralatan</h3>
+<p><strong>Faedah Pemilikan</strong>: Anda memiliki aset serta-merta (atau selepas pembayaran pinjaman). Membina ekuiti dan menangkap nilai baki semasa menjual atau bertukar.</p>
+<p><strong>Tiada Sekatan Penggunaan</strong>: Gunakan peralatan seintensif yang diperlukan. Ubah suai, naik taraf, atau pindahkan peralatan tanpa kelulusan pemberi pajak.</p>
+<p><strong>Kos Jangka Panjang Lebih Rendah</strong>: Sepanjang hayat berguna peralatan, pembelian biasanya memerlukan kos lebih rendah daripada pajak. Tiada margin keuntungan pemberi pajak yang berterusan dalam pembayaran anda.</p>
+<p><strong>Susut Nilai Cukai</strong>: Tuntut elaun modal dan potongan susut nilai. Jadual susut nilai dipercepatkan Malaysia memberikan faedah cukai yang ketara.</p>
+<p><strong>Nilai Jual Semula</strong>: Jual peralatan apabila tidak diperlukan lagi. Pulihkan sebahagian pelaburan untuk membiayai peralatan baru atau keperluan perniagaan lain.</p>
+<p><strong>Meminjam Terhadap Aset</strong>: Gunakan peralatan yang dimiliki sebagai cagaran untuk pinjaman masa depan. Meningkatkan kapasiti peminjaman tanpa jaminan tambahan.</p>
+<p><strong>Kawalan Lengkap</strong>: Tentukan jadual penyelenggaraan, masa naik taraf, dan perubahan operasi. Tiada sekatan pemberi pajak pada penggunaan peralatan.</p>
+<h3 id="kelemahan-pembelian-peralatan">Kelemahan Pembelian Peralatan</h3>
+<p><strong>Kos Pendahuluan Tinggi</strong>: Bayaran awal yang besar menekan aliran tunai. Walaupun dengan pembiayaan 0% deposit, komitmen kepada pembayaran masa depan mempengaruhi kapasiti peminjaman.</p>
+<p><strong>Tanggungjawab Penyelenggaraan</strong>: Semua kos penyelenggaraan, pembaikan, dan insurans jatuh kepada anda. Kerosakan tidak dijangka mencipta tekanan kewangan tambahan.</p>
+<p><strong>Risiko Teknologi</strong>: Peralatan yang dimiliki mungkin menjadi usang sebelum susut nilai sepenuhnya. Kemajuan teknologi mengurangkan nilai jual semula dan kecekapan operasi.</p>
+<p><strong>Kesan Kunci Kira-Kira</strong>: Pembelian mencipta hutang (jika dibiayai) yang muncul dalam penyata kewangan. Mungkin mengehadkan kapasiti peminjaman masa depan.</p>
+<p><strong>Masalah Pelupusan</strong>: Menjual peralatan lama memerlukan masa dan usaha. Keadaan pasaran mungkin menghasilkan nilai jual semula yang lebih rendah daripada dijangkakan.</p>
+<h2 id="analisis-kewangan-pajak-vs-beli">Analisis Kewangan: Pajak vs Beli</h2>
+<p>Memahami kesan kewangan sebenar memerlukan analisis beberapa faktor di luar pembayaran bulanan.</p>
+<h3 id="analisis-kesan-aliran-tunai">Analisis Kesan Aliran Tunai</h3>
+<p><strong>Contoh Pembelian Peralatan</strong> (Jengkaut RM200,000):</p>
+<ul>
+<li>Bayaran pendahuluan: RM40,000 (20%)</li>
+<li>Bayaran pinjaman bulanan: RM3,500 (5 tahun pada 8%)</li>
+<li>Belanjawan penyelenggaraan: RM800/bulan</li>
+<li>Insurans: RM300/bulan</li>
+<li>Jumlah aliran keluar tunai bulanan: RM4,600</li>
+</ul>
+<p><strong>Contoh Pajak Peralatan</strong> (Jengkaut Yang Sama):</p>
+<ul>
+<li>Deposit: RM0 (pajak 0% deposit)</li>
+<li>Bayaran pajak bulanan: RM4,200</li>
+<li>Penyelenggaraan termasuk dalam pajak</li>
+<li>Insurans termasuk dalam pajak</li>
+<li>Jumlah aliran keluar tunai bulanan: RM4,200</li>
+</ul>
+<p>Pajak memelihara RM40,000 dalam modal kerja sambil mengurangkan kos bulanan sebanyak RM400.</p>
+<h3 id="jumlah-kos-pemilikan-tco">Jumlah Kos Pemilikan (TCO)</h3>
+<p><strong>TCO Pembelian (5 tahun)</strong>:</p>
+<ul>
+<li>Jumlah bayaran pinjaman: RM250,000</li>
+<li>Kos penyelenggaraan: RM48,000</li>
+<li>Insurans: RM18,000</li>
+<li>Tolak: Nilai jual semula (RM80,000)</li>
+<li>Kos bersih: RM236,000</li>
+</ul>
+<p><strong>TCO Pajak (5 tahun)</strong>:</p>
+<ul>
+<li>Jumlah bayaran pajak: RM252,000</li>
+<li>Penyelenggaraan: Termasuk</li>
+<li>Insurans: Termasuk</li>
+<li>Pemulangan peralatan: Tiada nilai baki</li>
+<li>Kos bersih: RM252,000</li>
+</ul>
+<p>Pembelian menjimatkan RM16,000 dalam tempoh lima tahun tetapi memerlukan pelaburan pendahuluan RM40,000 lebih tinggi.</p>
+<h3 id="analisis-nilai-semasa-bersih-npv">Analisis Nilai Semasa Bersih (NPV)</h3>
+<p>Semasa membandingkan pilihan, kira nilai semasa semua aliran tunai menggunakan kos modal perniagaan anda.</p>
+<p><strong>Faktor Yang Mempengaruhi NPV</strong>:</p>
+<ul>
+<li>Kadar diskaun (kos modal)</li>
+<li>Masa faedah cukai</li>
+<li>Kebolehubahan kos penyelenggaraan</li>
+<li>Ketidakpastian nilai baki</li>
+<li>Kos peluang modal</li>
+</ul>
+<p>Secara amnya, pembelian menunjukkan NPV yang lebih baik untuk penggunaan peralatan jangka panjang, manakala pajak memberi manfaat kepada keperluan jangka pendek atau teknologi yang berubah dengan cepat.</p>
+<h2 id="implikasi-cukai-di-malaysia">Implikasi Cukai di Malaysia</h2>
+<p>Rawatan cukai memberi kesan ketara kepada kos sebenar setiap pilihan.</p>
+<h3 id="faedah-cukai-pajak">Faedah Cukai Pajak</h3>
+<p><strong>Potongan Pajak Operasi</strong>: Pembayaran pajak penuh boleh ditolak serta-merta sebagai perbelanjaan perniagaan. Ini memberikan pelepasan cukai segera sama dengan kadar cukai marginal anda.</p>
+<p><strong>Contoh</strong>: Pembayaran pajak tahunan RM50,400</p>
+<ul>
+<li>Penjimatan cukai (kadar korporat 24%): RM12,096</li>
+<li>Kos berkesan selepas cukai: RM38,304</li>
+</ul>
+<h3 id="faedah-cukai-pembelian">Faedah Cukai Pembelian</h3>
+<p><strong>Elaun Modal</strong>: Malaysia menyediakan elaun susut nilai yang murah hati untuk peralatan perniagaan.</p>
+<p><strong>Elaun Awal</strong>: Potongan 20% pada tahun pertama untuk kebanyakan kategori peralatan.</p>
+<p><strong>Elaun Tahunan</strong>: Kadar susut nilai tambahan berbeza mengikut jenis peralatan:</p>
+<ul>
+<li>Jentera: 10-14% tahunan</li>
+<li>Kenderaan bermotor: 20% tahunan</li>
+<li>Peralatan komputer: 20% tahunan</li>
+</ul>
+<p><strong>Contoh</strong>: Pembelian jengkaut RM200,000</p>
+<ul>
+<li>Potongan Tahun 1 (20% + 10%): RM60,000</li>
+<li>Penjimatan cukai (kadar 24%): RM14,400</li>
+<li>Potongan Tahun 2-10: RM20,000 tahunan</li>
+<li>Penjimatan cukai tahunan: RM4,800</li>
+</ul>
+<h3 id="faedah-susut-nilai-dipercepatkan">Faedah Susut Nilai Dipercepatkan</h3>
+<p>Malaysia menawarkan susut nilai dipercepatkan untuk industri dan jenis peralatan tertentu. Ini boleh menjadikan pembelian lebih menarik daripada yang dicadangkan oleh susut nilai standard.</p>
+<p><strong>Peralatan Layak</strong>:</p>
+<ul>
+<li>Peralatan perlindungan alam sekitar</li>
+<li>Jentera cekap tenaga</li>
+<li>Automasi dan robotik</li>
+<li>Peralatan penyelidikan dan pembangunan</li>
+</ul>
+<h2 id="pertimbangan-khusus-industri">Pertimbangan Khusus Industri</h2>
+<p>Industri berbeza memihak kepada pajak atau pembelian berdasarkan ciri-ciri operasi.</p>
+<h3 id="industri-pembinaan">Industri Pembinaan</h3>
+<p><strong>Memihak Pajak Apabila</strong>:</p>
+<ul>
+<li>Keperluan peralatan khusus projek</li>
+<li>Tempoh projek tidak menentu</li>
+<li>Corak kerja bermusim</li>
+<li>Perubahan teknologi pesat (GPS, automasi)</li>
+</ul>
+<p><strong>Memihak Pembelian Apabila</strong>:</p>
+<ul>
+<li>Projek mantap, jangka panjang</li>
+<li>Peralatan khusus dengan hayat panjang</li>
+<li>Berbilang aliran pendapatan daripada peralatan</li>
+<li>Keupayaan penyelenggaraan yang mantap</li>
+</ul>
+<h3 id="sektor-pembuatan">Sektor Pembuatan</h3>
+<p><strong>Memihak Pajak Apabila</strong>:</p>
+<ul>
+<li>Teknologi yang berkembang pesat</li>
+<li>Keperluan pengeluaran fleksibel</li>
+<li>Modal terhad untuk pengembangan</li>
+<li>Kepakaran penyelenggaraan tidak tersedia</li>
+</ul>
+<p><strong>Memihak Pembelian Apabila</strong>:</p>
+<ul>
+<li>Peralatan pengeluaran teras</li>
+<li>Permintaan mantap, jangka panjang</li>
+<li>Kakitangan penyelenggaraan tersedia</li>
+<li>Faedah susut nilai cukai ketara</li>
+</ul>
+<h3 id="pengangkutan-dan-logistik">Pengangkutan dan Logistik</h3>
+<p><strong>Memihak Pajak Apabila</strong>:</p>
+<ul>
+<li>Ujian pengembangan armada</li>
+<li>Variasi permintaan bermusim</li>
+<li>Pakej penyelenggaraan menarik</li>
+<li>Memelihara barisan kredit untuk inventori</li>
+</ul>
+<p><strong>Memihak Pembelian Apabila</strong>:</p>
+<ul>
+<li>Laluan dan permintaan yang mantap</li>
+<li>Keupayaan penyelenggaraan dalaman</li>
+<li>Hayat berguna peralatan panjang</li>
+<li>Membina pangkalan aset untuk cagaran</li>
+</ul>
+<h2 id="strategi-hibrid">Strategi Hibrid</h2>
+<p>Banyak perniagaan menggunakan kedua-dua pendekatan secara strategik.</p>
+<h3 id="peralatan-teras-vs-bukan-teras">Peralatan Teras vs Bukan Teras</h3>
+<p><strong>Beli Peralatan Teras</strong>: Beli peralatan penting yang menjadi pusat operasi. Aset ini membenarkan faedah pemilikan dan kelebihan kos jangka panjang.</p>
+<p><strong>Pajak Peralatan Tambahan</strong>: Pajak peralatan untuk projek sementara, keperluan bermusim, atau menguji keupayaan baru.</p>
+<h3 id="pendekatan-kapasiti-kewangan">Pendekatan Kapasiti Kewangan</h3>
+<p><strong>Pajak Apabila Kekurangan Tunai</strong>: Memelihara modal kerja semasa fasa pertumbuhan atau ketidakpastian ekonomi. Gunakan tunai yang tersedia untuk pelaburan pulangan tinggi.</p>
+<p><strong>Beli Apabila Tunai Tersedia</strong>: Beli peralatan apabila kedudukan tunai kuat dan faedah susut nilai menguntungkan. Membina pangkalan aset untuk cagaran masa depan.</p>
+<h3 id="strategi-kitaran-hayat-teknologi">Strategi Kitaran Hayat Teknologi</h3>
+<p><strong>Pajak Teknologi Berubah Pantas</strong>: Pengkomputeran, telekomunikasi, dan peralatan pembuatan berteknologi tinggi dengan hayat berguna pendek.</p>
+<p><strong>Beli Teknologi Stabil</strong>: Jentera asas, kenderaan, dan peralatan dengan teknologi terbukti, stabil dan hayat berguna panjang.</p>
+<h2 id="rangka-kerja-keputusan">Rangka Kerja Keputusan</h2>
+<p>Gunakan pendekatan berstruktur ini untuk menilai keputusan pajak vs beli.</p>
+<h3 id="langkah-1-nilai-kedudukan-kewangan">Langkah 1: Nilai Kedudukan Kewangan</h3>
+<p><strong>Analisis Aliran Tunai</strong>:</p>
+<ul>
+<li>Kedudukan tunai semasa</li>
+<li>Keperluan modal kerja</li>
+<li>Corak aliran tunai bermusim</li>
+<li>Barisan kredit yang tersedia</li>
+</ul>
+<p><strong>Keutamaan Pelaburan</strong>:</p>
+<ul>
+<li>Kritikal peralatan kepada operasi</li>
+<li>Peluang pelaburan alternatif</li>
+<li>Keperluan pembiayaan pertumbuhan</li>
+<li>Tahap toleransi risiko</li>
+</ul>
+<h3 id="langkah-2-kira-kos-sebenar">Langkah 2: Kira Kos Sebenar</h3>
+<p><strong>Analisis Pajak</strong>:</p>
+<ul>
+<li>Jumlah bayaran pajak sepanjang tempoh</li>
+<li>Keperluan deposit dan yuran</li>
+<li>Kemasukan penyelenggaraan dan insurans</li>
+<li>Pilihan dan kos akhir pajak</li>
+</ul>
+<p><strong>Analisis Pembelian</strong>:</p>
+<ul>
+<li>Harga pembelian dan terma pembiayaan</li>
+<li>Keperluan bayaran pendahuluan</li>
+<li>Penyelenggaraan dan insurans berterusan</li>
+<li>Nilai baki yang dijangkakan</li>
+</ul>
+<h3 id="langkah-3-nilai-faedah-cukai">Langkah 3: Nilai Faedah Cukai</h3>
+<p><strong>Kesan Cukai Pajak</strong>:</p>
+<ul>
+<li>Potongan perbelanjaan segera</li>
+<li>Kesan pada pendapatan bercukai</li>
+<li>Nilai semasa penjimatan cukai</li>
+</ul>
+<p><strong>Kesan Cukai Pembelian</strong>:</p>
+<ul>
+<li>Jadual elaun modal</li>
+<li>Ketersediaan susut nilai dipercepatkan</li>
+<li>Aliran faedah cukai jangka panjang</li>
+</ul>
+<h3 id="langkah-4-pertimbangkan-faktor-strategik">Langkah 4: Pertimbangkan Faktor Strategik</h3>
+<p><strong>Keperluan Operasi</strong>:</p>
+<ul>
+<li>Intensiti penggunaan peralatan</li>
+<li>Keperluan pengubahsuaian</li>
+<li>Keperluan pemindahan</li>
+<li>Kekerapan naik taraf teknologi</li>
+</ul>
+<p><strong>Strategi Perniagaan</strong>:</p>
+<ul>
+<li>Rancangan pertumbuhan dan keperluan pembiayaan</li>
+<li>Matlamat pengumpulan aset</li>
+<li>Objektif kunci kira-kira</li>
+<li>Keutamaan pengurusan risiko</li>
+</ul>
+<h2 id="mitos-dan-salah-tanggapan-biasa">Mitos dan Salah Tanggapan Biasa</h2>
+<p>Memahami mitos ini membantu membuat keputusan termaklum.</p>
+<h3 id="mitos-pajak-sentiasa-lebih-mahal">Mitos: “Pajak Sentiasa Lebih Mahal”</h3>
+<p><strong>Realiti</strong>: Walaupun jumlah pembayaran mungkin lebih tinggi, pertimbangkan kos peluang modal, penjimatan penyelenggaraan, dan faedah cukai. Untuk penggunaan jangka pendek atau peralatan yang menyusut nilai dengan cepat, pajak selalunya memberikan nilai yang lebih baik.</p>
+<h3 id="mitos-anda-patut-sentiasa-memiliki-peralatan-anda">Mitos: “Anda Patut Sentiasa Memiliki Peralatan Anda”</h3>
+<p><strong>Realiti</strong>: Pemilikan tidak sentiasa optimum. Pajak memelihara modal, memberikan fleksibiliti, dan memindahkan risiko tertentu kepada pemberi pajak. Fokus pada kesan perniagaan keseluruhan, bukan hanya psikologi pemilikan.</p>
+<h3 id="mitos-bayaran-pajak-adalah-wang-yang-sia-sia">Mitos: “Bayaran Pajak adalah Wang Yang Sia-Sia”</h3>
+<p><strong>Realiti</strong>: Bayaran pajak membeli hak untuk menggunakan peralatan dan menjana pendapatan. Sama seperti sewa untuk kemudahan, pajak peralatan membolehkan operasi perniagaan tanpa komitmen modal yang besar.</p>
+<h3 id="mitos-membeli-membina-nilai-perniagaan">Mitos: “Membeli Membina Nilai Perniagaan”</h3>
+<p><strong>Realiti</strong>: Walaupun peralatan yang dimiliki muncul dalam kunci kira-kira, aset yang menyusut nilai dengan cepat mungkin tidak meningkatkan nilai perniagaan dengan ketara. Pertimbangkan sama ada pelaburan modal alternatif memberikan pulangan yang lebih baik.</p>
+<h3 id="mitos-0-deposit-bermakna-wang-percuma">Mitos: “0% Deposit Bermakna Wang Percuma”</h3>
+<p><strong>Realiti</strong>: Pilihan sifar deposit biasanya termasuk pembayaran bulanan atau kadar yang lebih tinggi. Analisis jumlah kos termasuk caj faedah dan yuran untuk memahami perbelanjaan sebenar.</p>
+<h2 id="membuat-pilihan-yang-tepat-untuk-perniagaan-anda">Membuat Pilihan Yang Tepat untuk Perniagaan Anda</h2>
+<p>Pertimbangkan garis panduan ini semasa memutuskan antara pajak dan pembelian.</p>
+<h3 id="pilih-pajak-peralatan-apabila">Pilih Pajak Peralatan Apabila:</h3>
+<ul>
+<li><strong>Modal Kerja Terhad</strong>: Perlu memelihara tunai untuk operasi atau peluang pertumbuhan</li>
+<li><strong>Keperluan Jangka Pendek</strong>: Peralatan diperlukan untuk projek tertentu atau peningkatan kapasiti sementara</li>
+<li><strong>Teknologi Berubah Pantas</strong>: Peralatan mungkin menjadi usang semasa hayat berguna</li>
+<li><strong>Kebimbangan Penyelenggaraan</strong>: Kurang keupayaan penyelenggaraan dalaman atau memilih kos yang boleh diramal</li>
+<li><strong>Pengoptimuman Cukai</strong>: Potongan perbelanjaan segera memberikan faedah cukai yang ketara</li>
+<li><strong>Pengurusan Kunci Kira-Kira</strong>: Ingin mengelakkan hutang yang muncul dalam penyata kewangan</li>
+<li><strong>Perniagaan Bermusim</strong>: Keperluan peralatan berbeza dengan ketara sepanjang tahun</li>
+</ul>
+<h3 id="pilih-pembelian-peralatan-apabila">Pilih Pembelian Peralatan Apabila:</h3>
+<ul>
+<li><strong>Kedudukan Tunai Kuat</strong>: Modal mencukupi tersedia tanpa menekan operasi</li>
+<li><strong>Penggunaan Jangka Panjang</strong>: Rancang untuk menggunakan peralatan sepanjang hayat berguna</li>
+<li><strong>Teknologi Stabil</strong>: Peralatan tidak mungkin menjadi usang dengan cepat</li>
+<li><strong>Keupayaan Penyelenggaraan</strong>: Ada atau boleh membangunkan kepakaran penyelenggaraan dalaman</li>
+<li><strong>Membina Aset</strong>: Ingin mengumpul aset perniagaan untuk cagaran atau jualan</li>
+<li><strong>Penggunaan Tinggi</strong>: Peralatan akan digunakan secara intensif, membenarkan pemilikan</li>
+<li><strong>Nilai Jual Semula</strong>: Peralatan mengekalkan nilai ketara sepanjang hayat berguna</li>
+</ul>
+<h3 id="amalan-terbaik-industri">Amalan Terbaik Industri</h3>
+<p><strong>Syarikat Pembinaan</strong>:</p>
+<ul>
+<li>Pajak peralatan khusus untuk projek tertentu</li>
+<li>Beli kenderaan armada teras dan peralatan asas</li>
+<li>Pertimbangkan pakej penyelenggaraan untuk jentera berat</li>
+</ul>
+<p><strong>Perniagaan Pembuatan</strong>:</p>
+<ul>
+<li>Beli peralatan pengeluaran utama</li>
+<li>Pajak peralatan bantuan atau sandaran</li>
+<li>Nilai kitaran penyegaran teknologi dengan teliti</li>
+</ul>
+<p><strong>Perniagaan Kecil</strong>:</p>
+<ul>
+<li>Mulakan dengan pajak untuk memelihara modal</li>
+<li>Beli peralatan apabila aliran tunai bertambah baik</li>
+<li>Fokus pada peralatan kritikal kepada operasi teras</li>
+</ul>
+<p><strong>Syarikat Berkembang</strong>:</p>
+<ul>
+<li>Gunakan pajak semasa fasa pengembangan pesat</li>
+<li>Beli peralatan apabila operasi stabil</li>
+<li>Seimbangkan pembiayaan pertumbuhan dengan keperluan peralatan</li>
+</ul>
+<h2 id="cadangan-pakar">Cadangan Pakar</h2>
+<p>Penasihat kewangan dan perunding perniagaan mencadangkan strategi ini.</p>
+<h3 id="prinsip-perancangan-kewangan">Prinsip Perancangan Kewangan</h3>
+<ol>
+<li>
+<p><strong>Kekalkan Kecairan</strong>: Jangan komitkan semua tunai yang tersedia kepada pembelian peralatan. Simpan modal kerja untuk peluang atau cabaran yang tidak dijangka.</p>
+</li>
+<li>
+<p><strong>Padankan Pembiayaan dengan Penggunaan</strong>: Pajak peralatan jangka pendek atau khusus projek. Beli aset operasi jangka panjang.</p>
+</li>
+<li>
+<p><strong>Pertimbangkan Kesan Perniagaan Keseluruhan</strong>: Keputusan peralatan mempengaruhi aliran tunai, cukai, kunci kira-kira, dan fleksibiliti operasi. Nilai semua faktor bersama.</p>
+</li>
+<li>
+<p><strong>Rancang untuk Pertumbuhan</strong>: Keputusan peralatan patut menyokong rancangan pertumbuhan perniagaan. Elakkan komitmen yang mengehadkan pengembangan masa depan.</p>
+</li>
+<li>
+<p><strong>Semakan Berkala</strong>: Nilai semula keperluan peralatan dan strategi pembiayaan setiap tahun. Keadaan perniagaan dan pilihan peralatan berubah dari masa ke masa.</p>
+</li>
+</ol>
+<h3 id="strategi-pengurusan-risiko">Strategi Pengurusan Risiko</h3>
+<p><strong>Kepelbagaian Pembiayaan Peralatan</strong>: Gunakan kedua-dua pajak dan pembelian untuk menyebarkan risiko dan mengoptimumkan kategori peralatan yang berbeza.</p>
+<p><strong>Masukkan Pertimbangan Penyelenggaraan</strong>: Faktor dalam kerumitan penyelenggaraan dan kos ke dalam keputusan. Sesetengah peralatan mendapat manfaat daripada penyelenggaraan yang disediakan pemberi pajak.</p>
+<p><strong>Rancang Strategi Keluar</strong>: Pertimbangkan pilihan akhir tempoh semasa pajak dan pasaran jual semula semasa membeli.</p>
+<p><strong>Pantau Trend Teknologi</strong>: Kekal maklum tentang kemajuan peralatan yang mungkin mempengaruhi masa keputusan pemerolehan.</p>
+<h3 id="integrasi-perancangan-cukai">Integrasi Perancangan Cukai</h3>
+<p><strong>Koordinat dengan Akauntan</strong>: Keputusan peralatan mempunyai implikasi cukai yang ketara. Libatkan penasihat cukai dalam proses keputusan.</p>
+<p><strong>Masa Pembelian Secara Strategik</strong>: Pertimbangkan masa tahun cukai untuk pembelian bagi mengoptimumkan faedah susut nilai.</p>
+<p><strong>Faham Perubahan Elaun</strong>: Peraturan cukai Malaysia berubah dari masa ke masa. Kekal terkini dengan peraturan elaun modal.</p>
+<p><strong>Dokumentasi Penggunaan Perniagaan</strong>: Kekalkan rekod yang jelas tentang penggunaan peralatan perniagaan untuk sokongan potongan cukai.</p>
+<h2 id="soalan-lazim-faq">Soalan Lazim (FAQ)</h2>
+<h3 id="1-pilihan-mana-yang-memberikan-aliran-tunai-lebih-baik-untuk-perniagaan-saya">1. Pilihan mana yang memberikan aliran tunai lebih baik untuk perniagaan saya?</h3>
+<p>Pajak peralatan biasanya memberikan aliran tunai jangka pendek yang lebih baik kerana memerlukan pelaburan pendahuluan yang sedikit atau tiada. Dengan pilihan 0% deposit, anda boleh memperoleh peralatan serta-merta sambil memelihara modal kerja untuk keperluan perniagaan lain. Walau bagaimanapun, pembelian mungkin memberikan aliran tunai jangka panjang yang lebih baik jika anda boleh menggunakan faedah susut nilai cukai dan menangkap nilai baki peralatan. Pilihan terbaik bergantung pada kedudukan tunai semasa anda, rancangan pertumbuhan perniagaan, dan intensiti penggunaan peralatan.</p>
+<h3 id="2-bolehkah-saya-mendapat-pilihan-0-deposit-untuk-kedua-dua-pajak-dan-pembelian">2. Bolehkah saya mendapat pilihan 0% deposit untuk kedua-dua pajak dan pembelian?</h3>
+<p>Ya, kedua-dua pajak dan pembiayaan pembelian boleh menawarkan pilihan 0% deposit di Malaysia. Syarikat pajak peralatan kerap menyediakan pajak sifar deposit sebagai kelebihan kompetitif. Untuk pembelian, sesetengah bank dan institusi kewangan menawarkan pembiayaan 100% untuk perniagaan yang layak kredit, pada asasnya tidak memerlukan bayaran pendahuluan. Walau bagaimanapun, pengaturan 0% deposit biasanya melibatkan pembayaran bulanan atau kadar faedah yang sedikit lebih tinggi untuk mengimbangi risiko pemberi pinjaman yang meningkat.</p>
+<h3 id="3-bagaimana-faedah-cukai-berbanding-antara-pajak-dan-beli">3. Bagaimana faedah cukai berbanding antara pajak dan beli?</h3>
+<p>Pajak memberikan faedah cukai segera melalui bayaran pajak yang boleh ditolak sepenuhnya, memberikan anda penjimatan cukai sama dengan kadar cukai marginal anda didarab dengan kos pajak tahunan. Pembelian memberikan faedah cukai melalui elaun modal dan susut nilai, tetapi ini tersebar dalam beberapa tahun. Elaun awal Malaysia sebanyak 20% ditambah elaun tahunan boleh memberikan faedah cukai jangka panjang yang besar untuk pembelian. Pilihan yang lebih baik bergantung pada situasi cukai semasa anda, keperluan aliran tunai, dan sama ada anda memilih faedah cukai segera atau lanjutan.</p>
+<h3 id="4-apa-yang-berlaku-di-akhir-pajak-peralatan">4. Apa yang berlaku di akhir pajak peralatan?</h3>
+<p>Di akhir pajak, anda biasanya mempunyai tiga pilihan: kembalikan peralatan kepada pemberi pajak, beli pada nilai pasaran saksama, atau naik taraf kepada peralatan yang lebih baharu dengan pajak baru. Pajak operasi biasanya memerlukan pemulangan peralatan melainkan anda memilih untuk membeli. Pajak kewangan selalunya termasuk pemindahan pemilikan untuk yuran nominal. Sesetengah pajak termasuk pilihan pembelian terjamin pada harga yang telah ditetapkan. Semak terma pajak dengan teliti untuk memahami komitmen dan peluang akhir tempoh anda.</p>
+<h3 id="5-pilihan-mana-yang-lebih-baik-untuk-teknologi-yang-berubah-dengan-pantas">5. Pilihan mana yang lebih baik untuk teknologi yang berubah dengan pantas?</h3>
+<p>Pajak secara amnya lebih baik untuk teknologi yang berubah dengan pantas kerana membenarkan naik taraf tetap tanpa beban kewangan melupuskan peralatan usang. Tempoh pajak pendek (2-3 tahun) membolehkan anda kekal terkini dengan kemajuan teknologi dalam pengkomputeran, telekomunikasi, dan jentera automatik. Membeli peralatan teknologi selalunya mengakibatkan keusangan sebelum susut nilai penuh, mengurangkan nilai peralatan dan kecekapan operasi. Walau bagaimanapun, jika teknologi stabil dan anda merancang penggunaan jangka panjang, pembelian mungkin masih kos efektif.</p>
+<h2 id="kesimpulan">Kesimpulan</h2>
+<p>Keputusan antara pajak dan pembelian peralatan di Malaysia bergantung pada keadaan perniagaan khusus anda, kedudukan kewangan, dan matlamat strategik. Pajak menawarkan pemeliharaan aliran tunai yang unggul, kemudahan penyelenggaraan, dan fleksibiliti untuk keperluan yang berubah. Pembelian memberikan kelebihan kos jangka panjang, faedah pemilikan aset, dan kawalan operasi.</p>
+<p>Pertimbangkan pajak apabila anda perlu memelihara modal kerja, mempunyai keperluan peralatan jangka pendek, atau mahukan kos bulanan yang boleh diramal dengan penyelenggaraan termasuk. Pilih pembelian apabila anda mempunyai aliran tunai yang kuat, merancang penggunaan peralatan jangka panjang, dan ingin membina aset perniagaan sambil menangkap faedah susut nilai.</p>
+<p>Ingat bahawa anda tidak perlu memilih hanya satu pendekatan. Banyak perniagaan yang berjaya menggunakan kedua-dua pajak dan pembelian secara strategik untuk kategori peralatan yang berbeza. Kunci adalah memadankan pendekatan pembiayaan anda dengan peranan setiap peralatan dalam perniagaan anda dan kapasiti kewangan semasa anda.</p>
+<p><strong>Bersedia untuk meneroka pilihan pembiayaan peralatan anda?</strong> Hubungi ING HENG CREDIT hari ini untuk nasihat peribadi mengenai pajak peralatan, pembiayaan pembelian, dan penyelesaian 0% deposit yang disesuaikan dengan keperluan perniagaan dan keperluan aliran tunai anda.</p>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Equipment Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    border: 2px solid #2D1810;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background: #D4A574;
+    color: #2D1810;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

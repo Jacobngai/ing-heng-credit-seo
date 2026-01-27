@@ -1,7 +1,7 @@
 ---
 title: "马自达Cosmo融资马来西亚 - 0%首付转子传奇投资"
 description: "在马来西亚获得马自达Cosmo 0%首付融资。这些标志性转子跑车的升值让月供感觉像零花钱。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

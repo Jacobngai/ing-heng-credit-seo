@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Mitsubishi Diamante Malaysia - 0% Deposit Kecemerlangan Eksekutif"
 description: "Biayai Mitsubishi Diamante anda dengan 0% deposit. Rasai kemewahan eksekutif dengan kuasa V6 dan teknologi canggih. Kelulusan pantas untuk peminat sedan canggih."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Nissan Avenir Malaysia - 0% Deposit Kecemerlangan Wagon"
 description: "Dapatkan pembiayaan 0% deposit untuk wagon premium Nissan Avenir anda. Jangan biar kerumitan import hancurkan impian estate mewah anda di Malaysia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

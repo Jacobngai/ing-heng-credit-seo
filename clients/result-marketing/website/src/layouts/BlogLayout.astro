@@ -1,0 +1,193 @@
+---
+import type { Locale } from '../utils/constants';
+import { generateArticleSchema, generateBreadcrumbSchema } from '../utils/schema';
+import { AUTHORS } from '../utils/constants';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  author: 'jacob' | 'tris';
+  publishDate: string;
+  modifiedDate?: string;
+  category: string;
+  tags?: string[];
+  image?: string;
+  readingTime?: number;
+}
+
+const {
+  title,
+  description,
+  locale,
+  author,
+  publishDate,
+  modifiedDate,
+  category,
+  tags = [],
+  image,
+  readingTime
+} = Astro.props;
+
+const authorData = AUTHORS[author];
+const articleUrl = Astro.url.href;
+
+// Generate schemas
+const articleSchema = generateArticleSchema({
+  title,
+  description,
+  author,
+  publishDate,
+  modifiedDate,
+  image,
+  url: articleUrl
+});
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: `/${locale}/` },
+  { name: 'Blog', url: `/${locale}/blog` },
+  { name: title, url: articleUrl }
+]);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  ogType="article"
+  ogImage={image}
+  publishDate={publishDate}
+  modifiedDate={modifiedDate}
+  author={authorData.name}
+  schemas={[articleSchema, breadcrumbSchema]}
+>
+  <article class="py-12 md:py-16">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <!-- Article Header -->
+        <header class="mb-10">
+          {/* Breadcrumbs */}
+          <nav class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <a href={`/${locale}/`} class="hover:text-primary-600">Home</a>
+            <span>/</span>
+            <a href={`/${locale}/blog`} class="hover:text-primary-600">Blog</a>
+            <span>/</span>
+            <span class="text-gray-900">{title}</span>
+          </nav>
+
+          {/* Category Badge */}
+          <div class="mb-4">
+            <span class="badge badge-primary">{category}</span>
+          </div>
+
+          {/* Title */}
+          <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark mb-6">
+            {title}
+          </h1>
+
+          {/* Meta Info */}
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-600">
+            <div class="flex items-center gap-3">
+              {authorData.image ? (
+                <img
+                  src={authorData.image}
+                  alt={authorData.name}
+                  class="w-10 h-10 rounded-full"
+                />
+              ) : (
+                <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold">
+                  {authorData.name.charAt(0)}
+                </div>
+              )}
+              <div>
+                <div class="font-semibold text-dark">{authorData.name}</div>
+                <div class="text-xs">{authorData.role}</div>
+              </div>
+            </div>
+            <div>
+              <time datetime={publishDate}>
+                {new Date(publishDate).toLocaleDateString(locale, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+            </div>
+            {readingTime && (
+              <div>{readingTime} min read</div>
+            )}
+          </div>
+        </header>
+
+        {/* Featured Image */}
+        {image && (
+          <div class="mb-10">
+            <img
+              src={image}
+              alt={title}
+              class="w-full rounded-xl shadow-lg"
+            />
+          </div>
+        )}
+
+        {/* Article Content */}
+        <div class="prose prose-lg max-w-none">
+          <slot />
+        </div>
+
+        {/* Tags */}
+        {tags.length > 0 && (
+          <div class="mt-10 pt-8 border-t border-gray-200">
+            <div class="flex flex-wrap gap-2">
+              <span class="text-sm font-semibold text-gray-700">Tags:</span>
+              {tags.map(tag => (
+                <a
+                  href={`/${locale}/blog/tag/${tag}`}
+                  class="badge bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Author Bio */}
+        <div class="mt-12 p-6 bg-gray-50 rounded-xl">
+          <h3 class="text-lg font-semibold mb-2">About the Author</h3>
+          <div class="flex items-start gap-4">
+            {authorData.image ? (
+              <img
+                src={authorData.image}
+                alt={authorData.name}
+                class="w-16 h-16 rounded-full flex-shrink-0"
+              />
+            ) : (
+              <div class="w-16 h-16 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold text-2xl flex-shrink-0">
+                {authorData.name.charAt(0)}
+              </div>
+            )}
+            <div>
+              <div class="font-semibold text-lg mb-1">{authorData.name}</div>
+              <div class="text-sm text-gray-600 mb-2">{authorData.role}</div>
+              <p class="text-gray-700 mb-3">{authorData.bio}</p>
+              <div class="flex gap-3">
+                {Object.entries(authorData.social).map(([platform, url]: [string, string]) => (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary-600 hover:text-primary-700"
+                  >
+                    {platform}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

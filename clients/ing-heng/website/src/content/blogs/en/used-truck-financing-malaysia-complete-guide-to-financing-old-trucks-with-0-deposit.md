@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2025      10 min read
-  #  Used Truck Financing Malaysia: Complete Guide to Financing Old Trucks with 0% Deposit 
-
-  Finance used trucks up to 10+ years old in Malaysia with 0% deposit. Learn about approval rates, interest rates, and complete process for second-hand truck financing. 
-
-     By Ing Heng Credit &amp; Leasing     ## Why Choose Used Truck Financing Over New?
 
 When you watch successful logistics operators building their fleets, most start with used trucks. The math is simple:
 

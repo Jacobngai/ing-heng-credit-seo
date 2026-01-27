@@ -1,7 +1,7 @@
 ---
 title: Pembiayaan Nissan Cefiro A31 Malaysia - 0% Deposit Impian Sedan VIP
 description: Biayai Nissan Cefiro A31 dengan 0% deposit di Malaysia. Bank tolak sedan VIP tapi kami lulus. Kredit buruk diterima. Kelulusan pantas untuk legenda drift.
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: ms
 publishDate: 2025-12-20

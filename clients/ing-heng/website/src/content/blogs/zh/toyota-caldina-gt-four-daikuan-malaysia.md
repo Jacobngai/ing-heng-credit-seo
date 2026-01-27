@@ -1,7 +1,7 @@
 ---
 title: "Toyota Caldina GT-Four 贷款马来西亚 - 0% 首付AWD性能"
 description: "为您的Toyota Caldina GT-Four涡轮旅行车获得0%首付融资。不要让进口障碍粉碎您在马来西亚的AWD性能梦想。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

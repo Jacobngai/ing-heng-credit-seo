@@ -1,7 +1,7 @@
 ---
 title: "日产蓝鸟SSS融资马来西亚 - 0%首付JDM性能传奇"
 description: "为传奇的日产蓝鸟SSS获得0%首付融资。通过专为JDM爱好者和收藏家设计的灵活付款条款体验涡轮增压SR20动力。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

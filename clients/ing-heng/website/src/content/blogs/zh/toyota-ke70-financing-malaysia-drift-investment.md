@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Toyota KE70融资 - 0%首付漂移传奇投资"
 description: "为Toyota KE70 Corolla漂移构建获得0%首付融资。银行拒绝老丰田，我们批准传奇后驱平台。专业漂移车融资可用。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

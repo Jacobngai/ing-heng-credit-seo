@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Autozam AZ-1 Malaysia - 0% Deposit Gullwing Kei Supercar"
 description: "Pembiayaan Autozam AZ-1 langka dengan 0% deposit. Bank tolak gullwing kei 30 tahun? Kami luluskan. Dapatkan miniatur supercar mid-engine ini sebelum nilai meletup."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

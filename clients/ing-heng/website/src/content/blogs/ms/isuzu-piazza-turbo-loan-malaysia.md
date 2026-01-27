@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Isuzu Piazza Turbo Malaysia - 0% Deposit untuk Karya Agung Italia-Jepun Yang Terlupa"
 description: "Dapatkan pembiayaan untuk Isuzu Piazza Turbo nadir dengan 0% deposit. Wedge JDM berrekabentuk Giugiaro ini menggabungkan gaya Italia dengan kebolehpercayaan Jepun - biayai kepingan sejarah automotif anda hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

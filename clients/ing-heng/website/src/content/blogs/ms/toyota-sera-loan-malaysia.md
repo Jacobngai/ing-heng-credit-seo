@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Toyota Sera Malaysia - 0% Deposit untuk Keajaiban Kubah Kaca Gullwing"
 description: "Biayai Toyota Sera nadir anda dengan 0% deposit. Coupe kubah kaca berpintu gullwing ini mewakili eksperimen reka bentuk Toyota yang paling berani - dapatkan pembiayaan untuk ikon pintu rama-rama yang meningkat nilai ini hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

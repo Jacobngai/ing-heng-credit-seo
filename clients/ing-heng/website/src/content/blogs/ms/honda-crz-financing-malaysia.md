@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Honda CRZ Malaysia - Pinjaman Kereta Hibrid Sukan 0% Deposit"
 description: "Dapatkan pembiayaan Honda CRZ di Malaysia dengan pilihan 0% deposit. Lulus untuk kereta hibrid sukan jarang ini yang meningkat nilainya. Panduan pakar untuk peminat kereta klasik."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

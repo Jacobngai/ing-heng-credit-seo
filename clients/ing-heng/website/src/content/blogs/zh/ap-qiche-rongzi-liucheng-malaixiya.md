@@ -1,7 +1,7 @@
 ---
 title: "AP汽车融资流程马来西亚 - 进口许可证车辆0%定金"
 description: "0%定金融资您的AP进口车。AP汽车融资流程完整指南、银行拒绝和替代批准解决方案。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2024-12-24

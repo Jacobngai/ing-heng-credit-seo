@@ -15,7 +15,7 @@ keywords:
 - 豪华车进口融资
 - LTA批准融资
 - 特斯拉Model S贷款
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - 特斯拉
 - 电动汽车

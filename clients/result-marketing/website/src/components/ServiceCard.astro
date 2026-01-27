@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  link?: string;
+  features?: string[];
+  price?: string;
+  badge?: string;
+}
+
+const { title, description, icon, link, features, price, badge } = Astro.props;
+---
+
+<!-- Service Card - Bold & Disruptive Dark Theme -->
+<div class="card card-hover h-full flex flex-col group">
+  <!-- Badge -->
+  {badge && (
+    <div class="absolute top-4 right-4">
+      <span class="badge badge-accent text-xs">
+        {badge}
+      </span>
+    </div>
+  )}
+
+  <!-- Icon with Glow Effect -->
+  <div class="relative mb-6">
+    <div class="absolute inset-0 bg-primary-600/30 blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+    <div class="relative w-16 h-16 rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white text-4xl border border-primary-500/50 glow-purple">
+      {icon}
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h3 class="text-2xl font-heading font-extrabold text-white mb-3 group-hover:text-primary-400 transition-colors">
+    {title}
+  </h3>
+
+  <!-- Price -->
+  {price && (
+    <div class="text-3xl font-black gradient-text mb-4">
+      {price}
+    </div>
+  )}
+
+  <!-- Description -->
+  <p class="text-secondary-400 mb-6 flex-grow leading-relaxed">
+    {description}
+  </p>
+
+  <!-- Features -->
+  {features && features.length > 0 && (
+    <ul class="space-y-3 mb-6">
+      {features.map(feature => (
+        <li class="flex items-start gap-3 text-sm text-secondary-300">
+          <div class="relative">
+            <div class="absolute inset-0 bg-success-500/30 blur-sm"></div>
+            <svg class="h-5 w-5 text-success-500 flex-shrink-0 mt-0.5 relative" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <span class="font-medium">{feature}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <!-- CTA -->
+  {link && (
+    <a href={link} class="btn btn-disruptive w-full text-center">
+      Learn More
+    </a>
+  )}
+</div>

@@ -19,12 +19,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      8 min read
-  #  5-Unit Bulldozer Fleet Financing Package for Contractors 
-
-  Get 5-unit bulldozer fleet financing package in Malaysia. 0% deposit available for D5, D6, D7, D8 bulldozer fleets. Specialized financing for earthwork contractors and large-scale projects. 
-
-     By Ing Heng Credit &amp; Leasing     # 5-Unit Bulldozer Fleet Financing Package for Contractors
 
 When Ahmad’s earthwork company was awarded the land preparation contract for Malaysia’s largest industrial park - 2,000 acres requiring 18 months of continuous earthmoving - he realized his current 2-bulldozer operation couldn’t handle the scale.
 

@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Mitsubishi Evo Malaysia: Kelulusan Legenda Rally 0% Deposit"
 description: "Dapatkan pembiayaan Mitsubishi Lancer Evolution di Malaysia dengan pilihan 0% deposit. Kelulusan pakar untuk model Evo X, IX, VIII, VII. Kredit buruk dialu-alukan."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["Mitsubishi Evo", "pembiayaan Lancer Evolution", "pinjaman kereta rally", "0% deposit", "Malaysia"]
 publishDate: 2025-01-15
 author: "ING HENG Credit"

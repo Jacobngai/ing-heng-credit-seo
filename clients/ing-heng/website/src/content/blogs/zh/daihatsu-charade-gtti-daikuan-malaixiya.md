@@ -1,7 +1,7 @@
 ---
 title: "大发Charade GTti贷款马来西亚 - 0%首付涡轮野兽"
 description: "在马来西亚获得大发Charade GTti 0%首付融资。专业贷款适用于这款传奇涡轮口袋火箭，具有升值潜力和灵活条款。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-25

@@ -3,7 +3,7 @@ title: "马来西亚船贷款要求 | 海洋船只融资指南"
 description: "在马来西亚获得0%首付船只融资。我们批准银行拒绝的渔船、游艇和商用船只。海洋贷款要求完整指南。"
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["船贷款", "海洋融资", "船只贷款", "渔船", "游艇"]
 keywords:
   - "马来西亚船贷款要求"

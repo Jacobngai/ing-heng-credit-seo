@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Enduro摩托车融资 - 0%首付越野摩托车贷款"
 description: "在马来西亚获得0%首付的Enduro摩托车融资。银行拒绝越野摩托车？我们批准KTM、Husqvarna、Beta和定制改装的Enduro贷款。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-25

@@ -1,7 +1,7 @@
 ---
 title: "萨博900 Turbo融资马来西亚 - 0%首付瑞典性能图标"
 description: "在马来西亚以0%首付融资您的萨博900 Turbo。瑞典涡轮先驱专家批准，快速升值。立即获得您的900 Turbo融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

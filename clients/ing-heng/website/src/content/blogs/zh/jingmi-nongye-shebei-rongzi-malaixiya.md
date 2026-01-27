@@ -15,7 +15,7 @@ keywords:
 - 自动化农场设备融资
 - 马来西亚智慧农业技术
 - 农业自动化融资
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - 精密农业
 - 智慧农业技术

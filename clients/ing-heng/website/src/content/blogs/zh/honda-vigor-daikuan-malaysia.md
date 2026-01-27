@@ -1,7 +1,7 @@
 ---
 title: "Honda Vigor 贷款马来西亚 - 0% 首付行政轿车卓越"
 description: "为您的Honda Vigor豪华轿车获得0%首付融资。不要让复杂的JDM进口要求粉碎您在马来西亚的行政车辆梦想。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

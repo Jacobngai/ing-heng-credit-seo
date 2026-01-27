@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2025      12 min read
-  #  Mobile Crane Financing Malaysia: 0% Deposit &amp; 100% Financing for All-Terrain Cranes 
-
-  Get mobile crane financing with 0% deposit in Malaysia. We finance new &amp; used mobile cranes 10+ years old, 100% financing available. Fast approval for contractors &amp; crane rental businesses. 
-
-     By Ing Heng Credit &amp; Leasing     ## Why Mobile Crane Financing Makes Perfect Business Sense
 
 Ahmad runs a construction company that spends RM 240,000 yearly renting mobile cranes. When he found a quality used 80-ton all-terrain crane for RM 850,000, his bank wanted RM 170,000 down payment and 3 weeks processing time. We offered 0% deposit and approved his application in 4 days. Today Ahmad owns his crane and generates RM 15,000 monthly rental income from other contractors.
 

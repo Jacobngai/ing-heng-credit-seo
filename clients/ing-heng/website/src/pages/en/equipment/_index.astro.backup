@@ -1,0 +1,643 @@
+---
+/**
+ * Equipment Index Page - English
+ * Catalog page showcasing all equipment types available for financing
+ * SEO: Equipment financing Malaysia, heavy equipment financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import Calculator from '../../../components/Calculator.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Equipment Financing Malaysia | Excavator, Lorry, Forklift, Crane Financing';
+const pageDescription = 'Finance any construction, logistics, or industrial equipment in Malaysia. Fast 2-hour approval, 95% approval rate, flexible terms. Excavators, lorries, forklifts, cranes & more.';
+const keywords = ['equipment financing Malaysia', 'heavy equipment financing', 'construction equipment loan', 'machinery financing', 'equipment leasing Malaysia'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment Financing', url: '/en/equipment' },
+];
+
+// Equipment Categories
+const equipmentCategories = [
+  {
+    name: 'Construction Equipment',
+    description: 'Heavy machinery for earthworks, excavation, and building projects',
+    icon: 'construction',
+    items: ['Excavators', 'Bulldozers', 'Cranes', 'Backhoe Loaders', 'Concrete Mixers'],
+    link: '#construction-equipment'
+  },
+  {
+    name: 'Logistics & Transportation',
+    description: 'Commercial vehicles for cargo, freight, and delivery operations',
+    icon: 'truck',
+    items: ['Commercial Lorries', 'Prime Movers', 'Refrigerated Trucks', 'Box Trucks', 'Tankers'],
+    link: '#logistics-equipment'
+  },
+  {
+    name: 'Industrial & Warehouse',
+    description: 'Material handling and manufacturing equipment for factories',
+    icon: 'warehouse',
+    items: ['Forklifts', 'CNC Machines', 'Pallet Jacks', 'Conveyor Systems', 'Industrial Tools'],
+    link: '#industrial-equipment'
+  }
+];
+
+// Featured Equipment Listings
+const featuredEquipment = [
+  {
+    name: 'Excavator',
+    description: 'Mini to large excavators (1-30 tons) for construction, earthmoving, and demolition projects.',
+    image: '/images/equipment/excavator.jpg',
+    priceRange: 'RM 80,000 - RM 800,000',
+    monthlyFrom: 2400,
+    features: [
+      'New & used up to 10 years old',
+      'All major brands accepted',
+      'Seasonal payment options',
+      '10% down payment only'
+    ],
+    link: '/en/equipment/excavator',
+    badge: 'Most Popular'
+  },
+  {
+    name: 'Commercial Lorry',
+    description: 'Light to heavy-duty lorries (1-40 tons) for logistics, delivery, and freight operations.',
+    image: '/images/equipment/lorry.jpg',
+    priceRange: 'RM 50,000 - RM 500,000',
+    monthlyFrom: 1500,
+    features: [
+      'All tonnage categories',
+      'Fleet financing available',
+      'Trade-in programs',
+      'Fast 24-hour approval'
+    ],
+    link: '/en/equipment/lorry',
+    badge: 'Fast Approval'
+  },
+  {
+    name: 'Forklift',
+    description: 'Electric and diesel forklifts (1-10 tons) for warehouse, factory, and logistics operations.',
+    image: '/images/equipment/forklift.jpg',
+    priceRange: 'RM 30,000 - RM 200,000',
+    monthlyFrom: 900,
+    features: [
+      'Electric & diesel models',
+      'Indoor/outdoor variants',
+      'Battery included',
+      'Flexible 12-60 month terms'
+    ],
+    link: '/en/equipment/forklift'
+  },
+  {
+    name: 'Mobile Crane',
+    description: 'Hydraulic cranes (5-100 tons) for construction, infrastructure, and heavy lifting projects.',
+    image: '/images/equipment/crane.jpg',
+    priceRange: 'RM 300,000 - RM 2,000,000',
+    monthlyFrom: 9000,
+    features: [
+      'All tonnage capacity',
+      'Road-mobile cranes',
+      'Certified operators network',
+      'Project-based financing'
+    ],
+    link: '/en/equipment/crane'
+  },
+  {
+    name: 'Prime Mover',
+    description: 'Tractor units for trailer hauling, container transport, and long-distance freight.',
+    image: '/images/equipment/prime-mover.jpg',
+    priceRange: 'RM 200,000 - RM 600,000',
+    monthlyFrom: 6000,
+    features: [
+      '4x2, 6x2, 6x4 configurations',
+      'Euro 2-5 standards',
+      'High mileage accepted',
+      'Trailer combo financing'
+    ],
+    link: '/en/equipment/prime-mover'
+  },
+  {
+    name: 'Bulldozer',
+    description: 'Track-type dozers for land clearing, grading, and heavy earthmoving operations.',
+    image: '/images/equipment/bulldozer.jpg',
+    priceRange: 'RM 150,000 - RM 1,000,000',
+    monthlyFrom: 4500,
+    features: [
+      'Track & wheel variants',
+      'Rippers & blades included',
+      'Swamp dozers available',
+      'Government project financing'
+    ],
+    link: '/en/equipment/bulldozer'
+  },
+  {
+    name: 'Refrigerated Truck',
+    description: 'Reefer trucks for cold chain logistics, food delivery, and temperature-controlled transport.',
+    image: '/images/equipment/reefer-truck.jpg',
+    priceRange: 'RM 80,000 - RM 350,000',
+    monthlyFrom: 2400,
+    features: [
+      '-20°C to +20°C range',
+      'Thermo King/Carrier units',
+      'Insulated box body',
+      'Fleet financing available'
+    ],
+    link: '/en/equipment/refrigerated-truck'
+  },
+  {
+    name: 'CNC Machinery',
+    description: 'Computer-controlled machines for precision manufacturing, milling, and industrial production.',
+    image: '/images/equipment/cnc-machine.jpg',
+    priceRange: 'RM 100,000 - RM 2,000,000',
+    monthlyFrom: 3000,
+    features: [
+      'CNC lathes, mills, routers',
+      'Japanese & European brands',
+      'Software & training support',
+      'Technology upgrade financing'
+    ],
+    link: '/en/equipment/cnc-machinery'
+  }
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Fast 2-Hour Approval', description: 'Get preliminary approval within 2 hours for urgent equipment needs.' },
+  { icon: 'percentage', title: '95% Approval Rate', description: 'Industry-leading approval rate. We approve applications others reject.' },
+  { icon: 'calendar', title: 'Flexible 12-60 Month Terms', description: 'Choose payment terms that match your business cash flow.' },
+  { icon: 'shield', title: 'All Equipment Types', description: 'Finance any equipment from excavators to CNC machines, new or used.' },
+  { icon: 'users', title: 'Low 10% Down Payment', description: 'Minimal upfront investment. Preserve working capital for operations.' },
+  { icon: 'lightning', title: 'Fleet Financing Available', description: 'Finance multiple units with discounted rates and simplified processing.' },
+];
+
+// How It Works Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Choose Equipment', description: 'Browse our catalog or bring your own equipment supplier.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Application', description: 'Quick online form or WhatsApp application in 5 minutes.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved Fast', description: '2-hour preliminary approval, 24-hour final confirmation.' },
+  { stepNumber: 4, icon: 'truck', title: 'Receive Your Equipment', description: 'Funds released directly to supplier. Start operations immediately.' },
+];
+
+// Industries We Serve
+const industries = [
+  { name: 'Construction & Civil Works', icon: 'building', equipment: 'Excavators, bulldozers, cranes, concrete mixers' },
+  { name: 'Logistics & Transportation', icon: 'truck', equipment: 'Lorries, prime movers, trailers, delivery vans' },
+  { name: 'Manufacturing & Production', icon: 'factory', equipment: 'CNC machines, industrial tools, production lines' },
+  { name: 'Warehousing & Distribution', icon: 'warehouse', equipment: 'Forklifts, pallet jacks, material handling' },
+  { name: 'Agriculture & Plantation', icon: 'leaf', equipment: 'Tractors, harvesters, palm oil equipment' },
+  { name: 'Mining & Quarry', icon: 'mountain', equipment: 'Dump trucks, excavators, crushing equipment' },
+];
+
+// FAQs
+const faqs = [
+  { question: 'What equipment types can you finance?', answer: 'We finance ALL types of commercial and industrial equipment including construction machinery (excavators, bulldozers, cranes), logistics vehicles (lorries, prime movers, trucks), industrial equipment (forklifts, CNC machines, manufacturing tools), and specialized equipment. If it generates income for your business, we can finance it.' },
+  { question: 'How long does approval take?', answer: 'Preliminary approval: 2 hours. Final approval: 24 hours from complete document submission. Urgent cases can be expedited with premium service for critical project deadlines.' },
+  { question: 'Can I finance used equipment?', answer: 'Yes! We finance used equipment up to 10 years old from any reputable brand. Equipment must be in good working condition and pass our inspection. Used equipment often qualifies for same rates as new.' },
+  { question: 'What is the minimum and maximum loan amount?', answer: 'Minimum: RM 30,000. Maximum: RM 5,000,000 depending on equipment type and your financial profile. We can finance 90% of equipment value with 10% down payment.' },
+  { question: 'Do you finance multiple equipment units?', answer: 'Yes! Fleet financing available with discount rates for 2+ units. Simplified documentation for bulk purchases. Perfect for contractors and logistics companies expanding operations.' },
+  { question: 'What if I have bad credit or loan defaults?', answer: 'We consider each application individually. Bad credit doesn\'t mean automatic rejection. We focus on your current business performance, project contracts, and equipment value. 95% approval rate includes many clients with credit issues.' },
+  { question: 'Can I trade in my old equipment?', answer: 'Absolutely! Trade-in and upgrade programs available. We can refinance your existing equipment and provide additional funds for newer/larger machines. Free equipment valuation service included.' },
+  { question: 'What documents do I need?', answer: 'For individuals: IC, 6 months bank statements, income proof. For companies: SSM registration, company bank statements, directors\' IC, financial statements (if available). Simple and straightforward process.' },
+  { question: 'Do you serve all Malaysian states?', answer: 'Yes! We serve all states: Selangor, KL, Johor, Penang, Perak, Pahang, Sabah, Sarawak, and more. Remote area applications processed online and via WhatsApp. National coverage with local expertise.' },
+  { question: 'Is there early repayment penalty?', answer: 'No early repayment penalty! Pay off your loan anytime without extra charges. Many clients refinance after 12-18 months when their business grows and they qualify for better rates.' },
+];
+
+// ItemList Schema for Equipment Categories
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Equipment Financing Catalog',
+  description: 'Comprehensive equipment financing options for construction, logistics, and industrial equipment in Malaysia',
+  itemListElement: featuredEquipment.map((equipment, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: equipment.name,
+      description: equipment.description,
+      image: `https://ingheng-credit.vercel.app${equipment.image}`,
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'MYR',
+        price: equipment.monthlyFrom,
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: equipment.monthlyFrom,
+          priceCurrency: 'MYR',
+          unitText: 'MONTH'
+        },
+        availability: 'https://schema.org/InStock',
+        seller: {
+          '@type': 'Organization',
+          name: 'Ing Heng Credit & Leasing'
+        }
+      }
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: 'Equipment Financing Malaysia',
+  description: 'Comprehensive equipment financing for construction, logistics, and industrial equipment with fast approval and flexible terms',
+  provider: {
+    '@type': 'Organization',
+    name: 'Ing Heng Credit & Leasing'
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Malaysia'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Equipment Financing Options',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Construction Equipment Financing',
+          description: 'Excavators, bulldozers, cranes, and heavy machinery financing'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Logistics Equipment Financing',
+          description: 'Commercial lorries, prime movers, trucks, and delivery vehicles'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Industrial Equipment Financing',
+          description: 'Forklifts, CNC machines, manufacturing equipment, and tools'
+        }
+      }
+    ]
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(itemListSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Finance Any Equipment - Fast Approval in 2 Hours"
+    subtitle="Construction, Logistics & Industrial Equipment | 95% Approval Rate | Flexible 12-60 Month Terms | RM 30,000 - RM 5,000,000"
+    ctaText="Get Free Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20equipment%20financing."
+    ctaSecondaryText="Call: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/equipment-hero.jpg"
+    lang={lang}
+    trustSignals={['40 Years Experience', 'KPKT Licensed', '95% Approval Rate', '2-Hour Fast Approval']}
+  />
+
+  <!-- Equipment Categories Overview -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Equipment Categories We Finance
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          From construction machinery to logistics vehicles and industrial equipment
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {equipmentCategories.map((category) => (
+          <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
+            <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
+              <div class="text-5xl mb-3">
+                {category.icon === 'construction' && '🏗️'}
+                {category.icon === 'truck' && '🚛'}
+                {category.icon === 'warehouse' && '🏭'}
+              </div>
+              <h3 class="text-2xl font-display uppercase text-white">{category.name}</h3>
+            </div>
+            <div class="p-8">
+              <p class="text-gray-700 leading-relaxed mb-6">{category.description}</p>
+              <ul class="space-y-3 mb-8">
+                {category.items.map((item) => (
+                  <li class="text-sm text-gray-700 flex items-start space-x-3">
+                    <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900 flex-shrink-0 mt-0.5"></div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={category.link} class="btn btn-outline w-full block text-center">
+                View Equipment
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Equipment -->
+  <section class="section bg-white" id="construction-equipment">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Featured Equipment <span class="text-secondary">for Financing</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Popular equipment choices with competitive monthly rates
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredEquipment.map((equipment) => (
+          <ProductCard
+            name={equipment.name}
+            description={equipment.description}
+            monthlyPayment={equipment.monthlyFrom}
+            features={equipment.features}
+            link={equipment.link}
+            lang={lang}
+            image={equipment.image}
+            badge={equipment.badge}
+          />
+        ))}
+      </div>
+
+      <!-- Additional Equipment Note -->
+      <div class="mt-12 bg-blue-50 border-3 border-navy-900 shadow-brutal-lg p-8 text-center">
+        <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Don't See Your Equipment?</h3>
+        <p class="text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto">
+          We finance ALL types of commercial and industrial equipment. Contact us for custom quotes on specialized machinery, agricultural equipment, mining tools, and more.
+        </p>
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20equipment%20financing."
+          class="btn btn-secondary inline-block"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contact Us for Custom Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Why Choose <span class="text-secondary">Ing Heng Credit</span>?
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Fast approval, flexible terms, and competitive rates for all equipment types
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Calculate Your <span class="text-secondary">Monthly Payment</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          See how affordable equipment financing can be for your business
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        <Calculator lang={lang} equipmentType="Equipment" defaultPrice={150000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-blue-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          How Equipment <span class="text-secondary">Financing Works</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Simple 4-step process from application to equipment delivery
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary btn-lg inline-block"
+        >
+          Start Your Application Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section bg-white" id="logistics-equipment">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Industries <span class="text-secondary">We Serve</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Specialized financing solutions for every business sector
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {industries.map((industry) => (
+          <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1 p-6 text-center">
+            <div class="w-16 h-16 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl">
+              {industry.icon === 'building' && '🏗️'}
+              {industry.icon === 'truck' && '🚛'}
+              {industry.icon === 'factory' && '🏭'}
+              {industry.icon === 'warehouse' && '📦'}
+              {industry.icon === 'leaf' && '🌾'}
+              {industry.icon === 'mountain' && '⛏️'}
+            </div>
+            <h3 class="text-lg font-display uppercase text-navy-900 mb-2">{industry.name}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{industry.equipment}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals & Stats -->
+  <section class="section bg-secondary text-white" id="industrial-equipment">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-4">
+          Trusted by 4,000+ <span class="text-yellow-400">Malaysian Businesses</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-blue-100">
+          40 years of equipment financing excellence
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">95%</div>
+          <div class="text-lg text-blue-100">Approval Rate</div>
+        </div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">2-24h</div>
+          <div class="text-lg text-blue-100">Approval Time</div>
+        </div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">4,000+</div>
+          <div class="text-lg text-blue-100">Companies Financed</div>
+        </div>
+        <div class="bg-white/10 border-2 border-white/20 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">40</div>
+          <div class="text-lg text-blue-100">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked <span class="text-secondary">Questions</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Everything you need to know about equipment financing
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section bg-blue-50">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+        Ready to Finance Your <span class="text-secondary">Equipment</span>?
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Get fast approval in 2 hours. Join 4,000+ businesses who chose Ing Heng Credit for their equipment financing needs.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary text-lg px-8 py-4"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn btn-outline text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-700 mt-8">
+        <div class="flex items-center space-x-2">
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">No Obligation Quote</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">Fast 2-Hour Approval</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">KPKT Licensed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

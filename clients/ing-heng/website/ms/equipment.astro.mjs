@@ -1,0 +1,400 @@
+/* empty css                                    */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead, d as addAttribute } from '../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout, e as encodeJSONLD } from '../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$ProductCard } from '../../chunks/ProductCard_J8Pa6XB0.mjs';
+import { $ as $$FAQItem } from '../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$Calculator } from '../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$Breadcrumbs } from '../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { S as SITE_CONFIG } from '../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$Index = createComponent(($$result, $$props, $$slots) => {
+  const lang = "ms";
+  const pageTitle = "Pembiayaan Peralatan Malaysia | Jengkaut, Lori, Forklift, Kren";
+  const pageDescription = "Biayai sebarang peralatan pembinaan, logistik atau industri. Kelulusan pantas cepat, bayaran fleksibel. Jengkaut, lori, forklift, kren & lain-lain.";
+  const keywords = ["pembiayaan peralatan Malaysia", "pembiayaan peralatan berat", "pinjaman peralatan pembinaan", "pembiayaan jentera", "pajakan peralatan Malaysia"];
+  const breadcrumbs = [
+    { label: "Laman Utama", url: "/ms" },
+    { label: "Pembiayaan Peralatan", url: "/ms/equipment" }
+  ];
+  const equipmentCategories = [
+    {
+      name: "Peralatan Pembinaan",
+      description: "Jentera berat untuk kerja tanah, penggalian dan projek pembinaan",
+      icon: "construction",
+      items: ["Jengkaut", "Jentolak", "Kren", "Pemuat", "Pengadun Konkrit"],
+      link: "#construction-equipment"
+    },
+    {
+      name: "Peralatan Logistik & Pengangkutan",
+      description: "Kenderaan komersial untuk kargo, pengangkutan dan operasi penghantaran",
+      icon: "truck",
+      items: ["Lori Komersial", "Prime Mover", "Lori Peti Sejuk", "Van Kotak", "Trak Tangki"],
+      link: "#logistics-equipment"
+    },
+    {
+      name: "Peralatan Industri & Gudang",
+      description: "Peralatan pengendalian bahan dan pembuatan untuk kilang",
+      icon: "warehouse",
+      items: ["Forklift", "Mesin CNC", "Troli Palet", "Sistem Conveyor", "Alat Industri"],
+      link: "#industrial-equipment"
+    }
+  ];
+  const featuredEquipment = [
+    {
+      name: "Jengkaut",
+      description: "Jengkaut kecil hingga besar (1-30 tan) untuk pembinaan, kerja tanah dan projek perobohan. Model terpakai diterima.",
+      image: "/images/equipment/excavator.jpg",
+      link: "/ms/equipment/excavator",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Lori Komersial",
+      description: "Lori ringan hingga berat (1-40 tan) untuk logistik, penghantaran dan operasi kargo. Model terpakai diterima.",
+      image: "/images/equipment/lorry.jpg",
+      link: "/ms/equipment/lorry",
+      badge: "Startup Mesra"
+    },
+    {
+      name: "Forklift",
+      description: "Forklift elektrik dan diesel (1-10 tan) untuk operasi gudang, kilang dan logistik.",
+      image: "/images/equipment/forklift.jpg",
+      link: "/ms/equipment/forklift",
+      badge: "Paling Popular"
+    },
+    {
+      name: "Kren Mudah Alih",
+      description: "Kren hidraulik (5-100 tan) untuk pembinaan, infrastruktur dan projek angkat berat.",
+      image: "/images/equipment/crane.jpg",
+      link: "/ms/equipment/crane"
+    },
+    {
+      name: "Prime Mover",
+      description: "Unit traktor untuk pengangkutan treler, kontena dan kargo jarak jauh. Model terpakai diterima.",
+      image: "/images/equipment/prime-mover.jpg",
+      link: "/ms/equipment/prime-mover",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Jentolak",
+      description: "Jentolak trek untuk pembersihan tanah, perataan dan operasi kerja tanah berat.",
+      image: "/images/equipment/bulldozer.jpg",
+      link: "/ms/equipment/bulldozer",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Lori Peti Sejuk",
+      description: "Lori peti sejuk untuk logistik rantaian sejuk, penghantaran makanan dan pengangkutan kawalan suhu.",
+      image: "/images/equipment/reefer-truck.jpg",
+      link: "/ms/equipment/refrigerated-truck"
+    },
+    {
+      name: "Jentera CNC",
+      description: "Mesin kawalan komputer untuk pembuatan ketepatan, pengilangan dan pengeluaran industri.",
+      image: "/images/equipment/cnc-machine.jpg",
+      link: "/ms/equipment/cnc-machinery"
+    },
+    // ===== PERALATAN BARU DARI BROSUR IMEJ =====
+    {
+      name: "Caterpillar 966C Wheel Loader",
+      description: "Pemuat roda berat untuk pengendalian bahan, kuari dan operasi kerja tanah berskala besar. Model terpakai diterima.",
+      image: "/images/equipment/caterpillar-966c.jpg",
+      link: "/ms/equipment/wheel-loader",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Komatsu PC350 Excavator",
+      description: "Jengkaut hidraulik 35 tan untuk kuari, perlombongan dan projek pembinaan berskala besar. Model terpakai diterima.",
+      image: "/images/equipment/komatsu-pc350.jpg",
+      link: "/ms/equipment/komatsu-pc350",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Lori Tipper Nissan",
+      description: "Lori tipper 6 roda untuk kerja tanah, penghantaran pasir dan pengangkutan bahan binaan. Model terpakai diterima.",
+      image: "/images/equipment/nissan-tipper.jpg",
+      link: "/ms/equipment/tipper-truck",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Forklift Mitsubishi FD250",
+      description: "Forklift kapasiti 2.5 tan untuk operasi gudang, kilang dan logistik.",
+      image: "/images/equipment/mitsubishi-fd250.jpg",
+      link: "/ms/equipment/forklift"
+    },
+    {
+      name: "Backhoe Case Super M",
+      description: "Pemuat backhoe serba guna untuk penggalian, pemuatan dan pengendalian bahan di tapak binaan. Model terpakai diterima.",
+      image: "/images/equipment/case-backhoe.jpg",
+      link: "/ms/equipment/backhoe",
+      badge: "Mesin 2-in-1"
+    },
+    {
+      name: "Prime Mover Volvo",
+      description: "Kepala traktor tugas berat untuk pengangkutan kontena, kargo jarak jauh dan operasi logistik. Model terpakai diterima.",
+      image: "/images/equipment/volvo-prime-mover.jpg",
+      link: "/ms/equipment/prime-mover",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Treler Kontena 40 Kaki",
+      description: "Casis kontena skeletal untuk pengangkutan kontena pelabuhan-ke-gudang dan logistik intermodal. Model terpakai diterima.",
+      image: "/images/equipment/40ft-trailer.jpg",
+      link: "/ms/equipment/container-trailer",
+      badge: "Peralatan Terpakai"
+    },
+    {
+      name: "Side Loader Kontena",
+      description: "Treler khas dengan keupayaan pemuatan sisi untuk operasi pengendalian kontena yang cekap.",
+      image: "/images/equipment/side-loader.jpg",
+      link: "/ms/equipment/side-loader"
+    },
+    {
+      name: "Self Loader Nissan",
+      description: "Kren dipasang lori untuk memuat/memunggah kargo, bahan binaan dan jentera.",
+      image: "/images/equipment/nissan-self-loader.jpg",
+      link: "/ms/equipment/self-loader"
+    },
+    {
+      name: "Pemadat Ingersoll Rand",
+      description: "Penggelek jalan bergetar untuk pemadatan tanah, pembinaan jalan dan projek peleraian asfalt.",
+      image: "/images/equipment/ingersoll-compactor.jpg",
+      link: "/ms/equipment/compactor"
+    },
+    {
+      name: "Grab Kawalan Jauh 25 Tan",
+      description: "Grab kawalan jauh tugas berat untuk besi buruk, sisa perobohan dan pengendalian bahan pukal.",
+      image: "/images/equipment/remote-grab.jpg",
+      link: "/ms/equipment/remote-grab"
+    },
+    {
+      name: "Mesin Penghancur Jaw",
+      description: "Peralatan penghancur batu untuk operasi kuari, pengeluaran agregat dan industri perlombongan.",
+      image: "/images/equipment/jaw-crusher.jpg",
+      link: "/ms/equipment/jaw-crusher"
+    },
+    {
+      name: "Mesin CNC Takisawa",
+      description: "Pelarik CNC ketepatan untuk pemesinan logam, pembuatan dan operasi pengeluaran industri.",
+      image: "/images/equipment/takisawa-cnc.jpg",
+      link: "/ms/equipment/cnc-machinery"
+    },
+    {
+      name: "Pencampur Pasir Pivotal",
+      description: "Pencampur pasir berterusan industri untuk pengeluaran konkrit, pembinaan dan pembuatan.",
+      image: "/images/equipment/sand-mixer.jpg",
+      link: "/ms/equipment/sand-mixer"
+    },
+    {
+      name: "Tangki Kimia Keluli Tahan Karat",
+      description: "Tangki penyimpanan industri untuk pemprosesan kimia, pengeluaran makanan dan industri farmaseutikal.",
+      image: "/images/equipment/chemical-tank.jpg",
+      link: "/ms/equipment/chemical-tank"
+    },
+    {
+      name: "Gerai Makanan Keluli Tahan Karat",
+      description: "Gerai makanan mudah alih gred komersial untuk pusat penjaja, pasar malam dan perniagaan khidmat makanan.",
+      image: "/images/equipment/food-stall.jpg",
+      link: "/ms/equipment/food-stall",
+      badge: "Startup Mesra"
+    },
+    {
+      name: "Mesin Quilting",
+      description: "Mesin quilting industri untuk pembuatan tekstil, pengeluaran tilam dan kilang pakaian.",
+      image: "/images/equipment/quilting-machine.jpg",
+      link: "/ms/equipment/quilting-machine"
+    },
+    {
+      name: "Helikopter Robinson R66",
+      description: "Helikopter turbin ringan untuk kerja udara, pelancongan, pengangkutan perubatan dan perjalanan eksekutif.",
+      image: "/images/equipment/robinson-r66.jpg",
+      link: "/ms/equipment/helicopter",
+      badge: "Khusus"
+    }
+  ];
+  const benefits = [
+    { icon: "clock", title: "Kelulusan Pantas", description: "Dapatkan kelulusan awal dalam cepat untuk keperluan peralatan segera." },
+    { icon: "percentage", title: "Kadar Kelulusan Terbaik", description: "Kami luluskan permohonan yang ditolak pihak lain." },
+    { icon: "calendar", title: "Tempoh Fleksibel 12-60 Bulan", description: "Pilih tempoh bayaran yang sesuai dengan aliran tunai perniagaan anda." },
+    { icon: "shield", title: "Semua Jenis Peralatan", description: "Biayai sebarang peralatan dari jengkaut hingga mesin CNC, baru atau terpakai." },
+    { icon: "users", title: "Bayaran Pendahuluan 10%", description: "Pelaburan awal minimum. Kekalkan modal kerja untuk operasi." },
+    { icon: "lightning", title: "Pembiayaan Armada Tersedia", description: "Biayai berbilang unit dengan kadar diskaun dan pemprosesan dipermudah." }
+  ];
+  const steps = [
+    { stepNumber: 1, icon: "contact", title: "Pilih Peralatan", description: "Layari katalog kami atau bawa pembekal peralatan sendiri." },
+    { stepNumber: 2, icon: "document", title: "Hantar Permohonan", description: "Borang dalam talian pantas atau permohonan WhatsApp dalam 5 minit." },
+    { stepNumber: 3, icon: "check", title: "Kelulusan Pantas", description: "Kelulusan awal cepat, pengesahan akhir pantas." },
+    { stepNumber: 4, icon: "truck", title: "Terima Peralatan", description: "Dana disalurkan terus kepada pembekal. Mula operasi segera." }
+  ];
+  const industries = [
+    { name: "Pembinaan & Kerja Awam", icon: "building", equipment: "Jengkaut, jentolak, kren, pengadun konkrit" },
+    { name: "Logistik & Pengangkutan", icon: "truck", equipment: "Lori, prime mover, treler, van penghantaran" },
+    { name: "Pembuatan & Pengeluaran", icon: "factory", equipment: "Mesin CNC, alat industri, barisan pengeluaran" },
+    { name: "Pergudangan & Pengedaran", icon: "warehouse", equipment: "Forklift, troli palet, pengendalian bahan" },
+    { name: "Pertanian & Perladangan", icon: "leaf", equipment: "Traktor, penuai, peralatan kelapa sawit" },
+    { name: "Perlombongan & Kuari", icon: "mountain", equipment: "Trak sampah, jengkaut, peralatan penghancur" }
+  ];
+  const faqs = [
+    { question: "Jenis peralatan apa yang boleh dibiayai?", answer: "Kami membiayai SEMUA jenis peralatan komersial dan industri termasuk jentera pembinaan (jengkaut, jentolak, kren), kenderaan logistik (lori, prime mover, trak), peralatan industri (forklift, mesin CNC, alat pembuatan), dan peralatan khusus. Jika peralatan menjana pendapatan untuk perniagaan anda, kami boleh biayainya." },
+    { question: "Berapa lama proses kelulusan?", answer: "Kelulusan awal: cepat. Kelulusan akhir: pantas dari penghantaran dokumen lengkap. Kes segera boleh dipercepatkan dengan perkhidmatan premium untuk tarikh akhir projek kritikal." },
+    { question: "Bolehkah membiayai peralatan terpakai?", answer: "Ya! Kami membiayai peralatan terpakai sehingga 10 tahun dari mana-mana jenama bereputasi. Peralatan mesti dalam keadaan baik dan lulus pemeriksaan kami. Peralatan terpakai selalunya layak mendapat kadar yang sama seperti baru." },
+    { question: "Apakah jumlah pinjaman minimum dan maksimum?", answer: "Minimum: RM 30,000. Maksimum: RM 2,000,000 bergantung kepada jenis peralatan dan profil kewangan anda. Kami boleh membiayai 90% nilai peralatan dengan bayaran pendahuluan 10%." },
+    { question: "Bolehkah membiayai berbilang unit peralatan?", answer: "Ya! Pembiayaan armada tersedia dengan kadar diskaun untuk 2+ unit. Dokumentasi dipermudah untuk pembelian pukal. Sesuai untuk kontraktor dan syarikat logistik yang mengembangkan operasi." },
+    { question: "Bagaimana jika saya ada rekod kredit buruk atau gagal bayar?", answer: "Kami pertimbangkan setiap permohonan secara individu. Kredit buruk tidak bermakna penolakan automatik. Kami fokus pada prestasi perniagaan semasa anda, kontrak projek, dan nilai peralatan." },
+    { question: "Bolehkah tukar beli peralatan lama?", answer: "Sudah tentu! Program tukar beli dan naik taraf tersedia. Kami boleh membiayai semula peralatan sedia ada anda dan sediakan dana tambahan untuk mesin lebih baru/besar. Perkhidmatan penilaian peralatan percuma disertakan." },
+    { question: "Dokumen apa yang diperlukan?", answer: "Untuk individu: IC, penyata bank 6 bulan, bukti pendapatan. Untuk syarikat: Pendaftaran SSM, penyata bank syarikat, IC pengarah, penyata kewangan (jika ada). Proses mudah dan jelas." },
+    { question: "Adakah anda berkhidmat di semua negeri Malaysia?", answer: "Ya! Kami berkhidmat di semua negeri: Selangor, KL, Johor, Pulau Pinang, Perak, Pahang, Sabah, Sarawak, dan lain-lain. Permohonan kawasan terpencil diproses dalam talian dan melalui WhatsApp. Liputan nasional dengan kepakaran tempatan." },
+    { question: "Adakah penalti untuk bayaran awal?", answer: "Tiada penalti bayaran awal! Jelaskan pinjaman anda bila-bila masa tanpa caj tambahan. Ramai pelanggan membiayai semula selepas 12-18 bulan apabila perniagaan berkembang dan mereka layak mendapat kadar lebih baik." }
+  ];
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Katalog Pembiayaan Peralatan",
+    description: "Pilihan pembiayaan peralatan pembinaan, logistik dan industri yang komprehensif di Malaysia",
+    itemListElement: featuredEquipment.map((equipment, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: equipment.name,
+        description: equipment.description,
+        image: `${SITE_CONFIG.url}${equipment.image}`,
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "MYR",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "Organization",
+            name: "Ing Heng Credit & Leasing"
+          }
+        }
+      }
+    }))
+  };
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    name: "Pembiayaan Peralatan Malaysia",
+    description: "Pembiayaan peralatan pembinaan, logistik dan industri yang komprehensif dengan kelulusan pantas dan terma fleksibel",
+    provider: {
+      "@type": "Organization",
+      name: "Ing Heng Credit & Leasing"
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Malaysia"
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Pilihan Pembiayaan Peralatan",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Pembiayaan Peralatan Pembinaan",
+            description: "Pembiayaan jengkaut, jentolak, kren dan jentera berat"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Pembiayaan Peralatan Logistik",
+            description: "Lori komersial, prime mover, trak dan kenderaan penghantaran"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Pembiayaan Peralatan Industri",
+            description: "Forklift, mesin CNC, peralatan pembuatan dan alat"
+          }
+        }
+      ]
+    }
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${maybeRenderHead()}<div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbs, "lang": lang })} </div>  ${renderComponent($$result2, "Hero", $$Hero, { "title": "Biayai Sebarang Peralatan - Kelulusan Pantas", "subtitle": "Peralatan Pembinaan, Logistik & Industri | Tempoh Fleksibel 12-60 Bulan | RM 30,000 - RM 2,000,000", "ctaText": "Dapatkan Sebut Harga Percuma WhatsApp", "ctaLink": "https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20dapatkan%20sebut%20harga%20pembiayaan%20peralatan.", "ctaSecondaryText": "Hubungi: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["40 Tahun Pengalaman", "Berlesen KPKT", "Kadar Kelulusan Terbaik", "Kelulusan Pantas"] })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-16"> <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-[#2D1810]">
+Kategori Peralatan Yang Kami Biayai
+</h2> <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div> <p class="text-xl text-[#4F3E29]">
+Dari jentera pembinaan hingga kenderaan logistik dan peralatan industri
+</p> </div> <div class="grid md:grid-cols-3 gap-8"> ${equipmentCategories.map((category) => renderTemplate`<div class="bg-white border-3 border-[#2D1810] shadow-[8px_8px_0_#2D1810] hover:shadow-[12px_12px_0_#2D1810] transition-all hover:-translate-y-1"> <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6 text-center"> <div class="text-5xl mb-3"> ${category.icon === "construction" && "\u{1F3D7}\uFE0F"} ${category.icon === "truck" && "\u{1F69B}"} ${category.icon === "warehouse" && "\u{1F3ED}"} </div> <h3 class="text-2xl font-display uppercase text-white">${category.name}</h3> </div> <div class="p-8"> <p class="text-[#4F3E29] leading-relaxed mb-6">${category.description}</p> <ul class="space-y-3 mb-8"> ${category.items.map((item) => renderTemplate`<li class="text-sm text-[#4F3E29] flex items-start space-x-3"> <div class="w-5 h-5 bg-[#D4A574] border-2 border-[#2D1810] flex-shrink-0 mt-0.5"></div> <span>${item}</span> </li>`)} </ul> <a${addAttribute(category.link, "href")} class="btn btn-outline w-full block text-center">
+Lihat Peralatan
+</a> </div> </div>`)} </div> </div> </section>  <section class="section bg-white" id="construction-equipment"> <div class="container-custom"> <div class="text-center mb-16"> <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-[#2D1810]">
+Peralatan Pilihan <span class="text-[#D4A574]">Untuk Pembiayaan</span> </h2> <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div> <p class="text-xl text-[#4F3E29]">
+Pilihan peralatan popular dengan kadar bulanan kompetitif
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ${featuredEquipment.map((equipment) => renderTemplate`${renderComponent($$result2, "ProductCard", $$ProductCard, { "name": equipment.name, "description": equipment.description, "features": equipment.features, "link": equipment.link, "lang": lang, "image": equipment.image, "badge": equipment.badge })}`)} </div> <!-- Additional Equipment Note --> <div class="mt-12 text-center p-6 bg-[#F5F5DC] rounded-lg"> <h3 class="text-xl font-bold text-primary mb-3">Tidak Jumpa Peralatan Anda?</h3> <p class="text-[#4F3E29] mb-4">
+Kami membiayai SEMUA jenis peralatan komersial dan industri. Hubungi kami untuk sebut harga tersuai bagi jentera khusus, peralatan pertanian, alat perlombongan dan lain-lain.
+</p> <a href="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20bertanya%20tentang%20pembiayaan%20peralatan." class="btn btn-primary inline-block" target="_blank" rel="noopener noreferrer">
+Hubungi Kami Untuk Sebut Harga Tersuai
+</a> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-16"> <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-[#2D1810]">
+Kenapa Pilih <span class="text-[#D4A574]">Ing Heng Credit</span>?
+</h2> <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div> <p class="text-xl text-[#4F3E29]">
+Kelulusan pantas, terma fleksibel dan kadar kompetitif untuk semua jenis peralatan
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-8"> <h2 class="text-5xl md:text-6xl font-display uppercase text-[#2D1810] mb-4">
+Kira Bayaran Bulanan Anda
+</h2> <p class="text-xl text-[#4F3E29]">
+Lihat betapa berpatutannya pembiayaan peralatan untuk perniagaan anda
+</p> </div> <div class="max-w-3xl mx-auto"> ${renderComponent($$result2, "Calculator", $$Calculator, { "lang": lang, "equipmentType": "Peralatan", "defaultPrice": 15e4 })} </div> </div> </section>  <section class="section bg-white"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-5xl md:text-6xl font-display uppercase text-[#2D1810] mb-4">
+Bagaimana Pembiayaan Peralatan Berfungsi
+</h2> <p class="text-xl text-[#4F3E29]">
+Proses mudah 4 langkah dari permohonan hingga penghantaran peralatan
+</p> </div> <div class="grid md:grid-cols-4 gap-8"> ${steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { "stepNumber": step.stepNumber, "icon": step.icon, "title": step.title, "description": step.description })}`)} </div> <div class="text-center mt-12"> <a href="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20memohon%20pembiayaan%20peralatan." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg inline-block">
+Mulakan Permohonan Anda Sekarang
+</a> </div> </div> </section>  <section class="section bg-[#F5F5DC]" id="logistics-equipment"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-5xl md:text-6xl font-display uppercase text-[#2D1810] mb-4">
+Industri Yang Kami Khidmati
+</h2> <p class="text-xl text-[#4F3E29]">
+Penyelesaian pembiayaan khusus untuk setiap sektor perniagaan
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> ${industries.map((industry) => renderTemplate`<div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow"> <div class="text-3xl mb-3"> ${industry.icon === "building" && "\u{1F3D7}\uFE0F"} ${industry.icon === "truck" && "\u{1F69B}"} ${industry.icon === "factory" && "\u{1F3ED}"} ${industry.icon === "warehouse" && "\u{1F4E6}"} ${industry.icon === "leaf" && "\u{1F33E}"} ${industry.icon === "mountain" && "\u26CF\uFE0F"} </div> <h3 class="text-xl font-bold text-primary mb-2">${industry.name}</h3> <p class="text-sm text-[#4F3E29]">${industry.equipment}</p> </div>`)} </div> </div> </section>  <section class="section bg-[#8B6F47] text-white" id="industrial-equipment"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold mb-4">
+Dipercayai Oleh 4,000+ Perniagaan Malaysia
+</h2> <p class="text-xl opacity-90">
+40 tahun kecemerlangan pembiayaan peralatan
+</p> </div> <div class="grid md:grid-cols-4 gap-8 text-center"> <div> <div class="text-5xl font-bold mb-2">40</div> <div class="text-lg opacity-90">Tahun Pengalaman</div> </div> <div> <div class="text-5xl font-bold mb-2">Pantas</div> <div class="text-lg opacity-90">Masa Kelulusan</div> </div> <div> <div class="text-5xl font-bold mb-2">4,000+</div> <div class="text-lg opacity-90">Syarikat Dibiayai</div> </div> <div> <div class="text-5xl font-bold mb-2">40 Tahun</div> <div class="text-lg opacity-90">Pengalaman Industri</div> </div> </div> </div> </section>  <section class="section bg-white"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-5xl md:text-6xl font-display uppercase text-[#2D1810] mb-4">
+Soalan Lazim
+</h2> <p class="text-xl text-[#4F3E29]">
+Segala yang anda perlu tahu tentang pembiayaan peralatan
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom text-center"> <h2 class="text-5xl md:text-6xl font-display uppercase text-[#2D1810] mb-6">
+Bersedia Untuk Membiayai Peralatan Anda?
+</h2> <p class="text-xl text-[#4F3E29] mb-8 max-w-2xl mx-auto">
+Dapatkan kelulusan pantas dalam cepat. Sertai 4,000+ perniagaan yang memilih Ing Heng Credit untuk keperluan pembiayaan peralatan mereka.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center"> <a href="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20memohon%20pembiayaan%20peralatan." target="_blank" rel="noopener noreferrer" class="btn btn-primary text-lg px-8 py-4">
+Mohon Melalui WhatsApp
+</a> <a href="tel:+60175700889" class="btn btn-secondary text-lg px-8 py-4">
+Hubungi: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm text-[#4F3E29] mt-8"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Sebut Harga Tanpa Obligasi</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Kelulusan Pantas</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Berlesen KPKT</span> </div> </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(itemListSchema)), unescapeHTML(encodeJSONLD(serviceSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/ms/equipment/index.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/ms/equipment/index.astro";
+const $$url = "/ms/equipment";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

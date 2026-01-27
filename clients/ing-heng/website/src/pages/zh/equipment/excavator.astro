@@ -6,24 +6,22 @@
  * Cultural Focus: Trust, community recommendations, family business
  */
 
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Hero from '../../../../components/Hero.astro';
-import BenefitCard from '../../../../components/BenefitCard.astro';
-import StepCard from '../../../../components/StepCard.astro';
-import FAQItem from '../../../../components/FAQItem.astro';
-import ContactForm from '../../../../components/ContactForm.astro';
-import Calculator from '../../../../components/Calculator.astro';
-import TestimonialCard from '../../../../components/TestimonialCard.astro';
-import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
-import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
-import { SITE_CONFIG } from '../../../../utils/constants';
 const lang = 'zh';
 
 // SEO Data
-const pageTitle = '挖掘机融资马来西亚 | 快速批准 | Industry-Leading批准率 | 信誉保证';
-const pageDescription = '专业挖掘机融资服务。快速批准，Industry-Leading批准率，灵活12-60个月还款期。接受新旧挖掘机。立即申请！';
+const pageTitle = '挖掘机融资马来西亚 | 24小时快速批准 | 95%批准率 | 信誉保证';
+const pageDescription = '专业挖掘机融资服务。24小时批准，95%批准率，灵活12-60个月还款期。接受新旧挖掘机。立即申请！';
 const keywords = ['挖掘机融资', '挖掘机贷款', '建筑设备融资', '重型设备贷款', '挖掘机租赁'];
 
 // Breadcrumbs
@@ -35,20 +33,21 @@ const breadcrumbs = [
 
 // Benefits - Chinese cultural adaptation: emphasize trust, reliability, and community
 const benefits = [
-  { icon: 'clock', title: '快速批准', description: '快速批准，让您的项目不耽误，信守承诺。' },
-  { icon: 'percentage', title: 'Industry-Leading批准率', description: '行业领先的批准率。我们批准其他银行拒绝的申请。' },
+  { icon: 'clock', title: '24小时快速批准', description: '一个工作日内批准，让您的项目不耽误，信守承诺。' },
+  { icon: 'percentage', title: '95%批准率', description: '行业领先的批准率。我们批准其他银行拒绝的申请。' },
   { icon: 'calendar', title: '灵活12-60个月期限', description: '根据您的项目时间和现金流选择还款期限。' },
   { icon: 'shield', title: '接受新旧挖掘机', description: '融资新旧挖掘机，接受10年以内的任何品牌。' },
-  { icon: 'users', title: '首付从0%起*', description: '最低启动投资。符合条件者可贷款至100%*。保留您的营运资金。*受条款及条件约束' },
+  { icon: 'users', title: '0%首付款可选', description: '符合条件者可享0%首付。保留您的营运资金。' },
+  { icon: 'lightning', title: '季节性付款选项', description: '雨季或淡季调整付款以匹配您的收入。' },
   { icon: 'clock', title: '免费设备评估', description: '专业评估服务，无需费用。立即了解您的设备价值。' },
-  { icon: 'shield', title: '无隐藏费用', description: '透明定价，没有意外收费。竞争性利率8-18%年利率。无提前还款罚款。诚信经营40年。' },
+  { icon: 'shield', title: '无隐藏费用', description: '透明定价，没有意外收费。诚信经营40年。' },
 ];
 
 // Steps
 const steps = [
   { stepNumber: 1, icon: 'contact', title: '联系我们', description: '通过WhatsApp、电话或在线表格联系。与我们的融资专家交谈。' },
   { stepNumber: 2, icon: 'document', title: '提交文件', description: '提供身份证、银行对账单和公司文件。简单的文书流程。' },
-  { stepNumber: 3, icon: 'check', title: '快速获得批准', description: '快速收到批准决定。快速处理保证。' },
+  { stepNumber: 3, icon: 'check', title: '24小时内获得批准', description: '一个工作日内收到批准决定。快速处理保证。' },
   { stepNumber: 4, icon: 'clipboard', title: '完成文书工作', description: '签署贷款协议并完成最终文件。' },
   { stepNumber: 5, icon: 'truck', title: '获得您的挖掘机', description: '收到资金并取得挖掘机。立即开始工作。' },
 ];
@@ -59,13 +58,14 @@ const testimonials = [
     name: '陈志强',
     company: '志强建筑有限公司',
     location: '雪兰莪，巴生',
-    testimonial: '我需要一台挖掘机用于政府项目。银行拒绝了我的申请，但Ing Heng Credit在18小时内批准了，只需10%首付。现在我的业务增长了40%。他们是真正了解建筑行业的金融伙伴。',
+    testimonial: '我需要一台挖掘机用于政府项目。银行拒绝了我的申请，但Ing Heng Credit在18小时内批准了，0%首付全额贷款！现在我的业务增长了40%。他们是真正了解建筑行业的金融伙伴。',
     rating: 5,
   },
   {
     name: '李文华',
     company: '文华土木工程',
     location: '柔佛，新山',
+    testimonial: '与Ing Heng Credit合作了3年，融资了4台挖掘机。季节性付款选项在雨季帮助我管理现金流。他们的服务像家人一样，总是为客户着想。强烈推荐给华人承包商朋友。',
     rating: 5,
   },
   {
@@ -80,26 +80,27 @@ const testimonials = [
 // FAQs - Culturally adapted
 const faqs = [
   { question: '可以融资二手挖掘机吗？', answer: '可以！我们接受10年以内的二手挖掘机，任何信誉良好的品牌。设备必须处于良好工作状态并通过我们的检查。' },
-  { question: '接受的最大挖掘机年龄是多少？', answer: '我们接受10年以内的挖掘机进行融资。较旧的设备可能需要更高的首付或较短的贷款期限。' },
-  { question: '首次创业的承包商可以申请吗？', answer: '当然可以！我们专门帮助新承包商起步。我们看重您的项目潜力，而不仅仅是信用历史。Industry-Leading的批准率证明我们支持成长中的企业。' },
+  { question: '接受的最大挖掘机年龄是多少？', answer: '我们接受10年以内的挖掘机进行融资。实际上，较旧设备更容易获得全额贷款（0%首付），因为市场价值较低，我们可以融资超过购买价格。' },
+  { question: '首次创业的承包商可以申请吗？', answer: '当然可以！我们专门帮助新承包商起步。我们看重您的项目潜力，而不仅仅是信用历史。95%的批准率证明我们支持成长中的企业。' },
   { question: '如果我有不良信用或以前的贷款违约怎么办？', answer: '我们逐一考虑每个申请。不良信用不意味着自动拒绝。我们会查看您当前的财务状况、项目合同和设备价值。许多成功客户之前都有信用问题。' },
+  { question: '雨季期间可以获得融资吗？', answer: '可以！我们理解建筑行业的季节性。我们的季节性付款计划允许在雨季月份（11月至2月）降低付款，在旺季（3月至10月）增加付款。' },
   { question: '接受哪些挖掘机品牌？', answer: '我们接受所有主要品牌，包括小松（Komatsu）、日立（Hitachi）、卡特彼勒（CAT）、神钢（Kobelco）、现代（Hyundai）、斗山（Doosan）、三一（SANY）、徐工（XCMG）、沃尔沃（Volvo）和住友（Sumitomo）。日本、美国、中国和欧洲品牌都可接受。' },
-  { question: '批准流程需要多长时间？', answer: '标准批准从完整文件提交起快速处理（1个工作日）。紧急情况可以通过优质服务在8-1快速内处理。我们优先考虑有即时项目截止日期的承包商。' },
+  { question: '批准流程需要多长时间？', answer: '标准批准从完整文件提交起需要24小时（1个工作日）。紧急情况可以通过优质服务在8-12小时内处理。我们优先考虑有即时项目截止日期的承包商。' },
   { question: '申请需要什么文件？', answer: '个人：身份证/护照、6个月银行对账单、收入证明。公司：SSM注册、公司银行对账单（6个月）、董事身份证、财务报表（如有）、项目合同（如有）。' },
   { question: '以后可以升级我的挖掘机吗？', answer: '可以！提供以旧换新和升级计划。我们可以为您现有的挖掘机进行再融资，并为更大的机器增加资金。许多客户从迷你挖掘机开始，随着业务增长升级到中型或大型挖掘机。' },
   { question: '如果挖掘机损坏怎么办？', answer: '建议但不强制设备保险。我们可以帮助您联系保险提供商。如果未投保的设备损坏，您仍然负责贷款支付。为了安心起见，请考虑综合保险。' },
   { question: '提前还款有罚款吗？', answer: '没有提前还款罚款！随时偿还您的贷款，无需额外费用。许多客户在12-18个月后，当他们的业务增长并获得更好的利率时进行再融资。' },
-  { question: '你们的利率是多少？', answer: '利率范围为每年7.5%至12%，取决于信用状况、首付金额、贷款期限和设备年龄。与银行（9-15%）和经销商融资（10-18%）相比，利率具有竞争力。' },
+  { question: '你们的利率是多少？', answer: '利率范围为每年7.5%至12%，取决于信用状况、贷款期限和设备年龄。全额贷款（0%首付）可享竞争利率。与银行（9-15%）和经销商融资（10-18%）相比，利率具有竞争力。' },
   { question: '可以同时融资多台挖掘机吗？', answer: '可以！提供车队融资，适用于多个单位。同时融资2台或更多挖掘机可享受折扣率。非常适合承接大型项目的扩展承包商。' },
   { question: '除了挖掘机外，还需要抵押品吗？', answer: '挖掘机作为主要抵押品。对于超过RM 500,000的贷款，可能需要额外抵押品（房产、定期存款或担保人）。大多数标准挖掘机贷款不需要额外抵押品。' },
-  { question: '我可以借多少？', answer: '最低贷款：RM 30,000。最高贷款：RM 3,000,000，取决于设备价值和您的财务状况。我们可以融资设备价值的90%（需要10%首付）。' },
+  { question: '我可以借多少？', answer: '最低贷款：RM 30,000。最高贷款：RM 3,000,000，取决于设备价值和您的财务状况。全额贷款（0%首付）可用 - 我们可以融资设备价值的100%。二手设备因市场价值较低，更容易获批全额贷款。' },
 ];
 
 // Product Schema
 const productSchema = generateProductSchema({
   name: '挖掘机融资马来西亚',
-  description: '快速批准，Industry-Leading批准率的挖掘机融资。为建筑承包商提供灵活的付款条款。',
-  imageUrl: `${SITE_CONFIG.url}/images/excavator-financing.jpg`,
+  description: '24小时快速批准，95%批准率的挖掘机融资。为建筑承包商提供灵活的付款条款。',
+  imageUrl: 'https://ingheng-credit.vercel.app/images/excavator-financing.jpg',
   category: '金融服务 - 设备融资',
   offers: {
     price: '30000',
@@ -133,38 +134,39 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="马来西亚承包商快速挖掘机融资"
-    subtitle="快速批准 | Industry-Leading批准率 | 零预付费用 | 灵活12-60个月期限 | 诚信经营40年"
+    subtitle="24小时批准 | 95%批准率 | 零预付费用 | 灵活12-60个月期限 | 诚信经营40年"
     ctaText="WhatsApp免费报价"
     ctaLink="https://wa.me/60175700889?text=你好！我想获取挖掘机融资的报价。"
     ctaSecondaryText="立即致电: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/excavator-hero.jpg"
     lang={lang}
     trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '当日批准']}
   />
 
   <!-- Problem/Solution Section - Chinese cultural angle -->
-  <section class="section bg-[#F5F5DC]">
+  <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
           建筑承包商面临现金流挑战
         </h2>
-        <p class="text-xl text-[#4F3E29] leading-relaxed">
+        <p class="text-xl text-gray-700 leading-relaxed">
           您有项目在手，但银行拒绝贷款。设备经销商要求30-50%首付。您的竞争对手因为有挖掘机而赢得合同，而您没有。这听起来熟悉吗？
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <div class="bg-white p-6 rounded-lg shadow-md">
           <div class="text-red-600 font-bold text-lg mb-3">问题</div>
-          <ul class="space-y-2 text-[#4F3E29]">
+          <ul class="space-y-2 text-gray-700">
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
               <span>银行因信用记录有限而拒绝申请</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
-              <span>高额首付要求（30-50%）</span>
+              <span>高额首付要求（20-50%）</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-red-500 mt-1">✗</span>
@@ -177,19 +179,20 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <div class="bg-white p-6 rounded-lg shadow-md">
           <div class="text-green-600 font-bold text-lg mb-3">我们的解决方案</div>
-          <ul class="space-y-2 text-[#4F3E29]">
+          <ul class="space-y-2 text-gray-700">
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>Industry-Leading批准率 - 我们批准银行拒绝的申请</span>
+              <span>95%批准率 - 我们批准银行拒绝的申请</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
-              <span>只需10%首付</span>
+              <span>0%首付 - 全额贷款可用</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
+              <span>提供季节性付款计划</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-green-500 mt-1">✓</span>
@@ -198,20 +201,20 @@ const faqSchema = generateFAQSchema(faqs);
           </ul>
         </div>
 
-        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
           <div class="font-bold text-lg mb-3 text-yellow-600">真实案例</div>
           <div class="text-sm leading-relaxed text-gray-800">
             <p class="mb-3"><strong class="text-primary">来自巴生的陈先生</strong>需要一台RM 180,000的挖掘机用于政府道路项目。</p>
-            <p class="mb-3"><strong class="text-red-600">银行拒绝了他。</strong>我们在18小时内批准，只需RM 18,000首付（10%）。</p>
+            <p class="mb-3"><strong class="text-red-600">银行拒绝了他。</strong>我们在18小时内批准，0%首付 - 全额贷款RM 180,000！</p>
             <p class="font-semibold text-green-700">他完成了项目，赚了RM 250,000，6个月后买了第二台挖掘机。</p>
           </div>
         </div>
       </div>
 
       <!-- Trust Building - Chinese cultural element -->
-      <div class="max-w-3xl mx-auto text-center p-6 bg-white rounded-lg shadow-[4px_4px_0_#2D1810]">
+      <div class="max-w-3xl mx-auto text-center p-6 bg-white rounded-lg shadow-md">
         <h3 class="text-2xl font-bold text-primary mb-4">40年信誉，服务华人社区</h3>
-        <p class="text-[#4F3E29] leading-relaxed mb-4">
+        <p class="text-gray-700 leading-relaxed mb-4">
           我们了解华人承包商的需求和挑战。从家族生意传承到企业扩展，从应对季节性波动到把握政府项目机会。我们不仅是金融公司，更是您生意成长的伙伴。
         </p>
         <p class="text-primary font-semibold">
@@ -228,7 +231,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           为什么选择Ing Heng Credit进行挖掘机融资？
         </h2>
-        <p class="text-xl text-[#4F3E29]">
+        <p class="text-xl text-gray-600">
           我们了解承包商的挑战，专门为您的业务设计融资
         </p>
       </div>
@@ -246,7 +249,7 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Payment Calculator -->
-  <section class="section bg-[#F5F5DC]">
+  <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto">
         <Calculator lang={lang} equipmentType="挖掘机" defaultPrice={180000} />
@@ -261,7 +264,7 @@ const faqSchema = generateFAQSchema(faqs);
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           5个简单步骤获得您的挖掘机
         </h2>
-        <p class="text-xl text-[#4F3E29]">
+        <p class="text-xl text-gray-600">
           从申请到设备交付最快3-5天
         </p>
       </div>
@@ -291,41 +294,41 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- Equipment Types & Brands -->
-  <section class="section bg-[#F5F5DC]">
+  <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           我们融资的挖掘机类型
         </h2>
-        <p class="text-xl text-[#4F3E29]">
+        <p class="text-xl text-gray-600">
           从1吨迷你到30吨重型机器的所有挖掘机类别
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-bold text-primary mb-3">迷你挖掘机（1-5吨）</h3>
-          <p class="text-[#4F3E29]">适合住宅项目、园林绿化和狭小空间。省油且多功能。</p>
+          <p class="text-gray-600">适合住宅项目、园林绿化和狭小空间。省油且多功能。</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-bold text-primary mb-3">中型挖掘机（5-10吨）</h3>
-          <p class="text-[#4F3E29]">适合中型建筑工地、道路工程和公用事业项目。平衡动力和机动性。</p>
+          <p class="text-gray-600">适合中型建筑工地、道路工程和公用事业项目。平衡动力和机动性。</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-bold text-primary mb-3">大型挖掘机（10-30吨）</h3>
-          <p class="text-[#4F3E29]">用于大型建筑、采矿和土方工程项目的重型机器。</p>
+          <p class="text-gray-600">用于大型建筑、采矿和土方工程项目的重型机器。</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-bold text-primary mb-3">长臂挖掘机</h3>
-          <p class="text-[#4F3E29]">扩展臂用于深度挖掘、疏浚和河岸工作，长达30米。</p>
+          <p class="text-gray-600">扩展臂用于深度挖掘、疏浚和河岸工作，长达30米。</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-bold text-primary mb-3">轮式挖掘机</h3>
-          <p class="text-[#4F3E29]">适用于道路建设和城市项目的移动挖掘机。快速在工地之间转移。</p>
+          <p class="text-gray-600">适用于道路建设和城市项目的移动挖掘机。快速在工地之间转移。</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h3 class="text-lg font-bold text-primary mb-3">水陆两用挖掘机</h3>
-          <p class="text-[#4F3E29]">专用于沼泽、湿地和洪水易发地区。满足马来西亚独特需求。</p>
+          <p class="text-gray-600">专用于沼泽、湿地和洪水易发地区。满足马来西亚独特需求。</p>
         </div>
       </div>
 
@@ -334,24 +337,24 @@ const faqSchema = generateFAQSchema(faqs);
         <h3 class="text-2xl font-bold text-primary mb-6">接受的品牌</h3>
         <div class="flex flex-wrap justify-center gap-4">
           {['小松 Komatsu', '日立 Hitachi', '卡特彼勒 CAT', '神钢 Kobelco', '现代 Hyundai', '斗山 Doosan', '三一 SANY', '徐工 XCMG', '沃尔沃 Volvo', '住友 Sumitomo'].map((brand) => (
-            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium">
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium">
               {brand}
             </span>
           ))}
         </div>
-        <p class="text-[#4F3E29] mt-4">...以及更多！联系我们了解其他品牌。</p>
+        <p class="text-gray-600 mt-4">...以及更多！联系我们了解其他品牌。</p>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="section bg-[#F5F5DC]">
+  <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           马来西亚华人承包商的成功故事
         </h2>
-        <p class="text-xl text-[#4F3E29]">
+        <p class="text-xl text-gray-600">
           通过我们的融资发展业务的真实承包商
         </p>
       </div>
@@ -371,13 +374,13 @@ const faqSchema = generateFAQSchema(faqs);
   </section>
 
   <!-- FAQ Section -->
-  <section class="section bg-[#F5F5DC]">
+  <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
           常见问题
         </h2>
-        <p class="text-xl text-[#4F3E29]">
+        <p class="text-xl text-gray-600">
           关于挖掘机融资您需要知道的一切
         </p>
       </div>
@@ -390,11 +393,8 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- Related Equipment Section -->
-  <RelatedEquipment lang={lang} currentEquipment="excavator" />
-
   <!-- Final CTA Section -->
-  <section class="section bg-[#8B6F47] text-white">
+  <section class="section bg-secondary text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         准备好获得您的挖掘机了吗？
@@ -431,7 +431,7 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>快速批准</span>
+          <span>24小时批准</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -451,8 +451,8 @@ const faqSchema = generateFAQSchema(faqs);
           <h2 class="text-3xl font-bold text-primary mb-4">
             或填写我们的在线表格
           </h2>
-          <p class="text-[#4F3E29]">
-            我们将在营业时间内快速内与您联系
+          <p class="text-gray-600">
+            我们将在营业时间内2小时内与您联系
           </p>
         </div>
         <ContactForm lang={lang} />

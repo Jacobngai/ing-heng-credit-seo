@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Toyota Corolla AE92 GTZ Malaysia - 0% Deposit Legenda Rally"
 description: "Dapatkan pembiayaan 0% deposit untuk Toyota Corolla AE92 GTZ yang berlegenda. Nikmati prestasi bred-rally dengan terma fleksibel untuk karya agung twin-cam yang boleh dikumpul ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

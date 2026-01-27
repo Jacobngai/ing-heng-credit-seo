@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Peugeot 205 GTI Malaysia - 0% Deposit Ikon Hot Hatch"
 description: "Biayai Peugeot 205 GTI anda dengan 0% deposit di Malaysia. Kelulusan pakar untuk legenda hot hatch yang mentakrifkan generasi. Dapatkan pembiayaan 205 GTI anda hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

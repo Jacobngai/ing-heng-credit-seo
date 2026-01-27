@@ -19,12 +19,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Construction Equipment  December 23, 2025      8 min read
-  #  Complete Guide to Excavator Financing in Malaysia 2025 
-
-  Learn how to get excavator financing in Malaysia. Application process, required documents, high approval rate, and tips for fast approval. 
-
-     By Ing Heng Credit &amp; Leasing     # Complete Guide to Excavator Financing in Malaysia 2025
 
 Excavators are essential machines for construction contractors in Malaysia. New excavator prices can reach RM500,000 to RM2 million. This makes it difficult for many contractors to buy with cash.
 

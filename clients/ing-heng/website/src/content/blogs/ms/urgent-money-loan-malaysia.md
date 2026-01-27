@@ -6,7 +6,7 @@ description: Perlukan pinjaman wang segera di Malaysia? Kelulusan pantas untuk k
   segera untuk krisis peribadi dan perniagaan.
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: Panduan Pembiayaan
+category: Financing Guides
 tags:
 - pinjaman segera
 - pembiayaan kecemasan

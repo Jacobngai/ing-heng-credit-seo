@@ -1,7 +1,7 @@
 ---
 title: "斯巴鲁SVX融资马来西亚 - 0%首付革命性无窗奇迹"
 description: "为您稀有的斯巴鲁SVX提供0%首付融资。这款突破性的玻璃驾驶舱大旅行车重新定义了汽车设计 - 今天就为这个升值的JDM图标确保融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

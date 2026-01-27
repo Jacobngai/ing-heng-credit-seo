@@ -3,7 +3,7 @@ title: "雪兰莪水上摩托车融资 | 海洋运动设备贷款"
 description: "在雪兰莪获得0%首付水上摩托车融资。我们批准银行拒绝的个人水上交通工具贷款。为休闲或租赁业务融资Yamaha、Sea-Doo、Kawasaki水上摩托车。"
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["水上摩托车融资", "海洋运动", "水上交通工具贷款", "雪兰莪", "休闲车辆"]
 keywords:
   - "雪兰莪水上摩托车融资"

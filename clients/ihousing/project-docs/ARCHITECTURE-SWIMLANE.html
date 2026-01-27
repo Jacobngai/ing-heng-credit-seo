@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iHousing Architecture - Swimlane Diagram</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .diagram-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #123A32 0%, #1a5c3d 100%);
+      color: white;
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    .swimlanes {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+      padding: 20px 0;
+      min-height: 800px;
+    }
+
+    .swimlane {
+      border-right: 2px dashed #e0e0e0;
+      position: relative;
+      padding: 10px;
+    }
+
+    .swimlane:last-child {
+      border-right: none;
+    }
+
+    .lane-header {
+      text-align: center;
+      font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+      padding: 10px;
+      background: #fafafa;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      border: 1px solid #eee;
+    }
+
+    .lane-header.ai { color: #123A32; }
+    .lane-header.human { color: #e67e22; }
+    .lane-header.sitemap { color: #9b59b6; }
+    .lane-header.build { color: #3498db; }
+    .lane-header.deploy { color: #e74c3c; }
+
+    .process-node {
+      background: white;
+      border-radius: 8px;
+      padding: 12px 10px;
+      margin: 8px 0;
+      font-size: 11px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    .process-node.critical {
+      border: 2px solid #e74c3c;
+      background: #fff5f5;
+    }
+
+    .process-node.start {
+      border: 2px solid #27ae60;
+      background: #f0fff4;
+      font-weight: bold;
+    }
+
+    .process-node.end {
+      border: 2px solid #2980b9;
+      background: #f0f9ff;
+      font-weight: bold;
+    }
+
+    .process-node .icon {
+      font-size: 14px;
+      margin-right: 6px;
+    }
+
+    .flow-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .flow-line {
+      position: absolute;
+      height: 2px;
+      background: #123A32;
+      opacity: 0.6;
+      border-radius: 2px;
+    }
+
+    .flow-line::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid #123A32;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+
+    .flow-line-vertical {
+      width: 2px;
+      background: #123A32;
+      opacity: 0.6;
+      border-radius: 2px;
+    }
+
+    .flow-line-vertical::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: -4px;
+      width: 0;
+      height: 0;
+      border-top: 8px solid #123A32;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px 40px;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .legend-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .legend-box.start { border: 2px solid #27ae60; background: #f0fff4; }
+    .legend-box.critical { border: 2px solid #e74c3c; background: #fff5f5; }
+    .legend-box.normal { border: 1px solid #e0e0e0; background: white; }
+    .legend-box.end { border: 2px solid #2980b9; background: #f0f9ff; }
+
+    .critical-section {
+      background: #fff8e1;
+      border: 2px solid #f39c12;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    .critical-section h4 {
+      color: #d35400;
+      font-size: 11px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .phase-label {
+      position: absolute;
+      left: -40px;
+      background: #123A32;
+      color: white;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .connector {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      top: 100%;
+      left: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1200px) {
+      .swimlanes {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .swimlanes {
+        grid-template-columns: 1fr;
+      }
+      .swimlane {
+        border-right: none;
+        border-bottom: 2px dashed #e0e0e0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="diagram-container">
+    <div class="header">
+      <h1>iHousing Architecture - Content & Deployment Swimlane</h1>
+      <p>Zero 404 Policy | Auto-Sitemap | Slug Tracking | GitHub Actions CI/CD</p>
+    </div>
+
+    <div class="swimlanes">
+      <!-- Lane 1: AI Agent -->
+      <div class="swimlane">
+        <div class="phase-label" style="top: 50px;">AI AGENT</div>
+        <div class="lane-header ai">AI Content Agent</div>
+
+        <div class="process-node start">
+          <span class="icon">▶️</span>
+          Start: Content Request
+        </div>
+
+        <div class="process-node">
+          <span class="icon">📝</span>
+          Generate Draft Content
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🏷️</span>
+          Define Slug in Frontmatter
+        </div>
+
+        <div class="process-node">
+          <span class="icon">💾</span>
+          Save to D/ Folder
+        </div>
+      </div>
+
+      <!-- Lane 2: Human Review -->
+      <div class="swimlane">
+        <div class="phase-label" style="top: 50px;">HUMAN</div>
+        <div class="lane-header human">Human Review</div>
+
+        <div class="process-node">
+          <span class="icon">👀</span>
+          Review Draft Content
+        </div>
+
+        <div class="process-node critical">
+          <span class="icon">✅</span>
+          CRITICAL: Add slug to SLUG_MANIFEST.json
+        </div>
+
+        <div class="process-node">
+          <span class="icon">📂</span>
+          Move D/ → A/ (Approved)
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🔗</span>
+          Check Internal Links
+        </div>
+      </div>
+
+      <!-- Lane 3: Build & Sitemap -->
+      <div class="swimlane">
+        <div class="phase-label" style="top: 50px;">BUILD</div>
+        <div class="lane-header sitemap">Build & Sitemap</div>
+
+        <div class="critical-section">
+          <h4>🔥 CRITICAL: ZERO 404 POLICY</h4>
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🔨</span>
+          npm run build
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🗺️</span>
+          Astro Auto-Generates Sitemap
+        </div>
+
+        <div class="process-node critical">
+          <span class="icon">✓</span>
+          CRITICAL: Verify SLUG_MANIFEST.json updated
+        </div>
+      </div>
+
+      <!-- Lane 4: Local Testing -->
+      <div class="swimlane">
+        <div class="phase-label" style="top: 50px;">TEST</div>
+        <div class="lane-header build">Local Test</div>
+
+        <div class="process-node">
+          <span class="icon">🧪</span>
+          npm run check-sitemap
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🎭</span>
+          Playwright Visits ALL URLs
+        </div>
+
+        <div class="process-node critical">
+          <span class="icon">🚫</span>
+          CRITICAL: Abort if ANY 404 found
+        </div>
+
+        <div class="process-node">
+          <span class="icon">📊</span>
+          Results saved to JSON
+        </div>
+      </div>
+
+      <!-- Lane 5: Deployment -->
+      <div class="swimlane">
+        <div class="phase-label" style="top: 50px;">DEPLOY</div>
+        <div class="lane-header deploy">CI/CD Deploy</div>
+
+        <div class="process-node">
+          <span class="icon">⬆️</span>
+          Push to GitHub
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🔄</span>
+          Vercel Auto-Deploy
+        </div>
+
+        <div class="process-node">
+          <span class="icon">🤖</span>
+          GitHub Action Triggers
+        </div>
+
+        <div class="process-node critical">
+          <span class="icon">🔍</span>
+          CRITICAL: Auto Sitemap Link Check
+        </div>
+
+        <div class="process-node end">
+          <span class="icon">🎉</span>
+          Success: No 404s!
+        </div>
+
+        <div class="process-node" style="background: #ffebee; border-color: #e74c3c;">
+          <span class="icon">❌</span>
+          Fail: Create GitHub Issue
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-box start"></div>
+        <span>Start Point</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box critical"></div>
+        <span>Critical Step (Must Complete)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box normal"></div>
+        <span>Normal Process</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box end"></div>
+        <span>End Point</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Animate the diagram on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const nodes = document.querySelectorAll('.process-node');
+      nodes.forEach((node, index) => {
+        node.style.opacity = '0';
+        node.style.transform = 'translateY(20px)';
+        node.style.transition = 'all 0.4s ease';
+
+        setTimeout(() => {
+          node.style.opacity = '1';
+          node.style.transform = 'translateY(0)';
+        }, 100 + (index * 100));
+      });
+    });
+  </script>
+</body>
+</html>

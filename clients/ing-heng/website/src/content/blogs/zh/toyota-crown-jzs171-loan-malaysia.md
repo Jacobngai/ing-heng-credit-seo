@@ -1,7 +1,7 @@
 ---
 title: "丰田皇冠JZS171贷款马来西亚 - 0%首付VIP轿车投资"
 description: "在马来西亚获得丰田皇冠JZS171 0%首付融资。这款终极VIP轿车的奢华地位和不断增长的收藏吸引力让月供感觉微不足道。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

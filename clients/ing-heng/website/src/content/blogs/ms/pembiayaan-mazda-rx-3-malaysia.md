@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Mazda RX-3 Malaysia - 0% Deposit Legenda Rotary"
 description: "Dapatkan pembiayaan Mazda RX-3 dengan 0% deposit di Malaysia. Pinjaman pakar untuk kereta sport rotary berlegenda ini dengan teknologi enjin unik dan potensi kenaikan nilai klasik."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

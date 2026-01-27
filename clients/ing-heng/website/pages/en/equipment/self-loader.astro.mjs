@@ -1,0 +1,127 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { c as generateProductSchema, a as generateFAQSchema, $ as $$BaseLayout, e as encodeJSONLD } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+import { S as SITE_CONFIG } from '../../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$SelfLoader = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const pageTitle = "Self-Loader Truck Financing Malaysia | Start Your Towing Business Today";
+  const pageDescription = "Finance your Nissan self-loader truck and enter the profitable towing industry. 0% deposit option. Equipment 10+ years old accepted. Build your vehicle transport empire.";
+  const keywords = ["self loader truck financing Malaysia", "car carrier financing", "towing business financing", "auto transporter loan", "vehicle recovery truck financing", "Nissan self loader loan"];
+  const benefits = [
+    { icon: "percentage", title: "0% Deposit Option", description: "Finance up to 100% of your self-loader truck. Preserve cash for business operations. Start earning revenue immediately." },
+    { icon: "trending-up", title: "Enter RM 2.5 Billion Towing Industry", description: "Malaysia automotive services market worth RM 2.5 billion. Towing services essential for insurance, police, dealerships. Recession-proof business." },
+    { icon: "shield", title: "Equipment 10+ Years Old Accepted", description: "Banks reject older equipment. We approve well-maintained self-loaders regardless of age. Focus on condition and earning potential." },
+    { icon: "clock", title: "24/7 Revenue Potential", description: "Breakdowns happen anytime. Emergency towing charges premium rates. RM 200-800 per job. Your truck working while you sleep." },
+    { icon: "users", title: "Multiple Revenue Streams", description: "Towing services, car dealership transport, auction vehicle delivery, repossession services. Diversified income sources." },
+    { icon: "calendar", title: "Flexible 12-84 Month Terms", description: "Payment plans that match seasonal cash flow. Lower payments during slow months. Equipment pays for itself." }
+  ];
+  const steps = [
+    { number: 1, title: "Choose Your Self-Loader", description: "Nissan, Hino, Isuzu models available. We assess condition over age. Hydraulic system functionality is key factor." },
+    { number: 2, title: "Business Plan Review", description: "Show us your target market: insurance partnerships, dealership contracts, emergency services. We approve based on revenue potential." },
+    { number: 3, title: "Fast Approval Process", description: "Equipment assessment, business viability check, loan structuring. Approval focused on earning capacity, not just credit score." },
+    { number: 4, title: "Start Earning Revenue", description: "Register business, get insurance, start operations. Self-loader pays for itself through towing jobs and transport contracts." }
+  ];
+  const faqs = [
+    { question: "Can I start a towing business with financed equipment?", answer: "YES! Most successful towing companies started with financed equipment. Self-loader trucks cost RM 80,000-200,000. Financing preserves cash for business licenses, insurance, marketing. Equipment generates revenue to service the loan." },
+    { question: "What if the self-loader needs repairs?", answer: "We can include repair costs in your financing amount. Combine equipment purchase and refurbishment costs. Budget RM 10-20k for hydraulic system maintenance. Well-maintained self-loaders last 15-20 years." },
+    { question: "Do towing companies make good money?", answer: "Emergency towing: RM 200-800 per job. Insurance work: RM 150-300 per tow. Dealership transport: RM 100-250 per car. Busy operators handle 5-10 jobs daily. Revenue potential: RM 15,000-40,000 monthly." },
+    { question: "What self-loader brands do you finance?", answer: "ALL major brands: Nissan (most popular for reliability), Hino (premium quality), Isuzu (excellent value), Mitsubishi Fuso. Chinese brands: Dongfeng, Foton. We assess each truck individually based on condition and business viability." },
+    { question: "Can I finance a 10+ year old self-loader?", answer: "ABSOLUTELY! Your revenue depends on the truck working, not its age. Many 15-year-old self-loaders still operate daily. We focus on hydraulic system condition, engine health, and your business plan. Age is secondary to earning potential." },
+    { question: "How do I get towing contracts?", answer: "Insurance companies need regular towing services. Police require vehicle removal. Car dealerships need transport between locations. Auto auctions require delivery services. Build relationships, get proper licenses, maintain professional service. Contracts follow." },
+    { question: "What licenses do I need for towing business?", answer: "Business registration (SSM), commercial vehicle license, towing permit from local council, insurance coverage. We help connect you with licensing consultants. Focus on getting operational quickly." },
+    { question: "Can I finance if I have no business experience?", answer: "YES! We evaluate your commitment and learning ability. Towing is learnable skill. Equipment operation is straightforward. Business success depends more on customer service and reliability than prior experience. Show us your plan and dedication." },
+    { question: "What is the approval process timeline?", answer: "Complete application with equipment details and business plan. We review within 2-3 business days. Focus on equipment condition, your business potential, and ability to service the loan through towing revenue." },
+    { question: "Do I need a depot or storage facility?", answer: "Not initially. Many operators work from home base. As business grows, consider renting storage yard for impounded vehicles. Start simple, expand as revenue increases. Location less important than service quality and response time." }
+  ];
+  const productSchema = generateProductSchema({
+    name: "Self-Loader Truck Financing Malaysia",
+    description: "Finance your Nissan, Hino, or Isuzu self-loader truck for towing business. 0% deposit option available. Start your vehicle transport business today.",
+    imageUrl: `${SITE_CONFIG.url}/images/self-loader-truck-financing.jpg`,
+    category: "Financial Service - Commercial Vehicle Financing",
+    offers: {
+      price: "80000",
+      currency: "MYR",
+      availability: "https://schema.org/InStock"
+    }
+  });
+  const faqSchema = generateFAQSchema(faqs);
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${renderComponent($$result2, "Hero", $$Hero, { "title": "Start Your Towing Business. Finance Your Self-Loader Truck Today.", "subtitle": "Enter the RM 2.5 billion automotive services market. Finance Nissan, Hino, Isuzu self-loaders. 0% deposit option. Equipment 10+ years old accepted. 24/7 revenue potential.", "ctaText": "Get Financing Quote", "ctaLink": "https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20self-loader%20truck%20financing.", "ctaSecondaryText": "Call Now: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["0% Deposit Option", "40 Years Experience", "Equipment 10+ Years Old Accepted", "Business Financing Specialists"] })}  ${maybeRenderHead()}<section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto"> <div class="bg-white p-8 md:p-12 rounded-lg shadow-[6px_6px_0_#2D1810]"> <div class="prose prose-lg max-w-none"> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+You see the tow truck driver earning RM 300 for a 20-minute job.
+</p> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+While you're struggling with inconsistent income from your current work.
+</p> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+You think: "He makes in 20 minutes what I make in a full day."
+</p> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+You research towing businesses. The numbers are incredible:
+</p> <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6"> <ul class="text-lg text-green-800 space-y-2 mb-0"> <li><strong>Emergency towing:</strong> RM 200-800 per job</li> <li><strong>Insurance contracts:</strong> RM 150-300 per tow</li> <li><strong>Dealership transport:</strong> RM 100-250 per car</li> <li><strong>Average jobs daily:</strong> 5-10 calls</li> </ul> </div> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+You visit equipment dealers. Self-loader trucks cost RM 80,000-200,000.
+</p> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+You think: "I don't have RM 80,000 cash. This dream is impossible."
+</p> <div class="bg-red-50 border-l-4 border-red-500 p-4 my-6"> <p class="text-lg text-red-800 mb-2"> <strong>When you see that price tag, does your heart sink thinking your towing business dream just died?</strong> </p> <p class="text-red-800 mb-0">
+When you walk away from the dealership, knowing you can't afford the equipment to enter this profitable industry, does it feel like watching opportunity slip away?
+</p> </div> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+But you don't need RM 80,000 cash.
+</p> <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6"> <p class="text-lg text-green-800 mb-2"> <strong>You need financing. 0% deposit option available.</strong> </p> <p class="text-green-800 mb-0">
+Start your towing business without massive upfront payment. Equipment generates revenue to service the loan.
+</p> </div> <p class="text-lg leading-relaxed text-[#4F3E29] mb-4">
+Your self-loader starts earning RM 300 per job from day one.
+</p> <div class="bg-primary text-white p-6 rounded-lg my-6"> <p class="text-xl font-bold mb-2">That's your towing business.</p> <p class="text-lg mb-0">
+Professional equipment. Profitable business. Financial independence. Enter the automotive services industry.
+</p> </div> </div> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Why Finance Your Self-Loader With Ing Heng Credit
+</h2> <p class="text-xl text-[#4F3E29]">
+Professional equipment financing for Malaysia's automotive services industry
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+How Self-Loader Financing Works
+</h2> <p class="text-xl text-[#4F3E29]">
+From application to operating your towing business
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ${steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { "number": step.number, "title": step.title, "description": step.description })}`)} </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Self-Loader Truck Types We Finance
+</h2> <p class="text-xl text-[#4F3E29]">
+All major brands and configurations accepted
+</p> </div> <div class="max-w-4xl mx-auto"> <div class="grid md:grid-cols-2 gap-8"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">Hydraulic Self-Loaders</h3> <ul class="space-y-2 text-[#4F3E29]"> <li><strong>Nissan Car Carriers</strong> - Most popular, reliable hydraulics, excellent parts availability</li> <li><strong>Hino Self-Loaders</strong> - Premium quality, fuel-efficient, strong resale value</li> <li><strong>Isuzu Auto Transporters</strong> - Excellent value, lower maintenance costs than European brands</li> <li><strong>Mitsubishi Fuso</strong> - Compact models for urban towing, good fuel economy</li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">Specialized Applications</h3> <ul class="space-y-2 text-[#4F3E29]"> <li><strong>Emergency Recovery</strong> - 24/7 breakdown services, accident vehicle removal</li> <li><strong>Dealership Transport</strong> - New car delivery, auction vehicle collection</li> <li><strong>Insurance Towing</strong> - Accident claims, total loss vehicle recovery</li> <li><strong>Repossession Services</strong> - Bank asset recovery, stealth operation capability</li> </ul> </div> </div> </div> </div> </section>  ${renderComponent($$result2, "Calculator", $$Calculator, { "lang": lang })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Frequently Asked Questions
+</h2> <p class="text-xl text-[#4F3E29]">
+Everything you need to know about starting your towing business
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  ${renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "lang": lang, "currentEquipment": "self-loader" })}  <section class="section"> <div class="container-custom"> <div class="max-w-2xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">
+Ready to Start Your Towing Business?
+</h2> <p class="text-[#4F3E29] text-lg mb-6">
+Finance your self-loader truck today. Enter the profitable automotive services industry. 0% deposit option available.
+</p> </div> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section>  <section class="section bg-[#8B6F47] text-white"> <div class="container-custom text-center"> <h2 class="text-3xl md:text-4xl font-bold mb-6">
+Your Towing Business Starts Here
+</h2> <p class="text-xl mb-8 max-w-2xl mx-auto">
+Professional equipment financing for Malaysia's automotive services industry. 24/7 revenue potential. Multiple income streams. Recession-proof business.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20start%20a%20towing%20business%20with%20self-loader%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
+Get Financing Quote via WhatsApp
+</a> <a href="tel:+60175700889" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+Call: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>0% Deposit Option</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Equipment 10+ Years Old Accepted</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Business Financing Specialists</span> </div> </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(productSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/self-loader.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/self-loader.astro";
+const $$url = "/en/equipment/self-loader";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$SelfLoader,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

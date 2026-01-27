@@ -1,7 +1,7 @@
 ---
 title: "马自达RX-3融资马来西亚 - 0%首付转子传奇"
 description: "在马来西亚获得马自达RX-3 0%首付融资。专业贷款适用于这款传奇转子跑车，具有独特发动机技术和经典升值潜力。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

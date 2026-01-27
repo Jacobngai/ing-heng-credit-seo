@@ -1,7 +1,7 @@
 ---
 title: "铃木Swift GTI融资马来西亚 - 0%首付热掀背英雄"
 description: "在马来西亚获得铃木Swift GTI 0%首付融资。专业贷款适用于这款传奇热掀背，具有双凸轮动力和经典升值潜力。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

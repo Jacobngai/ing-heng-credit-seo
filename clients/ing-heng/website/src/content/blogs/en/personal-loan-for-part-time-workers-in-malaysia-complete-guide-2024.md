@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Financing Guides  December 22, 2024      8 min read
-  #  Personal Loan for Part-Time Workers in Malaysia: Complete Guide 2024 
-
-  Get personal loans as a part-time worker in Malaysia. Learn requirements, best options, 0% deposit solutions, and approval strategies for flexible employment. 
-
-     By ING HENG Credit Team     # Personal Loan for Part-Time Workers in Malaysia: Your Complete 2024 Guide
 
 Getting a personal loan as a part-time worker in Malaysia can seem difficult. Many banks prefer full-time employees with steady salaries. However, part-time workers have real financing options.
 

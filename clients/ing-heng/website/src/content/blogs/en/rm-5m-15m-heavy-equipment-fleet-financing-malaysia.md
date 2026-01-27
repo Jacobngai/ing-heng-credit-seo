@@ -19,12 +19,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      8 min read
-  #  RM 5M-15M Heavy Equipment Fleet Financing Malaysia 
-
-  Get RM 5-15 million heavy equipment fleet financing in Malaysia. 0% deposit, 100% financing for multi-unit purchases. Excavators, bulldozers, cranes, loaders financing packages for contractors. 
-
-     By Ing Heng Credit &amp; Leasing     # RM 5M-15M Heavy Equipment Fleet Financing Malaysia
 
 When Ahmad’s construction company secured three simultaneous infrastructure contracts worth RM 180 million total - a highway expansion, bridge construction, and industrial development - he quickly realized he needed RM 12 million in heavy equipment across 15 machines to execute efficiently.
 

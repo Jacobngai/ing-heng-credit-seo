@@ -1,7 +1,7 @@
 ---
 title: "铃木Cappuccino贷款马来西亚 - 0%首付涡轮Kei敞篷车"
 description: "稀有铃木Cappuccino零首付融资。银行拒绝30年轻型敞篷车？我们批准。在收藏价值爆发前获得这台涡轮敞篷跑车。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-27

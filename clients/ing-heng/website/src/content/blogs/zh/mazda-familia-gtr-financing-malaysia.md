@@ -1,7 +1,7 @@
 ---
 title: "马自达Familia GTR融资马来西亚 - 0%首付涡轮AWD传奇"
 description: "为标志性马自达Familia GTR获得0%首付融资。通过专为这款稀有JDM拉力同质化特殊车设计的专业贷款条款体验涡轮增压AWD性能。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

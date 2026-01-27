@@ -1,0 +1,169 @@
+{
+  "$ref": "#/definitions/blogs",
+  "definitions": {
+    "blogs": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string",
+          "default": "Ing Heng Credit & Leasing"
+        },
+        "publishDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "integer",
+                  "format": "unix-time"
+                }
+              ]
+            }
+          ]
+        },
+        "updatedDate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "integer",
+                  "format": "unix-time"
+                }
+              ]
+            }
+          ]
+        },
+        "metaTitle": {
+          "type": "string"
+        },
+        "metaDescription": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "ogImage": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Equipment Financing",
+            "Construction Equipment",
+            "Logistics Equipment",
+            "Specialized Vehicle Financing",
+            "Business Tips",
+            "Industry News",
+            "Case Studies",
+            "Financing Guides",
+            "Personal Financing",
+            "Emergency Financing",
+            "Business Financing",
+            "Pembiayaan Peralatan",
+            "Panduan Pembiayaan",
+            "Tip Perniagaan",
+            "设备融资",
+            "融资指南"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "persona": {
+          "type": "string",
+          "enum": [
+            "Contractor Ahmad",
+            "Logistics Lee",
+            "Warehouse William",
+            "General"
+          ]
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "draft": {
+          "type": "boolean",
+          "default": false
+        },
+        "locale": {
+          "type": "string",
+          "enum": [
+            "en",
+            "zh",
+            "ms"
+          ]
+        },
+        "readingTime": {
+          "type": "number"
+        },
+        "faqSchema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question",
+              "answer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "publishDate",
+        "category",
+        "locale"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

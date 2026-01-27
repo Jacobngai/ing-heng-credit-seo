@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Honda CRX融资 - 0%首付运动紧凑传奇投资"
 description: "0%首付融资您的Honda CRX。在银行拒绝老式本田时为这款标志性运动紧凑车获得资金。VTEC传奇和投资潜力的专业改装车融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

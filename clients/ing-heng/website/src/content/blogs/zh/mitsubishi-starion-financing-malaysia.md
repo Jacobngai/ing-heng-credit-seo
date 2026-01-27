@@ -1,7 +1,7 @@
 ---
 title: "三菱Starion融资马来西亚 - 0%首付涡轮运动车投资"
 description: "在马来西亚以0%首付融资获得您的三菱Starion。拥有定义日本性能设计和工程的标志性1980年代涡轮运动车。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

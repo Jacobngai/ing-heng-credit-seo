@@ -3,7 +3,7 @@ title: "高尔夫球车融资球场马来西亚 - 0%首付高尔夫车贷款"
 description: "获得马来西亚球场高尔夫球车融资批准。银行拒绝娱乐车贷款？我们专门提供高尔夫球车融资，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["高尔夫球车融资", "球场设备贷款", "娱乐车融资", "高尔夫球车租赁马来西亚"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

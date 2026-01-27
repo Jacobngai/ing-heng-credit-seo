@@ -1,7 +1,7 @@
 ---
 title: "奥迪Quattro贷款马来西亚 - 0%首付原创AWD先驱融资"
 description: "在马来西亚以0%首付贷款获得您的奥迪Quattro。为革命化拉力赛和性能驾驶的原创全轮驱动先驱提供融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

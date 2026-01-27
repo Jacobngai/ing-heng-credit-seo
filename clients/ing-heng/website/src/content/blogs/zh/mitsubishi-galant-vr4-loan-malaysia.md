@@ -1,7 +1,7 @@
 ---
 title: "三菱戈蓝VR-4贷款马来西亚 - 0%首付AWD涡轮融资"
 description: "为传奇三菱戈蓝VR-4获得0%首付融资。通过专为这款标志性性能轿车设计的专业贷款条款体验拉力验证的AWD涡轮动力。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

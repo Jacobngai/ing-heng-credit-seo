@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      9 min read
-  #  CIDB Class A Equipment Requirements &amp; Financing Options Malaysia 2025 
-
-  Upgrade to CIDB Class A with equipment financing. We finance RM 2M+ equipment packages for contractor upgrades. 0% deposit, 100% financing for bulldozers, excavators, cranes. 
-
-     By Ing Heng Credit &amp; Leasing     # CIDB Class A Equipment Requirements &amp; Financing Options Malaysia 2025
 
 When Ahmad looks at that Class B contractor certificate on his office wall, and calculates that upgrading to Class A could unlock RM 100 million government tenders instead of being limited to RM 10 million projects, does that gap feel impossible to bridge?
 

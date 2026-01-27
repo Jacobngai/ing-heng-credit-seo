@@ -1,0 +1,78 @@
+name: Sitemap Link Checker
+
+# Run after deployment or manually triggered
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Site URL to check (default from env)'
+        required: false
+        type: string
+
+jobs:
+  check-sitemap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ./clients/ihousing/website
+        run: npm ci
+
+      - name: Run sitemap link checker
+        working-directory: ./clients/ihousing/website
+        env:
+          SITE_URL: ${{ inputs.url || 'https://en.ihousing-temp.vercel.app' }}
+        run: npm run check-sitemap
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap-check-results
+          path: clients/ihousing/website/sitemap-check-results.json
+          retention-days: 30
+
+      - name: Create GitHub Issue if errors found
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('clients/ihousing/website/sitemap-check-results.json', 'utf8'));
+
+            if (results.errors && results.errors.length > 0) {
+              const issueBody = `## 🔍 Sitemap Link Check Failed
+
+              **Checked at:** ${results.timestamp}
+              **Total URLs checked:** ${results.totalUrls}
+              **Errors found:** ${results.errors.length}
+
+              ### ❌ Broken Links (404s)
+              ${results.errors.map(e => `- [${e.url}](${e.url}) - ${e.statusCode}: ${e.error}`).join('\n')}
+
+              ### 📋 Summary
+              - Success rate: ${results.successRate}%
+              - Please fix these broken links and redeploy.
+
+              ---
+
+              *This issue was automatically created by the Sitemap Link Checker workflow.*`;
+
+              github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `🚨 Sitemap Check Failed - ${results.errors.length} Broken Links Found`,
+                body: issueBody,
+                labels: ['bug', '404', 'sitemap']
+              });
+            }

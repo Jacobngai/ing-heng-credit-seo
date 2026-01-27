@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2024      12 min read
-  #  Concrete Mixer Financing Malaysia: 0% Deposit Construction Equipment Loans 
-
-  Get concrete mixer financing with zero deposit in Malaysia. Finance up to 100% of mixer truck value. Fast approval for new and used cement mixers from 1-year-old businesses. 
-
-     By Ing Heng Credit &amp; Leasing     ## Concrete Mixer Financing Malaysia: Get Your Mixer Truck with 0% Deposit
 
 Need a concrete mixer truck for your construction or ready-mix business? Getting financing should not delay your concrete operations. At Ing Heng Credit, we offer concrete mixer financing with zero deposit required and loans up to 100% of equipment value.
 

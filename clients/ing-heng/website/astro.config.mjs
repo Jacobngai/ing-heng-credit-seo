@@ -36,24 +36,20 @@ export default defineConfig({
       i18n: {
         defaultLocale: DEFAULT_LOCALE,
         locales: {
-          // Dynamic: only include the default locale for this deployment
-          // This prevents duplicate content across the 3 domains
-          [DEFAULT_LOCALE]: DEFAULT_LOCALE === 'en' ? 'en-MY' : DEFAULT_LOCALE === 'ms' ? 'ms-MY' : 'zh-Hans-MY',
+          en: 'en-MY',
+          zh: 'zh-Hans-MY',
+          ms: 'ms-MY',
         },
       },
       filter: (page) => {
-        // CRITICAL FIX: Only include pages for the default locale
-        // This prevents duplicate content across multi-domain deployments
-        // EN site (inghengcredit.com) → only /en/ pages
-        // MS site (kreditloan.my) → only /ms/ pages
-        // ZH site (inghengcredit.my) → only /zh/ pages
-        const excludeRoot = page !== `${SITE_URL}/`;
-        const includeOnlyDefaultLocale = page.includes(`/${DEFAULT_LOCALE}/`);
-        return excludeRoot && includeOnlyDefaultLocale;
+        // Exclude language selector root page from sitemap
+        // Only exclude the exact root URL, not language-prefixed pages
+        return page !== `${SITE_URL}/`;
       },
       serialize: (item) => {
-        // Add lastmod to all pages
+        // Add lastmod to all pages (today's date to trigger re-crawl)
         item.lastmod = new Date();
+        item.changefreq = 'weekly'; // Encourage weekly crawling
 
         // Set higher priority for homepage variants
         if (item.url.match(/\/(en|zh|ms)\/?$/)) {

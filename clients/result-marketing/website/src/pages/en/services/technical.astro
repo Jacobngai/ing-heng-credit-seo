@@ -1,0 +1,426 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+// SIMPLE WORDS REPLACEMENTS
+// "Technical SEO" → "Fix Your Website"
+// "Slow Page Speed" → "Site Loads Slow"
+// "Core Web Vitals" → "Google Health Check"
+// "Mobile Issues" → "Broken on Phone"
+// "Indexing Problems" → "Google Can't Find You"
+// "Missing Schema" → "No Rich Snippets"
+
+const issues = [
+  {
+    issue: 'Site Loads Slow',
+    impact: 'Every 1 second wait = 7% fewer sales',
+    solution: 'Shrink images, clean code, fast server',
+    icon: '🐌'
+  },
+  {
+    issue: 'Fails Google Health Check',
+    impact: 'Google punishes your ranking since 2021',
+    solution: 'Fix load speed, delay, and layout shift',
+    icon: '📊'
+  },
+  {
+    issue: 'Broken on Phone',
+    impact: '60% of users on mobile, most sites fail',
+    solution: 'Make it work on all screen sizes',
+    icon: '📱'
+  },
+  {
+    issue: "Google Can't Find You",
+    impact: 'Your pages don\'t show in search',
+    solution: 'Fix sitemap, robots.txt, tags',
+    icon: '🔍'
+  },
+  {
+    issue: 'No Rich Snippets',
+    impact: 'Lower click rate in search results',
+    solution: 'Add structured data markup',
+    icon: '🏷️'
+  },
+  {
+    issue: 'Not Secure',
+    impact: 'Google shows "Not Secure" warning',
+    solution: 'Install SSL, use HTTPS',
+    icon: '🔒'
+  }
+];
+
+const services = [
+  {
+    category: 'Make Site Fast',
+    description: 'Your site loads in under 2 seconds (3 on mobile)',
+    tasks: [
+      'Compress images',
+      'Clean up code',
+      'Set up browser cache',
+      'Use CDN',
+      'Fix server speed',
+      'Check hosting'
+    ]
+  },
+  {
+    category: 'Pass Google Health Check',
+    description: 'Meet Google\'s quality requirements',
+    tasks: [
+      'Fix load time (LCP)',
+      'Improve response speed (FID)',
+      'Stop layout jumping (CLS)',
+      'Tune interaction speed (INP)',
+      'Track real users',
+      'Monthly reports'
+    ]
+  },
+  {
+    category: 'Fix Mobile',
+    description: 'Perfect experience for 60% of your traffic',
+    tasks: [
+      'Make layout responsive',
+      'Fix button sizes',
+      'Set mobile screen size',
+      'Mobile speed fixes',
+      'AMP if needed',
+      'Test on real phones'
+    ]
+  },
+  {
+    category: 'Get Found',
+    description: 'Google can find and show all your pages',
+    tasks: [
+      'Create XML sitemap',
+      'Fix robots.txt',
+      'Add canonical tags',
+      'Build internal links',
+      'Handle pagination',
+      'Optimize crawl budget'
+    ]
+  },
+  {
+    category: 'Rich Snippets',
+    description: 'Better display in search results',
+    tasks: [
+      'Business info schema',
+      'Local business schema',
+      'Product schema',
+      'Article schema',
+      'FAQ schema',
+      'Breadcrumb schema'
+    ]
+  },
+  {
+    category: 'Security',
+    description: 'Protect your site and build trust',
+    tasks: [
+      'Install SSL certificate',
+      'Move to HTTPS',
+      'Fix mixed content',
+      'Add security headers',
+      'Regular security checks',
+      'Watch for malware'
+    ]
+  }
+];
+
+const process = [
+  {
+    step: 1,
+    title: 'Check Everything',
+    description: 'We scan your whole site using pro tools (Lighthouse, Screaming Frog, GTmetrix)',
+    deliverable: 'Detailed report with problems ranked by importance'
+  },
+  {
+    step: 2,
+    title: 'Fix Big Problems First',
+    description: 'We tackle speed, mobile, and indexing issues first',
+    deliverable: 'Quick wins done in 1 week'
+  },
+  {
+    step: 3,
+    title: 'Deep Fixes',
+    description: 'Systematic fixes across all technical areas',
+    deliverable: 'Full fix done in 2-3 weeks'
+  },
+  {
+    step: 4,
+    title: 'Test Everything',
+    description: 'Verify fixes work on all devices, browsers, and locations',
+    deliverable: 'Before/after report'
+  },
+  {
+    step: 5,
+    title: 'Keep Watching',
+    description: 'Monthly checks catch new issues before they hurt you',
+    deliverable: 'Monthly health reports'
+  }
+];
+
+const tools = [
+  { name: 'Google Lighthouse', purpose: 'Performance checks' },
+  { name: 'PageSpeed Insights', purpose: 'Core Web Vitals' },
+  { name: 'Screaming Frog', purpose: 'Site scanning' },
+  { name: 'GTmetrix', purpose: 'Speed tests' },
+  { name: 'Search Console', purpose: 'Index monitoring' },
+  { name: 'Schema Validator', purpose: 'Structured data' }
+];
+
+const pricing = {
+  oneTime: {
+    name: 'Fix Once',
+    price: 'RM 3,500',
+    includes: [
+      'Full technical check',
+      'Priority fixes',
+      'Speed optimization',
+      'Schema markup',
+      '30-day support'
+    ],
+    bestFor: 'New sites or big changes'
+  },
+  ongoing: {
+    name: 'Keep It Fixed',
+    price: 'RM 1,500/month',
+    includes: [
+      'Monthly checks',
+      'Ongoing fixes',
+      'New page optimization',
+      'Core Web Vitals watch',
+      'Priority support'
+    ],
+    bestFor: 'Active sites with regular updates'
+  }
+};
+---
+
+<BaseLayout
+  title="Fix Your Website - Fast, Secure, Google-Friendly | Result Marketing"
+  description="We fix slow sites, mobile problems, and indexing issues. Your content can rank when the technical foundation is solid."
+  locale={lang}
+>
+  <!-- Hero Section - SIMPLE WORDS -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Technical Fixes</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Fix the Foundation. Help Your Content Win.
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          Great content won't rank if your site is slow, broken, or hard to find.
+          <br><br>
+          <strong>We fix the technical stuff. You grow your business.</strong>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Get Free Check
+          </a>
+          <a href="#pricing" class="btn btn-secondary">
+            See Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Problems -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          6 Problems That Kill Your Rankings
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Most sites have at least 3 of these. We fix them all.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {issues.map(item => (
+          <div class="card p-6">
+            <div class="text-4xl mb-3">{item.icon}</div>
+            <h3 class="text-lg font-black mb-2 text-red-500">{item.issue}</h3>
+            <p class="text-sm text-secondary-400 mb-3">
+              <strong>Problem:</strong> {item.impact}
+            </p>
+            <p class="text-sm text-accent-500">
+              <strong>Fix:</strong> {item.solution}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Fix -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          What We Fix
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Complete technical help across all areas
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {services.map(service => (
+          <div class="card p-8">
+            <h3 class="text-xl font-black mb-2 text-white">{service.category}</h3>
+            <p class="text-secondary-400 mb-4">{service.description}</p>
+            <ul class="space-y-2">
+              {service.tasks.map(task => (
+                <li class="flex items-start gap-2 text-sm text-secondary-400">
+                  <svg class="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>{task}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Process -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          How We Fix Your Site
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        {process.map((item) => (
+          <div class="card p-6">
+            <div class="flex gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-white font-black text-lg flex items-center justify-center">
+                  {item.step}
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-black mb-2 text-white">{item.title}</h3>
+                <p class="text-secondary-400 mb-2">{item.description}</p>
+                <p class="text-sm text-accent-500">
+                  <strong>You get:</strong> {item.deliverable}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools We Use -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Tools We Use
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Pro tools for pro-level technical work
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {tools.map(tool => (
+          <div class="card p-6 text-center">
+            <h3 class="font-black mb-1 text-white">{tool.name}</h3>
+            <p class="text-sm text-secondary-400">{tool.purpose}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section bg-dark" id="pricing">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Pricing
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Pick what works for you
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="card p-8">
+          <h3 class="text-2xl font-black mb-2 text-white">{pricing.oneTime.name}</h3>
+          <div class="text-4xl font-black text-accent-500 mb-4">{pricing.oneTime.price}</div>
+          <p class="text-secondary-400 mb-6">
+            <strong>Best for:</strong> {pricing.oneTime.bestFor}
+          </p>
+          <ul class="space-y-3 mb-8">
+            {pricing.oneTime.includes.map(item => (
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-white">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full text-center block">
+            Get Started
+          </a>
+        </div>
+
+        <div class="card p-8 border-2 border-accent-500 relative">
+          <div class="absolute top-0 right-6 -mt-3">
+            <span class="bg-accent-500 text-black text-xs font-black px-3 py-1 rounded-full">
+              RECOMMENDED
+            </span>
+          </div>
+          <h3 class="text-2xl font-black mb-2 text-white">{pricing.ongoing.name}</h3>
+          <div class="text-4xl font-black mb-4 text-white">{pricing.ongoing.price}</div>
+          <p class="text-secondary-400 mb-6">
+            <strong>Best for:</strong> {pricing.ongoing.bestFor}
+          </p>
+          <ul class="space-y-3 mb-8">
+            {pricing.ongoing.includes.map(item => (
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-white">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-accent w-full text-center block">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Get a Free Technical Check
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          We'll scan your site and send you a detailed report.
+          <br>
+          <strong>No cost. No obligation.</strong>
+        </p>
+        <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+          Request Free Check
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

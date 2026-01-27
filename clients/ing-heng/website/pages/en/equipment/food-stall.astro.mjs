@@ -1,0 +1,216 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$FoodStall = createComponent(($$result, $$props, $$slots) => {
+  const pageTitle = "Food Stall Equipment Financing Malaysia | Stainless Steel Hawker Stall Loans";
+  const pageDescription = "Finance your stainless steel food stall with 0% deposit. Professional food court equipment loans for hawker vendors, food entrepreneurs. Monthly payments from RM 300.";
+  const seo = {
+    title: pageTitle,
+    description: pageDescription,
+    canonical: "https://ingheng.my/en/equipment/food-stall",
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      type: "website",
+      image: "/images/equipment/food-stall.jpg"
+    }
+  };
+  const benefits = [
+    {
+      icon: "\u{1F35C}",
+      title: "Food Business Specialists",
+      description: "Dedicated financing for hawker stalls, food court equipment, and commercial kitchen setups for food entrepreneurs starting or expanding their businesses"
+    },
+    {
+      icon: "\u26A1",
+      title: "Small Business Friendly",
+      description: "Fast approval process designed for food vendors and small entrepreneurs, with flexible terms that understand seasonal food business cycles"
+    },
+    {
+      icon: "\u{1F3EA}",
+      title: "Complete Food Equipment",
+      description: "Finance stainless steel food stalls, display cases, cooking equipment, and complete food court setups from leading manufacturers"
+    },
+    {
+      icon: "\u{1F4B0}",
+      title: "Zero Down Payment",
+      description: "Start your food business immediately with 0% deposit financing for qualified food entrepreneurs and hawker center operators"
+    },
+    {
+      icon: "\u{1F4CA}",
+      title: "Entrepreneur-Focused Terms",
+      description: "Payment schedules aligned with food business cash flows and peak dining periods to support small business growth"
+    },
+    {
+      icon: "\u{1F37D}\uFE0F",
+      title: "Complete Food Business Solutions",
+      description: "Bundle food stall financing with kitchen equipment, refrigeration, and other food service equipment for comprehensive setups"
+    }
+  ];
+  const steps = [
+    {
+      number: "01",
+      title: "Business Assessment",
+      description: "Our food business specialists evaluate your stall requirements, location needs and menu planning to recommend optimal equipment"
+    },
+    {
+      number: "02",
+      title: "Instant Pre-Approval",
+      description: "Get preliminary approval within 30 minutes for food equipment financing amounts up to RM 50,000 with minimal documentation"
+    },
+    {
+      number: "03",
+      title: "Equipment Inspection",
+      description: "Professional assessment of your chosen stainless steel stall including compliance with health department standards"
+    },
+    {
+      number: "04",
+      title: "Same-Day Funding",
+      description: "Complete financing documentation and receive funds to purchase your food stall equipment within 24 hours"
+    }
+  ];
+  const relatedEquipment = [
+    {
+      name: "Commercial Kitchen",
+      image: "/images/equipment/commercial-kitchen.jpg",
+      href: "/en/equipment/commercial-kitchen",
+      description: "Complete kitchen setups"
+    },
+    {
+      name: "Refrigeration Unit",
+      image: "/images/equipment/refrigeration.jpg",
+      href: "/en/equipment/refrigeration",
+      description: "Food storage solutions"
+    },
+    {
+      name: "Food Truck",
+      image: "/images/equipment/food-truck.jpg",
+      href: "/en/equipment/food-truck",
+      description: "Mobile food service"
+    },
+    {
+      name: "Restaurant Equipment",
+      image: "/images/equipment/restaurant-equipment.jpg",
+      href: "/en/equipment/restaurant-equipment",
+      description: "Complete restaurant solutions"
+    }
+  ];
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "seo": seo }, { "default": ($$result2) => renderTemplate(_a || (_a = __template([" ", "  ", '<section class="section"> <div class="container"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nComplete Food Stall Financing Solutions\n</h2> <p class="text-lg text-slate-600 leading-relaxed">\nSpecialized equipment loans for stainless steel food stalls and hawker center equipment. From traditional pasar malam vendors to professional food court operators - we finance the equipment that builds Malaysian food businesses.\n</p> </div> <div class="grid lg:grid-cols-2 gap-8 items-center mb-16"> <div> <h3 class="text-2xl font-bold text-slate-900 mb-4">Professional Food Stall Equipment</h3> <p class="text-slate-600 mb-6">\nModern stainless steel food stalls transform traditional hawker operations into professional food court businesses. These hygenic, attractive setups attract more customers while meeting health department standards for sustainable food business growth.\n</p> <div class="space-y-4"> <div class="flex items-start space-x-3"> <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div> <div> <h4 class="font-semibold text-slate-900">Professional Appearance</h4> <p class="text-sm text-slate-600">Stainless steel construction creates modern, hygienic image that attracts premium customers</p> </div> </div> <div class="flex items-start space-x-3"> <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div> <div> <h4 class="font-semibold text-slate-900">Health Department Compliance</h4> <p class="text-sm text-slate-600">Meets MOH requirements for food safety and hygiene standards in Malaysian food courts</p> </div> </div> <div class="flex items-start space-x-3"> <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div> <div> <h4 class="font-semibold text-slate-900">Increased Revenue Potential</h4> <p class="text-sm text-slate-600">Professional setup enables premium pricing and higher customer volume</p> </div> </div> </div> </div> <div class="bg-slate-50 p-8 rounded-lg"> <h4 class="text-xl font-bold text-slate-900 mb-6">Food Equipment We Finance</h4> <div class="space-y-4"> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Basic Food Stalls</span> <span class="text-primary font-semibold">RM 8K - 15K</span> </div> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Premium Food Court Stalls</span> <span class="text-primary font-semibold">RM 15K - 25K</span> </div> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Custom Designed Stalls</span> <span class="text-primary font-semibold">RM 25K - 40K</span> </div> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Complete Food Business Setup</span> <span class="text-primary font-semibold">RM 40K - 80K</span> </div> </div> </div> </div> </div> </section>  <section class="section bg-slate-50"> <div class="container"> <div class="max-w-3xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nWhy Choose Our Food Stall Financing\n</h2> <p class="text-lg text-slate-600">\nSpecialized food business equipment financing designed for hawker vendors and food entrepreneurs\n</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> ', ' </div> </div> </section>  <section class="section"> <div class="container"> <div class="max-w-3xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nGet Your Food Stall Financed in 4 Steps\n</h2> <p class="text-lg text-slate-600">\nFast, professional approval process for food business equipment financing\n</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ', ' </div> </div> </section>  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5" id="calculator"> <div class="container"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nFood Stall Investment Calculator\n</h2> <p class="text-lg text-slate-600">\nCalculate your return on investment for food stall equipment financing\n</p> </div> ', ` </div> </div> </section>  <section class="section"> <div class="container"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">
+Food Stall Applications & Business Types
+</h2> <p class="text-lg text-slate-600">
+Professional food service equipment for diverse Malaysian food business operations
+</p> </div> <div class="grid md:grid-cols-2 gap-8 mb-12"> <div class="space-y-6"> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Food Court Operations</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Shopping mall food court stalls</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Office building food courts</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>University and college cafeterias</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Hospital and medical center food courts</span> </li> </ul> </div> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Hawker Center Stalls</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Traditional hawker center upgrades</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Government kopitiam stalls</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Air-conditioned hawker centers</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Heritage hawker center modernization</span> </li> </ul> </div> </div> <div class="space-y-6"> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Market & Event Stalls</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Pasar malam night market stalls</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Weekend farmer's market setups</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Festival and event food booths</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Corporate catering stalls</span> </li> </ul> </div> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Specialty Food Business</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Bubble tea and beverage stalls</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Dessert and ice cream kiosks</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Fast-casual dining concepts</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Healthy food and salad bars</span> </li> </ul> </div> </div> </div> <!-- Technical Specifications --> <div class="bg-slate-50 p-8 rounded-lg"> <h3 class="text-xl font-bold text-slate-900 mb-6">Stainless Steel Food Stall Specifications</h3> <div class="grid md:grid-cols-3 gap-6"> <div> <h4 class="font-semibold text-slate-900 mb-3">Construction Specs</h4> <ul class="space-y-2 text-sm text-slate-600"> <li><strong>Material:</strong> SS304 food-grade stainless steel</li> <li><strong>Size:</strong> 2m x 1.2m x 2.2m (standard)</li> <li><strong>Display:</strong> Tempered glass front panels</li> <li><strong>Insulation:</strong> Food-safe thermal insulation</li> </ul> </div> <div> <h4 class="font-semibold text-slate-900 mb-3">Financing Terms</h4> <ul class="space-y-2 text-sm text-slate-600"> <li><strong>Loan Amount:</strong> RM 8K - 80K</li> <li><strong>Tenure:</strong> 1 - 5 years</li> <li><strong>Down Payment:</strong> From 0%</li> <li><strong>Interest Rate:</strong> From 8.5% p.a.</li> </ul> </div> <div> <h4 class="font-semibold text-slate-900 mb-3">Features</h4> <ul class="space-y-2 text-sm text-slate-600"> <li><strong>Electrical:</strong> 240V power supply ready</li> <li><strong>Ventilation:</strong> Built-in exhaust system</li> <li><strong>Storage:</strong> Under-counter storage space</li> <li><strong>Mobility:</strong> Optional wheels for portability</li> </ul> </div> </div> </div> </div> </div> </section>  <section class="section bg-slate-50"> <div class="container"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">
+From Street Vendor to Food Court Success
+</h2> <p class="text-lg text-slate-600">
+How professional equipment financing transforms food businesses
+</p> </div> <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8"> <div class="bg-white p-6 rounded-lg shadow-sm"> <div class="text-3xl mb-4">\u{1F6D2}</div> <h3 class="text-lg font-bold text-slate-900 mb-3">Stage 1: Street Vendor</h3> <p class="text-slate-600 text-sm mb-4">
+Traditional setup with basic equipment, limited customer appeal, and operational challenges. Revenue often constrained by equipment limitations and health regulations.
+</p> <div class="text-sm text-slate-500"> <strong>Challenges:</strong> Limited menu, health compliance issues, weather dependency, low profit margins
+</div> </div> <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-primary"> <div class="text-3xl mb-4">\u{1F3EA}</div> <h3 class="text-lg font-bold text-slate-900 mb-3">Stage 2: Professional Stall</h3> <p class="text-slate-600 text-sm mb-4">
+Investment in stainless steel stall creates professional image, meets health standards, and attracts premium customers. Higher revenue potential with improved operational efficiency.
+</p> <div class="text-sm text-primary font-medium"> <strong>Our Financing Solution:</strong> 0% deposit, flexible payment terms, fast approval
+</div> </div> <div class="bg-white p-6 rounded-lg shadow-sm"> <div class="text-3xl mb-4">\u{1F3E2}</div> <h3 class="text-lg font-bold text-slate-900 mb-3">Stage 3: Multiple Locations</h3> <p class="text-slate-600 text-sm mb-4">
+Successful stall operation enables expansion to multiple food court locations, franchise opportunities, and building food business empire.
+</p> <div class="text-sm text-slate-500"> <strong>Growth:</strong> Multiple revenue streams, brand recognition, scalable operations, business equity
+</div> </div> </div> </div> </section>  <section class="section"> <div class="container"> <div class="max-w-3xl mx-auto"> <div class="text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">
+Food Stall Financing FAQ
+</h2> <p class="text-lg text-slate-600">
+Common questions about food business equipment and stall financing
+</p> </div> <div class="space-y-4"> `, " ", " ", " ", " ", " ", " ", " ", ' </div> </div> </div> </section>  <section class="section"> <div class="container"> ', ' </div> </section>  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5" id="contact"> <div class="container"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nGet Your Food Stall Financing Quote\n</h2> <p class="text-lg text-slate-600">\nProfessional food business equipment financing with competitive rates and flexible terms\n</p> </div> ', ' </div> </div> </section>  <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), renderComponent($$result2, "Hero", $$Hero, { "title": "Food Stall Equipment Financing", "subtitle": "Professional food court and hawker stall equipment loans for food entrepreneurs. Finance stainless steel food stalls with 0% deposit and monthly payments from RM 300.", "backgroundImage": "/images/equipment-hero.jpg", "primaryCTA": "Get Food Stall Financing Quote", "primaryCTAHref": "#contact", "secondaryCTA": "Calculate Payments", "secondaryCTAHref": "#calculator" }), maybeRenderHead(), benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { ...benefit })}`), steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { ...step })}`), renderComponent($$result2, "Calculator", $$Calculator, { "equipmentType": "food-stall", "basePrice": 18e3, "description": "Calculate monthly payments and ROI for your food stall equipment financing" }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "How much does a stainless steel food stall cost in Malaysia?", "answer": "Stainless steel food stalls in Malaysia typically cost RM 8,000 to RM 25,000 depending on size, customization, and built-in equipment. Basic models start at RM 8,000 while premium custom-designed stalls with specialized features can reach RM 40,000 or more." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Can I get financing for a food stall with limited credit history?", "answer": "Yes, we offer food stall equipment financing for entrepreneurs with limited credit history. We evaluate your business potential, food court location, menu concept, and personal commitment rather than relying solely on credit scores." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "What documents do I need for food stall financing?", "answer": "Required documents include: IC/Passport, business registration (if applicable), 3 months bank statements, food stall quotation, food court agreement or rental contract, and basic business plan. Additional documents may be required for larger financing amounts." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "How long does food stall financing approval take?", "answer": "Pre-approval can be obtained within 30 minutes for amounts up to RM 50,000. Complete approval and funding typically takes 24-48 hours once all documentation is submitted and stall specifications are verified." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Can I finance additional kitchen equipment with my food stall?", "answer": "Absolutely. We offer comprehensive food business financing packages that can include food stalls, refrigeration units, cooking equipment, POS systems, and other food service equipment. Package deals often provide better terms and simplified payments." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Do you offer 0% down payment for food stall financing?", "answer": "Yes, qualified food entrepreneurs can access our 0% deposit food stall financing program. This is especially beneficial for first-time food business owners who need to preserve capital for initial inventory and operational expenses." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "What are the monthly payment options for food stall financing?", "answer": "Monthly payments start from as low as RM 300 for basic stalls with longer repayment terms. Payment schedules can be customized to match your food business cash flow patterns, including options for seasonal adjustments if needed." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Is used food stall equipment eligible for financing?", "answer": "Yes, we finance quality used stainless steel food stalls that are in good condition and meet health department standards. Used equipment financing offers lower monthly payments while still providing professional setup for your food business." }), renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "title": "Complete Your Food Business Setup", "description": "Explore our full range of food service equipment financing options", "equipment": relatedEquipment }), renderComponent($$result2, "ContactForm", $$ContactForm, { "equipmentType": "Food Stall", "leadSource": "Food Stall Equipment Page" }), unescapeHTML(JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Food Stall Equipment Financing",
+    "description": "Professional equipment financing for stainless steel food stalls and hawker center equipment with flexible terms for food entrepreneurs",
+    "category": "Food Service Equipment Financing",
+    "brand": {
+      "@type": "Brand",
+      "name": "Multiple Brands (Food Service Equipment)"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "8000",
+      "highPrice": "80000",
+      "priceCurrency": "MYR",
+      "description": "Flexible financing terms from 1-5 years",
+      "seller": {
+        "@type": "FinancialService",
+        "name": "Ing Heng Credit",
+        "url": "https://ingheng.my"
+      }
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Material",
+        "value": "SS304 Food-Grade Stainless Steel"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Applications",
+        "value": "Food Courts, Hawker Centers, Markets"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Monthly Payment",
+        "value": "From RM 300"
+      }
+    ]
+  })), unescapeHTML(JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a stainless steel food stall cost in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stainless steel food stalls in Malaysia typically cost RM 8,000 to RM 25,000 depending on size, customization, and built-in equipment. Basic models start at RM 8,000 while premium custom-designed stalls with specialized features can reach RM 40,000 or more."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get financing for a food stall with limited credit history?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer food stall equipment financing for entrepreneurs with limited credit history. We evaluate your business potential, food court location, menu concept, and personal commitment rather than relying solely on credit scores."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer 0% down payment for food stall financing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, qualified food entrepreneurs can access our 0% deposit food stall financing program. This is especially beneficial for first-time food business owners who need to preserve capital for initial inventory and operational expenses."
+        }
+      }
+    ]
+  }))) })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/food-stall.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/food-stall.astro";
+const $$url = "/en/equipment/food-stall";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$FoodStall,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

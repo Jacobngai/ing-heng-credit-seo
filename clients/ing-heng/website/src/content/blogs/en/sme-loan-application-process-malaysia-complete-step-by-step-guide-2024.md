@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Business Tips  December 20, 2024      8 min read
-  #  SME Loan Application Process Malaysia: Complete Step-by-Step Guide 2024 
-
-  Struggling with complex SME loan applications? Get step-by-step guidance on business loan requirements, documentation, and approval factors. Fast equipment financing available. 
-
-     By Ing Heng Credit &amp; Leasing     # SME Loan Application Process Malaysia: Complete Step-by-Step Guide
 
 When Koh Wei Ming submitted his excavator financing application to three banks, each gave him the same response: “Equipment too old, application denied.” His 8-year-old CAT excavator was perfect for his small earthworks business, but banks saw only the manufacturing date. Two weeks later, after discovering alternative lenders, Koh received approval and purchased the machine. Today, he runs five excavators across three projects.
 

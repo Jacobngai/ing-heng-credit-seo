@@ -3,7 +3,7 @@ title: "Lamborghini Gallardo融资马来西亚 - 0%首付超级车贷款"
 description: "获得Lamborghini Gallardo融资批准在马来西亚。银行拒绝异国车贷款？我们专门提供超级车融资，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["lamborghini gallardo融资", "超级车贷款马来西亚", "异国车融资", "lamborghini贷款"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

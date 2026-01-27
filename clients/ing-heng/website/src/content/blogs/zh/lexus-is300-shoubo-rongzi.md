@@ -3,7 +3,7 @@ title: "Lexus IS300手波融资马来西亚 - 0%首付运动轿车贷款"
 description: "获得Lexus IS300手动变速箱融资批准在马来西亚。银行拒绝稀有运动轿车？我们专门提供性能车贷款，0%首付。"
 publishDate: 2024-12-24
 tags: ["lexus is300融资", "手动变速箱贷款", "运动轿车融资", "lexus融资马来西亚"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

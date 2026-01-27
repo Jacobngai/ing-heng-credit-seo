@@ -1,0 +1,107 @@
+---
+/**
+ * CompetitorAnalysis - Shows who's ranking in simple terms
+ * No technical jargon, just what matters
+ */
+interface Competitor {
+  domain: string;
+  title: string;
+  type: 'supplier' | 'agency' | 'directory' | 'marketplace';
+  position: number;
+}
+
+interface Props {
+  keyword: string;
+  competitors: Competitor[];
+  opportunity?: string;
+}
+
+const { keyword, competitors, opportunity = 'Easy opportunity to rank!' } = Astro.props;
+
+const typeIcon = {
+  supplier: '🏭',
+  agency: '🏢',
+  directory: '📋',
+  marketplace: '🛒'
+};
+
+const typeLabel = {
+  supplier: 'Equipment Seller',
+  agency: 'Marketing Agency',
+  directory: 'Directory',
+  marketplace: 'Marketplace'
+};
+
+const supplierCount = competitors.filter(c => c.type === 'supplier').length;
+const hasAgencyGap = competitors.filter(c => c.type === 'agency').length === 0;
+---
+
+<div class="competitor-analysis bg-gray-100 rounded-card p-6">
+  <!-- Header -->
+  <div class="mb-6">
+    <span class="text-gray-600 font-semibold text-sm uppercase tracking-wide">Who's Ranking Now</span>
+    <h3 class="text-xl font-bold mt-1 text-gray-900">People searching "{keyword}" see these websites:</h3>
+  </div>
+
+  <!-- Summary -->
+  <div class="grid grid-cols-3 gap-4 mb-6">
+    <div class="bg-white rounded-lg p-3 text-center">
+      <p class="text-2xl font-bold text-gray-900">{competitors.length}</p>
+      <p class="text-xs text-gray-600">Top results</p>
+    </div>
+    <div class="bg-white rounded-lg p-3 text-center">
+      <p class="text-2xl font-bold text-gray-900">{supplierCount}</p>
+      <p class="text-xs text-gray-600">Equipment sellers</p>
+    </div>
+    <div class="bg-white rounded-lg p-3 text-center">
+      <p class="text-2xl font-bold {hasAgencyGap ? 'text-green-600' : 'text-gray-900'}">
+        {hasAgencyGap ? '0' : competitors.filter(c => c.type === 'agency').length}
+      </p>
+      <p class="text-xs text-gray-600">SEO agencies</p>
+    </div>
+  </div>
+
+  <!-- Opportunity Alert -->
+  {hasAgencyGap && (
+    <div class="bg-green-50 border-2 border-green-500 rounded-lg p-4 mb-6">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">🎯</span>
+        <div>
+          <p class="font-bold text-gray-900">Good News!</p>
+          <p class="text-sm text-gray-700 mt-1">{opportunity}</p>
+        </div>
+      </div>
+    </div>
+  )}
+
+  <!-- Competitor List -->
+  <div class="space-y-3 mb-6">
+    <p class="text-xs text-gray-600 uppercase tracking-wide font-semibold">Current top rankings:</p>
+    {competitors.map(competitor => (
+      <div class="flex items-center gap-3 bg-white rounded-lg p-3">
+        <span class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full text-sm font-bold text-gray-900">
+          {competitor.position}
+        </span>
+        <span class="text-xl">{typeIcon[competitor.type]}</span>
+        <div class="flex-1 min-w-0">
+          <p class="font-medium text-gray-900 truncate">{competitor.title}</p>
+          <p class="text-xs text-gray-500 truncate">{competitor.domain}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Simple Explanation -->
+  <div class="bg-white rounded-lg p-4">
+    <p class="text-sm text-gray-700">
+      <span class="font-bold text-gray-900">What this means:</span> All top results are equipment sellers,
+      not content sites. <span class="font-bold text-gray-900">We can rank with helpful content.</span>
+    </p>
+  </div>
+</div>
+
+<style>
+  .competitor-analysis {
+    background: #f3f4f6;
+  }
+</style>

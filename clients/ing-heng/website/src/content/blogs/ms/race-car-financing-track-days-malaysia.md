@@ -3,7 +3,7 @@ title: 'Pembiayaan Kereta Lumba Track Days Malaysia: Pinjaman Kenderaan Trek Tan
 description: Biayai kereta lumba anda untuk track days dan acara motorsport di Malaysia. 0% deposit, kelulusan pantas, dan terma fleksibel untuk kenderaan prestasi hingga 15 tahun.
 author: "ING HENG Credit"
 publishDate: 2025-12-20
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - pembiayaan kereta lumba
 - track days

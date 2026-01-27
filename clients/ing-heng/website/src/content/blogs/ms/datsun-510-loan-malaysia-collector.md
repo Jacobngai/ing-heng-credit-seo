@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Datsun 510 Malaysia - 0% Deposit Pelaburan Kereta Klasik"
 description: "Biayai Datsun 510 impian anda dengan 0% deposit. Elakkan penolakan bank dan dapatkan 100% pembiayaan untuk ikon klasik JDM yang meningkat nilai. Solusi pembiayaan kolektor pakar tersedia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

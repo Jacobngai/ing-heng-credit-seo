@@ -11,14 +11,12 @@ interface Props {
   lang: Locale;
   equipmentType?: string;
   defaultPrice?: number;
-  minDownPayment?: number;
 }
 
 const {
   lang,
   equipmentType = 'Equipment',
   defaultPrice = 100000,
-  minDownPayment = 10,
 } = Astro.props;
 
 // Translation helper
@@ -67,10 +65,10 @@ const translations = {
   },
 };
 
-const t = translations[lang] || translations['en']; // Fallback to English if lang is undefined
+const t = translations[lang];
 ---
 
-<div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl shadow-[8px_8px_0_#2D1810] text-white">
+<div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl shadow-2xl text-white">
   <div class="text-center mb-8">
     <h2 class="text-3xl font-bold mb-2 text-white">{t.title}</h2>
     <p class="text-white">{t.subtitle}</p>
@@ -100,22 +98,21 @@ const t = translations[lang] || translations['en']; // Fallback to English if la
     <!-- Down Payment Slider -->
     <div>
       <label class="block text-sm font-semibold mb-2">
-        {t.downPayment}: <span data-down-payment-percent>{minDownPayment}</span>%
-        (<span class="font-bold" data-down-payment-amount>RM {formatCurrency(defaultPrice * (minDownPayment / 100), lang).replace('MYR', '').trim()}</span>)
+        {t.downPayment}: <span data-down-payment-percent>10</span>%
+        (<span class="font-bold" data-down-payment-amount>RM {formatCurrency(defaultPrice * 0.1, lang).replace('MYR', '').trim()}</span>)
       </label>
       <input
         type="range"
         id="down-payment"
         class="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer accent-accent"
-        min={minDownPayment}
+        min="10"
         max="50"
         step="5"
-        value={minDownPayment}
+        value="10"
         data-calculator-down-payment
-        data-min-down-payment={minDownPayment}
       />
       <div class="flex justify-between text-xs mt-1">
-        <span>{minDownPayment}%</span>
+        <span>10%</span>
         <span>50%</span>
       </div>
     </div>
@@ -176,8 +173,6 @@ const t = translations[lang] || translations['en']; // Fallback to English if la
       target="_blank"
       rel="noopener noreferrer"
       class="btn btn-accent w-full text-center block text-lg font-bold py-4"
-      data-apply-button
-      data-equipment-type={equipmentType}
     >
       {t.applyNow}
     </a>
@@ -193,34 +188,23 @@ const t = translations[lang] || translations['en']; // Fallback to English if la
     const priceInput = calculator.querySelector('[data-calculator-price]') as HTMLInputElement;
     const downPaymentSlider = calculator.querySelector('[data-calculator-down-payment]') as HTMLInputElement;
     const termSlider = calculator.querySelector('[data-calculator-term]') as HTMLInputElement;
-    const applyButton = calculator.querySelector('[data-apply-button]') as HTMLAnchorElement;
 
-    const downPaymentPercentDisplay = calculator.querySelector('[data-down-payment-percent]');
-    const downPaymentAmountDisplay = calculator.querySelector('[data-down-payment-amount]');
+    const downPaymentPercent = calculator.querySelector('[data-down-payment-percent]');
+    const downPaymentAmount = calculator.querySelector('[data-down-payment-amount]');
     const loanTermDisplay = calculator.querySelector('[data-loan-term]');
     const interestRateDisplay = calculator.querySelector('[data-interest-rate]');
     const monthlyPaymentDisplay = calculator.querySelector('[data-monthly-payment]');
     const totalAmountDisplay = calculator.querySelector('[data-total-amount]');
 
-    // Get minimum down payment from data attribute
-    const minDownPayment = parseInt(downPaymentSlider?.getAttribute('data-min-down-payment') || '10');
-    const equipmentType = applyButton?.getAttribute('data-equipment-type') || 'Equipment';
-
     // Fixed interest rate (can be made dynamic)
     const annualInterestRate = 8.5;
 
-    function updateApplyButton(price: number) {
-      if (!applyButton) return;
-      const message = `Hi! I'd like to apply for ${equipmentType} financing. Equipment price: RM ${price.toLocaleString()}`;
-      applyButton.href = `https://wa.me/60175700889?text=${encodeURIComponent(message)}`;
-    }
-
     function calculatePayment() {
       const price = parseFloat(priceInput.value) || 0;
-      const downPaymentPct = Math.max(minDownPayment, parseFloat(downPaymentSlider.value) || minDownPayment);
+      const downPaymentPercent = parseFloat(downPaymentSlider.value) || 10;
       const months = parseInt(termSlider.value) || 36;
 
-      const downPayment = price * (downPaymentPct / 100);
+      const downPayment = price * (downPaymentPercent / 100);
       const loanAmount = price - downPayment;
       const monthlyInterestRate = annualInterestRate / 100 / 12;
 
@@ -232,14 +216,11 @@ const t = translations[lang] || translations['en']; // Fallback to English if la
       const totalAmount = (monthlyPayment * months) + downPayment;
 
       // Update displays
-      if (downPaymentPercentDisplay) downPaymentPercentDisplay.textContent = downPaymentPct.toFixed(0);
-      if (downPaymentAmountDisplay) downPaymentAmountDisplay.textContent = `RM ${downPayment.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+      if (downPaymentPercent) downPaymentPercent.textContent = downPaymentPercent.toFixed(0);
+      if (downPaymentAmount) downPaymentAmount.textContent = `RM ${downPayment.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
       if (loanTermDisplay) loanTermDisplay.textContent = months.toString();
       if (monthlyPaymentDisplay) monthlyPaymentDisplay.textContent = `RM ${monthlyPayment.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
       if (totalAmountDisplay) totalAmountDisplay.textContent = `RM ${totalAmount.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
-
-      // Update Apply Now button with current price
-      updateApplyButton(price);
     }
 
     // Event listeners

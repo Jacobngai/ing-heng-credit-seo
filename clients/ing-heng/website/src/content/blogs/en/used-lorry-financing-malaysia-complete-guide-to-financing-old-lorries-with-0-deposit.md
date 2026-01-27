@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2025      10 min read
-  #  Used Lorry Financing Malaysia: Complete Guide to Financing Old Lorries with 0% Deposit 
-
-  Finance used lorries up to 10+ years old in Malaysia with 0% deposit option. Learn about approval process, interest rates, and complete guide for second-hand lorry financing. 
-
-     By Ing Heng Credit &amp; Leasing     ## Why Used Lorry Financing Makes Business Sense
 
 Successful logistics operators know the secret: used lorries deliver better ROI than new vehicles. Here’s why:
 

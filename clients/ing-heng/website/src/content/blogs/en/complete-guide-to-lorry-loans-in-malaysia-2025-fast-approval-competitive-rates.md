@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Logistics Equipment  December 26, 2025      7 min read
-  #  Complete Guide to Lorry Loans in Malaysia 2025: Fast Approval &amp; Competitive Rates 
-
-  Learn about lorry loan processes in Malaysia. Application requirements, required documents, high approval rate, fast approval. For logistics companies and transport businesses. 
-
-     By Ing Heng Credit &amp; Leasing     # Complete Guide to Lorry Loans in Malaysia 2025: Fast Approval &amp; Competitive Rates
 
 Running a logistics or transport business in Malaysia means owning your own lorry is key to success. But buying a lorry requires a large amount of capital. This is why **lorry loans** have become the preferred solution for many logistics business owners.
 

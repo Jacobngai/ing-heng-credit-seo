@@ -3,7 +3,7 @@ title: '马来西亚赛车融资赛道日：零首付赛道车贷款'
 description: 为马来西亚的赛道日和赛车活动融资您的赛车。0%首付，快速批准，15年车龄性能车辆的灵活条款。
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - 赛车融资
 - 赛道日

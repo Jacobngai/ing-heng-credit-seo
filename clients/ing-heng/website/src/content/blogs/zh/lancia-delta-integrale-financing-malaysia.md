@@ -1,7 +1,7 @@
 ---
 title: "蓝旗亚Delta Integrale融资马来西亚 - 0%首付拉力传奇投资"
 description: "在马来西亚以0%首付融资获得您的拉力偶像蓝旗亚Delta Integrale。将您的Group B同质化特殊梦想转化为今天升值的现实。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

@@ -1,7 +1,7 @@
 ---
 title: "日产Laurel C33贷款马来西亚 - 0%首付漂移传奇投资"
 description: "在马来西亚获得日产Laurel C33 0%首付融资。这个漂移文化图标的价值上涨让您的贷款支付感觉像小钱。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

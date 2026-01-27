@@ -1,0 +1,262 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { c as generateProductSchema, a as generateFAQSchema, $ as $$BaseLayout, e as encodeJSONLD } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$TestimonialCard } from '../../../chunks/TestimonialCard_DCNY-qZL.mjs';
+import { $ as $$Breadcrumbs } from '../../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+import { S as SITE_CONFIG } from '../../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$Bulldozer = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const pageTitle = "Bulldozer Financing Malaysia | Government Tender Equipment Loan | RM 5M-15M";
+  const pageDescription = "Finance bulldozers for government tenders & mega projects. MRT3, Pan Borneo, ECRL approved. CIDB Class A equipment financing. GPS-guided bulldozers. Fast approval. Apply now!";
+  const keywords = ["bulldozer financing Malaysia", "CIDB Class A equipment financing", "government tender bulldozer", "GPS bulldozer financing", "heavy equipment loan", "infrastructure equipment financing", "D8 bulldozer financing", "fleet financing Malaysia"];
+  const breadcrumbs = [
+    { label: "Home", url: "/en" },
+    { label: "Equipment", url: "/en/equipment" },
+    { label: "Bulldozer Financing", url: "/en/equipment/bulldozer" }
+  ];
+  const benefits = [
+    { icon: "clock", title: "Fast Approval", description: "Government tender deadlines? We approve fleet financing up to RM 15M quickly." },
+    { icon: "percentage", title: "Up to RM 15 Million Financing", description: "Fleet packages for CIDB G7 contractors. Finance 5-10 bulldozers simultaneously." },
+    { icon: "calendar", title: "Flexible 36-84 Month Terms", description: "Align payments with mega project timelines. MRT3, ECRL, Pan Borneo durations." },
+    { icon: "shield", title: "GPS & Smart Technology", description: "Finance GPS-guided bulldozers with 3D machine control. Tender competitiveness advantage." },
+    { icon: "users", title: "Down Payment From 0%*", description: "Minimal down payment for fleet purchases. Loan up to 100%* for qualified applicants. Preserve capital for tender deposits. *Subject to terms and conditions" },
+    { icon: "lightning", title: "Project-Based Repayment", description: "Structure payments around government project cash flows and retention schedules." },
+    { icon: "clock", title: "CIDB Upgrade Support", description: "Equipment packages designed for G6 to G7 contractor upgrades. Tender capacity increase." },
+    { icon: "shield", title: "Tax Benefit Maximization", description: "Capital allowance optimization. 20% initial + 14% annual allowance structuring." }
+  ];
+  const steps = [
+    { stepNumber: 1, icon: "contact", title: "Project Consultation", description: "Discuss your tender requirements, project value, and equipment specifications." },
+    { stepNumber: 2, icon: "document", title: "Equipment & Fleet Assessment", description: "Submit tender documents, CIDB registration, company financials, and equipment list." },
+    { stepNumber: 3, icon: "check", title: "48-Hour Approval Decision", description: "Receive conditional approval for fleet financing up to RM 15 million." },
+    { stepNumber: 4, icon: "clipboard", title: "Equipment Procurement", description: "We coordinate with dealers (CAT, Komatsu, Volvo). Equipment inspection and valuation." },
+    { stepNumber: 5, icon: "truck", title: "Disbursement & Mobilization", description: "Funds released. Equipment delivered. Registration documents for CIDB/tender submission." }
+  ];
+  const bulldozerTypes = [
+    { name: "Crawler Bulldozers (D6-D11)", description: "Heavy-duty tracked bulldozers for major earthmoving. Ideal for MRT3, ECRL foundation work, land clearing, and mass excavation. Models: CAT D8T, D9T, D10T, D11T; Komatsu D155, D275, D375, D475." },
+    { name: "GPS-Guided Precision Bulldozers", description: "CAT AccuGrade, Komatsu iMC intelligent machine control. 3D grade control for viaduct foundations, highway precision grading. 30-40% productivity gains. Essential for Penang LRT, MRT3 civil packages." },
+    { name: "Swamp Bulldozers (Low Ground Pressure)", description: "Specialized for Sarawak, Sabah wetlands. Pan Borneo Highway swamp reclamation. Extra-wide tracks, amphibious capabilities. Models: Komatsu D85ESS, Caterpillar D6N LGP, Shantui SD32W." },
+    { name: "Wheel Bulldozers", description: "Mobile bulldozers for highway maintenance, road construction. Fast relocation between sites. Lower fuel consumption. Ideal for JKR road projects, industrial park development." },
+    { name: "Mini-Midi Bulldozers (D3-D5)", description: "Compact machines for building site preparation, drainage works, residential projects. Models: CAT D3K2, D4K2, D5K2; Komatsu D31, D37, D39, D51. Perfect for smaller contractors scaling up." },
+    { name: "Hybrid & Low-Emission Bulldozers", description: "Future-ready for green building certifications. Komatsu D61EXi hybrid, Caterpillar electric drive. 20-30% fuel savings. Government green infrastructure preference." }
+  ];
+  const acceptedBrands = ["Caterpillar (CAT)", "Komatsu", "Shantui", "XCMG", "Liebherr", "John Deere", "Volvo CE", "Hitachi", "SANY", "Zoomlion", "Doosan", "Hyundai"];
+  const megaProjects = [
+    {
+      name: "MRT3 Circle Line",
+      value: "RM 45 Billion",
+      description: "51km elevated rail, 10 interchange stations. Civil packages releasing Q1-Q2 2025. Heavy bulldozers required for viaduct foundation, mass excavation, site clearing. GPS-guided equipment for precision grading."
+    },
+    {
+      name: "Penang LRT Mutiara Line",
+      value: "RM 16 Billion",
+      description: "24km elevated viaduct, 19 stations. Construction started January 2025. Foundation works, station excavation, park-and-ride grading. Subsequent packages beyond Gamuda's RM 8B award."
+    },
+    {
+      name: "Pan Borneo Highway",
+      value: "Phase 1B Ongoing",
+      description: "15 LOAs issued Q3 2024. Sabah & Sarawak highway alignment. Mass earthwork, swamp reclamation, rock excavation. Additional phases in planning. Regional contractor preference."
+    },
+    {
+      name: "Flood Mitigation Program",
+      value: "RM 11.8 Billion",
+      description: "33 high-priority projects across 7 states. River widening, retention pond excavation, levee construction. DID tender authority. Continuous Budget 2025 allocations (RM 3B)."
+    }
+  ];
+  const testimonials = [
+    {
+      name: "Dato' Syed Rahman",
+      company: "SR Mega Projects Sdn Bhd",
+      location: "Selangor",
+      testimonial: "We financed a fleet of 5 CAT D8T bulldozers (RM 6.2 million) for a flood mitigation project. Ing Heng Credit structured payments around DID's retention schedule. Approval in 36 hours. GPS equipment gave us a competitive edge in tender scoring. We won the RM 280 million contract.",
+      rating: 5
+    },
+    {
+      name: "Tan Boon Huat",
+      company: "TBH Infrastructure Sdn Bhd",
+      location: "Johor",
+      testimonial: "Upgrading from CIDB G6 to G7 required major equipment investment. Ing Heng Credit financed 3 bulldozers + 4 excavators (RM 8.5M total). Tax benefit optimization saved us RM 680K in Year 1 through capital allowance. We secured our first RM 500M Pan Borneo package 4 months later.",
+      rating: 5
+    },
+    {
+      name: "Khairul Anuar bin Abdullah",
+      company: "KA Construction & Engineering",
+      location: "Perak",
+      testimonial: "Needed Komatsu D155 bulldozers urgently for MRT3 tender submission. Equipment ownership scored 25 points in technical evaluation. Ing Heng approved RM 3.2M financing fast. We demonstrated owned equipment in our proposal. Won the RM 180M earthwork package. ROI achieved in 18 months.",
+      rating: 5
+    }
+  ];
+  const faqs = [
+    {
+      question: "Can you finance bulldozer fleets for CIDB G7 contractors?",
+      answer: "Yes! We specialize in fleet financing for CIDB G7 contractors and those upgrading from G6. We finance 5-10 bulldozers simultaneously (RM 5M-15M range). Our packages are designed around government tender requirements, equipment ownership scoring, and CIDB registration documentation. We understand tender capacity limits (G7 = unlimited) and structure financing to maximize your competitive advantage."
+    },
+    {
+      question: "Do you finance GPS-guided and smart technology bulldozers?",
+      answer: "Absolutely! We actively finance GPS-guided bulldozers (CAT AccuGrade, Komatsu iMC, Volvo Co-Pilot). These systems add RM 150K-300K to equipment cost but deliver 30-40% productivity gains and are essential for mega projects like MRT3 and Penang LRT where precision grading (\xB110mm accuracy) is required. Technology demonstrates tender competitiveness and can add 10-15 points to technical scoring."
+    },
+    {
+      question: "What is the approval process for fleet financing above RM 5 million?",
+      answer: "Fleet financing (RM 5M-15M) requires: (1) Company financials and CIDB registration, (2) Tender documents or confirmed contract awards, (3) Equipment specifications and dealer quotations, (4) Directors' guarantees and corporate resolutions. Approval timeline: within days from complete documentation. We coordinate directly with equipment dealers (Tractors Malaysia/CAT, Komatsu distributors) for valuation and inspection."
+    },
+    {
+      question: "Can you structure payments around government project cash flows?",
+      answer: "Yes! We understand government payment terms (30-60 days), retention amounts (5-10%), and defects liability periods. We can structure: (1) Lower payments during mobilization phase (Months 1-3), (2) Standard payments during active construction, (3) Balloon payments upon retention release, (4) Interest-only periods for project gaps. This prevents cash flow mismatches common with fixed monthly obligations."
+    },
+    {
+      question: "Do you finance used bulldozers for government tenders?",
+      answer: "Yes, we finance used bulldozers up to 8 years old for government tender purposes. However, note that government tender scoring often favors newer equipment (equipment age <5 years scores higher). For mega projects (MRT3, ECRL), clients typically choose new or 0-3 year old equipment to maximize tender competitiveness. Used equipment (5-8 years) suitable for smaller projects or backup fleet units."
+    },
+    {
+      question: "What bulldozer brands are accepted for government tender financing?",
+      answer: 'We finance all major brands: Caterpillar (CAT D6-D11 series - market leader), Komatsu (D31-D475 - strong government contractor preference), Shantui (cost-effective Chinese brand), XCMG, Liebherr (European premium), John Deere, Volvo CE. Government tenders typically specify "equivalent to CAT/Komatsu standard" so both Japanese and Western brands score equally. Chinese brands (Shantui, XCMG) acceptable but may score slightly lower in some tenders.'
+    },
+    {
+      question: "How does equipment ownership affect government tender scoring?",
+      answer: 'Equipment ownership is CRITICAL for government tender success. Typical tender evaluation: Technical (40-50%), Financial (30-40%), Compliance (10-20%). Within Technical scoring: Equipment ownership = 20-30 points, Personnel = 15-20 points, Experience = 10-15 points. OWNED equipment scores higher than rental or "intent to purchase." For MRT3/ECRL mega tenders, demonstrated fleet ownership (registration documents, PUSPAKOM inspection) can be the deciding factor between winning and losing RM 500M+ contracts.'
+    },
+    {
+      question: "Can you help with CIDB upgrade financing (G6 to G7)?",
+      answer: 'Yes! CIDB G7 upgrade requires: (1) RM 750K paid-up capital (we verify), (2) Technical personnel (degree holders, 5+ years experience), (3) Equipment ownership/access demonstration, (4) Progressive project track record. We specialize in "equipment ownership" requirement through strategic fleet financing. Typical G7 equipment package: 3-5 bulldozers + 5-8 excavators + 2-3 graders = RM 8M-12M investment. We structure this to demonstrate equipment access without over-leveraging your company.'
+    },
+    {
+      question: "What is the down payment for bulldozer fleet financing?",
+      answer: "Standard down payment: 20-30% for fleet financing (RM 5M+). Example: RM 10M fleet = RM 2M-3M down payment. We can reduce to 15-20% if: (1) Confirmed government contract award, (2) Strong company financials, (3) Additional collateral (property). For CIDB G7 contractors with proven track record, we've approved 15% down payment (RM 1.5M on RM 10M fleet). This preserves capital for tender deposits and performance bonds."
+    },
+    {
+      question: "What are the interest rates for bulldozer financing?",
+      answer: "Interest rates: 6.5-10% annually depending on: (1) Fleet size (larger fleets get better rates), (2) Company financial strength, (3) CIDB grade (G7 = better rates), (4) Down payment amount, (5) Equipment age (new = lower rates). Example: RM 10M fleet, 25% down, CIDB G7, new equipment = ~7.2% rate. This is competitive vs. banks (9-15%) and dealer financing (10-18%). Government-linked financing (SME Bank) available at 4.5-5.5% for qualifying contractors."
+    },
+    {
+      question: "Can you finance bulldozers for specific mega projects (MRT3, ECRL, Pan Borneo)?",
+      answer: "Yes! We structure project-tied financing for confirmed contract awards. If you've won (or are bidding on) MRT3, ECRL, Pan Borneo, or flood mitigation packages, we can: (1) Provide conditional approval before tender submission (equipment ownership demonstration), (2) Final approval upon contract award (LOA/LOI), (3) Disburse funds for equipment procurement within 5-7 days, (4) Structure repayments around project milestones and VO payments. We've financed equipment for 15+ mega project contractors since 2023."
+    },
+    {
+      question: "Do you provide tax benefit guidance for bulldozer investments?",
+      answer: "Yes! Heavy equipment qualifies for capital allowance (tax deduction): Initial Allowance: 20% in Year 1, Annual Allowance: 14% on reducing balance for subsequent years. Example: RM 10M bulldozer fleet investment - Year 1: RM 2M (initial) + RM 1.12M (annual) = RM 3.12M tax deduction. At 24% corporate tax rate = RM 748K tax savings in Year 1. This effectively reduces your equipment cost by 7.5% in Year 1 alone. We provide tax structuring consultation (work with your accountant) to maximize benefits."
+    },
+    {
+      question: "What is the typical fleet composition for a CIDB G7 civil engineering contractor?",
+      answer: "Typical G7 earthmoving fleet (RM 6M-9M investment): Bulldozers: 3-5 heavy units (D8-D11 class) = RM 1.2M-2M each, Excavators: 5-8 hydraulic (30-50 ton) = RM 800K-1.5M each, Motor Graders: 2-3 units = RM 1M-1.8M each, Compactors: 2-3 vibratory = RM 600K-1M each, Dump Trucks: 2-3 articulated = RM 800K-1.5M each. Total: RM 6M-9M. This fleet demonstrates G7 equipment capability for tender scoring and enables RM 60M-75M annual revenue (mega project execution)."
+    },
+    {
+      question: "How quickly can I get bulldozers for an urgent government tender deadline?",
+      answer: `Expedited process for urgent tenders: Day 1: Submit documents + equipment specs (morning), Day 2: Conditional approval + dealer coordination (within 48 hours), Day 3-5: Equipment inspection and valuation, Day 6-7: Final approval and loan documentation, Day 8-10: Disbursement and equipment delivery. For tender submission deadlines, we provide: (1) Conditional approval letter (for "owned equipment" demonstration), (2) Purchase order evidence, (3) Registration documents (post-delivery). We've helped contractors meet 7-day tender deadlines through expedited processing.`
+    },
+    {
+      question: "Can foreigners or foreign-owned companies apply for bulldozer financing?",
+      answer: "Yes, but with requirements: (1) Malaysian company registration (SSM), (2) Valid work permits for directors, (3) Malaysian bank account (6 months statements), (4) Local guarantor or additional collateral may be required, (5) CIDB registration (if applying for government tenders). Foreign contractors often partner with Malaysian Bumiputera companies (30% government tender requirement) which strengthens financing applications. International joint ventures for mega projects (MRT3, ECRL) are common and we finance equipment for these consortiums."
+    },
+    {
+      question: "What happens if a government project is delayed or cancelled?",
+      answer: "Government project risks are real. Risk mitigation strategies: (1) Portfolio diversification (don't depend on single mega project), (2) Payment restructuring options (if project delayed, we can extend terms or reduce payments temporarily), (3) Equipment redeployment (bulldozers are versatile, can be used on other projects), (4) Refinancing options (if you secure another contract, we can restructure). Note: Government mega projects rarely cancel entirely (MRT3, ECRL historically revived after suspensions). Delays of 3-6 months are more common - we provide payment holiday options for such scenarios."
+    },
+    {
+      question: "Do you finance bulldozer attachments and ancillary equipment?",
+      answer: "Yes! We finance complete bulldozer packages including: Bulldozer attachments: Straight blades, angle blades, U-blades, rippers (single/multi-shank), winches; Ancillary equipment: Low-boy trailers (for mobilization), GPS systems (Trimble, Topcon), telematics platforms, spare parts inventory, workshop tools. Package financing (bulldozer + attachments + trailer + GPS) typically adds 15-20% to base equipment cost but provides turnkey solution. This is preferred by contractors mobilizing for mega projects who need immediate operational capability."
+    },
+    {
+      question: "What areas of Malaysia do you serve for bulldozer financing?",
+      answer: "We serve all Malaysian states and focus on mega project regions: Klang Valley (MRT3, flood mitigation), Penang (LRT Mutiara Line, Second Bridge logistics), Johor (industrial parks, Singapore proximity), Sabah & Sarawak (Pan Borneo Highway, state infrastructure), East Coast (ECRL, flood mitigation). Remote area processing via WhatsApp, email, and video calls. We coordinate with nationwide equipment dealers (Tractors Malaysia/CAT branches, Komatsu distributors) for inspection and delivery to any location including Sabah/Sarawak project sites."
+    },
+    {
+      question: "Can I refinance existing bulldozer loans to get better terms?",
+      answer: "Yes! Refinancing benefits: (1) Lower interest rates (if you now have stronger financials or CIDB G7 upgrade), (2) Extended terms (reduce monthly payments), (3) Access additional capital (top-up for fleet expansion), (4) Consolidate multiple equipment loans into one facility. Many clients refinance after 12-18 months when: (1) Their business has grown (mega contract won), (2) CIDB upgrade achieved (G7 = better rates), (3) They need capital for another tender deposit. We've saved clients 2-4% in interest through strategic refinancing."
+    },
+    {
+      question: "How do I choose between new vs used bulldozers for government tenders?",
+      answer: "Decision factors: New Bulldozers (0-2 years): Pros - Maximum tender scoring points, GPS technology available, lower maintenance, full warranty, 20-30% productivity gains; Cons - Higher upfront cost, 20-30% more expensive. Used Bulldozers (3-8 years): Pros - Lower capital requirement, faster approval, suitable for backup fleet; Cons - May score lower in tenders, higher maintenance risk, limited GPS technology. Recommendation: For mega projects (MRT3, ECRL) - choose new with GPS. For smaller tenders or second/third units - used acceptable. Hybrid strategy: 2-3 new flagship bulldozers + 1-2 used backup units."
+    }
+  ];
+  const productSchema = generateProductSchema({
+    name: "Bulldozer Financing for Government Tenders Malaysia",
+    description: "Fleet financing for CIDB G7 contractors. Finance GPS-guided bulldozers for MRT3, ECRL, Pan Borneo mega projects. Up to RM 15M financing. 48-hour approval.",
+    imageUrl: `${SITE_CONFIG.url}/images/bulldozer-financing.jpg`,
+    category: "Financial Service - Heavy Equipment Financing",
+    offers: {
+      price: "1800000",
+      currency: "MYR",
+      availability: "https://schema.org/InStock"
+    }
+  });
+  const faqSchema = generateFAQSchema(faqs);
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${maybeRenderHead()}<div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbs, "lang": lang })} </div>  ${renderComponent($$result2, "Hero", $$Hero, { "title": "Bulldozer Financing for Government Tenders & Mega Projects", "subtitle": "MRT3 | ECRL | Pan Borneo Highway | Flood Mitigation | RM 5M-15M Fleet Financing | CIDB G7 Equipment Packages", "ctaText": "Get Fleet Quote via WhatsApp", "ctaLink": "https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20bulldozer%20fleet%20financing%20for%20government%20tender.", "ctaSecondaryText": "Call: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["40 Years Experience", "CIDB G7 Specialist", "RM 15M Fleet Financing", "Mega Project Approved"] })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+Major Contractors Face Equipment Investment Challenges
+</h2> <p class="text-xl text-[#4F3E29] leading-relaxed">
+You've been shortlisted for MRT3 or Pan Borneo Highway tenders worth RM 500 million. But equipment ownership scoring requires demonstrating a fleet of 5-10 bulldozers (RM 8M-12M investment). Banks want 40% down payment. Tender submission deadline is 30 days. How do you compete?
+</p> </div> <div class="grid md:grid-cols-3 gap-8 mb-12"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-red-600 font-bold text-lg mb-3">The Challenge</div> <ul class="space-y-2 text-[#4F3E29]"> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>Mega project tenders require owned equipment (20-30 scoring points)</span> </li> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>Fleet investment RM 8M-15M ties up capital for tender deposits</span> </li> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>CIDB G7 upgrade requires equipment ownership demonstration</span> </li> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>GPS technology adds RM 300K per unit but mandatory for precision work</span> </li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-green-600 font-bold text-lg mb-3">Our Solution</div> <ul class="space-y-2 text-[#4F3E29]"> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>Up to RM 15M fleet financing with 48-hour approval</span> </li> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>80% LTV financing (only 20% down payment required)</span> </li> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>GPS-guided bulldozer financing for tender competitiveness</span> </li> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>Project-based repayment aligned with government cash flows</span> </li> </ul> </div> <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="font-bold text-lg mb-3 text-yellow-600">Real Success Story</div> <div class="text-sm leading-relaxed text-gray-800"> <p class="mb-3"><strong class="text-primary">Dato' Syed from Selangor</strong> needed 5 CAT D8T bulldozers (RM 6.2M) for a flood mitigation tender.</p> <p class="mb-3"><strong class="text-red-600">Banks wanted 40% down (RM 2.5M).</strong> We approved with RM 1.2M down (20%) in 36 hours.</p> <p class="font-semibold text-green-700">He won the RM 280M DID contract. Equipment ownership scored 28/30 points. ROI in 14 months.</p> </div> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Mega Projects Requiring Bulldozer Fleets in 2025
+</h2> <p class="text-xl text-[#4F3E29]">
+RM 70+ billion in infrastructure projects creating unprecedented opportunities for equipped contractors
+</p> </div> <div class="grid md:grid-cols-2 gap-8 mb-8"> ${megaProjects.map((project) => renderTemplate`<div class="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-l-4 border-primary"> <div class="flex justify-between items-start mb-4"> <h3 class="text-2xl font-bold text-primary">${project.name}</h3> <span class="text-lg font-bold text-[#D4A574] bg-accent px-3 py-1 rounded-full">${project.value}</span> </div> <p class="text-[#4F3E29] leading-relaxed">${project.description}</p> </div>`)} </div> <div class="text-center bg-[#F5F5DC] border-l-4 border-primary p-6 rounded-lg"> <p class="text-lg text-gray-800"> <strong>Equipment Requirement Insight:</strong> Government tenders for these projects typically award 20-30 points for equipment ownership, 15-20 points for GPS/smart technology, and 10-15 points for telematics fleet management. <span class="text-primary font-semibold">Demonstrated bulldozer ownership can be the deciding factor in winning RM 500M+ contracts.</span> </p> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Why CIDB G7 Contractors Choose Ing Heng Credit
+</h2> <p class="text-xl text-[#4F3E29]">
+Specialized financing designed for mega project contractors and government tender specialists
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="max-w-3xl mx-auto"> ${renderComponent($$result2, "Calculator", $$Calculator, { "lang": lang, "equipmentType": "Bulldozer Fleet", "defaultPrice": 18e5 })} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Fleet Financing Process: From Application to Tender Submission
+</h2> <p class="text-xl text-[#4F3E29]">
+Structured process designed for government tender deadlines
+</p> </div> <div class="grid md:grid-cols-5 gap-8"> ${steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { "stepNumber": step.stepNumber, "icon": step.icon, "title": step.title, "description": step.description })}`)} </div> <!-- CTA after steps --> <div class="text-center mt-12"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20discuss%20bulldozer%20fleet%20financing%20for%20a%20government%20mega%20project." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg inline-block">
+Start Fleet Financing Application
+</a> <p class="text-[#4F3E29] mt-4">Government tender deadline approaching? Request expedited fast processing.</p> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Bulldozer Types We Finance for Government Tenders
+</h2> <p class="text-xl text-[#4F3E29]">
+From compact D3K2 to heavy-duty D11T - All bulldozer categories for infrastructure projects
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"> ${bulldozerTypes.map((equipment) => renderTemplate`<div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow border-t-4 border-primary"> <h3 class="text-lg font-bold text-primary mb-3">${equipment.name}</h3> <p class="text-[#4F3E29] text-sm leading-relaxed">${equipment.description}</p> </div>`)} </div> <!-- Accepted Brands --> <div class="text-center"> <h3 class="text-2xl font-bold text-primary mb-6">Accepted Brands for Government Tenders</h3> <div class="flex flex-wrap justify-center gap-4 mb-6"> ${acceptedBrands.map((brand) => renderTemplate`<span class="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium border border-primary/20"> ${brand} </span>`)} </div> <div class="max-w-3xl mx-auto bg-[#F5F5DC] p-6 rounded-lg border-l-4 border-primary"> <p class="text-gray-800"> <strong>Tender Specification Note:</strong> Most government tenders specify "equivalent to CAT/Komatsu standard." Both Japanese (Komatsu) and American (Caterpillar) brands score equally in technical evaluation. Chinese brands (Shantui, XCMG) are cost-effective but may score 5-10% lower in some tender evaluations.
+</p> </div> </div> </div> </section>  <section class="section bg-gradient-to-r from-primary/10 to-secondary/10"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+CIDB G7 Upgrade Equipment Financing
+</h2> <p class="text-xl text-[#4F3E29]">
+Strategic equipment packages designed to help G6 contractors upgrade to unlimited tender capacity
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">CIDB G7 Requirements</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <span class="text-2xl">1.</span> <div> <div class="font-semibold text-gray-900">RM 750,000 Paid-Up Capital</div> <div class="text-sm text-[#4F3E29]">Financial capability verification</div> </div> </li> <li class="flex items-start space-x-3"> <span class="text-2xl">2.</span> <div> <div class="font-semibold text-gray-900">Technical Personnel (Degree Holders)</div> <div class="text-sm text-[#4F3E29]">Minimum 5 years experience required</div> </div> </li> <li class="flex items-start space-x-3"> <span class="text-2xl">3.</span> <div> <div class="font-semibold text-gray-900 text-primary">Equipment Ownership/Access</div> <div class="text-sm text-[#4F3E29]">Demonstrate advanced technology and infrastructure access</div> </div> </li> <li class="flex items-start space-x-3"> <span class="text-2xl">4.</span> <div> <div class="font-semibold text-gray-900">Progressive Track Record</div> <div class="text-sm text-[#4F3E29]">Successful completion of large construction projects</div> </div> </li> </ul> </div> <div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-lg shadow-[6px_6px_0_#2D1810] text-white"> <h3 class="text-2xl font-bold mb-6">Typical G7 Equipment Investment</h3> <div class="space-y-4 text-sm"> <div class="border-b border-white/30 pb-3"> <div class="font-semibold">3-5x Heavy Bulldozers (D8-D11)</div> <div class="opacity-90">RM 1.2M - 2M each = RM 3.6M - 10M</div> </div> <div class="border-b border-white/30 pb-3"> <div class="font-semibold">5-8x Hydraulic Excavators (30-50 ton)</div> <div class="opacity-90">RM 800K - 1.5M each = RM 4M - 12M</div> </div> <div class="border-b border-white/30 pb-3"> <div class="font-semibold">2-3x Motor Graders</div> <div class="opacity-90">RM 1M - 1.8M each = RM 2M - 5.4M</div> </div> <div class="border-b border-white/30 pb-3"> <div class="font-semibold">2-3x Vibratory Compactors</div> <div class="opacity-90">RM 600K - 1M each = RM 1.2M - 3M</div> </div> <div class="pt-3 border-t-2 border-white/50"> <div class="font-bold text-xl">Total Fleet Investment</div> <div class="text-2xl font-bold">RM 6M - 9M</div> <div class="text-xs opacity-90 mt-2">We finance 80% (RM 4.8M - 7.2M) | 20% equity required</div> </div> </div> <div class="mt-6 p-4 bg-white/10 rounded-lg"> <p class="text-sm"><strong>ROI Target:</strong> RM 60M-75M annual revenue from mega project execution. Breakeven in 18-24 months with proper project portfolio management.</p> </div> </div> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Application Requirements for Fleet Financing
+</h2> <p class="text-xl text-[#4F3E29]">
+Documentation requirements for RM 5M-15M bulldozer fleet financing
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"> <!-- Company Requirements --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">Company Documentation</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">SSM Registration + Form 24/49</div> <div class="text-sm text-[#4F3E29]">Company registration, shareholding structure, directors list</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">CIDB Registration Certificate</div> <div class="text-sm text-[#4F3E29]">G6/G7 registration. Current grade and tender capacity limit.</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Financial Statements (2-3 years)</div> <div class="text-sm text-[#4F3E29]">Audited accounts, balance sheets, cash flow statements</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Company Bank Statements (12 months)</div> <div class="text-sm text-[#4F3E29]">Operating account transaction history</div> </div> </li> </ul> </div> <!-- Project Requirements --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">Project & Equipment Documentation</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Tender Documents or Contract Awards</div> <div class="text-sm text-[#4F3E29]">LOA/LOI for confirmed projects, or tender invitation for bidding projects</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Equipment Quotations</div> <div class="text-sm text-[#4F3E29]">Dealer quotations (CAT, Komatsu), specifications, delivery terms</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Project Track Record</div> <div class="text-sm text-[#4F3E29]">Previous government project completions, reference letters</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Directors' IC + Guarantees</div> <div class="text-sm text-[#4F3E29]">All directors, corporate resolutions, personal guarantees for RM 5M+ financing</div> </div> </li> </ul> </div> </div> <!-- Additional Notes --> <div class="max-w-4xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg"> <h4 class="font-bold text-primary mb-3">Expedited Processing for Government Tenders:</h4> <ul class="space-y-2 text-[#4F3E29]"> <li>• <strong>Conditional Approval:</strong> Available for tender submission (demonstrates equipment ownership)</li> <li>• <strong>Final Approval:</strong> Upon contract award (LOA/LOI confirmation) within days</li> <li>• <strong>Disbursement:</strong> 5-7 days post final approval for equipment procurement</li> <li>• <strong>Urgent Cases:</strong> Priority processing available for imminent tender deadlines (premium service)</li> </ul> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Success Stories from CIDB G7 Contractors
+</h2> <p class="text-xl text-[#4F3E29]">
+Major developers who secured mega projects through strategic equipment financing
+</p> </div> <div class="grid md:grid-cols-3 gap-6"> ${testimonials.map((testimonial) => renderTemplate`${renderComponent($$result2, "TestimonialCard", $$TestimonialCard, { "name": testimonial.name, "company": testimonial.company, "location": testimonial.location, "testimonial": testimonial.testimonial, "rating": testimonial.rating })}`)} </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Frequently Asked Questions
+</h2> <p class="text-xl text-[#4F3E29]">
+Everything major contractors need to know about bulldozer fleet financing
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  <section class="section bg-[#8B6F47] text-white"> <div class="container-custom text-center"> <h2 class="text-3xl md:text-4xl font-bold mb-6">
+Ready to Finance Your Bulldozer Fleet for Mega Projects?
+</h2> <p class="text-xl mb-8 max-w-2xl mx-auto">
+MRT3 civil packages are releasing Q1-Q2 2025. Pan Borneo Phase 1B ongoing. Flood mitigation tenders continuous. Equipment ownership = tender competitiveness. Apply today for 48-hour conditional approval.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20discuss%20bulldozer%20fleet%20financing%20for%20a%20government%20mega%20project%20(MRT3/ECRL/Pan%20Borneo)." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
+WhatsApp: Fleet Financing Quote
+</a> <a href="tel:+60175700889" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+Call: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>RM 5M-15M Financing</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>48-Hour Approval</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>CIDB G7 Specialist</span> </div> </div> </div> </section>  ${renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "lang": lang, "currentEquipment": "bulldozer" })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-2xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">
+Request Fleet Financing Consultation
+</h2> <p class="text-[#4F3E29]">
+Our CIDB G7 financing specialists will contact you promptly during business hours
+</p> </div> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(productSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/bulldozer.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/bulldozer.astro";
+const $$url = "/en/equipment/bulldozer";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Bulldozer,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

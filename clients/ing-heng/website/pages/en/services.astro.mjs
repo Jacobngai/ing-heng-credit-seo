@@ -1,0 +1,116 @@
+/* empty css                                    */
+import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout, b as generateOrganizationSchema } from '../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Breadcrumbs } from '../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { $ as $$ContactForm } from '../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$StructuredData } from '../../chunks/StructuredData_BEy59xv7.mjs';
+import { C as COMPANY_INFO } from '../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../renderers.mjs';
+
+const $$Index = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const title = "Our Services - Equipment Financing Solutions | Ing Heng Credit";
+  const description = "Complete financing solutions for all your equipment needs. Hire purchase, business loans, warehouse equipment financing, and insurance services. Fast approval and flexible terms. Get your free quote today!";
+  const keywords = [
+    "equipment financing services",
+    "hire purchase Malaysia",
+    "business loan services",
+    "equipment insurance",
+    "financing solutions Malaysia",
+    "Ing Heng Credit services",
+    "construction equipment financing",
+    "logistics equipment loan",
+    "warehouse equipment financing",
+    "material handling equipment finance",
+    "forklift financing services"
+  ];
+  const breadcrumbItems = [
+    { label: "Home", href: "/en" },
+    { label: "Services", href: "/en/services" }
+  ];
+  const organizationSchema = generateOrganizationSchema();
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": title, "description": description, "lang": lang, "keywords": keywords }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "StructuredData", $$StructuredData, { "schema": organizationSchema })}  ${maybeRenderHead()}<div class="bg-blue-50 border-b-3 border-navy-900"> <div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbItems, "lang": lang })} </div> </div>  <section class="hero relative overflow-hidden"> <div class="container-custom relative z-10 text-center py-20"> <h1 class="text-5xl md:text-6xl lg:text-7xl font-display uppercase leading-tight mb-6 text-white">
+Our <span class="text-yellow-400">Services</span> </h1> <p class="text-xl md:text-2xl text-white opacity-90 mb-8 max-w-3xl mx-auto">
+Complete financing solutions designed to help your business acquire the equipment it needs to grow
+</p> </div> <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div> </section>  <section class="section bg-white"> <div class="container-custom"> <div class="text-center mb-16"> <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+Comprehensive <span class="text-secondary">Financing Solutions</span> </h2> <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div> <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+With over 40 years of experience, we provide tailored financing solutions for businesses across Malaysia
+</p> </div> <!-- Services Grid --> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"> <!-- Service 1: Hire Purchase --> <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1"> <div class="bg-secondary border-b-3 border-navy-900 p-8 text-center"> <div class="text-7xl mb-4">🚜</div> <h3 class="text-3xl font-display uppercase text-white mb-2">Hire Purchase</h3> <p class="text-white text-lg">Asset Financing Solutions</p> </div> <div class="p-8"> <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+Asset financing that allows your business to own equipment through flexible monthly payments.
+              Perfect for excavators, lorries, forklifts, and all business equipment.
+</p> <div class="mb-8"> <h4 class="font-display uppercase text-navy-900 mb-4 text-lg">Key Benefits:</h4> <ul class="space-y-3"> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Own your assets while maintaining cash flow</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Flexible terms from 12 to 60 months</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">New and used equipment accepted</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Low down payment from 10%</span> </li> </ul> </div> <a href="/en/services/hire-purchase" class="btn btn-primary w-full block text-center text-lg">
+Learn More →
+</a> </div> </div> <!-- Service 2: Loan Financing --> <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1"> <div class="bg-secondary border-b-3 border-navy-900 p-8 text-center"> <div class="text-7xl mb-4">💰</div> <h3 class="text-3xl font-display uppercase text-white mb-2">Loan Financing</h3> <p class="text-white text-lg">Business Capital Solutions</p> </div> <div class="p-8"> <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+Customized business loans trusted by over 4,000 companies across Malaysia.
+              Get the working capital you need with competitive rates and fast approval.
+</p> <div class="mb-8"> <h4 class="font-display uppercase text-navy-900 mb-4 text-lg">Key Benefits:</h4> <ul class="space-y-3"> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Quick approval process</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Competitive interest rates from 6.5% p.a.</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Flexible repayment terms</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Loans up to RM 500,000</span> </li> </ul> </div> <a href="/en/services/loan-financing" class="btn btn-primary w-full block text-center text-lg">
+Learn More →
+</a> </div> </div> <!-- Service 3: Insurance --> <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1"> <div class="bg-secondary border-b-3 border-navy-900 p-8 text-center"> <div class="text-7xl mb-4">🛡️</div> <h3 class="text-3xl font-display uppercase text-white mb-2">Insurance</h3> <p class="text-white text-lg">Protection Solutions</p> </div> <div class="p-8"> <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+Comprehensive insurance coverage for personal, business, and motor needs.
+              Protect your valuable equipment investments and business operations.
+</p> <div class="mb-8"> <h4 class="font-display uppercase text-navy-900 mb-4 text-lg">Key Benefits:</h4> <ul class="space-y-3"> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Comprehensive coverage options</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Trusted insurance partners</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Competitive premiums</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Fast claims processing</span> </li> </ul> </div> <a href="/en/services/insurance" class="btn btn-primary w-full block text-center text-lg">
+Learn More →
+</a> </div> </div> <!-- Service 4: Warehouse Equipment Financing --> <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1"> <div class="bg-secondary border-b-3 border-navy-900 p-8 text-center"> <div class="text-7xl mb-4">🏗️</div> <h3 class="text-3xl font-display uppercase text-white mb-2">Warehouse Equipment</h3> <p class="text-white text-lg">Material Handling Finance</p> </div> <div class="p-8"> <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+Specialized financing for warehouse equipment including forklifts, conveyors, pallet jacks, 
+              and material handling systems. Stop bleeding rental fees forever.
+</p> <div class="mb-8"> <h4 class="font-display uppercase text-navy-900 mb-4 text-lg">Key Benefits:</h4> <ul class="space-y-3"> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">0% deposit, 100% financing available</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Even 10+ year old equipment considered</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Seasonal payment flexibility</span> </li> <li class="flex items-start"> <span class="text-secondary mr-3 text-xl mt-1">▸</span> <span class="text-gray-700">Complete warehouse equipment packages</span> </li> </ul> </div> <a href="/en/services/warehouse-equipment-financing" class="btn btn-primary w-full block text-center text-lg">
+Learn More →
+</a> </div> </div> </div> </div> </section>  <section class="section bg-blue-50"> <div class="container-custom"> <div class="text-center mb-16"> <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+Why Choose <span class="text-secondary">Ing Heng Credit</span>?
+</h2> <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div> </div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> <div class="bg-white border-3 border-navy-900 shadow-brutal-md p-8 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1"> <div class="w-20 h-20 bg-secondary border-3 border-navy-900 mx-auto mb-6 flex items-center justify-center text-white text-4xl">
+⚡
+</div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Fast Approval</h3> <p class="text-gray-600 leading-relaxed">
+Get approved quickly with our streamlined application process
+</p> </div> <div class="bg-white border-3 border-navy-900 shadow-brutal-md p-8 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1"> <div class="w-20 h-20 bg-yellow-400 border-3 border-navy-900 mx-auto mb-6 flex items-center justify-center text-navy-900 text-4xl">
+✓
+</div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">High Approval Rate</h3> <p class="text-gray-600 leading-relaxed">
+Excellent approval rate with flexible terms for all business types
+</p> </div> <div class="bg-white border-3 border-navy-900 shadow-brutal-md p-8 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1"> <div class="w-20 h-20 bg-secondary border-3 border-navy-900 mx-auto mb-6 flex items-center justify-center text-white text-4xl">
+🏆
+</div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">40+ Years Experience</h3> <p class="text-gray-600 leading-relaxed">
+Trusted by over 4,000 businesses since 1985
+</p> </div> <div class="bg-white border-3 border-navy-900 shadow-brutal-md p-8 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1"> <div class="w-20 h-20 bg-yellow-400 border-3 border-navy-900 mx-auto mb-6 flex items-center justify-center text-navy-900 text-4xl">
+💬
+</div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Expert Guidance</h3> <p class="text-gray-600 leading-relaxed">
+Free consultation in English, Mandarin, and Bahasa Malaysia
+</p> </div> </div> </div> </section>  <section class="section bg-white"> <div class="container-custom"> <div class="text-center mb-16"> <h2 class="text-4xl md:text-5xl font-display uppercase mb-6 text-navy-900">
+Our Simple <span class="text-secondary">Application Process</span> </h2> <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div> <p class="text-gray-700 max-w-3xl mx-auto text-xl">
+Get your equipment financing approved in just 4 easy steps
+</p> </div> <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto"> <div class="text-center"> <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md"> <span class="text-5xl font-display text-navy-900">1</span> </div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Inquiry</h3> <p class="text-gray-600 leading-relaxed">
+Contact us via WhatsApp, phone, or fill out our online form
+</p> </div> <div class="text-center"> <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md"> <span class="text-5xl font-display text-navy-900">2</span> </div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Documentation</h3> <p class="text-gray-600 leading-relaxed">
+Submit required documents - we keep it simple and minimal
+</p> </div> <div class="text-center"> <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md"> <span class="text-5xl font-display text-navy-900">3</span> </div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Approval</h3> <p class="text-gray-600 leading-relaxed">
+Get approved quickly with our fast processing
+</p> </div> <div class="text-center"> <div class="bg-yellow-400 border-3 border-navy-900 w-24 h-24 mx-auto mb-6 flex items-center justify-center shadow-brutal-md"> <span class="text-5xl font-display text-navy-900">4</span> </div> <h3 class="text-xl font-display uppercase text-navy-900 mb-3">Disbursement</h3> <p class="text-gray-600 leading-relaxed">
+Receive your funds and get your equipment within 3-5 days
+</p> </div> </div> </div> </section>  <section class="section bg-secondary text-white relative" style="border-top: 8px solid #FBBF24;"> <div class="container-custom text-center"> <h2 class="text-5xl md:text-6xl font-display uppercase mb-6">
+Ready to Get <span class="text-yellow-500">Started?</span> </h2> <p class="text-xl mb-12 text-white opacity-90 max-w-3xl mx-auto">
+Join 4,000+ businesses who trust Ing Heng Credit for their financing needs.
+        Contact us today for a free consultation and quote!
+</p> <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8"> <a${addAttribute(COMPANY_INFO.whatsapp.link, "href")} class="btn btn-secondary text-xl px-12 py-6">
+WhatsApp Us Now
+</a> <a href="/en/contact" class="btn btn-outline-white text-xl px-12 py-6">
+Get Free Quote
+</a> </div> <div class="mt-8 text-white"> <p class="text-lg">
+Or call us directly:
+<a${addAttribute(`tel:${COMPANY_INFO.phone.international}`, "href")} class="text-yellow-400 font-black hover:underline" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);"> ${COMPANY_INFO.phone.display} </a> </p> </div> </div> </section>  <section class="section bg-white"> <div class="container-custom max-w-4xl"> <div class="text-center mb-16"> <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+Get Your Free <span class="text-secondary">Quote Today</span> </h2> <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div> <p class="text-gray-700 text-xl">
+Fill out the form below and our financing experts will contact you promptly
+</p> </div> <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-xl p-8 md:p-12"> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section> ` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/services/index.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/services/index.astro";
+const $$url = "/en/services";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

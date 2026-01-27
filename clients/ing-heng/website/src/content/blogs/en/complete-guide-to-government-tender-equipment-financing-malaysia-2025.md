@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      8 min read
-  #  Complete Guide to Government Tender Equipment Financing Malaysia 2025 
-
-  Get your government tender equipment financing approved fast. We finance bulldozers, excavators, cranes for JKR, CIDB Class A contractors. 0% deposit, 100% financing available. 
-
-     By Ing Heng Credit &amp; Leasing     # Complete Guide to Government Tender Equipment Financing Malaysia 2025
 
 When Ahmad wins that RM 15 million JKR road construction tender, and the contract requires 3 bulldozers, 5 excavators, and 10 tipper trucks to be on-site within 30 days, does your chest tighten knowing the equipment purchase will cost RM 8 million - money you don’t have sitting in the bank?
 

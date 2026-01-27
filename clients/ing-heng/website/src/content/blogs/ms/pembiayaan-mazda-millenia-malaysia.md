@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Mazda Millenia Malaysia - 0% Deposit Inovasi Mewah"
 description: "Dapatkan pembiayaan 0% deposit untuk sedan mewah Mazda Millenia anda. Jangan biar kerumitan import hancurkan impian Mazda premium anda di Malaysia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Isuzu Gemini Turbo Malaysia - 0% Deposit Legenda JDM"
 description: "Dapatkan pembiayaan Isuzu Gemini Turbo dengan 0% deposit di Malaysia. Panduan pakar untuk pinjaman hatchback turbo JDM langka dengan terma fleksibel dan potensi kenaikan nilai."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

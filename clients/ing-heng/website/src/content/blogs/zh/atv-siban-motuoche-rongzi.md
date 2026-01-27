@@ -3,7 +3,7 @@ title: "ATV四板摩托车融资马来西亚 - 0%首付越野车贷款"
 description: "获得ATV四板摩托车融资批准在马来西亚。银行拒绝娱乐车贷款？我们专门提供越野车融资，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["atv四板摩托车融资", "越野车贷款", "娱乐车融资", "四板摩托车贷款马来西亚"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

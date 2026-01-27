@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Renault Alpine A110 Malaysia - 0% Deposit Legenda Kereta Sport Perancis"
 description: "Dapatkan Renault Alpine A110 dengan pembiayaan 0% deposit di Malaysia. Kelulusan pakar untuk pelaburan kereta sport Perancis yang meningkat pesat. Mohon pembiayaan Alpine A110 hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

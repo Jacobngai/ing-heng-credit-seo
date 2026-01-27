@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  January 20, 2026      9 min read
-  #  Equipment Financing Up to 10 Years Old: Complete Policy Guide Malaysia 
-
-  Finance any equipment up to 10 years old with 0% deposit. Comprehensive guide to age limits, valuation, approval process for excavators, lorries, forklifts, and more. 
-
-     By Ing Heng Credit &amp; Leasing     # Equipment Financing Up to 10 Years Old: Complete Policy Guide Malaysia
 
 Looking to finance used equipment but worried about age restrictions? Good news: **we finance all equipment types up to 10 years old** with competitive rates and 0% deposit options available.
 

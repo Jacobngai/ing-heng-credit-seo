@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Ford Escort MK1 Malaysia - Pinjaman Ikon Rali 0% Deposit"
 description: "Dapatkan pembiayaan Ford Escort MK1 di Malaysia dengan 0% deposit. Bank tolak kereta rali vintage? Kami luluskan pinjaman untuk Mexico, RS1600, Twin Cam dan semua varian MK1."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

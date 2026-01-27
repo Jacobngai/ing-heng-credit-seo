@@ -1,7 +1,7 @@
 ---
 title: "马自达MX-3 V6融资马来西亚 - 0%首付世界最小量产V6"
 description: "为您稀有的马自达MX-3 V6提供0%首付融资。这款紧凑型轿跑搭载世界最小的量产V6发动机 - 今天就为这个快速升值的工程奇迹确保融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

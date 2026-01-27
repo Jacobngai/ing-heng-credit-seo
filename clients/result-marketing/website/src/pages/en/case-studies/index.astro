@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+const caseStudies = [
+  {
+    slug: 'terasek',
+    title: 'Terasek Supply: 2x Faster Collections',
+    subtitle: 'Digital automation transforms water tanker operations',
+    category: 'Logistics',
+    results: [
+      { metric: '2x', label: 'Faster Collection' },
+      { metric: '2 months → 1 month', label: 'Collection Time' },
+      { metric: 'GPS', label: 'Fleet Tracking' }
+    ],
+    summary: 'Implemented digital paperwork app and GPS fleet tracking for Terasek Supply, reducing payment collection time from 2 months to 1 month and enabling outstation jobs.',
+    image: '💧',
+    featured: true
+  },
+  {
+    slug: 'ing-heng-credit',
+    title: 'Ing Heng Credit: Multi-Language AIEO',
+    subtitle: 'Tri-lingual AIEO captures money lending market',
+    category: 'Financial Services',
+    results: [
+      { metric: '3', label: 'Languages' },
+      { metric: 'RM399', label: 'First Month' },
+      { metric: '#1', label: 'AI Rankings' }
+    ],
+    summary: 'Built a 3-language website (English, Malay, Chinese) for Ing Heng Credit with AIEO optimization, ranking #1 on Gemini, ChatGPT & Claude for money lending keywords.',
+    image: '💰',
+    featured: true
+  },
+  {
+    slug: 'ihousing',
+    title: 'iHousing Paradise: 500%+ Traffic Growth',
+    subtitle: 'AIEO + Airbnb automation drives massive growth',
+    category: 'Property Management',
+    results: [
+      { metric: '500%+', label: 'Traffic Increase' },
+      { metric: '24/7', label: 'Auto Response' },
+      { metric: '1000+', label: 'Reviews Managed' }
+    ],
+    summary: 'Combined AI-powered AIEO with Airbnb review automation, achieving 500%+ search traffic growth and automating the entire guest review workflow for iHousing Paradise.',
+    image: '🏠',
+    featured: true
+  }
+];
+
+const industries = [
+  { name: 'Financial Services', icon: '💰' },
+  { name: 'Property Management', icon: '🏠' },
+  { name: 'Logistics', icon: '🚛' }
+];
+---
+
+<BaseLayout
+  title="Case Studies - Real Results from Real Clients | Result Marketing"
+  description="See how we've helped businesses achieve 500%+ traffic growth, 15x keyword coverage, and dominate their markets with AI-powered SEO."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Case Studies</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Real Results from Real Clients
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          We don't just talk about results—we deliver them. See how AI-powered SEO has helped businesses across industries achieve massive growth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Case Studies -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">Featured Success Stories</h2>
+        <p class="text-lg text-secondary-400">
+          In-depth case studies showing exactly how we achieve results
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {caseStudies.map(study => (
+          <a href={`/en/case-studies/${study.slug}`} class="group">
+            <div class="card card-hover h-full">
+              <div class="text-6xl mb-4 text-center">{study.image}</div>
+              <div class="mb-4">
+                <span class="badge badge-primary text-xs">{study.category}</span>
+              </div>
+              <h3 class="text-2xl font-black mb-2 text-white group-hover:text-primary-400 transition-colors">
+                {study.title}
+              </h3>
+              <p class="text-secondary-400 mb-6 text-sm">{study.subtitle}</p>
+
+              <div class="grid grid-cols-3 gap-3 mb-6">
+                {study.results.map(result => (
+                  <div class="text-center">
+                    <div class="text-xl font-black gradient-text">{result.metric}</div>
+                    <div class="text-xs text-secondary-500">{result.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <p class="text-secondary-400 text-sm mb-4 line-clamp-3">{study.summary}</p>
+
+              <div class="text-primary-500 font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
+                Read Full Case Study
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries We Serve -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">Industries We Serve</h2>
+        <p class="text-lg text-secondary-400">
+          Our AI-powered approach works across diverse industries
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        {industries.map(industry => (
+          <div class="card text-center py-6">
+            <div class="text-4xl mb-2">{industry.icon}</div>
+            <div class="text-sm font-bold text-white">{industry.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Ready to Be Our Next Success Story?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          Schedule a free consultation. We'll analyze your current SEO situation and show you how AI-powered strategies can help you achieve similar results.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Get Free Consultation
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

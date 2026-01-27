@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Directory
+D_DIR="content/en/blogs/D"
+
+# List of missing slugs (batch 3 - final batch)
+SLUGS=(
+  "aeo-outcomes-equipment-rental"
+  "aeo-roi-local-sme"
+  "aeo-benefits-manufacturing"
+  "aeo-impact-retail-business"
+  "aeo-results-f-and-b"
+  "aeo-outcomes-b2b-industrial"
+  "aeo-benefits-logistics"
+  "aeo-results-property-development"
+  "aeo-impact-automotive"
+  "aeo-outcomes-healthcare"
+  "aeo-results-education"
+  "aeo-benefits-professional-services"
+)
+
+count=0
+for slug in "${SLUGS[@]}"; do
+  file="$D_DIR/aeo-$slug.md"
+  if [ -f "$file" ]; then
+    echo "EXISTS: aeo-$slug.md"
+  else
+    printf '%s\n' "---
+title: \"$slug\"
+description: \"AEO content for $slug\"
+category: \"aeo\"
+published: \"2026-01-25\"
+status: \"draft\"
+---
+# Draft: $slug
+Content to be generated.
+" > "$file"
+    echo "✅ CREATED: aeo-$slug.md"
+    count=$((count + 1))
+  fi
+done
+
+echo "Created $count files"

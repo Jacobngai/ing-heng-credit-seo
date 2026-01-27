@@ -1,7 +1,7 @@
 ---
 title: "日产Pulsar GTI-R贷款马来西亚 - 0%首付JDM AWD传奇融资"
 description: "在马来西亚以0%首付贷款获得您的日产Pulsar GTI-R。为具有Group A拉力血统和SR20DET涡轮动力的终极JDM热掀背融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-27

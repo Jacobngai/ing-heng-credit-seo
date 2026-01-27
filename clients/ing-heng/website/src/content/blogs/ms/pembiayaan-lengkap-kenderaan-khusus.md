@@ -3,7 +3,7 @@ title: "Pembiayaan Kenderaan Khusus Malaysia - Yacht, Ferrari, ATV dengan 0% Dep
 description: "Pembiayaan lengkap untuk kenderaan khusus - yacht, supercar Ferrari/Lamborghini, golf cart, ATV, UTV di Malaysia. 0% deposit tersedia."
 publishDate: 2024-12-24
 tags: ["pembiayaan kenderaan khusus", "pinjaman yacht malaysia", "pembiayaan supercar", "pinjaman atv utv"]
-category: "Specialized Vehicle Financing"  
+category: Equipment Financing  
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

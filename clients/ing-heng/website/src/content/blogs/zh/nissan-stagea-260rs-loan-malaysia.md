@@ -1,7 +1,7 @@
 ---
 title: "日产Stagea 260RS贷款马来西亚 - 0%首付AWD旅行车野兽"
 description: "稀有日产Stagea 260RS零首付融资。银行拒绝25年旅行车怪兽？我们批准。在价格爆发前获得这台RB26动力潜行者。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

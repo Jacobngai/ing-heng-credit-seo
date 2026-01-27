@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Mitsubishi Starion Malaysia - 0% Deposit Pelaburan Kereta Sport Turbo"
 description: "Dapatkan Mitsubishi Starion anda dengan pembiayaan 0% deposit di Malaysia. Miliki kereta sport turbo ikonik 1980an yang mentakrifkan reka bentuk dan kejuruteraan prestasi Jepun."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

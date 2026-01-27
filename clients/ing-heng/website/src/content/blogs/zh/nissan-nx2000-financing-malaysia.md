@@ -1,7 +1,7 @@
 ---
 title: "日产NX2000融资马来西亚 - 0%首付T-Top SR20DE专家"
 description: "为您稀有的日产NX2000提供0%首付融资。这款配备T-top的SR20DE动力轿跑代表了纯正的90年代跑车DNA - 今天就为这颗升值的自然吸气宝石确保融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

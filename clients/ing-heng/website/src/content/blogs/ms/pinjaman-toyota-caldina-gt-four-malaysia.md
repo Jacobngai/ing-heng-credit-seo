@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Toyota Caldina GT-Four Malaysia - 0% Deposit Prestasi AWD"
 description: "Dapatkan pembiayaan 0% deposit untuk wagon turbo Toyota Caldina GT-Four anda. Jangan biar penghalang import hancurkan impian prestasi AWD anda di Malaysia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

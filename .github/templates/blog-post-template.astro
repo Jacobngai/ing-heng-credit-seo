@@ -1,0 +1,513 @@
+---
+/**
+ * Blog Post Template - Equipment Financing
+ *
+ * SEO Optimization Checklist:
+ * ✅ Primary keyword in title (H1)
+ * ✅ Keyword density 2-3% for primary keywords
+ * ✅ Readability score ≥ 60 (Flesch Reading Ease)
+ * ✅ Company credibility mentions (40+ years, KPKT, 4,000+ companies)
+ * ✅ Internal links to related content
+ * ✅ Clear call-to-action
+ * ✅ Meta description 150-160 characters
+ *
+ * Quality Gates (Auto-Checked by GitHub Actions):
+ * - Keyword density check
+ * - Readability score validation
+ * - Link validation
+ * - Fact verification
+ */
+
+// EDIT THESE FIELDS:
+title: "Complete Guide to Equipment Financing in Malaysia 2025"
+description: "Expert guide to equipment financing in Malaysia. Learn financing options, approval strategies, and tax benefits. 40+ years of trusted financing expertise."
+keywords: [
+  "equipment financing Malaysia",
+  "equipment loan",
+  "construction equipment financing",
+  "hire purchase Malaysia",
+  "business equipment loan"
+]
+target_keywords: [
+  "equipment financing",
+  "equipment loan",
+  "financing Malaysia"
+]
+date: "2025-01-22"
+author: "Ing Heng Credit Team"
+category: "Equipment Financing Tips"
+readTime: 8
+image: "/images/blog/equipment-financing-guide.jpg"
+featured: true
+---
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'en'; // Change to 'ms' or 'zh' for other languages
+
+// Breadcrumb navigation
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: frontmatter.title, href: Astro.url.pathname },
+];
+
+// Schema markup for BlogPosting
+const blogPostSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": frontmatter.title,
+  "description": frontmatter.description,
+  "image": `https://www.inghengcredit.com${frontmatter.image}`,
+  "datePublished": frontmatter.date,
+  "dateModified": frontmatter.date,
+  "author": {
+    "@type": "Organization",
+    "name": frontmatter.author,
+    "url": "https://www.inghengcredit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.inghengcredit.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://www.inghengcredit.com${Astro.url.pathname}`
+  }
+};
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  lang={lang}
+  keywords={frontmatter.keywords}
+>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostSchema)} />
+
+  <!-- Breadcrumbs -->
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="section bg-white">
+    <div class="container-custom max-w-4xl">
+
+      <!-- Article Header -->
+      <header class="mb-8">
+        {frontmatter.featured && (
+          <div class="mb-4">
+            <span class="badge-brutalist">FEATURED</span>
+          </div>
+        )}
+
+        <h1 class="text-4xl md:text-5xl font-black text-navy-900 mb-4 tracking-tight" style="font-family: 'Bebas Neue', sans-serif;">
+          {frontmatter.title}
+        </h1>
+
+        <!-- Meta Info -->
+        <div class="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <time datetime={frontmatter.date}>
+              {new Date(frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{frontmatter.readTime} min read</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span>{frontmatter.author}</span>
+          </div>
+        </div>
+
+        <!-- Category Badge -->
+        <div>
+          <a href={`/en/blog/category/${frontmatter.category.toLowerCase().replace(/\s+/g, '-')}`} class="badge-brutalist">
+            {frontmatter.category}
+          </a>
+        </div>
+      </header>
+
+      <!-- Featured Image (if available) -->
+      {frontmatter.image && (
+        <div class="mb-8">
+          <img
+            src={frontmatter.image}
+            alt={frontmatter.title}
+            class="w-full h-auto border-4 border-navy-900"
+            style="box-shadow: 8px 8px 0 #1E3A8A;"
+          />
+        </div>
+      )}
+
+      <!-- Article Body -->
+      <div class="prose prose-lg max-w-none">
+
+        <!-- Introduction -->
+        <p class="lead">
+          Equipment financing is essential for businesses looking to acquire construction equipment,
+          machinery, or commercial vehicles without depleting cash reserves. This comprehensive guide
+          covers everything you need to know about equipment financing in Malaysia, from understanding
+          different financing options to maximizing your approval chances.
+        </p>
+
+        <h2>What is Equipment Financing?</h2>
+
+        <p>
+          Equipment financing is a type of business loan specifically designed to help companies purchase
+          or lease equipment needed for their operations. Unlike traditional business loans, equipment
+          financing uses the equipment itself as collateral, making it easier to qualify and often
+          offering better terms.
+        </p>
+
+        <h3>Types of Equipment You Can Finance</h3>
+
+        <ul>
+          <li><strong>Construction Equipment</strong>: Excavators, bulldozers, cranes, concrete mixers</li>
+          <li><strong>Commercial Vehicles</strong>: Lorries, trucks, delivery vans, company cars</li>
+          <li><strong>Manufacturing Machinery</strong>: Production lines, CNC machines, industrial equipment</li>
+          <li><strong>Warehouse Equipment</strong>: Forklifts, pallet jacks, storage systems</li>
+          <li><strong>Agricultural Equipment</strong>: Tractors, harvesters, irrigation systems</li>
+        </ul>
+
+        <h2>Equipment Financing Options in Malaysia</h2>
+
+        <h3>1. Hire Purchase (HP)</h3>
+
+        <p>
+          Hire purchase is the most common equipment financing method in Malaysia. With hire purchase,
+          you make monthly payments over a fixed period (typically 1-7 years) until you own the equipment
+          outright. This option offers tax benefits and predictable monthly costs.
+        </p>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 my-6">
+          <h4 class="text-lg font-bold text-navy-900 mb-2">💡 Expert Tip</h4>
+          <p class="text-gray-700">
+            Hire purchase typically offers better interest rates than personal loans or credit cards,
+            making it ideal for expensive equipment. At Ing Heng Credit, our rates start from 2.88% p.a.
+          </p>
+        </div>
+
+        <h3>2. Equipment Leasing</h3>
+
+        <p>
+          Leasing allows you to use equipment without owning it. You pay monthly rental fees, and at
+          the end of the lease term, you can return the equipment, purchase it at residual value, or
+          upgrade to newer equipment. Leasing is ideal for equipment that becomes obsolete quickly.
+        </p>
+
+        <h3>3. Term Loans</h3>
+
+        <p>
+          Term loans provide a lump sum that you repay over a fixed period. While you own the equipment
+          immediately, term loans may require more collateral and have stricter approval criteria
+          compared to hire purchase agreements.
+        </p>
+
+        <h2>Benefits of Equipment Financing</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+          <div class="card-brutalist p-6">
+            <h3 class="text-xl font-bold text-navy-900 mb-3">💰 Preserve Cash Flow</h3>
+            <p>
+              Avoid large upfront capital expenditure. Keep your working capital for day-to-day
+              operations and emergencies.
+            </p>
+          </div>
+
+          <div class="card-brutalist p-6">
+            <h3 class="text-xl font-bold text-navy-900 mb-3">📊 Tax Benefits</h3>
+            <p>
+              Equipment financing payments may be tax-deductible as business expenses. Consult your
+              accountant for specific deductions.
+            </p>
+          </div>
+
+          <div class="card-brutalist p-6">
+            <h3 class="text-xl font-bold text-navy-900 mb-3">⚡ Quick Approval</h3>
+            <p>
+              Get approved within 24-48 hours with minimal documentation. Start using your equipment
+              immediately to grow your business.
+            </p>
+          </div>
+
+          <div class="card-brutalist p-6">
+            <h3 class="text-xl font-bold text-navy-900 mb-3">🛡️ Flexible Terms</h3>
+            <p>
+              Choose repayment periods from 1-7 years. Adjust your monthly payments to match your
+              cash flow and business cycles.
+            </p>
+          </div>
+        </div>
+
+        <h2>How to Qualify for Equipment Financing</h2>
+
+        <h3>Basic Requirements</h3>
+
+        <ul>
+          <li>Malaysian registered business (Sdn Bhd, Partnership, Sole Proprietorship)</li>
+          <li>Business operating for at least 6 months (preferably 1+ years)</li>
+          <li>Good credit history and financial standing</li>
+          <li>Clear business plan and purpose for equipment</li>
+          <li>Sufficient income to support repayments</li>
+        </ul>
+
+        <h3>Documents Required</h3>
+
+        <ol>
+          <li>Business registration documents (SSM, Form 9, Form 49)</li>
+          <li>Latest audited accounts or management accounts (6 months)</li>
+          <li>Bank statements (last 6 months)</li>
+          <li>Equipment quotation or invoice</li>
+          <li>Directors' IC and personal bank statements</li>
+          <li>Business premises tenancy agreement (if applicable)</li>
+        </ol>
+
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-6 my-6">
+          <h4 class="text-lg font-bold text-navy-900 mb-2">🚀 Fast-Track Approval Tips</h4>
+          <ul class="text-gray-700 space-y-2">
+            <li>✅ Prepare all documents in advance</li>
+            <li>✅ Ensure financial statements are up-to-date</li>
+            <li>✅ Get multiple equipment quotations for comparison</li>
+            <li>✅ Have a clear business case for the equipment</li>
+            <li>✅ Work with experienced financing partners like Ing Heng Credit</li>
+          </ul>
+        </div>
+
+        <h2>Why Choose Ing Heng Credit?</h2>
+
+        <p>
+          With over 40 years of experience in equipment financing, Ing Heng Credit & Leasing Sdn Bhd
+          is Malaysia's trusted partner for business equipment financing. We are licensed by KPKT
+          (Kementerian Perumahan dan Kerajaan Tempatan) and have helped more than 4,000 companies
+          across various industries acquire the equipment they need to grow.
+        </p>
+
+        <h3>Our Competitive Advantages</h3>
+
+        <ul>
+          <li><strong>Competitive Rates</strong>: Starting from 2.88% p.a.</li>
+          <li><strong>Fast Approval</strong>: Get approved within 24 hours</li>
+          <li><strong>Flexible Terms</strong>: Repayment periods from 1-7 years</li>
+          <li><strong>High Approval Rate</strong>: Even for SMEs and startups</li>
+          <li><strong>Personalized Service</strong>: Dedicated relationship managers</li>
+          <li><strong>Wide Equipment Coverage</strong>: Construction, logistics, manufacturing, and more</li>
+        </ul>
+
+        <h2>Real Success Stories</h2>
+
+        <blockquote class="border-l-4 border-yellow-400 pl-6 italic my-6">
+          "Ing Heng Credit helped us finance three excavators for our construction business. The
+          approval was fast, rates were competitive, and the service was exceptional. We've been
+          working with them for 5 years now."
+          <footer class="text-gray-600 mt-2">— Ahmad bin Rahman, ABC Construction Sdn Bhd</footer>
+        </blockquote>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What is the minimum loan amount?</h3>
+        <p>
+          We finance equipment from RM 50,000 onwards. There's no maximum limit - we can finance
+          heavy machinery worth millions.
+        </p>
+
+        <h3>Can startups get equipment financing?</h3>
+        <p>
+          Yes! We work with startups that have been operating for at least 6 months. We evaluate
+          based on business potential, management experience, and financial projections.
+        </p>
+
+        <h3>How long does approval take?</h3>
+        <p>
+          Standard applications are approved within 24-48 hours. Complex cases may take up to 5
+          business days. We prioritize fast turnaround times.
+        </p>
+
+        <h3>Do I need to provide collateral?</h3>
+        <p>
+          The equipment itself serves as primary collateral. Additional collateral may be required
+          for larger loans or higher-risk applications.
+        </p>
+
+        <h2>Take the Next Step</h2>
+
+        <p>
+          Ready to finance your business equipment? Ing Heng Credit makes it easy to get the equipment
+          you need with flexible financing solutions tailored to your business. Our experienced team
+          will guide you through the entire process, from application to approval to delivery.
+        </p>
+
+        <p>
+          Contact us today for a free consultation and competitive quote. Join the 4,000+ companies
+          that trust Ing Heng Credit for their equipment financing needs.
+        </p>
+
+      </div>
+
+      <!-- Call-to-Action Section -->
+      <div class="mt-12 bg-gradient-to-br from-navy-900 to-blue-900 text-white p-8 border-4 border-yellow-400" style="box-shadow: 8px 8px 0 #FBBF24;">
+        <h3 class="text-2xl md:text-3xl font-black mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+          Get Your Free Equipment Financing Quote
+        </h3>
+        <p class="text-lg mb-6 opacity-90">
+          Competitive rates from 2.88% p.a. • 24-hour approval • Flexible terms up to 7 years
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <CTAButton
+            text="WhatsApp Us Now"
+            link={COMPANY_INFO.whatsapp.link}
+            variant="accent"
+            size="large"
+            icon="whatsapp"
+          />
+          <CTAButton
+            text="Calculate Monthly Payment"
+            link="/en/calculator"
+            variant="outline-white"
+            size="large"
+          />
+        </div>
+
+        <p class="mt-6 text-sm opacity-75">
+          Or call us directly: <a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-yellow-400">{COMPANY_INFO.phone.display}</a>
+        </p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="mt-12 border-t-3 border-navy-900 pt-8">
+        <h3 class="text-2xl font-black text-navy-900 mb-6" style="font-family: 'Bebas Neue', sans-serif;">
+          Related Articles
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/en/blog/excavator-financing-save-30-percent" class="card-brutalist p-4 hover:bg-yellow-50 transition-colors">
+            <h4 class="font-bold text-navy-900 mb-2">Excavator Financing: Save 30%</h4>
+            <p class="text-sm text-gray-600">Learn how contractors reduce equipment costs through smart financing.</p>
+          </a>
+
+          <a href="/en/blog/tax-benefits-equipment-financing-2025" class="card-brutalist p-4 hover:bg-yellow-50 transition-colors">
+            <h4 class="font-bold text-navy-900 mb-2">Tax Benefits of Equipment Financing</h4>
+            <p class="text-sm text-gray-600">Maximize deductions and reduce your tax burden legally.</p>
+          </a>
+
+          <a href="/en/blog/lorry-financing-fast-approval-strategies" class="card-brutalist p-4 hover:bg-yellow-50 transition-colors">
+            <h4 class="font-bold text-navy-900 mb-2">Lorry Financing Fast Approval</h4>
+            <p class="text-sm text-gray-600">Get your commercial vehicle financing approved quickly.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .badge-brutalist {
+    @apply inline-block px-3 py-1 text-xs font-black uppercase;
+    @apply bg-yellow-400 text-navy-900 border-2 border-navy-900;
+    box-shadow: 3px 3px 0 #1E3A8A;
+  }
+
+  .card-brutalist {
+    @apply bg-white border-4 border-navy-900;
+    box-shadow: 8px 8px 0 #1E3A8A;
+    transition: all 0.3s ease;
+  }
+
+  .card-brutalist:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 #1E3A8A;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-20;
+  }
+
+  .bg-navy-900 {
+    background-color: #0F172A;
+  }
+
+  .text-navy-900 {
+    color: #0F172A;
+  }
+
+  .border-navy-900 {
+    border-color: #0F172A;
+  }
+
+  /* Prose customization */
+  .prose {
+    @apply text-gray-800;
+  }
+
+  .prose h2 {
+    @apply text-3xl font-black text-navy-900 mt-12 mb-6 tracking-tight;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-black text-navy-900 mt-8 mb-4;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .prose h4 {
+    @apply text-xl font-bold text-navy-900 mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply text-lg leading-relaxed mb-6;
+  }
+
+  .prose .lead {
+    @apply text-xl font-semibold text-gray-700 mb-8 leading-relaxed;
+  }
+
+  .prose ul, .prose ol {
+    @apply mb-6 space-y-2;
+  }
+
+  .prose li {
+    @apply text-lg;
+  }
+
+  .prose strong {
+    @apply font-bold text-navy-900;
+  }
+
+  .prose blockquote {
+    @apply text-xl italic text-gray-700 my-8;
+  }
+
+  .prose a {
+    @apply text-yellow-600 hover:text-navy-900 underline font-semibold;
+  }
+</style>

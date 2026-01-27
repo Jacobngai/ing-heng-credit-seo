@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+const timeline = [
+  {
+    phase: 'Before',
+    title: 'Manual Operations',
+    items: [
+      '2-month payment collection cycle',
+      'Paper delivery orders (JB → KL)',
+      'Manual scheduling phone calls',
+      'No GPS tracking for fleet'
+    ]
+  },
+  {
+    phase: 'Month 1-2',
+    title: 'Digital Transformation',
+    items: [
+      'Digital delivery order system',
+      'GPS fleet tracking implementation',
+      'Automated scheduling workflow',
+      'WhatsApp integration for drivers'
+    ]
+  },
+  {
+    phase: 'Month 3+',
+    title: 'Results Achieved',
+    items: [
+      'Payment collection: 2 months → 1 month',
+      'Can accept outstation jobs (no paperwork travel)',
+      'Real-time fleet visibility',
+      'Reduced administrative overhead'
+    ]
+  }
+];
+
+const tactics = [
+  {
+    title: 'Digital Paperwork System',
+    description: 'Replaced manual paper delivery orders with a digital app that drivers can access on mobile. Instant upload, no lost paperwork.',
+    impact: 'Same-day documentation'
+  },
+  {
+    title: 'GPS Fleet Tracking',
+    description: 'Implemented real-time GPS tracking for all water tanker vehicles. Dispatchers can see exact locations and optimize routes.',
+    impact: 'Better fleet utilization'
+  },
+  {
+    title: 'Automated Scheduling',
+    description: 'Built automated scheduling system that considers driver availability, vehicle location, and delivery urgency.',
+    impact: '50% faster scheduling'
+  },
+  {
+    title: 'WhatsApp Integration',
+    description: 'Integrated WhatsApp for driver communications and customer notifications, reducing phone call overhead.',
+    impact: 'Faster response times'
+  }
+];
+
+const results = [
+  { metric: '2x', label: 'Faster Collections', detail: '2 months → 1 month' },
+  { metric: 'RM', label: 'Outstation Jobs', detail: 'New revenue stream' },
+  { metric: 'Real-time', label: 'GPS Tracking', detail: 'Full fleet visibility' },
+  { metric: '50%', label: 'Less Admin', detail: 'Automated workflows' }
+];
+---
+
+<BaseLayout
+  title="Case Study: Digital Automation for Terasek Supply | Result Marketing"
+  description="How digital automation reduced payment collection time from 2 months to 1 month for Terasek Supply water tanker services."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <a href="/en/case-studies" class="inline-flex items-center gap-2 text-primary-500 hover:text-primary-400 font-bold mb-6">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to Case Studies
+        </a>
+
+        <span class="badge badge-accent mb-4">Logistics & Automation</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          2x Faster Collections with Digital Automation
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl">
+          How we helped Terasek Supply reduce payment collection time from 2 months to 1 month through digital automation and GPS fleet tracking.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
+          {results.map(result => (
+            <div class="card p-4 text-center">
+              <div class="text-3xl md:text-4xl font-black gradient-text mb-1">{result.metric}</div>
+              <div class="text-sm font-bold text-white mb-1">{result.label}</div>
+              <div class="text-xs text-secondary-500">{result.detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Challenge -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">The Challenge</h2>
+        <div class="prose prose-lg max-w-none prose-invert">
+          <p class="text-secondary-300 text-lg">
+            Terasek Supply provides water tanker services for construction sites, events, and industrial needs across Johor Bahru and Kuala Lumpur.
+          </p>
+          <p class="text-secondary-300">
+            <strong class="text-white">The problem:</strong> Their operations were entirely manual. Paper delivery orders traveled physically with drivers from JB to KL. Payment collection took 2 months because invoices could only be processed after paper documents arrived. They couldn't accept outstation jobs efficiently due to paperwork logistics.
+          </p>
+          <p class="text-secondary-300">
+            Fleet visibility was zero—dispatchers had no idea where vehicles were, making scheduling inefficient and reactive rather than optimized.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">The Digital Automation Solution</h2>
+        <div class="prose prose-lg max-w-none prose-invert mb-8">
+          <p class="text-secondary-300 text-lg">
+            We implemented a comprehensive digital transformation with four key components:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {tactics.map(tactic => (
+            <div class="card">
+              <h3 class="text-xl font-black mb-2 text-white">{tactic.title}</h3>
+              <p class="text-secondary-400 mb-3 text-sm">{tactic.description}</p>
+              <div class="badge badge-success text-xs">{tactic.impact}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">Transformation Timeline</h2>
+
+        <div class="space-y-6">
+          {timeline.map((phase, index) => (
+            <div class="flex gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-32 h-32 rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 text-white font-black text-lg flex items-center justify-center glow-purple">
+                  {phase.phase}
+                </div>
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-2xl font-black mb-3 text-white">{phase.title}</h3>
+                <ul class="space-y-2">
+                  {phase.items.map(item => (
+                    <li class="flex items-start gap-3 text-secondary-400">
+                      <div class="relative">
+                        <div class="absolute inset-0 bg-success-500/30 blur-sm"></div>
+                        <svg class="h-5 w-5 text-success-500 flex-shrink-0 mt-0.5 relative" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                      <span class="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Takeaways -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">Key Takeaways</h2>
+        <div class="card p-8">
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">💡</div>
+              <div>
+                <h3 class="text-xl font-black mb-2 text-white">Paperwork is a Bottleneck</h3>
+                <p class="text-secondary-400">Physical paper documents traveling hundreds of kilometers delay everything. Digital systems pay for themselves in faster collections alone.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">📍</div>
+              <div>
+                <h3 class="text-xl font-black mb-2 text-white">GPS Enables Optimization</h3>
+                <p class="text-secondary-400">Real-time fleet visibility transforms reactive dispatching into proactive optimization. Better resource utilization = more revenue per vehicle.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">🚀</div>
+              <div>
+                <h3 class="text-xl font-black mb-2 text-white">Automation Opens New Markets</h3>
+                <p class="text-secondary-400">Outstation jobs that were previously impractical due to paperwork logistics became a new revenue stream after automation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Want Similar Automation Results?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          Schedule a free consultation. We'll analyze your operational bottlenecks and show you how AI-powered automation can transform your business.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Get Free Consultation
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

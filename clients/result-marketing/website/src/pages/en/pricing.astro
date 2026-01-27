@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+
+const lang = 'en';
+
+const packages = [
+  {
+    name: SITE_CONFIG.packages.trial.name,
+    price: SITE_CONFIG.packages.trial.price,
+    description: 'Perfect for startups and small businesses getting started with AI search optimization',
+    features: SITE_CONFIG.packages.trial.features,
+    ctaText: 'Get Started',
+    ctaLink: "https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services.",
+    popular: false
+  },
+  {
+    name: SITE_CONFIG.packages.monthly.name,
+    price: SITE_CONFIG.packages.monthly.price,
+    description: 'Ideal for growing businesses ready to scale their organic traffic',
+    features: SITE_CONFIG.packages.monthly.features,
+    ctaText: 'Get Started',
+    ctaLink: "https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services.",
+    popular: true
+  },
+  {
+    name: SITE_CONFIG.packages.scale.name,
+    price: SITE_CONFIG.packages.scale.price,
+    description: 'For established businesses demanding maximum coverage and results',
+    features: SITE_CONFIG.packages.scale.features,
+    ctaText: 'Get Started',
+    ctaLink: "https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services.",
+    popular: false
+  }
+];
+
+const faqs = [
+  {
+    question: 'What\'s included in the monthly price?',
+    answer: 'Everything: keyword research, content creation, technical SEO, AI search optimization, reporting, and support. No hidden fees beyond the one-time setup. What you see is what you pay.'
+  },
+  {
+    question: 'Can I upgrade or downgrade my package?',
+    answer: 'Yes! You can change packages anytime. If you upgrade mid-month, we\'ll prorate the difference. If you downgrade, the change takes effect at your next billing cycle.'
+  },
+  {
+    question: 'What is the setup fee for?',
+    answer: 'The one-time setup fee covers: website audit, keyword research, content strategy, and initial optimization setup. After that, you only pay the monthly retainer. Setup fees: Trial (RM 0), Monthly (RM 0), Scale (RM 0).'
+  },
+  {
+    question: 'How long until we see results?',
+    answer: 'Most clients see initial traffic improvements within 30-60 days. Meaningful business results (leads, conversions) typically show up in 60-90 days. Full strategy maturity takes 4-6 months.'
+  },
+  {
+    question: 'Do you offer custom packages?',
+    answer: 'Yes! If you need something specific (multiple languages, technical migrations, enterprise-level support), we can create a custom package. Contact us to discuss your needs.'
+  },
+  {
+    question: 'What\'s your refund policy?',
+    answer: 'We offer a 30-day money-back guarantee. If you\'re not seeing measurable progress (traffic, rankings, engagement) after 1 month of consistent work, we\'ll refund your retainer. No questions asked.'
+  },
+  {
+    question: 'How do you compare to traditional agencies?',
+    answer: 'Traditional agencies charge RM 10K-20K/month for similar results because they do everything manually. We use AI automation to deliver the same quality 10x faster, passing the savings to you.'
+  },
+  {
+    question: 'What makes your pricing so competitive?',
+    answer: 'Two things: (1) AI automation reduces our production costs by 80%, and (2) we\'re intentionally lean—no fancy offices or sales teams. We focus budget on what matters: delivering results for clients.'
+  }
+];
+
+const comparisonTable = [
+  {
+    feature: 'Keywords Covered',
+    traditional: '10-20',
+    result: '50-200',
+    highlight: true
+  },
+  {
+    feature: 'Content Production',
+    traditional: '4-8 pieces/month',
+    result: '60 pieces/month (20 per language)',
+    highlight: true
+  },
+  {
+    feature: 'Time to Results',
+    traditional: '12-18 months',
+    result: '4-6 months',
+    highlight: true
+  },
+  {
+    feature: 'AI Search Optimization',
+    traditional: 'Not included',
+    result: 'Included',
+    highlight: false
+  },
+  {
+    feature: 'Transparency',
+    traditional: 'Quarterly reports',
+    result: 'Real-time dashboard',
+    highlight: false
+  },
+  {
+    feature: 'Monthly Cost',
+    traditional: 'RM 10K-20K',
+    result: 'RM 998-2,899',
+    highlight: true
+  }
+];
+---
+
+<BaseLayout
+  title="SEO Pricing & Packages - Transparent, Affordable Results | Result Marketing"
+  description="Honest pricing for AI-powered long-tail SEO. From RM 2,500/month. No setup fees, no contracts, 60-day money-back guarantee. See our transparent pricing."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Pricing</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Simple, Transparent Pricing
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          No hidden fees. No confusing tiers. No lock-in contracts. Just honest pricing for results-driven SEO. Choose your package based on coverage needs, upgrade or downgrade anytime.
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <svg class="h-6 w-6 text-success-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-white font-bold">One-Time Setup Fee</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-6 w-6 text-success-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-white font-bold">Cancel Anytime</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-6 w-6 text-success-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-white font-bold">30-Day Guarantee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {packages.map(pkg => (
+          <PricingCard {...pkg} />
+        ))}
+      </div>
+
+      <!-- Additional Info -->
+      <div class="max-w-4xl mx-auto mt-12 text-center">
+        <p class="text-secondary-400 mb-4">
+          All packages include: AI search optimization (ChatGPT, Perplexity), technical SEO, monthly reporting, and email support.
+        </p>
+        <p class="text-sm text-secondary-500">
+          Need something custom? <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:text-primary-400 underline">Contact us</a> for enterprise solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+            How We Compare to Traditional Agencies
+          </h2>
+          <p class="text-lg text-secondary-400">
+            Same quality results, 10x faster, at a fraction of the cost. Here's the breakdown.
+          </p>
+        </div>
+
+        <div class="card overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-dark border-b-2 border-primary-600/50">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-black text-white uppercase tracking-wide">Feature</th>
+                <th class="px-6 py-4 text-center text-sm font-black text-secondary-400 uppercase tracking-wide">Traditional Agencies</th>
+                <th class="px-6 py-4 text-center text-sm font-black text-primary-500 uppercase tracking-wide">Result Marketing</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonTable.map((row, index) => (
+                <tr class={`border-b border-secondary-800 ${row.highlight ? 'bg-primary-600/10' : ''}`}>
+                  <td class="px-6 py-4 text-sm font-bold text-white">{row.feature}</td>
+                  <td class="px-6 py-4 text-sm text-center text-secondary-400">{row.traditional}</td>
+                  <td class="px-6 py-4 text-sm text-center font-black text-primary-500">{row.result}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card-disruptive p-12 text-white text-center">
+          <div class="text-5xl mb-4">💰</div>
+          <h2 class="text-3xl md:text-4xl font-black mb-4">
+            The Math That Changes Everything
+          </h2>
+          <p class="text-xl text-secondary-300 mb-6">
+            Traditional agencies: RM 15,000/month × 12 months = <strong class="text-white">RM 180,000</strong> to cover 50 keywords.
+          </p>
+          <p class="text-xl text-secondary-300 mb-6">
+            Result Marketing Growth: RM 1,799/month × 12 months = <strong class="text-white">RM 21,588</strong> to cover 300 keywords.
+          </p>
+          <p class="text-2xl font-black mb-8">
+            Save RM 158,412. Get 6x the coverage. Better results.
+          </p>
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Get Started Today
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-12 text-center text-white">Pricing FAQs</h2>
+
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="card">
+              <h3 class="text-lg font-black mb-3 text-white">{faq.question}</h3>
+              <p class="text-secondary-400">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Money-Back Guarantee -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-12 border-success-500/50 bg-gradient-to-br from-success-500/10 to-success-500/5 text-center">
+          <div class="text-5xl mb-4">✅</div>
+          <h2 class="text-3xl font-black mb-4 text-white">
+            30-Day Money-Back Guarantee
+          </h2>
+          <p class="text-lg text-secondary-300 mb-6">
+            We're so confident in our approach that we offer a full refund if you're not seeing measurable progress after 1 month. No questions, no hassle.
+          </p>
+          <p class="text-secondary-400">
+            Why? Because if we're not delivering value, we don't deserve your business. Simple as that.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Ready to Get Started?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          Schedule a free consultation. We'll review your current SEO, identify opportunities, and recommend the right package for your goals.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Get Free Consultation
+          </a>
+          <a href="/en/services" class="btn btn-secondary">
+            See Our Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

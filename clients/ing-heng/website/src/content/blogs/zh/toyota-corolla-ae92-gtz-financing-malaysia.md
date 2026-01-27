@@ -1,7 +1,7 @@
 ---
 title: "丰田卡罗拉AE92 GTZ融资马来西亚 - 0%首付拉力传奇"
 description: "为传奇丰田卡罗拉AE92 GTZ获得0%首付融资。通过灵活条款为这款可收藏的双凸轮杰作体验拉力繁殖性能。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

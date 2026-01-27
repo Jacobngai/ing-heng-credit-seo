@@ -1,7 +1,7 @@
 ---
 title: "攀爬摩托车融资专家 - 0%首付竞赛摩托车贷款"
 description: "在马来西亚获得0%首付的攀爬摩托车融资。Beta、Montesa、Sherco和Gas Gas攀爬摩托车专业融资。银行不懂竞赛摩托车 - 我们懂。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

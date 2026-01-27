@@ -1,7 +1,7 @@
 ---
 title: "宝马E30融资马来西亚 - 0%首付终极驾驶机器投资"
 description: "为您的宝马E30获得0%首付融资。专家经典车贷款解决方案，为升值的德国工程卓越和投资潜力提供服务。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

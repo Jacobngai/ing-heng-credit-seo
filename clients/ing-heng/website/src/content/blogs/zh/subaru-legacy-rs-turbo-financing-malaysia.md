@@ -1,7 +1,7 @@
 ---
 title: 马来西亚Subaru Legacy RS Turbo融资 - 0%首付AWD旅行车梦想
 description: 在马来西亚0%首付融资您的Subaru Legacy RS Turbo。银行拒绝AWD旅行车但我们批准。接受不良信用。拉力传奇快速批准。
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: zh
 publishDate: 2025-12-23

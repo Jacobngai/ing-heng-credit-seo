@@ -3,7 +3,7 @@ title: "马来西亚丰田Supra MK4贷款 | 为2JZ传奇融资"
 description: "为您梦想的Supra MK4获得0%首付融资。我们批准银行因年龄而拒绝的JDM标志。为传奇的2JZ动力投资融资。"
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["supra mk4", "jdm融资", "2jz引擎", "丰田supra贷款", "收藏车"]
 keywords:
   - "马来西亚丰田supra mk4贷款"

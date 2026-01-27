@@ -1,7 +1,7 @@
 ---
 title: "JDM进口车融资指南马来西亚 - 0%定金可用"
 description: "0%定金融资您的JDM梦想车。Skyline GT-R、Supra、NSX进口融资给收藏家和爱好者。银行拒绝，我们批准。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2024-12-24

@@ -3,7 +3,7 @@ title: 马来西亚紧急资金贷款 - 无法等待时的即时金融解决方�
 description: 需要马来西亚紧急资金贷款？当传统银行耗时过长时，为真正紧急情况快速批准。获得个人和企业危机的即时金融帮助。
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: 融资指南
+category: Financing Guides
 tags:
 - 紧急贷款
 - 紧急融资

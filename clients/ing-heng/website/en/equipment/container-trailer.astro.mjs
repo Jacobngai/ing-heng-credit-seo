@@ -1,0 +1,171 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { c as generateProductSchema, a as generateFAQSchema, $ as $$BaseLayout, e as encodeJSONLD } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Breadcrumbs } from '../../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+import { S as SITE_CONFIG } from '../../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$ContainerTrailer = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const pageTitle = "Container Trailer Financing | Stop Renting Trailers | Own Your Equipment";
+  const pageDescription = "Stop paying RM 6,000/month rental. Finance used skeletal chassis, 10+ years old accepted. 0% deposit option. Malaysian logistics operators - control your schedule and revenue.";
+  const keywords = ["container trailer financing Malaysia", "stop renting trailers Malaysia", "skeletal chassis financing", "used trailer financing Malaysia", "trailer ownership logistics"];
+  const breadcrumbs = [
+    { label: "Home", url: "/en" },
+    { label: "Equipment", url: "/en/equipment" },
+    { label: "Container Trailer Financing", url: "/en/equipment/container-trailer" }
+  ];
+  const benefits = [
+    { icon: "percentage", title: "0% Deposit Available", description: "0% down payment option for qualified applicants. Finance up to 100% of equipment value. Stop renting, start owning." },
+    { icon: "shield", title: "Equipment 10+ Years Old Accepted", description: "Banks reject 7-10 year trailers. We approve them. Skeletal chassis lasts 15-20 years with basic maintenance. Simple equipment, long working life." },
+    { icon: "clock", title: "24/7 Availability - Your Trailer", description: 'No more 6 PM return deadlines. No more "trailer not available" excuses. Your trailer, your schedule, all revenue yours.' },
+    { icon: "lightning", title: "Fast Approval Process", description: "Prime mover owners with consistent contracts get rapid approval. Your operating history proves business viability." },
+    { icon: "users", title: "Trailer-Only Financing", description: "Already own prime mover? Finance trailer separately. Build your trailer fleet. Increase capacity without massive capital." },
+    { icon: "document", title: "Minimal Documentation", description: "IC, business documents, current contracts proof. We evaluate your logistics operations and revenue potential." }
+  ];
+  const faqs = [
+    {
+      question: "Why should I buy a trailer instead of continuing to rent?",
+      answer: 'SIMPLE MATH. Renting: RM 6,000/month = RM 72,000/year = RM 216,000 after 3 years. You own NOTHING. Buying: Used 7-year skeletal chassis costs RM 80,000-100,000. Finance with 0% deposit = RM 2,400-3,000/month. After 3 years, you OWN the trailer. It still works for another 8-10 years. More importantly: OPERATIONAL CONTROL. Rental restrictions kill your business. "Return trailer by 6 PM" - but your container delivery is 7 PM slot. You lose the job. "No trailers available today" - but you have a port pickup booked. Client goes to competitor. "Trailer inspection takes 3 days" - but you need it NOW for urgent haul. You miss the opportunity. When you OWN: 24/7 availability. Morning, evening, night shifts - your choice. No rental company approval needed. All revenue is YOURS. The break-even is 12-15 months. After that, pure profit compared to renting forever.'
+    },
+    {
+      question: "What are the hidden costs of renting trailers?",
+      answer: `RENTAL COSTS BEYOND THE RM 6,000/MONTH: SCHEDULE RESTRICTIONS - Return by 6 PM or pay overtime fees (RM 200-500 extra). Evening/night hauls become expensive or impossible. Lost revenue from jobs you cannot take. AVAILABILITY ISSUES - Peak season? No trailers available. You turn down work while competitors operate. Your client contracts require consistency - rental uncertainty breaks that. DAMAGE LIABILITY - Minor damage during operations? Rental company charges RM 5,000-15,000 repairs. Even when it's normal wear and tear. You pay inflated repair costs. INSPECTION DELAYS - Trailer needs servicing? Rental company takes 2-5 days. Your operations STOP. No income while waiting. RATE INCREASES - Rental started RM 5,000/month. Year 2: RM 5,500. Year 3: RM 6,000. You have no control over cost increases. RELATIONSHIP COSTS - You're always "the renter." Rental company prioritizes fleet owners. Want 3 trailers for big contract? "Sorry, only 1 available." Fleet owners get priority. TOTAL HIDDEN COST: RM 1,500-3,000/month in lost opportunities, overtime fees, damage charges, and operational restrictions. Ownership eliminates ALL of this. Your trailer, your rules, full control.`
+    },
+    {
+      question: "I already own a prime mover. Can I finance just the trailer?",
+      answer: "YES - and this is actually COMMON. Many operators buy prime mover first (expensive but essential), then realize they need multiple trailers to maximize utilization. The economics: One prime mover can handle 2-3 trailers efficiently with driver rotation. Morning shift: Driver A uses Trailer 1. Afternoon: Driver B uses Trailer 2. Evening: You use Trailer 3. Same truck, triple revenue. But renting 3 trailers = RM 15,000-18,000/month. That's RM 180,000-216,000/year just in rental fees. We finance trailer-only purchases. No need to buy truck + trailer package. This lets you: BUILD TRAILER FLEET gradually. Buy 1 trailer, prove the revenue model, buy more trailers. MAXIMIZE PRIME MOVER utilization without massive rental costs. FLEXIBILITY for contract fluctuations. Busy month: Use all 3 trailers. Slow month: Park 1-2, only loan payments continue (but no rental fees). Many successful Malaysian operators: Own 1-2 prime movers, own 4-6 trailers. This gives them capacity to handle large contracts and driver rotation efficiency. We approve trailer-only financing regularly. Bring prime mover ownership proof and your operation history."
+    },
+    {
+      question: "Why do banks reject 7-10 year old trailers but you approve them?",
+      answer: `Banks look at PAPER VALUE. We look at WORKING LIFE. Bank calculation: "Trailer depreciates 10% per year. 7-year trailer = 30% original value = minimal collateral = REJECT." Our calculation: "Skeletal chassis is SIMPLE equipment. Steel frame, twist locks, suspension, axles. What can break? Very little. With basic maintenance, 15-20 year working life is NORMAL." Real-world evidence: We have clients with 12-15 year old trailers hauling containers from major ports daily. Why do they still work? Because skeletal chassis is NOT complex machinery. It's a FRAME on WHEELS with TWIST LOCKS. Compare to prime mover: Engine (can fail), gearbox (can fail), electronics (can fail), turbo (can fail). Many failure points. Trailer: Frame (steel, lasts 20-30 years), axles (replace bearings every 3-5 years), tires (replace every 2-3 years), twist locks (repair as needed). These are MAINTENANCE items, not equipment failure. A well-maintained 7-year trailer has 8-10+ MORE YEARS of reliable operation. Can generate RM 8,000-13,000/month revenue. That's RM 768,000 - 1.56 million total revenue potential. But banks see "30% depreciated value." We see "8-10 years of working life remaining." This is why we finance trailers banks reject - we understand equipment reality, not just depreciation tables. Bring the trailer for inspection. If it works, if it's structurally sound, if you can earn revenue with it - we approve.`
+    },
+    {
+      question: "How much should I budget for repairs on a used 7-10 year trailer?",
+      answer: "ANNUAL MAINTENANCE: RM 5,000-8,000/year for 7-10 year skeletal chassis. BREAKDOWN: REGULAR (Every year): Tire replacement if needed (RM 3,000-5,000 for full set), brake system service (RM 800-1,500), bearing lubrication (RM 500-800), lighting and wiring (RM 300-600). OCCASIONAL (Every 2-3 years): Suspension bushings (RM 2,000-4,000), axle bearing replacement (RM 1,500-3,000 per axle), twist lock repair (RM 500-1,500), rust treatment and paint touch-up (RM 1,500-3,000). MAJOR OVERHAUL (Every 5-7 years): Full repaint and rust prevention (RM 5,000-10,000), complete suspension rebuild (RM 8,000-15,000), axle replacement if needed (RM 10,000-20,000). MONTHLY BUDGET: Set aside RM 400-600/month. This covers regular maintenance and builds reserve for bigger repairs. COST COMPARISON: New trailer maintenance: RM 1,000-2,000/year (mostly warranty). Used 7-10 year: RM 5,000-8,000/year extra cost. BUT purchase savings: RM 40,000-80,000 vs new price. So you can run used trailer 5-10 YEARS before maintenance costs equal the upfront savings. Compare to RENTING: RM 6,000/month = RM 72,000/year. Your RM 5,000-8,000 maintenance + RM 30,000-36,000 loan payments = RM 35,000-44,000/year total cost. STILL CHEAPER than renting. And after loan is paid, only maintenance costs remain. Rental never ends. PREVENTION MATTERS: Monthly inspections catch problems early. Regular washing prevents rust. Good mechanic relationships keep costs down. Budget properly and avoid emergency breakdowns. Clients who maintain well: 10-15 years of reliable service is normal. Clients who neglect: Major repairs at year 3-4, expensive failures."
+    },
+    {
+      question: "What if the trailer breaks down and I cannot work?",
+      answer: `BREAKDOWN PROTECTION STRATEGIES: INSURANCE - Comprehensive coverage protects against major damage and repairs. This is essential business protection. EMERGENCY FUND - Save RM 500-800/month. Build 3-6 month reserve. This covers unexpected repairs and loan payments during downtime. PREVENTIVE MAINTENANCE - Monthly inspections prevent 80% of breakdowns. Spending RM 500-1,000/month on prevention saves RM 10,000-30,000 in emergency repairs. MULTIPLE TRAILERS STRATEGY - This is why successful operators buy 2-3 trailers eventually. One breaks down? Others keep earning. Business continuity. PAYMENT DEFERMENT - We offer 1-2 month payment relief in genuine hardship cases. Contact us immediately if breakdown causes income loss. WORST CASE SCENARIO: Major breakdown, no insurance, no fund. OPTIONS: Repair financing available (we can help arrange). Sell trailer with damage disclosure (recover equity and pay off loan). Use trailer as collateral for repair loan. Negotiate payment restructuring until repaired and earning again. REALITY CHECK: Skeletal chassis breakdowns are RARE compared to prime movers. Simple equipment = fewer failure points. Most "breakdowns" are: Tire blowouts (1-3 days fix, RM 800-1,500), lighting issues (same-day fix, RM 200-500), minor suspension work (3-5 days, RM 1,500-3,000). Genuine major breakdown (frame damage, axle failure) happens maybe once in 5-10 years with proper maintenance. Compare to RENTING: Rental trailer breaks? You wait 3-7 days for replacement. Still pay rental fee. No control over timeline. Your contracts suffer. OWNERSHIP gives you control: Choose your mechanic. Rush repairs if needed. Know your equipment's history. Prevent problems before they happen. Insurance + emergency fund + prevention = breakdown risk is manageable and much lower than operational restrictions of renting.`
+    },
+    {
+      question: "Can I really control my schedule if I own the trailer?",
+      answer: 'THIS IS THE BIGGEST ADVANTAGE. RENTAL RESTRICTIONS: "Return by 6 PM or pay RM 300/hour overtime." "No weekend usage without advance booking." "Trailer inspection Monday-Wednesday - you cannot use it." "Peak season, all trailers booked - wait 2 weeks." These restrictions KILL revenue opportunities. OWNERSHIP FREEDOM: 24/7 AVAILABILITY - Container delivery at 7 PM? Take it. Night shift haul to warehouse? No problem. Sunday urgent pickup? Your trailer, your choice. EVENING/NIGHT PREMIUM RATES - Many shipping lines pay 20-30% MORE for evening/night delivery slots. Rental restrictions prevent you from accessing this premium revenue. Ownership captures it. LAST-MINUTE CONTRACTS - "Can you pick up container in 2 hours?" Rental: "Let me check availability... sorry, no trailers." Ownership: "Yes, on my way." You get the job. CLIENT RELATIONSHIP BUILDING - Consistent availability builds trust. Clients know they can count on you anytime. This leads to contract renewals and referrals. FLEXIBILITY FOR GROWTH - Suddenly get 3-day contract for 15 containers? With owned trailer: Accept immediately, work non-stop, maximize revenue. With rental: "Let me check if I can extend rental hours... can I get second trailer?" By the time you sort logistics, opportunity is gone. REAL EXAMPLE: Our client Ahmad owns 2 trailers, rents prime mover. Port calls Friday 4 PM: "Can you handle 8 containers Saturday-Sunday? Premium rate." Rental operators cannot commit (6 PM return, no weekend guaranteed availability). Ahmad commits immediately. Works Saturday-Sunday. Earns RM 12,000 in 2 days. This happens monthly. The premium rate jobs, the last-minute opportunities, the evening hauls - they go to OWNERS who have 24/7 availability. Renters get standard 9-5 jobs only. Control your schedule = control your revenue = build your business YOUR way.'
+    },
+    {
+      question: "How long does a used skeletal chassis actually last?",
+      answer: `15-20 YEARS with proper maintenance. Banks say "10 years maximum." But skeletal chassis reality: It's a STEEL FRAME on AXLES with TWIST LOCKS. Not complex machinery. WHAT WEARS OUT: Tires - Replace every 2-3 years (RM 3,000-5,000 full set). Axle bearings - Replace every 3-5 years (RM 2,000-4,000). Suspension bushings - Replace every 4-6 years (RM 1,500-3,000). Paint/rust prevention - Repaint every 5-7 years (RM 3,000-8,000). Twist lock mechanisms - Repair as needed (RM 500-1,500). These are MAINTENANCE items. The FRAME itself - solid steel - lasts 20-30 years if rust controlled. REAL EXAMPLES: 2006 chassis (17 years old) - Still hauling container transport routes daily. Repainted twice, suspension rebuilt once, works perfectly. 2008 chassis (15 years old) - Serving shipping line contracts. Looks rough cosmetically but mechanically solid. 2010 chassis (13 years old) - Client bought 3 years ago for RM 75,000. Already earned RM 400,000+ revenue. Still going strong. WHY BANKS DON'T UNDERSTAND: They calculate RESALE value to individuals. We calculate WORKING LIFE for commercial use. A 10-year trailer resells for RM 40,000-50,000 to buyer. But it can EARN RM 8,000-12,000/month for next 5-8 years. That's RM 480,000 - 1.15 million in revenue. The RM 40k resale value is irrelevant when you're using it to EARN. PROPER MAINTENANCE EXTENDS LIFE: Monthly wash (prevent rust). Quarterly inspection (catch issues early). Annual service (replace worn parts). Every 5 years: Major service (suspension, bearings, paint). Follow this schedule: 15-20 year working life is NORMAL. Neglect maintenance: Problems at year 5-7, expensive repairs needed. So yes, we confidently finance 7-10 year trailers. With 8-12 years of working life remaining, they're excellent business assets. Much better than paying RM 72,000/year renting forever.`
+    },
+    {
+      question: "What equipment ages do you actually accept?",
+      answer: `We finance equipment 10+ YEARS OLD. There is no strict upper age limit. EVALUATION CRITERIA: Does it work? Is the frame structurally sound? Are critical components functional? Can it pass inspection? Will it earn revenue during loan term? If YES to all questions - we approve, regardless of age. EXAMPLES WE'VE FINANCED: 7-year skeletal chassis - Very common, excellent condition typically, easy approval. 10-year chassis - Still good working life, approved regularly if maintained. 13-year chassis - Inspected carefully but approved if solid, many in service. 15-year chassis - Case-by-case, inspection critical, but we've financed several. WHY AGE DOESN'T SCARE US: Skeletal chassis is SIMPLE. Unlike prime movers with complex engines/electronics, a trailer is: Steel frame (lasts 20-30 years), axles (rebuildable), suspension (replaceable), twist locks (repairable). The age matters less than CONDITION and MAINTENANCE HISTORY. WHAT WE LOOK FOR: Structural inspection - No frame cracks, no serious rust damage. Twist locks functional - Must secure containers properly. Axles and suspension - Can be worn but must be serviceable. Tires and brakes - Can be replaced, not a rejection factor. Overall working condition - Can it haul containers safely and legally? SELLER REPUTATION - Buying from reputable dealer or well-maintained fleet? Maintenance records - Any service history showing care? If equipment passes inspection and you can demonstrate revenue potential - we approve. CONTRAST WITH BANKS: Banks have arbitrary age limits: "Maximum 5 years old" or "Maximum 7 years old." These limits ignore equipment reality. A well-maintained 10-year trailer is better business asset than a neglected 3-year one. We assess INDIVIDUALLY. Bring the trailer for inspection. If it works, if you can earn with it, if it will last the loan term - age is secondary. This is why contractors choose us - we understand equipment, not just depreciation tables.`
+    },
+    {
+      question: "Is owning really cheaper than renting in the long run?",
+      answer: "YES - and the math is CLEAR. 3-YEAR COMPARISON: RENTING: RM 6,000/month \xD7 36 months = RM 216,000 paid. You own NOTHING. Rental continues forever at same or higher rate. BUYING (Used RM 90,000 trailer, 0% deposit, 5-year term): Monthly payment: RM 2,700 \xD7 36 months = RM 97,200 paid. Maintenance: RM 6,000/year \xD7 3 years = RM 18,000. TOTAL COST: RM 115,200. You own RM 50,000-60,000 in trailer equity (remaining value). NET COST after equity: RM 55,200-65,200 for 3 years of usage. RENTING costs RM 216,000 for same 3 years. SAVINGS: RM 150,000+ over 3 years. 5-YEAR COMPARISON: RENTING: RM 6,000 \xD7 60 months = RM 360,000. Nothing owned. BUYING: RM 2,700 \xD7 60 months = RM 162,000 (loan paid off!). Maintenance: RM 7,000/year \xD7 5 years = RM 35,000. TOTAL: RM 197,000. You own trailer outright (worth RM 40,000-50,000). YEARS 6-10 (Ownership advantage): Renting: RM 6,000/month continues = RM 360,000 more over 5 years. Owning: Only maintenance (RM 7,000-9,000/year) = RM 35,000-45,000 total. SAVINGS in years 6-10: RM 315,000+. 10-YEAR TOTAL: Renting: RM 720,000 paid. Own nothing. Rental continues. Owning: RM 197,000 (loan + maintenance years 1-5) + RM 40,000 (maintenance years 6-10) = RM 237,000 total. Still own working trailer. SAVINGS: RM 483,000 over 10 years. PLUS INTANGIBLE BENEFITS: 24/7 availability (worth RM 2,000-5,000/month in premium jobs). No rental restrictions (worth RM 1,500-3,000/month in flexibility). Equipment control (worth RM 1,000-2,000/month in avoided fees/delays). TOTAL REAL SAVINGS: RM 600,000-800,000 over 10 years when factoring operational advantages. The break-even point is 12-15 months. After that, every month you own vs rent = RM 3,000-4,000 savings. Over 10 years, this is MASSIVE wealth difference. Renting is paying someone else's asset. Owning is building YOUR asset. The choice is clear - IF you plan to operate long-term, ownership wins decisively."
+    }
+  ];
+  const productSchema = generateProductSchema({
+    name: "Container Trailer Financing Malaysia - Stop Renting, Start Owning",
+    description: "Finance used skeletal chassis trailers. Stop paying RM 6,000/month rental. 0% deposit option, 10+ years old accepted. Malaysian logistics operators - own your equipment, control your schedule.",
+    imageUrl: `${SITE_CONFIG.url}/images/container-trailer-financing.jpg`,
+    category: "Financial Service - Commercial Trailer Financing",
+    offers: {
+      price: "30000",
+      currency: "MYR",
+      availability: "https://schema.org/InStock"
+    }
+  });
+  const faqSchema = generateFAQSchema(faqs);
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${maybeRenderHead()}<div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbs, "lang": lang })} </div>  ${renderComponent($$result2, "Hero", $$Hero, { "title": "Stop Paying RM 6,000/Month Rental - Own Your Container Trailer", "subtitle": "Finance used skeletal chassis. 0% deposit option. Equipment 10+ years old accepted. Malaysian operators - control your schedule, keep your revenue.", "ctaText": "Get Free Quote via WhatsApp", "ctaLink": "https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20container%20trailer%20financing.", "ctaSecondaryText": "Call Now: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["40 Years in Business", "0% Deposit Option", "Trailer-Only Financing OK", "10+ Years Old Accepted"] })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
+You Own a Prime Mover. You're Renting Trailers. This is Costing You.
+</h2> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] mb-8"> <div class="prose prose-lg max-w-none text-[#4F3E29]"> <p class="mb-4">
+You own a prime mover. You haul containers.
+</p> <p class="mb-4">
+But you don't own trailers. You rent them. RM 6,000 per month per trailer.
+</p> <p class="mb-4">
+Every rental comes with restrictions:
+</p> <p class="mb-4">
+Monday morning, you get a call: "Container needs delivery to factory by 8 PM tonight."
+</p> <p class="mb-4">
+Good revenue. But it's 5:30 PM. Rental company policy: "Return trailer by 6 PM, no exceptions."
+</p> <p class="mb-4">
+You call them. "Can I keep it a few more hours? Just tonight?"
+</p> <p class="mb-4 font-semibold text-red-700">
+"No. Contract says 6 PM. Return it or pay RM 500 penalty."
+</p> <p class="mb-4">
+Do you feel that powerlessness? That missed revenue slipping away because of someone else's schedule?
+</p> <p class="mb-4">
+You turn down the evening job. RM 350 gone. The shipping agent calls someone else.
+</p> <p class="mb-4">
+When rental schedules control your business - when you can't say YES to good work because equipment isn't available on YOUR terms - does your chest tighten with frustration?
+</p> <p class="mb-4">
+You've rented for 3 years. RM 6,000 monthly. That's RM 216,000.
+</p> <p class="mb-4">
+For that money, you could OWN 2 used trailers outright.
+</p> <p class="mb-6 font-bold text-red-700">
+But instead: Still renting. Still restricted by 6 PM deadlines. Still missing evening hauls.
+</p> <div class="bg-primary/10 border-l-4 border-primary p-6 rounded mb-6"> <p class="font-semibold mb-3">Consider This:</p> <p class="mb-3">
+You found a used 40ft skeletal chassis. 7 years old. Twist locks functional. Frame solid.
+</p> <p class="mb-3 text-red-700 font-semibold">
+Banks reject. "7 years old? No residual value."
+</p> <p class="mb-3">
+But you know trailers. Simple equipment. Steel frame, axles, locks. They last 15-20 years.
+</p> <p class="font-semibold text-green-700">
+We approve equipment 10+ years old.
+</p> </div> <p class="mb-4">
+Your trailer. Your schedule. 24/7 availability.
+</p> <p class="mb-4">
+Morning hauls. Evening hauls. Night shift hauls. All yours to accept.
+</p> <div class="bg-green-50 border-2 border-green-500 p-6 rounded mb-6"> <p class="font-bold text-green-700 mb-3">24/7 availability for all shipping calls. Evening premium rates, yours to capture. Build trailer assets while operating your business.</p> </div> <p class="text-xl font-bold text-primary mt-6">
+That's controlling your logistics business.
+</p> </div> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Why Malaysian Operators Choose Ownership
+</h2> <p class="text-xl text-[#4F3E29]">
+Stop renting. Start building your logistics business assets.
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
+Container Trailer Types We Finance
+</h2> <div class="grid md:grid-cols-2 gap-6"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">40ft Skeletal Chassis</h3> <ul class="space-y-2 text-[#4F3E29]"> <li>• Standard container transport</li> <li>• Most common configuration</li> <li>• Tri-axle or tandem options</li> <li>• 7-15 years old accepted</li> <li>• High demand, proven revenue</li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">20ft Skeletal Chassis</h3> <ul class="space-y-2 text-[#4F3E29]"> <li>• Smaller container operations</li> <li>• Urban delivery focus</li> <li>• Lower capital requirement</li> <li>• Flexibility for mixed loads</li> <li>• Good starter equipment</li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">Flatbed Trailers</h3> <ul class="space-y-2 text-[#4F3E29]"> <li>• Versatile cargo types</li> <li>• Construction materials</li> <li>• Machinery transport</li> <li>• Multi-purpose operations</li> <li>• Higher utilization options</li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">Side Loader Trailers</h3> <ul class="space-y-2 text-[#4F3E29]"> <li>• Specialized operations</li> <li>• Self-loading capability</li> <li>• Premium service rates</li> <li>• Niche market advantage</li> <li>• Higher revenue potential</li> </ul> </div> </div> <div class="mt-8 p-6 bg-primary/10 border-l-4 border-primary rounded"> <p class="text-[#4F3E29] font-semibold">
+All trailer types eligible for 0% deposit financing. Equipment 10+ years old accepted. Bring trailer for inspection - if it works and you can earn revenue with it, we approve.
+</p> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Stop Renting: Your Questions Answered
+</h2> <p class="text-xl text-[#4F3E29]">
+Everything Malaysian logistics operators need to know about owning vs renting trailers
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  ${renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "lang": lang, "currentEquipment": "containerTrailer" })}  <section class="section bg-[#8B6F47] text-white"> <div class="container-custom text-center"> <h2 class="text-3xl md:text-4xl font-bold mb-6">
+Ready to Stop Renting and Start Owning?
+</h2> <p class="text-xl mb-8 max-w-2xl mx-auto">
+RM 6,000/month rental = RM 216,000 after 3 years with nothing owned. Finance your own trailer for less. 0% deposit option available. Equipment 10+ years old accepted. Control your schedule. Keep your revenue.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20container%20trailer%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
+Apply via WhatsApp Now
+</a> <a href="tel:+60175700889" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+Call: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Stop Renting Forever</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>0% Deposit Option</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>24/7 Availability - Your Schedule</span> </div> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-2xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">
+Or Fill Out Our Online Application Form
+</h2> <p class="text-[#4F3E29]">
+We'll contact you promptly during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+</p> </div> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(productSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/container-trailer.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/container-trailer.astro";
+const $$url = "/en/equipment/container-trailer";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$ContainerTrailer,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

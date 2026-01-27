@@ -1,7 +1,7 @@
 ---
 title: "Fiat 500 经典车融资马来西亚 - 0%首付收藏者之梦"
 description: "在马来西亚以0%首付获得Fiat 500经典车融资。意大利复古汽车投资专家批准。立即申请收藏车融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-25

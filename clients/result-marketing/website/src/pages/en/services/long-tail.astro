@@ -1,0 +1,504 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+// SIMPLE WORDS REPLACEMENTS
+// "Long-Tail Keywords" → "Specific Search Terms"
+// "Stop Fighting for 10 Keywords" → "Stop Chasing Hard Words"
+// "Dominate 1,000" → "Win with 1,000 Easy Wins"
+// "Competitive" → "Hard to Rank"
+// "Lower Competition" → "Less Fighting"
+// "Higher Intent" → "Ready to Buy"
+
+const stats = [
+  {
+    stat: '92%',
+    label: 'of searches are specific phrases',
+    insight: 'Not short words like "SEO"',
+    source: 'Backlinko'
+  },
+  {
+    stat: '70%',
+    label: 'of traffic comes from specific searches',
+    insight: 'Where your real customers are',
+    source: 'Industry Studies'
+  },
+  {
+    stat: '36%',
+    label: 'buy rate (vs 11% for short words)',
+    insight: '3x more sales',
+    source: 'WordStream'
+  },
+  {
+    stat: '5x',
+    label: 'easier to rank on page 1',
+    insight: 'See results in months, not years',
+    source: 'Moz'
+  }
+];
+
+const example = {
+  hard: {
+    keyword: '"SEO services"',
+    volume: '22,000/month',
+    difficulty: 'Very Hard (90/100)',
+    cost: 'RM 8 per click',
+    reality: 'You\'ll fight big companies with huge budgets. Even if you rank, traffic doesn\'t buy well.'
+  },
+  easy: [
+    {
+      keyword: '"SEO for construction companies Malaysia"',
+      volume: '50/month',
+      difficulty: 'Easy (20/100)',
+      cost: 'RM 1.20/click'
+    },
+    {
+      keyword: '"how to rank website on Google KL"',
+      volume: '30/month',
+      difficulty: 'Easy (15/100)',
+      cost: 'RM 0.80/click'
+    },
+    {
+      keyword: '"affordable SEO for small business"',
+      volume: '40/month',
+      difficulty: 'Easy (10/100)',
+      cost: 'RM 0.50/click'
+    }
+  ],
+  math: 'Each easy keyword is... well, easy. 100 easy wins beat 1 hard fight.'
+};
+
+const keywordTypes = [
+  {
+    title: 'Questions People Ask',
+    description: 'Target "how to", "what is", "best way to" searches. These people are researching.',
+    examples: [
+      'how to rank website on Google',
+      'what is long-tail SEO',
+      'best SEO company for small business'
+    ]
+  },
+  {
+    title: 'Comparisons',
+    description: 'Catch people comparing options. They\'re close to buying.',
+    examples: [
+      'traditional SEO vs AI SEO',
+      'SEO company comparison Malaysia',
+      'Result Marketing vs competitors'
+    ]
+  },
+  {
+    title: 'Location-Based',
+    description: 'Own your local area searches.',
+    examples: [
+      'SEO services Kuala Lumpur',
+      'content marketing Penang',
+      'digital marketing Johor Bahru'
+    ]
+  },
+  {
+    title: 'Problem Words',
+    description: 'Help people describe their pain points. This is the sweet spot.',
+    examples: [
+      'why my website has no traffic',
+      'how to get more organic leads',
+      'SEO not working for my business'
+    ]
+  }
+];
+
+const benefits = [
+  {
+    title: 'Less Fighting',
+    description: 'Most agencies ignore these terms. You face 90% less competition.',
+    icon: '🎯'
+  },
+  {
+    title: 'Ready to Buy',
+    description: 'Specific search = specific need. Better chance of sale.',
+    icon: '💎'
+  },
+  {
+    title: 'Fast Results',
+    description: 'Rank in weeks, not years. Easy wins add up quick.',
+    icon: '⚡'
+  },
+  {
+    title: 'Grows Over Time',
+    description: '100 terms × 50 visits = 5,000 monthly visitors.',
+    icon: '📈'
+  },
+  {
+    title: 'Works with AI Search',
+    description: 'ChatGPT and Gemini like complete coverage of topics.',
+    icon: '🔮'
+  },
+  {
+    title: 'Costs Less',
+    description: 'Lower ad costs. Easier rankings. Win twice.',
+    icon: '💰'
+  }
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Find the Easy Keywords',
+    description: 'AI scans millions of searches. Finds 100+ terms others miss. The gold hidden in dirt.'
+  },
+  {
+    step: '02',
+    title: 'Group by Intent',
+    description: 'We group keywords by what people want. No random content. Everything has a job.'
+  },
+  {
+    step: '03',
+    title: 'Make a Plan',
+    description: '90-day roadmap. Quick wins first. You see the plan before we start.'
+  },
+  {
+    step: '04',
+    title: 'Go Live Fast',
+    description: 'AI-assisted writing gets you live in 2-3 weeks. Others take 3-4 months.'
+  },
+  {
+    step: '05',
+    title: 'Keep Improving',
+    description: 'Check what works. Find new terms. Fix weak spots. SEO never stops.'
+  }
+];
+
+const comparison = {
+  hard: {
+    title: 'Short Keywords',
+    subtitle: 'What Most Do (Wrong)',
+    stats: [
+      { label: 'Share of Searches', value: '8%', bad: true },
+      { label: 'Competition', value: 'Very High', bad: true },
+      { label: 'Buy Rate', value: '11%', bad: true },
+      { label: 'Time to Rank', value: 'Years', bad: true }
+    ]
+  },
+  smart: {
+    title: 'Specific Phrases',
+    subtitle: 'What Smart Do (Right)',
+    stats: [
+      { label: 'Share of Searches', value: '92%', good: true },
+      { label: 'Competition', value: 'Low', good: true },
+      { label: 'Buy Rate', value: '36%', good: true },
+      { label: 'Time to Rank', value: 'Weeks/Months', good: true }
+    ]
+  }
+};
+---
+
+<BaseLayout
+  title="Specific Search Terms - Win with Easy Keywords | Result Marketing"
+  description="Stop fighting for hard keywords. Win with 1,000 easy, specific searches. Less competition. More buyers. Fast results."
+  locale={lang}
+>
+  <!-- Hero Section - SIMPLE WORDS -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Smart Keywords</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Stop Chasing Hard Words.<br />Win with Easy Ones.
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          While others fight over "SEO services" (RM 8/click, impossible to rank), you own the specific searches real customers make.
+          <br><br>
+          <strong>Less competition. More buyers. Better results.</strong>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            See Your Keywords
+          </a>
+          <a href="/en/case-studies" class="btn btn-secondary">
+            See Results
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Numbers -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Why Specific Terms Win: The Numbers
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Real data shows why smart businesses use specific phrases
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+        {stats.map(stat => (
+          <div class="card p-6 text-center border-2 border-accent-500/30 hover:border-accent-400 transition-colors">
+            <div class="text-5xl font-black text-accent-500 mb-2">{stat.stat}</div>
+            <div class="text-lg font-black mb-2 text-white">{stat.label}</div>
+            <div class="text-sm text-secondary-400 mb-3">{stat.insight}</div>
+            <div class="text-xs text-secondary-500 italic">Source: {stat.source}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hard vs Smart -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Hard Way (Bad) -->
+          <div class="card p-8 border-2 border-red-500/50">
+            <div class="text-center mb-6">
+              <div class="text-3xl mb-2">❌</div>
+              <h3 class="text-2xl font-black text-white mb-1">{comparison.hard.title}</h3>
+              <p class="text-sm text-secondary-400">{comparison.hard.subtitle}</p>
+            </div>
+            <div class="space-y-4">
+              {comparison.hard.stats.map(stat => (
+                <div class="flex justify-between items-center py-3 border-b border-secondary-800 last:border-0">
+                  <span class="text-secondary-300 font-black">{stat.label}</span>
+                  <span class="text-red-500 font-black text-lg">{stat.value}</span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-6 p-4 bg-red-500/10 rounded-lg border border-red-500/30">
+              <p class="text-sm text-secondary-300">
+                <strong>Truth:</strong> You fight companies with million-dollar budgets. Even if you win, the traffic doesn't buy.
+              </p>
+            </div>
+          </div>
+
+          <!-- Smart Way (Good) -->
+          <div class="card p-8 border-2 border-success-500 relative">
+            <div class="absolute -top-3 -right-3 bg-success-500 text-black px-4 py-1 rounded-full text-sm font-black shadow-md">
+              Smart Choice
+            </div>
+            <div class="text-center mb-6">
+              <div class="text-3xl mb-2">✅</div>
+              <h3 class="text-2xl font-black text-white mb-1">{comparison.smart.title}</h3>
+              <p class="text-sm text-secondary-400">{comparison.smart.subtitle}</p>
+            </div>
+            <div class="space-y-4">
+              {comparison.smart.stats.map(stat => (
+                <div class="flex justify-between items-center py-3 border-b border-secondary-800 last:border-0">
+                  <span class="text-secondary-300 font-black">{stat.label}</span>
+                  <span class="text-success-500 font-black text-lg">{stat.value}</span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-6 p-4 bg-success-500/10 rounded-lg border border-success-500/30">
+              <p class="text-sm text-secondary-300">
+                <strong>Smart Play:</strong> Less fighting. More sales. Fast results. Target 100+ specific terms and own your market.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Math -->
+        <div class="mt-12 card p-8 border border-accent-500/30">
+          <h3 class="text-xl font-black text-center mb-6 text-white">The Math is Simple</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="text-center">
+              <div class="text-lg font-black text-white mb-2">Hard Keywords</div>
+              <div class="text-sm text-secondary-400 space-y-1">
+                <p>1 keyword × 5,000 searches</p>
+                <p>11% buy rate = 550 sales</p>
+                <p>Time to rank: 12-24 months</p>
+              </div>
+            </div>
+            <div class="text-center border-l-2 border-accent-500">
+              <div class="text-lg font-black text-success-500 mb-2">Specific Keywords</div>
+              <div class="text-sm text-secondary-400 space-y-1">
+                <p>100 keywords × 50 each</p>
+                <p>36% buy rate = 1,800 sales</p>
+                <p>Time to rank: 2-6 months</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Example -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Real Example: Hard vs. Easy
+        </h2>
+        <p class="text-lg text-secondary-400">
+          See why chasing popular keywords wastes money
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <!-- Hard Keyword -->
+        <div class="card p-6 mb-6 border-2 border-red-500/50 bg-red-500/5">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-2xl">❌</span>
+            <h3 class="text-xl font-black text-white">The Hard Way (What Most Do)</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-3">
+            <div>
+              <div class="text-sm text-secondary-400 mb-1">Keyword</div>
+              <div class="font-black text-white">{example.hard.keyword}</div>
+            </div>
+            <div>
+              <div class="text-sm text-secondary-400 mb-1">Searches</div>
+              <div class="font-black text-red-500">{example.hard.volume}</div>
+            </div>
+            <div>
+              <div class="text-sm text-secondary-400 mb-1">Difficulty</div>
+              <div class="font-black text-red-500">{example.hard.difficulty}</div>
+            </div>
+            <div>
+              <div class="text-sm text-secondary-400 mb-1">Ad Cost</div>
+              <div class="font-black text-red-500">{example.hard.cost}</div>
+            </div>
+          </div>
+          <p class="text-sm text-secondary-400">
+            <strong>Truth:</strong> {example.hard.reality}
+          </p>
+        </div>
+
+        <!-- Easy Keywords -->
+        <div class="card p-6 border-2 border-success-500/50 bg-success-500/5">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-2xl">✅</span>
+            <h3 class="text-xl font-black text-white">The Smart Way (What We Do)</h3>
+          </div>
+          <div class="space-y-4 mb-3">
+            {example.easy.map(kw => (
+              <div class="card p-4 border border-success-500/30">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div>
+                    <div class="text-sm text-secondary-400 mb-1">Keyword</div>
+                    <div class="font-black text-sm text-white">{kw.keyword}</div>
+                  </div>
+                  <div>
+                    <div class="text-sm text-secondary-400 mb-1">Searches</div>
+                    <div class="font-black text-success-500">{kw.volume}</div>
+                  </div>
+                  <div>
+                    <div class="text-sm text-secondary-400 mb-1">Difficulty</div>
+                    <div class="font-black text-success-500">{kw.difficulty}</div>
+                  </div>
+                  <div>
+                    <div class="text-sm text-secondary-400 mb-1">Ad Cost</div>
+                    <div class="font-black text-success-500">{kw.cost}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="text-sm text-secondary-400">
+            <strong>Result:</strong> {example.math}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Keyword Types -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          4 Types of Smart Keywords
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {keywordTypes.map(type => (
+          <div class="card p-8">
+            <h3 class="text-xl font-black mb-3 text-white">{type.title}</h3>
+            <p class="text-secondary-400 mb-4">{type.description}</p>
+            <div class="space-y-2">
+              <div class="text-sm font-black text-white mb-2">Examples:</div>
+              {type.examples.map(ex => (
+                <div class="text-sm text-secondary-400 bg-secondary-800 px-3 py-2 rounded">
+                  "{ex}"
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Why This Works Better
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {benefits.map(benefit => (
+          <div class="card p-6 text-center">
+            <div class="text-4xl mb-3">{benefit.icon}</div>
+            <h3 class="text-lg font-black mb-2 text-white">{benefit.title}</h3>
+            <p class="text-secondary-400 text-sm">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          How We Do It
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-6">
+        {process.map((item) => (
+          <div class="flex gap-6 card p-6">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-white font-black text-lg flex items-center justify-center">
+                {item.step}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-black mb-2 text-white">{item.title}</h3>
+              <p class="text-secondary-400">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          See Your Easy Keywords
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          We'll find 100+ specific keywords you can actually rank for.
+          <br>
+          <strong>No cost. No sales pitch. Just data.</strong>
+        </p>
+        <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+          Get Free Report
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

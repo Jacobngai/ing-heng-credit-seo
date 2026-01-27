@@ -1,7 +1,7 @@
 ---
 title: "Nissan Avenir 融资马来西亚 - 0% 首付旅行车卓越"
 description: "为您的Nissan Avenir高端旅行车获得0%首付融资。不要让进口复杂性粉碎您在马来西亚的豪华旅行车梦想。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

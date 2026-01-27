@@ -1,7 +1,7 @@
 ---
 title: "日产Primera P11贷款马来西亚 - SR20发动机0%首付融资"
 description: "在马来西亚获得日产Primera P11融资，提供0%首付选项。获批这款搭载SR20动力的稀有家用轿车，在爱好者中获得认可。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

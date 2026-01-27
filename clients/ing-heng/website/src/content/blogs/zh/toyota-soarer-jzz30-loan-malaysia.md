@@ -1,7 +1,7 @@
 ---
 title: "马来西亚丰田Soarer JZZ30贷款 - 0%首付双涡轮梦想"
 description: "以0%首付融资您的丰田Soarer JZZ30。体验1JZ-GTE双涡轮的野蛮咆哮。为寻求完美的泡沫时代豪华轿跑车爱好者快速审批。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

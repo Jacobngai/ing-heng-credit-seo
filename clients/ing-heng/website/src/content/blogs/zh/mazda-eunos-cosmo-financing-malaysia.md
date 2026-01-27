@@ -1,7 +1,7 @@
 ---
 title: "马来西亚马自达Eunos Cosmo融资 - 0%首付转子梦想"
 description: "以0%首付融资您的稀有马自达Eunos Cosmo。体验双转子13B-RE发动机的迷人咆哮。为寻求泡沫时代奢华的转子爱好者快速审批。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

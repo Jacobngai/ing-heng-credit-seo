@@ -1,7 +1,7 @@
 ---
 title: "沃尔沃240涡轮融资马来西亚 - 0%首付瑞典工程投资"
 description: "为您的沃尔沃240涡轮获得0%首付融资。专家经典车贷款解决方案，为升值的瑞典工程卓越和独特特性提供服务。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

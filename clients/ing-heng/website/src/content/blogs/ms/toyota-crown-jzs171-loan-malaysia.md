@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Toyota Crown JZS171 Malaysia - 0% Deposit Pelaburan Sedan VIP"
 description: "Dapatkan pembiayaan Toyota Crown JZS171 dengan 0% deposit di Malaysia. Status mewah sedan VIP ultimat ini dan daya tarikan kolektor yang berkembang membuatkan bayaran terasa tidak signifikan."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

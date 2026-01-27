@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WhatsAppCTA from '../../../components/industries/WhatsAppCTA.astro';
+
+const lang = 'en';
+
+// Available Industries
+const industries = [
+  {
+    name: 'Construction',
+    icon: '🏗️',
+    description: 'Equipment rental, material suppliers, contractors',
+    status: 'live',
+    slug: 'construction',
+    pages: 8
+  },
+  {
+    name: 'Logistics',
+    icon: '🚚',
+    description: 'Transport, delivery, fleet management',
+    status: 'coming',
+    slug: 'logistics'
+  },
+  {
+    name: 'Manufacturing',
+    icon: '🏭',
+    description: 'Industrial, factory, machinery',
+    status: 'coming',
+    slug: 'manufacturing'
+  },
+  {
+    name: 'Financial',
+    icon: '💰',
+    description: 'Banking, insurance, investment',
+    status: 'coming',
+    slug: 'financial'
+  },
+  {
+    name: 'Real Estate',
+    icon: '🏢',
+    description: 'Property, condo, commercial',
+    status: 'coming',
+    slug: 'real-estate'
+  },
+  {
+    name: 'Healthcare',
+    icon: '🏥',
+    description: 'Medical, clinic, pharmacy',
+    status: 'coming',
+    slug: 'healthcare'
+  },
+  {
+    name: 'Hospitality',
+    icon: '🏨',
+    description: 'Hotel, restaurant, tourism',
+    status: 'coming',
+    slug: 'hospitality'
+  },
+  {
+    name: 'Automotive',
+    icon: '🚗',
+    description: 'Car rental, parts, service',
+    status: 'coming',
+    slug: 'automotive'
+  },
+  {
+    name: 'Education',
+    icon: '📚',
+    description: 'Training, tuition, courses',
+    status: 'coming',
+    slug: 'education'
+  },
+  {
+    name: 'Retail',
+    icon: '🛒',
+    description: 'E-commerce, shops, F&B',
+    status: 'coming',
+    slug: 'retail'
+  },
+  {
+    name: 'Professional Services',
+    icon: '💼',
+    description: 'Legal, accounting, consulting',
+    status: 'coming',
+    slug: 'professional-services'
+  },
+  {
+    name: 'Technology',
+    icon: '💻',
+    description: 'SaaS, software, IT services',
+    status: 'coming',
+    slug: 'technology'
+  },
+  {
+    name: 'Energy',
+    icon: '⚡',
+    description: 'Solar, renewable, utilities',
+    status: 'coming',
+    slug: 'energy'
+  },
+  {
+    name: 'Agriculture',
+    icon: '🌾',
+    description: 'Farming, livestock, fisheries',
+    status: 'coming',
+    slug: 'agriculture'
+  }
+];
+
+// Construction live pages
+const constructionPages = [
+  { title: 'Property Developers', slug: 'property-developers', icon: '🏢' },
+  { title: 'Pocket Development', slug: 'property-developers/pocket-development', icon: '🏭' },
+  { title: 'Shoplot', slug: 'property-developers/shoplot', icon: '🏪' },
+  { title: 'Residential', slug: 'property-developers/residential', icon: '🏠' },
+  { title: 'Forklift Rental', slug: 'best-marketing-for-forklift-rental', icon: '🔥' },
+  { title: 'Lorry Rental', slug: 'best-marketing-for-lorry-rental', icon: '⚡' },
+  { title: 'Excavator Rental', slug: 'best-marketing-for-excavator-rental', icon: '🏗️' },
+  { title: 'Crane Rental', slug: 'best-marketing-for-crane-rental', icon: '🏗️' }
+];
+---
+<BaseLayout
+  title="Industries We Serve | SEO Services for Malaysian Businesses"
+  description="Industry-specific SEO services. Construction equipment rental live now. 13 more industries coming soon. Problem-aware keywords in 3 languages."
+  locale={lang}
+>
+  <!-- Hero Section - Industry Selection -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-black mb-4 text-white">
+          Choose Your Industry
+        </h1>
+        <p class="text-xl text-secondary-400 mb-12 max-w-3xl mx-auto">
+          We specialize in industry-specific SEO. Problem-aware keywords. 3 languages.
+          <br>
+          <span class="text-accent-400">Construction live now. More coming soon.</span>
+        </p>
+
+        <!-- Industry Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {industries.map((industry, index) => (
+            <div
+              class={`card p-6 text-center transition-all duration-300 ${
+                industry.status === 'live'
+                  ? 'hover:border-accent-500/50 hover:shadow-glow-purple cursor-pointer'
+                  : 'opacity-60'
+              }`}
+            >
+              {industry.status === 'live' ? (
+                <a href={`/${lang}/industries/${industry.slug}/`} class="block">
+                  <div class="text-4xl mb-3">{industry.icon}</div>
+                  <h3 class="text-lg font-black text-white mb-2">{industry.name}</h3>
+                  <p class="text-sm text-secondary-400 mb-3">{industry.description}</p>
+                  <span class="inline-block bg-accent-500/20 text-accent-400 px-3 py-1 rounded-full text-xs font-bold">
+                    {industry.pages} Pages Live
+                  </span>
+                </a>
+              ) : (
+                <div>
+                  <div class="text-4xl mb-3 opacity-50">{industry.icon}</div>
+                  <h3 class="text-lg font-black text-secondary-500 mb-2">{industry.name}</h3>
+                  <p class="text-sm text-secondary-600 mb-3">{industry.description}</p>
+                  <span class="inline-block bg-secondary-700 text-secondary-500 px-3 py-1 rounded-full text-xs font-bold">
+                    Coming Soon
+                  </span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Construction Live Pages -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="text-4xl">🏗️</span>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-black text-white">Construction Industry</h2>
+            <p class="text-secondary-400">8 pages live • Equipment rental • Property development</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          {constructionPages.map((page, index) => (
+            <a
+              href={`/${lang}/industries/construction/${page.slug}/`}
+              class="card p-5 flex items-center gap-4 hover:border-accent-500/50 transition-all duration-300 group"
+            >
+              <span class="text-3xl">{page.icon}</span>
+              <div class="flex-1">
+                <h3 class="text-lg font-black text-white group-hover:text-accent-400 transition-colors">
+                  {page.title}
+                </h3>
+              </div>
+              <svg class="w-5 h-5 text-accent-500 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Industry-Specific SEO -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl md:text-4xl font-black text-white mb-4">
+          Why Industry-Specific SEO Works Better
+        </h2>
+        <p class="text-lg text-secondary-400 mb-12">
+          Generic SEO agencies target everyone. We target your specific buyers.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card p-6">
+            <div class="text-3xl mb-3">🎯</div>
+            <h3 class="text-lg font-black text-white mb-2">Problem-Aware Keywords</h3>
+            <p class="text-secondary-400 text-sm">
+              "How much to rent forklift for 1 day" — buyers actively researching. We create content that answers their questions.
+            </p>
+          </div>
+          <div class="card p-6">
+            <div class="text-3xl mb-3">🌐</div>
+            <h3 class="text-lg font-black text-white mb-2">3 Languages</h3>
+            <p class="text-secondary-400 text-sm">
+              English, Malay, Chinese. English-only websites miss 67% of Malaysian buyers.
+            </p>
+          </div>
+          <div class="card p-6">
+            <div class="text-3xl mb-3">🤖</div>
+            <h3 class="text-lg font-black text-white mb-2">AI Engine Optimized</h3>
+            <p class="text-secondary-400 text-sm">
+              Optimized for ChatGPT, Gemini, Claude. Future-proof your SEO as AI search grows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon Info -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card-disruptive p-8 text-center">
+          <h2 class="text-2xl md:text-3xl font-black text-white mb-4">
+            Want Your Industry Added?
+          </h2>
+          <p class="text-lg text-secondary-300 mb-6">
+            We're adding industries based on demand. Construction is live. 13 more in development.
+            <br>
+            <span class="text-accent-400">84 landing pages total potential.</span>
+          </p>
+          <p class="text-secondary-400 text-sm mb-8">
+            Each industry gets 6-8 pages: category overview + specific niches (e.g., Forklift Rental, Lorry Rental, Property Developers)
+          </p>
+          <WhatsAppCTA
+            industry="industry expansion"
+            variant="disruptive"
+            size="lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Links -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl font-black text-white mb-6">Related Services</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href={`/${lang}/services/trilingual-seo`} class="card p-5 hover:border-accent-500/50 transition-colors">
+            <h3 class="font-black text-accent-400 mb-1">Trilingual SEO</h3>
+            <p class="text-sm text-secondary-400">Why 3 languages win more buyers</p>
+          </a>
+          <a href={`/${lang}/services/ai-seo`} class="card p-5 hover:border-accent-500/50 transition-colors">
+            <h3 class="font-black text-accent-400 mb-1">AI-Powered SEO</h3>
+            <p class="text-sm text-secondary-400">ChatGPT & AI engine optimization</p>
+          </a>
+          <a href={`/${lang}/pricing`} class="card p-5 hover:border-accent-500/50 transition-colors">
+            <h3 class="font-black text-accent-400 mb-1">Pricing</h3>
+            <p class="text-sm text-secondary-400">RM 1,200/month • All included</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

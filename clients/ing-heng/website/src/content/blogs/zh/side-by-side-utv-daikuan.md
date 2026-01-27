@@ -3,7 +3,7 @@ title: "Side by Side UTV贷款马来西亚 - 0%首付多功能车融资"
 description: "获得side-by-side UTV融资批准在马来西亚。银行拒绝多功能车贷款？我们专门提供UTV融资，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["side by side utv贷款", "多功能车融资", "utv贷款马来西亚", "side by side融资"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

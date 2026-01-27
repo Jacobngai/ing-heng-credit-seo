@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Mazda 323 GTX融资 - 0%首付拉力传奇投资"
 description: "0%首付融资您的Mazda 323 GTX。为这款罕见的全轮驱动拉力认证特殊版获得资金，而银行拒绝老式涡轮马自达。专业融资可用。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-25

@@ -1,7 +1,7 @@
 ---
 title: "Autozam AZ-1融资马来西亚 - 0%首付鸥翼Kei超级跑车"
 description: "稀有Autozam AZ-1零首付融资。银行拒绝30年鸥翼轻型车？我们批准。在价值爆发前获得这台中置引擎超级跑车微型版。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

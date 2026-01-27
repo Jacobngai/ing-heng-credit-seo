@@ -460,7 +460,7 @@ interface Props {
   />
   <BenefitCard
     title="Competitive Rates"
-    description="Industry-leading rates from 6.5% p.a."
+    description="Industry-leading rates from 2.88% p.a."
     icon="percentage"
   />
 </div>

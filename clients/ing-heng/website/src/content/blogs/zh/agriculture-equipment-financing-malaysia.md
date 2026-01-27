@@ -12,7 +12,7 @@ keywords:
 - 马来西亚拖拉机融资
 - 马来西亚收割机融资
 - 0%首付农业设备
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - 农业设备
 - 农机

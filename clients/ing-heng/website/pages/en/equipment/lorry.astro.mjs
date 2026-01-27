@@ -1,0 +1,171 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { c as generateProductSchema, a as generateFAQSchema, $ as $$BaseLayout, e as encodeJSONLD } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$TestimonialCard } from '../../../chunks/TestimonialCard_DCNY-qZL.mjs';
+import { $ as $$Breadcrumbs } from '../../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+import { S as SITE_CONFIG } from '../../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$Lorry = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const pageTitle = "Commercial Lorry Financing Malaysia | Port Klang Fleet Solutions";
+  const pageDescription = "Fast commercial lorry financing for logistics operators. Fast approval, 90% financing, flexible payment terms. Box trucks, flatbeds, tankers, trailers. Apply now!";
+  const keywords = ["lorry financing Malaysia", "commercial truck loan", "lorry financing Port Klang", "fleet financing Malaysia", "SME lorry loan", "logistics vehicle financing"];
+  const breadcrumbs = [
+    { label: "Home", url: "/en" },
+    { label: "Equipment", url: "/en/equipment" },
+    { label: "Lorry Financing", url: "/en/equipment/lorry" }
+  ];
+  const benefits = [
+    { icon: "clock", title: "Fast Approval", description: "Quick decisions for time-sensitive contracts. Get approved and secure that Port Klang delivery contract." },
+    { icon: "percentage", title: "Financing From 0% Down*", description: "From 0%* down payment for qualified applicants. Loan up to 100%*. Keep working capital for fuel, maintenance, and operations. *Subject to terms and conditions" },
+    { icon: "calendar", title: "Flexible 12-84 Month Terms", description: "Payment plans that match your fleet operations. Scale payments with your revenue cycle." },
+    { icon: "shield", title: "New & Used Accepted", description: "Finance lorries up to 15 years old. All major brands including Isuzu, Hino, Mitsubishi, UD Trucks." },
+    { icon: "users", title: "Fleet Financing Solutions", description: "Special rates for multiple units. Expand your fleet and increase delivery capacity efficiently." },
+    { icon: "clock", title: "Trade-In & Refinancing", description: "Upgrade old lorries to newer fuel-efficient models. Refinance existing loans at better rates." },
+    { icon: "shield", title: "Transparent Pricing", description: "No hidden fees or surprise charges. Clear interest rates and payment schedules from day one." }
+  ];
+  const steps = [
+    { stepNumber: 1, icon: "contact", title: "WhatsApp Inquiry", description: "Message us your lorry requirements. Quick response from logistics financing specialists." },
+    { stepNumber: 2, icon: "document", title: "Submit Documents", description: "Send IC, bank statements, SSM (if company). Simple digital submission process." },
+    { stepNumber: 3, icon: "check", title: "Fast Credit Decision", description: "Fast credit decision. Approval notification via WhatsApp or phone call." },
+    { stepNumber: 4, icon: "clipboard", title: "Sign Loan Agreement", description: "Review terms and complete paperwork. We can meet you at Port Klang or Klang Valley." },
+    { stepNumber: 5, icon: "truck", title: "Drive Your Lorry", description: "Funds disbursed, collect your lorry. Start deliveries and earn revenue immediately." }
+  ];
+  const lorryTypes = [
+    { name: "Box Lorry (Van Body)", description: "Enclosed cargo protection for general freight, e-commerce deliveries, and valuable goods. Popular for urban last-mile delivery." },
+    { name: "Flatbed Lorry", description: "Versatile hauling for construction materials, machinery transport, and oversized cargo. Essential for Port Klang operations." },
+    { name: "Tipper Lorry (Dump Truck)", description: "Self-unloading for sand, gravel, construction waste. High demand in infrastructure projects and land development." },
+    { name: "Refrigerated Lorry (Reefer)", description: "Temperature-controlled transport for cold chain logistics. Growing demand with Ninja Cold and e-grocery expansion." },
+    { name: "Tanker Lorry", description: "Liquid transport including diesel fuel, palm oil, chemicals. Specialized operations with stable contracts." },
+    { name: "Container Trailer (Prime Mover)", description: "Port Klang container haulage. High-earning capacity with 20ft and 40ft container movements." },
+    { name: "Lorry Crane (Hiab)", description: "Self-loading capability for machinery, steel, building materials. Premium rates for specialized transport." },
+    { name: "Curtainsider Lorry", description: "Easy side-loading for palletized goods. Efficient for warehouse-to-warehouse freight forwarding." }
+  ];
+  const acceptedBrands = ["Isuzu", "Hino", "Mitsubishi Fuso", "UD Trucks", "Nissan Diesel", "Daihatsu", "Mercedes-Benz", "MAN", "Scania", "Dongfeng", "Foton", "FAW"];
+  const testimonials = [
+    {
+      name: "Lee Chong Wei",
+      company: "LCW Logistics Sdn Bhd",
+      location: "Port Klang, Selangor",
+      testimonial: "Needed 3 lorries urgently for Shopee contract. Ing Heng Credit approved all 3 units in 20 hours with 90% financing. Now running 8 lorries with their support. Best partner for fleet expansion.",
+      rating: 5
+    },
+    {
+      name: "Wong Kim Fatt",
+      company: "Fatt Kee Transport",
+      location: "Klang, Selangor",
+      testimonial: "Family logistics business for 25 years. Upgraded entire fleet from old lorries to newer Isuzu models through refinancing. Fuel savings alone paid for the upgrade. Professional and trustworthy service.",
+      rating: 5
+    },
+    {
+      name: "Rajendran a/l Muthu",
+      company: "Raja Freight Services",
+      location: "Shah Alam, Selangor",
+      testimonial: "Started with 1 used flatbed lorry. Now operating 5 lorries for Port Klang container haulage. Flexible payment during CNY slow period helped tremendously. Highly recommended for SME logistics operators.",
+      rating: 5
+    }
+  ];
+  const faqs = [
+    { question: "Can I finance used commercial lorries?", answer: "Yes! We finance used lorries up to 15 years old. Older vehicles may require higher down payment (20-30%) or shorter loan terms. The lorry must be in operational condition and pass basic inspection." },
+    { question: "What is the maximum lorry age you accept for financing?", answer: "We accept commercial lorries up to 15 years old. However, lorries aged 10-15 years typically receive 70-80% financing (20-30% down payment) and shorter loan terms (36-48 months)." },
+    { question: "Do you finance specialized lorries like refrigerated trucks and tankers?", answer: "Yes! We finance all lorry types including refrigerated trucks, tankers, tippers, lorry cranes, and container trailers. Specialized vehicles may receive preferential rates due to higher revenue potential." },
+    { question: "Can I get fleet financing for multiple lorries?", answer: "Absolutely! Fleet financing for 2+ lorries receives discounted interest rates. We offer bulk financing packages for logistics companies expanding operations. Volume discounts range from 0.5% to 2% off standard rates." },
+    { question: "What if I have no company registration (SSM)? Can individuals apply?", answer: "Yes! Individuals can apply using personal IC, bank statements, and proof of logistics income (delivery contracts, service agreements). However, company registration (SSM) improves approval chances and may secure better rates." },
+    { question: "Can new logistics startups get financing?", answer: "Yes! We support new logistics businesses. Requirements include: SSM registration, directors' IC, 3-6 months bank statements, delivery contracts or letters of intent from clients. We evaluate business viability, not just credit history." },
+    { question: "What lorry brands do you accept?", answer: "We accept all major brands: Japanese (Isuzu, Hino, Mitsubishi Fuso, UD Trucks, Nissan Diesel), European (Mercedes-Benz, MAN, Scania), and Chinese (Dongfeng, Foton, FAW). Both local assembled and imported lorries accepted." },
+    { question: "Can I refinance my existing lorry loan to get better rates?", answer: "Yes! If you're paying high interest rates (above 10%), we can refinance your existing loan. Process involves loan settlement, vehicle ownership transfer, and new loan agreement. Many clients save 2-4% in interest annually." },
+    { question: "What is the interest rate for lorry financing?", answer: "Interest rates range from 6.5% to 11% annually depending on: credit profile, down payment (10-30%), loan term (12-84 months), lorry age and condition, and fleet size. Competitive rates for SME logistics operators." },
+    { question: "How much down payment is required?", answer: "Standard down payment: 10-20% for new lorries, 20-30% for used lorries (10-15 years old). Fleet financing may qualify for lower down payments (10%) even for used units. Down payment can sometimes be negotiated based on creditworthiness." },
+    { question: "What documents do I need to apply?", answer: "For individuals: IC, 6 months bank statements, proof of income. For companies: SSM registration, company bank statements (6 months), directors' IC, financial statements (if available), delivery contracts (optional but helpful)." },
+    { question: "Can I get financing if I have CCRIS or CTOS records?", answer: "Yes! We accept applicants with credit issues. CCRIS/CTOS records don't mean automatic rejection. We review current income, existing contracts, and repayment ability. Many clients with past defaults have been approved." },
+    { question: "Do you finance container trailers and prime movers for Port Klang?", answer: "Yes! We specialize in financing container trailers and prime movers for Port Klang operations. Given Port Klang's record 14.64M TEUs (2024), demand for container haulage is strong. Competitive financing for 20ft and 40ft operations." },
+    { question: "Can foreigners apply for lorry financing?", answer: "Yes, foreigners with valid Malaysian work permits, company registration (SSM), and local operations can apply. Additional requirements: passport, work permit, Malaysian business address, local director/guarantor may be needed." },
+    { question: "What happens if the lorry breaks down during the loan term?", answer: "You remain responsible for loan payments regardless of lorry condition. We strongly recommend comprehensive insurance covering breakdown, accidents, and theft. We can connect you with commercial vehicle insurance providers." },
+    { question: "Is there an early repayment penalty?", answer: "No early repayment penalty! You can settle the loan anytime without extra charges. Many clients pay off loans early when business grows or when refinancing for fleet expansion." },
+    { question: "Can I trade in my old lorry for a newer model?", answer: "Yes! Trade-in programs available. We assess your old lorry's value, settle the remaining loan (if any), and finance the new lorry. Popular among operators upgrading from older models (10-15 years) to fuel-efficient newer lorries." },
+    { question: "What is the maximum loan amount?", answer: "Minimum loan: RM 40,000. Maximum loan: RM 5,000,000 for fleet financing. Single lorry financing typically ranges from RM 80,000 (used 3-ton) to RM 800,000 (new prime mover/container trailer)." },
+    { question: "How long does the entire process take from application to disbursement?", answer: "Standard timeline: Fast approval decision, 3-5 days for documentation and disbursement. Urgent cases (e.g., immediate contract requirements) can be fast-tracked to 1-2 days with complete documentation." }
+  ];
+  const productSchema = generateProductSchema({
+    name: "Commercial Lorry Financing Malaysia",
+    description: "Fast commercial lorry and truck financing for logistics operators. Fleet solutions for Port Klang and Klang Valley businesses.",
+    imageUrl: `${SITE_CONFIG.url}/images/lorry-financing.jpg`,
+    category: "Financial Service - Commercial Vehicle Financing",
+    offers: {
+      price: "40000",
+      currency: "MYR",
+      availability: "https://schema.org/InStock"
+    }
+  });
+  const faqSchema = generateFAQSchema(faqs);
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${maybeRenderHead()}<div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbs, "lang": lang })} </div>  ${renderComponent($$result2, "Hero", $$Hero, { "title": "Commercial Lorry Financing for Port Klang Logistics Operators", "subtitle": "Fast Approval | 90% Financing | Fleet Solutions | New & Used Lorries Accepted", "ctaText": "Get Free Quote via WhatsApp", "ctaLink": "https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20lorry%20financing.", "ctaSecondaryText": "Call Now: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["40 Years Experience", "Port Klang Specialist", "Fleet Financing Expert", "Same-Day Approval"] })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+Logistics Operators Face Fleet Financing Challenges
+</h2> <p class="text-xl text-[#4F3E29] leading-relaxed">
+Port Klang hit 14.64M TEUs in 2024. E-commerce deliveries surging. You have contracts but no lorries. Banks demand 30-50% down payment. Can't expand fleet to meet demand. Your competitors are capturing opportunities while you wait.
+</p> </div> <div class="grid md:grid-cols-3 gap-8 mb-12"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-red-600 font-bold text-lg mb-3">The Problem</div> <ul class="space-y-2 text-[#4F3E29]"> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>High down payment blocks fleet expansion (30-50%)</span> </li> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>Banks reject SME logistics startups</span> </li> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>Slow approval loses time-sensitive contracts</span> </li> <li class="flex items-start space-x-2"> <span class="text-red-500 mt-1">✗</span> <span>CNY cash flow issues impact operations</span> </li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-green-600 font-bold text-lg mb-3">Our Solution</div> <ul class="space-y-2 text-[#4F3E29]"> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>Only 10-20% down payment required</span> </li> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>Support new logistics businesses</span> </li> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> <span>Fast approval for urgent contracts</span> </li> <li class="flex items-start space-x-2"> <span class="text-green-500 mt-1">✓</span> </li> </ul> </div> <div class="bg-gradient-to-br from-primary to-secondary p-6 rounded-lg shadow-[4px_4px_0_#2D1810] text-white"> <div class="font-bold text-lg mb-3">Real Example</div> <div class="text-sm leading-relaxed"> <p class="mb-3"><strong>Lee from Port Klang</strong> needed 3 box lorries for Shopee/Lazada contracts worth RM 45,000/month.</p> <p class="mb-3"><strong>Banks rejected him.</strong> We approved RM 420,000 (3 lorries) in 20 hours with 10% down.</p> <p class="font-semibold">He earned RM 540,000 in 12 months and expanded to 8-lorry fleet. Now a top Ninja Van partner.</p> </div> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Why Logistics Operators Choose Ing Heng Credit
+</h2> <p class="text-xl text-[#4F3E29]">
+Specialized lorry financing designed for Port Klang and Klang Valley logistics businesses
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-3xl mx-auto"> ${renderComponent($$result2, "Calculator", $$Calculator, { "lang": lang, "equipmentType": "Lorry", "defaultPrice": 2e5 })} </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Get Your Lorry in 5 Simple Steps
+</h2> <p class="text-xl text-[#4F3E29]">
+From application to driving your lorry in as fast as 3-5 days
+</p> </div> <div class="grid md:grid-cols-5 gap-8"> ${steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { "stepNumber": step.stepNumber, "icon": step.icon, "title": step.title, "description": step.description })}`)} </div> <!-- CTA after steps --> <div class="text-center mt-12"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20lorry%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg inline-block">
+Start Your Application Now
+</a> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Commercial Lorry Types We Finance
+</h2> <p class="text-xl text-[#4F3E29]">
+All lorry categories from 1-ton vans to 30-ton prime movers
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"> ${lorryTypes.map((lorry) => renderTemplate`<div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow"> <h3 class="text-lg font-bold text-primary mb-3">${lorry.name}</h3> <p class="text-[#4F3E29] text-sm">${lorry.description}</p> </div>`)} </div> <!-- Accepted Brands --> <div class="text-center"> <h3 class="text-2xl font-bold text-primary mb-6">Accepted Lorry Brands</h3> <div class="flex flex-wrap justify-center gap-4"> ${acceptedBrands.map((brand) => renderTemplate`<span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium"> ${brand} </span>`)} </div> <p class="text-[#4F3E29] mt-4">...and more! Contact us for other brands.</p> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Application Requirements
+</h2> <p class="text-xl text-[#4F3E29]">
+Simple documentation - Most logistics operators already have these
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"> <!-- Individual Requirements --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">For Individuals</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">IC / Passport Copy</div> <div class="text-sm text-[#4F3E29]">Malaysian IC or valid passport with work permit</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">6 Months Bank Statements</div> <div class="text-sm text-[#4F3E29]">Personal account showing income consistency</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Proof of Logistics Income</div> <div class="text-sm text-[#4F3E29]">Delivery contracts, service agreements, or invoices</div> </div> </li> </ul> </div> <!-- Company Requirements --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">For Companies</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">SSM Registration</div> <div class="text-sm text-[#4F3E29]">Company registration (Form 9/24/49)</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Company Bank Statements</div> <div class="text-sm text-[#4F3E29]">6 months company account statements</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Directors' IC Copies</div> <div class="text-sm text-[#4F3E29]">All company directors and shareholders</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Delivery Contracts (Optional)</div> <div class="text-sm text-[#4F3E29]">Client agreements strengthen application</div> </div> </li> </ul> </div> </div> <!-- Additional Notes --> <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg"> <h4 class="font-bold text-primary mb-2">Good to Know:</h4> <ul class="space-y-1 text-[#4F3E29] text-sm"> <li>• Lorry age: Up to 15 years old accepted</li> <li>• Credit score: We accept CCRIS/CTOS records</li> <li>• Processing time: Fast approval from complete submission</li> <li>• Fleet financing: Special rates for 2+ lorries</li> </ul> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Success Stories from Logistics Operators
+</h2> <p class="text-xl text-[#4F3E29]">
+Real businesses that grew with our lorry financing solutions
+</p> </div> <div class="grid md:grid-cols-3 gap-6"> ${testimonials.map((testimonial) => renderTemplate`${renderComponent($$result2, "TestimonialCard", $$TestimonialCard, { "name": testimonial.name, "company": testimonial.company, "location": testimonial.location, "testimonial": testimonial.testimonial, "rating": testimonial.rating })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Frequently Asked Questions
+</h2> <p class="text-xl text-[#4F3E29]">
+Everything you need to know about lorry financing
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  ${renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "lang": lang, "currentEquipment": "lorry" })}  <section class="section bg-[#8B6F47] text-white"> <div class="container-custom text-center"> <h2 class="text-3xl md:text-4xl font-bold mb-6">
+Ready to Expand Your Fleet?
+</h2> <p class="text-xl mb-8 max-w-2xl mx-auto">
+Apply today and get approved by tomorrow. Join 4,000+ logistics operators who trust Ing Heng Credit for their fleet financing.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20lorry%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
+Apply via WhatsApp
+</a> <a href="tel:+60175700889" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+Call: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>No Obligation Quote</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Fast Approval</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Port Klang Specialist</span> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="max-w-2xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">
+Or Fill Out Our Online Form
+</h2> <p class="text-[#4F3E29]">
+We'll contact you promptly during business hours
+</p> </div> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(productSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/lorry.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/lorry.astro";
+const $$url = "/en/equipment/lorry";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Lorry,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

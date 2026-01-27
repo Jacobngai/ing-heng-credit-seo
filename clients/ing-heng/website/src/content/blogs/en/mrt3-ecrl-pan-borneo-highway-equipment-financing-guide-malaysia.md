@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      10 min read
-  #  MRT3 ECRL Pan Borneo Highway Equipment Financing Guide Malaysia 
-
-  Finance equipment for Malaysia mega infrastructure projects. MRT3 ECRL Pan Borneo Highway contractor equipment financing. 0% deposit fast approval for project deadlines. 
-
-     By Ing Heng Credit &amp; Leasing     # MRT3, ECRL &amp; Pan Borneo Highway Equipment Financing Guide Malaysia
 
 When Daniel sees the **MRT3 Circle Line tender** worth RM 52 billion and calculates he needs RM 15 million worth of specialized tunneling and construction equipment to qualify, does that investment gap feel impossible to bridge?
 
