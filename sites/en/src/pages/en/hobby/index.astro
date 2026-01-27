@@ -6,12 +6,11 @@
  */
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Hero from '../../../components/Hero.astro';
 import HobbyCard from '../../../components/HobbyCard.astro';
 import BenefitCard from '../../../components/BenefitCard.astro';
 import FAQItem from '../../../components/FAQItem.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import { HOBBY_CATEGORIES } from '../../../utils/constants';
+import { COMPANY_INFO } from '../../../utils/constants';
 import { encodeJSONLD } from '../../../utils/schema';
 
 const lang = 'en';
@@ -256,23 +255,60 @@ const faqSchema = {
     <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
   </Fragment>
 
-  <!-- Breadcrumbs -->
-  <div class="container-custom py-4">
-    <Breadcrumbs items={breadcrumbs} lang={lang} />
-  </div>
+  <!-- Hero Section - Matching Home Page Design -->
+  <section class="hero-section relative overflow-hidden bg-gradient-to-br from-accent to-primary-dark min-h-[80vh] flex items-center">
+    <!-- Strong dark overlay for maximum text contrast -->
+    <div class="absolute inset-0 bg-black/60 z-0"></div>
+    <!-- Additional gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-5"></div>
 
-  <!-- Hero Section - Matching Equipment Page Format -->
-  <Hero
-    title="Finance Your Passion - Banks Say No, We Say Yes"
-    subtitle="Classic Cars, Motorcycles, Boats & More | No Age Limit | Up to RM1 Million | Fast Approval"
-    ctaText="Get Free Quote via WhatsApp"
-    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20hobby%20financing."
-    ctaSecondaryText="Call: 017-570 0889"
-    ctaSecondaryLink="tel:+60175700889"
-    backgroundImage="/images/hobby-hero.jpg"
-    lang={lang}
-    trustSignals={['40 Years Experience', 'KPKT Licensed', 'No Age Limit', 'Fast Approval']}
-  />
+    <div class="container-custom relative z-10">
+      <div class="max-w-5xl mx-auto text-center">
+        <!-- Breadcrumbs -->
+        <div class="mb-8">
+          <Breadcrumbs items={breadcrumbs} lang={lang} />
+        </div>
+
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-display uppercase leading-none mb-6 text-white font-black" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">
+          Finance Your <span class="text-yellow-400" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">Passion</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white mb-8 font-medium leading-relaxed max-w-3xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 1px 1px 2px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.6);">
+          Banks Say No to Old Cars. We Say Yes. Classic cars, motorcycles, boats & more.
+        </p>
+
+        <!-- Trust Signals -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">RM1M</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Maximum Loan</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">No</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Age Limit</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">⚡</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Fast Approval</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">40+</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Years Experience</div>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20hobby%20financing." class="bg-white text-[#8B6F47] font-black uppercase tracking-tight text-xl px-12 py-5 border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810] hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all inline-block text-center">
+            Get Free Quote Now
+          </a>
+          <a href={COMPANY_INFO.whatsapp.link} class="btn btn-outline-white text-xl px-12 py-5">
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
 
   <!-- Category Cards Grid -->
   <section class="section bg-white">
@@ -438,7 +474,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <!-- Final CTA Section - Matching Equipment Page Format -->
+  <!-- Final CTA Section - Matching Home Page Format -->
   <section class="section bg-gray-50">
     <div class="container-custom text-center">
       <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
@@ -482,3 +518,33 @@ const faqSchema = {
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .hero-section {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .text-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .text-accent {
+    color: #0F172A;
+  }
+
+  .text-primary-dark {
+    color: #1E3A8A;
+  }
+
+  .text-secondary {
+    color: #8B6F47;
+  }
+
+  .text-navy-900 {
+    color: #2D1810;
+  }
+</style>
