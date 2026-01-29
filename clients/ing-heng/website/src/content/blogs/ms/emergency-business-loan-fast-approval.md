@@ -6,7 +6,7 @@ description: Perlukan pembiayaan perniagaan segera? Kami memberikan respons pant
   krisis untuk perniagaan Malaysia.
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: Panduan Pembiayaan
+category: Financing Guides
 tags:
 - pinjaman kecemasan
 - pembiayaan segera

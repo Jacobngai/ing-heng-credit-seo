@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Business Tips  December 21, 2024      8 min read
-  #  Business Loan Rejected by Bank Malaysia - Second Chance Equipment Financing Solutions 
-
-  Bank rejected your business loan? Get 0% deposit equipment financing for excavators, trucks, and cranes. Fast approval for older equipment banks will not finance. 
-
-     By Ing Heng Credit &amp; Leasing     # Business Loan Rejected by Bank Malaysia? Your Second Chance for Equipment Financing
 
 ## The Silent Killer of Malaysian Small Businesses
 

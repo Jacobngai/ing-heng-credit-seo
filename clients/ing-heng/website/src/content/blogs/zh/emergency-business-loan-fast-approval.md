@@ -3,7 +3,7 @@ title: 马来西亚紧急商业贷款快速批准 - 最需要时的危机融资
 description: 需要紧急商业融资？我们为银行耗时过长的真正紧急情况提供快速响应。马来西亚企业危机融资解决方案。
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: 融资指南
+category: Financing Guides
 tags:
 - 紧急贷款
 - 紧急融资

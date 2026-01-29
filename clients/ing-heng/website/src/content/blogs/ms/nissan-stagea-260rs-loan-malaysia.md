@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Nissan Stagea 260RS Malaysia - 0% Deposit AWD Wagon Beast"
 description: "Pembiayaan Nissan Stagea 260RS langka dengan 0% deposit. Bank tolak wagon monster 25 tahun? Kami luluskan. Dapatkan sleeper berkuasa RB26 ini sebelum harga meletup."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

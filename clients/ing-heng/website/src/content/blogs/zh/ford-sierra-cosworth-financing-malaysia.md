@@ -1,7 +1,7 @@
 ---
 title: "福特Sierra Cosworth融资马来西亚 - 0%首付涡轮传奇投资"
 description: "在马来西亚以0%首付融资获得您的福特Sierra Cosworth。拥有统治Group A拉力赛和英国房车赛的标志性涡轮同质化特殊车型。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

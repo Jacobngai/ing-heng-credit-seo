@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Subaru SVX Malaysia - 0% Deposit untuk Keajaiban Tanpa Tingkap"
 description: "Biayai Subaru SVX istimewa anda dengan 0% deposit. Grand tourer revolusioner berkokpit kaca yang mentakrifkan semula reka bentuk automotif - dapatkan pembiayaan untuk ikon JDM yang meningkat nilai ini hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

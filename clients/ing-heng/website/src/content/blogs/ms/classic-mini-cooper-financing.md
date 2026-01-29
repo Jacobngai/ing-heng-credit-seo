@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Classic Mini Cooper Malaysia - Pinjaman Ikon British 0% Deposit"
 description: "Dapatkan pembiayaan classic Mini Cooper di Malaysia dengan 0% deposit. Bank tolak Mini vintage? Kami luluskan pinjaman untuk semua varian Mini dari 1959-2000."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

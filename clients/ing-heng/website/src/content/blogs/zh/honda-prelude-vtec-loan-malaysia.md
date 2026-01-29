@@ -1,7 +1,7 @@
 ---
 title: "本田前奏VTEC贷款马来西亚 - 0%首付性能跑车融资"
 description: "为标志性本田前奏VTEC获得0%首付融资。通过专为性能爱好者和收藏家设计的灵活贷款条款体验传奇VTEC动力。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

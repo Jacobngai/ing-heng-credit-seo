@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  January 23, 2026      8 min read
-  #  Excavator Financing for Small Contractors: Win More Tenders Without Draining Capital 
-
-  Small contractors can compete with larger firms using 0% deposit excavator financing. Get 100% financing, win urgent tenders, and preserve working capital for growth. 
-
-     By Ing Heng Credit &amp; Leasing     # Excavator Financing for Small Contractors: Win More Tenders Without Draining Capital
 
 Are you a small contractor losing tenders because you lack your own excavator? Do larger competitors always win because they own equipment while you rent?
 

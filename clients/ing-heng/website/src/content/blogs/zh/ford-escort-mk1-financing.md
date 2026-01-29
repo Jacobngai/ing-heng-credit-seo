@@ -1,7 +1,7 @@
 ---
 title: "马来西亚福特Escort MK1融资 - 0%首付拉力标志贷款"
 description: "在马来西亚获得0%首付的福特Escort MK1融资。银行拒绝古董拉力车？我们批准Mexico、RS1600、Twin Cam和所有MK1变体的贷款。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

@@ -1,0 +1,402 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  "title": "Pembiayaan Jentera Pintar & IoT Malaysia",
+  "slug": "pembiayaan-jentera-pintar-iot-malaysia",
+  "excerpt": "Pembiayaan jentera pintar IoT dengan 0% deposit. Jentera bersambung kurangkan masa henti 40% dan tingkatkan produktiviti. Kelulusan pantas Malaysia.",
+  "date": "2025-12-20T00:00:00.000Z",
+  "author": "Ing Heng Credit & Leasing Sdn Bhd      Laman Utama  Tentang Kami  Perkhidmatan    Peralatan            🏗️ Semua Peralatan    Lihat katalog peralatan lengkap kami         🚜 Jengkaut  Paling Popular    Jengkaut mini hingga besar untuk pembinaan         🚛 Lori Komersial  Kelulusan Pantas    Logistik & pengangkutan barang         🏭 Forklift    Peralatan gudang & perindustrian         🏗️ Kren Mudah Alih    Angkatan berat & pembinaan         🚚 Prime Mover    Pengangkutan treler & barang         🚜 Jentolak    Kerja tanah & pembukaan tanah         🧊 Lori Peti Sejuk    Logistik rantaian sejuk dan pengangkutan terkawal suhu          Lihat katalog peralatan lengkap kami  Hubungi Kami →\n      document.addEventListener(\"DOMContentLoaded\",()=>{const e=document.querySelector(\".equipment-dropdown-trigger\"),d=document.querySelector(\".equipment-dropdown-menu\"),n=document.querySelector(\".equipment-dropdown-wrapper\");e&&d&&n&&(e.addEventListener(\"click\",t=>{t.preventDefault(),t.stopPropagation();const r=e.getAttribute(\"aria-expanded\")===\"true\";e.setAttribute(\"aria-expanded\",(!r).toString())}),document.addEventListener(\"click\",t=>{n.contains(t.target)||e.setAttribute(\"aria-expanded\",\"false\")}),document.addEventListener(\"keydown\",t=>{t.key===\"Escape\"&&e.getAttribute(\"aria-expanded\")===\"true\"&&(e.setAttribute(\"aria-expanded\",\"false\"),e.focus())}),n.addEventListener(\"mouseenter\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"true\")}),n.addEventListener(\"mouseleave\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"false\")}))}); Blog  Hubungi          🇲🇾           🇬🇧 English    🇨🇳 中文    🇲🇾 Bahasa Melayu        \n  // Language switcher dropdown functionality - Enhanced version\n  (function() {\n    'use strict';\n\n    function initLanguageSwitcher() {\n      // Find ALL language switchers on the page (desktop + mobile)\n      const switchers = document.querySelectorAll('[data-language-switcher]');\n\n      switchers.forEach(function(switcher) {\n        const button = switcher.querySelector('#language-menu-button');\n        const menu = switcher.querySelector('#language-menu');\n        const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n        if (!button || !menu) {\n          console.warn('Language switcher: Missing button or menu element');\n          return;\n        }\n\n        // Remove any existing listeners (prevent duplicates)\n        const newButton = button.cloneNode(true);\n        button.parentNode.replaceChild(newButton, button);\n\n        // Toggle dropdown on button click\n        newButton.addEventListener('click', function(e) {\n          e.preventDefault();\n          e.stopPropagation();\n\n          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';\n          const newState = !isExpanded;\n\n          // Close all other language switchers first\n          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {\n            if (otherSwitcher !== switcher) {\n              const otherButton = otherSwitcher.querySelector('#language-menu-button');\n              const otherMenu = otherSwitcher.querySelector('#language-menu');\n              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');\n\n              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');\n              if (otherMenu) otherMenu.classList.add('hidden');\n              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';\n            }\n          });\n\n          // Toggle current switcher\n          newButton.setAttribute('aria-expanded', newState.toString());\n          menu.classList.toggle('hidden', !newState);\n\n          // Rotate arrow\n          if (arrow) {\n            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';\n          }\n\n          console.log('Language switcher toggled:', newState ? 'open' : 'closed');\n        });\n      });\n\n      // Close all dropdowns when clicking outside\n      document.addEventListener('click', function(e) {\n        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');\n\n        if (!clickedInsideSwitcher) {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (button) button.setAttribute('aria-expanded', 'false');\n            if (menu) menu.classList.add('hidden');\n            if (arrow) arrow.style.transform = 'rotate(0deg)';\n          });\n        }\n      });\n\n      // Close dropdowns on ESC key\n      document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape') {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (menu && !menu.classList.contains('hidden')) {\n              if (button) {\n                button.setAttribute('aria-expanded', 'false');\n                button.focus();\n              }\n              menu.classList.add('hidden');\n              if (arrow) arrow.style.transform = 'rotate(0deg)';\n            }\n          });\n        }\n      });\n\n      console.log('Language switcher initialized:', switchers.length, 'instance(s)');\n    }\n\n    // Run when DOM is ready\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);\n    } else {\n      initLanguageSwitcher();\n    }\n\n    // Re-initialize after view transitions (for Astro)\n    document.addEventListener('astro:page-load', initLanguageSwitcher);\n  })();\n       Sembang di WhatsApp",
+  "readTime": 7,
+  "category": "Equipment Financing",
+  "image": "https://www.kreditloan.my\n/images/og-default.jpg"
+};
+
+const keywords = "pembiayaan jentera pintar Malaysia, pembiayaan jentera IoT, pembiayaan jentera bersambung, pembiayaan jentera telematik, pembiayaan bulldozer excavator pintar",
+  breadcrumbItems = [
+  {
+    "label": "Blog",
+    "href": "/ms/blog"
+  }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h1 id="pembiayaan-jentera-pintar--iot-malaysia-revolusi-jentera-bersambung">Pembiayaan Jentera Pintar &amp; IoT Malaysia: Revolusi Jentera Bersambung</h1>
+<p>Apabila excavator anda rosak pada 2 petang dalam projek kritikal, dan anda mendapati ia boleh dicegah jika anda tahu penapis hidraulik 90% tersumbat, adakah anda merasakan perasaan tenggelam dalam perut anda kerana pembaikan ini akan kos RM15,000 dan melambatkan projek 3 hari? Jentera pembinaan diaktifkan IoT menghapuskan senario ini dengan memantau kesihatan mesin anda secara masa nyata.</p>
+<p>Jentera pembinaan pintar dengan teknologi Internet of Things (IoT) mengubah cara kontraktor Malaysia mengurus armada mereka. Jentera bersambung mengurangkan masa henti tidak dirancang sebanyak 40%, meningkatkan kecekapan bahan api 20%, dan menyediakan wawasan data yang meningkatkan keuntungan sebanyak 25-35%.</p>
+<h2 id="apakah-jentera-pembinaan-pintar">Apakah Jentera Pembinaan Pintar?</h2>
+<p>Jentera pembinaan pintar mengintegrasikan sensor IoT, sambungan selular, dan analitik berasaskan awan untuk menyediakan pemantauan dan kawalan masa nyata prestasi mesin, lokasi, dan status kesihatan.</p>
+<h3 id="komponen-iot-teras">Komponen IoT Teras:</h3>
+<p><strong>Sensor Mesin:</strong></p>
+<ul>
+<li>Pemantauan prestasi enjin (suhu, tekanan minyak, RPM)</li>
+<li>Diagnostik sistem hidraulik (tekanan, kadar aliran, pencemaran)</li>
+<li>Penjejakan penggunaan bahan api (penggunaan masa nyata, metrik kecekapan)</li>
+<li>Rakaman jam operasi dan masa melahu</li>
+<li>Penjejakan lokasi GPS dengan keupayaan geofencing</li>
+</ul>
+<p><strong>Sistem Sambungan:</strong></p>
+<ul>
+<li>Komunikasi selular 4G/5G</li>
+<li>Sambungan satelit untuk kawasan terpencil</li>
+<li>Sinkronisasi data Wi-Fi apabila tersedia</li>
+<li>Bluetooth untuk perpasangan peranti tempatan</li>
+</ul>
+<p><strong>Platform Analitik Awan:</strong></p>
+<ul>
+<li>Akses papan pemuka masa nyata melalui aplikasi mudah alih</li>
+<li>Algoritma penyelenggaraan ramalan</li>
+<li>Penanda aras dan pelaporan prestasi</li>
+<li>Alat pengurusan armada dan pengoptimuman</li>
+<li>Analisis data sejarah dan trend</li>
+</ul>
+<h3 id="cara-jentera-pintar-berfungsi">Cara Jentera Pintar Berfungsi:</h3>
+<p><strong>1. Pengumpulan Data (Berterusan):</strong></p>
+<ul>
+<li>Sensor pantau 50+ parameter mesin setiap saat</li>
+<li>GPS jejaki lokasi dan corak pergerakan</li>
+<li>Keadaan operasi direkod (beban, kelajuan, medan)</li>
+<li>Penggunaan bahan api diukur dengan tepat</li>
+</ul>
+<p><strong>2. Penghantaran Data (Masa Nyata):</strong></p>
+<ul>
+<li>Maklumat dihantar ke pelayan awan melalui selular</li>
+<li>Amaran kecemasan dihantar serta-merta</li>
+<li>Laporan ringkasan harian dijana automatik</li>
+<li>Data sejarah disimpan untuk analisis</li>
+</ul>
+<p><strong>3. Pemprosesan Kecerdasan:</strong></p>
+<ul>
+<li>Algoritma AI analisis corak prestasi</li>
+<li>Cadangan penyelenggaraan ramalan dijana</li>
+<li>Cadangan pengoptimuman kecekapan disediakan</li>
+<li>Pengesanan anomali picu amaran segera</li>
+</ul>
+<p><strong>4. Pelaksanaan Tindakan:</strong></p>
+<ul>
+<li>Pengurus terima amaran penyelenggaraan di mudah alih</li>
+<li>Operator dapat bimbingan kecekapan masa nyata</li>
+<li>Penghantaran armada dioptimum berdasarkan data lokasi</li>
+<li>Penyelenggaraan pencegahan dijadualkan automatik</li>
+</ul>
+<h2 id="faedah-jentera-diaktifkan-iot">Faedah Jentera Diaktifkan IoT</h2>
+<h3 id="1-revolusi-penyelenggaraan-ramalan">1. Revolusi Penyelenggaraan Ramalan</h3>
+<p><strong>Pendekatan Penyelenggaraan Tradisional:</strong></p>
+<ul>
+<li>Penyelenggaraan jadual tetap tanpa kira penggunaan</li>
+<li>Bertindak balas kepada kerosakan selepas ia berlaku</li>
+<li>Kos masa henti tidak dirancang tinggi</li>
+<li>Penggantian bahagian pramatang atau kegagalan malapetaka</li>
+</ul>
+<p><strong>Penyelenggaraan Ramalan Diaktifkan IoT:</strong></p>
+<ul>
+<li>Penyelenggaraan berdasarkan keadaan mesin sebenar</li>
+<li>Ramal kegagalan 2-4 minggu sebelum berlaku</li>
+<li>Jadualkan penyelenggaraan semasa masa henti dirancang</li>
+<li>Optimumkan masa penggantian bahagian untuk nilai maksimum</li>
+</ul>
+<h3 id="2-pengoptimuman-kecekapan-bahan-api">2. Pengoptimuman Kecekapan Bahan Api</h3>
+<p><strong>Pemantauan Penggunaan Bahan Api:</strong></p>
+<ul>
+<li>Pengukuran kadar pembakaran bahan api masa nyata</li>
+<li>Penjejakan dan pengoptimuman masa melahu</li>
+<li>Pemarkahan kecekapan operasi</li>
+<li>Pengoptimuman laluan untuk jentera mudah alih</li>
+</ul>
+<p><strong>Peningkatan Kecekapan:</strong></p>
+<ul>
+<li>15-25% penjimatan bahan api melalui operasi dioptimum</li>
+<li>Pengurangan masa melahu (30-50% pengurangan biasa)</li>
+<li>Bimbingan operator lebih baik berdasarkan data kecekapan</li>
+<li>Pengoptimuman perancangan laluan untuk jentera pengangkutan</li>
+</ul>
+<h3 id="3-perlindungan-kecurian-dan-keselamatan">3. Perlindungan Kecurian dan Keselamatan</h3>
+<p><strong>Ciri Perlindungan Aset:</strong></p>
+<ul>
+<li>Penjejakan GPS masa nyata dengan ketepatan 5 meter</li>
+<li>Amaran geofencing apabila jentera meninggalkan kawasan ditetapkan</li>
+<li>Amaran pergerakan semasa waktu bukan bekerja</li>
+<li>Keupayaan immobilisasi untuk jentera dicuri</li>
+<li>Penjejakan sejarah untuk penguatkuasaan undang-undang</li>
+</ul>
+<h3 id="4-pengurusan-prestasi-operator">4. Pengurusan Prestasi Operator</h3>
+<p><strong>Pemantauan Tingkah Laku Pemandu:</strong></p>
+<ul>
+<li>Pemarkahan kecekapan operasi (skala 0-100)</li>
+<li>Pengesanan operasi kasar (pecutan tiba-tiba, brek keras)</li>
+<li>Metrik produktiviti (kitaran beban, jam operasi)</li>
+<li>Cadangan latihan berdasarkan data</li>
+</ul>
+<h2 id="roi-analisis-pengurusan-armada-tradisional-vs-pintar">ROI Analisis: Pengurusan Armada Tradisional vs Pintar</h2>
+<h3 id="kajian-kes-armada-pembinaan-10-mesin">Kajian Kes: Armada Pembinaan 10 Mesin</h3>
+<p><strong>Komposisi Armada:</strong></p>
+<ul>
+<li>4 × Excavator (kelas 20-25 tan)</li>
+<li>3 × Bulldozer (kelas D6-D7)</li>
+<li>2 × Pemuat roda (kelas 950-966)</li>
+<li>1 × Grader motor (kelas 14M)</li>
+</ul>
+<h3 id="kos-pengurusan-armada-tradisional-tahunan">Kos Pengurusan Armada Tradisional (Tahunan):</h3>
+<p><strong>Kos Penyelenggaraan:</strong></p>
+<ul>
+<li>Penyelenggaraan dirancang: RM180,000</li>
+<li>Kerosakan tidak dirancang: RM95,000</li>
+<li>Pembaikan kecemasan: RM45,000</li>
+<li><strong>Jumlah penyelenggaraan: RM320,000</strong></li>
+</ul>
+<p><strong>Kos Bahan Api:</strong></p>
+<ul>
+<li>Penggunaan tahunan: 85,000 liter</li>
+<li>Kos bahan api purata: RM3.20/liter</li>
+<li><strong>Jumlah kos bahan api: RM272,000</strong></li>
+</ul>
+<p><strong>Kos Masa Henti:</strong></p>
+<ul>
+<li>Masa henti tidak dirancang: 240 jam/tahun</li>
+<li>Kehilangan hasil: RM450/jam</li>
+<li><strong>Jumlah kos masa henti: RM108,000</strong></li>
+</ul>
+<p><strong>Keselamatan dan Kecurian:</strong></p>
+<ul>
+<li>Premium insurans: RM35,000</li>
+<li>Langkah keselamatan: RM18,000</li>
+<li><strong>Jumlah kos keselamatan: RM53,000</strong></li>
+</ul>
+<p><strong>Jumlah Kos Operasi Tradisional: RM753,000/tahun</strong></p>
+<h3 id="pengurusan-armada-pintar-diaktifkan-iot-tahunan">Pengurusan Armada Pintar Diaktifkan IoT (Tahunan):</h3>
+<p><strong>Kos Penyelenggaraan:</strong></p>
+<ul>
+<li>Penyelenggaraan dirancang: RM165,000 (jadual dioptimum)</li>
+<li>Kerosakan tidak dirancang: RM35,000 (65% pengurangan)</li>
+<li>Pembaikan kecemasan: RM15,000 (70% pengurangan)</li>
+<li><strong>Jumlah penyelenggaraan: RM215,000 (33% penjimatan)</strong></li>
+</ul>
+<p><strong>Kos Bahan Api:</strong></p>
+<ul>
+<li>Penggunaan tahunan: 68,000 liter (20% pengurangan)</li>
+<li>Kos bahan api purata: RM3.20/liter</li>
+<li><strong>Jumlah kos bahan api: RM217,600 (20% penjimatan)</strong></li>
+</ul>
+<p><strong>Kos Masa Henti:</strong></p>
+<ul>
+<li>Masa henti tidak dirancang: 85 jam/tahun (65% pengurangan)</li>
+<li>Kehilangan hasil: RM450/jam</li>
+<li><strong>Jumlah kos masa henti: RM38,250 (65% penjimatan)</strong></li>
+</ul>
+<p><strong>Keselamatan dan Kecurian:</strong></p>
+<ul>
+<li>Premium insurans: RM28,000 (20% diskaun)</li>
+<li>Langkah keselamatan: RM8,000 (penjejakan GPS gantikan pengawal)</li>
+<li><strong>Jumlah kos keselamatan: RM36,000 (32% penjimatan)</strong></li>
+</ul>
+<p><strong>Kos Langganan IoT:</strong></p>
+<ul>
+<li>10 mesin × RM350/bulan × 12 bulan</li>
+<li><strong>Langganan tahunan: RM42,000</strong></li>
+</ul>
+<p><strong>Jumlah Kos Operasi Armada Pintar: RM548,850/tahun</strong></p>
+<h3 id="pengiraan-roi">Pengiraan ROI:</h3>
+<p><strong>Penjimatan Tahunan: RM753,000 - RM548,850 = RM204,150</strong>
+<strong>Pelaburan IoT (retrofit armada sedia ada): RM85,000</strong>
+<strong>ROI = RM204,150 ÷ RM85,000 × 100 = 240% setiap tahun</strong>
+<strong>Tempoh Bayar Balik: 4.2 bulan</strong></p>
+<h2 id="pembiayaan-jentera-pintar-dengan-sistem-iot">Pembiayaan Jentera Pintar dengan Sistem IoT</h2>
+<h3 id="pecahan-kos-jentera">Pecahan Kos Jentera:</h3>
+<p><strong>Excavator Pintar Baharu (CAT 320 dengan Product Link):</strong></p>
+<ul>
+<li>Mesin asas: RM580,000</li>
+<li>Integrasi sistem IoT: RM25,000</li>
+<li>Pakej perisian termaju: RM15,000</li>
+<li>Pemasangan dan latihan: RM8,000</li>
+<li><strong>Jumlah pelaburan: RM628,000</strong></li>
+</ul>
+<p><strong>Retrofit IoT untuk Jentera Sedia Ada:</strong></p>
+<ul>
+<li>Pemasangan perkakasan: RM12,000-18,000</li>
+<li>Persediaan dan latihan perisian: RM5,000-8,000</li>
+<li>Langganan bulanan: RM280-450</li>
+<li><strong>Pelaburan awal: RM17,000-26,000 setiap mesin</strong></li>
+</ul>
+<h3 id="pilihan-pembiayaan-dengan-ing-heng-credit">Pilihan Pembiayaan dengan Ing Heng Credit:</h3>
+<p><strong>Pakar Jentera Teknologi:</strong></p>
+<ul>
+<li>Pembiayaan 0% deposit tersedia</li>
+<li>Sehingga 100% pembiayaan jentera pintar</li>
+<li>Sertakan sistem IoT dalam pakej pembiayaan</li>
+<li>Kelulusan pantas untuk naik taraf teknologi</li>
+</ul>
+<p><strong>Terma Fleksibel:</strong></p>
+<ul>
+<li>Tempoh pinjaman: 12-60 bulan</li>
+<li>Kadar faedah: 7.5-10.5% setahun</li>
+<li>Bayaran bulanan tetap</li>
+<li>Rebat penyelesaian awal tersedia</li>
+</ul>
+<h3 id="contoh-bayaran-bulanan">Contoh Bayaran Bulanan:</h3>
+<p><strong>RM628,000 Excavator Pintar (48 bulan):</strong></p>
+<ul>
+<li>Kadar faedah: 8.5% setahun</li>
+<li><strong>Bayaran bulanan: RM15,485</strong></li>
+</ul>
+<p><strong>Pakej Retrofit IoT (24 bulan):</strong></p>
+<ul>
+<li>RM150,000 untuk armada 10 mesin</li>
+<li>Kadar faedah: 9.5% setahun</li>
+<li><strong>Bayaran bulanan: RM6,950</strong></li>
+</ul>
+<h2 id="sedia-untuk-memodenkan-armada-anda">Sedia untuk Memodenkan Armada Anda?</h2>
+<p><strong>Hubungi Ing Heng Credit - Pembiayaan Jentera Pintar:</strong></p>
+<ul>
+<li><strong>WhatsApp:</strong> +60175700889 (Pakar jentera IoT)</li>
+<li><strong>Telefon:</strong> +603-3362 1588</li>
+<li><strong>E-mel:</strong> <a href="mailto:info@inghengcredit.com">info@inghengcredit.com</a></li>
+<li><strong>Lawat:</strong> 47A, Jalan Raya Timur, Taman Rashna, 41200 Klang</li>
+</ul>
+<p><strong>Apa Yang Kami Tawarkan:</strong></p>
+<ul>
+<li>Pembiayaan jentera pintar 0% deposit</li>
+<li>Sehingga 100% pembiayaan termasuk sistem IoT</li>
+<li>Pakar jentera teknologi</li>
+<li>Kelulusan pantas untuk permohonan layak</li>
+<li>Kadar kompetitif dari 7.5% setahun</li>
+</ul>
+<p><strong>Mengapa Pilih Kami:</strong></p>
+<ul>
+<li>40+ tahun pengalaman pembiayaan jentera</li>
+<li>Pakar penggunaan teknologi</li>
+<li>Kadar kejayaan tinggi untuk pinjaman jentera pintar</li>
+<li>Memahami keperluan ROI IoT</li>
+<li>Menyokong inovasi pembinaan Malaysia</li>
+</ul>
+<p>Revolusi pembinaan pintar sedang mempercepatkan. Kontraktor dengan jentera bersambung akan mendominasi projek fokus kecekapan manakala operator tradisional bergelut dengan kos meningkat dan permintaan klien untuk ketelusan.</p>
+<p><strong>Jangan ketinggalan. Mulakan perjalanan jentera pintar anda hari ini.</strong></p>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Equipment Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    border: 2px solid #2D1810;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background: #D4A574;
+    color: #2D1810;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

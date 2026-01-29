@@ -1,7 +1,7 @@
 ---
 title: "雪铁龙2CV贷款马来西亚 - 0%首付法国汽车图标"
 description: "在马来西亚以0%首付融资您的雪铁龙2CV。法国汽车图标专家批准，稳步升值。立即获得您的2CV融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

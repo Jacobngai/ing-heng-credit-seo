@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Financing Guides  January 27, 2026      9 min read
-  #  Lorry Financing for Logistics Startups: Start Your Business with 0% Deposit 
-
-  Start your logistics business without capital. 100% lorry financing with 0% deposit for Malaysian startups. Fast approval, self-employed friendly, ROI calculator included. 
-
-     By Ing Heng Credit &amp; Leasing     # Lorry Financing for Logistics Startups: Start Your Business with 0% Deposit
 
 You have the drive. You have the plan. You know logistics can be profitable. But you do not have RM 100,000 cash to buy your first lorry.
 

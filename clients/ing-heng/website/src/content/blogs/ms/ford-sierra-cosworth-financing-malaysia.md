@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Ford Sierra Cosworth Malaysia - 0% Deposit Pelaburan Legenda Turbo"
 description: "Dapatkan Ford Sierra Cosworth anda dengan pembiayaan 0% deposit di Malaysia. Miliki homologasi turbo ikonik yang mendominasi rali Group A dan kereta touring British."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-23

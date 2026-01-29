@@ -1,0 +1,440 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  "title": "Keperluan Peralatan CIDB Kelas A & Pilihan Pembiayaan Malaysia 2025",
+  "slug": "keperluan-peralatan-cidb-kelas-a-pembiayaan",
+  "excerpt": "Naik taraf ke CIDB Kelas A dengan pembiayaan peralatan. Kami membiayai pakej peralatan RM 2J+ untuk naik taraf kontraktor. 0% deposit, 100% pembiayaan untuk buldoser, excavator, kren.",
+  "date": "2025-12-20T00:00:00.000Z",
+  "author": "Ing Heng Credit & Leasing Sdn Bhd      Laman Utama  Tentang Kami  Perkhidmatan    Peralatan            🏗️ Semua Peralatan    Lihat katalog peralatan lengkap kami         🚜 Jengkaut  Paling Popular    Jengkaut mini hingga besar untuk pembinaan         🚛 Lori Komersial  Kelulusan Pantas    Logistik & pengangkutan barang         🏭 Forklift    Peralatan gudang & perindustrian         🏗️ Kren Mudah Alih    Angkatan berat & pembinaan         🚚 Prime Mover    Pengangkutan treler & barang         🚜 Jentolak    Kerja tanah & pembukaan tanah         🧊 Lori Peti Sejuk    Logistik rantaian sejuk dan pengangkutan terkawal suhu          Lihat katalog peralatan lengkap kami  Hubungi Kami →\n      document.addEventListener(\"DOMContentLoaded\",()=>{const e=document.querySelector(\".equipment-dropdown-trigger\"),d=document.querySelector(\".equipment-dropdown-menu\"),n=document.querySelector(\".equipment-dropdown-wrapper\");e&&d&&n&&(e.addEventListener(\"click\",t=>{t.preventDefault(),t.stopPropagation();const r=e.getAttribute(\"aria-expanded\")===\"true\";e.setAttribute(\"aria-expanded\",(!r).toString())}),document.addEventListener(\"click\",t=>{n.contains(t.target)||e.setAttribute(\"aria-expanded\",\"false\")}),document.addEventListener(\"keydown\",t=>{t.key===\"Escape\"&&e.getAttribute(\"aria-expanded\")===\"true\"&&(e.setAttribute(\"aria-expanded\",\"false\"),e.focus())}),n.addEventListener(\"mouseenter\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"true\")}),n.addEventListener(\"mouseleave\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"false\")}))}); Blog  Hubungi          🇲🇾           🇬🇧 English    🇨🇳 中文    🇲🇾 Bahasa Melayu        \n  // Language switcher dropdown functionality - Enhanced version\n  (function() {\n    'use strict';\n\n    function initLanguageSwitcher() {\n      // Find ALL language switchers on the page (desktop + mobile)\n      const switchers = document.querySelectorAll('[data-language-switcher]');\n\n      switchers.forEach(function(switcher) {\n        const button = switcher.querySelector('#language-menu-button');\n        const menu = switcher.querySelector('#language-menu');\n        const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n        if (!button || !menu) {\n          console.warn('Language switcher: Missing button or menu element');\n          return;\n        }\n\n        // Remove any existing listeners (prevent duplicates)\n        const newButton = button.cloneNode(true);\n        button.parentNode.replaceChild(newButton, button);\n\n        // Toggle dropdown on button click\n        newButton.addEventListener('click', function(e) {\n          e.preventDefault();\n          e.stopPropagation();\n\n          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';\n          const newState = !isExpanded;\n\n          // Close all other language switchers first\n          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {\n            if (otherSwitcher !== switcher) {\n              const otherButton = otherSwitcher.querySelector('#language-menu-button');\n              const otherMenu = otherSwitcher.querySelector('#language-menu');\n              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');\n\n              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');\n              if (otherMenu) otherMenu.classList.add('hidden');\n              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';\n            }\n          });\n\n          // Toggle current switcher\n          newButton.setAttribute('aria-expanded', newState.toString());\n          menu.classList.toggle('hidden', !newState);\n\n          // Rotate arrow\n          if (arrow) {\n            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';\n          }\n\n          console.log('Language switcher toggled:', newState ? 'open' : 'closed');\n        });\n      });\n\n      // Close all dropdowns when clicking outside\n      document.addEventListener('click', function(e) {\n        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');\n\n        if (!clickedInsideSwitcher) {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (button) button.setAttribute('aria-expanded', 'false');\n            if (menu) menu.classList.add('hidden');\n            if (arrow) arrow.style.transform = 'rotate(0deg)';\n          });\n        }\n      });\n\n      // Close dropdowns on ESC key\n      document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape') {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (menu && !menu.classList.contains('hidden')) {\n              if (button) {\n                button.setAttribute('aria-expanded', 'false');\n                button.focus();\n              }\n              menu.classList.add('hidden');\n              if (arrow) arrow.style.transform = 'rotate(0deg)';\n            }\n          });\n        }\n      });\n\n      console.log('Language switcher initialized:', switchers.length, 'instance(s)');\n    }\n\n    // Run when DOM is ready\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);\n    } else {\n      initLanguageSwitcher();\n    }\n\n    // Re-initialize after view transitions (for Astro)\n    document.addEventListener('astro:page-load', initLanguageSwitcher);\n  })();\n       Sembang di WhatsApp",
+  "readTime": 7,
+  "category": "Equipment Financing",
+  "image": "https://www.kreditloan.my\n/images/og-default.jpg"
+};
+
+const keywords = "pembiayaan peralatan CIDB Kelas A, pembiayaan naik taraf CIDB, peralatan klasifikasi kontraktor, sistem mata peralatan CIDB, keperluan kontraktor Kelas A",
+  breadcrumbItems = [
+  {
+    "label": "Blog",
+    "href": "/ms/blog"
+  }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h1 id="keperluan-peralatan-cidb-kelas-a--pilihan-pembiayaan-malaysia-2025">Keperluan Peralatan CIDB Kelas A &amp; Pilihan Pembiayaan Malaysia 2025</h1>
+<p>Bila Ahmad memandang sijil kontraktor Kelas B di dinding pejabat, dan mengira bahawa naik taraf ke Kelas A boleh membuka tender kerajaan RM 100 juta berbanding terhad kepada projek RM 10 juta, adakah jurang itu terasa mustahil diatasi?</p>
+<p>Bila anda membaca “Nilai peralatan minimum: RM 2,000,000” dan sedar buldoser semasa dan dua excavator hanya bernilai RM 800,000, adakah bahu anda tegang mengetahui anda terlepas kontrak besar setiap bulan?</p>
+<p><strong>Halangan CIDB Kelas A bukan sekadar kertas kerja - ia pembiayaan peralatan.</strong></p>
+<h2 id="memahami-klasifikasi-cidb--keperluan-peralatan">Memahami Klasifikasi CIDB &amp; Keperluan Peralatan</h2>
+<p>Sistem klasifikasi <strong>Lembaga Pembangunan Industri Pembinaan (CIDB)</strong> menentukan kontrak mana anda boleh bida. Perbezaan antara Kelas B dan Kelas A bukan sekadar prestij - ia berjuta dalam peluang tender.</p>
+<h3 id="manfaat-kelas-a"><strong>Manfaat Kelas A:</strong></h3>
+<ul>
+<li>Kapasiti tender: <strong>Nilai projek tanpa had</strong></li>
+<li>Projek kerajaan: Akses penuh ke infrastruktur utama</li>
+<li>Projek swasta: Hubungan pemaju premium</li>
+<li>Kadar subkontraktor: Margin lebih tinggi kerana klasifikasi</li>
+<li>Hubungan bank: Syarat lebih baik kerana status naik taraf</li>
+</ul>
+<h3 id="halangan-kelas-a"><strong>Halangan Kelas A:</strong></h3>
+<ul>
+<li><strong>Nilai peralatan minimum RM 2,000,000</strong></li>
+<li>Peralatan mesti dimiliki (bukan sewa)</li>
+<li>Keperluan mata peralatan khusus</li>
+<li>Standard pematuhan dan pensijilan</li>
+<li>Keperluan kedudukan kewangan</li>
+</ul>
+<p><strong>Realiti?</strong> Kebanyakan kontraktor boleh memenuhi keperluan kewangan dan teknikal. Pelaburan peralatan adalah halangan terbesar.</p>
+<h2 id="sistem-mata-peralatan-cidb-dijelaskan">Sistem Mata Peralatan CIDB Dijelaskan</h2>
+<h3 id="bagaimana-mata-peralatan-berfungsi"><strong>Bagaimana Mata Peralatan Berfungsi:</strong></h3>
+<p>Setiap jenis peralatan membawa mata CIDB khusus berdasarkan:</p>
+<ul>
+<li><strong>Kapasiti peralatan</strong> (kuasa kuda, tonaj, kapasiti angkat)</li>
+<li><strong>Tahap spesialisasi</strong> (fungsi asas vs maju)</li>
+<li><strong>Umur dan kondisi</strong> (peralatan baru mungkin bawa lebih mata)</li>
+<li><strong>Status pensijilan</strong> (pematuhan DOSH, dll.)</li>
+</ul>
+<h3 id="kategori-peralatan-utama--mata"><strong>Kategori Peralatan Utama &amp; Mata:</strong></h3>
+<p><strong>Pergerakan Tanah Berat (Mata Tinggi):</strong></p>
+<ul>
+<li><strong>Buldoser D7-D9:</strong> 25-40 mata setiap</li>
+<li><strong>Excavator besar (30+ tan):</strong> 20-35 mata setiap</li>
+<li><strong>Wheel loader (kelas 966-980):</strong> 15-25 mata setiap</li>
+<li><strong>Motor grader (14M-16M):</strong> 20-30 mata setiap</li>
+</ul>
+<p><strong>Angkat &amp; Pengendalian (Mata Premium):</strong></p>
+<ul>
+<li><strong>Mobile crane (50+ tan):</strong> 30-50 mata setiap</li>
+<li><strong>Tower crane:</strong> 35-60 mata setiap</li>
+<li><strong>Pam konkrit (mounted lori):</strong> 25-40 mata setiap</li>
+<li><strong>Crawler crane (100+ tan):</strong> 40-70 mata setiap</li>
+</ul>
+<p><strong>Pengeluaran Khusus (Mata Maksimum):</strong></p>
+<ul>
+<li><strong>Loji penghancur:</strong> 80-150 mata setiap</li>
+<li><strong>Loji asfalt:</strong> 100-200 mata setiap</li>
+<li><strong>Loji bancuhan konkrit:</strong> 60-120 mata setiap</li>
+<li><strong>Rig pancang:</strong> 40-80 mata setiap</li>
+</ul>
+<p><strong>Pembinaan Standard (Mata Asas):</strong></p>
+<ul>
+<li><strong>Backhoe loader:</strong> 8-15 mata setiap</li>
+<li><strong>Compactor:</strong> 5-12 mata setiap</li>
+<li><strong>Lori tipper:</strong> 3-8 mata setiap</li>
+<li><strong>Prime mover:</strong> 10-18 mata setiap</li>
+</ul>
+<h2 id="pakej-peralatan-strategik-untuk-naik-taraf-kelas-a">Pakej Peralatan Strategik untuk Naik Taraf Kelas A</h2>
+<h3 id="pakej-1-kontraktor-infrastruktur-rm-25j"><strong>Pakej 1: Kontraktor Infrastruktur (RM 2.5J)</strong></h3>
+<p><strong>Fokus:</strong> Jalan, saliran, projek kerja tanah</p>
+<p><strong>Campuran Peralatan:</strong></p>
+<ul>
+<li>2x Buldoser CAT D7 (RM 800,000 jumlah) = 50 mata</li>
+<li>3x Excavator PC350 (RM 900,000 jumlah) = 60 mata</li>
+<li>1x CAT 966 Wheel Loader (RM 280,000) = 20 mata</li>
+<li>2x Mobile Crane 40-tan (RM 520,000) = 60 mata</li>
+</ul>
+<p><strong>Jumlah Pelaburan:</strong> RM 2.5J | <strong>Jumlah Mata:</strong> 190+ | <strong>Pembiayaan:</strong> 100% tersedia</p>
+<p><strong>Mengapa Pakej Ini Berkesan:</strong></p>
+<ul>
+<li>Merangkumi 80% tender infrastruktur kerajaan</li>
+<li>Campuran peralatan kendalikan kebanyakan keperluan projek</li>
+<li>Nilai jualan semula kuat kekalkan keselamatan pembiayaan</li>
+<li>Peralatan terbukti yang bank faham</li>
+</ul>
+<h3 id="pakej-2-kontraktor-bangunan-rm-32j"><strong>Pakej 2: Kontraktor Bangunan (RM 3.2J)</strong></h3>
+<p><strong>Fokus:</strong> Tinggi, pembinaan komersial</p>
+<p><strong>Campuran Peralatan:</strong></p>
+<ul>
+<li>2x Tower Crane (RM 1,200,000 jumlah) = 100 mata</li>
+<li>2x Excavator Besar 45-tan (RM 800,000) = 60 mata</li>
+<li>1x Lori Pam Konkrit (RM 650,000) = 35 mata</li>
+<li>1x Mobile Crane 80-tan (RM 550,000) = 45 mata</li>
+</ul>
+<p><strong>Jumlah Pelaburan:</strong> RM 3.2J | <strong>Jumlah Mata:</strong> 240+ | <strong>Pembiayaan:</strong> 0% deposit</p>
+<p><strong>Mengapa Pakej Ini Berkesan:</strong></p>
+<ul>
+<li>Sasarkan projek bangunan nilai tinggi</li>
+<li>Tower crane jana pendapatan sewa</li>
+<li>Pam konkrit tutup keperluan khusus</li>
+<li>Kedudukan Kelas A yang kuat</li>
+</ul>
+<h3 id="pakej-3-infrastruktur-berat-rm-45j"><strong>Pakej 3: Infrastruktur Berat (RM 4.5J)</strong></h3>
+<p><strong>Fokus:</strong> Projek kerajaan utama, lebuhraya, jambatan</p>
+<p><strong>Campuran Peralatan:</strong></p>
+<ul>
+<li>1x Loji Penghancur Lengkap (RM 1,800,000) = 120 mata</li>
+<li>2x Buldoser D8 (RM 1,200,000) = 70 mata</li>
+<li>2x Excavator Besar 50-tan (RM 1,000,000) = 70 mata</li>
+<li>1x Crawler Crane 150-tan (RM 500,000) = 60 mata</li>
+</ul>
+<p><strong>Jumlah Pelaburan:</strong> RM 4.5J | <strong>Jumlah Mata:</strong> 320+ | <strong>Pembiayaan:</strong> Tersedia</p>
+<p><strong>Mengapa Pakej Ini Berkesan:</strong></p>
+<ul>
+<li>Layak untuk projek mega infrastruktur</li>
+<li>Loji penghancur jana pendapatan bebas</li>
+<li>Peralatan berat kendalikan kerja tanah utama</li>
+<li>Kedudukan Kelas A premium</li>
+</ul>
+<h2 id="strategi-umur-peralatan--pematuhan-cidb">Strategi Umur Peralatan &amp; Pematuhan CIDB</h2>
+<h3 id="apa-yang-sebenarnya-cidb-perlukan"><strong>Apa Yang Sebenarnya CIDB Perlukan:</strong></h3>
+<p><strong>Fleksibiliti Umur Peralatan:</strong></p>
+<ul>
+<li>CIDB tidak nyatakan umur maksimum peralatan</li>
+<li>Fokus pada <strong>produktiviti dan pematuhan</strong></li>
+<li>Peralatan lama yang diselenggara baik layak</li>
+<li>Dokumentasi dan pensijilan yang paling penting</li>
+</ul>
+<p><strong>Salah Tanggapan Biasa:</strong></p>
+<ul>
+<li>“Peralatan mesti baru” (SALAH - kondisi yang penting)</li>
+<li>“Bank tak biayai peralatan lama” (BENAR - tetapi kami akan)</li>
+<li>“Peralatan lama tak dikira” (SALAH - jika produktif)</li>
+<li>“Mesti beli dari dealer sahaja” (SALAH - jualan swasta boleh)</li>
+</ul>
+<h3 id="strategi-umur-peralatan-kami"><strong>Strategi Umur Peralatan Kami:</strong></h3>
+<p><strong>Peralatan Sweet Spot (7-12 tahun):</strong></p>
+<ul>
+<li><strong>60% kos lebih rendah</strong> daripada peralatan baru setara</li>
+<li>Masih <strong>10+ tahun hayat produktif</strong> berbaki</li>
+<li>Kebolehpercayaan terbukti dan sejarah penyelenggaraan</li>
+<li>Nilai pembiayaan kuat kerana susut nilai stabil</li>
+</ul>
+<p><strong>Kisah Kejayaan - CAT D8 13 Tahun:</strong>
+Ahmad beli CAT D8 13 tahun untuk RM 380,000 (vs RM 850,000 baru). Bank kata “terlalu lama.” Kami biayai 100%. Tiga tahun kemudian, masih mengendalikan projek utama setiap hari. Jumlah kos operasi 65% kurang daripada peralatan baru.</p>
+<h2 id="masalah-pembiayaan-bank-untuk-naik-taraf-cidb">Masalah Pembiayaan Bank untuk Naik Taraf CIDB</h2>
+<h3 id="mengapa-bank-tolak-pembiayaan-peralatan-cidb"><strong>Mengapa Bank Tolak Pembiayaan Peralatan CIDB:</strong></h3>
+<p><strong>Sekatan Umur:</strong></p>
+<ul>
+<li>Kebanyakan bank hadkan pembiayaan peralatan kepada 5 tahun</li>
+<li>Naik taraf CIDB sering perlukan peralatan terpakai mampu milik</li>
+<li>Peralatan 7-15 tahun tawar nilai terbaik tetapi bank tak sentuh</li>
+</ul>
+<p><strong>Keperluan Kompleks:</strong></p>
+<ul>
+<li>Bank tak faham sistem mata CIDB</li>
+<li>Tidak jelas penilaian peralatan untuk jentera lama</li>
+<li>Mengelak risiko pelaburan klasifikasi kontraktor</li>
+</ul>
+<p><strong>Kelulusan Lambat:</strong></p>
+<ul>
+<li>Proses kelulusan 4-8 minggu tipikal</li>
+<li>Naik taraf CIDB sering ada tekanan deadline</li>
+<li>Keperluan dokumentasi kompleks</li>
+</ul>
+<p><strong>Pemahaman Terhad:</strong></p>
+<ul>
+<li>Pegawai bank tak faham industri pembinaan</li>
+<li>Tiada penghargaan produktiviti peralatan vs umur</li>
+<li>Penilaian konservatif tak cermin utiliti sebenar</li>
+</ul>
+<h3 id="bagaimana-kami-berbeza"><strong>Bagaimana Kami Berbeza:</strong></h3>
+<p><strong>Fleksibiliti Umur Peralatan:</strong></p>
+<ul>
+<li>Biayai peralatan <strong>10+ tahun</strong> yang bank tolak</li>
+<li>Faham hubungan <strong>produktiviti vs umur</strong></li>
+<li>Fokus pada <strong>kondisi peralatan</strong> bukan tarikh pembuatan</li>
+</ul>
+<p><strong>Kepakaran CIDB:</strong></p>
+<ul>
+<li>Pengetahuan mendalam sistem mata dan keperluan</li>
+<li>Bantu struktur campuran peralatan untuk klasifikasi optimum</li>
+<li>Faham strategi dan timing naik taraf kontraktor</li>
+</ul>
+<p><strong>Kelulusan Pantas:</strong></p>
+<ul>
+<li><strong>Kelulusan pantas</strong> direka untuk timeline kontraktor</li>
+<li>Kepakaran industri cepatkan proses penilaian</li>
+<li>Faham keperluan mendesak deadline klasifikasi</li>
+</ul>
+<h2 id="proses-naik-taraf-cidb-kelas-a-langkah-demi-langkah">Proses Naik Taraf CIDB Kelas A Langkah-demi-Langkah</h2>
+<h3 id="fasa-1-penilaian-semasa-minggu-1"><strong>Fasa 1: Penilaian Semasa (Minggu 1)</strong></h3>
+<p><strong>Audit Peralatan:</strong></p>
+<ol>
+<li>Senarai semua peralatan dimiliki semasa dengan nilai</li>
+<li>Kira jumlah nilai peralatan semasa</li>
+<li>Tentukan mata CIDB semasa</li>
+<li>Kenal pasti jurang untuk capai keperluan minimum Kelas A</li>
+</ol>
+<p><strong>Kesiapan Kewangan:</strong></p>
+<ol>
+<li>Semak kedudukan kewangan syarikat</li>
+<li>Nilai kapasiti hutang untuk pembiayaan peralatan</li>
+<li>Rancang aliran tunai untuk operasi naik taraf</li>
+<li>Sedia dokumentasi untuk permohonan pembiayaan</li>
+</ol>
+<h3 id="fasa-2-strategi-peralatan-minggu-2"><strong>Fasa 2: Strategi Peralatan (Minggu 2)</strong></h3>
+<p><strong>Pemilihan Peralatan:</strong></p>
+<ol>
+<li>Pilih campuran peralatan maksimum mata CIDB per ringgit</li>
+<li>Seimbangkan keperluan segera vs keperluan klasifikasi</li>
+<li>Pertimbang peralatan dengan potensi pendapatan sewa</li>
+<li>Rancang untuk produktiviti dan penggunaan berterusan</li>
+</ol>
+<p><strong>Perancangan Pembiayaan:</strong></p>
+<ol>
+<li>Hantar permohonan pra-kelulusan pembiayaan</li>
+<li>Dapatkan penilaian peralatan dan sebut harga</li>
+<li>Struktur syarat pembiayaan dan jadual pembayaran</li>
+<li>Sahkan jumlah pelaburan dan komitmen bulanan</li>
+</ol>
+<h3 id="fasa-3-pemerolehan-peralatan-minggu-3-4"><strong>Fasa 3: Pemerolehan Peralatan (Minggu 3-4)</strong></h3>
+<p><strong>Pelaksanaan Pembelian:</strong></p>
+<ol>
+<li>Muktamadkan pemilihan peralatan dan pembekal</li>
+<li>Lengkapkan dokumentasi dan kelulusan pembiayaan</li>
+<li>Koordinat pemeriksaan dan penghantaran peralatan</li>
+<li>Atur insurans dan pendaftaran</li>
+</ol>
+<p><strong>Dokumentasi CIDB:</strong></p>
+<ol>
+<li>Sedia dokumentasi pemilikan peralatan</li>
+<li>Hantar permohonan naik taraf klasifikasi CIDB</li>
+<li>Koordinat pemeriksaan peralatan jika diperlukan</li>
+<li>Lengkapkan kertas kerja pensijilan dan pematuhan</li>
+</ol>
+<h3 id="fasa-4-penyiapan-klasifikasi-minggu-5-8"><strong>Fasa 4: Penyiapan Klasifikasi (Minggu 5-8)</strong></h3>
+<p><strong>Pemprosesan CIDB:</strong></p>
+<ol>
+<li>Semakan CIDB permohonan dan dokumentasi</li>
+<li>Lawatan tapak dan pengesahan peralatan (jika diperlukan)</li>
+<li>Semakan jawatankuasa klasifikasi dan keputusan</li>
+<li>Pengeluaran sijil Kelas A baru</li>
+</ol>
+<p><strong>Peralihan Operasi:</strong></p>
+<ol>
+<li>Kemaskini keupayaan tender dan pemasaran</li>
+<li>Mula bida projek Kelas A</li>
+<li>Laras operasi untuk skala projek lebih tinggi</li>
+<li>Bina hubungan dengan pembekal dan klien Kelas A</li>
+</ol>
+<h2 id="mengapa-pilih-ing-heng-credit-untuk-pembiayaan-peralatan-cidb">Mengapa Pilih Ing Heng Credit untuk Pembiayaan Peralatan CIDB</h2>
+<h3 id="spesialisasi-cidb"><strong>Spesialisasi CIDB:</strong></h3>
+<ul>
+<li><strong>15+ tahun</strong> pengalaman naik taraf klasifikasi kontraktor</li>
+<li>Pemahaman mendalam keperluan dan proses CIDB</li>
+<li>Rekod kejayaan pembiayaan naik taraf Kelas A</li>
+<li>Hubungan dan pengetahuan industri</li>
+</ul>
+<h3 id="kepakaran-peralatan"><strong>Kepakaran Peralatan:</strong></h3>
+<ul>
+<li>Biayai peralatan <strong>10+ tahun</strong> yang bank tak sentuh</li>
+<li>Faham penilaian produktiviti dan nilai peralatan</li>
+<li>Kategori dan spesialisasi peralatan komprehensif</li>
+<li>Sokongan integrasi dan pemodenan teknologi</li>
+</ul>
+<h3 id="perkhidmatan-fokus-kontraktor"><strong>Perkhidmatan Fokus Kontraktor:</strong></h3>
+<ul>
+<li><strong>Pilihan 0% deposit</strong> kekalkan tunai untuk operasi</li>
+<li><strong>Kelulusan pantas</strong> untuk naik taraf CIDB sensitif masa</li>
+<li><strong>Syarat fleksibel</strong> sejajar aliran tunai kontraktor</li>
+<li><strong>Pemahaman industri</strong> cabaran dan peluang kontraktor</li>
+</ul>
+<hr>
+<h2 id="ambil-tindakan-naik-taraf-ke-cidb-kelas-a-hari-ini">Ambil Tindakan: Naik Taraf ke CIDB Kelas A Hari Ini</h2>
+<p>Bila anda melihat pengumuman tender kerajaan RM 50 juta seterusnya, bila senarai keperluan peralatan semua yang anda perlukan tetapi tidak miliki, bila anda mengira perbezaan pendapatan bulanan antara projek Kelas B dan Kelas A - jangan biarkan pembiayaan peralatan jadi penghalang.</p>
+<p><strong>Naik taraf CIDB Kelas A anda bermula dengan satu keputusan pembiayaan peralatan.</strong></p>
+<h3 id="hubungi-ing-heng-credit-hari-ini"><strong>Hubungi Ing Heng Credit Hari Ini:</strong></h3>
+<p>📞 <strong>WhatsApp: +60175700889</strong> (Respons Segera)<br>
+📧 <strong>Email: <a href="mailto:enquiry@inghengcredit.com">enquiry@inghengcredit.com</a></strong><br>
+🏢 <strong>Lawat Kami: 306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor</strong></p>
+<h3 id="pakar-pembiayaan-peralatan-cidb-kelas-a"><strong>Pakar Pembiayaan Peralatan CIDB Kelas A:</strong></h3>
+<p>✅ <strong>Pakej Peralatan CIDB 0% Deposit</strong><br>
+✅ <strong>Peralatan 10+ Tahun (Bank Tolak, Kami Luluskan)</strong><br>
+✅ <strong>Strategi &amp; Perancangan Peralatan Kelas A Lengkap</strong><br>
+✅ <strong>Kelulusan Pantas untuk Keperluan Deadline CIDB</strong><br>
+✅ <strong>Pembiayaan Pakej Peralatan RM 2J-10J</strong></p>
+<p><strong>Waktu Perniagaan:</strong><br>
+Isnin-Jumaat: 9:00 AM - 5:00 PM<br>
+Sabtu: 9:00 AM - 1:00 PM</p>
+<hr>
+<p><strong>Bersedia untuk status kontraktor Kelas A?</strong> Rakan pembiayaan peralatan anda faham betul apa yang diperlukan. Mari buka kunci tender kerajaan utama dan transformasi perniagaan pembinaan anda.</p>
+<p><strong>Ingat:</strong> Setiap bulan anda kekal Kelas B adalah pendapatan yang tidak anda perolehi. Kontraktor yang naik taraf dahulu dapat kelebihan kompetitif dan projek premium. Perjalanan Kelas A anda bermula dengan pembelian peralatan seterusnya.</p>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Equipment Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    border: 2px solid #2D1810;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background: #D4A574;
+    color: #2D1810;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

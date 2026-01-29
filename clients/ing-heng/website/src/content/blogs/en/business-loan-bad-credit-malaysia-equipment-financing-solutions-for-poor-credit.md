@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Business Tips  December 21, 2024      8 min read
-  #  Business Loan Bad Credit Malaysia - Equipment Financing Solutions for Poor Credit 
-
-  Bad credit blocking your business loan? Get 0% deposit equipment financing for excavators, trucks, and cranes. Alternative lenders approve when banks will not. 
-
-     By Ing Heng Credit &amp; Leasing     # Business Loan Bad Credit Malaysia: Equipment Financing When Banks Say No
 
 ## The Bad Credit Trap That Destroys Business Dreams
 

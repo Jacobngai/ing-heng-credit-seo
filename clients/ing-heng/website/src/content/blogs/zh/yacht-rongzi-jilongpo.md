@@ -3,7 +3,7 @@ title: "游艇融资吉隆坡 - 0%首付海洋船只贷款马来西亚"
 description: "在吉隆坡获得游艇融资批准。银行拒绝豪华船只贷款？我们专门提供海洋船只融资，0%首付选择高达RM5百万。"
 publishDate: 2024-12-24
 tags: ["游艇融资吉隆坡", "船只贷款马来西亚", "海洋船只融资", "豪华游艇贷款"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

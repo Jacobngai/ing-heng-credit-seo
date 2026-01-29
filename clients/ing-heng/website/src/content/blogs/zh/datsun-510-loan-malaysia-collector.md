@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Datsun 510融资 - 0%首付经典车收藏投资"
 description: "0%首付融资您的梦想Datsun 510。跳过银行拒绝，为这款升值的经典JDM偶像获得100%资金。专业收藏家融资解决方案。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

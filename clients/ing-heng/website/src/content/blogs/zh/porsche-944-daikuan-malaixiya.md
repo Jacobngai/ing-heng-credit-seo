@@ -1,7 +1,7 @@
 ---
 title: "保时捷944贷款马来西亚 - 0%首付德国工程投资"
 description: "为您的保时捷944获得0%首付融资。专家经典车贷款解决方案，为升值的德国跑车卓越性提供竞争性利率。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

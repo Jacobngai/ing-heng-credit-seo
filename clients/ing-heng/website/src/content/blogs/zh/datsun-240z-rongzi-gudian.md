@@ -3,7 +3,7 @@ title: "Datsun 240Z融资古典车马来西亚 - 0%首付可用"
 description: "获得Datsun 240Z古典车融资批准在马来西亚。银行拒绝经典车？我们专门提供经典车辆贷款，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["datsun 240z融资", "古典车贷款马来西亚", "经典车辆融资", "datsun融资"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

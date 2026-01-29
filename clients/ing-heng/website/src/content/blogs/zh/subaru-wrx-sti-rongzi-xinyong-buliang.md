@@ -1,7 +1,7 @@
 ---
 title: "Subaru WRX STI 融资信用不良：马来西亚0%首付批准解决方案"
 description: "在马来西亚即使信用不良也能获得Subaru WRX STI融资。0%首付、快速批准、无银行拒绝。为信用困难买家提供性能车贷款。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["Subaru WRX STI", "不良信用融资", "性能车贷款", "0%首付", "马来西亚"]
 publishDate: 2025-01-15
 author: "ING HENG Credit"

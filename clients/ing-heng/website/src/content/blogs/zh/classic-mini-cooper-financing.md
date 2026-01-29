@@ -1,7 +1,7 @@
 ---
 title: "马来西亚经典Mini Cooper融资 - 0%首付英国标志贷款"
 description: "在马来西亚获得0%首付的经典Mini Cooper融资。银行拒绝古董Mini？我们批准1959-2000年所有Mini车型的贷款。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

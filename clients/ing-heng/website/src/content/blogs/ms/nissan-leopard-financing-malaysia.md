@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Nissan Leopard Malaysia - 0% Deposit Impian Kemewahan Eksekutif"
 description: "Biayai Nissan Leopard langka anda dengan 0% deposit. Rasai kemewahan gred VIP dan kecemerlangan enjin RB. Kelulusan pantas untuk peminat sedan eksekutif yang mencari kehalusan era bubble."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

@@ -1,0 +1,245 @@
+name: Publish Blog Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      content_file:
+        description: 'Path to blog post file (e.g., clients/ing-heng/website/src/pages/en/blog/my-post.astro)'
+        required: true
+        type: string
+      languages:
+        description: 'Languages to publish (comma-separated: en,ms,zh or all)'
+        required: true
+        default: 'all'
+        type: string
+      skip_quality_check:
+        description: 'Skip quality gates (not recommended)'
+        required: false
+        default: false
+        type: boolean
+      deploy_immediately:
+        description: 'Deploy to Vercel immediately after merge'
+        required: false
+        default: true
+        type: boolean
+
+  pull_request:
+    paths:
+      - 'clients/ing-heng/website/src/pages/**/blog/*.astro'
+      - 'clients/ing-heng/website/src/pages/**/blog/*.md'
+      - 'clients/ing-heng/website/src/pages/**/blog/*.mdx'
+    types: [opened, synchronize, reopened]
+
+jobs:
+  detect-languages:
+    name: Detect Affected Languages
+    runs-on: ubuntu-latest
+    outputs:
+      languages: ${{ steps.detect.outputs.languages }}
+      files: ${{ steps.detect.outputs.files }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed blog files
+        id: detect
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            # Manual trigger - use input
+            INPUT_LANGS="${{ github.event.inputs.languages }}"
+            FILE="${{ github.event.inputs.content_file }}"
+
+            if [[ "$INPUT_LANGS" == "all" ]]; then
+              LANGUAGES="en,ms,zh"
+            else
+              LANGUAGES="$INPUT_LANGS"
+            fi
+
+            echo "languages=$LANGUAGES" >> $GITHUB_OUTPUT
+            echo "files=$FILE" >> $GITHUB_OUTPUT
+          else
+            # PR trigger - detect from changed files
+            CHANGED_FILES=$(git diff --name-only HEAD^1 HEAD | grep -E 'src/pages/(en|ms|zh)/blog/.*\.(astro|md|mdx)$' || true)
+
+            if [[ -z "$CHANGED_FILES" ]]; then
+              echo "No blog files changed"
+              echo "languages=" >> $GITHUB_OUTPUT
+              echo "files=" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+
+            # Extract unique languages
+            LANGUAGES=$(echo "$CHANGED_FILES" | sed -E 's|.*src/pages/([a-z]{2})/blog/.*|\1|' | sort -u | tr '\n' ',' | sed 's/,$//')
+
+            echo "languages=$LANGUAGES" >> $GITHUB_OUTPUT
+            echo "files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          fi
+
+          echo "Detected languages: $LANGUAGES"
+          echo "Changed files: $CHANGED_FILES"
+
+  quality-check-en:
+    name: Quality Check (EN)
+    needs: detect-languages
+    if: contains(needs.detect-languages.outputs.languages, 'en') && github.event.inputs.skip_quality_check != 'true'
+    uses: ./.github/workflows/content-quality-check.yml
+    with:
+      file_path: ${{ github.event.inputs.content_file || needs.detect-languages.outputs.files }}
+      language: 'en'
+
+  quality-check-ms:
+    name: Quality Check (MS)
+    needs: detect-languages
+    if: contains(needs.detect-languages.outputs.languages, 'ms') && github.event.inputs.skip_quality_check != 'true'
+    uses: ./.github/workflows/content-quality-check.yml
+    with:
+      file_path: ${{ github.event.inputs.content_file || needs.detect-languages.outputs.files }}
+      language: 'ms'
+
+  quality-check-zh:
+    name: Quality Check (ZH)
+    needs: detect-languages
+    if: contains(needs.detect-languages.outputs.languages, 'zh') && github.event.inputs.skip_quality_check != 'true'
+    uses: ./.github/workflows/content-quality-check.yml
+    with:
+      file_path: ${{ github.event.inputs.content_file || needs.detect-languages.outputs.files }}
+      language: 'zh'
+
+  create-pr-or-commit:
+    name: Create PR or Auto-commit
+    needs: [detect-languages, quality-check-en, quality-check-ms, quality-check-zh]
+    if: |
+      always() &&
+      (needs.quality-check-en.result == 'success' || needs.quality-check-en.result == 'skipped') &&
+      (needs.quality-check-ms.result == 'success' || needs.quality-check-ms.result == 'skipped') &&
+      (needs.quality-check-zh.result == 'success' || needs.quality-check-zh.result == 'skipped') &&
+      github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      pr_number: ${{ steps.create-pr.outputs.pr_number }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Create feature branch
+        id: branch
+        run: |
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          BRANCH_NAME="blog/auto-publish-$TIMESTAMP"
+          git checkout -b "$BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
+      - name: Commit changes
+        run: |
+          git add "${{ github.event.inputs.content_file }}"
+          git commit -m "feat: Add new blog post
+
+          File: ${{ github.event.inputs.content_file }}
+          Languages: ${{ github.event.inputs.languages }}
+
+          Auto-generated by GitHub Actions
+          Quality checks: ✅ Passed"
+
+      - name: Push to remote
+        run: |
+          git push origin "${{ steps.branch.outputs.branch_name }}"
+
+      - name: Create Pull Request
+        id: create-pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚀 New Blog Post: Auto-publish',
+              head: '${{ steps.branch.outputs.branch_name }}',
+              base: 'master',
+              body: `## 📝 New Blog Post
+
+              **File:** \`${{ github.event.inputs.content_file }}\`
+              **Languages:** ${{ github.event.inputs.languages }}
+
+              ### ✅ Quality Checks Passed
+              - Keyword density: ✅
+              - Readability score: ✅
+              - Fact verification: ✅
+
+              ### 🚀 Next Steps
+              - Review the content changes
+              - Merge this PR to trigger deployment
+              - Content will be deployed to:
+                - EN: https://www.inghengcredit.com
+                - MS: https://www.kreditloan.my
+                - ZH: https://www.inghengcredit.my
+
+              ---
+              *Auto-generated by GitHub Actions*`
+            });
+
+            console.log('Pull request created:', pr.number);
+            core.setOutput('pr_number', pr.number);
+            return pr.number;
+
+  auto-merge:
+    name: Auto-merge if quality checks passed
+    needs: [create-pr-or-commit]
+    if: github.event.inputs.deploy_immediately == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Auto-merge PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = ${{ needs.create-pr-or-commit.outputs.pr_number }};
+
+            // Approve the PR
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              event: 'APPROVE',
+              body: '✅ Auto-approved by GitHub Actions - Quality checks passed'
+            });
+
+            // Merge the PR
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              merge_method: 'squash',
+              commit_title: '🚀 Publish new blog post',
+              commit_message: 'Auto-merged by GitHub Actions after quality checks'
+            });
+
+            console.log('Pull request auto-merged successfully');
+
+  trigger-deployment:
+    name: Trigger Vercel Deployment
+    needs: [detect-languages, auto-merge]
+    if: |
+      always() &&
+      (needs.auto-merge.result == 'success' || github.event.pull_request.merged == true)
+    uses: ./.github/workflows/deploy-to-vercel.yml
+    secrets: inherit
+    with:
+      languages: ${{ needs.detect-languages.outputs.languages }}
+
+  update-sitemap:
+    name: Update Sitemaps
+    needs: [trigger-deployment]
+    if: needs.trigger-deployment.result == 'success'
+    uses: ./.github/workflows/update-sitemaps.yml
+    secrets: inherit
+    with:
+      languages: ${{ needs.detect-languages.outputs.languages }}

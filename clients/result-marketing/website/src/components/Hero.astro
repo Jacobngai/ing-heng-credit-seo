@@ -1,0 +1,153 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaText?: string;
+  ctaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
+  belowButtonsText?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  badge?: string;
+}
+
+const {
+  title,
+  subtitle,
+  ctaText,
+  ctaLink,
+  secondaryCtaText,
+  secondaryCtaLink,
+  belowButtonsText,
+  imageSrc,
+  imageAlt = 'Hero image',
+  badge
+} = Astro.props;
+---
+
+<!-- Hero Section - Bold & Disruptive -->
+<section class="relative overflow-hidden bg-gradient-mesh text-white">
+  <!-- Animated Background Elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Glowing Orbs -->
+    <div class="absolute top-20 left-10 w-64 h-64 bg-primary-600/20 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 left-1/2 w-72 h-72 bg-primary-600/10 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+
+    <!-- Grid Pattern Overlay -->
+    <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid-disruptive" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(124, 58, 237, 0.5)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid-disruptive)" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="container-custom relative">
+    <div class="py-20 md:py-28 lg:py-36">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="space-y-8">
+          <!-- Badge -->
+          {badge && (
+            <div class="inline-flex">
+              <span class="badge badge-accent animate-pulse-slow">
+                {badge}
+              </span>
+            </div>
+          )}
+
+          <!-- Main Heading -->
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
+            {title}
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-xl md:text-2xl text-secondary-400 leading-relaxed max-w-2xl" set:html={subtitle} />
+
+          <!-- CTA Buttons -->
+          {(ctaText || secondaryCtaText) && (
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              {ctaText && ctaLink && (
+                <a href={ctaLink} class="btn btn-primary px-12 py-5 text-xl shadow-glow-purple min-h-[60px]">
+                  {ctaText}
+                </a>
+              )}
+              {secondaryCtaText && secondaryCtaLink && (
+                <a
+                  href={secondaryCtaLink}
+                  class="btn btn-secondary px-12 py-5 text-xl font-bold min-h-[60px]"
+                >
+                  {secondaryCtaText}
+                </a>
+              )}
+            </div>
+          )}
+
+          <!-- Text Below Buttons -->
+          {belowButtonsText && (
+            <p class="text-sm text-secondary-500 text-center pt-2" set:html={belowButtonsText} />
+          )}
+
+          <!-- Trust Stats - Bold Style -->
+          <div class="grid grid-cols-3 gap-6 pt-8 border-t border-secondary-800">
+            <div class="space-y-1">
+              <div class="text-3xl md:text-4xl font-black gradient-text">500%+</div>
+              <div class="text-sm text-secondary-500 uppercase tracking-wide font-semibold">Traffic Growth</div>
+            </div>
+            <div class="space-y-1">
+              <div class="text-3xl md:text-4xl font-black gradient-text">3</div>
+              <div class="text-sm text-secondary-500 uppercase tracking-wide font-semibold">Languages</div>
+            </div>
+            <div class="space-y-1">
+              <div class="text-3xl md:text-4xl font-black gradient-text">RM399</div>
+              <div class="text-sm text-secondary-500 uppercase tracking-wide font-semibold">Starting Price</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image/Visual -->
+        {imageSrc && (
+          <div class="relative">
+            <!-- Main Image Container with Glow Border -->
+            <div class="relative aspect-square lg:aspect-square rounded-3xl overflow-hidden border-3 border-primary-600/50 shadow-2xl">
+              <!-- Glow Effect Behind -->
+              <div class="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-accent-500/20 blur-xl"></div>
+
+              <!-- Image -->
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                class="relative w-full h-full object-cover"
+                loading="eager"
+              />
+
+              <!-- Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent"></div>
+
+              <!-- Floating Badge -->
+              <div class="absolute bottom-6 left-6 right-6">
+                <div class="bg-secondary-900/95 backdrop-blur-sm border border-primary-600/50 rounded-xl p-4">
+                  <div class="text-sm text-secondary-400 uppercase tracking-wide font-semibold mb-1">Trusted By</div>
+                  <div class="text-xl font-bold text-white">20+ Businesses</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Decorative Corner Elements -->
+            <div class="absolute -top-3 -left-3 w-24 h-24 border-t-4 border-l-4 border-primary-600 rounded-tl-3xl"></div>
+            <div class="absolute -bottom-3 -right-3 w-24 h-24 border-b-4 border-r-4 border-accent-500 rounded-br-3xl"></div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Gradient Fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-dark to-transparent pointer-events-none"></div>
+</section>

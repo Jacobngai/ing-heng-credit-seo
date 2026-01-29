@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Toyota Altezza RS200 Malaysia - Pinjaman Enjin Beams 0% Deposit"
 description: "Dapatkan pembiayaan Toyota Altezza RS200 di Malaysia dengan pilihan 0% deposit. Lulus untuk sedan sukan naturally aspirated jarang ini dengan enjin 3S-GE Beams legenda."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

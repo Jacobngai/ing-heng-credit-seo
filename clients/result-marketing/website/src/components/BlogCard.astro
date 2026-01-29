@@ -1,0 +1,63 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
+  category: string;
+  date: string;
+  author: string;
+  readingTime?: number;
+}
+
+const {
+  title,
+  description,
+  href,
+  image,
+  category,
+  date,
+  author,
+  readingTime
+} = Astro.props;
+---
+
+<article class="card card-hover h-full flex flex-col overflow-hidden">
+  {image && (
+    <div class="aspect-video overflow-hidden -m-6 mb-0">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+  )}
+
+  <div class={`flex flex-col flex-grow ${image ? 'p-6' : ''}`}>
+    <div class="flex items-center gap-3 mb-3">
+      <span class="badge badge-primary text-xs">{category}</span>
+      <span class="text-sm text-gray-500">{readingTime} min read</span>
+    </div>
+
+    <h3 class="text-xl font-heading font-bold text-dark mb-3 line-clamp-2">
+      <a href={href} class="hover:text-primary-600 transition-colors">
+        {title}
+      </a>
+    </h3>
+
+    <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+      {description}
+    </p>
+
+    <div class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-200">
+      <span>{author}</span>
+      <time datetime={date}>
+        {new Date(date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        })}
+      </time>
+    </div>
+  </div>
+</article>

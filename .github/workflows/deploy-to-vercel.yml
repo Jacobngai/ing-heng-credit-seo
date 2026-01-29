@@ -1,0 +1,267 @@
+name: Deploy to Vercel
+
+on:
+  workflow_call:
+    inputs:
+      languages:
+        required: true
+        type: string
+        description: 'Comma-separated languages to deploy (en,ms,zh)'
+    secrets:
+      VERCEL_TOKEN:
+        required: true
+      VERCEL_ORG_ID:
+        required: true
+
+  workflow_dispatch:
+    inputs:
+      languages:
+        description: 'Languages to deploy (comma-separated: en,ms,zh or all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - en
+          - ms
+          - zh
+          - en,ms
+          - en,zh
+          - ms,zh
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+jobs:
+  prepare-deployment:
+    name: Prepare Deployment Matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Set deployment matrix
+        id: set-matrix
+        run: |
+          INPUT_LANGS="${{ inputs.languages }}"
+
+          if [[ "$INPUT_LANGS" == "all" ]]; then
+            LANGUAGES="en,ms,zh"
+          else
+            LANGUAGES="$INPUT_LANGS"
+          fi
+
+          # Create JSON array for matrix
+          MATRIX_JSON=$(echo "$LANGUAGES" | jq -R -s -c 'split(",") | map(select(length > 0))')
+
+          echo "matrix=$MATRIX_JSON" >> $GITHUB_OUTPUT
+          echo "Deploying languages: $MATRIX_JSON"
+
+  deploy-en:
+    name: Deploy English (EN)
+    needs: prepare-deployment
+    if: contains(needs.prepare-deployment.outputs.matrix, 'en')
+    runs-on: ubuntu-latest
+    environment:
+      name: production-en
+      url: https://www.inghengcredit.com
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'clients/ing-heng/website/package-lock.json'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel Environment Information
+        working-directory: clients/ing-heng/website
+        run: |
+          # Create .vercel directory if it doesn't exist
+          mkdir -p .vercel
+
+          # Configure for EN project
+          echo '{"projectId":"prj_FyozN2vmJ0OwPbgH3GhzOwW4jXnw","orgId":"team_ZRACGuujUQkB6IRfNtWpe0T6"}' > .vercel/project.json
+
+          # Pull environment
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build Project
+        working-directory: clients/ing-heng/website
+        run: vercel build --prod --token=$VERCEL_TOKEN
+        env:
+          PUBLIC_DEFAULT_LOCALE: en
+          DEFAULT_LOCALE: en
+          PUBLIC_SITE_URL: https://www.inghengcredit.com
+          SITE_URL: https://www.inghengcredit.com
+
+      - name: Deploy to Vercel
+        working-directory: clients/ing-heng/website
+        run: |
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN \
+            --env PUBLIC_DEFAULT_LOCALE=en \
+            --env DEFAULT_LOCALE=en \
+            --env PUBLIC_SITE_URL=https://www.inghengcredit.com \
+            --env SITE_URL=https://www.inghengcredit.com
+
+      - name: Verify deployment
+        run: |
+          echo "✅ English (EN) deployed successfully to https://www.inghengcredit.com"
+
+  deploy-ms:
+    name: Deploy Malay (MS)
+    needs: prepare-deployment
+    if: contains(needs.prepare-deployment.outputs.matrix, 'ms')
+    runs-on: ubuntu-latest
+    environment:
+      name: production-ms
+      url: https://www.kreditloan.my
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'clients/ing-heng/website/package-lock.json'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel Environment Information
+        working-directory: clients/ing-heng/website
+        run: |
+          # Create .vercel directory if it doesn't exist
+          mkdir -p .vercel
+
+          # Configure for MS project
+          echo '{"projectId":"prj_eKJtQcTcOd69sER92xq8NeS1SD4y","orgId":"team_ZRACGuujUQkB6IRfNtWpe0T6"}' > .vercel/project.json
+
+          # Pull environment
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build Project
+        working-directory: clients/ing-heng/website
+        run: vercel build --prod --token=$VERCEL_TOKEN
+        env:
+          PUBLIC_DEFAULT_LOCALE: ms
+          DEFAULT_LOCALE: ms
+          PUBLIC_SITE_URL: https://www.kreditloan.my
+          SITE_URL: https://www.kreditloan.my
+
+      - name: Deploy to Vercel
+        working-directory: clients/ing-heng/website
+        run: |
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN \
+            --env PUBLIC_DEFAULT_LOCALE=ms \
+            --env DEFAULT_LOCALE=ms \
+            --env PUBLIC_SITE_URL=https://www.kreditloan.my \
+            --env SITE_URL=https://www.kreditloan.my
+
+      - name: Verify deployment
+        run: |
+          echo "✅ Malay (MS) deployed successfully to https://www.kreditloan.my"
+
+  deploy-zh:
+    name: Deploy Chinese (ZH)
+    needs: prepare-deployment
+    if: contains(needs.prepare-deployment.outputs.matrix, 'zh')
+    runs-on: ubuntu-latest
+    environment:
+      name: production-zh
+      url: https://www.inghengcredit.my
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'clients/ing-heng/website/package-lock.json'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull Vercel Environment Information
+        working-directory: clients/ing-heng/website
+        run: |
+          # Create .vercel directory if it doesn't exist
+          mkdir -p .vercel
+
+          # Configure for ZH project
+          echo '{"projectId":"prj_z3Fq1Al7iR5MTrsZEVct5Zj2JZl7","orgId":"team_ZRACGuujUQkB6IRfNtWpe0T6"}' > .vercel/project.json
+
+          # Pull environment
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build Project
+        working-directory: clients/ing-heng/website
+        run: vercel build --prod --token=$VERCEL_TOKEN
+        env:
+          PUBLIC_DEFAULT_LOCALE: zh
+          DEFAULT_LOCALE: zh
+          PUBLIC_SITE_URL: https://www.inghengcredit.my
+          SITE_URL: https://www.inghengcredit.my
+
+      - name: Deploy to Vercel
+        working-directory: clients/ing-heng/website
+        run: |
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN \
+            --env PUBLIC_DEFAULT_LOCALE=zh \
+            --env DEFAULT_LOCALE=zh \
+            --env PUBLIC_SITE_URL=https://www.inghengcredit.my \
+            --env SITE_URL=https://www.inghengcredit.my
+
+      - name: Verify deployment
+        run: |
+          echo "✅ Chinese (ZH) deployed successfully to https://www.inghengcredit.my"
+
+  deployment-summary:
+    name: Deployment Summary
+    needs: [deploy-en, deploy-ms, deploy-zh]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate summary
+        run: |
+          echo "# 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Deployment Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [[ "${{ needs.deploy-en.result }}" == "success" ]]; then
+            echo "- ✅ **English (EN)**: https://www.inghengcredit.com" >> $GITHUB_STEP_SUMMARY
+          elif [[ "${{ needs.deploy-en.result }}" == "skipped" ]]; then
+            echo "- ⏭️ **English (EN)**: Skipped" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ **English (EN)**: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.deploy-ms.result }}" == "success" ]]; then
+            echo "- ✅ **Malay (MS)**: https://www.kreditloan.my" >> $GITHUB_STEP_SUMMARY
+          elif [[ "${{ needs.deploy-ms.result }}" == "skipped" ]]; then
+            echo "- ⏭️ **Malay (MS)**: Skipped" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ **Malay (MS)**: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.deploy-zh.result }}" == "success" ]]; then
+            echo "- ✅ **Chinese (ZH)**: https://www.inghengcredit.my" >> $GITHUB_STEP_SUMMARY
+          elif [[ "${{ needs.deploy-zh.result }}" == "skipped" ]]; then
+            echo "- ⏭️ **Chinese (ZH)**: Skipped" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ **Chinese (ZH)**: Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*Deployment completed at $(date -u)*" >> $GITHUB_STEP_SUMMARY

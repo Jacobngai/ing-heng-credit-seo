@@ -1,14 +1,14 @@
 ---
 /**
- * English Blog Index Page - Updated with Live Site Design
+ * English Blog Index Page - Matching Live Site Design
  * Equipment Financing Blog - Expert Tips & Industry Guides
  */
 
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
-import CTAButton from '../../../../components/CTAButton.astro';
-import { COMPANY_INFO } from '../../../../utils/constants';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
 
 const lang = 'en';
 
@@ -33,6 +33,29 @@ const sortedPosts = allPosts.sort((a, b) =>
   new Date(b.date).valueOf() - new Date(a.date).valueOf()
 );
 
+// Get category counts
+const categoryCounts: Record<string, number> = {};
+allPosts.forEach(post => {
+  categoryCounts[post.category] = (categoryCounts[post.category] || 0) + 1;
+});
+
+// Define categories with their icons (matching live site)
+const categoryConfig = [
+  { name: 'Equipment Financing', slug: 'equipment-financing', icon: '🏗️' },
+  { name: 'Government Tenders', slug: 'government-tenders', icon: '🏛️' },
+  { name: 'Crane Financing', slug: 'crane-financing', icon: '🏗️' },
+  { name: 'Fleet Financing', slug: 'fleet-financing', icon: '🚛' },
+  { name: 'Technology Equipment', slug: 'technology-equipment', icon: '🔧' },
+  { name: 'Tax Benefits', slug: 'tax-benefits', icon: '📋' },
+  { name: 'Financing Guides', slug: 'financing-guides', icon: '📝' },
+  { name: 'Logistics Equipment', slug: 'logistics-equipment', icon: '🚛' },
+  { name: 'Business Tips', slug: 'business-tips', icon: '💡' },
+  { name: 'Case Studies', slug: 'case-studies', icon: '📊' },
+];
+
+// Get categories that have posts
+const categories = categoryConfig.filter(cat => categoryCounts[cat.name] > 0);
+
 // Featured posts
 const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
 const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
@@ -44,24 +67,14 @@ const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
 const paginatedPosts = sortedPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
-// Category icons
-const categoryIcons: Record<string, string> = {
-  'equipment-financing-tips': '🏗️',
-  'industry-news-trends': '📰',
-  'contractor-guides': '👷',
-  'business-growth': '📈',
-  'tax-compliance': '📋',
-  'equipment-maintenance': '🔧',
-};
+// Most popular posts (first 8)
+const mostPopularPosts = sortedPosts.slice(0, 8);
 
-// Categories
-const categories = [
-  { name: 'Equipment Financing', slug: 'equipment-financing-tips', icon: '🏗️' },
-  { name: 'Industry News', slug: 'industry-news-trends', icon: '📰' },
-  { name: 'Contractor Guides', slug: 'contractor-guides', icon: '👷' },
-  { name: 'Business Growth', slug: 'business-growth', icon: '📈' },
-  { name: 'Tax Compliance', slug: 'tax-compliance', icon: '📋' },
-];
+// Category icons mapping for badges
+const categoryIcons: Record<string, string> = {};
+categoryConfig.forEach(cat => {
+  categoryIcons[cat.name] = cat.icon;
+});
 ---
 
 <BaseLayout
@@ -157,6 +170,7 @@ const categories = [
           >
             <span class="category-icon">{category.icon}</span>
             <span class="category-name">{category.name}</span>
+            <span class="category-count">({categoryCounts[category.name] || 0})</span>
           </a>
         ))}
       </div>
@@ -174,16 +188,17 @@ const categories = [
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {displayFeaturedPosts.map((post) => (
+        {displayFeaturedPosts.map((post, index) => (
           <div class="blog-card">
             <a href={`/${lang}/blog/${post.slug}`} class="card-image-link">
               <div class="card-image-placeholder">
-                {categories.find(c => c.name === post.category)?.icon || '📝'}
+                {categoryIcons[post.category] || '📝'}
               </div>
             </a>
             <div class="card-content">
               <div class="card-meta">
-                <span class="category-badge">{post.category}</span>
+                <span class="category-badge featured-badge">FEATURED</span>
+                <span class="category-name-badge">{categoryIcons[post.category] || '📝'} {post.category}</span>
                 <span class="read-time">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -202,7 +217,7 @@ const categories = [
                   {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                 </time>
                 <a href={`/${lang}/blog/${post.slug}`} class="read-more">
-                  Read More →
+                  Read More
                 </a>
               </div>
             </div>
@@ -219,8 +234,8 @@ const categories = [
         <!-- Main Content -->
         <div class="lg:col-span-2">
           <div class="mb-8">
-            <h2 class="section-title-inline">Recent Articles</h2>
-            <span class="post-count">Showing {Math.min(POSTS_PER_PAGE, allPosts.length)} of {allPosts.length} articles</span>
+            <h2 class="section-title-inline">All Articles</h2>
+            <span class="post-count">Showing {Math.min(POSTS_PER_PAGE, allPosts.length)}- {allPosts.length} articles</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -228,11 +243,11 @@ const categories = [
               <div class="blog-card-sm">
                 <a href={`/${lang}/blog/${post.slug}`} class="card-image-link">
                   <div class="card-image-placeholder-sm">
-                    {categories.find(c => c.name === post.category)?.icon || '📝'}
+                    {categoryIcons[post.category] || '📝'}
                   </div>
                 </a>
                 <div class="card-content-sm">
-                  <span class="category-badge-sm">{post.category}</span>
+                  <span class="category-badge-sm">{categoryIcons[post.category] || '📝'} {post.category}</span>
                   <h3 class="card-title-sm">
                     <a href={`/${lang}/blog/${post.slug}`}>
                       {post.title}
@@ -254,7 +269,7 @@ const categories = [
 
           <!-- Pagination -->
           <div class="pagination">
-            <button disabled class="pagination-button pagination-button-disabled">Previous</button>
+            <button disabled class="pagination-button pagination-button-disabled">← Previous</button>
             {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => (
               <button
                 class={`pagination-button ${i === 0 ? 'pagination-button-active' : 'pagination-button-inactive'}`}
@@ -264,7 +279,10 @@ const categories = [
             ))}
             {totalPages > 5 && <span class="pagination-ellipsis">...</span>}
             {totalPages > 5 && <button class="pagination-button pagination-button-inactive">{totalPages}</button>}
-            <button class="pagination-button pagination-button-active">Next</button>
+            <button class="pagination-button pagination-button-active">Next →</button>
+          </div>
+          <div class="pagination-info text-center mt-2 text-sm text-gray-600">
+            Page {currentPage} of {totalPages} • {allPosts.length} total articles
           </div>
         </div>
 
@@ -286,7 +304,22 @@ const categories = [
             </p>
           </div>
 
-          <!-- Categories -->
+          <!-- Most Popular -->
+          <div class="sidebar-widget">
+            <h3 class="sidebar-title">Most Popular</h3>
+            <ol class="popular-list">
+              {mostPopularPosts.map((post, index) => (
+                <li class="popular-item">
+                  <span class="popular-number">{String(index + 1).padStart(2, '0')}</span>
+                  <a href={`/${lang}/blog/${post.slug}`} class="popular-link">
+                    {post.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <!-- Browse by Category -->
           <div class="sidebar-widget">
             <h3 class="sidebar-title">Browse by Category</h3>
             <ul class="category-list">
@@ -295,12 +328,31 @@ const categories = [
                   <a href={`/${lang}/blog/category/${category.slug}`} class="category-link-sm">
                     <span class="category-icon">{category.icon}</span>
                     <span>{category.name}</span>
+                    <span class="category-count">({categoryCounts[category.name] || 0})</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-navy-900 text-white">
+    <div class="container-custom text-center">
+      <h2 class="hero-title text-white mb-4">Ready to Finance Your Equipment?</h2>
+      <p class="hero-subtitle text-white mb-12">
+        Join 4,000+ businesses who trust Ing Heng Credit for their financing needs. Get approved quickly with competitive rates from 2.88% p.a.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+        <a href={COMPANY_INFO.whatsapp.link} class="cta-button-primary">
+          Get Free Quote Now
+        </a>
+        <a href={`/${lang}/calculator`} class="cta-button-secondary">
+          Calculate Monthly Payment
+        </a>
       </div>
     </div>
   </section>
@@ -328,7 +380,8 @@ const categories = [
   }
 
   .hero-subtitle {
-    @apply text-xl text-white leading-relaxed mb-8 max-w-4xl mx-auto;
+    @apply text-xl text-white leading-relaxed mb-8;
+    max-width: 4xl mx-auto;
   }
 
   .search-bar {
@@ -379,6 +432,11 @@ const categories = [
     @apply flex items-center gap-2 px-6 py-3 bg-white border-3 border-navy-900 hover:bg-yellow-400 hover:text-navy-900 transition-all;
     @apply font-bold;
     box-shadow: 4px 4px 0 #1E3A8A;
+    position: relative;
+  }
+
+  .category-count {
+    @apply text-sm text-gray-500 ml-2;
   }
 
   .category-icon {
@@ -402,11 +460,11 @@ const categories = [
   .section-title-inline {
     @apply text-2xl font-black text-navy-900;
     font-family: 'Bebas Neue', sans-serif;
-    text-transform: uppercase;
+    @apply flex items-center justify-between;
   }
 
   .post-count {
-    @apply text-sm text-gray-700 font-bold;
+    @apply text-sm text-gray-500 font-bold;
   }
 
   .blog-card {
@@ -455,7 +513,7 @@ const categories = [
   }
 
   .card-meta {
-    @apply flex items-center justify-between text-sm text-gray-700 mb-3;
+    @apply flex items-center gap-2 text-sm mb-3 flex-wrap;
   }
 
   .category-badge {
@@ -470,23 +528,37 @@ const categories = [
     box-shadow: 2px 2px 0 #1E3A8A;
   }
 
+  .featured-badge {
+    @apply inline-block px-2 py-1 text-xs font-black uppercase bg-navy-900 text-yellow-400;
+  }
+
+  .category-name-badge {
+    @apply inline-flex items-center gap-1 text-sm;
+  }
+
   .read-time {
-    @apply flex items-center gap-1;
+    @apply flex items-center gap-1 text-gray-600;
   }
 
   .card-title {
-    @apply text-2xl font-black text-navy-900 mb-3 group-hover:text-yellow-600;
+    @apply text-xl font-bold text-navy-900 mb-3;
     font-family: 'Bebas Neue', sans-serif;
-    text-transform: uppercase;
+    @apply line-clamp-2;
   }
 
   .card-title a {
     @apply text-navy-900;
     text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .blog-card:hover .card-title a,
+  .blog-card-sm:hover .card-title-sm a {
+    @apply text-yellow-600;
   }
 
   .card-title-sm {
-    @apply text-xl font-black text-navy-900 mb-3 group-hover:text-yellow-600;
+    @apply text-lg font-bold text-navy-900 mb-3;
     font-family: 'Bebas Neue', sans-serif;
     @apply line-clamp-2;
   }
@@ -494,10 +566,12 @@ const categories = [
   .card-title-sm a {
     @apply text-navy-900;
     text-decoration: none;
+    transition: color 0.2s;
   }
 
   .card-excerpt {
     @apply text-gray-700 mb-4 leading-relaxed;
+    @apply line-clamp-3;
   }
 
   .card-excerpt-sm {
@@ -512,29 +586,23 @@ const categories = [
     @apply flex items-center justify-between pt-4 border-t-3 border-navy-900 text-sm;
   }
 
-  .read-more {
-    @apply text-yellow-600 font-black hover:text-navy-900 transition-colors;
+  .read-more, .read-more-sm {
+    @apply text-yellow-600 font-bold hover:text-navy-900 transition-colors;
     @apply uppercase text-sm;
     text-decoration: none;
   }
 
-  .read-more-sm {
-    @apply text-yellow-600 font-black hover:text-[#2D1810] transition-colors;
-    @apply uppercase;
-    text-decoration: none;
-  }
-
   .pagination {
-    @apply flex justify-center gap-2;
+    @apply flex justify-center gap-2 flex-wrap;
   }
 
   .pagination-button {
-    @apply px-4 py-2 border border-gray-300 rounded-lg;
-    @apply font-semibold transition-all;
+    @apply px-4 py-2 border border-gray-300 rounded-lg font-semibold transition-all;
   }
 
   .pagination-button-active {
-    @apply bg-primary text-white;
+    @apply bg-blue-600 text-white;
+    border-color: #2563eb;
   }
 
   .pagination-button-disabled {
@@ -547,6 +615,10 @@ const categories = [
 
   .pagination-ellipsis {
     @apply px-4 py-2;
+  }
+
+  .pagination-info {
+    @apply text-center text-sm text-gray-500;
   }
 
   .sidebar {
@@ -563,7 +635,7 @@ const categories = [
   }
 
   .sidebar-phone {
-    @apply mt-4 text-sm;
+    @apply mt-4 text-sm text-white;
   }
 
   .sidebar-phone a {
@@ -575,14 +647,36 @@ const categories = [
     @apply bg-white border-4 border-navy-900 p-6;
   }
 
+  .popular-list {
+    @apply list-decimal list-none pl-0 space-y-4;
+  }
+
+  .popular-item {
+    counter-increment: popular-counter;
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .popular-number {
+    @apply absolute -left-8 font-bold text-navy-900 text-lg;
+    color: #8B6F47;
+  }
+
+  .popular-link {
+    @apply text-navy-900 font-semibold hover:text-yellow-600;
+    text-decoration: none;
+    @apply block pr-4;
+  }
+
   .category-list {
     @apply space-y-3;
   }
 
   .category-link-sm {
     @apply flex items-center justify-between;
-    @apply text-gray-700 hover:text-primary transition-colors;
+    @apply text-gray-700 hover:text-yellow-600 transition-colors;
     text-decoration: none;
+    @apply group;
   }
 
   .border-navy-900 {
@@ -613,5 +707,17 @@ const categories = [
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .cta-button-primary {
+    @apply bg-white text-[#8B6F47] font-black uppercase tracking-tight text-xl px-12 py-6;
+    @apply border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810];
+    @apply hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px];
+    @apply hover:bg-[#8B6F47] hover:text-white transition-all inline-block text-center;
+    text-decoration: none;
+  }
+
+  .cta-button-secondary {
+    @apply bg-transparent text-white font-black uppercase tracking-tight text-xl px-12 py-6 border-3 border-white hover:bg-white hover:text-navy-900 transition-all inline-block text-center;
   }
 </style>

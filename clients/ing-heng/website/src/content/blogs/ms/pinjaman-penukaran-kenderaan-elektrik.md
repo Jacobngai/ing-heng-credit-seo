@@ -3,7 +3,7 @@ title: "Pinjaman Penukaran Kenderaan Elektrik Malaysia - 0% Deposit Pembiayaan P
 description: "Dapatkan kelulusan pembiayaan penukaran kenderaan elektrik di Malaysia. Bank tolak projek penukaran EV? Kami pakar dalam pinjaman teknologi hijau dengan 0% deposit."
 publishDate: 2024-12-24
 tags: ["pinjaman penukaran kenderaan elektrik", "pembiayaan penukaran ev", "pembiayaan teknologi hijau", "penukaran kereta elektrik malaysia"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

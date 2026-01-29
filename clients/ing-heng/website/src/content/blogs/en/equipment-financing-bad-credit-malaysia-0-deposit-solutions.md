@@ -19,12 +19,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      8 min read
-  #  Equipment Financing Bad Credit Malaysia - 0% Deposit Solutions 
-
-  Get equipment financing with bad credit in Malaysia. 0% deposit required, 10+ year old equipment accepted. When banks reject, we approve based on business potential. 
-
-     By Ing Heng Credit Team     # Equipment Financing Bad Credit Malaysia: Your Business Deserves Better
 
 When you walk into that bank with your excavator quotation and a solid business plan, and the loan officer doesn’t even look at your contracts before saying “Your credit score is too low for equipment financing,” do you feel that crushing disappointment knowing your construction business could grow 300% with that machine, but past financial mistakes are blocking your future success?
 

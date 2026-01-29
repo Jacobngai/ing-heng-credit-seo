@@ -1,0 +1,135 @@
+---
+/**
+ * RevenueCalculator - Shows aggregate potential from 20+ keywords we've found
+ * We tell clients: "We already found these keywords for you, just list them"
+ */
+interface Props {
+  industry?: string;
+  keywordCount?: number;
+  totalSearches?: number;
+  avgCustomerValue?: number;
+}
+
+const {
+  industry = 'Your Industry',
+  keywordCount = 20,
+  totalSearches = 500,
+  avgCustomerValue = 2000
+} = Astro.props;
+
+// Aggregate calculations for 20+ keywords
+const avgClicksPerMonth = Math.round(totalSearches * 0.15); // 15% aggregate CTR
+const avgLeadsPerMonth = Math.round(avgClicksPerMonth * 0.30); // 30% convert to leads
+const avgCustomersPerMonth = Math.round((avgLeadsPerMonth * 0.10) * 10) / 10; // 10% close rate
+const avgRevenuePerMonth = Math.round(avgCustomersPerMonth * avgCustomerValue);
+
+const trialPrice = 399;
+const breakEvenMonths = Math.max(1, Math.ceil(trialPrice / avgRevenuePerMonth));
+---
+
+<div class="revenue-calculator bg-gradient-to-br from-primary-50 to-accent-50 rounded-card p-6">
+  <!-- Header -->
+  <div class="text-center mb-6">
+    <span class="text-success-600 font-bold text-sm uppercase tracking-wide">We Found These Keywords For You</span>
+    <h3 class="text-2xl font-bold text-gray-900 mt-2">{keywordCount}+ Keywords Your Customers Are Searching</h3>
+    <p class="text-sm text-gray-600 mt-2">{totalSearches} searches every month from people looking for {industry}</p>
+  </div>
+
+  <!-- What We Found -->
+  <div class="bg-white rounded-lg p-5 mb-6 shadow-sm border-2 border-success-500">
+    <div class="flex items-start gap-3">
+      <span class="text-3xl">✅</span>
+      <div>
+        <h4 class="font-bold text-lg text-gray-900">We Already Did The Research For You</h4>
+        <p class="text-sm text-gray-600 mt-1">
+          Example: "rent excavator in klang", "lorry for house moving", "forklift rental price" —
+          <span class="font-bold text-gray-900">your customers are searching these right now.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Funnel Visualization -->
+  <div class="bg-white rounded-lg p-4 mb-6 shadow-sm">
+    <p class="text-sm font-bold text-gray-900 mb-3">Here's What Happens When You Rank:</p>
+    <div class="space-y-3">
+      <!-- Search Volume -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🔍</span>
+          <span class="font-medium text-gray-900">{totalSearches} people search monthly</span>
+        </div>
+      </div>
+
+      <!-- Arrow Down -->
+      <div class="flex justify-center">
+        <span class="text-gray-400 text-sm">↓ Some click your website</span>
+      </div>
+
+      <!-- Website Clicks -->
+      <div class="flex items-center justify-between bg-secondary-50 rounded-lg p-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">👥</span>
+          <span class="font-medium text-gray-900">{avgClicksPerMonth} visitors to your site</span>
+        </div>
+      </div>
+
+      <!-- Arrow Down -->
+      <div class="flex justify-center">
+        <span class="text-gray-400 text-sm">↓ Some contact you</span>
+      </div>
+
+      <!-- Leads -->
+      <div class="flex items-center justify-between bg-primary-50 rounded-lg p-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">📞</span>
+          <span class="font-medium text-gray-900">{avgLeadsPerMonth} people ask for price</span>
+        </div>
+      </div>
+
+      <!-- Arrow Down -->
+      <div class="flex justify-center">
+        <span class="text-gray-400 text-sm">↓ Some become customers</span>
+      </div>
+
+      <!-- Customers -->
+      <div class="flex items-center justify-between bg-success-50 rounded-lg p-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">💰</span>
+          <span class="font-medium text-gray-900">{avgCustomersPerMonth} new customers monthly</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue Summary -->
+  <div class="bg-gradient-to-r from-success-500 to-success-600 rounded-lg p-5 text-white text-center">
+    <p class="text-sm opacity-90 mb-1">Extra Money Per Month</p>
+    <p class="text-4xl font-bold">RM{avgRevenuePerMonth.toLocaleString()}</p>
+    <p class="text-xs opacity-75 mt-2">
+      That's RM{(avgRevenuePerMonth * 12).toLocaleString()} per year from these keywords
+    </p>
+  </div>
+
+  <!-- Simple Breakdown -->
+  <div class="mt-6 bg-white rounded-lg p-4 shadow-sm">
+    <p class="text-sm text-gray-700 text-center">
+      <span class="font-bold">We found {keywordCount}+ keywords.</span> You just need to rank for them.
+      We build the pages, you get the calls.
+    </p>
+  </div>
+
+  <!-- Trial CTA -->
+  <div class="mt-4 bg-primary-600 rounded-lg p-4 text-white text-center">
+    <p class="text-sm">
+      <span class="font-bold">Try RM399 first month.</span> If you don't see results, stop.
+      If you do, continue. Simple.
+    </p>
+  </div>
+</div>
+
+<style>
+  .revenue-calculator {
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+  }
+</style>

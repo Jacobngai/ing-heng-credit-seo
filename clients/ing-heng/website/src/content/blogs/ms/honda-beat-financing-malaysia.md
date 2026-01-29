@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Honda Beat Malaysia - 0% Deposit Legenda Kei Sports Car"
 description: "Pembiayaan Honda Beat langka dengan 0% deposit. Bank tolak kei car 30 tahun? Kami luluskan. Dapatkan kereta sukan micro VTEC ini sebelum nilai kolektor melambung."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

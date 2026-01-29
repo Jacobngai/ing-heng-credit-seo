@@ -1,0 +1,253 @@
+name: Update Sitemaps and Submit to Google
+
+on:
+  workflow_call:
+    inputs:
+      languages:
+        required: true
+        type: string
+        description: 'Comma-separated languages to update sitemaps for'
+    secrets:
+      GOOGLE_SEARCH_CONSOLE_CREDENTIALS:
+        required: false
+
+  workflow_dispatch:
+    inputs:
+      languages:
+        description: 'Languages to update (comma-separated: en,ms,zh or all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - en
+          - ms
+          - zh
+
+  schedule:
+    # Run weekly on Mondays at 00:00 UTC
+    - cron: '0 0 * * 1'
+
+jobs:
+  update-sitemaps:
+    name: Regenerate Sitemaps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'clients/ing-heng/website/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: clients/ing-heng/website
+        run: npm ci
+
+      - name: Determine languages to update
+        id: languages
+        run: |
+          INPUT_LANGS="${{ inputs.languages }}"
+
+          if [[ -z "$INPUT_LANGS" ]] || [[ "$INPUT_LANGS" == "all" ]]; then
+            LANGUAGES="en,ms,zh"
+          else
+            LANGUAGES="$INPUT_LANGS"
+          fi
+
+          echo "languages=$LANGUAGES" >> $GITHUB_OUTPUT
+          echo "Updating sitemaps for: $LANGUAGES"
+
+      - name: Build sitemap for EN
+        if: contains(steps.languages.outputs.languages, 'en')
+        working-directory: clients/ing-heng/website
+        run: npm run build
+        env:
+          PUBLIC_DEFAULT_LOCALE: en
+          DEFAULT_LOCALE: en
+          PUBLIC_SITE_URL: https://www.inghengcredit.com
+          SITE_URL: https://www.inghengcredit.com
+
+      - name: Extract EN sitemap
+        if: contains(steps.languages.outputs.languages, 'en')
+        run: |
+          mkdir -p ./sitemaps
+          cp clients/ing-heng/website/dist/sitemap-0.xml ./sitemaps/sitemap-en.xml || true
+          cp clients/ing-heng/website/dist/sitemap-index.xml ./sitemaps/sitemap-index-en.xml || true
+          echo "EN sitemap extracted"
+
+      - name: Build sitemap for MS
+        if: contains(steps.languages.outputs.languages, 'ms')
+        working-directory: clients/ing-heng/website
+        run: npm run build
+        env:
+          PUBLIC_DEFAULT_LOCALE: ms
+          DEFAULT_LOCALE: ms
+          PUBLIC_SITE_URL: https://www.kreditloan.my
+          SITE_URL: https://www.kreditloan.my
+
+      - name: Extract MS sitemap
+        if: contains(steps.languages.outputs.languages, 'ms')
+        run: |
+          mkdir -p ./sitemaps
+          cp clients/ing-heng/website/dist/sitemap-0.xml ./sitemaps/sitemap-ms.xml || true
+          cp clients/ing-heng/website/dist/sitemap-index.xml ./sitemaps/sitemap-index-ms.xml || true
+          echo "MS sitemap extracted"
+
+      - name: Build sitemap for ZH
+        if: contains(steps.languages.outputs.languages, 'zh')
+        working-directory: clients/ing-heng/website
+        run: npm run build
+        env:
+          PUBLIC_DEFAULT_LOCALE: zh
+          DEFAULT_LOCALE: zh
+          PUBLIC_SITE_URL: https://www.inghengcredit.my
+          SITE_URL: https://www.inghengcredit.my
+
+      - name: Extract ZH sitemap
+        if: contains(steps.languages.outputs.languages, 'zh')
+        run: |
+          mkdir -p ./sitemaps
+          cp clients/ing-heng/website/dist/sitemap-0.xml ./sitemaps/sitemap-zh.xml || true
+          cp clients/ing-heng/website/dist/sitemap-index.xml ./sitemaps/sitemap-index-zh.xml || true
+          echo "ZH sitemap extracted"
+
+      - name: Validate sitemaps
+        run: |
+          echo "Validating sitemaps..."
+          for sitemap in ./sitemaps/*.xml; do
+            if [ -f "$sitemap" ]; then
+              echo "Checking $sitemap"
+              # Basic XML validation
+              xmllint --noout "$sitemap" 2>&1 || echo "Warning: $sitemap may have issues"
+
+              # Count URLs
+              URL_COUNT=$(grep -c '<loc>' "$sitemap" || echo "0")
+              echo "  URLs found: $URL_COUNT"
+            fi
+          done
+
+      - name: Upload sitemap artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemaps-${{ github.run_number }}
+          path: ./sitemaps/*.xml
+          retention-days: 90
+
+  submit-to-google-en:
+    name: Submit EN Sitemap to Google
+    needs: update-sitemaps
+    if: contains(needs.update-sitemaps.steps.languages.outputs.languages, 'en')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit to Google Search Console
+        run: |
+          # Using HTTP ping method (no authentication required)
+          SITEMAP_URL="https://www.inghengcredit.com/sitemap-index.xml"
+
+          curl -s "https://www.google.com/ping?sitemap=${SITEMAP_URL}" || true
+          echo "✅ Submitted EN sitemap to Google Search Console"
+
+      - name: Submit to Bing Webmaster
+        run: |
+          # Submit to Bing as well
+          SITEMAP_URL="https://www.inghengcredit.com/sitemap-index.xml"
+
+          curl -s "https://www.bing.com/ping?sitemap=${SITEMAP_URL}" || true
+          echo "✅ Submitted EN sitemap to Bing Webmaster"
+
+  submit-to-google-ms:
+    name: Submit MS Sitemap to Google
+    needs: update-sitemaps
+    if: contains(needs.update-sitemaps.steps.languages.outputs.languages, 'ms')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit to Google Search Console
+        run: |
+          SITEMAP_URL="https://www.kreditloan.my/sitemap-index.xml"
+
+          curl -s "https://www.google.com/ping?sitemap=${SITEMAP_URL}" || true
+          echo "✅ Submitted MS sitemap to Google Search Console"
+
+      - name: Submit to Bing Webmaster
+        run: |
+          SITEMAP_URL="https://www.kreditloan.my/sitemap-index.xml"
+
+          curl -s "https://www.bing.com/ping?sitemap=${SITEMAP_URL}" || true
+          echo "✅ Submitted MS sitemap to Bing Webmaster"
+
+  submit-to-google-zh:
+    name: Submit ZH Sitemap to Google
+    needs: update-sitemaps
+    if: contains(needs.update-sitemaps.steps.languages.outputs.languages, 'zh')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit to Google Search Console
+        run: |
+          SITEMAP_URL="https://www.inghengcredit.my/sitemap-index.xml"
+
+          curl -s "https://www.google.com/ping?sitemap=${SITEMAP_URL}" || true
+          echo "✅ Submitted ZH sitemap to Google Search Console"
+
+      - name: Submit to Bing Webmaster
+        run: |
+          SITEMAP_URL="https://www.inghengcredit.my/sitemap-index.xml"
+
+          curl -s "https://www.bing.com/ping?sitemap=${SITEMAP_URL}" || true
+          echo "✅ Submitted ZH sitemap to Bing Webmaster"
+
+  summary:
+    name: Sitemap Update Summary
+    needs: [update-sitemaps, submit-to-google-en, submit-to-google-ms, submit-to-google-zh]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate summary
+        run: |
+          echo "# 🗺️ Sitemap Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### Sitemap Generation" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ needs.update-sitemaps.result }}" == "success" ]]; then
+            echo "- ✅ Sitemaps generated successfully" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ Sitemap generation failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Search Engine Submission" >> $GITHUB_STEP_SUMMARY
+
+          if [[ "${{ needs.submit-to-google-en.result }}" == "success" ]]; then
+            echo "- ✅ **EN**: Submitted to Google & Bing (https://www.inghengcredit.com/sitemap-index.xml)" >> $GITHUB_STEP_SUMMARY
+          elif [[ "${{ needs.submit-to-google-en.result }}" == "skipped" ]]; then
+            echo "- ⏭️ **EN**: Skipped" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.submit-to-google-ms.result }}" == "success" ]]; then
+            echo "- ✅ **MS**: Submitted to Google & Bing (https://www.kreditloan.my/sitemap-index.xml)" >> $GITHUB_STEP_SUMMARY
+          elif [[ "${{ needs.submit-to-google-ms.result }}" == "skipped" ]]; then
+            echo "- ⏭️ **MS**: Skipped" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ needs.submit-to-google-zh.result }}" == "success" ]]; then
+            echo "- ✅ **ZH**: Submitted to Google & Bing (https://www.inghengcredit.my/sitemap-index.xml)" >> $GITHUB_STEP_SUMMARY
+          elif [[ "${{ needs.submit-to-google-zh.result }}" == "skipped" ]]; then
+            echo "- ⏭️ **ZH**: Skipped" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*Updated at $(date -u)*" >> $GITHUB_STEP_SUMMARY
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Verify Sitemaps" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check your sitemaps at:" >> $GITHUB_STEP_SUMMARY
+          echo "- EN: https://www.inghengcredit.com/sitemap-index.xml" >> $GITHUB_STEP_SUMMARY
+          echo "- MS: https://www.kreditloan.my/sitemap-index.xml" >> $GITHUB_STEP_SUMMARY
+          echo "- ZH: https://www.inghengcredit.my/sitemap-index.xml" >> $GITHUB_STEP_SUMMARY

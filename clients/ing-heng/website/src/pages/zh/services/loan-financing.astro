@@ -4,24 +4,24 @@
  * 贷款融资服务页面 - 为马来西亚中小企业提供商业贷款解决方案
  */
 
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Hero from '../../../../components/Hero.astro';
-import BenefitCard from '../../../../components/BenefitCard.astro';
-import ServiceCard from '../../../../components/ServiceCard.astro';
-import FAQItem from '../../../../components/FAQItem.astro';
-import ContactForm from '../../../../components/ContactForm.astro';
-import CTAButton from '../../../../components/CTAButton.astro';
-import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
-import Calculator from '../../../../components/Calculator.astro';
-import StepCard from '../../../../components/StepCard.astro';
-import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
-import StructuredData from '../../../../components/StructuredData.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Calculator from '../../../components/Calculator.astro';
+import StepCard from '../../../components/StepCard.astro';
+import { generateServiceSchema, generateServicePageSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+import StructuredData from '../../../components/StructuredData.astro';
 
 const lang = 'zh';
 
 // SEO Configuration - 20年专业优化
-const title = '设备贷款融资马来西亚 | 荣兴信贷';
-const description = '设备贷款融资:建筑、物流、工业机械。快速处理,12-60月期限。RM30k-RM5M。今日报价!';
+const title = 'RM1万-50万商业贷款 | 24小时批 | 2.88%利率 | 今天申请';
+const description = '今天就拿钱！RM10K-500K设备贷款。2.88%利率。银行拒绝？我们接受-95%批！中小企专家。2分钟申请，3天到账！';
 const keywords = ['马来西亚商业贷款', '中小企业融资', '设备贷款', '营运资金贷款', '业务扩展贷款', '商业融资', '企业贷款', '快速贷款审批'];
 
 // Breadcrumbs
@@ -35,11 +35,11 @@ const breadcrumbItems = [
 const faqs = [
   {
     question: '你们提供哪些类型的商业贷款？',
-    answer: '我们提供三种主要的商业贷款类型：设备融资贷款（购买机械和车辆）、营运资金贷款（日常运营和现金流）以及业务扩展贷款（增长计划）。每种贷款类型都提供灵活的12至60个月还款期限，年利率8-18%（需经过信用评估）。'
+    answer: '我们提供三种主要的商业贷款类型：设备融资贷款（购买机械和车辆）、营运资金贷款（日常运营和现金流）以及业务扩展贷款（增长计划）。每种贷款类型都提供灵活的12至60个月还款期限，利率从2.88%起，极具竞争力。'
   },
   {
     question: '申请商业贷款的资格要求是什么？',
-    answer: '您的公司必须在马来西亚注册（私人有限公司、企业或独资企业），营运至少6个月，并有可核实的收入或营业额。我们需要基本文件，包括SSM注册、银行对账单（6个月）、董事身份证/护照和财务报表（如有）。'
+    answer: '您的公司必须在马来西亚注册（私人有限公司、企业或独资企业），营运至少6个月，并有可核实的收入或营业额。我们需要基本文件，包括SSM注册、银行对账单（6个月）、董事身份证/护照和财务报表（如有）。我们保持95%的高批准率。'
   },
   {
     question: '贷款审批和放款需要多长时间？',
@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     question: '商业贷款的利率是多少？',
-    answer: '我们的商业贷款利率为年利率8-18%（需经过信用评估），具体利率取决于贷款金额、还款期限、企业信用状况和提供的抵押品。我们与多家金融合作伙伴合作，为您争取最优惠的利率。所有利率和费用在您承诺前都会透明公开。'
+    answer: '我们的商业贷款利率从每年2.88%起，具体利率取决于贷款金额、还款期限、企业信用状况和提供的抵押品。我们与多家金融合作伙伴合作，为您争取最优惠的利率。所有利率和费用在您承诺前都会透明公开。'
   },
   {
     question: '申请商业贷款需要抵押品吗？',
@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     question: '最高可以借到多少贷款金额？',
-    answer: '贷款金额从RM 50,000到RM 5,000,000不等，具体取决于您的业务需求、财务能力和贷款类型。设备融资通常覆盖设备价值的70-90%，而营运资金贷款则基于您的月收入和运营需求。请联系我们进行定制评估。'
+    answer: '贷款金额从RM 50,000到RM 5,000,000不等，具体取决于您的业务需求、财务能力和贷款类型。设备融资根据设备价值提供灵活覆盖，而营运资金贷款则基于您的月收入和运营需求。请联系我们进行定制评估。'
   },
   {
     question: '贷款可以用于多种用途吗？',
@@ -80,8 +80,8 @@ const servicePageSchema = generateServicePageSchema({
   serviceName: '商业贷款融资服务',
   description: '为马来西亚中小企业提供全面的商业贷款解决方案，包括设备融资、营运资金贷款和业务扩展融资',
   serviceType: '商业贷款融资',
-  minRate: '8.00',
-  maxRate: '18.00',
+  minRate: '2.88',
+  maxRate: '15.00',
   locale: 'zh',
 });
 
@@ -110,13 +110,14 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Hero Section -->
   <Hero
     title="设备与业务增长的商业贷款融资"
-    subtitle="快速灵活的融资助您业务增长。设备贷款、营运资金、扩展融资，快速审批。立即获取免费报价！"
+    subtitle="快速灵活的融资助您业务增长。设备贷款、营运资金、扩展融资，批准率95%，快速审批。立即获取免费报价！"
     ctaText="申请贷款"
     ctaLink="/zh/contact"
     ctaSecondaryText="WhatsApp联系"
     ctaSecondaryLink="https://wa.me/60175700889"
+    backgroundImage="/images/services/loan-financing-hero.jpg"
     lang={lang}
-    trustSignals={['快速审批', 'RM 50K-5M贷款']}
+    trustSignals={['95%批准率', '快速审批', 'RM 50K-5M贷款']}
   />
 
   <!-- What is Business Loan Financing Section -->
@@ -136,14 +137,15 @@ const faqSchema = generateFAQSchema(faqs);
           </p>
 
           <p class="text-gray-700 leading-relaxed mb-6">
-            无论您是购买新挖掘机、扩展货车车队、升级仓库叉车，还是需要营运资金来管理季节性现金流，我们的商业贷款融资都能在3-5天内为您提供资金，利率从每年6.5%起，极具竞争力。
+            无论您是购买新挖掘机、扩展货车车队、升级仓库叉车，还是需要营运资金来管理季节性现金流，我们的商业贷款融资都能在3-5天内为您提供资金，利率从每年2.88%起，极具竞争力。
           </p>
 
-          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-[2px_2px_0_#2D1810]">
+          <div class="bg-white p-6 rounded-lg border-l-4 border-primary shadow-sm">
             <h3 class="text-xl font-bold text-primary mb-3">为什么选择商业贷款而非传统融资？</h3>
             <ul class="space-y-3 text-gray-700">
               <li><strong>更快审批：</strong>快速处理 vs 银行的2-4周</li>
-              <li><strong>灵活要求：</strong>我们与较新的企业和各种信用状况合作（需经过评估）</li>
+              <li><strong>更高批准率：</strong>通过我们的贷款机构网络，成功率达95%</li>
+              <li><strong>灵活要求：</strong>我们与较新的企业和各种信用状况合作</li>
               <li><strong>多种用途：</strong>在一笔贷款中结合设备融资和营运资金</li>
               <li><strong>优惠利率：</strong>通过多家融资机构确保最优条款</li>
               <li><strong>定制期限：</strong>还款计划与您的业务现金流保持一致</li>
@@ -168,11 +170,11 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-t-4 border-primary">
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-primary">
           <div class="text-primary text-5xl mb-4">🚜</div>
           <h3 class="text-2xl font-bold text-primary mb-4">设备融资贷款</h3>
           <p class="text-gray-600 mb-6">
-            购买建筑设备、物流车辆或工业机械，贷款覆盖设备价值的70-90%。
+            购买建筑设备、物流车辆或工业机械，灵活融资方案满足您的设备需求。
           </p>
           <ul class="text-gray-700 space-y-2 mb-6">
             <li class="flex items-start">
@@ -208,7 +210,7 @@ const faqSchema = generateFAQSchema(faqs);
           />
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-t-4 border-secondary">
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-secondary">
           <div class="text-secondary text-5xl mb-4">💰</div>
           <h3 class="text-2xl font-bold text-primary mb-4">营运资金贷款</h3>
           <p class="text-gray-600 mb-6">
@@ -248,7 +250,7 @@ const faqSchema = generateFAQSchema(faqs);
           />
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow border-t-4 border-accent">
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-t-4 border-accent">
           <div class="text-accent text-5xl mb-4">📈</div>
           <h3 class="text-2xl font-bold text-primary mb-4">业务扩展贷款</h3>
           <p class="text-gray-600 mb-6">
@@ -313,8 +315,8 @@ const faqSchema = generateFAQSchema(faqs);
 
         <BenefitCard
           icon="percentage"
-          title="8-18%利率"
-          description="年利率8-18%（需经过信用评估）。我们通过贷款机构网络为您争取最优条款。"
+          title="2.88%起息"
+          description="从每年2.88%起的优惠利率。我们通过贷款机构网络为您争取最优条款。"
         />
 
         <BenefitCard
@@ -323,6 +325,11 @@ const faqSchema = generateFAQSchema(faqs);
           description="灵活的还款期限，与您的业务现金流和增长计划保持一致。"
         />
 
+        <BenefitCard
+          icon="shield"
+          title="95%批准率"
+          description="行业领先的批准成功率。我们为大多数企业找到融资解决方案。"
+        />
 
         <BenefitCard
           icon="users"
@@ -366,7 +373,7 @@ const faqSchema = generateFAQSchema(faqs);
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <div class="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-[6px_6px_0_#2D1810]">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary to-secondary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
             1
           </div>
           <h3 class="text-2xl font-bold text-primary mb-4">提交申请</h3>
@@ -376,7 +383,7 @@ const faqSchema = generateFAQSchema(faqs);
         </div>
 
         <div class="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-secondary to-accent text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-[6px_6px_0_#2D1810]">
+          <div class="w-24 h-24 bg-gradient-to-br from-secondary to-accent text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
             2
           </div>
           <h3 class="text-2xl font-bold text-primary mb-4">快速获批</h3>
@@ -386,7 +393,7 @@ const faqSchema = generateFAQSchema(faqs);
         </div>
 
         <div class="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-accent to-primary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-[6px_6px_0_#2D1810]">
+          <div class="w-24 h-24 bg-gradient-to-br from-accent to-primary text-white rounded-full flex items-center justify-center text-4xl font-bold mx-auto mb-6 shadow-lg">
             3
           </div>
           <h3 class="text-2xl font-bold text-primary mb-4">3-5天内收到资金</h3>
@@ -576,7 +583,7 @@ const faqSchema = generateFAQSchema(faqs);
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
           <h3 class="text-2xl font-bold text-primary mb-3">租购融资</h3>
           <p class="text-gray-600 mb-4">
             通过负担得起的月供拥有您的设备。非常适合挖掘机、货车和叉车，灵活的12-60个月期限。
@@ -588,7 +595,7 @@ const faqSchema = generateFAQSchema(faqs);
           />
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
           <h3 class="text-2xl font-bold text-primary mb-3">设备保险</h3>
           <p class="text-gray-600 mb-4">
             通过全面的保险覆盖保护您宝贵的设备投资。为您的机械和车辆提供安心保障。
@@ -620,8 +627,12 @@ const faqSchema = generateFAQSchema(faqs);
             <div class="text-white/90">批准时间</div>
           </div>
           <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-            <div class="text-4xl font-bold mb-2">8-18%</div>
-            <div class="text-white/90">利率范围</div>
+            <div class="text-4xl font-bold mb-2">95%</div>
+            <div class="text-white/90">批准率</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+            <div class="text-4xl font-bold mb-2">2.88%</div>
+            <div class="text-white/90">起始利率</div>
           </div>
         </div>
 

@@ -3,7 +3,7 @@ title: "马来西亚食品卡车融资要求 | 启动您的移动餐饮业务"
 description: "在马来西亚获得0%首付食品卡车融资。我们批准被银行拒绝的移动餐饮业务。完整的要求、成本和快速批准指南。"
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["食品卡车融资", "移动餐饮", "商用车", "餐饮融资", "创业贷款"]
 keywords:
   - "马来西亚食品卡车融资要求"

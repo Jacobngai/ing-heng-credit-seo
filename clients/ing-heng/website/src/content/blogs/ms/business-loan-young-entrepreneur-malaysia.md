@@ -5,7 +5,7 @@ description: Dapatkan pinjaman perniagaan untuk usahawan muda di Malaysia. Pelaj
   untuk pemilik perniagaan baru.
 author: "ING HENG Credit"
 publishDate: 2024-12-22
-category: Tip Perniagaan
+category: Business Tips
 tags:
 - pinjaman perniagaan
 - usahawan muda

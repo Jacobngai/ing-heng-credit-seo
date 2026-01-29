@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Honda Prelude VTEC Malaysia - Pembiayaan Coupe Prestasi 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk Honda Prelude VTEC yang ikonik. Nikmati kuasa VTEC yang berlegenda dengan terma pinjaman fleksibel yang direka untuk penggemar prestasi dan pengumpul."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

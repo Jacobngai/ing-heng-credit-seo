@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2025      9 min read
-  #  Machinery Loan for Small Business Malaysia: 0% Deposit Manufacturing Equipment Financing 
-
-  Get machinery loans for small manufacturing businesses with 0% deposit required. Finance CNC machines, injection molding equipment, packaging lines up to 100% value. Fast approval for small manufacturers. 
-
-     By Ing Heng Credit &amp; Leasing     # Machinery Loan for Small Business: 0% Deposit Solutions for Malaysian Manufacturers
 
 When you calculate the rental costs for that CNC machine - RM 18,000 monthly disappearing into someone else’s pocket while you build nothing - do you feel that tightness in your chest knowing you’re one equipment breakdown away from losing everything?
 

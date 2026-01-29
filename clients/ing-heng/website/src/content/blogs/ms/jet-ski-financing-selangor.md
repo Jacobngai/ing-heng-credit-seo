@@ -3,7 +3,7 @@ title: "Pembiayaan Jet Ski Selangor | Pinjaman Peralatan Sukan Marin"
 description: "Dapatkan pembiayaan jet ski deposit 0% di Selangor. Kami luluskan pinjaman kenderaan air peribadi yang ditolak bank. Biayai Yamaha, Sea-Doo, Kawasaki untuk rekreasi atau perniagaan sewa."
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["pembiayaan jet ski", "sukan marin", "pinjaman kenderaan air", "selangor", "kenderaan rekreasi"]
 keywords:
   - "pembiayaan jet ski selangor"

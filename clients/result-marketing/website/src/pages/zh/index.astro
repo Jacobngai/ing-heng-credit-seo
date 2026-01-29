@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import StatsSection from '../../components/StatsSection.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+import { t } from '../../utils/i18n';
+
+const lang = 'zh';
+const translate = t(lang);
+
+const services = [
+  {
+    title: 'AI 长尾 SEO',
+    description: '每月覆盖 100+ 高意向关键词，竞争对手只能做 10-20 个。用 AI 自动化主导长尾市场。',
+    icon: '🚀',
+    features: [
+      '每月覆盖 100+ 关键词',
+      'AI 搜索优化（ChatGPT、Perplexity）',
+      '人工审核质量控制',
+      '快速部署（24-48 小时）'
+    ]
+  },
+  {
+    title: '大规模内容制作',
+    description: '使用 Claude Code 自动化，内容制作速度提升 10 倍。企业级效果，中小企业价格。',
+    icon: '⚡',
+    features: [
+      'AI 辅助内容创作',
+      '从第一天就 SEO 优化',
+      '保持品牌声音一致',
+      '内置技术 SEO'
+    ]
+  },
+  {
+    title: '面向未来的策略',
+    description: '为搜索的未来做优化：ChatGPT、Perplexity、Claude 和 Gemini 等 AI 搜索引擎。',
+    icon: '🤖',
+    features: [
+      'AI 搜索优化',
+      '值得引用的内容',
+      '权威定位',
+      '全面覆盖'
+    ]
+  }
+];
+
+const testimonials = [
+  {
+    quote: 'Result Marketing 的 SEO 方法很现代，专注长尾关键词和 AI 搜索优化。他们的流程透明，注重结果。',
+    author: '企业主',
+    role: 'CEO',
+    company: '科技公司，马来西亚',
+    rating: 5
+  },
+  {
+    quote: 'AI 驱动的方法很有趣，很前瞻。他们帮助企业为搜索的未来做准备，不只是传统的 Google 排名。',
+    author: '营销专业人士',
+    role: '营销总监',
+    company: '服务公司，新加坡',
+    rating: 5
+  }
+];
+---
+
+<BaseLayout
+  title="马来西亚企业的 AI 长尾 SEO 服务"
+  description="用 AI 自动化每月覆盖 100+ 高意向关键词。快速、实惠、以结果为导向的 SEO，真正帮助您的业务成长。"
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <Hero
+    title="别再争夺 10 个关键词。主导 1,000 个。"
+    subtitle="Result Marketing 用 AI 自动化帮助马来西亚企业每月覆盖 100+ 长尾关键词。当竞争对手还在争夺热门词时，您已经拥有了客户真正搜索的问题。"
+    ctaText="今天就开始"
+    ctaLink="https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82"
+    secondaryCtaText="查看案例"
+    secondaryCtaLink="/zh/case-studies"
+  />
+
+  <!-- Stats Section -->
+  <StatsSection />
+
+  <!-- Services Section -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">我们做什么</span>
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          注重效果的 SEO 服务
+        </h2>
+        <p class="text-lg text-secondary-400">
+          我们专注重要的事：转化、潜在客户和收入。不是为排名而排名。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-500 font-black text-sm uppercase tracking-wider mb-2 block">我们的流程</span>
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          90 天内从零到 100 个关键词
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {[
+          {
+            step: '01',
+            title: '研究与策略',
+            description: '我们找出 100+ 竞争对手错过的高意向长尾关键词。'
+          },
+          {
+            step: '02',
+            title: 'AI 驱动创作',
+            description: '我们的 Claude Code 自动化以 10 倍速度生成 SEO 优化内容。'
+          },
+          {
+            step: '03',
+            title: '人工质量控制',
+            description: '每篇内容都由我们的专家团队审核和完善，确保准确性和品牌声音。'
+          },
+          {
+            step: '04',
+            title: '部署与优化',
+            description: '内容在 24-48 小时内上线。我们监控、完善，根据结果扩大规模。'
+          }
+        ].map(item => (
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-primary-100 text-primary-700 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">成功案例</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          客户评价
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {testimonials.map(testimonial => (
+          <TestimonialCard {...testimonial} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <CTASection
+        title="准备好看到真正的 SEO 效果了吗？"
+        description="获取免费的关键词差距分析。我们会展示 100+ 个能推动实际业务增长的机会。"
+        ctaText="获取免费分析"
+        ctaLink="https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82"
+        secondaryCtaText="查看价格"
+        secondaryCtaLink="/zh/pricing"
+      />
+    </div>
+  </section>
+</BaseLayout>

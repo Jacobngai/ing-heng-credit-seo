@@ -1,0 +1,68 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  ctaText: string;
+  ctaLink: string;
+  popular?: boolean;
+}
+
+const {
+  name,
+  price,
+  description,
+  features,
+  ctaText,
+  ctaLink,
+  popular = false
+} = Astro.props;
+---
+
+<!-- Pricing Card - Bold & Disruptive -->
+<div class={`h-full flex flex-col relative ${popular ? 'card-disruptive' : 'card card-hover'}`}>
+  {popular && (
+    <div class="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
+      <span class="badge badge-accent animate-pulse-slow shadow-glow-pink">
+        MOST CHOSEN
+      </span>
+    </div>
+  )}
+
+  <div class="text-center mb-8">
+    <h3 class={`text-3xl font-heading font-black mb-3 ${popular ? 'text-white' : 'text-white'}`}>
+      {name}
+    </h3>
+    <p class={`text-sm mb-6 ${popular ? 'text-white/90' : 'text-secondary-400'} leading-relaxed`}>
+      {description}
+    </p>
+    <div class="flex items-baseline justify-center gap-1 mb-2">
+      <span class={`text-6xl font-black ${popular ? 'text-white glow-text' : 'gradient-text'}`}>
+        {price}
+      </span>
+      <span class={`text-lg ${popular ? 'text-white/80' : 'text-secondary-500'}`}>/month</span>
+    </div>
+  </div>
+
+  <ul class="space-y-4 mb-10 flex-grow">
+    {features.map(feature => (
+      <li class="flex items-start gap-3">
+        <div class="relative">
+          <div class="absolute inset-0 bg-success-500/30 blur-sm"></div>
+          <svg class="h-6 w-6 text-success-500 flex-shrink-0 relative" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <span class={`font-medium ${popular ? 'text-white' : 'text-secondary-300'}`}>{feature}</span>
+      </li>
+    ))}
+  </ul>
+
+  <a
+    href={ctaLink}
+    class={`btn w-full ${popular ? 'btn-success' : 'btn-secondary'}`}
+  >
+    {ctaText}
+  </a>
+</div>

@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 5, 2025      9 min read
-  #  Excavator Financing with Bad Credit Malaysia: High Approval Rate 
-
-  Get excavator financing even with bad credit, CCRIS issues, or CTOS problems. Learn how credit companies evaluate your application differently than banks. 
-
-     By Ing Heng Credit &amp; Leasing     # Excavator Financing with Bad Credit Malaysia: High Approval Rate
 
 You’ve worked hard to build your construction business. You know that owning an excavator—instead of renting one—could save you thousands and help you win more projects. But there’s a problem: your credit history isn’t perfect.
 

@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+
+const lang = 'zh';
+
+const packages = [
+  {
+    name: SITE_CONFIG.packages.trial.name,
+    price: SITE_CONFIG.packages.trial.price,
+    description: '适合初创企业和小型企业开始AI搜索优化',
+    features: SITE_CONFIG.packages.trial.features,
+    ctaText: '立即开始',
+    ctaLink: "https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82",
+    popular: false
+  },
+  {
+    name: SITE_CONFIG.packages.monthly.name,
+    price: SITE_CONFIG.packages.monthly.price,
+    description: '适合准备扩大自然流量的成长型企业',
+    features: SITE_CONFIG.packages.monthly.features,
+    ctaText: '立即开始',
+    ctaLink: "https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82",
+    popular: true
+  },
+  {
+    name: SITE_CONFIG.packages.scale.name,
+    price: SITE_CONFIG.packages.scale.price,
+    description: '适合要求最大覆盖率和成效的成熟企业',
+    features: SITE_CONFIG.packages.scale.features,
+    ctaText: '立即开始',
+    ctaLink: "https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82",
+    popular: false
+  }
+];
+
+const faqs = [
+  {
+    question: '月费包含什么服务?',
+    answer: '全部包含: 关键词研究、内容创作、技术SEO、AI搜索优化、报告和支持。除了一次性设置费用外,没有其他隐藏费用。你看到的就是你需要支付的全部。'
+  },
+  {
+    question: '我可以升级或降级配套吗?',
+    answer: '可以!你可以随时更改配套。如果你在月中升级,我们会按比例收取差额。如果你降级,更改将在下一个计费周期生效。'
+  },
+  {
+    question: '设置费用是用来做什么的?',
+    answer: '一次性设置费用包括: 网站审核、关键词研究、内容策略和初始优化设置。之后,你只需支付月费。设置费用: Trial(RM 0)、Monthly(RM 0)、Scale(RM 0)。'
+  },
+  {
+    question: '多久才能看到成效?',
+    answer: '大多数客户在30-60天内看到初步流量改善。有意义的业务成果(潜在客户、转化率)通常在60-90天内显现。完整策略成熟需要4-6个月。'
+  },
+  {
+    question: '你们提供定制配套吗?',
+    answer: '提供!如果你需要特定服务(多语言、技术迁移、企业级支持),我们可以创建定制配套。联系我们讨论你的需求。'
+  },
+  {
+    question: '你们的退款政策是什么?',
+    answer: '我们提供60天退款保证。如果你在持续工作2个月后没有看到可衡量的进展(流量、排名、参与度),我们会退还你的月费。不问任何问题。'
+  },
+  {
+    question: '你们与传统代理公司相比如何?',
+    answer: '传统代理公司每月收费RM 10K-20K才能达到相同成果,因为他们手动完成所有工作。我们使用AI自动化以10倍的速度提供相同质量,并将节省的成本转给你。'
+  },
+  {
+    question: '为什么你们的定价这么有竞争力?',
+    answer: '两个原因:(1)AI自动化将我们的生产成本降低80%,(2)我们刻意保持精简 - 没有豪华办公室或销售团队。我们将预算集中在重要的事情上:为客户提供成果。'
+  }
+];
+
+const comparisonTable = [
+  {
+    feature: '关键词覆盖',
+    traditional: '10-20个',
+    result: '50-200个',
+    highlight: true
+  },
+  {
+    feature: '内容生产',
+    traditional: '每月4-8篇',
+    result: '每月20-50篇',
+    highlight: true
+  },
+  {
+    feature: '见效时间',
+    traditional: '12-18个月',
+    result: '4-6个月',
+    highlight: true
+  },
+  {
+    feature: 'AI搜索优化',
+    traditional: '不包含',
+    result: '包含',
+    highlight: false
+  },
+  {
+    feature: '透明度',
+    traditional: '季度报告',
+    result: '实时仪表板',
+    highlight: false
+  },
+  {
+    feature: '月费',
+    traditional: 'RM 10K-20K',
+    result: 'RM 998-2,899',
+    highlight: true
+  }
+];
+---
+
+<BaseLayout
+  title="SEO定价与配套 - 透明、可负担的成果 | Result Marketing"
+  description="诚实的AI驱动长尾SEO定价。从RM 2,500/月起。无设置费、无合约、60天退款保证。查看我们的透明定价。"
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">定价</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          简单透明的定价
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          没有隐藏费用。没有复杂的等级。没有锁定合约。只有诚实的成果导向SEO定价。根据覆盖需求选择配套,随时升级或降级。
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-success-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-secondary-300">一次性设置费</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-success-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-secondary-300">随时取消</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-success-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-secondary-300">60天保证</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {packages.map(pkg => (
+          <PricingCard {...pkg} />
+        ))}
+      </div>
+
+      <!-- Additional Info -->
+      <div class="max-w-4xl mx-auto mt-12 text-center">
+        <p class="text-secondary-400 mb-4">
+          所有配套包含: AI搜索优化(ChatGPT、Perplexity)、技术SEO、月度报告和电邮支持。
+        </p>
+        <p class="text-sm text-secondary-500">
+          需要定制服务? <a href="https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:text-primary-400">联系我们</a> 了解企业解决方案。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+            我们与传统代理公司的比较
+          </h2>
+          <p class="text-lg text-secondary-400">
+            相同质量成果,10倍速度,只需一小部分成本。详细对比如下。
+          </p>
+        </div>
+
+        <div class="card overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-dark border-b-2 border-primary-600/50">
+              <tr>
+                <th class="px-6 py-4 text-left font-black text-white uppercase tracking-wide">特点</th>
+                <th class="px-6 py-4 text-center text-sm font-semibold text-secondary-400">传统代理</th>
+                <th class="px-6 py-4 text-center text-sm font-black text-primary-500">Result Marketing</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonTable.map((row, index) => (
+                <tr class={`border-b border-secondary-800 ${row.highlight ? 'bg-primary-600/20' : ''}`}>
+                  <td class="px-6 py-4 text-sm font-black text-white">{row.feature}</td>
+                  <td class="px-6 py-4 text-sm text-center text-secondary-400">{row.traditional}</td>
+                  <td class="px-6 py-4 text-sm text-center font-black text-primary-500">{row.result}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card-disruptive p-12 text-white text-center">
+          <div class="text-5xl mb-4">💰</div>
+          <h2 class="text-3xl font-black mb-4">
+            改变一切的计算方式
+          </h2>
+          <p class="text-xl text-secondary-300 mb-8">
+            传统代理: RM 15,000/月 × 12个月 = <strong class="text-white">RM 180,000</strong> 覆盖50个关键词。
+          </p>
+          <p class="text-xl text-secondary-300 mb-8">
+            Result Marketing Growth: RM 1,799/月 × 12个月 = <strong class="text-white">RM 21,588</strong> 覆盖300个关键词。
+          </p>
+          <p class="text-2xl font-black mb-8">
+            节省RM 158,412。获得6倍覆盖率。更好的成果。
+          </p>
+          <a href="https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82" target="_blank" rel="noopener noreferrer" class="btn btn-success rounded-full">
+            立即开始
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-black mb-12 text-center text-white">定价常见问题</h2>
+
+        <div class="space-y-6">
+          {faqs.map(faq => (
+            <div class="card">
+              <h3 class="text-lg font-black mb-3 text-white">{faq.question}</h3>
+              <p class="text-secondary-400">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Money-Back Guarantee -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-12 border-2 border-success-500/50 text-center">
+          <div class="text-5xl mb-4">✅</div>
+          <h2 class="text-3xl font-black mb-4 text-white">
+            60天退款保证
+          </h2>
+          <p class="text-lg text-secondary-300 mb-6">
+            我们对我们的方法充满信心，如果你在2个月后没有看到可衡量的进展,我们会提供全额退款。不问任何问题,不麻烦。
+          </p>
+          <p class="text-secondary-400">
+            为什么?因为如果我们没有提供价值,我们不配得到你的业务。就这么简单。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          准备好开始了吗?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          安排免费咨询。我们会审查你当前的SEO状况,找出机会,并推荐适合你目标的配套。
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=%E5%96%82%EF%BC%8C%E6%88%91%E5%AF%B9Result%20Marketing%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%84%9F%E5%85%B4%E8%B6%A3%E3%80%82" target="_blank" rel="noopener noreferrer" class="btn btn-success rounded-full">
+            获取免费咨询
+          </a>
+          <a href="/zh/services" class="btn btn-secondary rounded-full">
+            查看我们的服务
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

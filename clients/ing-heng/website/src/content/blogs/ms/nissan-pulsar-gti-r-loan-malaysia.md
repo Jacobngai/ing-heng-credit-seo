@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Nissan Pulsar GTI-R Malaysia - 0% Deposit Pembiayaan Legenda AWD JDM"
 description: "Dapatkan Nissan Pulsar GTI-R anda dengan pinjaman 0% deposit di Malaysia. Biayai hot hatch JDM muktamad dengan silsilah rali Group A dan kuasa turbo SR20DET."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

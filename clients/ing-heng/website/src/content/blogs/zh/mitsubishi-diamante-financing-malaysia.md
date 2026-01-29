@@ -1,7 +1,7 @@
 ---
 title: "马来西亚三菱Diamante融资 - 0%首付行政卓越"
 description: "以0%首付融资您的三菱Diamante。体验V6动力和先进技术的行政奢华。为精致轿车爱好者快速审批。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-27

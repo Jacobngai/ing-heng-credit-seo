@@ -1,7 +1,7 @@
 ---
 title: "Subaru Alcyone 融资马来西亚 - 0% 首付稀有SVX轿跑车梦想"
 description: "获得您的稀有Subaru Alcyone SVX 0%首付融资。不要让复杂的进口要求粉碎您在马来西亚的豪华跑车梦想。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

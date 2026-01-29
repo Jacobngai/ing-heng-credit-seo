@@ -1,0 +1,415 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  "title": "Pembiayaan Mesin Kimpalan Malaysia | Pinjaman Peralatan 0% Deposit",
+  "slug": "pembiayaan-mesin-kimpalan-malaysia",
+  "excerpt": "Biayai mesin kimpalan dengan 0% deposit di Malaysia. Kelulusan pantas untuk peralatan kimpalan baru & terpakai. Pembiayaan 100% tersedia untuk bengkel fabrikasi & kontraktor.",
+  "date": "2025-12-21",
+  "author": "Ing Heng Credit & Leasing Sdn Bhd      Laman Utama  Tentang Kami  Perkhidmatan    Peralatan            🏗️ Semua Peralatan    Lihat katalog peralatan lengkap kami         🚜 Jengkaut  Paling Popular    Jengkaut mini hingga besar untuk pembinaan         🚛 Lori Komersial  Kelulusan Pantas    Logistik & pengangkutan barang         🏭 Forklift    Peralatan gudang & perindustrian         🏗️ Kren Mudah Alih    Angkatan berat & pembinaan         🚚 Prime Mover    Pengangkutan treler & barang         🚜 Jentolak    Kerja tanah & pembukaan tanah         🧊 Lori Peti Sejuk    Logistik rantaian sejuk dan pengangkutan terkawal suhu          Lihat katalog peralatan lengkap kami  Hubungi Kami →\n      document.addEventListener(\"DOMContentLoaded\",()=>{const e=document.querySelector(\".equipment-dropdown-trigger\"),d=document.querySelector(\".equipment-dropdown-menu\"),n=document.querySelector(\".equipment-dropdown-wrapper\");e&&d&&n&&(e.addEventListener(\"click\",t=>{t.preventDefault(),t.stopPropagation();const r=e.getAttribute(\"aria-expanded\")===\"true\";e.setAttribute(\"aria-expanded\",(!r).toString())}),document.addEventListener(\"click\",t=>{n.contains(t.target)||e.setAttribute(\"aria-expanded\",\"false\")}),document.addEventListener(\"keydown\",t=>{t.key===\"Escape\"&&e.getAttribute(\"aria-expanded\")===\"true\"&&(e.setAttribute(\"aria-expanded\",\"false\"),e.focus())}),n.addEventListener(\"mouseenter\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"true\")}),n.addEventListener(\"mouseleave\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"false\")}))}); Blog  Hubungi          🇲🇾           🇬🇧 English    🇨🇳 中文    🇲🇾 Bahasa Melayu        \n  // Language switcher dropdown functionality - Enhanced version\n  (function() {\n    'use strict';\n\n    function initLanguageSwitcher() {\n      // Find ALL language switchers on the page (desktop + mobile)\n      const switchers = document.querySelectorAll('[data-language-switcher]');\n\n      switchers.forEach(function(switcher) {\n        const button = switcher.querySelector('#language-menu-button');\n        const menu = switcher.querySelector('#language-menu');\n        const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n        if (!button || !menu) {\n          console.warn('Language switcher: Missing button or menu element');\n          return;\n        }\n\n        // Remove any existing listeners (prevent duplicates)\n        const newButton = button.cloneNode(true);\n        button.parentNode.replaceChild(newButton, button);\n\n        // Toggle dropdown on button click\n        newButton.addEventListener('click', function(e) {\n          e.preventDefault();\n          e.stopPropagation();\n\n          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';\n          const newState = !isExpanded;\n\n          // Close all other language switchers first\n          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {\n            if (otherSwitcher !== switcher) {\n              const otherButton = otherSwitcher.querySelector('#language-menu-button');\n              const otherMenu = otherSwitcher.querySelector('#language-menu');\n              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');\n\n              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');\n              if (otherMenu) otherMenu.classList.add('hidden');\n              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';\n            }\n          });\n\n          // Toggle current switcher\n          newButton.setAttribute('aria-expanded', newState.toString());\n          menu.classList.toggle('hidden', !newState);\n\n          // Rotate arrow\n          if (arrow) {\n            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';\n          }\n\n          console.log('Language switcher toggled:', newState ? 'open' : 'closed');\n        });\n      });\n\n      // Close all dropdowns when clicking outside\n      document.addEventListener('click', function(e) {\n        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');\n\n        if (!clickedInsideSwitcher) {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (button) button.setAttribute('aria-expanded', 'false');\n            if (menu) menu.classList.add('hidden');\n            if (arrow) arrow.style.transform = 'rotate(0deg)';\n          });\n        }\n      });\n\n      // Close dropdowns on ESC key\n      document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape') {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (menu && !menu.classList.contains('hidden')) {\n              if (button) {\n                button.setAttribute('aria-expanded', 'false');\n                button.focus();\n              }\n              menu.classList.add('hidden');\n              if (arrow) arrow.style.transform = 'rotate(0deg)';\n            }\n          });\n        }\n      });\n\n      console.log('Language switcher initialized:', switchers.length, 'instance(s)');\n    }\n\n    // Run when DOM is ready\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);\n    } else {\n      initLanguageSwitcher();\n    }\n\n    // Re-initialize after view transitions (for Astro)\n    document.addEventListener('astro:page-load', initLanguageSwitcher);\n  })();\n       Sembang di WhatsApp",
+  "readTime": 7,
+  "category": "Equipment Financing",
+  "image": "https://www.kreditloan.my\n/images/og-default.jpg"
+};
+
+const keywords = "pembiayaan mesin kimpalan Malaysia, pembiayaan peralatan kimpalan, pembiayaan bengkel fabrikasi, pinjaman mesin kimpalan Malaysia, peralatan kimpalan industri, pembiayaan peralatan kerja logam, pembiayaan setup bengkel kimpalan, pinjaman peralatan pembuatan",
+  breadcrumbItems = [
+  {
+    "label": "Blog",
+    "href": "/ms/blog"
+  }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h1 id="pembiayaan-mesin-kimpalan-malaysia-danai-impian-fabrikasi-dengan-0-deposit">Pembiayaan Mesin Kimpalan Malaysia: Danai Impian Fabrikasi dengan 0% Deposit</h1>
+<p>Apabila anda melihat kontrak kimpalan sempurna bernilai RM 25,000, tetapi kimpalan MIG lama anda terus tergendala di tengah-tengah kerja, adakah anda merasakan kekecewaan itu terbina di dada anda? Apabila klien bertanya sama ada anda boleh mengendalikan kerja keluli tahan karat dan anda terpaksa menolaknya kerana tidak memiliki kimpalan TIG, adakah peluang pendapatan yang terlepas itu mengganggu anda berhari-hari?</p>
+<p>Anda tidak bersendirian. Bengkel fabrikasi dan kontraktor kerja logam Malaysia menghadapi cabaran harian ini. Kerja kimpalan berkualiti memerlukan peralatan berkualiti, tetapi membeli mesin kimpalan industri memerlukan pelaburan modal yang serius.</p>
+<p>Di situlah pembiayaan mesin kimpalan kami mengubah segalanya.</p>
+<h2 id="realiti-menjalankan-perniagaan-fabrikasi-di-malaysia">Realiti Menjalankan Perniagaan Fabrikasi di Malaysia</h2>
+<p>Bayangkan ini: Anda menerima pertanyaan untuk projek keluli struktur bernilai RM 80,000. Spesifikasi memerlukan kimpalan MIG yang tepat dengan gas pelindung CO2. Mesin semasa anda hampir tidak dapat mengendalikan plat keluli 6mm secara konsisten.</p>
+<p>Anda mengira angka-angka. Kimpalan MIG berkualiti berharga RM 35,000. Akaun bank anda menunjukkan RM 8,000. Pembiayaan bank tradisional? Mereka mahu deposit 30% (RM 10,500) ditambah cagaran bernilai dua kali ganda jumlah pinjaman.</p>
+<p>Tarikh akhir projek? Dua minggu.</p>
+<p>Peluangnya? Hilang kepada pesaing dengan peralatan yang lebih baik.</p>
+<p>Senario ini berulang setiap hari dalam industri fabrikasi Malaysia. Kerja kimpalan berkualiti membayar kadar premium, tetapi akses kepada peralatan yang tepat kekal sebagai halangan terbesar kepada pertumbuhan perniagaan.</p>
+<h2 id="mengapa-peralatan-kimpalan-berbeza-dari-pelaburan-perniagaan-lain">Mengapa Peralatan Kimpalan Berbeza dari Pelaburan Perniagaan Lain</h2>
+<p>Tidak seperti komputer pejabat atau trak penghantaran, mesin kimpalan adalah alat industri khusus yang secara langsung mempengaruhi kualiti kerja dan julat keupayaan anda. Seorang pekerja fabrikasi tanpa peralatan kimpalan yang sesuai adalah seperti pakar bedah tanpa instrumen - terlatih secara teknikal tetapi terhad secara praktikal.</p>
+<p>Pertimbangkan aspek unik pembiayaan peralatan kimpalan ini:</p>
+<p><strong>Kesan Pendapatan</strong>: Mesin kimpalan yang tepat bukan sahaja mengekalkan kerja semasa - ia membuka segmen pasaran yang sama sekali baru. Keupayaan kimpalan TIG bermaksud kontrak aeroangkasa. Pemotongan plasma bermaksud kerja logam seni bina. Kimpalan spot bermaksud peluang pembaikan automotif.</p>
+<p><strong>Ketepatan Teknikal Diperlukan</strong>: Kualiti kimpalan secara langsung mempengaruhi integriti struktur. Menggunakan peralatan yang tidak mencukupi bukan sahaja bermaksud kerja yang lebih lambat - ia bermaksud kerja yang ditolak, isu liabiliti, dan kerosakan reputasi.</p>
+<p><strong>Jangka Hayat Peralatan</strong>: Mesin kimpalan berkualiti beroperasi selama beberapa dekad dengan penyelenggaraan yang betul. Kimpalan Lincoln atau Miller yang diselenggara dengan baik yang dibeli hari ini masih akan menghasilkan kimpalan profesional pada tahun 2040.</p>
+<p><strong>Peningkatan Kemahiran</strong>: Peralatan kimpalan canggih membolehkan tukang kimpal mengembangkan kemahiran peringkat tinggi, mewajarkan penetapan harga premium untuk kerja khusus.</p>
+<h2 id="kos-tersembunyi-tidak-mempunyai-peralatan-kimpalan-yang-sesuai">Kos Tersembunyi TIDAK Mempunyai Peralatan Kimpalan Yang Sesuai</h2>
+<p>Apabila anda menyewa peralatan kimpalan untuk projek aluminium sekali-sekala pada RM 350 sehari, dan tempoh sewa dipanjangkan kepada 12 hari kerana anda sedang mempelajari tetapan, adakah anda merasakan aliran wang itu semakin laju? RM 4,200 untuk sewa - cukup untuk menampung tiga bulan bayaran pembiayaan pada mesin anda sendiri.</p>
+<p>Apabila anda mensubkontrakkan kerja kimpalan tepat kepada pakar dan menyaksikan 40% daripada hasil projek meninggalkan bengkel anda, adakah itu menyakitkan? Klien anda membayar RM 15,000. Anda membayar tukang kimpal pakar RM 6,000. Anda menyimpan RM 9,000 untuk koordinasi dan bahan - tetapi keuntungan kimpalan berkemahiran tinggi pergi ke tempat lain.</p>
+<p>Apabila anda menolak projek keluli struktur kerana kimpalan stick anda tidak dapat mengendalikan ketepatan yang diperlukan, dan kontrak tersebut pergi kepada pesaing, berapa banyak hasil tahunan yang sebenarnya anda kehilangan? Lima projek RM 25,000 setahun bersamaan RM 125,000 dalam peluang yang terlepas.</p>
+<p>Kos sebenar bukanlah harga mesin kimpalan. Kos sebenar adalah beroperasi tanpa peralatan yang tepat.</p>
+<h2 id="apa-yang-membezakan-pembiayaan-mesin-kimpalan-kami">Apa yang Membezakan Pembiayaan Mesin Kimpalan Kami</h2>
+<h3 id="tiada-deposit-diperlukan">Tiada Deposit Diperlukan</h3>
+<p>Sementara bank menuntut bayaran pendahuluan 20-30%, kami menawarkan pembiayaan mesin kimpalan 0% deposit. Kimpalan MIG RM 35,000 itu? Mula menggunakannya segera tanpa bayaran pendahuluan. Bayaran pertama anda hanya bermula selepas anda mula menjana hasil dengan peralatan.</p>
+<h3 id="pembiayaan-100-tersedia">Pembiayaan 100% Tersedia</h3>
+<p>Kami boleh membiayai sehingga 100% daripada nilai mesin kimpalan. Ini termasuk bukan sahaja kimpalan itu sendiri, tetapi aksesori penting seperti meja kimpalan, pengatur gas, ketuhar elektrod, dan peralatan pelindung. Penyediaan bengkel lengkap dengan satu pakej pembiayaan.</p>
+<h3 id="fleksibiliti-umur-peralatan">Fleksibiliti Umur Peralatan</h3>
+<p>Bank biasanya menolak mesin kimpalan yang berumur lebih dari 5 tahun. Kami membiayai peralatan kimpalan 10+ tahun, menilai keadaan kerja dan bukannya had umur sewenang-wenangnya. Kimpalan Miller Dynasty TIG yang berumur 12 tahun yang diselenggara dengan baik masih menghasilkan kimpalan unggul berbanding mesin bajet baru.</p>
+<h3 id="proses-kelulusan-pantas">Proses Kelulusan Pantas</h3>
+<p>Pembiayaan bank tradisional untuk peralatan industri mengambil masa minimum 2-4 minggu. Proses kelulusan diperkemas kami membolehkan bengkel fabrikasi dilengkapi dan bekerja dengan jauh lebih pantas. Hantar permohonan Isnin, terima kelulusan menjelang akhir minggu, mula mengimpal Isnin berikutnya.</p>
+<h3 id="pemahaman-industri">Pemahaman Industri</h3>
+<p>Kami pakar dalam pembiayaan peralatan untuk perniagaan Malaysia. Pasukan kami memahami corak aliran tunai industri fabrikasi, kitaran hasil berasaskan projek, dan keperluan teknikal proses kimpalan yang berbeza.</p>
+<h2 id="jenis-peralatan-kimpalan-yang-kami-biayai">Jenis Peralatan Kimpalan Yang Kami Biayai</h2>
+<h3 id="kimpalan-miggmaw">Kimpalan MIG/GMAW</h3>
+<ul>
+<li><strong>Aplikasi</strong>: Keluli struktur, pembaikan automotif, fabrikasi am</li>
+<li><strong>Julat Pembiayaan</strong>: RM 15,000 - RM 150,000</li>
+<li><strong>Model Biasa</strong>: Siri Lincoln PowerMIG, siri Miller Millermatic, siri Fronius TransSteel</li>
+<li><strong>Kesan Perniagaan</strong>: Proses kimpalan terpantas untuk kerja pengeluaran, penembusan sangat baik pada bahan tebal</li>
+</ul>
+<h3 id="kimpalan-tiggtaw">Kimpalan TIG/GTAW</h3>
+<ul>
+<li><strong>Aplikasi</strong>: Keluli tahan karat, aluminium, aeroangkasa, kerja tepat</li>
+<li><strong>Julat Pembiayaan</strong>: RM 20,000 - RM 200,000</li>
+<li><strong>Model Biasa</strong>: Siri Lincoln Precision TIG, siri Miller Dynasty, siri Fronius Magic Wave</li>
+<li><strong>Kesan Perniagaan</strong>: Kimpalan kualiti tertinggi, akses kepada pasaran tepat yang membayar premium</li>
+</ul>
+<h3 id="kimpalan-sticksmaw">Kimpalan Stick/SMAW</h3>
+<ul>
+<li><strong>Aplikasi</strong>: Kerja struktur luar, fabrikasi berat, kimpalan lapangan</li>
+<li><strong>Julat Pembiayaan</strong>: RM 8,000 - RM 50,000</li>
+<li><strong>Model Biasa</strong>: Siri Lincoln Invertec, siri Miller Thunderbolt</li>
+<li><strong>Kesan Perniagaan</strong>: Kepelbagaian untuk kerja lapangan, keperluan penyediaan minimum</li>
+</ul>
+<h3 id="pemotong-plasma">Pemotong Plasma</h3>
+<ul>
+<li><strong>Aplikasi</strong>: Pemotongan tepat, kerja logam artistik, kerja penyediaan</li>
+<li><strong>Julat Pembiayaan</strong>: RM 12,000 - RM 80,000</li>
+<li><strong>Model Biasa</strong>: Siri Hypertherm Powermax, siri Miller Spectrum</li>
+<li><strong>Kesan Perniagaan</strong>: Potongan bersih mengurangkan masa pengisaran, membolehkan kerja logam artistik</li>
+</ul>
+<h3 id="kimpalan-pelbagai-proses">Kimpalan Pelbagai Proses</h3>
+<ul>
+<li><strong>Aplikasi</strong>: Bengkel serba boleh yang memerlukan pelbagai proses kimpalan</li>
+<li><strong>Julat Pembiayaan</strong>: RM 35,000 - RM 250,000</li>
+<li><strong>Model Biasa</strong>: Siri Miller Multimatic, siri Lincoln PowerTEC</li>
+<li><strong>Kesan Perniagaan</strong>: Mesin tunggal mengendalikan pelbagai aplikasi, kecekapan ruang</li>
+</ul>
+<h3 id="peralatan-kimpalan-khusus">Peralatan Kimpalan Khusus</h3>
+<ul>
+<li><strong>Kimpalan Arka Terendam</strong>: Fabrikasi struktur berat</li>
+<li><strong>Kimpalan Rintangan/Spot</strong>: Kerja automotif dan lembaran logam</li>
+<li><strong>Kimpalan Orbit</strong>: Automasi kimpalan paip dan tiub</li>
+<li><strong>Sistem Kimpalan Robotik</strong>: Aplikasi pengeluaran volum tinggi</li>
+</ul>
+<h2 id="kes-perniagaan-untuk-pembiayaan-mesin-kimpalan">Kes Perniagaan untuk Pembiayaan Mesin Kimpalan</h2>
+<h3 id="peluang-pengembangan-hasil">Peluang Pengembangan Hasil</h3>
+<p><strong>Kerja Logam Tepat</strong>: Keupayaan kimpalan TIG membuka pasaran untuk kerja logam seni bina, fabrikasi tersuai, dan projek artistik. Ini biasanya membayar kadar 40-60% lebih tinggi daripada kimpalan struktur standard.</p>
+<p><strong>Kimpalan Aluminium</strong>: Dengan peralatan TIG atau MIG khusus yang sesuai, pembaikan bot aluminium, kerja automotif, dan aplikasi seni bina menjadi berdaya maju. Kimpalan aluminium memerintah penetapan harga premium disebabkan keperluan kemahiran dan peralatan.</p>
+<p><strong>Kecekapan Pengeluaran</strong>: Kimpalan pelbagai proses moden dengan kawalan sinergik mengurangkan masa persediaan dan meningkatkan kualiti kimpalan. Kerja yang lebih pantas dan konsisten bermaksud hasil setiap jam yang lebih tinggi dan kepuasan pelanggan.</p>
+<p><strong>Keupayaan Kerja Lapangan</strong>: Peralatan kimpalan mudah alih membuka aliran hasil untuk perkhidmatan di tapak, perkhidmatan kimpalan kecemasan, dan kerja tapak pembinaan yang membayar kadar premium untuk kemudahan.</p>
+<h3 id="kelebihan-daya-saing">Kelebihan Daya Saing</h3>
+<p><strong>Konsistensi Kualiti</strong>: Peralatan kimpalan profesional menghasilkan kimpalan yang konsisten dan berkualiti tinggi yang meningkatkan reputasi dan mewajarkan penetapan harga premium.</p>
+<p><strong>Julat Keupayaan</strong>: Memiliki pelbagai proses kimpalan bermaksud menerima projek yang lebih pelbagai tanpa mensubkontrakkan kerja khusus.</p>
+<p><strong>Kelajuan Tindak Balas</strong>: Apabila kerja kimpalan mendesak timbul, mempunyai peralatan sedia bermaksud menangkap peluang sensitif masa yang terlepas oleh pesaing.</p>
+<p><strong>Keyakinan Klien</strong>: Peralatan kimpalan gred profesional di bengkel anda membina keyakinan klien dalam keupayaan dan profesionalisme anda.</p>
+<h3 id="analisis-penjimatan-kos">Analisis Penjimatan Kos</h3>
+<p>Pertimbangkan kos bulanan TIDAK memiliki peralatan kimpalan yang sesuai:</p>
+<ul>
+<li><strong>Sewa Peralatan</strong>: RM 350/hari × 8 hari/bulan = RM 2,800</li>
+<li><strong>Kerja Khusus Subkontrak</strong>: 30% daripada nilai projek untuk kerja pakar</li>
+<li><strong>Masa Perjalanan untuk Pengambilan Sewa</strong>: 4 jam/bulan × RM 50/jam = RM 200</li>
+<li><strong>Masa Henti Semasa Isu Peralatan</strong>: Produktiviti hilang dan ketidakpuasan pelanggan</li>
+</ul>
+<p>Bayaran pembiayaan bulanan untuk peralatan kimpalan berkualiti: RM 1,200 - RM 2,500</p>
+<p>Bayaran pembiayaan sering kos kurang daripada perbelanjaan sewa peralatan dan subkontrak semasa, sambil menyediakan 100% ketersediaan peralatan dan pengekalan hasil.</p>
+<h2 id="kisah-kejayaan-dari-bengkel-fabrikasi-malaysia">Kisah Kejayaan dari Bengkel Fabrikasi Malaysia</h2>
+<h3 id="perjalanan-keluli-struktur-ahmad">Perjalanan Keluli Struktur Ahmad</h3>
+<p>Ahmad mengendalikan perniagaan fabrikasi keluli struktur kecil di Klang dengan peralatan kimpalan stick asas. Kerja berkualiti, tetapi terhad kepada struktur dan pembaikan mudah. Apabila pemaju mendekatinya tentang fabrikasi pegangan tangan untuk projek kondominium bernilai RM 120,000, spesifikasi memerlukan kimpalan MIG untuk kelajuan dan kimpalan TIG untuk komponen keluli tahan karat.</p>
+<p>Pilihan pembiayaan tradisional menuntut RM 15,000 pendahuluan untuk kimpalan pelbagai proses RM 50,000. Aliran tunai Ahmad tidak dapat mengendalikan pukulan itu, terutamanya dengan pembelian bahan yang diperlukan untuk projek.</p>
+<p>Penyelesaian pembiayaan 0% deposit kami membolehkan Ahmad dilengkapi dengan kimpalan pelbagai proses Lincoln PowerWave. Penyelesaian projek mengambil masa 6 minggu dengan hasil kualiti cemerlang. Pemaju menjadi pelanggan berulang, membawa kepada tiga projek tambahan bernilai RM 180,000 keseluruhan.</p>
+<p>Hasil perniagaan Ahmad berganda dalam masa 8 bulan, dan dia mengupah dua tukang kimpal tambahan. Bayaran pembiayaan mudah menampung dirinya melalui keupayaan projek yang meningkat dan penetapan harga premium untuk kerja berkualiti.</p>
+<h3 id="transformasi-kedai-khusus-automotif-lee">Transformasi Kedai Khusus Automotif Lee</h3>
+<p>Lee menjalankan kedai pembaikan automotif am tetapi menyedari permintaan yang meningkat untuk pembaikan badan kerja aluminium apabila kenderaan mewah menjadi lebih biasa di kawasannya. Peralatan sedia ada tidak dapat mengendalikan kimpalan aluminium dengan berkesan.</p>
+<p>Kimpalan TIG aluminium khusus berharga RM 35,000. Bank mahu jaminan sama dengan dua kali ganda jumlah pinjaman ditambah deposit 25%. Untuk aliran tunai kedai automotif, ini adalah melarang.</p>
+<p>Pembiayaan terjamin peralatan kami membolehkan Lee dilengkapi dengan kimpalan TIG AC/DC yang direka khusus untuk kerja aluminium. Dalam masa tiga bulan, kerja pembaikan aluminium mewakili 30% daripada hasil kedainya pada kadar setiap jam 50% lebih tinggi daripada kerja keluli standard.</p>
+<p>Syarikat insurans mula merujuk pembaikan kenderaan mewah terus ke kedai Lee. Hasil tahunan meningkat sebanyak RM 150,000, dan Lee berkembang ke fabrikasi motosikal tersuai menggunakan keupayaan barunya.</p>
+<h3 id="pengembangan-kerja-logam-seni-bina-susan">Pengembangan Kerja Logam Seni Bina Susan</h3>
+<p>Susan mengendalikan bengkel fabrikasi am tetapi mahu memasuki pasaran kerja logam seni bina mewah. Ini memerlukan keupayaan kimpalan TIG tepat untuk elemen artistik keluli tahan karat dan aluminium.</p>
+<p>Pelaburan peralatan yang diperlukan: Kimpalan TIG, pemotong plasma, dan pemasangan khusus berjumlah RM 85,000. Pembiayaan tradisional akan memerlukan cagaran yang besar dan proses kelulusan yang panjang.</p>
+<p>Pakej pembiayaan peralatan komprehensif kami meliputi penyediaan lengkap. Projek seni bina pertama Susan - panel hiasan untuk lobi hotel mewah - membayar RM 45,000 untuk kerja yang akan berharga RM 15,000 dalam keluli struktur standard.</p>
+<p>Dalam masa satu tahun, kerja seni bina terdiri daripada 60% daripada volum perniagaan Susan pada margin yang jauh lebih tinggi. Dia mengupah tukang kimpal artistik pakar dan berkembang ke kerja pemulihan arca untuk muzium.</p>
+<h2 id="pertimbangan-teknikal-untuk-pemilihan-peralatan-kimpalan">Pertimbangan Teknikal untuk Pemilihan Peralatan Kimpalan</h2>
+<h3 id="keperluan-kuasa-dan-infrastruktur-bengkel">Keperluan Kuasa dan Infrastruktur Bengkel</h3>
+<p><strong>Kuasa Fasa Tunggal vs Tiga Fasa</strong>: Peralatan kimpalan industri sering memerlukan kuasa tiga fasa untuk prestasi optimum. Faktorkan naik taraf elektrik ke dalam pengiraan pembiayaan anda jika diperlukan.</p>
+<p><strong>Keperluan Kitaran Tugas</strong>: Padankan kitaran tugas kimpalan dengan corak penggunaan sebenar anda. Bengkel pengeluaran tinggi memerlukan keupayaan kitaran tugas 100%, manakala situasi penggunaan sekali-sekala boleh menggunakan mesin kitaran tugas yang lebih rendah.</p>
+<p><strong>Pertimbangan Voltan Input</strong>: Standard elektrik Malaysia memerlukan konfigurasi voltan khusus. Pastikan keserasian peralatan dengan sistem kuasa tempatan.</p>
+<h3 id="ciri-peralatan-khusus-proses">Ciri Peralatan Khusus Proses</h3>
+<p><strong>Sistem Kimpalan MIG</strong>:</p>
+<ul>
+<li>Konsistensi suapan wayar untuk aplikasi aluminium</li>
+<li>Keupayaan kimpalan nadi untuk bahan nipis</li>
+<li>Keserasian pistol spool untuk wayar aluminium</li>
+<li>Kawalan sinergik untuk penyediaan yang dipermudahkan</li>
+</ul>
+<p><strong>Sistem Kimpalan TIG</strong>:</p>
+<ul>
+<li>Keupayaan AC untuk kimpalan aluminium</li>
+<li>Permulaan frekuensi tinggi untuk kerja tepat</li>
+<li>Kawalan amperage jauh untuk kimpalan kedudukan</li>
+<li>Pembentukan gelombang lanjutan untuk aplikasi khusus</li>
+</ul>
+<p><strong>Keupayaan Pelbagai Proses</strong>:</p>
+<ul>
+<li>Penukaran proses lancar</li>
+<li>Bahan habis pakai dikongsi di mana mungkin</li>
+<li>Antara muka kawalan bersatu</li>
+<li>Tetapan pengoptimuman proses</li>
+</ul>
+<h3 id="bahan-habis-pakai-dan-kos-operasi">Bahan Habis Pakai dan Kos Operasi</h3>
+<p>Peralatan kimpalan berkualiti mengurangkan kos bahan habis pakai melalui:</p>
+<ul>
+<li><strong>Kawalan arka tepat</strong>: Mengurangkan pembaziran elektrod dan pembersihan percikan</li>
+<li><strong>Suapan wayar konsisten</strong>: Meminimumkan isu suapan wayar dan pembaziran</li>
+<li><strong>Penggunaan gas dioptimumkan</strong>: Kawalan aliran gas lanjutan mengurangkan penggunaan gas pelindung</li>
+<li><strong>Kestabilan arka diperbaiki</strong>: Mengurangkan kadar kecacatan dan keperluan kerja semula</li>
+</ul>
+<h2 id="proses-permohonan-pembiayaan-untuk-peralatan-kimpalan">Proses Permohonan Pembiayaan untuk Peralatan Kimpalan</h2>
+<h3 id="dokumentasi-diperlukan">Dokumentasi Diperlukan</h3>
+<p><strong>Maklumat Perniagaan</strong>:</p>
+<ul>
+<li>Dokumen pendaftaran perniagaan</li>
+<li>Penyata kewangan terkini (6-12 bulan)</li>
+<li>Penyata bank yang menunjukkan sejarah transaksi</li>
+<li>Kontrak projek atau pengesahan pesanan</li>
+</ul>
+<p><strong>Butiran Peralatan</strong>:</p>
+<ul>
+<li>Model khusus dan sebut harga pembekal</li>
+<li>Spesifikasi teknikal dan aplikasi</li>
+<li>Keperluan pemasangan dan penyediaan</li>
+<li>Maklumat waranti dan sokongan perkhidmatan</li>
+</ul>
+<h3 id="faktor-kelulusan-yang-kami-pertimbangkan">Faktor Kelulusan Yang Kami Pertimbangkan</h3>
+<p><strong>Daya Maju Perniagaan</strong>: Kami menilai kedudukan pasaran perniagaan fabrikasi anda, pangkalan pelanggan, dan potensi pertumbuhan berbanding hanya nisbah kewangan.</p>
+<p><strong>Padanan Peralatan</strong>: Sejauh mana peralatan kimpalan yang diminta sejajar dengan aplikasi perniagaan dan peluang pasaran anda?</p>
+<p><strong>Pengalaman Industri</strong>: Pengalaman kimpalan dan rekod jejak perniagaan anda dalam fabrikasi atau industri berkaitan.</p>
+<p><strong>Corak Aliran Tunai</strong>: Memahami kitaran hasil berasaskan projek yang tipikal dalam perniagaan fabrikasi.</p>
+<h3 id="garis-masa-kelulusan">Garis Masa Kelulusan</h3>
+<ul>
+<li><strong>Penyerahan Permohonan</strong>: Lengkap dalam talian atau secara peribadi</li>
+<li><strong>Semakan Awal</strong>: 1-2 hari perniagaan</li>
+<li><strong>Pengesahan Dokumentasi</strong>: 2-3 hari perniagaan</li>
+<li><strong>Kelulusan Akhir</strong>: 1-2 hari perniagaan</li>
+<li><strong>Penghantaran Peralatan</strong>: Diselaraskan dengan pembekal</li>
+</ul>
+<p>Jumlah proses biasanya selesai dalam satu minggu, jauh lebih pantas daripada pembiayaan bank tradisional.</p>
+<h2 id="memaksimumkan-roi-dari-peralatan-kimpalan-dibiayai">Memaksimumkan ROI dari Peralatan Kimpalan Dibiayai</h2>
+<h3 id="pemilihan-peralatan-strategik">Pemilihan Peralatan Strategik</h3>
+<p><strong>Mulakan dengan Kepelbagaian</strong>: Kimpalan pelbagai proses menyediakan julat aplikasi maksimum dengan bayaran pembiayaan tunggal. Bina keupayaan pakar apabila perniagaan berkembang.</p>
+<p><strong>Padankan Kuasa dengan Aplikasi</strong>: Peralatan berkuasa berlebihan membazir elektrik dan kapasiti pembiayaan. Peralatan kurang kuasa mengehadkan peluang projek.</p>
+<p><strong>Pertimbangkan Mudah Alih</strong>: Peralatan kimpalan mudah alih membuka aliran hasil perkhidmatan lapangan yang tidak tersedia dengan penyediaan kedai sahaja.</p>
+<p><strong>Rancang untuk Pertumbuhan</strong>: Pilih peralatan dengan kapasiti untuk pengembangan perniagaan berbanding hanya keperluan semasa.</p>
+<h3 id="strategi-pengoptimuman-hasil">Strategi Pengoptimuman Hasil</h3>
+<p><strong>Kedudukan Perkhidmatan Premium</strong>: Peralatan kimpalan berkualiti membolehkan kedudukan sebagai penyedia perkhidmatan premium dengan penetapan harga yang sesuai.</p>
+<p><strong>Kemasukan Pasaran Khusus</strong>: Sasarkan pasaran niche yang memerlukan proses kimpalan khusus - marin, aeroangkasa, artistik, kerja pemulihan.</p>
+<p><strong>Pelaburan Latihan</strong>: Keupayaan peralatan lanjutan mewajarkan pelaburan dalam latihan kimpalan lanjutan untuk menggunakan sepenuhnya potensi peralatan.</p>
+<p><strong>Pelaburan Pemasaran</strong>: Penyediaan peralatan profesional meningkatkan kredibiliti perniagaan dan menyokong pelaburan pemasaran.</p>
+<h3 id="penambahbaikan-kecekapan-operasi">Penambahbaikan Kecekapan Operasi</h3>
+<p><strong>Masa Penyediaan Dikurangkan</strong>: Peralatan kimpalan moden dengan kawalan sinergik dan program pratetap mengurangkan masa penyediaan kerja dengan ketara.</p>
+<p><strong>Konsistensi Diperbaiki</strong>: Peralatan profesional menghasilkan hasil yang lebih konsisten, mengurangkan kerja semula dan aduan pelanggan.</p>
+<p><strong>Pengoptimuman Penyelenggaraan</strong>: Peralatan berkualiti dengan sokongan perkhidmatan yang sesuai mengurangkan masa henti dan kos penyelenggaraan.</p>
+<p><strong>Peningkatan Keselamatan</strong>: Ciri keselamatan moden mengurangkan kos insurans dan risiko pampasan pekerja.</p>
+<h2 id="kebimbangan-umum-tentang-pembiayaan-peralatan-kimpalan">Kebimbangan Umum Tentang Pembiayaan Peralatan Kimpalan</h2>
+<h3 id="peralatan-akan-menjadi-usang">”Peralatan Akan Menjadi Usang”</h3>
+<p>Asas kimpalan berkualiti kekal konsisten. Kimpalan MIG atau TIG yang dibina dengan baik dari 2025 masih akan menghasilkan kimpalan cemerlang pada 2035. Penambahbaikan teknologi memberi tumpuan kepada antara muka pengguna dan kecekapan berbanding keupayaan kimpalan asas.</p>
+<p>Peralatan kimpalan moden termasuk keupayaan kemas kini perisian tegar, memanjangkan relevan operasi. Selain itu, terma pembiayaan biasanya berkisar 3-7 tahun, membolehkan kitaran penyegaran peralatan sejajar dengan kemajuan teknologi.</p>
+<h3 id="aliran-tunai-akan-terlalu-ketat">”Aliran Tunai Akan Terlalu Ketat”</h3>
+<p>Bayaran pembiayaan disusun dengan mempertimbangkan corak aliran tunai perniagaan fabrikasi. Tidak seperti bank yang memerlukan bayaran bulanan tetap tanpa mengira kitaran perniagaan, struktur pembayaran kami boleh menampung aliran hasil berasaskan projek.</p>
+<p>Selain itu, peningkatan hasil daripada keupayaan diperluas biasanya melebihi bayaran pembiayaan dalam masa 3-6 bulan. Peralatan kimpalan berkualiti membayar sendiri melalui peluang penetapan harga premium.</p>
+<h3 id="kos-penyelenggaraan-dan-perkhidmatan">”Kos Penyelenggaraan dan Perkhidmatan”</h3>
+<p>Pengilang peralatan kimpalan terkemuka menyediakan rangkaian perkhidmatan komprehensif di seluruh Malaysia. Pakej pembiayaan boleh termasuk waranti lanjutan dan perjanjian perkhidmatan, menyediakan kos penyelenggaraan yang dapat diramal.</p>
+<p>Peralatan berkualiti memerlukan perkhidmatan yang kurang kerap daripada alternatif bajet. Kimpalan Lincoln atau Miller profesional biasanya memerlukan penyelenggaraan asas setiap 6-12 bulan berbanding isu bulanan dengan peralatan yang lebih murah.</p>
+<h3 id="keluk-pembelajaran-pada-peralatan-baru">”Keluk Pembelajaran pada Peralatan Baru”</h3>
+<p>Peralatan kimpalan moden termasuk panduan penyediaan yang luas dan pelarasan parameter automatik. Kawalan sinergik secara automatik menetapkan voltan, kelajuan wayar, dan aliran gas berdasarkan jenis bahan dan pemilihan ketebalan.</p>
+<p>Kebanyakan tukang kimpal mendapati peralatan lanjutan lebih mudah digunakan daripada mesin pelarasan manual yang lebih lama. Sumber latihan termasuk tutorial dalam talian, sokongan pengilang, dan sekolah kimpalan tempatan menyediakan pembangunan kemahiran yang pantas.</p>
+<h2 id="trend-industri-yang-mempengaruhi-pelaburan-peralatan-kimpalan">Trend Industri Yang Mempengaruhi Pelaburan Peralatan Kimpalan</h2>
+<h3 id="integrasi-automasi">Integrasi Automasi</h3>
+<p>Peralatan kimpalan moden semakin termasuk antara muka automasi untuk integrasi robotik masa hadapan. Membiayai peralatan berkualiti hari ini meletakkan perniagaan untuk naik taraf automasi tanpa penggantian peralatan lengkap.</p>
+<p><strong>Kimpalan Kolaboratif</strong>: Sistem separa automatik yang meningkatkan produktiviti tukang kimpal berbanding menggantikan kemahiran manusia.</p>
+<p><strong>Integrasi Data</strong>: Log parameter kimpalan dan pemantauan kualiti melalui antara muka digital.</p>
+<p><strong>Pemantauan Jauh</strong>: Keupayaan pemantauan prestasi peralatan dan penyelenggaraan ramalan.</p>
+<h3 id="kemajuan-teknologi-bahan">Kemajuan Teknologi Bahan</h3>
+<p><strong>Keluli Kekuatan Tinggi Lanjutan</strong>: Aplikasi automotif dan struktur semakin menggunakan AHSS yang memerlukan parameter kimpalan khusus.</p>
+<p><strong>Penyambungan Bahan Berbeza</strong>: Permintaan yang meningkat untuk penyambungan keluli-aluminium dalam aplikasi automotif dan seni bina.</p>
+<p><strong>Sokongan Pembuatan Aditif</strong>: Keserasian peralatan kimpalan dengan aplikasi percetakan 3D dan pembaikan.</p>
+<h3 id="pertimbangan-alam-sekitar">Pertimbangan Alam Sekitar</h3>
+<p><strong>Kecekapan Tenaga</strong>: Peralatan kimpalan moden menggunakan 20-30% kurang elektrik daripada mesin generasi sebelumnya.</p>
+<p><strong>Integrasi Pengekstrakan Asap</strong>: Sistem pengurusan asap terbina dalam untuk keselamatan tempat kerja yang diperbaiki.</p>
+<p><strong>Bahan Habis Pakai Boleh Dikitar Semula</strong>: Pilihan bahan habis pakai sedar alam sekitar dan ciri pengurangan sisa.</p>
+<h2 id="pertimbangan-serantau-untuk-perniagaan-fabrikasi-malaysia">Pertimbangan Serantau untuk Perniagaan Fabrikasi Malaysia</h2>
+<h3 id="corak-permintaan-pasaran">Corak Permintaan Pasaran</h3>
+<p><strong>Pembangunan Infrastruktur</strong>: Projek MRT, LRT, dan lebuhraya yang berterusan mencipta permintaan konsisten untuk perkhidmatan kimpalan struktur.</p>
+<p><strong>Pertumbuhan Industri</strong>: Pembuatan elektronik, pemasangan automotif, dan industri petrokimia memerlukan perkhidmatan kimpalan khusus.</p>
+<p><strong>Aplikasi Marin</strong>: Kemudahan pelabuhan dan sektor pembinaan kapal memerlukan keupayaan kimpalan tahan kakisan.</p>
+<h3 id="pertimbangan-iklim">Pertimbangan Iklim</h3>
+<p><strong>Kesan Kelembapan</strong>: Iklim Malaysia memerlukan peralatan kimpalan dengan perlindungan lembapan yang sesuai dan sistem penyimpanan elektrod.</p>
+<p><strong>Kestabilan Suhu</strong>: Prestasi kimpalan konsisten walaupun variasi suhu persekitaran.</p>
+<p><strong>Rintangan Kakisan</strong>: Peralatan direka untuk persekitaran tropika dengan salutan pelindung yang sesuai.</p>
+<h3 id="rangkaian-pembekal">Rangkaian Pembekal</h3>
+<p><strong>Sokongan Perkhidmatan Tempatan</strong>: Akses kepada pusat perkhidmatan yang diberi kuasa pengilang di seluruh bandar utama Malaysia.</p>
+<p><strong>Ketersediaan Bahan Habis Pakai</strong>: Rantaian bekalan yang boleh dipercayai untuk elektrod, wayar, dan gas pelindung.</p>
+<p><strong>Sumber Latihan</strong>: Institut kimpalan tempatan dan program latihan pengilang untuk pembangunan kemahiran.</p>
+<h2 id="langkah-seterusnya-membiayai-peralatan-kimpalan-anda">Langkah Seterusnya: Membiayai Peralatan Kimpalan Anda</h2>
+<h3 id="fasa-penyelidikan-peralatan">Fasa Penyelidikan Peralatan</h3>
+<p><strong>Kenal pasti Keperluan Khusus</strong>: Analisis aplikasi kimpalan semasa dan unjuran anda untuk menentukan spesifikasi peralatan optimum.</p>
+<p><strong>Perundingan Pembekal</strong>: Bekerja dengan pengedar peralatan kimpalan yang diberi kuasa untuk mengenal pasti mesin terbaik untuk aplikasi dan bajet anda.</p>
+<p><strong>Pengiraan Jumlah Kos</strong>: Termasuk aksesori, pemasangan, bahan habis pakai awal, dan latihan dalam permintaan pembiayaan anda.</p>
+<h3 id="penyediaan-permohonan">Penyediaan Permohonan</h3>
+<p><strong>Dokumentasi Perniagaan</strong>: Kumpulkan penyata kewangan, kontrak projek, dan dokumen pendaftaran perniagaan.</p>
+<p><strong>Sebut Harga Peralatan</strong>: Dapatkan sebut harga terperinci daripada pengedar yang diberi kuasa termasuk waranti dan syarat perkhidmatan.</p>
+<p><strong>Unjuran Aliran Tunai</strong>: Sediakan unjuran hasil realistik yang menunjukkan bagaimana keupayaan peralatan baru akan memberi kesan kepada pendapatan perniagaan.</p>
+<h3 id="perancangan-selepas-kelulusan">Perancangan Selepas Kelulusan</h3>
+<p><strong>Koordinasi Pemasangan</strong>: Pastikan keperluan elektrik dan pengudaraan bengkel dipenuhi sebelum penghantaran peralatan.</p>
+<p><strong>Jadual Latihan</strong>: Rancang latihan operator untuk memaksimumkan keupayaan peralatan dari hari pertama.</p>
+<p><strong>Strategi Pemasaran</strong>: Bangunkan pendekatan pemasaran untuk mempromosikan keupayaan kimpalan baru kepada pelanggan sedia ada dan berpotensi.</p>
+<h2 id="bersedia-untuk-membiayai-peralatan-kimpalan-anda">Bersedia untuk Membiayai Peralatan Kimpalan Anda?</h2>
+<p>Berhenti melihat kontrak kimpalan menguntungkan pergi kepada pesaing dengan peralatan yang lebih baik. Berhenti membayar yuran sewa untuk peralatan yang anda boleh miliki. Berhenti mengehadkan keupayaan perniagaan fabrikasi anda disebabkan kekangan peralatan.</p>
+<p>Pembiayaan mesin kimpalan kami menawarkan:</p>
+<ul>
+<li><strong>0% deposit diperlukan</strong> - Mula menggunakan peralatan segera</li>
+<li><strong>Sehingga 100% pembiayaan</strong> - Tutup pakej peralatan lengkap</li>
+<li><strong>Proses kelulusan pantas</strong> - Dilengkapi dengan cepat</li>
+<li><strong>Syarat bayaran fleksibel</strong> - Disusun untuk aliran tunai perniagaan fabrikasi</li>
+<li><strong>Fleksibiliti umur peralatan</strong> - Biayai peralatan terpakai berkualiti juga</li>
+</ul>
+<p>Kemahiran kimpalan anda layak mendapat peralatan profesional. Perniagaan anda layak mendapat pemilikan peralatan. Pertumbuhan anda layak mendapat pembiayaan yang berkesan.</p>
+<p><strong>Hubungi kami hari ini untuk kelulusan pembiayaan peralatan kimpalan segera.</strong></p>
+<p>Kontrak kimpalan bernilai tinggi seterusnya tidak sepatutnya pergi kepada orang lain kerana mereka mempunyai peralatan yang lebih baik. Ia sepatutnya pergi kepada anda kerana anda membuat keputusan bijak untuk dilengkapi dengan betul.</p>
+<p>Perniagaan fabrikasi anda. Peralatan kimpalan anda. Kejayaan anda.</p>
+<p><strong>Mohon sekarang dan mula mengimpal dengan peralatan profesional bulan ini.</strong></p>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Equipment Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    border: 2px solid #2D1810;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background: #D4A574;
+    color: #2D1810;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

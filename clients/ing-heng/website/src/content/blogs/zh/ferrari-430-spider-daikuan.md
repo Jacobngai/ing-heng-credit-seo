@@ -3,7 +3,7 @@ title: "Ferrari 430 Spider贷款马来西亚 - 0%首付超级车融资"
 description: "获得Ferrari F430 Spider融资批准在马来西亚。银行拒绝超级车贷款？我们专门提供异国车融资，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["ferrari 430 spider贷款", "超级车融资马来西亚", "异国车贷款", "ferrari融资"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

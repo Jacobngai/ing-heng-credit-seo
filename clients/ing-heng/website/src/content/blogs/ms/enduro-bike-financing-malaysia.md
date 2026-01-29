@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Enduro Bike Malaysia - Pinjaman Motosikal Off-Road 0% Deposit"
 description: "Dapatkan pembiayaan enduro bike Malaysia dengan 0% deposit. Bank tolak motosikal off-road? Kami luluskan pinjaman enduro untuk KTM, Husqvarna, Beta dan custom build."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-23

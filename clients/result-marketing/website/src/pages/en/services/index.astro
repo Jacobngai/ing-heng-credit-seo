@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+
+const lang = 'en';
+
+// SIMPLE WORDS REPLACEMENTS
+// "AI-Powered SEO" → "Get Found in AI Search"
+// "Long-Tail Keyword Strategy" → "Target Easy Keywords"
+// "Content Creation at Scale" → "Write More Content"
+// "Technical SEO" → "Fix Your Website"
+// "AI Search Optimization" → "Ready for AI Search"
+
+const services = [
+  {
+    title: 'Get Found in AI Search',
+    description: 'Show up when people ask ChatGPT, Gemini, and Claude for help. Capture buyers before they search Google.',
+    icon: '🤖',
+    link: '/en/services/ai-seo',
+    features: [
+      'Find what people ask AI',
+      'Write answers that help',
+      'Get cited by AI engines',
+      'Turn questions into sales'
+    ]
+  },
+  {
+    title: 'Target Easy Keywords',
+    description: 'Stop fighting for hard words. Win with 1,000 specific, easy searches your customers actually use.',
+    icon: '🎯',
+    link: '/en/services/long-tail',
+    features: [
+      '100+ easy keywords monthly',
+      'Less competition',
+      'More buyers, less browsers',
+      'See results fast'
+    ]
+  },
+  {
+    title: 'Write More Content',
+    description: '10x faster writing. AI starts, humans finish. Same great quality, much lower cost.',
+    icon: '📝',
+    link: '/en/services/content',
+    features: [
+      'AI writes first draft',
+      'Humans make it perfect',
+      'Google-ready from day one',
+      'Sounds like you'
+    ]
+  },
+  {
+    title: 'Fix Your Website',
+    description: 'Fast load, mobile-friendly, easy to find. We fix the technical stuff so your content can rank.',
+    icon: '⚙️',
+    link: '/en/services/technical',
+    features: [
+      'Make site load fast',
+      'Pass Google health check',
+      'Fix mobile problems',
+      'Get found by Google'
+    ]
+  }
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Learn Your Business',
+    description: 'We check what\'s working, find quick wins, and make a 90-day plan.'
+  },
+  {
+    step: '02',
+    title: 'Find Your Keywords',
+    description: 'AI tools find 100+ easy terms your competitors miss.'
+  },
+  {
+    step: '03',
+    title: 'Write & Publish',
+    description: 'AI-assisted writing with human quality check. Fast, scalable, never bad quality.'
+  },
+  {
+    step: '04',
+    title: 'Watch & Improve',
+    description: 'Content goes live in 24-48 hours. We track, fix, and grow based on real data.'
+  }
+];
+
+const industries = [
+  {
+    name: 'B2B Software',
+    description: 'Help buyers find you when researching',
+    icon: '💼'
+  },
+  {
+    name: 'Professional Services',
+    description: 'Capture clients searching for expertise',
+    icon: '👔'
+  },
+  {
+    name: 'Online Stores',
+    description: 'Get found when people compare products',
+    icon: '🛒'
+  },
+  {
+    name: 'Finance',
+    description: 'Build trust with helpful content',
+    icon: '💰'
+  },
+  {
+    name: 'Healthcare',
+    description: 'Answer patient questions',
+    icon: '⚕️'
+  },
+  {
+    name: 'Manufacturing',
+    description: 'Help B2B buyers find your solutions',
+    icon: '🏭'
+  }
+];
+---
+
+<BaseLayout
+  title="Our Services - Simple SEO That Works | Result Marketing"
+  description="SEO services that actually work: AI search optimization, easy keywords, fast content writing, and technical fixes."
+  locale={lang}
+>
+  <!-- Hero Section - SIMPLE WORDS -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Our Services</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          SEO That Actually Works
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          We don't do "SEO" for rankings that don't matter.
+          <br><br>
+          <strong>We help you get found when real people search for real solutions. Traffic that buys. Leads that call. Growth that lasts.</strong>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Get Free Analysis
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            View Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {services.map(service => (
+          <a href={service.link} class="group">
+            <div class="card card-hover h-full">
+              <div class="text-4xl mb-4">{service.icon}</div>
+              <h3 class="text-2xl font-black mb-3 text-white group-hover:text-accent-400 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-secondary-400 mb-6">{service.description}</p>
+              <ul class="space-y-3 mb-6">
+                {service.features.map(feature => (
+                  <li class="flex items-start gap-3 text-sm text-secondary-300">
+                    <div class="relative">
+                      <div class="absolute inset-0 bg-success-500/30 blur-sm"></div>
+                      <svg class="h-5 w-5 text-success-500 flex-shrink-0 mt-0.5 relative" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                    </div>
+                    <span class="font-medium">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-4 text-accent-500 font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">How We Work</h2>
+        <p class="text-lg text-secondary-400">
+          Results in 90 days or less. No long contracts.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {process.map(item => (
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-accent-500 to-accent-700 text-white font-black text-2xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-xl font-black mb-3 text-white">{item.title}</h3>
+            <p class="text-secondary-400 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">Industries We Help</h2>
+        <p class="text-lg text-secondary-400">
+          Our approach works across many types of businesses
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {industries.map(industry => (
+          <div class="card card-hover text-center">
+            <div class="text-4xl mb-3">{industry.icon}</div>
+            <h3 class="font-black mb-2 text-white">{industry.name}</h3>
+            <p class="text-sm text-secondary-400">{industry.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Ready to See What 100 Keywords Can Do?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          Get a free keyword gap analysis. We'll show you exactly what you're missing.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Get Free Analysis
+          </a>
+          <a href="/en/case-studies" class="btn btn-secondary">
+            See Case Studies
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

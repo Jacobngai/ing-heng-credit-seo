@@ -1,3 +1,29 @@
+- 🚨 CRITICAL RULES - Progress Tracking for Batch Operations
+
+  **When running ANY batch operations (agents, background tasks, file generation):**
+
+  1. Create/Update a progress tracker markdown file in the relevant project folder
+  2. Mark items as [DONE], [IN_PROGRESS], or [PENDING]
+  3. Update IMMEDIATELY after completing each item
+  4. This allows resumption if process is interrupted (canceled, bad internet, crashes)
+
+  **Progress Tracker Format:**
+  ```markdown
+  # [Task Name] Progress Tracker
+
+  Started: [DATE]
+  Last Updated: [DATE]
+
+  ## Completion Status
+  - [DONE] item-name.md
+  - [IN_PROGRESS] item-name.md
+  - [PENDING] item-name.md
+  ```
+
+  **Rule:** Check as done in markdown BEFORE moving to next item. No exceptions.
+
+---
+
 - 🚨 CRITICAL RULES - Multi-Language Vercel Deployment
 
   1. Environment Variables (Vercel Dashboard)

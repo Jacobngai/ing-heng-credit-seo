@@ -1,7 +1,7 @@
 ---
 title: "丰田Celica GT-Four贷款马来西亚 - 0%首付拉力传奇"
 description: "在马来西亚获得丰田Celica GT-Four 0%首付融资。专业贷款适用于这款传奇全轮驱动拉力认证特种车，具有升值潜力。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

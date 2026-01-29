@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Nissan Laurel C33 Malaysia - 0% Deposit Legenda Drift Pelaburan"
 description: "Dapatkan pembiayaan Nissan Laurel C33 dengan 0% deposit di Malaysia. Nilai meningkat ikon budaya drift ini membuatkan bayaran pinjaman terasa seperti wang kecil."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

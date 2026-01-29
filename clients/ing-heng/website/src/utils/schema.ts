@@ -12,13 +12,13 @@ export function generateOrganizationSchema() {
     '@type': ['FinancialService', 'LocalBusiness'],
     name: 'Ing Heng Credit & Leasing Sdn Bhd',
     alternateName: 'Ing Heng Credit',
-    url: 'https://www.inghengcredit.com',
-    logo: 'https://www.inghengcredit.com/images/logo.png',
-    image: 'https://www.inghengcredit.com/images/og-default.jpg',
+    url: 'https://ingheng-credit.vercel.app',
+    logo: 'https://ingheng-credit.vercel.app/images/logo.png',
+    image: 'https://ingheng-credit.vercel.app/images/og-default.jpg',
     description: 'Premier equipment financing and leasing solutions in Malaysia for construction equipment, logistics vehicles, and industrial machinery.',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '16, Lintang Menalu, Taman Chi Liung',
+      streetAddress: '306-1, Persiaran Pegaga, Taman Bayu Perdana',
       addressLocality: 'Klang',
       addressRegion: 'Selangor',
       postalCode: '41200',
@@ -26,8 +26,8 @@ export function generateOrganizationSchema() {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '3.0229422',
-      longitude: '101.4332306',
+      latitude: '3.0414',
+      longitude: '101.4466',
     },
     contactPoint: [
       {
@@ -101,10 +101,6 @@ export function generateArticleSchema(props: ArticleSchemaProps) {
     locale,
   } = props;
 
-  const siteUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_SITE_URL)
-    || (typeof import.meta !== 'undefined' && import.meta.env?.SITE_URL)
-    || 'https://www.inghengcredit.com';
-
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -114,14 +110,14 @@ export function generateArticleSchema(props: ArticleSchemaProps) {
     author: {
       '@type': 'Organization',
       name: author || 'Ing Heng Credit & Leasing',
-      url: siteUrl,
+      url: 'https://ingheng-credit.vercel.app',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Ing Heng Credit & Leasing',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/logo.png`,
+        url: 'https://ingheng-credit.vercel.app/images/logo.png',
       },
     },
     datePublished: publishedDate,
@@ -245,16 +241,12 @@ export function generateHowToSchema(props: HowToSchemaProps) {
     image,
   } = props;
 
-  const siteUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_SITE_URL)
-    || (typeof import.meta !== 'undefined' && import.meta.env?.SITE_URL)
-    || 'https://www.inghengcredit.com';
-
   return {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name,
     description,
-    image: image || `${siteUrl}/images/og-default.jpg`,
+    image: image || 'https://ingheng-credit.vercel.app/images/og-default.jpg',
     totalTime: totalTime || 'PT30M',
     estimatedCost: estimatedCost
       ? {
@@ -333,10 +325,6 @@ export interface ServicePageSchemaProps {
 export function generateServicePageSchema(props: ServicePageSchemaProps) {
   const { serviceName, description, serviceType, minRate, maxRate, locale } = props;
 
-  const siteUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_SITE_URL)
-    || (typeof import.meta !== 'undefined' && import.meta.env?.SITE_URL)
-    || 'https://www.inghengcredit.com';
-
   const getLanguageCode = (lang: 'en' | 'zh' | 'ms') => {
     const codes = { en: 'en-MY', zh: 'zh-Hans-MY', ms: 'ms-MY' };
     return codes[lang];
@@ -352,7 +340,7 @@ export function generateServicePageSchema(props: ServicePageSchemaProps) {
     provider: {
       '@type': 'FinancialService',
       name: 'Ing Heng Credit & Leasing',
-      url: siteUrl,
+      url: 'https://ingheng-credit.vercel.app',
     },
     areaServed: {
       '@type': 'Country',

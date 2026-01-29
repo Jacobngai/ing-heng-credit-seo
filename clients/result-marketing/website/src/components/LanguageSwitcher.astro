@@ -1,0 +1,86 @@
+---
+import type { Locale } from '../utils/constants';
+import { SITE_CONFIG } from '../utils/constants';
+import { switchLocale } from '../utils/i18n';
+
+interface Props {
+  currentLang: Locale;
+  currentPath: string;
+}
+
+const { currentLang, currentPath } = Astro.props;
+---
+
+<div class="relative inline-block language-switcher">
+  <button
+    class="language-toggle flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+    aria-label="Change language"
+    aria-expanded="false"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+    </svg>
+    <span>{SITE_CONFIG.languages[currentLang].name}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 chevron transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div class="language-dropdown hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+    {Object.entries(SITE_CONFIG.languages).map(([code, lang]) => (
+      <a
+        href={switchLocale(currentPath, code as Locale, currentLang)}
+        class={`block px-4 py-2 text-sm transition-colors ${
+          code === currentLang
+            ? 'bg-primary-50 text-primary-700 font-semibold'
+            : 'text-gray-700 hover:bg-gray-50'
+        }`}
+      >
+        {lang.name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Vanilla JS dropdown functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const switchers = document.querySelectorAll('.language-switcher');
+
+    switchers.forEach(switcher => {
+      const toggle = switcher.querySelector('.language-toggle') as HTMLButtonElement;
+      const dropdown = switcher.querySelector('.language-dropdown') as HTMLElement;
+      const chevron = switcher.querySelector('.chevron') as SVGElement;
+
+      if (!toggle || !dropdown) return;
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !dropdown.classList.contains('hidden');
+
+        // Close all other dropdowns
+        document.querySelectorAll('.language-dropdown').forEach(d => {
+          if (d !== dropdown) d.classList.add('hidden');
+        });
+        document.querySelectorAll('.language-toggle').forEach(t => {
+          if (t !== toggle) t.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.chevron').forEach(c => {
+          if (c !== chevron) c.classList.remove('rotate-180');
+        });
+
+        // Toggle current dropdown
+        dropdown.classList.toggle('hidden');
+        toggle.setAttribute('aria-expanded', (!isOpen).toString());
+        chevron?.classList.toggle('rotate-180');
+      });
+
+      // Close on click outside
+      document.addEventListener('click', () => {
+        dropdown.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+        chevron?.classList.remove('rotate-180');
+      });
+    });
+  });
+</script>

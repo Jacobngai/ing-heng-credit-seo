@@ -3,7 +3,7 @@ title: "Mitsubishi GTO 3000GT贷款马来西亚 - 0%首付运动车融资"
 description: "获得Mitsubishi GTO 3000GT融资在马来西亚。银行拒绝JDM运动车？我们专门提供性能车贷款，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["mitsubishi gto融资", "3000gt贷款马来西亚", "jdm运动车融资", "性能车贷款"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

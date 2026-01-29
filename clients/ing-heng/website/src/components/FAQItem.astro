@@ -1,8 +1,7 @@
 ---
 /**
  * FAQItem Component
- * Collapsible accordion-style FAQ item with Industrial Trust brutal design
- * Follows MASTER-BRAND-DESIGN-RULES.md specifications
+ * Collapsible accordion-style FAQ item with Schema.org markup
  */
 
 interface Props {
@@ -20,55 +19,48 @@ const {
 } = Astro.props;
 ---
 
-<div class="bg-white border-3 border-[#2D1810] rounded-lg overflow-hidden shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all" data-faq-item>
+<div class="border border-gray-200 rounded-lg overflow-hidden" data-faq-item>
   <!-- Question Button -->
   <button
     type="button"
-    class="w-full px-6 py-5 text-left bg-white hover:bg-[#F5F1EC] focus:outline-none focus:ring-3 focus:ring-[#8B6F47] focus:ring-inset transition-colors"
-    style="min-height: 64px;"
+    class="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset transition-colors"
     aria-expanded={isOpen}
     aria-controls={id}
     data-faq-button
   >
-    <div class="flex items-center justify-between gap-4">
-      <h3 class="text-lg md:text-xl font-black uppercase text-[#8B6F47] tracking-tight flex-1">
+    <div class="flex items-center justify-between">
+      <h3 class="text-lg font-semibold text-primary pr-8">
         {question}
       </h3>
-      <div class="flex-shrink-0 w-10 h-10 bg-[#D4A574] border-2 border-[#2D1810] rounded flex items-center justify-center">
-        <svg
-          class="w-6 h-6 text-[#2D1810] transition-transform duration-300"
-          data-faq-icon
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          stroke-width="3"
-          aria-hidden="true"
-        >
-          <path stroke-linecap="square" stroke-linejoin="miter" d="M19 9l-7 7-7-7" />
-        </svg>
-      </div>
+      <svg
+        class="w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-300"
+        data-faq-icon
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
     </div>
   </button>
 
   <!-- Answer Content -->
   <div
     id={id}
-    class="overflow-hidden transition-all duration-300 ease-in-out"
-    style={isOpen ? 'max-height: 2000px;' : 'max-height: 0;'}
+    class={`px-6 overflow-hidden transition-all duration-300 ${isOpen ? 'py-4 max-h-screen' : 'max-h-0'}`}
     data-faq-content
     role="region"
     aria-labelledby={`${id}-button`}
   >
-    <div class="px-6 pb-6 pt-2 border-t-2 border-[#D4A574] bg-[#F5F5DC]">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-base md:text-lg leading-relaxed text-[#4F3E29] font-medium" set:html={answer} />
-      </div>
+    <div class="prose prose-sm max-w-none text-gray-600">
+      <p set:html={answer} />
     </div>
   </div>
 </div>
 
 <script>
-  // FAQ accordion functionality with proper max-height calculation
+  // FAQ accordion functionality
   document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('[data-faq-item]');
 
@@ -86,12 +78,14 @@ const {
         button.setAttribute('aria-expanded', (!isExpanded).toString());
 
         if (!isExpanded) {
-          // Expand - use scrollHeight for proper full content display
-          content.style.maxHeight = content.scrollHeight + 100 + 'px'; // Add buffer for safety
+          // Expand
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.classList.add('py-4');
           icon.style.transform = 'rotate(180deg)';
         } else {
           // Collapse
           content.style.maxHeight = '0';
+          content.classList.remove('py-4');
           icon.style.transform = 'rotate(0deg)';
         }
       });

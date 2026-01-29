@@ -1,7 +1,7 @@
 ---
 title: "斯巴鲁翼豹GC8 STI融资马来西亚 - 0%首付拉力传奇投资"
 description: "在马来西亚获得斯巴鲁翼豹GC8 STI 0%首付融资。这个拉力血统传奇的赛车传统和标志性地位让月供感觉像零花钱。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

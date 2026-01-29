@@ -15,7 +15,7 @@ keywords:
 - pembiayaan robotik pertanian
 - pinjaman teknologi ladang tepat
 - peralatan pertanian automatik Malaysia
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - teknologi ladang pintar
 - automasi pertanian

@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 21, 2025      12 min read
-  #  Excavator Financing Malaysia: 0% Deposit Equipment Loans for Contractors 2025 
-
-  Get excavator financing in Malaysia with 0% deposit and 100% financing. Fast approval for new and used excavators up to 15 years old. No bank rejection here. 
-
-     By Ing Heng Credit &amp; Leasing     # Excavator Financing Malaysia: Get Your Equipment with 0% Deposit
 
 When you watch that RM 15,000 rental check leave your account every month for the excavator you don’t own, does your stomach knot up thinking: “I just paid for another month of building someone else’s wealth while my own projects wait?”
 

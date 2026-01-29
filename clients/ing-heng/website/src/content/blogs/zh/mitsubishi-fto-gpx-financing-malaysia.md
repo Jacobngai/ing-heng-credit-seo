@@ -1,7 +1,7 @@
 ---
 title: "三菱FTO GPX融资马来西亚 - 0%首付双凸轮传奇"
 description: "稀有三菱FTO GPX零首付融资。银行拒绝25年经典车？我们批准。在价值进一步飙升前获得这款升值JDM传奇。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

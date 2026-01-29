@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import StatsSection from '../../components/StatsSection.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { SITE_CONFIG } from '../../utils/constants';
+import { t } from '../../utils/i18n';
+
+const lang = 'en';
+const translate = t(lang);
+
+const services = [
+  {
+    title: 'AIEO: Ranked #1 on AI Platforms',
+    description: 'We optimize for Gemini, ChatGPT, Claude, and all AI engines. Problem-aware content that gets cited when customers ask real questions.',
+    icon: '🤖',
+    features: [
+      'Ranked #1 on Gemini, ChatGPT & Claude',
+      'Cited in AI answers (trackable metrics)',
+      'Schema markup for AI engines',
+      'Problem-aware content strategy'
+    ]
+  },
+  {
+    title: 'RM399 First Month Promo: 3-Page Website + AIEO',
+    description: 'Complete trial package: 3-page website in 3 languages plus 1 month of AIEO service. First month promo price RM399, then RM1200/month.',
+    icon: '🚀',
+    features: [
+      '3-page website (EN/ZH/MS)',
+      '1 month AIEO optimization',
+      'Problem-aware keyword research',
+      '30-day money-back guarantee'
+    ]
+  },
+  {
+    title: 'Problem-Aware Traffic Strategy',
+    description: 'We capture customers at the problem stage: "Why my aircond not cold?" not just "aircond near me." Higher intent, better leads.',
+    icon: '🎯',
+    features: [
+      'Educational content that answers why/how',
+      'Diagnostic & comparison articles',
+      'AI engines cite us as authority',
+      'Ready-to-buy traffic, not browsers'
+    ]
+  }
+];
+
+const testimonials = [
+  {
+    quote: '500%+ increase in search traffic within 6 months. The AIEO approach positioned us as the go-to expert for Airbnb management in Malaysia.',
+    author: 'iHousing Paradise',
+    role: 'Airbnb Management',
+    company: 'Kuala Lumpur',
+    rating: 5
+  },
+  {
+    quote: 'Won RM 60,000 government tender. Why? Because we ranked for "lori air" (what Malay buyers actually search) instead of just "water tanker" (English only). Multi-language SEO works.',
+    author: 'Terasek Supply',
+    role: 'Water Tanker Services',
+    company: 'Johor Bahru',
+    rating: 5
+  },
+  {
+    quote: 'Finally ranking for money lending keywords across all 3 languages. Problem-aware content captures customers at the research stage.',
+    author: 'Ing Heng Credit',
+    role: 'Financial Services',
+    company: 'Klang',
+    rating: 5
+  }
+];
+---
+
+<BaseLayout
+  title="Ranked #1 on ChatGPT, Gemini & Claude | AIEO Services Malaysia"
+  description="RM399 trial: 3-page website + 1 month AIEO. Get ranked #1 on AI platforms. Problem-aware traffic strategy that captures ready-to-buy leads. 30-day money-back guarantee."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <Hero
+    title="Ranked #1 on ChatGPT, Gemini & Claude"
+    subtitle="Others fight for <strong>'aircond service near Klang.'</strong><br><br>You win <strong>'why my aircond not cold?'</strong><br><br>AI engines recommend answers. We write them. You get cited first. Problem-aware = 3x more sales."
+    ctaText="Try Now for RM399 a month"
+    ctaLink="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services."
+    secondaryCtaText="View Case Studies"
+    secondaryCtaLink="/en/case-studies"
+    belowButtonsText="<strong>Then RM1,200 per month</strong> (money back guaranteed)"
+  />
+
+  <!-- Stats Section -->
+  <StatsSection />
+
+  <!-- Services Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">What We Do</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          AIEO Services: Ranked #1 on All AI Platforms
+        </h2>
+        <p class="text-lg text-gray-600">
+          10+ years helping businesses get found online. We educate AI engines to recommend you—capturing problem-aware traffic that's ready to buy.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-500 font-semibold text-sm uppercase tracking-wide mb-2 block">Our Process</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
+          Get Ranked #1 on AI Engines in 90 Days
+        </h2>
+        <p class="text-gray-300">
+          Problem-aware content that AI engines love. Educational, not promotional.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {[
+          {
+            step: '01',
+            title: 'Problem-Aware Research',
+            description: 'We identify "why/how" questions your customers ask AI: "Why my aircond not cold?" not just "aircond near me."'
+          },
+          {
+            step: '02',
+            title: 'Educational Content',
+            description: 'Create diagnostic guides, comparison articles, and how-to content AI engines trust and cite.'
+          },
+          {
+            step: '03',
+            title: 'AIEO Optimization',
+            description: 'Schema markup, structured data, and formatting designed for Gemini, ChatGPT, Claude to recommend you.'
+          },
+          {
+            step: '04',
+            title: 'Track Citations',
+            description: 'Monitor where AI cites your brand. Measure problem-aware traffic growth. Scale what works.'
+          }
+        ].map(item => (
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-primary-100 text-primary-700 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials / Case Studies -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-primary-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Proven Results</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
+          Real Case Studies: Ranked #1 on AI Platforms
+        </h2>
+        <p class="text-lg text-gray-600">
+          10+ years of experience. Real results across industries.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map(testimonial => (
+          <TestimonialCard {...testimonial} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container-custom">
+      <CTASection
+        title="Try Now for RM399 a month"
+        description="Most SEO agencies rank only 'aircond service near klang'—we capture problem-aware keywords like 'why my aircond not cold?' that AI engines love."
+        ctaText="Try Now for RM399 a month"
+        ctaLink="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services."
+        secondaryCtaText="View Case Studies"
+        secondaryCtaLink="/en/case-studies"
+        belowButtonsText="Then RM1,200 per month (money back guaranteed)"
+      />
+    </div>
+  </section>
+</BaseLayout>

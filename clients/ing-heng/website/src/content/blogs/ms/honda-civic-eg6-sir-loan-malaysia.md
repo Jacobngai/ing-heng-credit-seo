@@ -1,7 +1,7 @@
 ---
 title: Pinjaman Honda Civic EG6 SiR Malaysia - 0% Deposit Impian Hatchback JDM
 description: Biayai Honda Civic EG6 SiR dengan 0% deposit di Malaysia. Bank tolak JDM berusia 30 tahun tapi kami lulus. Kredit buruk diterima. Kelulusan pantas untuk legenda VTEC.
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: ms
 publishDate: 2025-12-22

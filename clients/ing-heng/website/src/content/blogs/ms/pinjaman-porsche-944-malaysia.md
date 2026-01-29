@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Porsche 944 Malaysia - Pelaburan Kejuruteraan Jerman 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk Porsche 944 anda. Penyelesaian pinjaman kereta klasik pakar dengan kadar kompetitif untuk kecemerlangan kereta sukan Jerman yang menghargai."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

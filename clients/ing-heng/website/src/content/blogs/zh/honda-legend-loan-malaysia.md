@@ -1,7 +1,7 @@
 ---
 title: "马来西亚本田Legend贷款 - 0%首付豪华旗舰梦想"
 description: "以0%首付融资您的本田Legend。体验V6卓越的旗舰奢华。为寻求日本行政精致的高端轿车爱好者快速审批。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Saab 900 Turbo Malaysia - 0% Deposit Ikon Prestasi Sweden"
 description: "Biayai Saab 900 Turbo anda dengan 0% deposit di Malaysia. Kelulusan pakar untuk pelopor turbo Sweden yang meningkat pesat. Dapatkan pembiayaan 900 Turbo anda hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

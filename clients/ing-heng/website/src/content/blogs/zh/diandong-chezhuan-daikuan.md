@@ -3,7 +3,7 @@ title: "电动车转换贷款马来西亚 - 0%首付EV转换融资"
 description: "获得电动车转换融资批准在马来西亚。银行拒绝EV转换项目？我们专门提供绿色技术贷款，0%首付选择。"
 publishDate: 2024-12-24
 tags: ["电动车转换贷款", "ev转换融资", "绿色技术融资", "电动汽车转换马来西亚"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "zh"
 locale: "zh"
 author: "ING HENG Credit"

@@ -1,7 +1,7 @@
 ---
 title: "丰田Altezza RS200融资马来西亚 - Beams发动机0%首付贷款"
 description: "在马来西亚获得丰田Altezza RS200融资，提供0%首付选项。获批这款搭载传奇3S-GE Beams发动机的稀有自然吸气运动轿车。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

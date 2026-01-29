@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Suzuki Swift GTI Malaysia - 0% Deposit Hero Hot Hatch"
 description: "Dapatkan pembiayaan Suzuki Swift GTI dengan 0% deposit di Malaysia. Pinjaman pakar untuk hot hatch berlegenda ini dengan kuasa twin-cam dan potensi kenaikan nilai klasik."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

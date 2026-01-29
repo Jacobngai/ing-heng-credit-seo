@@ -1,0 +1,898 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  "title": "Pembiayaan Grader Malaysia: 0% Deposit Peralatan Pembinaan Jalan",
+  "slug": "pembiayaan-grader-malaysia",
+  "excerpt": "Dapatkan pembiayaan motor grader tanpa deposit di Malaysia. Biayai sehingga 100% nilai grader. Kelulusan pantas untuk grader baru dan terpakai dari perniagaan 1 tahun.",
+  "date": "2024-12-21T00:00:00.000Z",
+  "author": "Ing Heng Credit & Leasing Sdn Bhd      Laman Utama  Tentang Kami  Perkhidmatan    Peralatan            🏗️ Semua Peralatan    Lihat katalog peralatan lengkap kami         🚜 Jengkaut  Paling Popular    Jengkaut mini hingga besar untuk pembinaan         🚛 Lori Komersial  Kelulusan Pantas    Logistik & pengangkutan barang         🏭 Forklift    Peralatan gudang & perindustrian         🏗️ Kren Mudah Alih    Angkatan berat & pembinaan         🚚 Prime Mover    Pengangkutan treler & barang         🚜 Jentolak    Kerja tanah & pembukaan tanah         🧊 Lori Peti Sejuk    Logistik rantaian sejuk dan pengangkutan terkawal suhu          Lihat katalog peralatan lengkap kami  Hubungi Kami →\n      document.addEventListener(\"DOMContentLoaded\",()=>{const e=document.querySelector(\".equipment-dropdown-trigger\"),d=document.querySelector(\".equipment-dropdown-menu\"),n=document.querySelector(\".equipment-dropdown-wrapper\");e&&d&&n&&(e.addEventListener(\"click\",t=>{t.preventDefault(),t.stopPropagation();const r=e.getAttribute(\"aria-expanded\")===\"true\";e.setAttribute(\"aria-expanded\",(!r).toString())}),document.addEventListener(\"click\",t=>{n.contains(t.target)||e.setAttribute(\"aria-expanded\",\"false\")}),document.addEventListener(\"keydown\",t=>{t.key===\"Escape\"&&e.getAttribute(\"aria-expanded\")===\"true\"&&(e.setAttribute(\"aria-expanded\",\"false\"),e.focus())}),n.addEventListener(\"mouseenter\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"true\")}),n.addEventListener(\"mouseleave\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"false\")}))}); Blog  Hubungi          🇲🇾           🇬🇧 English    🇨🇳 中文    🇲🇾 Bahasa Melayu        \n  // Language switcher dropdown functionality - Enhanced version\n  (function() {\n    'use strict';\n\n    function initLanguageSwitcher() {\n      // Find ALL language switchers on the page (desktop + mobile)\n      const switchers = document.querySelectorAll('[data-language-switcher]');\n\n      switchers.forEach(function(switcher) {\n        const button = switcher.querySelector('#language-menu-button');\n        const menu = switcher.querySelector('#language-menu');\n        const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n        if (!button || !menu) {\n          console.warn('Language switcher: Missing button or menu element');\n          return;\n        }\n\n        // Remove any existing listeners (prevent duplicates)\n        const newButton = button.cloneNode(true);\n        button.parentNode.replaceChild(newButton, button);\n\n        // Toggle dropdown on button click\n        newButton.addEventListener('click', function(e) {\n          e.preventDefault();\n          e.stopPropagation();\n\n          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';\n          const newState = !isExpanded;\n\n          // Close all other language switchers first\n          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {\n            if (otherSwitcher !== switcher) {\n              const otherButton = otherSwitcher.querySelector('#language-menu-button');\n              const otherMenu = otherSwitcher.querySelector('#language-menu');\n              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');\n\n              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');\n              if (otherMenu) otherMenu.classList.add('hidden');\n              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';\n            }\n          });\n\n          // Toggle current switcher\n          newButton.setAttribute('aria-expanded', newState.toString());\n          menu.classList.toggle('hidden', !newState);\n\n          // Rotate arrow\n          if (arrow) {\n            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';\n          }\n\n          console.log('Language switcher toggled:', newState ? 'open' : 'closed');\n        });\n      });\n\n      // Close all dropdowns when clicking outside\n      document.addEventListener('click', function(e) {\n        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');\n\n        if (!clickedInsideSwitcher) {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (button) button.setAttribute('aria-expanded', 'false');\n            if (menu) menu.classList.add('hidden');\n            if (arrow) arrow.style.transform = 'rotate(0deg)';\n          });\n        }\n      });\n\n      // Close dropdowns on ESC key\n      document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape') {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (menu && !menu.classList.contains('hidden')) {\n              if (button) {\n                button.setAttribute('aria-expanded', 'false');\n                button.focus();\n              }\n              menu.classList.add('hidden');\n              if (arrow) arrow.style.transform = 'rotate(0deg)';\n            }\n          });\n        }\n      });\n\n      console.log('Language switcher initialized:', switchers.length, 'instance(s)');\n    }\n\n    // Run when DOM is ready\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);\n    } else {\n      initLanguageSwitcher();\n    }\n\n    // Re-initialize after view transitions (for Astro)\n    document.addEventListener('astro:page-load', initLanguageSwitcher);\n  })();\n       Sembang di WhatsApp",
+  "readTime": 7,
+  "category": "Equipment Financing",
+  "image": "https://www.kreditloan.my\n/images/og-default.jpg"
+};
+
+const keywords = "pembiayaan grader Malaysia, pinjaman motor grader, sewa beli grader jalan, pembiayaan peralatan grading, grader 0% deposit",
+  breadcrumbItems = [
+  {
+    "label": "Blog",
+    "href": "/ms/blog"
+  }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h2 id="pembiayaan-grader-malaysia-dapatkan-motor-grader-anda-dengan-0-deposit">Pembiayaan Grader Malaysia: Dapatkan Motor Grader Anda Dengan 0% Deposit</h2>
+<p>Perlukan motor grader untuk projek pembinaan jalan atau infrastruktur? Mendapatkan pembiayaan tidak sepatutnya melambatkan operasi anda. Di Ing Heng Credit, kami menawarkan pembiayaan grader dengan tiada deposit diperlukan dan pinjaman sehingga 100% nilai peralatan.</p>
+<p>Sama ada anda perlukan grader kompak untuk jalan kediaman atau motor grader besar untuk pembinaan lebuh raya, kami membantu kontraktor dan pembangun Malaysia mengakses peralatan pembinaan jalan yang diperlukan untuk menyiapkan projek tepat masa.</p>
+<p><strong>Kenapa kontraktor pilih kami untuk pembiayaan grader:</strong></p>
+<ul>
+<li>0% deposit diperlukan untuk pemohon yang layak</li>
+<li>Biayai sehingga 100% nilai grader</li>
+<li>Kelulusan pantas berbanding bank (kami respons lebih cepat)</li>
+<li>Kadar kejayaan tinggi untuk kontraktor yang layak</li>
+<li>Grader terpakai diterima (sehingga 10 tahun)</li>
+<li>Kadar kompetitif dari 6.5% setahun</li>
+<li>Perniagaan baru diterima (minimum 1 tahun)</li>
+</ul>
+<p><strong>40 tahun membiayai jentera berat untuk kontraktor Malaysia.</strong></p>
+<hr>
+<h2 id="kenapa-biayai-motor-grader-daripada-sewa">Kenapa Biayai Motor Grader Daripada Sewa?</h2>
+<h3 id="1-hentikan-bayar-sewa-selama-lamanya">1. Hentikan Bayar Sewa Selama-lamanya</h3>
+<p><strong>Kos sewa bertambah cepat:</strong></p>
+<ul>
+<li>Grader kecil (140H): RM 8,000-12,000/bulan</li>
+<li>Grader sederhana (16H): RM 15,000-20,000/bulan</li>
+<li>Grader besar (24M): RM 25,000-35,000/bulan</li>
+</ul>
+<p><strong>Contoh: Sewa motor grader sederhana</strong></p>
+<ul>
+<li>Sewa bulanan: RM 18,000</li>
+<li>Projek 2 tahun: RM 432,000</li>
+<li><strong>Hasil:</strong> RM 432,000 dibelanjakan, tiada aset dimiliki</li>
+</ul>
+<p><strong>Sebaliknya, biayai dengan 0% deposit:</strong></p>
+<ul>
+<li>Harga grader: RM 800,000</li>
+<li>Biayai 100%: RM 800,000 pinjaman</li>
+<li>Bayaran bulanan (60 bulan, 7% p.a.): RM 15,840</li>
+<li><strong>Selepas 5 tahun:</strong> Miliki grader RM 800,000, jimat RM 300,000</li>
+</ul>
+<h3 id="2-miliki-aset-dari-hari-pertama">2. Miliki Aset Dari Hari Pertama</h3>
+<p>Apabila anda membiayai motor grader:</p>
+<ul>
+<li>Bina aset syarikat untuk kunci kira-kira</li>
+<li>Faedah susut nilai untuk tujuan cukai</li>
+<li>Guna grader untuk pelbagai projek (bukan satu saja)</li>
+<li>Jual atau tukar bila naik taraf peralatan</li>
+<li>Tiada caj sewa harian yang memakan keuntungan projek</li>
+</ul>
+<h3 id="3-menang-lebih-banyak-kontrak-infrastruktur">3. Menang Lebih Banyak Kontrak Infrastruktur</h3>
+<p>Banyak projek kerajaan dan berskala besar memerlukan:</p>
+<ul>
+<li>Bukti peralatan milik sendiri (bukan bergantung sewa)</li>
+<li>Kestabilan kewangan (aset dalam kunci kira-kira)</li>
+<li>Keupayaan jangka panjang (tidak terhad oleh ketersediaan sewa)</li>
+<li>Jaminan kebolehpercayaan peralatan</li>
+</ul>
+<p><strong>Memiliki motor grader anda menjadikan anda lebih berdaya saing</strong> untuk kontrak pembinaan jalan utama.</p>
+<h3 id="4-pengurusan-aliran-tunai-projek-lebih-baik">4. Pengurusan Aliran Tunai Projek Lebih Baik</h3>
+<p>Bahagikan kos selama 36-84 bulan:</p>
+<ul>
+<li>Urus turun naik pendapatan bermusim</li>
+<li>Selaraskan pembayaran dengan tuntutan kemajuan projek</li>
+<li>Kekalkan modal kerja untuk bahan dan buruh</li>
+<li>Bayar dari keuntungan projek, bukan rizab tunai</li>
+</ul>
+<hr>
+<h2 id="jenis-motor-grader-yang-kami-biayai">Jenis Motor Grader Yang Kami Biayai</h2>
+<h3 id="grader-kompak-100-150-hp">Grader Kompak (100-150 HP)</h3>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Pembinaan jalan kediaman</li>
+<li>Pembangunan komersial kecil</li>
+<li>Projek penyelenggaraan perbandaran</li>
+<li>Penambahbaikan jalan luar bandar</li>
+<li>Grading tempat letak kereta</li>
+</ul>
+<p><strong>Model popular:</strong></p>
+<ul>
+<li>Caterpillar 140 series</li>
+<li>John Deere 670G</li>
+<li>Komatsu GD555</li>
+<li>XCMG GR135</li>
+</ul>
+<p><strong>Julat harga biasa:</strong> RM 400,000 - RM 800,000</p>
+<p><strong>Penggunaan biasa:</strong></p>
+<ul>
+<li>Jalan pembangunan perumahan</li>
+<li>Jalan akses estet perindustrian</li>
+<li>Bahagian lebuh raya kecil</li>
+<li>Pembinaan taxiway lapangan terbang</li>
+<li>Infrastruktur subdivisi</li>
+</ul>
+<h3 id="grader-sederhana-150-250-hp">Grader Sederhana (150-250 HP)</h3>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Pembinaan lebuh raya</li>
+<li>Projek jalan utama</li>
+<li>Pembinaan landasan lapangan terbang</li>
+<li>Jalan hauling perlombongan</li>
+<li>Pembangunan infrastruktur besar</li>
+</ul>
+<p><strong>Model popular:</strong></p>
+<ul>
+<li>Caterpillar 160 series</li>
+<li>John Deere 770G/772G</li>
+<li>Komatsu GD655/GD705</li>
+<li>XCMG GR165/GR180</li>
+</ul>
+<p><strong>Julat harga biasa:</strong> RM 700,000 - RM 1,500,000</p>
+<p><strong>Penggunaan biasa:</strong></p>
+<ul>
+<li>Pembinaan lebuh raya persekutuan</li>
+<li>Projek penambahbaikan jalan negeri</li>
+<li>Jalan akses kompleks perindustrian</li>
+<li>Pembangunan pelabuhan dan terminal</li>
+<li>Infrastruktur subdivisi utama</li>
+</ul>
+<h3 id="grader-besar-300-hp">Grader Besar (300+ HP)</h3>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Projek lebuh raya utama</li>
+<li>Operasi perlombongan</li>
+<li>Kerja tanah berskala besar</li>
+<li>Pembinaan landasan lapangan terbang</li>
+<li>Projek infrastruktur antarabangsa</li>
+</ul>
+<p><strong>Model popular:</strong></p>
+<ul>
+<li>Caterpillar 24 series</li>
+<li>John Deere 870G/872G</li>
+<li>Komatsu GD825/GD955</li>
+<li>XCMG GR215/GR300</li>
+</ul>
+<p><strong>Julat harga biasa:</strong> RM 1,500,000 - RM 3,500,000+</p>
+<p><strong>Penggunaan biasa:</strong></p>
+<ul>
+<li>Projek Lebuhraya Utara-Selatan</li>
+<li>Pembinaan keretapi ECRL</li>
+<li>Jalan hauling perlombongan utama</li>
+<li>Landasan lapangan terbang antarabangsa</li>
+<li>Pembangunan tanah berskala besar</li>
+</ul>
+<hr>
+<h2 id="industri-yang-perlukan-pembiayaan-motor-grader">Industri Yang Perlukan Pembiayaan Motor Grader</h2>
+<h3 id="pembinaan-jalan--infrastruktur">Pembinaan Jalan &amp; Infrastruktur</h3>
+<p><strong>Projek biasa:</strong></p>
+<ul>
+<li>Pembinaan lebuh raya dan lebuhraya</li>
+<li>Penambahbaikan jalan persekutuan dan negeri</li>
+<li>Pembinaan pendekatan jambatan</li>
+<li>Pembangunan interchange</li>
+<li>Kontrak penyelenggaraan jalan</li>
+</ul>
+<p><strong>Kenapa pembiayaan grader membantu:</strong></p>
+<ul>
+<li>Kos peralatan pendahuluan besar (RM 800K-3J)</li>
+<li>Tempoh projek panjang (12-36 bulan)</li>
+<li>Pembayaran terikat dengan tuntutan kemajuan</li>
+<li>Kekalkan tunai untuk asfalt, konkrit, dan buruh</li>
+</ul>
+<h3 id="infrastruktur-lapangan-terbang--penerbangan">Infrastruktur Lapangan Terbang &amp; Penerbangan</h3>
+<p><strong>Penggunaan biasa:</strong></p>
+<ul>
+<li>Pembinaan dan penyelenggaraan landasan</li>
+<li>Pembangunan taxiway</li>
+<li>Grading kawasan apron</li>
+<li>Projek pengembangan lapangan terbang</li>
+<li>Pembangunan kemudahan penerbangan</li>
+</ul>
+<p><strong>Kenapa pembiayaan grader membantu:</strong></p>
+<ul>
+<li>Projek penerbangan perlukan peralatan tepat</li>
+<li>Standard kualiti ketat perlukan grader boleh dipercayai</li>
+<li>Kontrak jangka panjang wajarkan pemilikan</li>
+<li>Peralatan mesti tersedia 24/7</li>
+</ul>
+<h3 id="operasi-perlombongan--kuari">Operasi Perlombongan &amp; Kuari</h3>
+<p><strong>Projek biasa:</strong></p>
+<ul>
+<li>Pembinaan dan penyelenggaraan jalan hauling</li>
+<li>Penyediaan tapak lombong</li>
+<li>Pembangunan kawasan stockpile</li>
+<li>Pembinaan jalan akses</li>
+<li>Pemulihan tapak</li>
+</ul>
+<p><strong>Kenapa pembiayaan grader membantu:</strong></p>
+<ul>
+<li>Perlombongan perlukan penyelenggaraan jalan berterusan</li>
+<li>Kos sewa tidak sustainable untuk operasi harian</li>
+<li>Pemilikan beri fleksibiliti operasi</li>
+<li>Pelbagai tapak lombong perlukan mobiliti peralatan</li>
+</ul>
+<h3 id="projek-perbandaran--kerajaan">Projek Perbandaran &amp; Kerajaan</h3>
+<p><strong>Penggunaan biasa:</strong></p>
+<ul>
+<li>Penyelenggaraan jalan bandar</li>
+<li>Penambahbaikan jalan luar bandar</li>
+<li>Pembinaan sistem saliran</li>
+<li>Projek naik taraf infrastruktur</li>
+<li>Pembaikan jalan kecemasan</li>
+</ul>
+<p><strong>Kenapa pembiayaan grader membantu:</strong></p>
+<ul>
+<li>Kontrak kerajaan ada pembayaran boleh dipercayai</li>
+<li>Pelbagai projek perlukan peralatan sepanjang tahun</li>
+<li>Pemilikan lebih jimat daripada sewa jangka panjang</li>
+<li>Ketersediaan peralatan untuk tindak balas kecemasan</li>
+</ul>
+<hr>
+<h2 id="pembiayaan-motor-grader-baru-vs-terpakai">Pembiayaan Motor Grader Baru vs Terpakai</h2>
+<h3 id="pembiayaan-motor-grader-baru">Pembiayaan Motor Grader Baru</h3>
+<p><strong>Kelebihan:</strong></p>
+<ul>
+<li>Ciri GPS dan teknologi terkini</li>
+<li>Waranti pengeluar penuh (2-3 tahun)</li>
+<li>Kecekapan bahan api dan produktiviti maksimum</li>
+<li>Kadar faedah lebih rendah (dari 6.5% p.a.)</li>
+<li>Pengekalan nilai jualan semula lebih baik</li>
+</ul>
+<p><strong>Pembiayaan biasa:</strong></p>
+<ul>
+<li>0% deposit mungkin</li>
+<li>Biayai sehingga 100% nilai</li>
+<li>Pilihan tempoh 60-84 bulan</li>
+<li>Julat RM 800,000 - RM 3,500,000</li>
+</ul>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Kontraktor besar dengan aliran tunai kuat</li>
+<li>Projek pembinaan jalan jangka panjang</li>
+<li>Syarikat yang utamakan teknologi dan kecekapan</li>
+<li>Perniagaan yang perlukan perlindungan waranti</li>
+</ul>
+<h3 id="pembiayaan-motor-grader-terpakai">Pembiayaan Motor Grader Terpakai</h3>
+<p><strong>Kelebihan:</strong></p>
+<ul>
+<li>40-50% lebih murah daripada peralatan baru</li>
+<li>Rekod kebolehpercayaan dan prestasi terbukti</li>
+<li>Pulangan pelaburan lebih cepat (bayar dalam 2-4 tahun)</li>
+<li>Bayaran bulanan lebih rendah untuk aliran tunai</li>
+<li>Bagus untuk kontraktor conscious budget</li>
+</ul>
+<p><strong>Pembiayaan biasa:</strong></p>
+<ul>
+<li>0% deposit tersedia untuk kredit bagus</li>
+<li>Biayai sehingga 100% nilai dinilai</li>
+<li>Pilihan tempoh 36-60 bulan</li>
+<li>Julat RM 300,000 - RM 1,500,000</li>
+</ul>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Perniagaan baru (1-3 tahun)</li>
+<li>Projek jangka pendek hingga sederhana</li>
+<li>Kontraktor bina fleet peralatan</li>
+<li>Operasi fokus budget</li>
+</ul>
+<p><strong>Kami biayai grader terpakai sehingga 10 tahun</strong> (bank had kepada 5-7 tahun)</p>
+<p><strong>Contoh perbandingan kos:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Jenis Grader</th><th>Harga Baru</th><th>Harga Terpakai (5 thn)</th><th>Jimat</th></tr></thead><tbody><tr><td>Kompak (140H)</td><td>RM 650,000</td><td>RM 350,000</td><td>46%</td></tr><tr><td>Sederhana (16H)</td><td>RM 1,200,000</td><td>RM 650,000</td><td>46%</td></tr><tr><td>Besar (24M)</td><td>RM 2,800,000</td><td>RM 1,400,000</td><td>50%</td></tr></tbody></table>
+<hr>
+<h2 id="pilihan-pembiayaan-motor-grader-diterangkan">Pilihan Pembiayaan Motor Grader Diterangkan</h2>
+<h3 id="pilihan-1-0-deposit-100-pembiayaan">Pilihan 1: 0% Deposit (100% Pembiayaan)</h3>
+<p><strong>Bagaimana ia berfungsi:</strong></p>
+<ul>
+<li>Biayai 100% nilai grader</li>
+<li>Tiada bayaran pendahuluan diperlukan</li>
+<li>Mula operasi serta-merta</li>
+<li>Kekalkan semua modal kerja untuk projek</li>
+</ul>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Keperluan projek mendesak</li>
+<li>Kontraktor kekurangan tunai</li>
+<li>Kegagalan peralatan tidak dijangka</li>
+<li>Perniagaan bermusim (tempoh tunai rendah)</li>
+</ul>
+<p><strong>Keperluan:</strong></p>
+<ul>
+<li>Skor kredit bagus (680+)</li>
+<li>Perniagaan mantap (2+ tahun lebih baik)</li>
+<li>Kontrak projek kuat atau base klien</li>
+<li>Demonstrasi aliran tunai positif</li>
+</ul>
+<p><strong>Contoh (Caterpillar 160M):</strong></p>
+<ul>
+<li>Harga grader: RM 1,100,000</li>
+<li>Bayaran pendahuluan: RM 0</li>
+<li>Jumlah dibiayai: RM 1,100,000</li>
+<li>Kadar faedah: 7.5% p.a.</li>
+<li>Tempoh: 60 bulan</li>
+<li><strong>Bayaran bulanan: RM 21,870</strong></li>
+</ul>
+<h3 id="pilihan-2-10-deposit-90-pembiayaan">Pilihan 2: 10% Deposit (90% Pembiayaan)</h3>
+<p><strong>Bagaimana ia berfungsi:</strong></p>
+<ul>
+<li>Bayar 10% deposit pendahuluan</li>
+<li>Biayai 90% nilai peralatan</li>
+<li>Kadar faedah lebih rendah ditawarkan</li>
+<li>Kewajipan bayaran bulanan dikurangkan</li>
+</ul>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Kontraktor dengan rizab tunai sedikit</li>
+<li>Perniagaan nak jimat faedah</li>
+<li>Projek dengan aliran pendapatan disahkan</li>
+<li>Operator utamakan kos bulanan lebih rendah</li>
+</ul>
+<p><strong>Keperluan:</strong></p>
+<ul>
+<li>Skor kredit sederhana (620+)</li>
+<li>Perniagaan 1+ tahun minimum</li>
+<li>Kontrak projek atau base klien mantap</li>
+<li>Keupayaan bayar 10% deposit pendahuluan</li>
+</ul>
+<p><strong>Contoh (Caterpillar 160M):</strong></p>
+<ul>
+<li>Harga grader: RM 1,100,000</li>
+<li>Bayaran pendahuluan: RM 110,000 (10%)</li>
+<li>Jumlah dibiayai: RM 990,000</li>
+<li>Kadar faedah: 6.8% p.a.</li>
+<li>Tempoh: 60 bulan</li>
+<li><strong>Bayaran bulanan: RM 19,500</strong></li>
+<li><strong>Jimat vs 0% deposit: RM 2,370/bulan</strong></li>
+</ul>
+<h3 id="pilihan-3-20-deposit-80-pembiayaan">Pilihan 3: 20% Deposit (80% Pembiayaan)</h3>
+<p><strong>Bagaimana ia berfungsi:</strong></p>
+<ul>
+<li>Bayar 20% deposit pendahuluan</li>
+<li>Biayai 80% nilai peralatan</li>
+<li>Kadar faedah terbaik tersedia</li>
+<li>Pilihan bayaran bulanan terendah</li>
+</ul>
+<p><strong>Terbaik untuk:</strong></p>
+<ul>
+<li>Perniagaan sihat tunai</li>
+<li>Strategi pelaburan peralatan jangka panjang</li>
+<li>Syarikat utamakan penjimatan kos total</li>
+<li>Operator dengan kunci kira-kira kuat</li>
+</ul>
+<p><strong>Keperluan:</strong></p>
+<ul>
+<li>Mana-mana skor kredit (580+)</li>
+<li>Perniagaan baru atau mantap</li>
+<li>Demonstrasi pendapatan tetap</li>
+<li>20% tunai tersedia untuk deposit</li>
+</ul>
+<p><strong>Contoh (Caterpillar 160M):</strong></p>
+<ul>
+<li>Harga grader: RM 1,100,000</li>
+<li>Bayaran pendahuluan: RM 220,000 (20%)</li>
+<li>Jumlah dibiayai: RM 880,000</li>
+<li>Kadar faedah: 6.5% p.a.</li>
+<li>Tempoh: 60 bulan</li>
+<li><strong>Bayaran bulanan: RM 17,250</strong></li>
+<li><strong>Jimat vs 0% deposit: RM 4,620/bulan</strong></li>
+</ul>
+<hr>
+<h2 id="kelayakan--keperluan-pembiayaan-motor-grader">Kelayakan &amp; Keperluan Pembiayaan Motor Grader</h2>
+<h3 id="keperluan-perniagaan">Keperluan Perniagaan</h3>
+<p><strong>Kriteria kelayakan asas:</strong></p>
+<ul>
+<li>Perniagaan berdaftar (sijil SSM)</li>
+<li>Operasi aktif (minimum 1 tahun lebih baik)</li>
+<li>Aliran tunai positif atau kontrak projek disahkan</li>
+<li>Akaun bank perniagaan sah dengan aktiviti</li>
+</ul>
+<p><strong>Kami terima jenis perniagaan ini:</strong></p>
+<ul>
+<li>Sdn Bhd (struktur pilihan)</li>
+<li>Milikan tunggal</li>
+<li>Perkongsian perniagaan</li>
+<li>Koperasi berdaftar</li>
+</ul>
+<p><strong>Nota:</strong> Perniagaan baru (1 tahun) dengan projek kuat dialu-alukan. Bank biasa perlukan 3+ tahun sejarah operasi.</p>
+<h3 id="keperluan-skor-kredit">Keperluan Skor Kredit</h3>
+<p><strong>Cemerlang (750+):</strong></p>
+<ul>
+<li>0% deposit mungkin</li>
+<li>Kadar faedah terbaik (6.5% p.a.)</li>
+<li>100% pembiayaan tersedia</li>
+<li>Proses kelulusan terpantas</li>
+</ul>
+<p><strong>Bagus (680-749):</strong></p>
+<ul>
+<li>0-10% deposit diperlukan</li>
+<li>Kadar bagus (6.8-7.2% p.a.)</li>
+<li>90-100% pembiayaan tersedia</li>
+<li>Timeline kelulusan standard</li>
+</ul>
+<p><strong>Sederhana (620-679):</strong></p>
+<ul>
+<li>10-15% deposit diperlukan</li>
+<li>Kadar sederhana (7.5-8.5% p.a.)</li>
+<li>85-90% pembiayaan tersedia</li>
+<li>Dokumentasi tambahan mungkin diperlukan</li>
+</ul>
+<p><strong>Bawah 620:</strong></p>
+<ul>
+<li>15-20% deposit diperlukan</li>
+<li>Kadar lebih tinggi (8.5-10% p.a.)</li>
+<li>80-85% pembiayaan tersedia</li>
+<li>Co-borrower mungkin kuatkan permohonan</li>
+</ul>
+<h3 id="keperluan-kewangan">Keperluan Kewangan</h3>
+<p><strong>Senarai semak dokumen:</strong></p>
+<ul>
+<li>Penyata bank perniagaan (6 bulan)</li>
+<li>Penyata kewangan syarikat (jika ada)</li>
+<li>Pulangan cukai terkini (korporat/individu)</li>
+<li>Kontrak projek atau pesanan pembelian</li>
+<li>Sebut harga peralatan dari dealer sah</li>
+</ul>
+<p><strong>Kaedah pengesahan pendapatan:</strong></p>
+<ul>
+<li>Deposit konsisten dalam akaun perniagaan</li>
+<li>Kontrak klien tunjuk jangkaan pendapatan</li>
+<li>Tuntutan kemajuan projek dan pembayaran</li>
+<li>Pesanan pembelian ditandatangani dari klien</li>
+</ul>
+<p><strong>Pertimbangan nisbah hutang-kepada-pendapatan:</strong></p>
+<ul>
+<li>Jumlah bayaran hutang bulanan &lt; 60% pendapatan</li>
+<li>Termasuk bayaran pinjaman peralatan sedia ada</li>
+<li>Perbelanjaan operasi perniagaan dipertimbangkan</li>
+<li>Pendapatan penjamin peribadi mungkin bantu kelayakan</li>
+</ul>
+<hr>
+<h2 id="cara-mohon-pembiayaan-motor-grader">Cara Mohon Pembiayaan Motor Grader</h2>
+<h3 id="langkah-1-dapatkan-sebut-harga-motor-grader">Langkah 1: Dapatkan Sebut Harga Motor Grader</h3>
+<p><strong>Dari dealer sah atau pembekal:</strong></p>
+<ul>
+<li>Pilih model grader spesifik anda</li>
+<li>Minta sebut harga rasmi (kop surat syarikat)</li>
+<li>Sertakan spesifikasi lengkap (HP, model tahun)</li>
+<li>Dapatkan tempoh penghantaran disahkan</li>
+</ul>
+<p><strong>Maklumat kunci diperlukan:</strong></p>
+<ul>
+<li>Make dan model (cth: Caterpillar 160M)</li>
+<li>Kuasa enjin (cth: 175 HP)</li>
+<li>Berat operasi dan dimensi</li>
+<li>Baru atau terpakai (jika terpakai, tahun dan jam operasi)</li>
+<li>Jumlah harga termasuk penghantaran dan setup</li>
+<li>Maklumat hubungan dealer</li>
+</ul>
+<h3 id="langkah-2-sediakan-dokumentasi-diperlukan">Langkah 2: Sediakan Dokumentasi Diperlukan</h3>
+<p><strong>Dokumen perniagaan:</strong></p>
+<ul>
+<li>Sijil SSM (Borang 9/24/49)</li>
+<li>Butiran pendaftaran syarikat</li>
+<li>Lesen perniagaan (jika berkenaan)</li>
+<li>Penyata bank perniagaan (6 bulan)</li>
+</ul>
+<p><strong>Dokumen kewangan:</strong></p>
+<ul>
+<li>Penyata kewangan syarikat terkini</li>
+<li>Pulangan cukai korporat (Borang B/BE)</li>
+<li>Kontrak projek atau pesanan pembelian</li>
+<li>Unjuran aliran tunai (untuk pinjaman besar)</li>
+</ul>
+<p><strong>Dokumen peribadi (Pengarah/Pemilik):</strong></p>
+<ul>
+<li>Salinan IC (muka depan dan belakang)</li>
+<li>Bukti alamat (bil utiliti terkini)</li>
+<li>Penyata bank peribadi (3-6 bulan)</li>
+</ul>
+<p><strong>Dokumen peralatan:</strong></p>
+<ul>
+<li>Sebut harga motor grader dari dealer</li>
+<li>Lembaran spesifikasi lengkap</li>
+<li>Foto (jika pertimbangkan peralatan terpakai)</li>
+<li>Laporan penilaian (jika terpakai, kami boleh aturkan)</li>
+</ul>
+<h3 id="langkah-3-hantar-permohonan">Langkah 3: Hantar Permohonan</h3>
+<p><strong>Pilihan 1: WhatsApp (Terpantas)</strong></p>
+<ol>
+<li>Simpan +60 17-570 0889 ke kenalan</li>
+<li>Mesej “Pertanyaan pembiayaan motor grader”</li>
+<li>Kongsi model grader dan butiran projek</li>
+<li>Hantar semua dokumen diperlukan via WhatsApp</li>
+<li>Terima penilaian awal dengan cepat</li>
+</ol>
+<p><strong>Pilihan 2: Hantar Email</strong></p>
+<ul>
+<li>Email: <a href="mailto:info@inghengcredit.com">info@inghengcredit.com</a></li>
+<li>Subjek: “Pembiayaan Motor Grader - [Nama Syarikat Anda]”</li>
+<li>Lampirkan semua dokumen diperlukan</li>
+<li>Sertakan nombor hubungan untuk susulan</li>
+</ul>
+<p><strong>Pilihan 3: Konsultasi Walk-In</strong></p>
+<ul>
+<li>Lawat pejabat Klang kami untuk perkhidmatan face-to-face</li>
+<li>47A, Jalan Raya Timur, Klang</li>
+<li>Isnin-Jumaat: 9AM-6PM, Sabtu: 9AM-1PM</li>
+<li>Bawa semua dokumen untuk penilaian segera</li>
+</ul>
+<h3 id="langkah-4-proses-kelulusan-pantas">Langkah 4: Proses Kelulusan Pantas</h3>
+<p><strong>Pecahan timeline:</strong></p>
+<ul>
+<li>Semakan permohonan: 1-2 hari bekerja</li>
+<li>Semakan kredit dan pengesahan: 1-2 hari bekerja</li>
+<li>Keputusan kelulusan: Lebih pantas dari bank tradisional</li>
+<li>Penyediaan dokumentasi: 2-3 hari bekerja</li>
+<li>Pengeluaran: Selepas pengesahan penghantaran grader</li>
+</ul>
+<p><strong>Apa yang kami nilai:</strong></p>
+<ul>
+<li>Daya maju perniagaan dan rekod prestasi</li>
+<li>Sejarah kredit (dengan kriteria fleksibel)</li>
+<li>Kontrak projek dan jangkaan pendapatan</li>
+<li>Keupayaan pembayaran balik berdasarkan aliran tunai</li>
+<li>Nilai peralatan dan keadaan pasaran</li>
+</ul>
+<h3 id="langkah-5-dokumentasi--pengeluaran">Langkah 5: Dokumentasi &amp; Pengeluaran</h3>
+<p><strong>Selepas pengesahan kelulusan:</strong></p>
+<ol>
+<li>Semak dan tandatangan perjanjian sewa beli</li>
+<li>Aturkan bayaran pendahuluan (jika berkenaan)</li>
+<li>Lengkapkan kertas kerja insurans menyeluruh</li>
+<li>Koordinasi dengan dealer untuk jadual penghantaran</li>
+<li>Kami bayar dealer terus selepas penghantaran</li>
+<li>Kumpul motor grader anda dan mula operasi</li>
+<li>Mulakan kerja produktif serta-merta</li>
+</ol>
+<p><strong>Bayaran pertama perlu dibayar:</strong> 30 hari selepas pengeluaran</p>
+<hr>
+<h2 id="kisah-kejayaan-pembiayaan-motor-grader-sebenar">Kisah Kejayaan Pembiayaan Motor Grader Sebenar</h2>
+<h3 id="kajian-kes-1-syarikat-pembinaan-lebuh-raya">Kajian Kes 1: Syarikat Pembinaan Lebuh Raya</h3>
+<p><strong>Pelanggan:</strong> Kontraktor saiz sederhana, Johor
+<strong>Projek:</strong> Projek pengembangan lebuh raya persekutuan
+<strong>Peralatan:</strong> Motor grader Caterpillar 16M
+<strong>Pembiayaan:</strong> RM 1,400,000 selama 72 bulan</p>
+<p><strong>Kenapa pembiayaan grader berfungsi sempurna:</strong></p>
+<ul>
+<li>Kontrak kerajaan perlukan bukti peralatan milik sendiri</li>
+<li>Bank tolak permohonan (perniagaan baru 2.5 tahun)</li>
+<li>Kami luluskan dengan keperluan deposit 10%</li>
+<li>Bayaran bulanan: RM 21,875 (dilindungi tuntutan kemajuan)</li>
+<li>Pendapatan projek: RM 150,000/bulan dijamin</li>
+<li>Pulangan pelaburan: 15 bulan</li>
+</ul>
+<p><strong>Hasil:</strong> Siapkan projek lebuh raya berjaya, menang 3 kontrak jalan tambahan guna grader sama</p>
+<h3 id="kajian-kes-2-kontraktor-sokongan-perlombongan">Kajian Kes 2: Kontraktor Sokongan Perlombongan</h3>
+<p><strong>Pelanggan:</strong> Kontraktor khusus, Pahang
+<strong>Projek:</strong> Pelbagai penyelenggaraan jalan hauling perlombongan
+<strong>Peralatan:</strong> Komatsu GD825 terpakai (4 tahun)
+<strong>Pembiayaan:</strong> RM 650,000 selama 48 bulan</p>
+<p><strong>Kenapa pembiayaan grader terpakai berfungsi:</strong></p>
+<ul>
+<li>Perlukan grader boleh dipercayai untuk operasi berterusan</li>
+<li>Grader baru kos RM 1.5J (budget terlalu ketat)</li>
+<li>Kami biayai peralatan terpakai diselenggara baik</li>
+<li>Bayaran bulanan: RM 14,950</li>
+<li>Grader beroperasi 12 jam sehari, 6 hari seminggu</li>
+<li>Bayar pinjaman awal dari pendapatan konsisten</li>
+</ul>
+<p><strong>Hasil:</strong> Kecekapan operasi naik 50%, berkembang untuk melayani 3 tapak perlombongan tambahan</p>
+<h3 id="kajian-kes-3-kontraktor-jalan-perbandaran">Kajian Kes 3: Kontraktor Jalan Perbandaran</h3>
+<p><strong>Pelanggan:</strong> Kontraktor tempatan, Selangor
+<strong>Projek:</strong> Pelbagai kontrak penambahbaikan jalan perbandaran
+<strong>Peralatan:</strong> Motor grader John Deere 770G
+<strong>Pembiayaan:</strong> RM 950,000 selama 60 bulan</p>
+<p><strong>Kenapa pembiayaan grader perbandaran berfungsi:</strong></p>
+<ul>
+<li>Kontrak kerajaan sediakan pendapatan stabil</li>
+<li>Pelbagai projek kecil perlukan ketersediaan peralatan konsisten</li>
+<li>Kami luluskan dengan 0% deposit (sejarah kredit cemerlang)</li>
+<li>Bayaran bulanan: RM 18,250</li>
+<li>Kontrak jumlah RM 80,000/bulan pendapatan</li>
+<li>Peralatan bayar sendiri melalui kerja boleh dipercayai</li>
+</ul>
+<p><strong>Hasil:</strong> Jadi kontraktor perbandaran pilihan, dapat kontrak penyelenggaraan jangka panjang bernilai RM 5J</p>
+<hr>
+<h2 id="pembiayaan-motor-grader-vs-pembiayaan-bank">Pembiayaan Motor Grader vs Pembiayaan Bank</h2>
+<h3 id="kenapa-pilih-ing-heng-credit-berbanding-bank-tradisional">Kenapa Pilih Ing Heng Credit Berbanding Bank Tradisional?</h3>
+<p><strong>Kelulusan Jauh Lebih Pantas:</strong></p>
+<ul>
+<li>Bank: 2-4 minggu (pelbagai mesyuarat, keputusan jawatankuasa)</li>
+<li>Kami: Proses kelulusan pantas (kuasa membuat keputusan langsung)</li>
+</ul>
+<p><strong>Kadar Kelulusan Lebih Tinggi:</strong></p>
+<ul>
+<li>Bank: 40-60% kadar kelulusan (kriteria sangat ketat)</li>
+<li>Kami: Kadar kejayaan tinggi (penilaian fleksibel, praktikal)</li>
+</ul>
+<p><strong>Mesra Perniagaan Baru:</strong></p>
+<ul>
+<li>Bank: Perlukan minimum 3+ tahun operasi</li>
+<li>Kami: Terima 1+ tahun dengan projek aktif</li>
+</ul>
+<p><strong>Penerimaan Peralatan Terpakai:</strong></p>
+<ul>
+<li>Bank: Had kepada maksimum 5-7 tahun</li>
+<li>Kami: Biayai peralatan sehingga 10 tahun</li>
+</ul>
+<p><strong>Pilihan Bayaran Pendahuluan Fleksibel:</strong></p>
+<ul>
+<li>Bank: Perlukan 20-40% deposit biasanya</li>
+<li>Kami: 0% deposit mungkin (sehingga 100% pembiayaan)</li>
+</ul>
+<p><strong>Penerimaan Skor Kredit Lebih Rendah:</strong></p>
+<ul>
+<li>Bank: Perlukan 700+ skor kredit biasanya</li>
+<li>Kami: Terima 620+ (semakan kes demi kes bawah 620)</li>
+</ul>
+<p><strong>Pemahaman Industri Superior:</strong></p>
+<ul>
+<li>Bank: Aplikasi kriteria pinjaman generik</li>
+<li>Kami: 40 tahun membiayai peralatan pembinaan khusus</li>
+</ul>
+<hr>
+<h2 id="soalan-lazim">Soalan Lazim</h2>
+<h3 id="adakah-saya-perlukan-deposit-untuk-pembiayaan-grader">Adakah saya perlukan deposit untuk pembiayaan grader?</h3>
+<p>Tiada deposit diperlukan untuk pemohon yang layak. Kami menawarkan 0% bayaran pendahuluan dan biayai sehingga 100% nilai motor grader. Keperluan termasuk kredit bagus (680+), perniagaan mantap (2+ tahun), dan kontrak projek kuat. Kebanyakan pemohon layak terima syarat pembiayaan deposit 0-10%.</p>
+<h3 id="bolehkah-saya-membiayai-motor-grader-terpakai">Bolehkah saya membiayai motor grader terpakai?</h3>
+<p>Ya! Kami pakar dalam pembiayaan motor grader terpakai sehingga 10 tahun. Bank biasa had kepada maksimum 5-7 tahun. Grader terpakai kos 40-50% kurang dari baru, tawarkan ROI lebih cepat, dan sediakan kebolehpercayaan terbukti. Pilihan deposit 0% sama tersedia untuk peralatan terpakai yang layak.</p>
+<h3 id="apakah-saiz-grader-yang-boleh-saya-biayai">Apakah saiz grader yang boleh saya biayai?</h3>
+<p>Kami biayai semua saiz dari grader kompak (100 HP) hingga motor grader besar (500+ HP). Jenama popular termasuk Caterpillar, Komatsu, John Deere, XCMG, dan semua pengeluar utama. Julat pembiayaan: RM 400,000 hingga RM 3,500,000+.</p>
+<h3 id="berapa-lama-kelulusan-pembiayaan-grader-mengambil-masa">Berapa lama kelulusan pembiayaan grader mengambil masa?</h3>
+<p>Kelulusan pantas berbanding bank tradisional. Kami sediakan respons lebih cepat dengan proses diperkemas dan membuat keputusan langsung. Bank ambil 2-4 minggu untuk keputusan kelulusan. Kami faham kontraktor perlukan peralatan mendesak untuk deadline projek.</p>
+<h3 id="projek-apa-yang-perlukan-pembiayaan-motor-grader">Projek apa yang perlukan pembiayaan motor grader?</h3>
+<p>Projek pembinaan jalan, pembangunan lebuh raya, pembinaan landasan lapangan terbang, jalan hauling perlombongan, infrastruktur perbandaran, pembangunan tanah, dan mana-mana projek perlukan keupayaan grading dan pembinaan jalan yang tepat.</p>
+<hr>
+<h2 id="kenapa-pilih-ing-heng-credit-untuk-pembiayaan-motor-grader">Kenapa Pilih Ing Heng Credit Untuk Pembiayaan Motor Grader?</h2>
+<h3 id="40-tahun-membiayai-jentera-berat">40 Tahun Membiayai Jentera Berat</h3>
+<p><strong>Sejak 1985:</strong></p>
+<ul>
+<li>Ribuan grader dibiayai berjaya</li>
+<li>Pemahaman mendalam perniagaan pembinaan jalan</li>
+<li>Berlesen oleh KPKT (Kementerian Perumahan)</li>
+<li>Dipercayai kontraktor Malaysia seluruh negara</li>
+</ul>
+<h3 id="penyelesaian-fokus-pembinaan-jalan">Penyelesaian Fokus Pembinaan Jalan</h3>
+<p><strong>Kami faham keperluan spesifik anda:</strong></p>
+<ul>
+<li>Corak pendapatan bermusim (impak monsun, perayaan)</li>
+<li>Kelewatan pembayaran projek (kitaran pembayaran 30-90 hari)</li>
+<li>Kecemasan kerosakan peralatan (deadline projek kritikal)</li>
+<li>Cabaran aliran tunai (bahan, buruh, kos bahan api)</li>
+</ul>
+<p><strong>Penyelesaian pembiayaan fleksibel:</strong></p>
+<ul>
+<li>Pilihan deposit 0% tersedia</li>
+<li>Sehingga 100% jumlah pinjaman mungkin</li>
+<li>Tempoh dilanjutkan (sehingga 84 bulan)</li>
+<li>Struktur pembayaran belon tersedia</li>
+</ul>
+<h3 id="liputan-peralatan-menyeluruh">Liputan Peralatan Menyeluruh</h3>
+<p><strong>Selain motor grader, kami juga biayai:</strong></p>
+<ul>
+<li>Excavator dan wheel loader</li>
+<li>Bulldozer dan compactor</li>
+<li>Lori dump dan prime mover</li>
+<li>Kren dan peralatan pengendalian bahan</li>
+<li>Fleet peralatan pembinaan lengkap</li>
+</ul>
+<p><strong>Pakej pembiayaan fleet tersedia</strong> untuk pembelian pelbagai peralatan</p>
+<h3 id="pejabat-klang-tempatan-mudah">Pejabat Klang Tempatan Mudah</h3>
+<p><strong>Akses mudah untuk kontraktor:</strong></p>
+<ul>
+<li>Konsultasi walk-in (tiada temujanji perlu)</li>
+<li>Perkhidmatan peribadi face-to-face (bincang projek spesifik)</li>
+<li>Mudah dicapai (akses Federal Highway, KESAS)</li>
+<li>Waktu operasi lanjutan: Isn-Jum 9AM-6PM, Sab 9AM-1PM</li>
+</ul>
+<p><strong>Alamat Fizikal:</strong> 47A, Jalan Raya Timur, 41000 Klang, Selangor</p>
+<hr>
+<h2 id="dapatkan-motor-grader-anda-dengan-0-deposit-hari-ini">Dapatkan Motor Grader Anda Dengan 0% Deposit Hari Ini</h2>
+<p>Sedia biayai motor grader anda dengan deposit sifar? Berhenti sewa dan mula miliki peralatan pembinaan jalan anda.</p>
+<p><strong>Hubungi Ing Heng Credit sekarang:</strong></p>
+<p><strong>WhatsApp (Respons Terpantas):</strong> +60 17-570 0889</p>
+<ul>
+<li>Mesej “Pertanyaan pembiayaan motor grader”</li>
+<li>Kongsi model grader dan butiran projek</li>
+<li>Hantar dokumen diperlukan serta-merta</li>
+<li>Terima respons kelulusan awal pantas</li>
+</ul>
+<p><strong>Komunikasi Email:</strong></p>
+<ul>
+<li><a href="mailto:info@inghengcredit.com">info@inghengcredit.com</a></li>
+<li>Subjek: “Pembiayaan Motor Grader - [Nama Syarikat Anda]”</li>
+<li>Lampirkan semua dokumen diperlukan</li>
+<li>Sertakan nombor hubungan untuk susulan cepat</li>
+</ul>
+<p><strong>Perkhidmatan Walk-In:</strong></p>
+<ul>
+<li>47A, Jalan Raya Timur, Klang</li>
+<li>Isnin-Jumaat: 9AM-6PM</li>
+<li>Sabtu: 9AM-1PM</li>
+<li>Bawa semua dokumen untuk penilaian hari sama</li>
+</ul>
+<p><strong>Apa yang perlu sediakan untuk permohonan:</strong></p>
+<ul>
+<li>Dokumen pendaftaran perniagaan (SSM)</li>
+<li>Penyata bank (6 bulan)</li>
+<li>Sebut harga motor grader dari dealer</li>
+<li>Kontrak projek (jika ada)</li>
+</ul>
+<hr>
+<h2 id="pembiayaan-peralatan-pembinaan-jalan-berkaitan">Pembiayaan Peralatan Pembinaan Jalan Berkaitan</h2>
+<p><strong>Cari peralatan pembinaan jalan lain?</strong></p>
+<ul>
+<li><a href="/ms/equipment/bulldozer">Pembiayaan Bulldozer</a> - 0% deposit peralatan kerja tanah</li>
+<li><a href="/ms/equipment/excavator">Pembiayaan Excavator</a> - Kelulusan pantas untuk pembinaan</li>
+<li><a href="/ms/equipment/roller">Pembiayaan Roller Compactor</a> - Peralatan pemadatan jalan</li>
+<li><a href="/ms/equipment/paver">Pembiayaan Paver</a> - Peralatan pemperlapik asfalt</li>
+</ul>
+<p><strong>Hub Peralatan Pembinaan:</strong></p>
+<ul>
+<li><a href="/ms/equipment">Semua Pembiayaan Peralatan</a> - Julat lengkap peralatan pembinaan</li>
+</ul>
+<p><strong>Perkhidmatan Kewangan:</strong></p>
+<ul>
+<li><a href="/ms/services/hire-purchase">Pembiayaan Sewa Beli</a> - Miliki peralatan, bahagikan bayaran</li>
+<li><a href="/ms/services/insurance">Insurans Peralatan</a> - Perlindungan menyeluruh disertakan</li>
+</ul>
+<hr>
+<p><strong>Ing Heng Credit &amp; Leasing Sdn Bhd</strong> - Syarikat pembiayaan peralatan berlesen berpusat di Klang, Selangor. Pakar dalam pembiayaan motor grader, sewa beli peralatan pembinaan jalan, dan pinjaman jentera berat untuk kontraktor Malaysia sejak 1985.</p>
+<p><strong>Dapatkan pembiayaan motor grader dengan 0% deposit dan sehingga 100% jumlah pinjaman. Kelulusan pantas untuk projek pembinaan jalan dan infrastruktur. Hubungi kami hari ini.</strong></p>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Equipment Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    border: 2px solid #2D1810;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background: #D4A574;
+    color: #2D1810;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

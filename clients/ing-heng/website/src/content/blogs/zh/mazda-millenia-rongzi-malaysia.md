@@ -1,7 +1,7 @@
 ---
 title: "Mazda Millenia 融资马来西亚 - 0% 首付豪华创新"
 description: "为您的Mazda Millenia豪华轿车获得0%首付融资。不要让进口复杂性粉碎您在马来西亚的高端Mazda梦想。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

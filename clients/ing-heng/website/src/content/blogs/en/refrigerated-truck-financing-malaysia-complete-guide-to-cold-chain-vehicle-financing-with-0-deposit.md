@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 22, 2025      12 min read
-  #  Refrigerated Truck Financing Malaysia: Complete Guide to Cold Chain Vehicle Financing with 0% Deposit 
-
-  Finance refrigerated trucks and freezer vehicles in Malaysia with 0% deposit options. Complete guide to cold chain logistics financing including interest rates, brand options, and approval process. 
-
-     By Ing Heng Credit &amp; Leasing     ## Why Refrigerated Truck Financing Transforms Cold Chain Businesses
 
 Cold chain logistics demands specialized equipment. Here’s why refrigerated truck financing opens massive opportunities:
 

@@ -13,7 +13,7 @@ keywords:
 - pembiayaan kereta prestasi
 - pinjaman Honda DC2 Malaysia
 - beli Honda Integra Type R
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - Honda Integra
 - Type R DC2

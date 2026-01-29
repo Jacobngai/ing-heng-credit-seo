@@ -1,7 +1,7 @@
 ---
 title: "本田Beat融资马来西亚 - 0%首付Kei跑车传奇"
 description: "稀有本田Beat零首付融资。银行拒绝30年轻型车？我们批准。在收藏价值飙升前获得这台VTEC微型跑车。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

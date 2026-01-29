@@ -20,12 +20,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 9, 2025      7 min read
-  #  Lorry Financing Malaysia Fast Approval: Get Approved in 1-3 Days 
-
-  Fast lorry financing approval in Malaysia. Learn how to get approved quickly with minimal documentation. Competitive rates from 7.5% p.a. for logistics companies. 
-
-     By Ing Heng Credit &amp; Leasing     # Lorry Financing Malaysia Fast Approval: Get Approved in 1-3 Days
 
 You win a new logistics contract today. You need another lorry by next week. But banks take 2-4 weeks for approval. You could lose the contract before the bank even responds.
 

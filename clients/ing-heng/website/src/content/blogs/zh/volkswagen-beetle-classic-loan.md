@@ -1,7 +1,7 @@
 ---
 title: "马来西亚大众甲壳虫经典贷款 - 0%首付VW Bug融资"
 description: "在马来西亚获得0%首付的经典大众甲壳虫融资。银行拒绝老旧VW？我们批准古董甲壳虫贷款给收藏家和爱好者。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

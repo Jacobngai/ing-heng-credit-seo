@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Alfa Romeo Spider Malaysia - Pelaburan Seni Automotif 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk Alfa Romeo Spider impian anda. Penyelesaian pinjaman kereta klasik pakar dengan kadar kompetitif untuk seni automotif Itali yang menghargai."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Mercedes W123 Malaysia - Pelaburan Kemewahan Klasik 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk Mercedes W123 anda. Penyelesaian pinjaman kereta klasik pakar untuk kejuruteraan kemewahan Jerman yang menghargai dan keanggunan abadi."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

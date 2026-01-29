@@ -1,7 +1,7 @@
 ---
 title: "五十铃Gemini Turbo融资马来西亚 - 0%首付JDM传奇"
 description: "在马来西亚获得五十铃Gemini Turbo 0%首付融资。专业指导稀有JDM涡轮掀背车贷款，条款灵活，升值潜力巨大。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

@@ -1,7 +1,7 @@
 ---
 title: "本田NSX Type R融资：马来西亚0%首付JDM传奇批准"
 description: "在马来西亚获得本田NSX Type R融资，提供0%首付选项。专业批准日本终极超跑。提供不良信用解决方案。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["本田NSX Type R", "JDM超跑融资", "异国车贷款", "0%首付", "马来西亚"]
 publishDate: 2025-01-15
 author: "ING HENG Credit"

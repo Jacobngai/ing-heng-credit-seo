@@ -1,7 +1,7 @@
 ---
 title: "五十铃Piazza Turbo贷款马来西亚 - 0%首付遗忘的意大利-日本杰作"
 description: "为稀有的五十铃Piazza Turbo提供0%首付融资。这款Giugiaro设计的JDM楔形车结合了意大利造型和日本可靠性 - 今天就为您的汽车历史片段融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-25

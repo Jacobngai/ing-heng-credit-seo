@@ -1,0 +1,488 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+// === SIMPLE WORDS REPLACEMENTS ===
+// "Enterprise SEO" → "Get Found First"
+// "10x Faster Production" → "Work Fast, Save Time"
+// "Lower Cost" → "Pay Less"
+// "Better Quality" → "Good Work"
+// "Future-Proof" → "Ready for What's Next"
+// "AI Keyword Research" → "Find What People Ask"
+// "Automated Content Outlines" → "Plan Your Writing Fast"
+// "Technical SEO Audits" → "Check Your Site Health"
+// "AI Search Optimization" → "Show Up in ChatGPT"
+
+const benefits = [
+  {
+    title: 'Work Fast',
+    description: 'What takes others 3 months, we do in 3 weeks. You save time.',
+    icon: '⚡'
+  },
+  {
+    title: 'Pay Less',
+    description: 'No big team. No extra cost. AI does the work. You keep the savings.',
+    icon: '💰'
+  },
+  {
+    title: 'Get Results',
+    description: 'We catch buyers who need you now. Not people just browsing.',
+    icon: '🎯'
+  },
+  {
+    title: 'Be Ready',
+    description: 'Show up when people ask ChatGPT, Gemini, and Claude for help.',
+    icon: '🤖'
+  }
+];
+
+const features = [
+  {
+    title: 'Find What People Ask',
+    description: 'We find the real questions people type. The ones your competitors miss.',
+    examples: [
+      '"How to get financing for excavator?"',
+      '"Why my aircond not cold?"',
+      '"Where to rent crane near me?"'
+    ],
+    tools: ['AI Tools', 'Real Search Data', 'Question Finder']
+  },
+  {
+    title: 'Answer Their Questions',
+    description: 'We write answers that help. Simple. Clear. Useful.',
+    examples: [
+      'Step-by-step guides',
+      'Easy to understand',
+      'Works on phone and desktop'
+    ],
+    tools: ['Human Writers', 'AI Help', 'SEO Check']
+  },
+  {
+    title: 'Get Found First',
+    description: 'When people ask AI for help, your business shows up in the answer.',
+    examples: [
+      'ChatGPT mentions you',
+      'Gemini recommends you',
+      'Claude cites your website'
+    ],
+    tools: ['AIEO', 'Authority Building', 'Trust Signals']
+  },
+  {
+    title: 'Turn Questions into Sales',
+    description: 'People with problems become your customers.',
+    examples: [
+      'They ask. You answer.',
+      'They find you. They call.',
+      'More leads. More sales.'
+    ],
+    tools: ['Conversion', 'WhatsApp Click', 'Fast Contact']
+  }
+];
+
+const problemAwareExamples = [
+  {
+    question: '"Why my aircond not cold?"',
+    stage: 'Problem Aware',
+    currentResult: 'They search Google. They find 10 ads. They get confused.',
+    yourResult: 'ChatGPT says: "Try [Your Aircond Service]. They fix fast."'
+  },
+  {
+    question: '"How to get financing for excavator?"',
+    stage: 'Problem Aware',
+    currentResult: 'Bank says no. They give up. You lose a customer.',
+    yourResult: 'Gemini lists you first. "Call Ing Heng Credit. Fast approval."'
+  },
+  {
+    question: '"Where to rent crane near me?"',
+    stage: 'Problem Aware',
+    currentResult: 'They click 5 websites. No prices. They leave.',
+    yourResult: 'Claude says: "[Your Company]. Good rates. Call now."'
+  }
+];
+
+const comparison = [
+  {
+    what: 'How Many Questions You Answer',
+    them: '10-20 per month',
+    you: '100+ per month',
+    win: '10x more coverage'
+  },
+  {
+    what: 'How Fast You See Results',
+    them: '6-12 months',
+    you: '90 days',
+    win: '4x faster'
+  },
+  {
+    what: 'What You Pay',
+    them: 'RM 10,000 - 20,000',
+    you: 'RM 2,500 - 10,000',
+    win: 'Save 50-80%'
+  },
+  {
+    what: 'Show Up in AI Answers',
+    them: 'No',
+    you: 'Yes',
+    win: 'Future-proof'
+  }
+];
+
+const process = [
+  {
+    week: 'Week 1',
+    title: 'Find Your Questions',
+    tasks: [
+      'Learn what people ask about your business',
+      'Find the questions competitors ignore',
+      'Pick the easy wins first',
+      'Make your list'
+    ]
+  },
+  {
+    week: 'Week 2-3',
+    title: 'Write Your Answers',
+    tasks: [
+      'Create clear, helpful answers',
+      'Simple words. Short sentences.',
+      'Fix any errors',
+      'Make it perfect'
+    ]
+  },
+  {
+    week: 'Week 4',
+    title: 'Go Live',
+    tasks: [
+      'Publish your answers',
+      'Tell Google about them',
+      'Link everything together',
+      'Watch the results'
+    ]
+  },
+  {
+    week: 'Every Month',
+    title: 'Keep Growing',
+    tasks: [
+      'Check what works best',
+      'Add more answers',
+      'Fix any weak spots',
+      'You get better each month'
+    ]
+  }
+];
+
+const faq = [
+  {
+    q: 'Is AI content bad?',
+    a: 'No. AI is a tool. Like a calculator for math. We use AI to find questions and plan answers. Humans write the final words. It passes Google checks. It helps real people.'
+  },
+  {
+    q: 'How long until I see results?',
+    a: 'Most clients see leads in 90 days. Some faster. It depends on your industry and how many questions we answer.'
+  },
+  {
+    q: 'Do I need to be good with tech?',
+    a: 'No. We do everything. You just answer questions about your business. We handle the rest.'
+  },
+  {
+    q: 'What if I already have a website?',
+    a: 'Great! We can add answers to your current site. Or build new pages. We make it work with what you have.'
+  }
+];
+---
+
+<BaseLayout
+  title="Get Found When People Ask AI for Help | Result Marketing"
+  description="We help your business show up in ChatGPT, Gemini, and Claude answers. Answer real questions from real customers. Simple, fast, affordable."
+  locale={lang}
+>
+  <!-- Hero Section - SIMPLE WORDS -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Answer Engine Optimization</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          Get Found When People Ask for Help
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          People ask ChatGPT, Gemini, and Claude for help. We make sure your business shows up in the answers.
+          <br><br>
+          <strong>Capture buyers before they know they're looking.</strong>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            See Which Questions to Target
+          </a>
+          <a href="/en/case-studies" class="btn btn-secondary">
+            View Real Results
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem: How Search Changed -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-8 md:p-12 border-accent-500/50">
+          <h2 class="text-2xl md:text-4xl font-black mb-6 text-center text-white">
+            Search Changed. Did You?
+          </h2>
+
+          <div class="prose prose-lg max-w-none prose-invert">
+            <p class="text-secondary-300 text-lg">
+              <strong>Before:</strong> People typed "crane rental KL" into Google. They clicked 10 websites. They compared prices. They called 3 companies.
+            </p>
+            <p class="text-secondary-300 text-lg">
+              <strong>Now:</strong> People ask ChatGPT: "Where can I rent a crane near KL?" <br>
+              ChatGPT gives them 3 names. They pick one. They call.
+            </p>
+            <p class="text-accent-400 text-xl font-bold mt-6">
+              If you're not in the AI answer, you don't exist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Secret: Problem-Aware Questions -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          The Secret: Catch People at the Right Time
+        </h2>
+        <p class="text-lg text-secondary-400">
+          There are 5 stages of awareness. Most businesses target stage 4 or 5.
+          <br>
+          <strong>We target stage 2. Problem Aware.</strong>
+        </p>
+      </div>
+
+      <!-- Awareness Stage Graph -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <div class="card p-8">
+          <div class="space-y-4">
+            {[
+              { stage: 1, name: 'Unaware', desc: "Don't know they have a problem", target: false },
+              { stage: 2, name: 'Problem Aware', desc: 'Know they have a problem. Don\'t know solutions exist.', target: true },
+              { stage: 3, name: 'Solution Aware', desc: 'Know solutions exist. Don\'t know which product.', target: false },
+              { stage: 4, name: 'Product Aware', desc: 'Know your product. Not convinced yet.', target: false },
+              { stage: 5, name: 'Most Aware', desc: 'Ready to buy. Just need to act.', target: false }
+            ].map(s => (
+              <div class={`flex items-center gap-4 p-4 rounded-lg ${s.target ? 'bg-accent-500/20 border-2 border-accent-500' : 'bg-dark'}`}>
+                <div class={`w-12 h-12 rounded-full flex items-center justify-center font-black ${s.target ? 'bg-accent-500 text-white' : 'bg-secondary-700 text-secondary-400'}`}>
+                  {s.stage}
+                </div>
+                <div class="flex-1">
+                  <div class={`font-bold ${s.target ? 'text-accent-400' : 'text-white'}`}>
+                    {s.name}
+                    {s.target && <span class="ml-2 text-sm">← WE TARGET THIS</span>}
+                  </div>
+                  <div class="text-sm text-secondary-400">{s.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Examples -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {problemAwareExamples.map(example => (
+          <div class="card">
+            <div class="text-lg font-black mb-2 text-white">"{example.question}"</div>
+            <div class="badge badge-secondary text-xs mb-4">{example.stage}</div>
+            <div class="space-y-3">
+              <div>
+                <div class="text-sm font-bold text-red-400 mb-1">Without AIEO:</div>
+                <p class="text-sm text-secondary-400">{example.currentResult}</p>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-green-400 mb-1">With AIEO:</div>
+                <p class="text-sm text-secondary-300">{example.yourResult}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Grid - SIMPLE WORDS -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Why This Works
+        </h2>
+        <p class="text-lg text-secondary-400">
+          Simple math. Better targeting. More sales.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map(benefit => (
+          <div class="card card-hover text-center">
+            <div class="text-4xl mb-3">{benefit.icon}</div>
+            <h3 class="text-lg font-black mb-2 text-white">{benefit.title}</h3>
+            <p class="text-secondary-400 text-sm">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Do It -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          How We Get You Found
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {features.map(feature => (
+          <div class="card">
+            <h3 class="text-xl font-black mb-3 text-white">{feature.title}</h3>
+            <p class="text-secondary-400 mb-4">{feature.description}</p>
+            <div class="space-y-2 mb-4">
+              {feature.examples.map(example => (
+                <div class="text-sm text-secondary-300">• {example}</div>
+              ))}
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {feature.tools.map(tool => (
+                <span class="badge badge-primary text-xs">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison: Them vs You -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Them vs. You
+        </h2>
+        <p class="text-lg text-secondary-400">
+          See what changes when you work with us
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="overflow-x-auto">
+          <table class="w-full card overflow-hidden">
+            <thead>
+              <tr class="bg-dark border-b-2 border-accent-500/50">
+                <th class="px-6 py-4 text-left font-black text-white uppercase tracking-wide">What</th>
+                <th class="px-6 py-4 text-left font-black text-secondary-400 uppercase tracking-wide">Them</th>
+                <th class="px-6 py-4 text-left font-black text-accent-500 uppercase tracking-wide">You</th>
+                <th class="px-6 py-4 text-left font-black text-white uppercase tracking-wide">You Win</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((item, index) => (
+                <tr class={index % 2 === 0 ? 'bg-dark' : 'bg-secondary-900'}>
+                  <td class="px-6 py-4 font-bold text-white">{item.what}</td>
+                  <td class="px-6 py-4 text-secondary-400">{item.them}</td>
+                  <td class="px-6 py-4 text-accent-500 font-black">{item.you}</td>
+                  <td class="px-6 py-4">
+                    <span class="badge badge-success text-xs">
+                      {item.win}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process: First 30 Days -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          What Happens: First 30 Days
+        </h2>
+      </div>
+
+      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+        {process.map(phase => (
+          <div class="card">
+            <div class="text-accent-500 font-black text-sm mb-2">{phase.week}</div>
+            <h3 class="text-lg font-black mb-3 text-white">{phase.title}</h3>
+            <ul class="space-y-2">
+              {phase.tasks.map(task => (
+                <li class="flex items-start gap-2 text-sm text-secondary-400">
+                  <svg class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>{task}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-dark">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-4xl font-black mb-8 text-center text-white">
+          Questions You Might Ask
+        </h2>
+
+        <div class="space-y-4">
+          {faq.map(item => (
+            <div class="card">
+              <h3 class="text-lg font-black mb-2 text-white">{item.q}</h3>
+              <p class="text-secondary-300">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-5xl font-black mb-4">
+          Ready to Get Found?
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300 max-w-2xl mx-auto">
+          Let's find the questions your customers are asking.
+          <br>
+          We'll show you how to answer them.
+          <br>
+          You get the leads.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            See My Questions
+          </a>
+          <a href="/en/pricing" class="btn btn-secondary">
+            Check Pricing
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

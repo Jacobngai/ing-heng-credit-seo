@@ -3,7 +3,7 @@ title: "Pembiayaan Ferrari 430 Spider Malaysia - 0% Deposit Pinjaman Supercar"
 description: "Dapatkan kelulusan pembiayaan Ferrari F430 Spider di Malaysia. Bank tolak pinjaman supercar? Kami pakar dalam pembiayaan kenderaan eksotik dengan 0% deposit."
 publishDate: 2024-12-24
 tags: ["pinjaman ferrari 430 spider", "pembiayaan supercar malaysia", "pinjaman kereta eksotik", "pembiayaan ferrari"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

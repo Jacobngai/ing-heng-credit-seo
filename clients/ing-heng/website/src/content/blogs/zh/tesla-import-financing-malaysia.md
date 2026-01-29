@@ -2,7 +2,7 @@
 title: "特斯拉进口融资马来西亚：商用电动车队融资"
 description: "马来西亚商用车队特斯拉进口融资。出租车、网约车和企业车队运营商0%押金电动车融资。快速审批流程。"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["特斯拉融资", "电动车融资", "车队融资", "进口车融资", "商业融资"]
 keywords: ["特斯拉进口融资马来西亚", "电动车队融资", "特斯拉商业贷款", "电动车进口融资", "特斯拉model3融资", "电动出租车融资"]
 author: "ING HENG Credit"

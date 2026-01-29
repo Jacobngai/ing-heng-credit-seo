@@ -19,12 +19,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  January 16, 2026      8 min read
-  #  Excavator Financing for 10 Years Old Equipment: Complete Guide 
-
-  Get financing for excavators up to 10 years old in Malaysia. Learn approval requirements, loan terms, and documentation needed for older equipment. 
-
-     By Ing Heng Credit &amp; Leasing     # Excavator Financing for 10 Years Old Equipment: Complete Guide
 
 Are you looking at a 10-year-old excavator but worried no one will finance it? You’re not alone. Many contractors think equipment age limits financing options.
 

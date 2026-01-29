@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Honda CRX Malaysia - 0% Deposit Pelaburan Legenda Sport Compact"
 description: "Biayai Honda CRX anda dengan 0% deposit. Dapatkan pembiayaan untuk sport compact ikonik ini manakala bank menolak Honda vintage. Pembiayaan kereta tuner pakar untuk legenda VTEC dan potensi pelaburan."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

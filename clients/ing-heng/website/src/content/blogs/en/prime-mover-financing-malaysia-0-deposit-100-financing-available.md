@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  January 2, 2026      12 min read
-  #  Prime Mover Financing Malaysia: 0% Deposit, 100% Financing Available 
-
-  Get prime mover financing with zero deposit in Malaysia. Fast approval, flexible terms, and financing up to 100% of equipment value for logistics businesses. 
-
-     By Ing Heng Credit &amp; Leasing     # Prime Mover Financing Malaysia: 0% Deposit, 100% Financing Available
 
 Need a **prime mover** for your logistics or port operations business? Want to finance without paying any deposit upfront?
 

@@ -1,7 +1,7 @@
 ---
 title: "马自达Lantis Type R融资马来西亚 - V6发动机0%首付贷款"
 description: "在马来西亚获得马自达Lantis Type R融资，提供0%首付选项。获批这款正成为隐藏经典的稀有自然吸气V6运动轿车。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

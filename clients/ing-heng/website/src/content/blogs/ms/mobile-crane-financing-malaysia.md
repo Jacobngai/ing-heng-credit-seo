@@ -6,7 +6,7 @@ description: Dapatkan pembiayaan kren mudah alih dengan 0% deposit di Malaysia. 
   pantas untuk kontraktor & perniagaan sewa kren.
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
 - kren mudah alih
 - pembiayaan kren

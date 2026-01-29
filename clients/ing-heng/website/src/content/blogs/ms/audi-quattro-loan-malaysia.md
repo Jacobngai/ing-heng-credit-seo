@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Audi Quattro Malaysia - 0% Deposit Pembiayaan Perintis AWD Asal"
 description: "Dapatkan Audi Quattro anda dengan pinjaman 0% deposit di Malaysia. Biayai perintis pacuan semua roda asal yang merevolusikan rali dan motoring prestasi."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

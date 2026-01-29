@@ -1,7 +1,7 @@
 ---
 title: Pinjaman Toyota Chaser JZX100 Malaysia - 0% Deposit Impian Prestasi Mewah JDM
 description: Biayai Toyota Chaser JZX100 dengan 0% deposit di Malaysia. Bank tolak sedan prestasi mewah tapi kami lulus. Kredit buruk diterima. Kelulusan pantas untuk legenda 2JZ.
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: ms
 publishDate: 2025-12-23

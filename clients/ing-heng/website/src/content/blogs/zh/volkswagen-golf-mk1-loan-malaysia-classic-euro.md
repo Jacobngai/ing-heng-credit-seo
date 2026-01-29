@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Volkswagen Golf MK1融资 - 0%首付经典欧洲投资"
 description: "为Volkswagen Golf MK1经典车获得0%首付融资。银行拒绝老式德国车，我们批准原装GTI传奇和欧洲投资潜力。专业融资可用。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-27

@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  December 20, 2025      8 min read
-  #  Construction Equipment Financing Malaysia: 0% Deposit Options for Excavators, Cranes &amp; More 
-
-  Get construction equipment financing in Malaysia with 0% deposit required. We finance excavators, cranes, bulldozers, trucks - even 10+ year old equipment. Fast approval for contractors. 
-
-     By Ing Heng Credit &amp; Leasing     # Construction Equipment Financing Malaysia: 0% Deposit Solutions for Every Contractor
 
 When Ahmad’s rental company called at 5 PM demanding their excavator back the next morning, and he had three days of foundation work scheduled, do you remember that sinking feeling in your stomach knowing you’d lose the RM45,000 contract?
 

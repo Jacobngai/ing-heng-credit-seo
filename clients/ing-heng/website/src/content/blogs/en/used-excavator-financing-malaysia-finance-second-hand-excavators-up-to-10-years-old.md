@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  January 13, 2026      9 min read
-  #  Used Excavator Financing Malaysia: Finance Second-Hand Excavators Up to 10 Years Old 
-
-  Finance used excavators up to 10 years old in Malaysia. 0% deposit available. Learn age limits, interest rates, valuation process, and approval requirements for second-hand excavators. 
-
-     By Ing Heng Credit &amp; Leasing     ## Why Buy a Used Excavator Instead of New?
 
 Many Malaysian contractors choose used excavators over new machines. The cost savings are significant:
 

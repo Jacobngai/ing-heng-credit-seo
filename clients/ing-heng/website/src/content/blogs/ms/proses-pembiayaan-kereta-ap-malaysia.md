@@ -1,7 +1,7 @@
 ---
 title: "Proses Pembiayaan Kereta AP Malaysia - 0% Deposit Untuk Kereta Import Permit"
 description: "Biayai kereta import AP anda dengan 0% deposit. Panduan lengkap proses pembiayaan kereta AP, penolakan bank, dan penyelesaian kelulusan alternatif."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2024-12-24

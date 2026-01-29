@@ -13,7 +13,7 @@ keywords:
 - 性能车融资
 - 马来西亚本田DC2贷款
 - 思域Type R分期付款
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - 本田思域
 - Type R DC2

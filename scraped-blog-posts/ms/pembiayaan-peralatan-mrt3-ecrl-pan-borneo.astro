@@ -1,0 +1,578 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'ms';
+const post = {
+  "title": "Panduan Pembiayaan Peralatan MRT3, ECRL & Pan Borneo Malaysia 2025",
+  "slug": "pembiayaan-peralatan-mrt3-ecrl-pan-borneo",
+  "excerpt": "Pembiayaan peralatan untuk projek mega MRT3, ECRL, Pan Borneo. Kami membiayai jentera khusus terowong, kren tower, crusher plant. 0% deposit untuk kontraktor berkelayakan.",
+  "date": "2025-12-20T00:00:00.000Z",
+  "author": "Ing Heng Credit & Leasing Sdn Bhd      Laman Utama  Tentang Kami  Perkhidmatan    Peralatan            🏗️ Semua Peralatan    Lihat katalog peralatan lengkap kami         🚜 Jengkaut  Paling Popular    Jengkaut mini hingga besar untuk pembinaan         🚛 Lori Komersial  Kelulusan Pantas    Logistik & pengangkutan barang         🏭 Forklift    Peralatan gudang & perindustrian         🏗️ Kren Mudah Alih    Angkatan berat & pembinaan         🚚 Prime Mover    Pengangkutan treler & barang         🚜 Jentolak    Kerja tanah & pembukaan tanah         🧊 Lori Peti Sejuk    Logistik rantaian sejuk dan pengangkutan terkawal suhu          Lihat katalog peralatan lengkap kami  Hubungi Kami →\n      document.addEventListener(\"DOMContentLoaded\",()=>{const e=document.querySelector(\".equipment-dropdown-trigger\"),d=document.querySelector(\".equipment-dropdown-menu\"),n=document.querySelector(\".equipment-dropdown-wrapper\");e&&d&&n&&(e.addEventListener(\"click\",t=>{t.preventDefault(),t.stopPropagation();const r=e.getAttribute(\"aria-expanded\")===\"true\";e.setAttribute(\"aria-expanded\",(!r).toString())}),document.addEventListener(\"click\",t=>{n.contains(t.target)||e.setAttribute(\"aria-expanded\",\"false\")}),document.addEventListener(\"keydown\",t=>{t.key===\"Escape\"&&e.getAttribute(\"aria-expanded\")===\"true\"&&(e.setAttribute(\"aria-expanded\",\"false\"),e.focus())}),n.addEventListener(\"mouseenter\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"true\")}),n.addEventListener(\"mouseleave\",()=>{window.innerWidth>=1024&&e.setAttribute(\"aria-expanded\",\"false\")}))}); Blog  Hubungi          🇲🇾           🇬🇧 English    🇨🇳 中文    🇲🇾 Bahasa Melayu        \n  // Language switcher dropdown functionality - Enhanced version\n  (function() {\n    'use strict';\n\n    function initLanguageSwitcher() {\n      // Find ALL language switchers on the page (desktop + mobile)\n      const switchers = document.querySelectorAll('[data-language-switcher]');\n\n      switchers.forEach(function(switcher) {\n        const button = switcher.querySelector('#language-menu-button');\n        const menu = switcher.querySelector('#language-menu');\n        const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n        if (!button || !menu) {\n          console.warn('Language switcher: Missing button or menu element');\n          return;\n        }\n\n        // Remove any existing listeners (prevent duplicates)\n        const newButton = button.cloneNode(true);\n        button.parentNode.replaceChild(newButton, button);\n\n        // Toggle dropdown on button click\n        newButton.addEventListener('click', function(e) {\n          e.preventDefault();\n          e.stopPropagation();\n\n          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';\n          const newState = !isExpanded;\n\n          // Close all other language switchers first\n          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {\n            if (otherSwitcher !== switcher) {\n              const otherButton = otherSwitcher.querySelector('#language-menu-button');\n              const otherMenu = otherSwitcher.querySelector('#language-menu');\n              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');\n\n              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');\n              if (otherMenu) otherMenu.classList.add('hidden');\n              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';\n            }\n          });\n\n          // Toggle current switcher\n          newButton.setAttribute('aria-expanded', newState.toString());\n          menu.classList.toggle('hidden', !newState);\n\n          // Rotate arrow\n          if (arrow) {\n            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';\n          }\n\n          console.log('Language switcher toggled:', newState ? 'open' : 'closed');\n        });\n      });\n\n      // Close all dropdowns when clicking outside\n      document.addEventListener('click', function(e) {\n        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');\n\n        if (!clickedInsideSwitcher) {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (button) button.setAttribute('aria-expanded', 'false');\n            if (menu) menu.classList.add('hidden');\n            if (arrow) arrow.style.transform = 'rotate(0deg)';\n          });\n        }\n      });\n\n      // Close dropdowns on ESC key\n      document.addEventListener('keydown', function(e) {\n        if (e.key === 'Escape') {\n          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {\n            const button = switcher.querySelector('#language-menu-button');\n            const menu = switcher.querySelector('#language-menu');\n            const arrow = switcher.querySelector('.lang-switcher-arrow');\n\n            if (menu && !menu.classList.contains('hidden')) {\n              if (button) {\n                button.setAttribute('aria-expanded', 'false');\n                button.focus();\n              }\n              menu.classList.add('hidden');\n              if (arrow) arrow.style.transform = 'rotate(0deg)';\n            }\n          });\n        }\n      });\n\n      console.log('Language switcher initialized:', switchers.length, 'instance(s)');\n    }\n\n    // Run when DOM is ready\n    if (document.readyState === 'loading') {\n      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);\n    } else {\n      initLanguageSwitcher();\n    }\n\n    // Re-initialize after view transitions (for Astro)\n    document.addEventListener('astro:page-load', initLanguageSwitcher);\n  })();\n       Sembang di WhatsApp",
+  "readTime": 7,
+  "category": "Equipment Financing",
+  "image": "https://www.kreditloan.my\n/images/og-default.jpg"
+};
+
+const keywords = "pembiayaan peralatan MRT3, pembiayaan jentera ECRL, peralatan Pan Borneo Highway, jentera projek mega Malaysia, pembiayaan peralatan infrastruktur",
+  breadcrumbItems = [
+  {
+    "label": "Blog",
+    "href": "/ms/blog"
+  }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY, { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <h1 id="panduan-pembiayaan-peralatan-mrt3-ecrl--pan-borneo-malaysia-2025">Panduan Pembiayaan Peralatan MRT3, ECRL &amp; Pan Borneo Malaysia 2025</h1>
+<p>Bila Ahmad membaca surat anugerah untuk seksyen terowong MRT3 bernilai RM 180 juta, dan kontrak memerlukan tunnel boring machine, 5 tower crane, dan 15 excavator khusus terowong - semua mesti di tapak dalam 45 hari, adakah fikiran anda terus ke “Di mana saya nak cari RM 25 juta untuk peralatan?”</p>
+<p>Bila anda lihat specifications ECRL untuk crusher plant berkepabatan 300 tan/jam, bridge crane 200-tan, dan rail welding equipment - semua bernilai RM 35 juta untuk satu pakej, adakah itu terasa mustahil?</p>
+<p><strong>Projek mega infrastruktur Malaysia bukan untuk kontraktor kecil. Tetapi pembiayaan peralatan tidak harus jadi halangan.</strong></p>
+<h2 id="projek-mega-infrastruktur-malaysia-2025-2030">Projek Mega Infrastruktur Malaysia 2025-2030</h2>
+<p>Malaysia sedang membina infrastruktur paling ambisius dalam sejarah. Tiga projek mega ini akan mentransformasi negara - dan kontraktor yang terlibat.</p>
+<h3 id="mrt3-circle-line---rm-52-bilion"><strong>MRT3 Circle Line - RM 52 Bilion:</strong></h3>
+<ul>
+<li><strong>Panjang:</strong> 50km dengan 31 stesen</li>
+<li><strong>Terowong:</strong> 70% bawah tanah melalui KL</li>
+<li><strong>Timeline:</strong> 2025-2030 fasa pembinaan utama</li>
+<li><strong>Kontraktor:</strong> 15-20 kontraktor utama diperlukan</li>
+</ul>
+<h3 id="ecrl-fasa-2---rm-44-bilion"><strong>ECRL Fasa 2 - RM 44 Bilion:</strong></h3>
+<ul>
+<li><strong>Panjang:</strong> 665km dari Pantai Timur ke Klang</li>
+<li><strong>Jambatan:</strong> 80+ jambatan utama</li>
+<li><strong>Timeline:</strong> 2025-2027 pembinaan intensif</li>
+<li><strong>Kontraktor:</strong> 25+ kontraktor khusus kereta api</li>
+</ul>
+<h3 id="pan-borneo-highway-sarawak---rm-165-bilion"><strong>Pan Borneo Highway Sarawak - RM 16.5 Bilion:</strong></h3>
+<ul>
+<li><strong>Panjang:</strong> 1,090km melalui Sarawak</li>
+<li><strong>Hutan:</strong> 60% melalui kawasan hutan tebal</li>
+<li><strong>Timeline:</strong> 2025-2028 pembinaan aktif</li>
+<li><strong>Kontraktor:</strong> 30+ kontraktor highway berpengalaman</li>
+</ul>
+<p><strong>Peluang Gabungan:</strong> RM 112.5 bilion kerja pembinaan. Peralatan diperlukan: RM 15-20 bilion.</p>
+<h2 id="keperluan-peralatan-mrt3-circle-line">Keperluan Peralatan MRT3 Circle Line</h2>
+<h3 id="kategori-1-peralatan-terowong-60-projek"><strong>Kategori 1: Peralatan Terowong (60% Projek)</strong></h3>
+<p><strong>Tunnel Boring Machine (TBM):</strong></p>
+<ul>
+<li><strong>Saiz:</strong> 6-8 meter diameter untuk MRT</li>
+<li><strong>Kos:</strong> RM 8-15 juta setiap unit</li>
+<li><strong>Kuantiti:</strong> 6-10 unit untuk keseluruhan projek</li>
+<li><strong>Pembiayaan:</strong> 7-10 tahun, 0% deposit tersedia</li>
+<li><strong>Kepakaran:</strong> Perlu operator dan teknisi khusus</li>
+</ul>
+<p><strong>Excavator Khusus Terowong:</strong></p>
+<ul>
+<li><strong>Jenis:</strong> Long-reach dengan attachment terowong</li>
+<li><strong>Saiz:</strong> 20-35 tan untuk ruang terhad</li>
+<li><strong>Kuantiti:</strong> 30-50 unit</li>
+<li><strong>Kos:</strong> RM 400,000-800,000 setiap</li>
+<li><strong>Pembiayaan:</strong> Standard equipment financing</li>
+</ul>
+<p><strong>Support Equipment Terowong:</strong></p>
+<ul>
+<li>Conveyor belt system untuk removal</li>
+<li>Ventilation dan air quality equipment</li>
+<li>Concrete lining machinery</li>
+<li>Emergency rescue equipment</li>
+<li>Dewatering pump besar</li>
+</ul>
+<h3 id="kategori-2-peralatan-stesen-30-projek"><strong>Kategori 2: Peralatan Stesen (30% Projek)</strong></h3>
+<p><strong>Tower Crane untuk Stesen Dalam:</strong></p>
+<ul>
+<li><strong>Kapasiti:</strong> 50-150 tan untuk stesen bawah tanah</li>
+<li><strong>Ketinggian:</strong> 60-100 meter reach</li>
+<li><strong>Kuantiti:</strong> 25-35 unit</li>
+<li><strong>Kos:</strong> RM 800,000-2.5 juta setiap</li>
+<li><strong>Special:</strong> Underground installation capability</li>
+</ul>
+<p><strong>Excavator Besar untuk Excavation:</strong></p>
+<ul>
+<li><strong>Saiz:</strong> 45-80 tan untuk penggalian dalam</li>
+<li><strong>Attachment:</strong> Rock breaker, grab bucket</li>
+<li><strong>Kuantiti:</strong> 40-60 unit</li>
+<li><strong>Kos:</strong> RM 800,000-2 juta setiap</li>
+<li><strong>Feature:</strong> High precision untuk urban areas</li>
+</ul>
+<p><strong>Concrete Plant &amp; Pump:</strong></p>
+<ul>
+<li>Mobile concrete plant untuk remote access</li>
+<li>Truck-mounted concrete pump 42-52 meter</li>
+<li>Specialized concrete untuk underground</li>
+<li>Quality control dan testing equipment</li>
+</ul>
+<h3 id="kategori-3-peralatan-sokongan-10-projek"><strong>Kategori 3: Peralatan Sokongan (10% Projek)</strong></h3>
+<p><strong>Transportation &amp; Logistics:</strong></p>
+<ul>
+<li>Specialized trailer untuk TBM transport</li>
+<li>Heavy haulage truck 100+ tan capacity</li>
+<li>Material handling crane 50-100 tan</li>
+<li>Workshop truck untuk on-site maintenance</li>
+</ul>
+<p><strong>Safety &amp; Environment:</strong></p>
+<ul>
+<li>Air monitoring dan filtration system</li>
+<li>Emergency evacuation equipment</li>
+<li>Noise reduction dan barrier system</li>
+<li>Environmental monitoring tools</li>
+</ul>
+<h2 id="keperluan-peralatan-ecrl-pembinaan">Keperluan Peralatan ECRL Pembinaan</h2>
+<h3 id="kategori-1-peralatan-track--rail-40-projek"><strong>Kategori 1: Peralatan Track &amp; Rail (40% Projek)</strong></h3>
+<p><strong>Rail Laying Equipment:</strong></p>
+<ul>
+<li><strong>Track laying machine:</strong> RM 3-5 juta setiap</li>
+<li><strong>Ballast regulator:</strong> RM 800,000-1.2 juta</li>
+<li><strong>Rail welding equipment:</strong> RM 500,000-800,000</li>
+<li><strong>Track geometry car:</strong> RM 2-4 juta</li>
+<li><strong>Tamping machine:</strong> RM 1-2 juta setiap</li>
+</ul>
+<p><strong>Material Handling:</strong></p>
+<ul>
+<li>Rail handling crane 40-80 tan</li>
+<li>Ballast transport train</li>
+<li>Tie insertion machine</li>
+<li>Rail cutting dan grinding equipment</li>
+</ul>
+<h3 id="kategori-2-bridge--structure-35-projek"><strong>Kategori 2: Bridge &amp; Structure (35% Projek)</strong></h3>
+<p><strong>Bridge Construction Crane:</strong></p>
+<ul>
+<li><strong>Mobile crane 200+ tan:</strong> RM 2-4 juta setiap</li>
+<li><strong>Crawler crane 300+ tan:</strong> RM 4-8 juta</li>
+<li><strong>Bridge launcher:</strong> RM 5-10 juta untuk segment</li>
+<li><strong>Pile driving equipment:</strong> RM 800,000-2 juta</li>
+</ul>
+<p><strong>Concrete Equipment:</strong></p>
+<ul>
+<li><strong>Batching plant 120-180 m³/hr:</strong> RM 1.5-3 juta</li>
+<li><strong>Truck pump 58-63 meter:</strong> RM 800,000-1.2 juta</li>
+<li><strong>Precast yard equipment:</strong> RM 2-5 juta setup</li>
+<li><strong>Bridge girder transporter:</strong> RM 1-3 juta</li>
+</ul>
+<h3 id="kategori-3-earthwork--formation-25-projek"><strong>Kategori 3: Earthwork &amp; Formation (25% Projek)</strong></h3>
+<p><strong>Heavy Earthwork:</strong></p>
+<ul>
+<li><strong>D9-D11 bulldozer:</strong> RM 800,000-1.5 juta setiap</li>
+<li><strong>Excavator 50+ tan:</strong> RM 1-2 juta setiap</li>
+<li><strong>Wheel loader 980-988:</strong> RM 500,000-800,000</li>
+<li><strong>Motor grader 16M-24M:</strong> RM 800,000-1.5 juta</li>
+</ul>
+<p><strong>Crushing &amp; Aggregate:</strong></p>
+<ul>
+<li><strong>Crusher plant 250+ tph:</strong> RM 2-5 juta</li>
+<li><strong>Screening plant:</strong> RM 800,000-2 juta</li>
+<li><strong>Conveyor system:</strong> RM 500,000-1.5 juta</li>
+<li><strong>Aggregate testing lab:</strong> RM 200,000-500,000</li>
+</ul>
+<h2 id="keperluan-peralatan-pan-borneo-highway">Keperluan Peralatan Pan Borneo Highway</h2>
+<h3 id="kategori-1-jungle-clearing--preparation-30-projek"><strong>Kategori 1: Jungle Clearing &amp; Preparation (30% Projek)</strong></h3>
+<p><strong>Heavy Clearing Equipment:</strong></p>
+<ul>
+<li><strong>D8-D10 bulldozer dengan bush guard:</strong> RM 600,000-1.2 juta</li>
+<li><strong>Forestry mulcher:</strong> RM 400,000-800,000</li>
+<li><strong>Tree spade untuk transplanting:</strong> RM 200,000-400,000</li>
+<li><strong>Excavator dengan clearing head:</strong> RM 500,000-900,000</li>
+</ul>
+<p><strong>Environmental Protection:</strong></p>
+<ul>
+<li>Erosion control equipment</li>
+<li>Water treatment plant portable</li>
+<li>Wildlife crossing construction tools</li>
+<li>Environmental monitoring system</li>
+</ul>
+<h3 id="kategori-2-road-construction-50-projek"><strong>Kategori 2: Road Construction (50% Projek)</strong></h3>
+<p><strong>Asphalt &amp; Paving:</strong></p>
+<ul>
+<li><strong>Asphalt plant 160-240 tph:</strong> RM 3-8 juta</li>
+<li><strong>Asphalt paver 4.5-9 meter:</strong> RM 800,000-2 juta</li>
+<li><strong>Road roller 12-20 tan:</strong> RM 200,000-500,000</li>
+<li><strong>Asphalt distributor truck:</strong> RM 300,000-600,000</li>
+</ul>
+<p><strong>Base &amp; Sub-base:</strong></p>
+<ul>
+<li><strong>Soil stabilizer 3-4 meter:</strong> RM 600,000-1.2 juta</li>
+<li><strong>Compactor vibrating 10+ tan:</strong> RM 300,000-800,000</li>
+<li><strong>Water truck 15-25,000 liter:</strong> RM 150,000-300,000</li>
+<li><strong>Aggregate spreader:</strong> RM 200,000-500,000</li>
+</ul>
+<h3 id="kategori-3-bridge--drainage-20-projek"><strong>Kategori 3: Bridge &amp; Drainage (20% Projek)</strong></h3>
+<p><strong>Bridge Equipment:</strong></p>
+<ul>
+<li><strong>All terrain crane 70-150 tan:</strong> RM 1-3 juta</li>
+<li><strong>Bridge beam launcher:</strong> RM 2-6 juta</li>
+<li><strong>Pile driving rig:</strong> RM 800,000-2 juta</li>
+<li><strong>Concrete pump truck:</strong> RM 600,000-1.2 juta</li>
+</ul>
+<p><strong>Drainage &amp; Culvert:</strong></p>
+<ul>
+<li><strong>Trencher untuk drainage:</strong> RM 300,000-800,000</li>
+<li><strong>Pipe laying equipment:</strong> RM 200,000-600,000</li>
+<li><strong>Concrete culvert machine:</strong> RM 500,000-1.5 juta</li>
+<li><strong>Hydro-seeding equipment:</strong> RM 100,000-300,000</li>
+</ul>
+<h2 id="strategi-pembiayaan-projek-mega">Strategi Pembiayaan Projek Mega</h2>
+<h3 id="pembiayaan-bertahap-untuk-projek-besar"><strong>Pembiayaan Bertahap untuk Projek Besar:</strong></h3>
+<p><strong>Fasa 1: Mobilisasi (Bulan 1-3)</strong></p>
+<ul>
+<li>Peralatan kritikal dan utama</li>
+<li>30-40% jumlah peralatan diperlukan</li>
+<li>Timeline ketat, perlu immediate delivery</li>
+<li>Pembiayaan express dalam 3-5 hari</li>
+</ul>
+<p><strong>Fasa 2: Pembinaan Penuh (Bulan 4-24)</strong></p>
+<ul>
+<li>Additional specialized equipment</li>
+<li>Replacement dan backup equipment</li>
+<li>Technology upgrade dan efficiency improvement</li>
+<li>Standard financing timeline</li>
+</ul>
+<p><strong>Fasa 3: Optimisasi (Bulan 25+)</strong></p>
+<ul>
+<li>Productivity enhancement equipment</li>
+<li>Cost reduction technology</li>
+<li>Fleet expansion untuk additional scope</li>
+<li>End-of-project equipment planning</li>
+</ul>
+<h3 id="struktur-pembiayaan-projek-mega"><strong>Struktur Pembiayaan Projek Mega:</strong></h3>
+<p><strong>Zero Deposit Program:</strong></p>
+<ul>
+<li>0% deposit untuk proven contractors dengan mega project award</li>
+<li>100% equipment cost financing</li>
+<li>Grace period semasa project mobilization</li>
+<li>Flexible payment aligned dengan project milestone</li>
+</ul>
+<p><strong>Extended Terms:</strong></p>
+<ul>
+<li>7-12 tahun untuk specialized equipment</li>
+<li>5-8 tahun untuk standard construction equipment</li>
+<li>3-7 tahun untuk technology dan IT equipment</li>
+<li>Customized terms untuk unique equipment</li>
+</ul>
+<p><strong>Project-Specific Benefits:</strong></p>
+<ul>
+<li>Expedited approval untuk mega project deadlines</li>
+<li>Technical support untuk equipment specification</li>
+<li>Supplier coordination dan delivery management</li>
+<li>Insurance dan risk management assistance</li>
+</ul>
+<h2 id="pembiayaan-peralatan-khusus--teknologi-maju">Pembiayaan Peralatan Khusus &amp; Teknologi Maju</h2>
+<h3 id="tunnel-boring-machine-tbm-financing"><strong>Tunnel Boring Machine (TBM) Financing:</strong></h3>
+<p><strong>Investment Requirements:</strong></p>
+<ul>
+<li><strong>New TBM:</strong> RM 8-15 juta</li>
+<li><strong>Refurbished TBM:</strong> RM 4-8 juta</li>
+<li><strong>Support equipment:</strong> RM 2-4 juta</li>
+<li><strong>Training &amp; setup:</strong> RM 500,000-1 juta</li>
+</ul>
+<p><strong>Financing Structure:</strong></p>
+<ul>
+<li>8-12 tahun financing period</li>
+<li>0-10% deposit depending on contractor strength</li>
+<li>Revenue-based payment struktur</li>
+<li>Technology upgrade paths built-in</li>
+</ul>
+<p><strong>Why Banks Don’t Finance TBM:</strong></p>
+<ul>
+<li>Highly specialized equipment</li>
+<li>Limited resale market</li>
+<li>Complex technology assessment</li>
+<li>Unknown depreciation patterns</li>
+</ul>
+<p><strong>Why We Finance TBM:</strong></p>
+<ul>
+<li>Understand tunneling industry</li>
+<li>Know TBM productivity dan revenue potential</li>
+<li>Have specialized equipment experts</li>
+<li>Focus on project cashflow, not just asset value</li>
+</ul>
+<h3 id="bridge-launcher--specialized-equipment"><strong>Bridge Launcher &amp; Specialized Equipment:</strong></h3>
+<p><strong>Equipment Categories:</strong></p>
+<ul>
+<li><strong>Bridge launcher 40-60 meter span:</strong> RM 5-10 juta</li>
+<li><strong>Precast yard setup:</strong> RM 3-8 juta</li>
+<li><strong>Segment lifter:</strong> RM 2-4 juta</li>
+<li><strong>Post-tensioning equipment:</strong> RM 1-3 juta</li>
+</ul>
+<p><strong>Technical Financing:</strong></p>
+<ul>
+<li>Custom financing untuk unique equipment</li>
+<li>International equipment import financing</li>
+<li>Currency hedging untuk foreign equipment</li>
+<li>Technology transfer dan training included</li>
+</ul>
+<h2 id="contoh-kejayaan-projek-mega">Contoh Kejayaan Projek Mega</h2>
+<h3 id="case-study-1-mrt3-terowong-contractor"><strong>Case Study 1: MRT3 Terowong Contractor</strong></h3>
+<p><strong>Kontraktor:</strong> Bina Terowong Sdn Bhd
+<strong>Projek:</strong> MRT3 Stesen Titiwangsa-Sentul (3.2km terowong)
+<strong>Nilai Kontrak:</strong> RM 285 juta
+<strong>Peralatan Diperlukan:</strong> RM 18 juta</p>
+<p><strong>Equipment Financed:</strong></p>
+<ul>
+<li>1x Tunnel Boring Machine (refurbished): RM 6 juta</li>
+<li>3x Specialized tunnel excavator: RM 2.1 juta</li>
+<li>2x Tower crane untuk access shaft: RM 3.2 juta</li>
+<li>Conveyor dan support equipment: RM 6.7 juta</li>
+</ul>
+<p><strong>Results:</strong></p>
+<ul>
+<li><strong>Financing approved:</strong> 4 hari with mega project LOI</li>
+<li><strong>Equipment delivery:</strong> 8 minggu vs standard 16 minggu</li>
+<li><strong>Project completion:</strong> On time dengan 15% cost saving</li>
+<li><strong>ROI achieved:</strong> Equipment paid for itself in 20 bulan</li>
+</ul>
+<p><strong>Key Success Factor:</strong> Kami faham TBM technology dan tunneling economics yang bank tak dapat assess.</p>
+<h3 id="case-study-2-ecrl-bridge-specialist"><strong>Case Study 2: ECRL Bridge Specialist</strong></h3>
+<p><strong>Kontraktor:</strong> Jambatan Megah Engineering
+<strong>Projek:</strong> 15 bridges along ECRL Pahang section
+<strong>Nilai Kontrak:</strong> RM 420 juta
+<strong>Peralatan Diperlukan:</strong> RM 25 juta</p>
+<p><strong>Equipment Financed:</strong></p>
+<ul>
+<li>2x Bridge launcher system: RM 12 juta</li>
+<li>1x Mobile crane 250-ton: RM 4.2 juta</li>
+<li>Precast yard complete setup: RM 5.8 juta</li>
+<li>Support equipment &amp; transport: RM 3 juta</li>
+</ul>
+<p><strong>Results:</strong></p>
+<ul>
+<li><strong>Multi-bridge efficiency:</strong> 40% time saving vs conventional</li>
+<li><strong>Quality improvement:</strong> Precast consistency</li>
+<li><strong>Additional contracts:</strong> Won 2 more ECRL packages</li>
+<li><strong>Business growth:</strong> From RM 50M to RM 200M annual capacity</li>
+</ul>
+<p><strong>Key Success Factor:</strong> Bridge launcher technology created competitive advantage dan premium pricing power.</p>
+<h3 id="case-study-3-pan-borneo-highway-pioneer"><strong>Case Study 3: Pan Borneo Highway Pioneer</strong></h3>
+<p><strong>Kontraktor:</strong> Sarawak Highway Builder
+<strong>Projek:</strong> 45km section through primary rainforest
+<strong>Nilai Kontrak:</strong> RM 380 juta
+<strong>Peralatan Diperlukan:</strong> RM 22 juta</p>
+<p><strong>Equipment Financed:</strong></p>
+<ul>
+<li>Environmental clearing equipment: RM 4 juta</li>
+<li>Complete asphalt plant: RM 8 juta</li>
+<li>Heavy earthwork fleet: RM 7 juta</li>
+<li>Bridge &amp; drainage equipment: RM 3 juta</li>
+</ul>
+<p><strong>Results:</strong></p>
+<ul>
+<li><strong>Environmental compliance:</strong> Zero violations in sensitive area</li>
+<li><strong>Community relations:</strong> Local hiring dan training program</li>
+<li><strong>Efficiency:</strong> 25% ahead of schedule</li>
+<li><strong>Reputation:</strong> Established as premier Sarawak highway contractor</li>
+</ul>
+<p><strong>Key Success Factor:</strong> Environmental equipment differentiated them in sensitive ecosystem project.</p>
+<h2 id="timeline--mobilisasi-projek-mega">Timeline &amp; Mobilisasi Projek Mega</h2>
+<h3 id="critical-timeline-factors"><strong>Critical Timeline Factors:</strong></h3>
+<p><strong>MRT3 Mobilization:</strong></p>
+<ul>
+<li><strong>Contract award to mobilization:</strong> 30-60 hari</li>
+<li><strong>TBM delivery dan setup:</strong> 12-20 minggu</li>
+<li><strong>Tunneling commencement:</strong> Must meet KLCC traffic restrictions</li>
+<li><strong>Seasonal considerations:</strong> Monsoon drainage planning</li>
+</ul>
+<p><strong>ECRL Mobilization:</strong></p>
+<ul>
+<li><strong>Equipment to site:</strong> Logistics challenge across Malaysia</li>
+<li><strong>Rail equipment import:</strong> 8-16 minggu from Europe/Japan</li>
+<li><strong>Track possession windows:</strong> Coordinate dengan existing rail</li>
+<li><strong>Multiple site coordination:</strong> Simultaneous work pakej</li>
+</ul>
+<p><strong>Pan Borneo Mobilization:</strong></p>
+<ul>
+<li><strong>Remote area access:</strong> Pioneer road construction required</li>
+<li><strong>Equipment transport:</strong> Barge dan specialist transport</li>
+<li><strong>Environmental approval:</strong> 4-8 minggu for sensitive areas</li>
+<li><strong>Local workforce:</strong> Training dan accommodation setup</li>
+</ul>
+<h3 id="our-mobilization-support"><strong>Our Mobilization Support:</strong></h3>
+<p><strong>Logistics Coordination:</strong></p>
+<ul>
+<li>Equipment transport planning dari port ke site</li>
+<li>Customs clearance untuk imported specialized equipment</li>
+<li>Oversized load permits dan route planning</li>
+<li>Site preparation dan temporary facilities</li>
+</ul>
+<p><strong>Technical Support:</strong></p>
+<ul>
+<li>Equipment specification verification</li>
+<li>Supplier technical support coordination</li>
+<li>Training program untuk specialized equipment</li>
+<li>Maintenance dan parts supply chain setup</li>
+</ul>
+<h2 id="mengapa-pilih-ing-heng-credit-untuk-projek-mega">Mengapa Pilih Ing Heng Credit untuk Projek Mega</h2>
+<h3 id="mega-project-expertise"><strong>Mega Project Expertise:</strong></h3>
+<ul>
+<li><strong>20+ tahun</strong> financing major infrastructure projects</li>
+<li>Deep understanding projek mega requirements</li>
+<li>Established relationships dengan international equipment suppliers</li>
+<li>Knowledge of government contract structures</li>
+</ul>
+<h3 id="specialized-equipment-knowledge"><strong>Specialized Equipment Knowledge:</strong></h3>
+<ul>
+<li>Finance TBM, bridge launcher, specialized construction equipment</li>
+<li>Understand technology assessment dan productivity economics</li>
+<li>International equipment import financing capability</li>
+<li>Technology upgrade dan refresh programs</li>
+</ul>
+<h3 id="mega-project-support"><strong>Mega Project Support:</strong></h3>
+<ul>
+<li><strong>Expedited approval</strong> untuk mega project deadlines (3-5 hari)</li>
+<li><strong>Zero deposit programs</strong> untuk proven mega contractors</li>
+<li><strong>Flexible terms</strong> aligned dengan mega project cashflow</li>
+<li><strong>Technical support</strong> throughout project lifecycle</li>
+</ul>
+<h3 id="track-record"><strong>Track Record:</strong></h3>
+<ul>
+<li>RM 500M+ equipment financed untuk mega projects</li>
+<li>Successful TBM, bridge, railway equipment financing</li>
+<li>Long-term relationships dengan mega project contractors</li>
+<li>Government project financing specialization</li>
+</ul>
+<hr>
+<h2 id="ambil-tindakan-sertai-projek-mega-malaysia">Ambil Tindakan: Sertai Projek Mega Malaysia</h2>
+<p>Bila anda dapat panggilan untuk bid MRT3 tunnel package, ECRL bridge section, atau Pan Borneo highway stretch, bila anda baca equipment requirements bernilai puluhan juta - jangan biarkan equipment financing jadi reason untuk tidak bid.</p>
+<p><strong>Malaysia’s mega infrastructure projects are once-in-a-generation opportunities.</strong></p>
+<h3 id="hubungi-ing-heng-credit-hari-ini"><strong>Hubungi Ing Heng Credit Hari Ini:</strong></h3>
+<p>📞 <strong>WhatsApp: +60175700889</strong> (Respons Segera untuk Mega Projects)<br>
+📧 <strong>Email: <a href="mailto:enquiry@inghengcredit.com">enquiry@inghengcredit.com</a></strong><br>
+🏢 <strong>Lawat Kami: 306-1, Persiaran Pegaga, Taman Bayu Perdana, 41200 Klang, Selangor</strong></p>
+<h3 id="mega-project-equipment-financing-specialists"><strong>Mega Project Equipment Financing Specialists:</strong></h3>
+<p>✅ <strong>TBM &amp; Specialized Tunneling Equipment Financing</strong><br>
+✅ <strong>Bridge Launcher &amp; Railway Construction Equipment</strong><br>
+✅ <strong>Complete Crusher Plant &amp; Asphalt Plant Packages</strong><br>
+✅ <strong>Expedited Approval untuk Mega Project Deadlines</strong><br>
+✅ <strong>0% Deposit untuk Mega Project Contractors</strong></p>
+<p><strong>Mega Project Hotline Available 24/7 untuk urgent equipment requirements</strong></p>
+<p><strong>Business Hours:</strong><br>
+Isnin-Jumaat: 9:00 AM - 5:00 PM<br>
+Sabtu: 9:00 AM - 1:00 PM</p>
+<hr>
+<p><strong>Ready untuk mega infrastructure opportunity?</strong> Equipment financing partner yang faham technology, timeline, dan mega project economics. Mari build Malaysia’s future infrastructure together.</p>
+<p><strong>Remember:</strong> Mega projects create mega contractors. The companies yang participate in MRT3, ECRL, dan Pan Borneo will dominate Malaysian construction for the next decade. Your mega project journey starts dengan proper equipment financing.</p>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="Get Equipment Financing" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  th, td {
+    border: 2px solid #2D1810;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background: #D4A574;
+    color: #2D1810;
+    font-weight: bold;
+  }
+
+  em {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-style: normal;
+  }
+
+  br {
+    display: none;
+  }
+</style>

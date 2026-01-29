@@ -12,7 +12,7 @@ keywords:
 - pembiayaan traktor Malaysia
 - pembiayaan mesin tuai Malaysia
 - 0% deposit peralatan pertanian
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - peralatan pertanian
 - jentera ladang

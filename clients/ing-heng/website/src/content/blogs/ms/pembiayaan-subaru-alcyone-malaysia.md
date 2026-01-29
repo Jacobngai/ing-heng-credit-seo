@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Subaru Alcyone Malaysia - 0% Deposit Impian SVX Coupe"
 description: "Dapatkan pembiayaan 0% deposit untuk Subaru Alcyone SVX anda. Jangan biar keperluan import yang kompleks hancurkan impian kereta mewah anda di Malaysia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Equipment Financing  March 15, 2024      15 min read
-  #  Tower Crane Financing Malaysia Complete Guide | 0% Deposit Options 2024 
-
-  Complete tower crane financing guide for Malaysia construction projects. Learn about 0% deposit options, approval process, and equipment loans for new and used tower cranes. 
-
-     By Ing Heng Credit &amp; Leasing     # Tower Crane Financing Malaysia Complete Guide | 0% Deposit Options 2024
 
 Complete tower crane financing guide for Malaysia construction projects. Learn about 0% deposit options, approval process, and equipment loans for new and used tower cranes.
 

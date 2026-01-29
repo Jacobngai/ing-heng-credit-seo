@@ -1,0 +1,205 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$Compactor = createComponent(($$result, $$props, $$slots) => {
+  const pageTitle = "Soil Compactor Financing Malaysia | Ingersoll Rand SD-100 Road Roller Loans";
+  const pageDescription = "Finance your Ingersoll Rand soil compactor with flexible terms. Road roller equipment loans for construction contractors in Klang, Selangor. 0% deposit options available for road building projects.";
+  const seo = {
+    title: pageTitle,
+    description: pageDescription,
+    canonical: "https://ingheng.my/en/equipment/compactor",
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      type: "website",
+      image: "/images/equipment/compactor.jpg"
+    }
+  };
+  const benefits = [
+    {
+      icon: "\u{1F6E3}\uFE0F",
+      title: "Road Construction Specialists",
+      description: "Dedicated financing solutions for road rollers and soil compactors used in highway development and infrastructure projects"
+    },
+    {
+      icon: "\u26A1",
+      title: "Rapid Equipment Approval",
+      description: "Fast track approval process designed for construction contractors with time-sensitive government and private projects"
+    },
+    {
+      icon: "\u{1F527}",
+      title: "All Compactor Types",
+      description: "Finance single drum, double drum, vibratory and pneumatic compactors from leading brands like Ingersoll Rand and Caterpillar"
+    },
+    {
+      icon: "\u{1F4B0}",
+      title: "Zero Down Payment",
+      description: "Start your road construction project immediately with our 0% deposit compactor financing program for qualified contractors"
+    },
+    {
+      icon: "\u{1F4C8}",
+      title: "ROI-Focused Terms",
+      description: "Payment schedules aligned with project cash flows and seasonal construction demand to maximize profitability"
+    },
+    {
+      icon: "\u{1F3D7}\uFE0F",
+      title: "Complete Package Deals",
+      description: "Bundle compactor financing with excavators, loaders and other road construction equipment for comprehensive fleet solutions"
+    }
+  ];
+  const steps = [
+    {
+      number: "01",
+      title: "Equipment Assessment",
+      description: "Our road construction equipment specialists evaluate your compactor needs, project requirements and soil type specifications"
+    },
+    {
+      number: "02",
+      title: "Instant Pre-Approval",
+      description: "Get preliminary approval within 30 minutes for compactor financing amounts up to RM 800,000 with minimal documentation"
+    },
+    {
+      number: "03",
+      title: "Equipment Inspection",
+      description: "Professional technical assessment of your chosen compactor model including Ingersoll Rand SD-100 and comparable units"
+    },
+    {
+      number: "04",
+      title: "Same-Day Funding",
+      description: "Complete financing documentation and receive funds to purchase your compactor equipment within 24 hours"
+    }
+  ];
+  const relatedEquipment = [
+    {
+      name: "Excavator",
+      image: "/images/equipment/excavator.jpg",
+      href: "/en/equipment/excavator",
+      description: "Essential earthmoving equipment"
+    },
+    {
+      name: "Wheel Loader",
+      image: "/images/equipment/wheel-loader.jpg",
+      href: "/en/equipment/wheel-loader",
+      description: "Material handling efficiency"
+    },
+    {
+      name: "Bulldozer",
+      image: "/images/equipment/bulldozer.jpg",
+      href: "/en/equipment/bulldozer",
+      description: "Ground preparation specialist"
+    },
+    {
+      name: "Crane",
+      image: "/images/equipment/crane.jpg",
+      href: "/en/equipment/crane",
+      description: "Heavy lifting solutions"
+    }
+  ];
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "seo": seo }, { "default": ($$result2) => renderTemplate(_a || (_a = __template([" ", "  ", `<section class="section"> <div class="container"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">
+Complete Soil Compactor Financing Solutions
+</h2> <p class="text-lg text-slate-600 leading-relaxed">
+Specialized equipment loans for all types of compactors and road rollers. From single drum vibratory units to pneumatic tire rollers, we finance the equipment that builds Malaysia's infrastructure.
+</p> </div> <div class="grid lg:grid-cols-2 gap-8 items-center mb-16"> <div> <h3 class="text-2xl font-bold text-slate-900 mb-4">Ingersoll Rand SD-100 Specialist</h3> <p class="text-slate-600 mb-6">
+The Ingersoll Rand SD-100 single drum compactor is the industry standard for soil compaction in road construction. Our financing specialists understand the specific requirements and ROI potential of this proven equipment.
+</p> <div class="space-y-4"> <div class="flex items-start space-x-3"> <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div> <div> <h4 class="font-semibold text-slate-900">Single Drum Vibratory Technology</h4> <p class="text-sm text-slate-600">Superior compaction for granular soils and asphalt applications</p> </div> </div> <div class="flex items-start space-x-3"> <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div> <div> <h4 class="font-semibold text-slate-900">Proven Reliability</h4> <p class="text-sm text-slate-600">Established track record in Malaysian road construction projects</p> </div> </div> <div class="flex items-start space-x-3"> <div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div> <div> <h4 class="font-semibold text-slate-900">High Resale Value</h4> <p class="text-sm text-slate-600">Strong secondary market supports favorable financing terms</p> </div> </div> </div> </div> <div class="bg-slate-50 p-8 rounded-lg"> <h4 class="text-xl font-bold text-slate-900 mb-6">Compactor Types We Finance</h4> <div class="space-y-4"> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Single Drum Rollers</span> <span class="text-primary font-semibold">RM 120K - 400K</span> </div> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Double Drum Rollers</span> <span class="text-primary font-semibold">RM 180K - 500K</span> </div> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Pneumatic Tire Rollers</span> <span class="text-primary font-semibold">RM 250K - 650K</span> </div> <div class="flex justify-between items-center p-3 bg-white rounded border"> <span class="font-medium">Padfoot Rollers</span> <span class="text-primary font-semibold">RM 200K - 550K</span> </div> </div> </div> </div> </div> </section>  <section class="section bg-slate-50"> <div class="container"> <div class="max-w-3xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">
+Why Choose Our Compactor Financing
+</h2> <p class="text-lg text-slate-600">
+Specialized equipment financing designed for road construction contractors and soil compaction professionals
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> `, ' </div> </div> </section>  <section class="section"> <div class="container"> <div class="max-w-3xl mx-auto text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nGet Your Compactor Financed in 4 Steps\n</h2> <p class="text-lg text-slate-600">\nFast, professional approval process for road construction equipment financing\n</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ', ' </div> </div> </section>  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5" id="calculator"> <div class="container"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nCompactor Investment Calculator\n</h2> <p class="text-lg text-slate-600">\nCalculate your return on investment for soil compactor equipment financing\n</p> </div> ', ' </div> </div> </section>  <section class="section"> <div class="container"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nCompactor Applications & Project Types\n</h2> <p class="text-lg text-slate-600">\nProfessional soil compaction equipment for diverse construction and infrastructure projects\n</p> </div> <div class="grid md:grid-cols-2 gap-8 mb-12"> <div class="space-y-6"> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Highway & Road Construction</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Federal highway development projects</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>State road construction and maintenance</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Urban street development</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Access road construction</span> </li> </ul> </div> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Infrastructure Projects</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Airport runway and taxiway construction</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Port and industrial area development</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Railway embankment compaction</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Dam and earthwork construction</span> </li> </ul> </div> </div> <div class="space-y-6"> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Commercial Development</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Shopping center parking areas</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Industrial complex ground preparation</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Housing development foundation work</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Sports facility construction</span> </li> </ul> </div> <div> <h3 class="text-xl font-bold text-slate-900 mb-4">Specialized Applications</h3> <ul class="space-y-2 text-slate-600"> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Landfill and waste management sites</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Golf course and recreational area development</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Pipeline and utility installation</span> </li> <li class="flex items-center space-x-2"> <span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span> <span>Soil stabilization projects</span> </li> </ul> </div> </div> </div> <!-- Technical Specifications --> <div class="bg-slate-50 p-8 rounded-lg"> <h3 class="text-xl font-bold text-slate-900 mb-6">Ingersoll Rand SD-100 Specifications</h3> <div class="grid md:grid-cols-3 gap-6"> <div> <h4 class="font-semibold text-slate-900 mb-3">Performance Specs</h4> <ul class="space-y-2 text-sm text-slate-600"> <li><strong>Operating Weight:</strong> 10.2 tons</li> <li><strong>Drum Width:</strong> 2,130mm</li> <li><strong>Engine Power:</strong> 129 HP</li> <li><strong>Vibration Frequency:</strong> 28/33 Hz</li> </ul> </div> <div> <h4 class="font-semibold text-slate-900 mb-3">Financing Terms</h4> <ul class="space-y-2 text-sm text-slate-600"> <li><strong>Loan Amount:</strong> RM 200K - 400K</li> <li><strong>Tenure:</strong> 1 - 7 years</li> <li><strong>Down Payment:</strong> From 0%</li> <li><strong>Interest Rate:</strong> From 6.8% p.a.</li> </ul> </div> <div> <h4 class="font-semibold text-slate-900 mb-3">Additional Features</h4> <ul class="space-y-2 text-sm text-slate-600"> <li><strong>ROPS Cabin:</strong> Operator protection</li> <li><strong>Articulated Steering:</strong> Tight turning radius</li> <li><strong>Water System:</strong> Drum cooling/cleaning</li> <li><strong>LED Lighting:</strong> Night operation capability</li> </ul> </div> </div> </div> </div> </div> </section>  <section class="section bg-slate-50"> <div class="container"> <div class="max-w-3xl mx-auto"> <div class="text-center mb-12"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nCompactor Financing FAQ\n</h2> <p class="text-lg text-slate-600">\nCommon questions about soil compactor and road roller equipment loans\n</p> </div> <div class="space-y-4"> ', " ", " ", " ", " ", " ", " ", " ", ' </div> </div> </div> </section>  <section class="section"> <div class="container"> ', ' </div> </section>  <section class="section bg-gradient-to-br from-primary/5 to-secondary/5" id="contact"> <div class="container"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-slate-900 mb-4">\nGet Your Compactor Financing Quote\n</h2> <p class="text-lg text-slate-600">\nProfessional road construction equipment financing with competitive rates and flexible terms\n</p> </div> ', ' </div> </div> </section>  <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), renderComponent($$result2, "Hero", $$Hero, { "title": "Soil Compactor Equipment Financing", "subtitle": "Professional road roller and soil compactor loans for construction contractors. Finance Ingersoll Rand, Caterpillar and other leading brands with 0% deposit options.", "backgroundImage": "/images/equipment-hero.jpg", "primaryCTA": "Get Compactor Financing Quote", "primaryCTAHref": "#contact", "secondaryCTA": "Calculate Payments", "secondaryCTAHref": "#calculator" }), maybeRenderHead(), benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { ...benefit })}`), steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { ...step })}`), renderComponent($$result2, "Calculator", $$Calculator, { "equipmentType": "compactor", "basePrice": 28e4, "description": "Calculate monthly payments and ROI for your compactor financing" }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "What types of compactors can be financed?", "answer": "We finance all types of soil compactors including single drum vibratory rollers (like Ingersoll Rand SD-100), double drum rollers, pneumatic tire rollers, padfoot rollers, and smooth wheel rollers. Both new and used equipment from major brands like Ingersoll Rand, Caterpillar, Bomag, and Dynapac are eligible for financing." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "What is the typical financing amount for a compactor?", "answer": "Compactor financing amounts range from RM 120,000 for smaller units to RM 650,000 for large pneumatic rollers. The Ingersoll Rand SD-100 typically falls in the RM 200,000 - 400,000 range depending on whether it's new or used equipment." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Do you offer 0% down payment for compactor financing?", "answer": "Yes, qualified contractors can access our 0% deposit compactor financing program. This is especially beneficial for established road construction companies with strong project pipelines and proven track records in infrastructure development." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "How long does compactor financing approval take?", "answer": "Pre-approval can be obtained within 30 minutes for amounts up to RM 800,000. Complete approval and funding typically takes 24-48 hours once all documentation is submitted and equipment inspection is completed." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Can I finance multiple pieces of road construction equipment together?", "answer": "Absolutely. We offer package financing solutions that can include compactors along with excavators, bulldozers, loaders, and other road construction equipment. This approach often provides better terms and simplified payment schedules." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "What are the requirements for compactor equipment financing?", "answer": "Requirements include: business registration in Malaysia, minimum 2 years in construction industry, project contracts or established customer base, down payment from 0-20% (depending on profile), and equipment inspection. Road construction experience is highly valued." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "Is used compactor equipment eligible for financing?", "answer": "Yes, we finance used compactors that are typically less than 10 years old. Ingersoll Rand equipment holds excellent resale value, making used SD-100 and similar models attractive financing options with competitive terms." }), renderComponent($$result2, "FAQItem", $$FAQItem, { "question": "How do I calculate ROI for a compactor purchase?", "answer": "ROI calculation considers factors like project size, compaction requirements, rental cost savings, productivity gains, and equipment utilization rates. Our specialists provide detailed ROI analysis including break-even calculations for your specific business situation." }), renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "title": "Complete Your Construction Fleet", "description": "Explore our full range of construction equipment financing options", "equipment": relatedEquipment }), renderComponent($$result2, "ContactForm", $$ContactForm, { "equipmentType": "Soil Compactor", "leadSource": "Compactor Equipment Page" }), unescapeHTML(JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Soil Compactor Equipment Financing",
+    "description": "Professional equipment financing for soil compactors and road rollers including Ingersoll Rand SD-100 models",
+    "category": "Construction Equipment Financing",
+    "brand": {
+      "@type": "Brand",
+      "name": "Multiple Brands (Ingersoll Rand, Caterpillar, Bomag)"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "120000",
+      "highPrice": "650000",
+      "priceCurrency": "MYR",
+      "description": "Flexible financing terms from 1-7 years",
+      "seller": {
+        "@type": "FinancialService",
+        "name": "Ing Heng Credit",
+        "url": "https://ingheng.my"
+      }
+    },
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Down Payment",
+        "value": "From 0%"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Approval Time",
+        "value": "24-48 hours"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Equipment Types",
+        "value": "Single drum, double drum, pneumatic tire rollers"
+      }
+    ]
+  })), unescapeHTML(JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What types of compactors can be financed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We finance all types of soil compactors including single drum vibratory rollers (like Ingersoll Rand SD-100), double drum rollers, pneumatic tire rollers, padfoot rollers, and smooth wheel rollers. Both new and used equipment from major brands like Ingersoll Rand, Caterpillar, Bomag, and Dynapac are eligible for financing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the typical financing amount for a compactor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compactor financing amounts range from RM 120,000 for smaller units to RM 650,000 for large pneumatic rollers. The Ingersoll Rand SD-100 typically falls in the RM 200,000 - 400,000 range depending on whether it's new or used equipment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer 0% down payment for compactor financing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, qualified contractors can access our 0% deposit compactor financing program. This is especially beneficial for established road construction companies with strong project pipelines and proven track records in infrastructure development."
+        }
+      }
+    ]
+  }))) })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/compactor.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/compactor.astro";
+const $$url = "/en/equipment/compactor";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Compactor,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

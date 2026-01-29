@@ -1,0 +1,80 @@
+---
+import type { Locale } from '../utils/constants';
+import { generateOrganizationSchema, generateWebsiteSchema } from '../utils/schema';
+import SEOHead from '../components/SEOHead.astro';
+import StructuredData from '../components/StructuredData.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  publishDate?: string;
+  modifiedDate?: string;
+  author?: string;
+  noindex?: boolean;
+  schemas?: any[];
+}
+
+const {
+  title,
+  description,
+  locale,
+  canonical,
+  ogImage,
+  ogType = 'website',
+  publishDate,
+  modifiedDate,
+  author,
+  noindex,
+  schemas = []
+} = Astro.props;
+
+// Default schemas for all pages
+const defaultSchemas = [
+  generateOrganizationSchema(),
+  generateWebsiteSchema(),
+  ...schemas
+];
+---
+
+<!DOCTYPE html>
+<html lang={locale}>
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      locale={locale}
+      canonical={canonical}
+      ogImage={ogImage}
+      ogType={ogType}
+      publishDate={publishDate}
+      modifiedDate={modifiedDate}
+      author={author}
+      noindex={noindex}
+    />
+    <StructuredData data={defaultSchemas} />
+    <GoogleAnalytics />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+  </head>
+  <body class="antialiased">
+    <Header lang={locale} currentPath={Astro.url.pathname} />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer lang={locale} />
+    <WhatsAppButton lang={locale} />
+  </body>
+</html>

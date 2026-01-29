@@ -1,7 +1,7 @@
 ---
 title: "马来西亚三菱Evo融资：0%首付拉力传奇批准"
 description: "在马来西亚获得三菱Lancer Evolution融资，提供0%首付选项。专业批准Evo X、IX、VIII、VII型号。欢迎不良信用。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["三菱Evo", "Lancer Evolution融资", "拉力赛车贷款", "0%首付", "马来西亚"]
 publishDate: 2025-01-15
 author: "ING HENG Credit"

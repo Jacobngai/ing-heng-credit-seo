@@ -1,7 +1,7 @@
 ---
 title: 马来西亚日产Cefiro A31融资 - 0%首付VIP轿车梦想
 description: 在马来西亚0%首付融资您的日产Cefiro A31。银行拒绝VIP轿车但我们批准。接受不良信用。漂移传奇快速批准。
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: zh
 publishDate: 2025-12-22

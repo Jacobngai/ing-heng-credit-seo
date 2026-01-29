@@ -1,7 +1,7 @@
 ---
 title: "奔驰W123贷款马来西亚 - 0%首付经典豪华投资"
 description: "为您的奔驰W123获得0%首付融资。专家经典车贷款解决方案，为升值的德国豪华工程和永恒优雅提供服务。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-26

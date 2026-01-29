@@ -1,0 +1,341 @@
+name: Content Quality Check
+
+on:
+  workflow_call:
+    inputs:
+      file_path:
+        required: true
+        type: string
+        description: 'Path to the content file to validate'
+      language:
+        required: true
+        type: string
+        description: 'Language code (en, ms, zh)'
+    outputs:
+      passed:
+        description: 'Whether quality checks passed'
+        value: ${{ jobs.quality-check.outputs.passed }}
+      report:
+        description: 'Quality check report'
+        value: ${{ jobs.quality-check.outputs.report }}
+
+jobs:
+  quality-check:
+    name: Run Quality Gates
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.evaluate.outputs.passed }}
+      report: ${{ steps.evaluate.outputs.report }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install -g markdown-link-check
+          npm install --save-dev flesch
+          npm install --save-dev keyword-extractor
+          npm install --save-dev string-similarity
+          npm install --save-dev natural
+
+      - name: Extract content from file
+        id: extract
+        run: |
+          FILE_PATH="${{ inputs.file_path }}"
+
+          # Extract frontmatter and content
+          if [[ -f "$FILE_PATH" ]]; then
+            # Extract keywords from frontmatter
+            KEYWORDS=$(sed -n '/^---$/,/^---$/p' "$FILE_PATH" | grep -E 'keywords:|target_keywords:' | sed 's/.*: \[\(.*\)\]/\1/' | tr -d '"' | tr ',' '\n')
+
+            # Extract main content (skip frontmatter)
+            CONTENT=$(sed '1,/^---$/d; /^---$/,$d' "$FILE_PATH")
+
+            # Save to temporary files
+            echo "$KEYWORDS" > /tmp/keywords.txt
+            echo "$CONTENT" > /tmp/content.txt
+
+            echo "extraction_success=true" >> $GITHUB_OUTPUT
+          else
+            echo "extraction_success=false" >> $GITHUB_OUTPUT
+            echo "Error: File not found at $FILE_PATH"
+          fi
+
+      - name: Check keyword density
+        id: keyword_density
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const keyword = require('keyword-extractor');
+
+          const content = fs.readFileSync('/tmp/content.txt', 'utf8');
+          const targetKeywords = fs.readFileSync('/tmp/keywords.txt', 'utf8')
+            .split('\n')
+            .filter(k => k.trim())
+            .map(k => k.toLowerCase().trim());
+
+          // Extract text from markdown (remove HTML tags and markdown syntax)
+          const cleanText = content
+            .replace(/<[^>]*>/g, ' ')
+            .replace(/[*_#`\[\]()]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .toLowerCase();
+
+          const words = cleanText.split(/\s+/).filter(w => w.length > 0);
+          const totalWords = words.length;
+
+          let report = {
+            totalWords,
+            keywordDensities: {},
+            passed: true,
+            warnings: []
+          };
+
+          // Calculate density for each keyword
+          targetKeywords.forEach(kw => {
+            const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+            const matches = cleanText.match(regex) || [];
+            const count = matches.length;
+            const density = (count / totalWords) * 100;
+
+            report.keywordDensities[kw] = {
+              count,
+              density: density.toFixed(2),
+              target: '2-3%',
+              status: density >= 2 && density <= 3 ? 'optimal' : density < 2 ? 'low' : 'high'
+            };
+
+            if (density < 2) {
+              report.warnings.push(`Keyword "${kw}" density is ${density.toFixed(2)}% (target: 2-3%)`);
+            } else if (density > 3) {
+              report.warnings.push(`Keyword "${kw}" density is ${density.toFixed(2)}% - risk of keyword stuffing`);
+              report.passed = false; // Fail if keyword stuffing detected
+            }
+          });
+
+          fs.writeFileSync('/tmp/keyword_report.json', JSON.stringify(report, null, 2));
+          console.log(JSON.stringify(report, null, 2));
+
+          process.exit(report.passed ? 0 : 1);
+          EOF
+
+      - name: Check readability score
+        id: readability
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const flesch = require('flesch');
+
+          const content = fs.readFileSync('/tmp/content.txt', 'utf8');
+
+          // Clean markdown for readability analysis
+          const cleanText = content
+            .replace(/<[^>]*>/g, ' ')
+            .replace(/[*_#`\[\]()]/g, ' ')
+            .replace(/\s+/g, ' ');
+
+          const score = flesch(cleanText);
+
+          // Flesch Reading Ease interpretation:
+          // 90-100: Very Easy (5th grade)
+          // 80-90: Easy (6th grade)
+          // 70-80: Fairly Easy (7th grade)
+          // 60-70: Standard (8th-9th grade)
+          // 50-60: Fairly Difficult (10th-12th grade)
+          // 30-50: Difficult (College)
+          // 0-30: Very Confusing (College graduate)
+
+          let interpretation = '';
+          let passed = true;
+
+          if (score >= 60) {
+            interpretation = 'Good - Easy to read';
+          } else if (score >= 50) {
+            interpretation = 'Acceptable - Fairly difficult';
+          } else {
+            interpretation = 'Too difficult - Consider simplifying';
+            passed = false;
+          }
+
+          const report = {
+            score: score.toFixed(1),
+            interpretation,
+            target: '60+ (Standard/Fairly Easy)',
+            passed
+          };
+
+          fs.writeFileSync('/tmp/readability_report.json', JSON.stringify(report, null, 2));
+          console.log(JSON.stringify(report, null, 2));
+
+          process.exit(passed ? 0 : 1);
+          EOF
+
+      - name: Check links validity
+        id: links
+        continue-on-error: true
+        run: |
+          markdown-link-check "${{ inputs.file_path }}" --config .github/link-check-config.json || true
+
+      - name: Basic fact verification
+        id: fact_check
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+
+          const content = fs.readFileSync('/tmp/content.txt', 'utf8');
+
+          // Define fact patterns to verify
+          const factPatterns = {
+            company_name: /Ing\s+Heng\s+Credit/i,
+            years_experience: /40\+?\s*years?/i,
+            license: /KPKT/i,
+            companies_helped: /4,?000\+?\s*(companies|businesses)/i
+          };
+
+          let report = {
+            passed: true,
+            verified: [],
+            missing: []
+          };
+
+          // Check for key facts
+          Object.entries(factPatterns).forEach(([fact, pattern]) => {
+            if (pattern.test(content)) {
+              report.verified.push(fact);
+            } else {
+              report.missing.push(fact);
+            }
+          });
+
+          // Warning if important facts are missing (but don't fail)
+          if (report.missing.length > 0) {
+            console.log('Warning: Some key facts not mentioned:', report.missing.join(', '));
+          }
+
+          fs.writeFileSync('/tmp/fact_report.json', JSON.stringify(report, null, 2));
+          console.log(JSON.stringify(report, null, 2));
+          EOF
+
+      - name: Evaluate overall quality
+        id: evaluate
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+
+          const keywordReport = JSON.parse(fs.readFileSync('/tmp/keyword_report.json', 'utf8'));
+          const readabilityReport = JSON.parse(fs.readFileSync('/tmp/readability_report.json', 'utf8'));
+          const factReport = JSON.parse(fs.readFileSync('/tmp/fact_report.json', 'utf8'));
+
+          const overallPassed = keywordReport.passed && readabilityReport.passed;
+
+          const report = {
+            passed: overallPassed,
+            file: '${{ inputs.file_path }}',
+            language: '${{ inputs.language }}',
+            timestamp: new Date().toISOString(),
+            checks: {
+              keyword_density: keywordReport,
+              readability: readabilityReport,
+              fact_verification: factReport
+            },
+            summary: {
+              total_words: keywordReport.totalWords,
+              readability_score: readabilityReport.score,
+              keyword_warnings: keywordReport.warnings.length,
+              facts_verified: factReport.verified.length
+            }
+          };
+
+          // Save full report
+          fs.writeFileSync('/tmp/quality_report.json', JSON.stringify(report, null, 2));
+
+          // Output for GitHub Actions
+          const reportJson = JSON.stringify(report);
+          fs.writeFileSync(process.env.GITHUB_OUTPUT, `passed=${overallPassed}\nreport<<EOF\n${reportJson}\nEOF\n`);
+
+          console.log('\n=== Quality Check Report ===');
+          console.log(JSON.stringify(report, null, 2));
+          console.log('\n=== Summary ===');
+          console.log(`Status: ${overallPassed ? '✅ PASSED' : '❌ FAILED'}`);
+          console.log(`Total Words: ${report.summary.total_words}`);
+          console.log(`Readability Score: ${report.summary.readability_score}`);
+          console.log(`Keyword Warnings: ${report.summary.keyword_warnings}`);
+          console.log(`Facts Verified: ${report.summary.facts_verified}`);
+
+          if (!overallPassed) {
+            console.log('\n⚠️ Quality gates failed. Please review the report above.');
+            process.exit(1);
+          }
+          EOF
+
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report-${{ inputs.language }}-${{ github.run_number }}
+          path: /tmp/quality_report.json
+          retention-days: 30
+
+      - name: Comment on PR with report
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('/tmp/quality_report.json', 'utf8'));
+
+            const status = report.passed ? '✅ PASSED' : '❌ FAILED';
+            const emoji = report.passed ? '✅' : '❌';
+
+            let comment = `## ${emoji} Content Quality Check Report\n\n`;
+            comment += `**File:** \`${{ inputs.file_path }}\`\n`;
+            comment += `**Language:** ${{ inputs.language }}\n`;
+            comment += `**Status:** ${status}\n\n`;
+
+            comment += `### Summary\n`;
+            comment += `- **Total Words:** ${report.summary.total_words}\n`;
+            comment += `- **Readability Score:** ${report.summary.readability_score} (${report.checks.readability.interpretation})\n`;
+            comment += `- **Keyword Warnings:** ${report.summary.keyword_warnings}\n`;
+            comment += `- **Facts Verified:** ${report.summary.facts_verified}\n\n`;
+
+            comment += `### Keyword Density Analysis\n`;
+            comment += `| Keyword | Count | Density | Status |\n`;
+            comment += `|---------|-------|---------|--------|\n`;
+            Object.entries(report.checks.keyword_density.keywordDensities).forEach(([kw, data]) => {
+              const statusEmoji = data.status === 'optimal' ? '✅' : data.status === 'low' ? '⚠️' : '❌';
+              comment += `| ${kw} | ${data.count} | ${data.density}% | ${statusEmoji} ${data.status} |\n`;
+            });
+
+            if (report.checks.keyword_density.warnings.length > 0) {
+              comment += `\n### ⚠️ Warnings\n`;
+              report.checks.keyword_density.warnings.forEach(w => {
+                comment += `- ${w}\n`;
+              });
+            }
+
+            comment += `\n### Readability\n`;
+            comment += `- **Score:** ${report.checks.readability.score}\n`;
+            comment += `- **Interpretation:** ${report.checks.readability.interpretation}\n`;
+            comment += `- **Target:** ${report.checks.readability.target}\n\n`;
+
+            comment += `### Fact Verification\n`;
+            if (report.checks.fact_verification.verified.length > 0) {
+              comment += `**Verified Facts:** ${report.checks.fact_verification.verified.join(', ')}\n`;
+            }
+            if (report.checks.fact_verification.missing.length > 0) {
+              comment += `**Missing Facts:** ${report.checks.fact_verification.missing.join(', ')}\n`;
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

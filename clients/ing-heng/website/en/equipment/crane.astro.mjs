@@ -1,0 +1,255 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { c as generateProductSchema, a as generateFAQSchema, $ as $$BaseLayout, e as encodeJSONLD } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$TestimonialCard } from '../../../chunks/TestimonialCard_DCNY-qZL.mjs';
+import { $ as $$Breadcrumbs } from '../../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+import { S as SITE_CONFIG } from '../../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$Crane = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const pageTitle = "Crane Financing Malaysia | Tower & Mobile Crane Loans | Fast Approval";
+  const pageDescription = "Professional crane financing for rental operators. Finance tower cranes, mobile cranes, crawler cranes. DOSH compliant financing, fleet packages, fast approval. RM500k-RM8M available.";
+  const keywords = ["crane financing Malaysia", "tower crane loan Malaysia", "mobile crane financing", "crane rental business loan", "Liebherr crane financing", "Tadano crane loan", "DOSH certified crane financing"];
+  const breadcrumbs = [
+    { label: "Home", url: "/en" },
+    { label: "Equipment", url: "/en/equipment" },
+    { label: "Crane Financing", url: "/en/equipment/crane" }
+  ];
+  const benefits = [
+    { icon: "clock", title: "Fast Approval", description: "Capture high-demand construction projects immediately. Expedited approval for operators with existing crane experience and rental contracts." },
+    { icon: "shield", title: "DOSH Compliance Support", description: "Finance cranes with anti-collision systems, load monitoring, and Certificate of Fitness requirements. Technology upgrades included in financing package." },
+    { icon: "calendar", title: "Fleet Financing Packages", description: "Finance 2-5 cranes simultaneously with volume discounts. Consolidated payment schedules and streamlined approval for growing rental businesses." },
+    { icon: "users", title: "New & Used Equipment", description: "Finance new or used cranes up to 15 years old. All major brands: Liebherr, Tadano, Zoomlion, Manitowoc, Potain, Terex, Grove accepted." },
+    { icon: "lightning", title: "Technology Upgrade Financing", description: "Bundle crane purchase with TSM (Tower Crane Systems Monitoring), anti-collision systems, and safety technology. One comprehensive financing package." },
+    { icon: "document", title: "Operator Business Expertise", description: "We understand crane rental economics: utilization rates, project cycles, operator shortages. Financing tailored to your business reality." },
+    { icon: "shield", title: "Competitive Rates 8-18%", description: "Interest rates from 8-18% per annum based on credit profile. Bad credit accepted*. No early repayment penalty. *Subject to terms and conditions" }
+  ];
+  const steps = [
+    { stepNumber: 1, icon: "contact", title: "Contact via WhatsApp", description: "Discuss your crane type, brand preference, and financing needs. Share project pipeline and rental contracts for faster approval." },
+    { stepNumber: 2, icon: "document", title: "Submit Business Documents", description: "Company registration, 12 months financial statements, rental contracts, and existing crane ownership records if applicable." },
+    { stepNumber: 3, icon: "check", title: "Fast Approval Process", description: "Fast-track approval for experienced crane operators. Technology-equipped cranes receive priority consideration and preferential rates." },
+    { stepNumber: 5, icon: "truck", title: "Deploy Your Crane", description: "Receive funding for crane purchase and mobilization. Start generating rental revenue immediately on high-rise and infrastructure projects." }
+  ];
+  const equipmentTypes = [
+    {
+      name: "Tower Cranes (Topless)",
+      description: "High-rise residential and commercial construction. Heights 30-80 meters. Essential for KL, Johor, Penang high-rise boom. Long-term rental contracts.",
+      applications: "Condominium projects, office towers, data centers, hospital construction",
+      brands: "Liebherr, Potain, Zoomlion, Comansa, Wolff"
+    },
+    {
+      name: "Mobile Cranes (All-Terrain)",
+      description: "Versatile 50-300 ton capacity. Road-mobile for multiple project sites. Ideal for infrastructure, bridge construction, industrial plant work.",
+      applications: "Bridge construction, MRT/LRT projects, power plants, heavy equipment installation",
+      brands: "Liebherr, Tadano, Grove, Terex, Manitowoc"
+    },
+    {
+      name: "Crawler Cranes",
+      description: "Heavy-lift specialists 100-600 ton capacity. Tracked mobility for soft terrain. Essential for major infrastructure and petrochemical projects.",
+      applications: "Petronas projects, dam construction, port development, wind turbine installation",
+      brands: "Liebherr, Sany, XCMG, Sumitomo, Kobelco"
+    },
+    {
+      name: "Truck-Mounted Cranes",
+      description: "Quick-deploy 25-80 ton capacity. Fast relocation without transport permits. Popular for urban construction and maintenance work.",
+      applications: "Equipment installation, urban construction, utility maintenance, emergency response",
+      brands: "Tadano, Zoomlion, XCMG, Palfinger"
+    },
+    {
+      name: "Rough-Terrain Cranes",
+      description: "Off-road capability 25-100 ton capacity. Compact design for confined sites. Ideal for oil & gas, industrial, and remote projects.",
+      applications: "Oil & gas facilities, remote construction, plantation infrastructure",
+      brands: "Tadano, Terex, Grove, Manitowoc"
+    },
+    {
+      name: "Luffing Jib Tower Cranes",
+      description: "Compact urban high-rise cranes. Reduced radius for dense construction zones. Required for KLCC area, Georgetown, and urban centers.",
+      applications: "Urban high-rise, confined sites, multiple crane projects, proximity restrictions",
+      brands: "Liebherr, Potain, Wolff, Raimondi"
+    }
+  ];
+  const acceptedBrands = ["Liebherr", "Tadano", "Potain (Manitowoc)", "Zoomlion", "Terex", "Grove", "Manitowoc", "Wolff", "Comansa", "Raimondi", "XCMG", "Sany", "Kobelco", "Sumitomo", "Favelle Favco"];
+  const testimonials = [
+    {
+      name: "Chris Tan",
+      company: "CT Heavy Lifting Sdn Bhd",
+      location: "Shah Alam, Selangor",
+      testimonial: "Financed a Liebherr LTM 1100 mobile crane for MRT3 project. Ing Heng Credit approved in 36 hours with only 15% down payment. The crane generates RM 80,000 monthly revenue with 85% utilization. ROI achieved in 28 months.",
+      rating: 5
+    },
+    {
+      name: "Kumar Subramaniam",
+      company: "KS Tower Cranes Sdn Bhd",
+      location: "Johor Bahru, Johor",
+      rating: 5
+    },
+    {
+      name: "Ahmad Fauzi",
+      company: "Fauzi Crane Services",
+      location: "Bayan Lepas, Penang",
+      testimonial: "Upgraded from Chinese cranes to Tadano mobile cranes with refinancing help from Ing Heng. The improved reliability reduced downtime by 40% and rental rates increased 20%. Clients specifically request Tadano now.",
+      rating: 5
+    }
+  ];
+  const faqs = [
+    {
+      question: "What crane brands do you finance?",
+      answer: "We finance all major crane brands: Liebherr, Tadano, Potain (Manitowoc), Zoomlion, Terex, Grove, Wolff, Comansa, Raimondi, Favelle Favco, XCMG, Sany, Kobelco, and Sumitomo. Both European premium brands (Liebherr, Potain) and Chinese value brands (Zoomlion, XCMG) are accepted. For premium brands with stronger resale values, we offer competitive interest rates."
+    },
+    {
+      question: "Can I finance used tower cranes?",
+      answer: "Yes! We finance used tower cranes up to 15 years old. For cranes 5-10 years old, standard financing terms apply (15-20% down payment, 5-7 year terms). For cranes 10-15 years old, we require 25-30% down payment and shorter loan terms (3-5 years). The crane must pass DOSH inspection and have valid Certificate of Fitness. Used cranes from reputable brands (Liebherr, Potain, Wolff) with maintenance records receive preferential approval."
+    },
+    {
+      question: "Do you finance DOSH compliance upgrades?",
+      answer: "Absolutely! We understand DOSH 2024 Certificate of Fitness regulations. We finance: (1) Tower Crane Systems Monitoring (TSM) installation (RM100,000-250,000), (2) Anti-collision systems for multi-crane sites, (3) Load monitoring systems (LMI), (4) Anemometers and weather monitoring, (5) Operator cabin safety upgrades. Technology upgrades can be bundled with crane financing or financed separately for existing fleet upgrades."
+    },
+    {
+      question: "What is the crane financing approval criteria?",
+      answer: "Key approval factors: (1) Crane rental business experience (minimum 2 years preferred), (2) Existing crane ownership or long-term rental history, (3) Active rental contracts or project pipeline (government projects preferred), (4) Financial statements showing rental revenue, (5) DOSH compliance track record (no major violations). First-time crane buyers with construction business background and secured rental contracts are considered."
+    },
+    {
+      question: "Can I get fleet financing for multiple cranes?",
+      answer: "Yes! Fleet financing available for 2-5 cranes purchased simultaneously. Benefits: (1) Volume discount: 0.5-1% interest rate reduction, (2) Single consolidated monthly payment, (3) Streamlined approval process, (4) Mixed fleet financing (e.g., 2 tower cranes + 1 mobile crane). Ideal for operators expanding to meet high-rise boom demand in Klang Valley, Johor, and Penang. We've financed fleets up to RM 25 million for established crane rental companies."
+    },
+    {
+      question: "What loan amounts and terms are available?",
+      answer: "Loan amounts: Minimum RM 500,000 (mobile cranes), Maximum RM 10 million+ (crawler cranes, tower cranes, fleet packages). Down payment: 15-30% depending on crane age and brand. Loan terms: 5-7 years for new cranes, 3-5 years for used cranes. Interest rates: 6-10% per annum (lower for premium brands, higher for Chinese brands). Early repayment penalty: None. Maximum LTV: 85% for new cranes, 75% for used cranes."
+    },
+    {
+      question: "Do you finance international crane purchases?",
+      answer: "Yes, we finance crane imports from Japan, Europe, China, and Korea. We work with: (1) Japanese used crane dealers (Tadano, Kobelco imports), (2) European new crane manufacturers (Liebherr, Potain), (3) Chinese manufacturers (Zoomlion, XCMG direct orders), (4) Korean manufacturers (Hyundai cranes). Import financing includes: crane cost, shipping, customs duties, import taxes, DOSH certification fees. Financing released upon crane arrival and DOSH inspection clearance."
+    },
+    {
+      question: "What happens if my crane is idle during monsoon season?"
+    },
+    {
+      question: "Can I refinance existing crane loans?",
+      answer: "Yes! We offer crane loan refinancing and buyout services. Benefits of refinancing: (1) Lower interest rates (typically 2-4% reduction), (2) Better payment terms with seasonal flexibility, (3) Release equity for fleet expansion or working capital, (4) Consolidate multiple crane loans into single payment. Ideal for operators paying high interest rates (above 10%) from dealer financing or previous loans. Refinancing available after 12 months of timely payments on existing loan."
+    },
+    {
+      question: "What are the DOSH Certificate of Fitness requirements?",
+      answer: "DOSH requires Certificate of Fitness (CF) renewal every 15 months via MyKKP portal. Requirements: (1) Licensed inspector verification, (2) Design and inspection reports, (3) Operator certification (CIDB/JKKP), (4) Safety systems functional (load indicators, anemometers), (5) Maintenance logs documented. Non-compliance penalty: Up to RM 100,000 fine. When financing cranes, we verify existing CF status and can include recertification costs in financing package. DOSH-compliant cranes receive preferential interest rates."
+    },
+    {
+      question: "Do you finance crane operator training programs?",
+      answer: "While we primarily finance equipment, we recognize the crane operator shortage challenge. For fleet financing above RM 3 million, we can include: (1) CIDB operator training program costs, (2) Akademi Binaan Malaysia (ABM) training fees, (3) Operator certification renewal costs, (4) Safety training programs. This helps crane rental companies build proprietary operator pools as competitive advantage. Training costs (RM 10,000-30,000 per operator) can be added to equipment financing package."
+    },
+    {
+      question: "What insurance is required for financed cranes?",
+      answer: "Comprehensive crane insurance mandatory for all financed equipment. Required coverage: (1) Equipment damage insurance (fire, theft, vandalism), (2) Third-party liability (RM 5-10 million coverage), (3) Cargo insurance during transport, (4) Weather damage coverage (wind, flood). Annual insurance cost: RM 30,000-80,000 depending on crane value and type. We can recommend insurance providers offering competitive rates for crane operators. Insurance premium can be financed and added to monthly payment."
+    },
+    {
+      question: "How fast can I get crane financing approved?",
+      answer: "Fast approval for complete applications. Expedited approval for experienced operators with: (1) Existing crane ownership, (2) Active rental contracts (government projects preferred), (3) Strong financial statements, (4) Clean DOSH compliance record. We prioritize urgent cases where operators have immediate project opportunities (e.g., winning government tender, securing long-term rental contract). Submit applications before 12pm for same-day initial assessment."
+    },
+    {
+      question: "Can foreigners or foreign companies apply?",
+      answer: "Yes, foreign companies with Malaysian operations can apply. Requirements: (1) Malaysian company registration (SSM), (2) Valid business license for crane rental operations, (3) Malaysian directors or local partners, (4) 2+ years operating history in Malaysia preferred, (5) Financial statements and tax filings. Foreign companies from Singapore, China, Japan involved in Malaysian construction boom are welcome. Approval rates slightly lower (75-85%) compared to Malaysian companies due to additional documentation verification."
+    },
+    {
+      question: "What are the tax benefits of crane financing?",
+      answer: "Crane financing offers significant tax advantages: (1) Monthly interest payments are tax-deductible business expenses, (2) Depreciation claims on crane value (typically 14.29% per year over 7 years), (3) Maintenance and insurance costs fully deductible, (4) Operator salary and training costs deductible. Effective tax savings: 15-25% of total equipment cost over loan term. Consult your tax advisor, but financing typically offers better tax position than outright cash purchase. Leasing structures also available for specific tax planning needs."
+    },
+    {
+      question: "Do you finance cranes for specific projects only?",
+      answer: "No, we finance cranes for general crane rental business operations, not project-specific. However, having secured rental contracts or government tenders strengthens your application significantly. Types of contracts that help approval: (1) Long-term rental agreements (12+ months) with developers, (2) Government infrastructure projects (MRT3, Penang LRT, Pan Borneo Highway), (3) Data center construction contracts (Google, Microsoft projects), (4) High-rise developer partnerships (Gamuda, Sime Darby, UEM). Diversified project pipeline preferred over single-project dependency."
+    },
+    {
+      question: "Can I trade-in my old crane and finance a new one?",
+      answer: "Yes! Trade-in and upgrade programs available. Process: (1) We assess your existing crane's market value, (2) Trade-in value applied as down payment toward new crane, (3) Remaining loan balance on old crane refinanced if applicable, (4) Single new loan for the new crane. Popular upgrade paths: (1) Chinese brands (Zoomlion, XCMG) to Japanese brands (Tadano, Kobelco) - 30% reliability improvement, (2) Old mobile cranes to tower cranes - capturing high-rise boom, (3) Standard tower cranes to TSM-equipped smart cranes - DOSH compliance + premium rental rates."
+    },
+    {
+      question: "What areas in Malaysia do you serve?",
+      answer: "We serve all major construction markets nationwide: (1) Klang Valley (KL, Selangor): Highest crane demand, high-rise boom, MRT3 projects, (2) Johor (Johor Bahru, Iskandar Malaysia): RTS project, Forest City, high-rise development, (3) Penang (Georgetown, Bayan Lepas): Industrial parks, high-rise residential, LRT project, (4) Perak, Pahang, Negeri Sembilan: Infrastructure and industrial projects, (5) Sabah, Sarawak (East Malaysia): Pan Borneo Highway, resource projects. Remote location processing available online and via WhatsApp. Crane inspection and DOSH verification coordinated nationwide."
+    },
+    {
+      question: "What makes your crane financing different from banks?"
+    }
+  ];
+  const productSchema = generateProductSchema({
+    name: "Crane Financing Malaysia - Tower & Mobile Cranes",
+    description: "Professional crane financing for rental operators. Finance tower cranes, mobile cranes, crawler cranes. DOSH compliant financing, fleet packages, fast approval. From RM500,000 to RM10 million.",
+    imageUrl: `${SITE_CONFIG.url}/images/crane-financing.jpg`,
+    category: "Financial Service - Heavy Equipment Financing",
+    offers: {
+      price: "500000",
+      currency: "MYR",
+      availability: "https://schema.org/InStock"
+    }
+  });
+  const faqSchema = generateFAQSchema(faqs);
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${maybeRenderHead()}<div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbs, "lang": lang })} </div>  ${renderComponent($$result2, "Hero", $$Hero, { "title": "Professional Crane Financing for Rental Operators", "subtitle": "Tower Cranes | Mobile Cranes | Crawler Cranes | Fast Approval | DOSH Compliant | Fleet Financing | RM500k-RM10M", "ctaText": "Get Fleet Quote via WhatsApp", "ctaLink": "https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20crane%20financing.", "ctaSecondaryText": "Call Now: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["40 Years Experience", "DOSH Compliance Experts", "Fleet Financing Specialists", "Operator Approved"] })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+Malaysia's Crane Rental Market is Booming - Are You Capturing It?
+</h2> <p class="text-xl text-[#4F3E29] leading-relaxed">
+High-rise boom across Klang Valley, Johor, and Penang. MRT3, Penang LRT, data centers (Google, Microsoft). Tower crane utilization at 80-90%. Rental rates up 15-20%. Operator shortage creating premium pricing opportunities. One problem: Access to capital for equipment acquisition.
+</p> </div> <div class="grid md:grid-cols-3 gap-8 mb-12"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-primary font-bold text-2xl mb-2">RM 1.74 Billion</div> <div class="text-[#4F3E29] font-semibold mb-2">Gamuda Elmina Data Center</div> <p class="text-sm text-[#4F3E29]">Google's hyperscale facility requires mobile cranes for 28-month construction. Similar projects pipeline: Microsoft, other hyperscalers.</p> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-primary font-bold text-2xl mb-2">80-90% Utilization</div> <div class="text-[#4F3E29] font-semibold mb-2">Tower Crane Demand Peak</div> <p class="text-sm text-[#4F3E29]">Highest utilization rates in 10 years. Johor RTS project, Penang high-rise boom, KL regeneration. Supply shortage supporting premium rental rates.</p> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-primary font-bold text-2xl mb-2">DOSH 2024 Regs</div> <div class="text-[#4F3E29] font-semibold mb-2">Safety Technology Mandate</div> <p class="text-sm text-[#4F3E29]">New Certificate of Fitness requirements. TSM, anti-collision systems increasingly required. Technology-equipped cranes command 10-20% rental premium.</p> </div> </div> <!-- ROI Calculator Section --> <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-4 text-center">Tower Crane Rental Business ROI</h3> <div class="grid md:grid-cols-2 gap-6 text-sm"> <div> <h4 class="font-bold text-gray-800 mb-2">Investment Example:</h4> <ul class="space-y-1 text-[#4F3E29]"> <li>• Zoomlion tower crane: RM 4,500,000</li> <li>• Down payment (20%): RM 900,000</li> <li>• Monthly payment (7 years): RM 62,000</li> <li>• TSM system included: RM 150,000</li> </ul> </div> <div> <h4 class="font-bold text-gray-800 mb-2">Revenue Potential:</h4> <ul class="space-y-1 text-[#4F3E29]"> <li>• Monthly rental rate: RM 120,000-180,000</li> <li>• Annual gross revenue: RM 1.44M-2.16M</li> <li>• Net annual profit: RM 600,000-900,000</li> <li>• <strong class="text-green-600">ROI: 4-6 years</strong></li> </ul> </div> </div> <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-500"> <p class="text-sm text-gray-800"> <strong>Market Reality:</strong> Tower cranes currently achieving 85-90% utilization in Klang Valley and Johor due to high-rise boom. Long-term contracts (12-24 months) with developers provide stable cash flow. Payback period: 5-7 years including peak and slow seasons.
+</p> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Why Crane Operators Choose Ing Heng Credit
+</h2> <p class="text-xl text-[#4F3E29]">
+Specialized financing for crane rental businesses with industry expertise and flexible terms
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-3xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">Calculate Your Monthly Crane Payment</h2> <p class="text-[#4F3E29]">Estimate monthly payment for tower crane, mobile crane, or fleet financing</p> </div> ${renderComponent($$result2, "Calculator", $$Calculator, { "lang": lang, "equipmentType": "Crane", "defaultPrice": 45e4 })} </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+How to Finance Your Crane Fleet in 5 Steps
+</h2> <p class="text-xl text-[#4F3E29]">
+From application to crane deployment in 5-7 days for experienced operators
+</p> </div> <div class="grid md:grid-cols-5 gap-8"> ${steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { "stepNumber": step.stepNumber, "icon": step.icon, "title": step.title, "description": step.description })}`)} </div> <!-- CTA after steps --> <div class="text-center mt-12"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20discuss%20crane%20fleet%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg inline-block">
+Discuss Your Fleet Financing
+</a> <p class="text-sm text-[#4F3E29] mt-3">Experienced operators approved quickly | Flexible terms available</p> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Crane Types We Finance
+</h2> <p class="text-xl text-[#4F3E29]">
+Comprehensive financing for all crane categories and applications
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"> ${equipmentTypes.map((equipment) => renderTemplate`<div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow"> <h3 class="text-lg font-bold text-primary mb-3">${equipment.name}</h3> <p class="text-[#4F3E29] mb-3 text-sm">${equipment.description}</p> <div class="text-sm text-[#4F3E29] space-y-2"> <p><strong>Applications:</strong> ${equipment.applications}</p> <p><strong>Brands:</strong> <span class="text-[#4F3E29]">${equipment.brands}</span></p> </div> </div>`)} </div> <!-- Accepted Brands --> <div class="text-center"> <h3 class="text-2xl font-bold text-primary mb-6">Accepted Crane Brands</h3> <div class="flex flex-wrap justify-center gap-4"> ${acceptedBrands.map((brand) => renderTemplate`<span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium hover:shadow-[4px_4px_0_#2D1810] transition-shadow"> ${brand} </span>`)} </div> <p class="text-[#4F3E29] mt-4">Premium brands (Liebherr, Tadano) receive preferential interest rates due to stronger resale values.</p> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+DOSH Compliance & Safety Technology Financing
+</h2> <p class="text-xl text-[#4F3E29]">
+Bundle safety technology with crane financing for comprehensive DOSH compliance
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"> <!-- DOSH Requirements --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">DOSH 2024 Requirements</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Certificate of Fitness (CF)</div> <div class="text-sm text-[#4F3E29]">Valid CF required every 15 months. Non-compliance fine: Up to RM 100,000. We verify CF status before financing.</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Operator Certification</div> <div class="text-sm text-[#4F3E29]">CIDB/JKKP certified operators mandatory. Operator shortage creates competitive advantage for well-trained teams.</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Safety Technology</div> <div class="text-sm text-[#4F3E29]">TSM, anti-collision, load monitoring increasingly required by major developers (Gamuda, Sime Darby, UEM).</div> </div> </li> </ul> </div> <!-- Technology Financing --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">Technology We Finance</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Tower Crane Systems Monitoring (TSM)</div> <div class="text-sm text-[#4F3E29]">Real-time monitoring, anti-collision, zoning systems. Cost: RM 100,000-250,000. Rental premium: 10-20%.</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Load Moment Indicator (LMI)</div> <div class="text-sm text-[#4F3E29]">Overload prevention, capacity management. Cost: RM 30,000-80,000. Insurance premium reduction: 5-15%.</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Weather Monitoring Systems</div> <div class="text-sm text-[#4F3E29]">Anemometers, automatic shutdown protocols. Critical for monsoon season safety. Cost: RM 20,000-50,000.</div> </div> </li> </ul> </div> </div> <!-- Technology ROI Note --> <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg"> <h4 class="font-bold text-primary mb-2">Technology Investment ROI:</h4> <p class="text-[#4F3E29] text-sm">
+TSM-equipped cranes command 10-20% rental premium (RM 15,000-30,000 extra monthly revenue for tower cranes). Insurance savings: 5-15% annually (RM 5,000-15,000). Accident prevention value: Potentially millions in liability/downtime avoidance. Payback period for technology investment: Typically 2-3 years. Major developers increasingly require TSM on multi-crane sites.
+</p> </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Success Stories from Crane Rental Operators
+</h2> <p class="text-xl text-[#4F3E29]">
+Real operators who scaled their crane rental businesses with our financing
+</p> </div> <div class="grid md:grid-cols-3 gap-6"> ${testimonials.map((testimonial) => renderTemplate`${renderComponent($$result2, "TestimonialCard", $$TestimonialCard, { "name": testimonial.name, "company": testimonial.company, "location": testimonial.location, "testimonial": testimonial.testimonial, "rating": testimonial.rating })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Frequently Asked Questions About Crane Financing
+</h2> <p class="text-xl text-[#4F3E29]">
+Comprehensive answers to crane operator financing questions
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  ${renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "lang": lang, "currentEquipment": "crane" })}  <section class="section bg-[#8B6F47] text-white"> <div class="container-custom text-center"> <h2 class="text-3xl md:text-4xl font-bold mb-6">
+Ready to Capture Malaysia's Crane Rental Boom?
+</h2> <p class="text-xl mb-8 max-w-2xl mx-auto">
+High-rise boom, infrastructure pipeline, operator shortage. Market conditions favor crane rental businesses with capital access. Finance your tower crane, mobile crane, or fleet expansion today.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20discuss%20crane%20financing%20for%20my%20rental%20business." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
+Discuss Fleet Financing via WhatsApp
+</a> <a href="tel:+60175700889" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+Call: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Fast Approval for Experienced Operators</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>DOSH Compliance Technology Included</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Fleet Financing Volume Discounts</span> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="max-w-2xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">
+Submit Your Crane Financing Application
+</h2> <p class="text-[#4F3E29]">
+We'll contact you within 4 hours during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+</p> </div> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(productSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/crane.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/crane.astro";
+const $$url = "/en/equipment/crane";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Crane,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

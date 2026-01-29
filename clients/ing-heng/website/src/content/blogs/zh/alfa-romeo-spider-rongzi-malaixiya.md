@@ -1,7 +1,7 @@
 ---
 title: "阿尔法罗密欧Spider融资马来西亚 - 0%首付意大利汽车艺术投资"
 description: "为您梦想的阿尔法罗密欧Spider获得0%首付融资。专家经典车贷款解决方案，为升值的意大利汽车艺术提供竞争性利率。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

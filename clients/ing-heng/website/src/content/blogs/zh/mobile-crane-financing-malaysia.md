@@ -3,7 +3,7 @@ title: 马来西亚移动式起重机融资：0%首付和100%融资全地形起�
 description: 在马来西亚获得0%首付的移动式起重机融资。我们为10年以上的新旧移动式起重机提供融资，100%融资可用。为承包商和起重机租赁企业提供快速审批。
 author: "ING HENG Credit"
 publishDate: 2025-12-21
-category: 设备融资
+category: Equipment Financing
 tags:
 - 移动式起重机
 - 起重机融资

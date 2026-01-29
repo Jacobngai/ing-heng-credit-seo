@@ -1,7 +1,7 @@
 ---
 title: "雷诺Alpine A110贷款马来西亚 - 0%首付法国跑车传奇"
 description: "在马来西亚以0%首付获得雷诺Alpine A110融资。法国跑车投资专家批准，快速升值。立即申请Alpine A110融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-22

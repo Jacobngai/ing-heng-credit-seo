@@ -1,7 +1,7 @@
 ---
 title: "三菱Legnum VR-4贷款马来西亚 - 拉力旅行车0%首付融资"
 description: "在马来西亚获得三菱Legnum VR-4融资，提供0%首付选项。获批这款稀有双涡轮AWD旅行车，正成为现代经典。专业拉力传承融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-20

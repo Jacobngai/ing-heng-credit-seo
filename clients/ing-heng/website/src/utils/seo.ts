@@ -33,10 +33,7 @@ export function generateSEOTags(props: SEOProps) {
     keywords = [],
   } = props;
 
-  // Use environment variable if available (set at Astro component level), otherwise fallback
-  const siteUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_SITE_URL)
-    || (typeof import.meta !== 'undefined' && import.meta.env?.SITE_URL)
-    || 'https://www.inghengcredit.com';
+  const siteUrl = 'https://ingheng-credit.vercel.app';
   const fullCanonical = canonical || `${siteUrl}/${locale}/`;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
@@ -86,10 +83,7 @@ export function generateHreflangLinks(
   slug: string,
   locales: Array<'en' | 'zh' | 'ms'> = ['en', 'zh', 'ms']
 ) {
-  // Use environment variable if available (set at Astro component level), otherwise fallback
-  const siteUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_SITE_URL)
-    || (typeof import.meta !== 'undefined' && import.meta.env?.SITE_URL)
-    || 'https://www.inghengcredit.com';
+  const siteUrl = 'https://ingheng-credit.vercel.app';
 
   return locales.map((locale) => ({
     rel: 'alternate',

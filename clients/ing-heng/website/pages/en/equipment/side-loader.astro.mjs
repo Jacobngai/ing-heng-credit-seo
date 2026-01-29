@@ -1,0 +1,245 @@
+/* empty css                                       */
+import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../../../chunks/astro/server_CFtfKdet.mjs';
+import 'piccolore';
+import { c as generateProductSchema, a as generateFAQSchema, $ as $$BaseLayout, e as encodeJSONLD } from '../../../chunks/BaseLayout_BSmrehMn.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_Byd6UBmX.mjs';
+import { $ as $$BenefitCard } from '../../../chunks/BenefitCard_DV4ZNQbs.mjs';
+import { $ as $$StepCard } from '../../../chunks/StepCard_CWNcWtHa.mjs';
+import { $ as $$FAQItem } from '../../../chunks/FAQItem_CTpbqvJe.mjs';
+import { $ as $$ContactForm } from '../../../chunks/ContactForm_BUPsgIWX.mjs';
+import { $ as $$Calculator } from '../../../chunks/Calculator_BS1M0nbC.mjs';
+import { $ as $$TestimonialCard } from '../../../chunks/TestimonialCard_DCNY-qZL.mjs';
+import { $ as $$Breadcrumbs } from '../../../chunks/Breadcrumbs_C7ZIfdIQ.mjs';
+import { $ as $$RelatedEquipment } from '../../../chunks/RelatedEquipment_ZkPtOS9o.mjs';
+import { S as SITE_CONFIG } from '../../../chunks/Footer_BoPJ3uP5.mjs';
+export { renderers } from '../../../renderers.mjs';
+
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$SideLoader = createComponent(($$result, $$props, $$slots) => {
+  const lang = "en";
+  const pageTitle = "Container Side Loader Financing Malaysia | Port Klang Logistics Equipment Loans";
+  const pageDescription = "Finance container side loaders for efficient handling operations. Fast approval for Port Klang logistics & depot operators. Hydraulic side loader financing available.";
+  const keywords = ["container side loader financing Malaysia", "side loader trailer financing", "Port Klang logistics equipment financing", "container handling equipment loan", "hydraulic side loader financing", "logistics equipment financing Selangor"];
+  const breadcrumbs = [
+    { label: "Home", url: "/en" },
+    { label: "Equipment", url: "/en/equipment" },
+    { label: "Side Loader Financing", url: "/en/equipment/side-loader" }
+  ];
+  const benefits = [
+    { icon: "clock", title: "Port Klang Expertise", description: "Deep understanding of container handling operations and Port Klang logistics industry requirements." },
+    { icon: "percentage", title: "Self-Loading Technology", description: "Finance hydraulic side loaders with independent loading capability - no external cranes required." },
+    { icon: "shield", title: "Container Depot Solutions", description: "Complete depot equipment packages including side loaders, reach stackers, and terminal tractors." },
+    { icon: "users", title: "Logistics Business Terms", description: "Payment schedules aligned with container handling revenue patterns and seasonal fluctuations." },
+    { icon: "document", title: "Fast Equipment Approval", description: "Quick financing decisions for urgent equipment replacement and capacity expansion needs." },
+    { icon: "shield", title: "New & Used Options", description: "Finance both new imported side loaders and quality used equipment from reliable suppliers." }
+  ];
+  const steps = [
+    { stepNumber: 1, icon: "contact", title: "Operations Assessment", description: "Evaluate your container handling volume, depot layout, and equipment requirements with our logistics specialists." },
+    { stepNumber: 2, icon: "document", title: "Equipment Specification", description: "Review side loader configurations, capacity requirements, and supplier quotations for your operation." },
+    { stepNumber: 3, icon: "check", title: "Business Evaluation", description: "Assess logistics business performance, customer contracts, and cash flow for financing approval." },
+    { stepNumber: 4, icon: "clipboard", title: "Financing Structure", description: "Design payment terms that match container handling revenue cycles and operational requirements." },
+    { stepNumber: 5, icon: "truck", title: "Equipment Delivery", description: "Coordinate side loader delivery, operator training, and integration with existing depot operations." }
+  ];
+  const equipmentTypes = [
+    {
+      name: "Twin Hydraulic Side Loaders",
+      description: "Dual hydraulic crane systems for simultaneous container handling. Maximum efficiency for high-volume depot operations.",
+      applications: "Container depots, intermodal yards, port facilities, freight terminals"
+    },
+    {
+      name: "Single Arm Side Loaders",
+      description: "Single hydraulic crane configuration for smaller operations. Cost-effective solution for medium-volume container handling.",
+      applications: "Small container depots, logistics yards, construction site container placement"
+    },
+    {
+      name: "Self-Loading Container Trailers",
+      description: "Integrated side loading systems on tri-axle trailers. Self-sufficient container transport and placement capability.",
+      applications: "Container transport, remote site delivery, construction logistics, storage facility operations"
+    },
+    {
+      name: "Heavy-Duty Side Loaders",
+      description: "High-capacity systems for oversized containers and heavy cargo. Designed for demanding industrial applications.",
+      applications: "Heavy industry, oil & gas containers, specialized cargo handling, industrial equipment transport"
+    }
+  ];
+  const industries = [
+    {
+      name: "Container Depot Operations",
+      description: "Empty container storage, cleaning, repair facilities requiring efficient container positioning and stacking systems.",
+      applications: "Empty container handling, depot yard management, container maintenance facilities"
+    },
+    {
+      name: "Logistics & Freight Services",
+      description: "Freight forwarders, logistics providers, and intermodal operators needing flexible container handling solutions.",
+      applications: "Intermodal freight, cargo consolidation, container transfer operations, logistics hubs"
+    },
+    {
+      name: "Port & Terminal Services",
+      description: "Port service providers, terminal operators, and marine logistics companies supporting container operations.",
+      applications: "Port container handling, terminal operations, marine logistics, cargo transfer"
+    },
+    {
+      name: "Construction & Industrial",
+      description: "Construction companies and industrial facilities using containers for storage, offices, and temporary facilities.",
+      applications: "Construction site containers, temporary storage, mobile offices, industrial container placement"
+    }
+  ];
+  const testimonials = [
+    {
+      name: "Rahman Abdullah",
+      company: "Port Valley Logistics Sdn Bhd",
+      location: "Port Klang, Selangor",
+      testimonial: "Twin hydraulic side loader from Ing Heng Credit doubled our container handling speed. No more waiting for cranes. Equipment paid for itself in 20 months through increased throughput and customer satisfaction.",
+      rating: 5
+    },
+    {
+      name: "Lim Wei Chuan",
+      company: "Container Solutions Malaysia",
+      location: "Shah Alam, Selangor",
+      testimonial: "Needed side loader for depot expansion but banks didn't understand logistics equipment. Ing Heng Credit approved quickly with terms matching our seasonal cash flow. Excellent service for container industry.",
+      rating: 5
+    }
+  ];
+  const faqs = [
+    {
+      question: "What is a container side loader and how does it work?",
+      answer: "A container side loader is a specialized trailer with hydraulic cranes that can lift and position containers from the side. Unlike traditional methods requiring external cranes, side loaders provide self-sufficient container handling capability, making them ideal for depots, construction sites, and locations without crane access."
+    },
+    {
+      question: "Can I finance container side loaders for my logistics business?",
+      answer: "Yes! We specialize in container handling equipment financing including twin hydraulic side loaders, single arm systems, and self-loading trailers. We understand logistics business needs and provide flexible terms for container depot and freight operations."
+    },
+    {
+      question: "What side loader configurations can you finance?",
+      answer: "We finance all types including twin hydraulic side loaders, single arm systems, tri-axle self-loading trailers, and heavy-duty container handlers. Both new imported equipment and quality used side loaders are considered for financing."
+    },
+    {
+      question: "Do you understand Port Klang logistics operations?",
+      answer: "Absolutely! Our Klang location gives us deep understanding of Port Klang container operations, depot requirements, and logistics industry needs. We structure financing terms that align with container handling revenue patterns and seasonal business cycles."
+    },
+    {
+      question: "What are typical financing amounts for side loaders?",
+      answer: "Container side loader financing typically ranges from RM 300,000 for single arm units to RM 800,000+ for twin hydraulic systems with advanced features. Complete depot equipment packages can range from RM 500,000 to RM 2,000,000 depending on capacity requirements."
+    },
+    {
+      question: "Can I finance complete container depot setup?",
+      answer: "Yes! We offer comprehensive depot equipment packages including side loaders + reach stackers + terminal tractors + yard equipment in one financing solution. This approach is often more efficient and cost-effective than individual equipment loans."
+    },
+    {
+      question: "Do you finance used container handling equipment?",
+      answer: "Yes, quality used side loaders and container equipment from reputable suppliers are considered. Used equipment must be in good working condition with available parts and service support. We evaluate equipment history, maintenance records, and remaining useful life."
+    },
+    {
+      question: "What about side loader maintenance and training?",
+      answer: "Maintenance contracts and operator training can often be included in side loader financing packages. Proper training ensures optimal productivity and equipment longevity. We work with suppliers who provide comprehensive support for container handling equipment."
+    },
+    {
+      question: "Can logistics startups finance side loaders?",
+      answer: "Yes, we support new logistics businesses with proper business plans, industry experience, and container handling contracts. Startup financing may require higher down payment (25-30%) and demonstration of market demand through pre-contracts or letters of intent."
+    },
+    {
+      question: "How long does approval take for container equipment?",
+      answer: "Standard approval for established logistics businesses is fast from complete application. For new businesses or complex depot setups, allow 1-2 weeks for thorough evaluation including equipment assessment and business review."
+    },
+    {
+      question: "Do you offer trade-in programs for container equipment?",
+      answer: "Yes! Trade-in programs help offset the cost of upgrading to newer or larger side loaders. Existing equipment value depends on condition and market demand. This reduces down payment requirements for equipment modernization."
+    },
+    {
+      question: "What documents are needed for logistics equipment financing?",
+      answer: "Required: Company registration, financial statements (2 years), equipment quotations, business operations details, and container handling requirements. For established logistics businesses: customer contracts, throughput records, and depot operational data."
+    },
+    {
+      question: "Can I finance multiple side loaders for fleet expansion?",
+      answer: "Absolutely! Fleet financing available for logistics businesses scaling operations. Multiple equipment purchases often qualify for volume discounts and better financing terms. Ideal for depot expansion or new facility development."
+    },
+    {
+      question: "Do you finance side loaders for construction use?",
+      answer: "Yes! Construction companies using containers for site offices, storage, and temporary facilities can finance side loaders. These provide flexible container placement capability for construction projects and facility development."
+    },
+    {
+      question: "What about insurance for side loader equipment?",
+      answer: "Equipment insurance is recommended and can sometimes be included in financing packages. We can connect you with insurance providers experienced in container handling equipment coverage for comprehensive protection."
+    }
+  ];
+  const productSchema = generateProductSchema({
+    name: "Container Side Loader Financing Malaysia",
+    description: "Container side loader financing for efficient depot operations, Port Klang logistics, and container handling businesses. Hydraulic side loader trailer financing available.",
+    imageUrl: `${SITE_CONFIG.url}/images/container-side-loader-financing-port-klang.jpg`,
+    category: "Container Handling Equipment Financing",
+    offers: {
+      price: "400000",
+      currency: "MYR",
+      availability: "https://schema.org/InStock"
+    }
+  });
+  const faqSchema = generateFAQSchema(faqs);
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": pageTitle, "description": pageDescription, "lang": lang, "keywords": keywords, "ogType": "website" }, { "default": ($$result2) => renderTemplate`    ${maybeRenderHead()}<div class="container-custom py-4"> ${renderComponent($$result2, "Breadcrumbs", $$Breadcrumbs, { "items": breadcrumbs, "lang": lang })} </div>  ${renderComponent($$result2, "Hero", $$Hero, { "title": "Container Side Loader Financing for Malaysian Logistics Operations", "subtitle": "Port Klang Specialists | Hydraulic Side Loaders | Container Depot Equipment | Fast Logistics Business Approval", "ctaText": "Get Container Equipment Financing Quote", "ctaLink": "https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20container%20side%20loader%20financing.", "ctaSecondaryText": "Call Now: 017-570 0889", "ctaSecondaryLink": "tel:+60175700889", "lang": lang, "trustSignals": ["Port Klang Proximity", "Logistics Equipment Specialists", "Container Depot Packages", "40 Years Equipment Finance"] })}  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+Efficient Container Handling Requires Modern Equipment
+</h2> <p class="text-xl text-[#4F3E29] leading-relaxed mb-8">
+Manual container positioning limits depot efficiency. Crane-dependent operations cause delays. Customer demands faster turnaround times. Container side loaders cost RM 400k-800k upfront. We finance container handling equipment with terms designed for logistics business cash flow.
+</p> <div class="grid md:grid-cols-3 gap-8"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-2xl font-bold text-primary mb-2">Independent Operation</div> <div class="text-[#4F3E29]">No external cranes required</div> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-2xl font-bold text-primary mb-2">Twin Hydraulic</div> <div class="text-[#4F3E29]">Simultaneous container handling capability</div> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <div class="text-2xl font-bold text-primary mb-2">Port Klang</div> <div class="text-[#4F3E29]">Strategic location for logistics support</div> </div> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Why Choose Ing Heng Credit for Container Equipment Financing?
+</h2> <p class="text-xl text-[#4F3E29]">
+Specialized understanding of container handling operations and Port Klang logistics industry
+</p> </div> <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"> ${benefits.map((benefit) => renderTemplate`${renderComponent($$result2, "BenefitCard", $$BenefitCard, { "icon": benefit.icon, "title": benefit.title, "description": benefit.description })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Container Side Loader Types We Finance
+</h2> <p class="text-xl text-[#4F3E29]">
+Complete range of hydraulic container handling systems for depot and logistics operations
+</p> </div> <div class="grid md:grid-cols-2 gap-6"> ${equipmentTypes.map((equipment) => renderTemplate`<div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-shadow"> <h3 class="text-lg font-bold text-primary mb-3">${equipment.name}</h3> <p class="text-[#4F3E29] mb-3">${equipment.description}</p> <div class="text-sm text-[#4F3E29] space-y-1"> <p><strong>Applications:</strong> ${equipment.applications}</p> </div> </div>`)} </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Logistics Industries We Support
+</h2> <p class="text-xl text-[#4F3E29]">
+Container side loader financing across diverse logistics and container handling sectors
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"> ${industries.map((industry) => renderTemplate`<div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-4">${industry.name}</h3> <p class="text-[#4F3E29] mb-4">${industry.description}</p> <div class="text-sm text-[#4F3E29]"> <strong>Applications:</strong> ${industry.applications} </div> </div>`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Container Side Loader Investment Analysis
+</h2> <p class="text-xl text-[#4F3E29]">
+How hydraulic side loaders improve depot efficiency and profitability
+</p> </div> <div class="grid md:grid-cols-2 gap-8 mb-8"> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">Traditional Container Handling</h3> <ul class="space-y-3 text-[#4F3E29]"> <li class="flex items-start space-x-3"> <span class="text-red-500 mt-1">✗</span> <span>Crane dependency: Wait times and scheduling conflicts</span> </li> <li class="flex items-start space-x-3"> <span class="text-red-500 mt-1">✗</span> <span>Limited positioning: Crane reach restrictions</span> </li> <li class="flex items-start space-x-3"> <span class="text-red-500 mt-1">✗</span> <span>Higher costs: Crane rental RM 300-500/hour</span> </li> <li class="flex items-start space-x-3"> <span class="text-red-500 mt-1">✗</span> <span>Slower operations: Setup and positioning delays</span> </li> </ul> </div> <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]"> <h3 class="text-xl font-bold text-primary mb-4">Side Loader Advantages</h3> <ul class="space-y-3 text-[#4F3E29]"> <li class="flex items-start space-x-3"> <span class="text-green-500 mt-1">✓</span> <span>Independent operation: No crane waiting time</span> </li> <li class="flex items-start space-x-3"> <span class="text-green-500 mt-1">✓</span> <span>Flexible positioning: Access tight spaces easily</span> </li> <li class="flex items-start space-x-3"> <span class="text-green-500 mt-1">✓</span> <span>Lower operating costs: Self-sufficient operation</span> </li> <li class="flex items-start space-x-3"> <span class="text-green-500 mt-1">✓</span> <span>Faster throughput: 50-70% time savings</span> </li> </ul> </div> </div> <!-- ROI Calculator --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6 text-center">Side Loader Investment ROI</h3> <div class="grid md:grid-cols-3 gap-8 text-sm"> <div> <h4 class="font-bold text-gray-800 mb-3">Investment</h4> <ul class="space-y-2 text-[#4F3E29]"> <li>• Twin hydraulic side loader: RM 650,000</li> <li>• Down payment (20%): RM 130,000</li> <li>• Monthly payment (6 years): RM 8,900</li> <li>• Training & setup: RM 25,000</li> </ul> </div> <div> <h4 class="font-bold text-gray-800 mb-3">Operational Benefits</h4> <ul class="space-y-2 text-[#4F3E29]"> <li>• Crane cost savings: RM 15,000/month</li> <li>• Increased throughput: 40% more containers</li> <li>• Additional revenue: RM 25,000/month</li> <li>• Labor efficiency: RM 8,000/month savings</li> </ul> </div> <div> <h4 class="font-bold text-gray-800 mb-3">Financial Return</h4> <ul class="space-y-2 text-[#4F3E29]"> <li>• Total monthly benefit: RM 48,000</li> <li>• Equipment payment: RM 8,900</li> <li>• <strong class="text-green-600">Net monthly profit: RM 39,100</strong></li> <li>• <strong class="text-green-600">ROI payback: 14-16 months</strong></li> </ul> </div> </div> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="max-w-3xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">Container Side Loader Financing Calculator</h2> <p class="text-[#4F3E29]">Estimate monthly payments for container handling equipment based on cost and financing terms</p> </div> ${renderComponent($$result2, "Calculator", $$Calculator, { "lang": lang, "equipmentType": "Container Side Loader", "defaultPrice": 55e4 })} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+How to Finance Your Container Side Loader
+</h2> <p class="text-xl text-[#4F3E29]">
+Streamlined process designed for logistics and container handling business requirements
+</p> </div> <div class="grid md:grid-cols-5 gap-8"> ${steps.map((step) => renderTemplate`${renderComponent($$result2, "StepCard", $$StepCard, { "stepNumber": step.stepNumber, "icon": step.icon, "title": step.title, "description": step.description })}`)} </div> <!-- CTA after steps --> <div class="text-center mt-12"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20container%20side%20loader%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg inline-block">
+Apply for Container Equipment Financing
+</a> <p class="text-sm text-[#4F3E29] mt-3">Fast approval for logistics businesses | Complete depot equipment packages</p> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Logistics Success Stories
+</h2> <p class="text-xl text-[#4F3E29]">
+Real Malaysian logistics businesses that enhanced operations with side loader financing
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"> ${testimonials.map((testimonial) => renderTemplate`${renderComponent($$result2, "TestimonialCard", $$TestimonialCard, { "name": testimonial.name, "company": testimonial.company, "location": testimonial.location, "testimonial": testimonial.testimonial, "rating": testimonial.rating })}`)} </div> </div> </section>  <section class="section bg-[#F5F5DC]"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Container Equipment Financing Requirements
+</h2> <p class="text-xl text-[#4F3E29]">
+Documentation designed for logistics businesses and container handling operations
+</p> </div> <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"> <!-- Established Business --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">For Established Logistics Companies</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Business Registration & Licenses</div> <div class="text-sm text-[#4F3E29]">Company registration, logistics license, and container handling permits</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Financial Performance</div> <div class="text-sm text-[#4F3E29]">2-3 years financial statements showing logistics business operations and throughput</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Customer Contracts</div> <div class="text-sm text-[#4F3E29]">Container handling contracts, depot agreements, or logistics service contracts</div> </div> </li> </ul> </div> <!-- New Business --> <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]"> <h3 class="text-2xl font-bold text-primary mb-6">For New Logistics Ventures</h3> <ul class="space-y-4"> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Business Plan & Market Analysis</div> <div class="text-sm text-[#4F3E29]">Comprehensive plan showing container handling market opportunity and operational strategy</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Industry Experience</div> <div class="text-sm text-[#4F3E29]">Logistics industry background, container handling experience, or relevant certifications</div> </div> </li> <li class="flex items-start space-x-3"> <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <div> <div class="font-semibold text-gray-900">Facility & Initial Contracts</div> <div class="text-sm text-[#4F3E29]">Depot facility details and preliminary container handling commitments or letters of intent</div> </div> </li> </ul> </div> </div> </div> </section>  <section class="section"> <div class="container-custom"> <div class="text-center mb-12"> <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+Container Side Loader Financing FAQ
+</h2> <p class="text-xl text-[#4F3E29]">
+Everything you need to know about financing container handling equipment
+</p> </div> <div class="max-w-4xl mx-auto space-y-4"> ${faqs.map((faq) => renderTemplate`${renderComponent($$result2, "FAQItem", $$FAQItem, { "question": faq.question, "answer": faq.answer })}`)} </div> </div> </section>  <section class="section bg-[#8B6F47] text-white"> <div class="container-custom text-center"> <h2 class="text-3xl md:text-4xl font-bold mb-6">
+Ready to Enhance Your Container Handling Operations?
+</h2> <p class="text-xl mb-8 max-w-2xl mx-auto">
+Apply today for container side loader financing. Fast approval for logistics businesses with flexible terms designed for container handling operations. Join Port Klang operators who improved efficiency with our financing.
+</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"> <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20container%20side%20loader%20financing." target="_blank" rel="noopener noreferrer" class="btn btn-accent text-lg px-8 py-4">
+Apply for Container Equipment Financing
+</a> <a href="tel:+60175700889" class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4">
+Call: 017-570 0889
+</a> </div> <div class="flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Port Klang Logistics Expertise</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>Complete Depot Equipment Packages</span> </div> <div class="flex items-center space-x-2"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path> </svg> <span>40+ Years Equipment Finance Experience</span> </div> </div> </div> </section>  ${renderComponent($$result2, "RelatedEquipment", $$RelatedEquipment, { "lang": lang, "currentEquipment": "side-loader" })}  <section class="section"> <div class="container-custom"> <div class="max-w-2xl mx-auto"> <div class="text-center mb-8"> <h2 class="text-3xl font-bold text-primary mb-4">
+Container Equipment Financing Application
+</h2> <p class="text-[#4F3E29]">
+Submit your container side loader requirements for fast evaluation
+</p> </div> ${renderComponent($$result2, "ContactForm", $$ContactForm, { "lang": lang })} </div> </div> </section> `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', '<\/script> <script type="application/ld+json">', "<\/script> "])), unescapeHTML(encodeJSONLD(productSchema)), unescapeHTML(encodeJSONLD(faqSchema))) })}` })}`;
+}, "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/side-loader.astro", void 0);
+
+const $$file = "C:/Users/MSI/ing heng/ing-heng-credit-seo/clients/ing-heng/website/src/pages/en/equipment/side-loader.astro";
+const $$url = "/en/equipment/side-loader";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$SideLoader,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

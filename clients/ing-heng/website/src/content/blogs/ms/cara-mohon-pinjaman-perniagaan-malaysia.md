@@ -5,7 +5,7 @@ description: Pelajari cara mohon pinjaman perniagaan di Malaysia. Panduan langka
   kejayaan pembiayaan PKS.
 author: "ING HENG Credit"
 publishDate: 2025-12-20
-category: Business Financing
+category: Financing Guides
 tags:
 - pinjaman perniagaan
 - pembiayaan PKS

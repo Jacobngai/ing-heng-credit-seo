@@ -1,7 +1,7 @@
 ---
 title: "标致205 GTI融资马来西亚 - 0%首付热舱图标"
 description: "在马来西亚以0%首付融资您的标致205 GTI。定义一代的热舱传奇专家批准。立即获得您的205 GTI融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-24

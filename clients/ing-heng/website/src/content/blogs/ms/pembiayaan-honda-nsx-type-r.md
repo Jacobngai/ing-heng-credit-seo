@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Honda NSX Type R: Kelulusan Legenda JDM 0% Deposit Malaysia"
 description: "Dapatkan pembiayaan Honda NSX Type R di Malaysia dengan pilihan 0% deposit. Kelulusan pakar untuk supercar tertinggi Jepun. Penyelesaian kredit buruk tersedia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["Honda NSX Type R", "pembiayaan supercar JDM", "pinjaman kereta eksotik", "0% deposit", "Malaysia"]
 publishDate: 2025-01-15
 author: "ING HENG Credit"

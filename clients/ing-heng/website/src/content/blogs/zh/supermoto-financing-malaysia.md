@@ -1,7 +1,7 @@
 ---
 title: "马来西亚Supermoto融资 - 0%首付双运动摩托车贷款"
 description: "在马来西亚获得0%首付的Supermoto融资。银行拒绝双运动摩托车？我们批准KTM、Husqvarna和定制改装的supermoto贷款。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

@@ -21,12 +21,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Financing Guides  December 21, 2025      12 min read
-  #  Personal Loan Malaysia Eligibility: Complete Requirements Guide 2025 
-
-  Complete guide to personal loan eligibility in Malaysia. Learn income requirements, credit score factors, age limits, and how to qualify even with poor credit history. 
-
-     By Ing Heng Credit &amp; Leasing     # Personal Loan Malaysia Eligibility: Complete Requirements Guide 2025
 
 Getting approved for a personal loan in Malaysia depends on meeting specific eligibility criteria that lenders use to assess your ability to repay. Understanding these requirements helps you prepare a strong application and avoid rejection.
 

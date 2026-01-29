@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+
+// Placeholder blog posts - will be replaced with real content
+const blogPosts = [
+  {
+    title: 'How to Dominate Long-Tail Keywords in 2025',
+    excerpt: 'Stop chasing competitive head terms. Learn how to identify and rank for 100+ long-tail keywords that actually convert.',
+    author: 'Walter Chen',
+    date: '2025-01-15',
+    category: 'Strategy',
+    readTime: '8 min read',
+    slug: 'dominate-long-tail-keywords-2025',
+    featured: true
+  },
+  {
+    title: 'AI Search Optimization: Complete Guide for Malaysian Businesses',
+    excerpt: 'ChatGPT, Perplexity, and Claude are changing search. Here\'s how to optimize your content to get cited by AI engines.',
+    author: 'Sarah Tan',
+    date: '2025-01-12',
+    category: 'AI SEO',
+    readTime: '10 min read',
+    slug: 'ai-search-optimization-guide-malaysia',
+    featured: true
+  },
+  {
+    title: 'We Analyzed 1,000 SEO Contracts: Here\'s What We Found',
+    excerpt: 'Most SEO agencies are overcharging and underdelivering. Our analysis reveals the shocking truth about industry pricing.',
+    author: 'Walter Chen',
+    date: '2025-01-08',
+    category: 'Industry',
+    readTime: '6 min read',
+    slug: 'seo-contract-analysis'
+  },
+  {
+    title: 'From 12 to 189 Keywords in 6 Months: B2B SaaS Case Study',
+    excerpt: 'How we helped a Malaysian SaaS company 15x their keyword coverage using long-tail strategy and AI automation.',
+    author: 'Sarah Tan',
+    date: '2025-01-05',
+    category: 'Case Study',
+    readTime: '7 min read',
+    slug: 'b2b-saas-case-study'
+  },
+  {
+    title: 'Content at Scale: How AI + Humans Create Better Content Faster',
+    excerpt: 'The truth about AI content: when it works, when it doesn\'t, and how to get 10x productivity without sacrificing quality.',
+    author: 'Walter Chen',
+    date: '2025-01-02',
+    category: 'Content',
+    readTime: '9 min read',
+    slug: 'content-at-scale-ai-humans'
+  },
+  {
+    title: 'Technical SEO Checklist for Malaysian Websites',
+    excerpt: 'The 15 technical SEO issues we find on 90% of Malaysian websites—and how to fix them in under 2 weeks.',
+    author: 'Sarah Tan',
+    date: '2024-12-28',
+    category: 'Technical',
+    readTime: '12 min read',
+    slug: 'technical-seo-checklist-malaysia'
+  }
+];
+
+const categories = [
+  { name: 'All Posts', count: blogPosts.length, slug: 'all' },
+  { name: 'Strategy', count: 2, slug: 'strategy' },
+  { name: 'AI SEO', count: 2, slug: 'ai-seo' },
+  { name: 'Case Studies', count: 1, slug: 'case-studies' },
+  { name: 'Content', count: 1, slug: 'content' },
+  { name: 'Technical', count: 1, slug: 'technical' }
+];
+
+const featuredPosts = blogPosts.filter(post => post.featured);
+const regularPosts = blogPosts.filter(post => !post.featured);
+---
+
+<BaseLayout
+  title="SEO Blog - AI-Powered Strategies & Insights | Result Marketing"
+  description="Learn cutting-edge SEO strategies, AI optimization techniques, and long-tail keyword tactics. Free insights from Malaysia's leading AI SEO agency."
+  locale={lang}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-accent-500 font-black text-sm uppercase tracking-wider mb-2 block">Blog</span>
+        <h1 class="text-5xl md:text-6xl font-black mb-6 text-white">
+          AI-Powered SEO Insights
+        </h1>
+        <p class="text-xl text-secondary-400 mb-8 max-w-3xl mx-auto">
+          Learn the strategies we use to help Malaysian businesses dominate long-tail search. No fluff, no theory—just actionable insights from real campaigns.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#subscribe" class="btn btn-primary">
+            Subscribe for Updates
+          </a>
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            Work with Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section bg-secondary-900 border-b-2 border-primary-600/30">
+    <div class="container-custom">
+      <div class="flex flex-wrap justify-center gap-4">
+        {categories.map(category => (
+          <button class={`px-6 py-3 rounded-button text-sm font-bold uppercase tracking-wide transition-colors ${
+            category.slug === 'all'
+              ? 'bg-primary-600 text-white hover:bg-primary-700'
+              : 'bg-dark text-secondary-400 hover:bg-primary-600 hover:text-white'
+          }`}>
+            {category.name} ({category.count})
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Posts -->
+  {featuredPosts.length > 0 && (
+    <section class="section bg-dark">
+      <div class="container-custom">
+        <h2 class="text-3xl md:text-4xl font-black mb-8 text-white">Featured Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredPosts.map(post => (
+            <article class="card card-hover overflow-hidden">
+              <div class="h-48 bg-gradient-to-br from-primary-600 to-accent-500"></div>
+              <div class="p-8">
+                <div class="flex items-center gap-4 mb-4 text-sm text-secondary-400">
+                  <span class="badge badge-primary">
+                    {post.category}
+                  </span>
+                  <span>{post.readTime}</span>
+                  <span>{post.date}</span>
+                </div>
+                <h3 class="text-2xl font-black mb-3 text-white hover:text-primary-400 transition-colors">
+                  <a href={`/en/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-secondary-400 mb-4">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-secondary-500">By {post.author}</span>
+                  <a href={`/en/blog/${post.slug}`} class="text-primary-500 font-bold hover:text-primary-400 flex items-center gap-1">
+                    Read more
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Regular Posts -->
+  <section class="section bg-secondary-900">
+    <div class="container-custom">
+      <h2 class="text-3xl md:text-4xl font-black mb-8 text-white">Latest Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {regularPosts.map(post => (
+          <article class="card card-hover overflow-hidden">
+            <div class="h-40 bg-gradient-to-br from-primary-600 to-primary-800"></div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3 text-xs text-secondary-400">
+                <span class="badge badge-primary text-xs">
+                  {post.category}
+                </span>
+                <span>{post.readTime}</span>
+              </div>
+              <h3 class="text-lg font-black mb-2 text-white hover:text-primary-400 transition-colors">
+                <a href={`/en/blog/${post.slug}`}>
+                  {post.title}
+                </a>
+              </h3>
+              <p class="text-secondary-400 text-sm mb-4">
+                {post.excerpt}
+              </p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-secondary-500">{post.author}</span>
+                <span class="text-secondary-600">{post.date}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="section bg-dark" id="subscribe">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto card-disruptive p-12 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">
+          Get Weekly SEO Insights
+        </h2>
+        <p class="text-xl mb-8 text-secondary-300">
+          Get actionable SEO tips delivered to your inbox every Tuesday. No spam, unsubscribe anytime.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="flex-1 px-6 py-3 rounded-button bg-dark border-2 border-primary-600/50 text-white placeholder:text-secondary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+            required
+          />
+          <button type="submit" class="btn btn-success">
+            Subscribe
+          </button>
+        </form>
+        <p class="text-sm text-secondary-400 mt-4">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient-mesh">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">
+          Ready to Apply These Strategies to Your Business?
+        </h2>
+        <p class="text-xl text-secondary-400 mb-8 max-w-2xl mx-auto">
+          Let's talk about how we can help you cover 100+ long-tail keywords and drive real business growth.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20Result%20Marketing%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Get Free Analysis
+          </a>
+          <a href="/en/case-studies" class="btn btn-secondary">
+            See Case Studies
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

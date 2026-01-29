@@ -1,7 +1,7 @@
 ---
 title: "马来西亚日产Leopard融资 - 0%首付行政奢华梦想"
 description: "以0%首付融资您的稀有日产Leopard。体验VIP级奢华和RB发动机卓越。为寻求泡沫时代精致的行政轿车爱好者快速审批。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-21

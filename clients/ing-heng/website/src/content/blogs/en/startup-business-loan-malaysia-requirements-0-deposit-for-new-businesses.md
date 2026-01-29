@@ -20,12 +20,6 @@ keywords:
 ogImage: /images/blog/forklift-financing.jpg
 ---
 
-Business Tips  December 21, 2025      8 min read
-  #  Startup Business Loan Malaysia Requirements - 0% Deposit for New Businesses 
-
-  Get startup business loan in Malaysia with 0% deposit. No 3-year operating history required. Fast approval when banks reject new businesses. 100% financing available. 
-
-     By Ing Heng Credit Team     # Startup Business Loan Malaysia Requirements: When Banks Say No, We Say Yes
 
 When the bank officer says “you need 3 years of audited financials” and you’ve only been operating 8 months, does that rejection feel like a punch to the gut? You know your business idea is solid, your market research is thorough, and your projections are realistic - but that doesn’t matter to banks who see “startup” and immediately think “high risk.”
 

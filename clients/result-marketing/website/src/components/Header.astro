@@ -1,0 +1,342 @@
+---
+import type { Locale } from '../utils/constants';
+import { SITE_CONFIG } from '../utils/constants';
+import { t, getLocalizedPath } from '../utils/i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  hasSubmenu?: boolean;
+  submenu?: NavSubItem[];
+}
+
+interface NavSubItem {
+  label: string;
+  href?: string;
+  isHeader?: boolean;
+  isDisabled?: boolean;
+  isHighlight?: boolean;
+  isCategory?: boolean;
+  children?: NavSubItem[];
+}
+
+const { lang, currentPath } = Astro.props;
+const translate = t(lang);
+
+const navItems: NavItem[] = [
+  { label: translate('nav.about'), href: getLocalizedPath(lang, 'about') },
+  {
+    label: translate('nav.services'),
+    href: getLocalizedPath(lang, 'services'),
+    hasSubmenu: true,
+    submenu: [
+      { label: 'Trilingual SEO', href: getLocalizedPath(lang, 'services/trilingual-seo') },
+      { label: 'AI-Powered SEO', href: getLocalizedPath(lang, 'services/ai-seo') },
+      { label: 'Long-Tail Strategy', href: getLocalizedPath(lang, 'services/long-tail') },
+      { label: 'Content Creation', href: getLocalizedPath(lang, 'services/content') },
+      { label: 'Technical SEO', href: getLocalizedPath(lang, 'services/technical') },
+    ]
+  },
+  {
+    label: 'Construction SEO',
+    href: getLocalizedPath(lang, 'industries/construction'),
+    hasSubmenu: true,
+    submenu: [
+      {
+        label: 'Property Developers',
+        isCategory: true,
+        children: [
+          { label: 'Property Developers', href: `/${lang}/industries/construction/property-developers/` },
+          { label: 'Pocket Development', href: `/${lang}/industries/construction/property-developers/pocket-development/` },
+          { label: 'Shoplot', href: `/${lang}/industries/construction/property-developers/shoplot/` },
+          { label: 'Residential', href: `/${lang}/industries/construction/property-developers/residential/` },
+        ]
+      },
+      {
+        label: 'Equipment Rental',
+        isCategory: true,
+        children: [
+          { label: 'Forklift Rental', href: `/${lang}/industries/construction/best-marketing-for-forklift-rental/` },
+          { label: 'Lorry Rental', href: `/${lang}/industries/construction/best-marketing-for-lorry-rental/` },
+          { label: 'Excavator Rental', href: `/${lang}/industries/construction/best-marketing-for-excavator-rental/` },
+          { label: 'Crane Rental', href: `/${lang}/industries/construction/best-marketing-for-crane-rental/` },
+          { label: 'Bulldozer Rental', href: `/${lang}/industries/construction/best-marketing-for-bulldozer-rental/` },
+          { label: 'Scaffold Rental', href: `/${lang}/industries/construction/best-marketing-for-scaffold-rental/` },
+          { label: 'Generator Rental', href: `/${lang}/industries/construction/best-marketing-for-generator-rental/` },
+          { label: 'Machinery Rental', href: `/${lang}/industries/construction/best-marketing-for-machinery-rental/` },
+        ]
+      },
+      {
+        label: 'Building Materials',
+        isCategory: true,
+        children: [
+          { label: 'Cement & Concrete', href: `/${lang}/industries/construction/building-materials/cement-concrete-suppliers/` },
+          { label: 'Sand & Aggregates', href: `/${lang}/industries/construction/building-materials/sand-aggregates-suppliers/` },
+          { label: 'Steel & Metal', href: `/${lang}/industries/construction/building-materials/steel-metal-suppliers/` },
+          { label: 'Bricks & Blocks', href: `/${lang}/industries/construction/building-materials/bricks-blocks-suppliers/` },
+          { label: 'Roofing Materials', href: `/${lang}/industries/construction/building-materials/roofing-materials-suppliers/` },
+          { label: 'Timber & Wood', href: `/${lang}/industries/construction/building-materials/timber-wood-suppliers/` },
+          { label: 'Tiles & Flooring', href: `/${lang}/industries/construction/building-materials/tiles-flooring-suppliers/` },
+          { label: 'Paint & Finishing', href: `/${lang}/industries/construction/building-materials/paint-finishing-suppliers/` },
+          { label: 'Glass & Aluminum', href: `/${lang}/industries/construction/building-materials/glass-aluminum-suppliers/` },
+          { label: 'Plumbing Materials', href: `/${lang}/industries/construction/building-materials/plumbing-materials-suppliers/` },
+          { label: 'Electrical Materials', href: `/${lang}/industries/construction/building-materials/electrical-materials-suppliers/` },
+          { label: 'Hardware & Tools', href: `/${lang}/industries/construction/building-materials/hardware-tools-suppliers/` },
+          { label: 'Insulation Materials', href: `/${lang}/industries/construction/building-materials/insulation-materials-suppliers/` },
+          { label: 'Waterproofing', href: `/${lang}/industries/construction/building-materials/waterproofing-materials-suppliers/` },
+          { label: 'Doors & Windows', href: `/${lang}/industries/construction/building-materials/doors-windows-suppliers/` },
+          { label: 'Kitchen & Bathroom', href: `/${lang}/industries/construction/building-materials/kitchen-bathroom-fixtures-suppliers/` },
+          { label: 'Construction Chemicals', href: `/${lang}/industries/construction/building-materials/construction-chemicals-suppliers/` },
+          { label: 'Scaffolding & Formwork', href: `/${lang}/industries/construction/building-materials/scaffolding-formwork-suppliers/` },
+          { label: 'Safety Equipment & PPE', href: `/${lang}/industries/construction/building-materials/safety-equipment-ppe-suppliers/` },
+          { label: 'Modular & Prefab', href: `/${lang}/industries/construction/building-materials/modular-prefab-suppliers/` },
+        ]
+      },
+      {
+        label: 'Sub-Contractors',
+        isCategory: true,
+        children: [
+          { label: 'Security Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-security-contractors/` },
+          { label: 'Landscaping Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-landscaping-contractors/` },
+          { label: 'Plumbing Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-plumbing-contractors/` },
+          { label: 'Precast Concrete', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-precast-concrete-contractors/` },
+          { label: 'Renovation Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-renovation-contractors/` },
+          { label: 'Carpentry Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-carpentry-contractors/` },
+          { label: 'Roofing Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-roofing-contractors/` },
+          { label: 'Piling Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-piling-contractors/` },
+          { label: 'Bricklaying Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-bricklaying-contractors/` },
+          { label: 'Fire Protection', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-fire-protection-contractors/` },
+          { label: 'Glazing Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-glazing-contractors/` },
+          { label: 'Demolition Contractors', href: `/${lang}/industries/construction/subcontractors/best-marketing-for-demolition-contractors/` },
+        ]
+      },
+    ]
+  },
+];
+---
+
+<!-- Header - Bold & Disruptive Dark Theme -->
+<header class="sticky top-0 z-50 bg-dark/95 backdrop-blur-md border-b-2 border-primary-600/30 shadow-glow-purple">
+  <nav class="container-custom">
+    <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 py-3">
+      <!-- Logo -->
+      <a href={getLocalizedPath(lang, '')} class="flex items-center space-x-3 group">
+        <div class="relative">
+          <div class="absolute inset-0 bg-primary-600/30 blur-lg group-hover:blur-xl transition-all duration-300"></div>
+          <img src="/logo.png" alt="{SITE_CONFIG.name} Logo" class="relative w-10 h-10 rounded-xl object-contain" />
+        </div>
+        <span class="font-heading font-black text-xl text-white group-hover:text-primary-400 transition-colors">
+          {SITE_CONFIG.name}
+        </span>
+      </a>
+
+      <!-- Desktop Navigation - 2 Layer Stack -->
+      <div class="hidden lg:flex flex-wrap items-center gap-1">
+        {navItems.map(item => (
+          'hasSubmenu' in item && item.hasSubmenu ? (
+            <div class="relative group">
+              <button
+                class={`px-3 py-1.5 rounded-button text-xs font-bold uppercase tracking-wide transition-all duration-200 flex items-center gap-1 ${
+                  currentPath.startsWith(item.href) && item.href !== `/${lang}/`
+                    ? 'bg-primary-600 text-white shadow-glow-purple'
+                    : 'text-secondary-400 hover:text-white hover:bg-secondary-800'
+                }`}
+              >
+                {item.label}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <!-- Submenu Dropdown - Big & Spacious with Categories -->
+              <div class="absolute left-0 mt-2 min-w-[900px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="bg-dark border-2 border-primary-600/50 rounded-xl shadow-glow-purple overflow-hidden">
+                  <div class="p-6">
+                    {item.submenu?.map(subItem => (
+                      subItem.isCategory ? (
+                        <div class="mb-6 last:mb-0">
+                          <div class="px-4 py-2 text-sm font-bold text-primary-400 uppercase tracking-wider border-b border-primary-600/30 mb-3">
+                            {subItem.label}
+                          </div>
+                          <div class="grid grid-cols-4 gap-2">
+                            {subItem.children?.map(child => (
+                              <a
+                                href={child.href}
+                                class="block px-4 py-2.5 text-sm font-medium text-secondary-300 hover:text-white hover:bg-primary-600 rounded-lg transition-all duration-150"
+                              >
+                                {child.label}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <a
+                          href={subItem.href}
+                          class="block px-4 py-2.5 text-sm font-medium text-secondary-300 hover:text-white hover:bg-primary-600 rounded-lg transition-all duration-150"
+                        >
+                          {subItem.label}
+                        </a>
+                      )
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class={`px-3 py-1.5 rounded-button text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
+                currentPath.startsWith(item.href) && item.href !== `/${lang}/`
+                  ? 'bg-primary-600 text-white shadow-glow-purple'
+                  : currentPath === item.href
+                  ? 'bg-primary-600 text-white shadow-glow-purple'
+                  : 'text-secondary-400 hover:text-white hover:bg-secondary-800'
+              }`}
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+      </div>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center gap-2 ml-auto">
+        <LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 text-secondary-400 hover:text-white transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden pb-6 pt-4 border-t border-secondary-800"
+    >
+      <div class="flex flex-col space-y-3">
+        {navItems.map((item, index) => (
+          'hasSubmenu' in item && item.hasSubmenu ? (
+            <div class="mobile-submenu">
+              <button
+                data-submenu-toggle={`submenu-${index}`}
+                class={`w-full px-5 py-3 rounded-button text-sm font-bold uppercase tracking-wide transition-all duration-200 flex items-center justify-between ${
+                  currentPath.startsWith(item.href) && item.href !== `/${lang}/`
+                    ? 'bg-primary-600 text-white'
+                    : 'text-secondary-400 hover:text-white hover:bg-secondary-800'
+                }`}
+              >
+                <span>{item.label}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id={`submenu-${index}`} class="hidden pl-4 mt-2 space-y-1 border-l-2 border-primary-600/30">
+                {item.submenu?.map(subItem => (
+                  subItem.isCategory ? (
+                    <div class="mb-2">
+                      <div class="px-4 py-1.5 text-xs font-bold text-primary-400 uppercase tracking-wider border-b border-primary-600/30">
+                        {subItem.label}
+                      </div>
+                      {subItem.children?.map(child => (
+                        <a
+                          href={child.href}
+                          class="block px-6 py-2 text-sm font-medium text-secondary-400 hover:text-white hover:bg-secondary-800 rounded-lg transition-all duration-150"
+                        >
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  ) : subItem.isDisabled ? (
+                    <div class="px-4 py-2 text-sm font-medium text-secondary-600 cursor-not-allowed">
+                      {subItem.label}
+                    </div>
+                  ) : subItem.isHighlight ? (
+                    <a
+                      href={subItem.href}
+                      class="block px-4 py-2 text-sm font-bold text-primary-300 hover:text-white hover:bg-primary-600 rounded-lg transition-all duration-150 border border-primary-600/30"
+                    >
+                      {subItem.label}
+                    </a>
+                  ) : (
+                    <a
+                      href={subItem.href}
+                      class="block px-4 py-2 text-sm font-medium text-secondary-400 hover:text-white hover:bg-secondary-800 rounded-lg transition-all duration-150"
+                    >
+                      {subItem.label}
+                    </a>
+                  )
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class={`px-5 py-3 rounded-button text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
+                currentPath.startsWith(item.href) && item.href !== `/${lang}/`
+                  ? 'bg-primary-600 text-white'
+                  : currentPath === item.href
+                  ? 'bg-primary-600 text-white'
+                  : 'text-secondary-400 hover:text-white hover:bg-secondary-800'
+              }`}
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+        <a
+          href="https://wa.me/60175032281?text=Hi%2C%20I%27m%20interested%20in%20getting%20started%20with%20Result%20Marketing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-disruptive w-full mt-4"
+        >
+          {translate('cta.getStarted')}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Mobile submenu toggle
+  const submenuToggles = document.querySelectorAll('[data-submenu-toggle]');
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const submenuId = toggle.getAttribute('data-submenu-toggle');
+      if (submenuId) {
+        const submenu = document.getElementById(submenuId);
+        const arrow = toggle.querySelector('svg');
+
+        if (submenu) {
+          submenu.classList.toggle('hidden');
+          if (arrow) {
+            arrow.classList.toggle('rotate-180');
+          }
+        }
+      }
+    });
+  });
+</script>

@@ -3,7 +3,7 @@ title: "日产Skyline GT-R R34融资马来西亚 | JDM传奇贷款"
 description: "以0%首付为您的梦想R34 GT-R融资。我们批准被银行拒绝的JDM传奇。为升值资产提供专业收藏车融资。"
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["jdm融资", "skyline gtr", "收藏车贷款", "r34融资", "特殊车辆"]
 keywords:
   - "日产skyline gtr r34融资马来西亚"

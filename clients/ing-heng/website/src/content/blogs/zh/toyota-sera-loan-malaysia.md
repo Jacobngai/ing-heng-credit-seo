@@ -1,7 +1,7 @@
 ---
 title: "丰田Sera贷款马来西亚 - 0%首付鸥翼玻璃圆顶奇迹"
 description: "为您稀有的丰田Sera提供0%首付融资。这款鸥翼门玻璃圆顶轿跑代表了丰田最大胆的设计实验 - 今天就为这个升值的蝶形门图标确保融资。"
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "zh"
 publishDate: 2025-12-23

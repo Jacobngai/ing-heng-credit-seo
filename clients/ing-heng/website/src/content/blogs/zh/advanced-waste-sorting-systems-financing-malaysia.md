@@ -1,7 +1,7 @@
 ---
 title: "马来西亚先进垃圾分拣系统融资 - 零首付设备贷款"
 description: "在马来西亚以0%首付融资先进垃圾分拣系统。获得光学分拣机、AI垃圾分离和自动化回收设备。无需预付款。"
-category: 'Specialized Vehicle Financing'
+category: Equipment Financing
 tags: ['垃圾分拣', '回收设备', '环保技术', '分拣系统', '光学分拣机', 'AI分拣', '自动化废物管理', '马来西亚融资']
 keywords: ['先进垃圾分拣系统融资', '马来西亚光学分拣机融资', 'AI垃圾分离设备贷款', '自动化回收设备融资', '垃圾分拣技术融资', '回收厂设备融资', '废物管理设备贷款', '马来西亚环保设备融资']
 author: "ING HENG Credit"

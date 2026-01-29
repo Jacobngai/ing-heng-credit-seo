@@ -3,7 +3,7 @@ title: "Pembiayaan Yacht Kuala Lumpur - 0% Deposit Pinjaman Kapal Mewah Malaysia
 description: "Dapatkan kelulusan pembiayaan yacht di Kuala Lumpur. Bank tolak pinjaman bot mewah? Kami pakar dalam pembiayaan kapal laut dengan 0% deposit hingga RM5J."
 publishDate: 2024-12-24
 tags: ["pembiayaan yacht kuala lumpur", "pinjaman bot malaysia", "pembiayaan kapal laut", "pinjaman yacht mewah"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

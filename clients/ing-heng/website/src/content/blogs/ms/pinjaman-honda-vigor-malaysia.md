@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Honda Vigor Malaysia - 0% Deposit Kecemerlangan Sedan Eksekutif"
 description: "Dapatkan pembiayaan 0% deposit untuk sedan mewah Honda Vigor anda. Jangan biar keperluan import JDM yang kompleks hancurkan impian kenderaan eksekutif anda di Malaysia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

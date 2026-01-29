@@ -1,28 +1,29 @@
 ---
 /**
- * Used Prime Mover Financing Landing Page - English
- * Target: Container trailer owners hiring drivers with trucks or renting trucks
- * Keywords: used prime mover financing Malaysia, Volvo prime mover loan, container transport financing
- * Focus: Real business scenario - stop losing 40% revenue to driver splits or RM 10k/month rentals
- * Word Count: ~1,500 words
+ * Prime Mover Financing Landing Page - English
+ * Target: Haulage Henry (Container/Heavy Haulage) - English secondary language
+ * Keywords: prime mover financing Malaysia, container truck financing, prime mover loan Port Klang
+ * Cultural Focus: Professional, fleet management ROI, Port Klang logistics focus
+ * Word Count: 3,200+ words
  */
 
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
-import Hero from '../../../../components/Hero.astro';
-import BenefitCard from '../../../../components/BenefitCard.astro';
-import FAQItem from '../../../../components/FAQItem.astro';
-import ContactForm from '../../../../components/ContactForm.astro';
-import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
-import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
-import { SITE_CONFIG } from '../../../../utils/constants';
 const lang = 'en';
 
-// SEO Data
-const pageTitle = 'Prime Mover Financing Malaysia | Stop Losing 40% Revenue | 0% Deposit';
-const pageDescription = 'Own your prime movers instead of hiring drivers with trucks or renting. Stop losing 40% revenue splits or RM 10k/month rental fees. Finance used Volvo, Scania 10+ years old. 0% deposit, bad credit OK.';
-const keywords = ['prime mover financing Malaysia', 'used prime mover loan', 'container transport financing', 'container trailer business financing', 'logistics business financing'];
+// SEO Data - Optimized for prime mover financing Malaysia
+const pageTitle = 'Prime Mover Financing Port Klang | 2-Hour Approval | 90% Financing';
+const pageDescription = 'Fast prime mover financing for hauliers. 2-hour approval, 90% financing, container truck loans for Port Klang operators. Scania, Volvo, Mercedes accepted. Fleet financing available.';
+const keywords = ['prime mover financing Malaysia', 'container truck financing', 'prime mover loan Port Klang', 'heavy truck financing', 'trailer financing Malaysia', 'Port Klang haulage financing'];
 
 // Breadcrumbs
 const breadcrumbs = [
@@ -31,68 +32,187 @@ const breadcrumbs = [
   { label: 'Prime Mover Financing', url: '/en/equipment/prime-mover' },
 ];
 
-// Benefits
+// Benefits - Fleet management and ROI focused
 const benefits = [
-  { icon: 'percentage', title: '0% Deposit Option*', description: 'Finance up to 100%* of equipment value. Start operations immediately. Build equity from day one. *Subject to terms and conditions' },
-  { icon: 'shield', title: '10+ Years Old Accepted', description: 'Used Volvo FL10, 12 years old, 950k km? Banks reject. We approve. Your business grows with quality equipment regardless of age.' },
-  { icon: 'chart', title: 'Full Revenue Control', description: '100% revenue stays in your business. Full operational control, your decisions. Hire salaried drivers, build your logistics company.' },
-  { icon: 'lightning', title: 'Fast Approval', description: 'Quick decisions on quality equipment. Your trailers stay productive. Your contracts stay fulfilled. Your business keeps growing.' },
-  { icon: 'document', title: 'Bad Credit Accepted', description: 'Equipment value secures loan. Your active operations prove capability. Your business future matters more than credit history.' },
-  { icon: 'calendar', title: 'Flexible Terms', description: '12-84 month terms aligned with your transport cycles. Predictable payments. Manageable cash flow. Sustainable growth.' },
+  { icon: 'clock', title: '2-Hour Approval', description: 'Fast-track approval for urgent shipping line contracts. Get approved in 2 hours for container haulage opportunities.' },
+  { icon: 'percentage', title: '0% Down Payment Available', description: 'Qualified applicants can get 100% financing. Preserve cash flow for fuel, maintenance, and operational costs.' },
+  { icon: 'calendar', title: '12-84 Month Terms', description: 'Flexible payment terms up to 7 years. Match payments to your contract cycles and revenue streams.' },
+  { icon: 'shield', title: 'Used Trucks Accepted', description: 'Finance used prime movers up to 15 years old. All major brands: Scania, Volvo, Mercedes, Hino, UD Trucks.' },
+  { icon: 'users', title: 'Fleet Financing', description: 'Special rates for 2+ trucks. Expand your fleet to secure Maersk, MSC, CMA CGM contracts. Volume discounts available.' },
+  { icon: 'lightning', title: 'Peak Season Flexibility', description: 'Higher payments during peak season (CNY, year-end), lower during slow months. Cash flow aligned with Port Klang cycles.' },
+  { icon: 'document', title: 'Fast Documentation', description: 'Minimal paperwork. IC, bank statements, company docs. No complex financial statements for fleet under 5 trucks.' },
+  { icon: 'shield', title: 'Transparent Pricing', description: 'No hidden fees. Competitive rates 6.5-11% p.a. Diesel subsidy SKDS 2.0 compliant financing options.' },
 ];
 
-// FAQs
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'WhatsApp Us', description: 'Contact our haulage financing specialists. Get instant quote based on truck model and contract status.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'IC, 6 months bank statements, SSM, shipping line contracts (if available). Simple process.' },
+  { stepNumber: 3, icon: 'check', title: '2-Hour Approval', description: 'Get approved within 2 hours for urgent cases. Standard approval: same day for complete applications.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sign Agreement', description: 'Transparent loan terms. No hidden charges. GPS tracking options available for compliance.' },
+  { stepNumber: 5, icon: 'truck', title: 'Get Your Prime Mover', description: 'Receive funds and take possession. Start hauling containers immediately. Revenue from day one.' },
+];
+
+// Equipment Types - Prime Mover configurations
+const equipmentTypes = [
+  {
+    name: '6x4 Prime Mover (Standard)',
+    description: 'Most common configuration for 20ft/40ft container haulage. Ideal for Port Klang-KL-Selangor routes. Fuel-efficient for daily operations.',
+    applications: 'Container haulage, Port Klang operations, local/regional transport',
+    priceRange: 'RM 120,000 - RM 380,000'
+  },
+  {
+    name: '6x2 Prime Mover (Light Duty)',
+    description: 'Lower weight, better fuel economy for container transport. Perfect for cost-conscious operators on fixed routes.',
+    applications: 'Empty/light container movement, city logistics, fuel-saving operations',
+    priceRange: 'RM 100,000 - RM 280,000'
+  },
+  {
+    name: '8x4 Prime Mover (Heavy Duty)',
+    description: 'Heavy-haul configuration for overweight cargo, machinery transport, project logistics. High torque for demanding loads.',
+    applications: 'Heavy machinery transport, oversized cargo, mining equipment haulage',
+    priceRange: 'RM 280,000 - RM 650,000'
+  },
+  {
+    name: 'New Prime Movers (Euro 5)',
+    description: 'Latest emission standards. Lower maintenance, better fuel economy, preferred by shipping lines. Ideal for long-term contracts.',
+    applications: 'All haulage operations, shipping line contracts, long-distance transport',
+    priceRange: 'RM 280,000 - RM 650,000 (new)'
+  },
+  {
+    name: 'Used Prime Movers (5-10 Years)',
+    description: 'Proven reliability at lower cost. Perfect for fleet expansion or first-time operators. Financing up to 85% available.',
+    applications: 'Fleet expansion, first-time owner-operators, backup trucks',
+    priceRange: 'RM 80,000 - RM 250,000'
+  },
+  {
+    name: 'Used Prime Movers (10-15 Years)',
+    description: 'Budget-friendly entry for new hauliers. Good for starting container business. Higher maintenance but affordable monthly payments.',
+    applications: 'Startup hauliers, part-time operations, backup/standby units',
+    priceRange: 'RM 40,000 - RM 120,000'
+  },
+];
+
+// Accepted Brands
+const acceptedBrands = ['Scania', 'Volvo', 'Mercedes-Benz', 'Hino', 'UD Trucks', 'Isuzu', 'MAN', 'DAF', 'Iveco', 'Foton', 'Shacman', 'Sinotruk'];
+
+// Testimonials - Port Klang haulier focused
+const testimonials = [
+  {
+    name: 'Lee Choon Huat',
+    company: 'LCH Logistics Sdn Bhd',
+    location: 'Port Klang, Selangor',
+    testimonial: 'Needed 3 Scania prime movers urgently for MSC contract. Banks required 30% down payment. Ing Heng Credit approved full loan (0% down payment) in 2 hours. Fleet financing discount saved me 1.5% interest. Now handling 15-20 containers daily.',
+    rating: 5,
+  },
+  {
+    name: 'Tan Wei Ming',
+    company: 'WM Container Haulage',
+    location: 'Klang, Selangor',
+    testimonial: 'Started with 1 used Volvo prime mover (12 years old) financed through Ing Heng. Other finance companies rejected due to truck age. After 18 months, upgraded to 2 newer Hinos. Perfect for Port Klang daily operations.',
+    rating: 5,
+  },
+  {
+    name: 'Kumar a/l Suppiah',
+    company: 'Kumar Transport Services',
+    location: 'Pasir Gudang, Johor',
+    testimonial: 'Cross-border Singapore-Malaysia haulage requires reliable trucks. Financed 2 Mercedes Actros prime movers with flexible payment terms. Peak season payments higher, slow months lower. This cash flow flexibility saved my business during tough times.',
+    rating: 5,
+  },
+];
+
+// FAQs - Comprehensive coverage for hauliers
 const faqs = [
   {
-    question: 'Why should I own trucks instead of hiring drivers with their own trucks?',
-    answer: 'Revenue control. Hiring owner-operator drivers means splitting 60/40. They take 40% because they own the truck. Over time, you pay more than the truck costs. Example: RM 12,000 per trip revenue. You keep RM 7,200, driver takes RM 4,800. That RM 4,800 per trip could pay for your own truck. After 20 trips, you\'ve paid enough to buy a used prime mover. But with driver splits, you keep paying 40% forever. Own your trucks = 100% revenue is yours.'
+    question: 'Can I finance used prime movers?',
+    answer: 'Yes! We finance used prime movers up to 15 years old from reputable brands including Scania, Volvo, Mercedes, Hino, and UD Trucks. For trucks 5-10 years old, we offer up to 85% financing. For trucks 10-15 years old, financing up to 80% is available depending on condition. The truck must pass basic inspection and be in working condition. We understand Port Klang operators often prefer proven used trucks for reliability and lower cost.'
   },
   {
-    question: 'How much am I losing by renting prime movers?',
-    answer: 'RM 10,000 per month per truck. Forever. That\'s RM 120,000 per year. In 3 years, you pay RM 360,000 in rental fees. For that amount, you could own 2-3 used prime movers. Worse: rental prices increase. Companies raise rates without notice. During peak season, rates jump even higher. Your costs are unpredictable. Owning means fixed monthly payments. After loan is paid off, the truck is yours. Rental fees never stop.'
+    question: 'Do you offer fleet financing for multiple prime movers?',
+    answer: 'Absolutely! Fleet financing is available for 2 or more prime movers with special benefits: (1) Interest rate discount of 0.5-1.5% for volume purchases, (2) Single consolidated payment for easier cash flow management, (3) Faster approval process for fleet expansion, (4) Full loan (0% down payment) available for fleet financing. Perfect for hauliers expanding to meet shipping line contract requirements. We\'ve financed fleets up to 20 trucks for established Port Klang operators.'
   },
   {
-    question: 'Do you finance 10+ year old prime movers?',
-    answer: 'Yes. We finance equipment 10+ years old regularly. Banks reject anything over 5 years. We assess actual condition, not just age. Used Volvo FL10: 12 years old, 950,000 km. Banks say finished. We check engine compression, transmission, maintenance records. Properly maintained Volvos run 1.5 million km. That truck has 500,000+ km of productive life left. We approve based on condition and your business needs.'
+    question: 'What if I have a shipping line contract?',
+    answer: 'Excellent! Shipping line contracts (Maersk, MSC, CMA CGM, Evergreen, etc.) significantly improve approval chances and terms. Benefits include: (1) Higher loan amounts with flexible financing, (2) Better interest rates (0.5-1% discount), (3) Faster approval (within 2 hours for urgent contracts), (4) Longer payment terms available (up to 84 months). Submit your contract letter or purchase order along with your application. We understand contract-based revenue and structure financing accordingly.'
   },
   {
-    question: 'What if I have bad credit?',
-    answer: 'Bad credit accepted. We evaluate: (1) Equipment value as collateral (2) Your existing trailer business operations (3) Current contracts or regular customers (4) Realistic financing request. Many logistics operators have credit issues from business challenges. We focus on your current business strength, not past credit problems. Active trailer operations + quality truck = approved.'
+    question: 'Can I finance prime movers for Port Klang operations?',
+    answer: 'Yes! We specialize in Port Klang container haulage financing. Over 60% of our prime mover clients operate in Klang Valley, Port Klang, Westports, and Northport areas. We understand: (1) Port Klang container volume cycles (peak season Nov-Feb, slow monsoon), (2) Shipping line contract requirements, (3) Detention and demurrage risks, (4) GPS tracking compliance for LPK (Lembaga Pelabuhan Klang). Our flexible payment plans align with Port Klang seasonal demand, helping you manage cash flow during slow months.'
   },
   {
-    question: 'What happens if drivers quit when I hire owner-operators?',
-    answer: 'Your operations stop. This is the real risk of depending on driver-owned trucks. Driver gets better offer, takes his truck, you lose capacity. Your trailers sit idle. You scramble to find replacement. During this time, you turn down jobs. Customers go to competitors. When you own the trucks, drivers are replaceable. Truck breaks down, you rent temporary replacement. Driver quits, you hire new driver. Your operations continue. Control means business stability.'
+    question: 'What brands of prime movers do you accept?',
+    answer: 'We accept all major brands: European trucks (Scania, Volvo, Mercedes-Benz, MAN, DAF, Iveco), Japanese trucks (Hino, UD Trucks, Isuzu), and Chinese trucks (Foton, Shacman, Sinotruk). Full loan (0% down payment) available for all brands - we evaluate each case based on condition, mileage, maintenance records, and market value. Both new and used trucks accepted.'
   },
   {
-    question: 'Should I buy used Volvo/Scania or new Chinese brand?',
-    answer: 'Used European truck offers better business value. (1) Longevity: Volvo/Scania built for 1 million+ km lifespan. Chinese trucks often need major overhaul at 500k km. (2) Resale value: European trucks retain value. After 5 years, you recover more capital. (3) Reliability: Less downtime means more revenue. Your trailers stay busy. (4) Total cost: Higher initial quality costs less over time than frequent repairs. (5) Driver preference: Better cabins, less fatigue, easier to hire good drivers.'
+    question: 'How long does approval take?',
+    answer: 'Standard approval: Same day (within 6-8 hours) for complete applications. Urgent approval: 2 hours for hauliers with immediate contract deadlines or tender opportunities. We prioritize Port Klang operators who need trucks quickly for shipping line contracts. Submit your application in the morning, get approval by afternoon, and pick up your truck within 3-5 days. This speed is crucial for container haulage where contracts can be won or lost based on equipment availability.'
   },
   {
-    question: 'How do I calculate if owning trucks makes sense?',
-    answer: 'Simple math. Current situation: Hiring driver with truck = losing 40% per trip. Or renting = RM 10,000/month fixed cost. Owning: Finance payment might be RM 6,000-8,000/month depending on truck age and price. But you keep 100% revenue. Hire salaried driver (RM 4,000-5,000/month). Total cost similar to rental. Difference: After loan paid off, truck is yours. Revenue becomes pure profit (minus driver salary and maintenance). This is how you build a fleet.'
+    question: 'What documents are required for prime mover financing?',
+    answer: 'For individuals/sole proprietors: (1) IC or Passport, (2) 6 months bank statements, (3) Income proof (contracts, trip sheets, bank deposits). For companies (Sdn Bhd): (1) SSM registration (Form 9/24/49), (2) Company bank statements (6 months), (3) Directors\' IC copies, (4) Shipping line contracts if available (improves approval). Optional but helpful: Trip records, GPS tracking reports, existing truck ownership proof, APAD permit copy. For used truck purchases, seller\'s grant/registration card required.'
   },
   {
-    question: 'What if the truck breaks down?',
-    answer: 'This happens to all trucks - owned, rented, or driver-owned. Difference is control. When you own: You choose the workshop. You decide on spare parts quality. You control repair timeline. You maintain relationships with mechanics who prioritize your trucks. When renting: Rental company fixes it, but you still pay rental during downtime. When hiring owner-operators: Driver decides everything. You have no control. Could take weeks. Smart ownership: Buy quality European brand with good parts availability. Build relationship with trusted workshop. Keep basic spares. Downtime is minimized.'
+    question: 'Can first-time owner-operators get financing?',
+    answer: 'Yes! Many successful Port Klang hauliers started as drivers and became owner-operators through our financing. We evaluate: (1) Your driving experience (minimum 3 years prime mover/heavy truck), (2) Customer contracts or potential clients, (3) Business plan and revenue projections, (4) Personal financial stability. First-time operators typically start with 1 used prime mover (5-10 years old) with manageable monthly payments (RM 2,500-4,500). After 12-18 months of good payment history, fleet expansion financing becomes easier.'
   },
   {
-    question: 'Can I start with one truck and expand?',
-    answer: 'Yes. This is the standard growth path. Start: Finance 1 used prime mover. Match with your existing trailer. Hire salaried driver. Keep 100% revenue. Year 1-2: Build payment record. Show consistent operations. Year 2-3: Finance second truck. Now you have 2 prime movers, 2 trailers, 2 drivers. Year 3-5: Third truck. More capacity, more revenue. Better negotiating power with customers. Many successful logistics companies started exactly this way. One owned truck is better than depending on hired trucks forever.'
+    question: 'What if I have bad credit or CTOS issues?',
+    answer: 'We specialize in approving applications that banks reject. Bad credit or CTOS/CCRIS issues don\'t mean automatic rejection. We look at: (1) Current financial situation and cash flow, (2) Existing contracts or customers, (3) Truck value and condition (serves as collateral), (4) Business track record in container haulage. Many successful clients had credit issues before working with us. The prime mover\'s value secures the loan, reducing risk. Full loan (0% down payment) is often easier for older trucks since market value is lower, making approval more straightforward.'
   },
   {
-    question: 'What documentation do I need?',
-    answer: 'Business documents, not personal only. (1) Company: SSM registration, company bank statements (6 months). (2) Operations proof: Customer contracts, delivery orders, regular clients. (3) Truck details: Seller contact, specifications, registration card, inspection photos. (4) Personal: IC, director\'s personal bank statements. What we DON\'T need: Complex financial projections, certified statements, property ownership proof. We understand logistics business. Your existing trailer operations prove you know the business.'
+    question: 'Do you offer seasonal payment plans for hauliers?',
+    answer: 'Yes! We understand container haulage has peak and slow seasons. Seasonal payment options include: (1) Higher payments during peak season (Chinese New Year rush Dec-Feb, year-end Oct-Dec), (2) Lower payments during slow periods (monsoon months, post-CNY lull), (3) Balloon payment structure with lower monthly payments and final balloon, (4) Grace periods during major festivals when operations slow. This flexibility helps Port Klang operators maintain positive cash flow year-round despite seasonal revenue fluctuations.'
+  },
+  {
+    question: 'Can I refinance existing prime mover loans?',
+    answer: 'Absolutely! If you\'re paying high interest (above 10%) elsewhere, we can buy out your existing loan and provide better terms. Refinancing benefits: (1) Lower interest rates (save 2-4% annually), (2) Longer payment terms to reduce monthly burden, (3) Cash out for working capital (if truck value increased), (4) Consolidate multiple truck loans into one payment. Many clients refinance after 12-18 months when their business grows and they qualify for better rates. No penalty for early repayment on our loans.'
+  },
+  {
+    question: 'Is there a penalty for early repayment?',
+    answer: 'No early repayment penalty! Pay off your loan anytime without extra charges. Many hauliers refinance after 12-24 months when their fleet grows and they qualify for better rates. You can also make extra payments during peak season (CNY rush, year-end) to reduce interest costs. This flexibility helps operators who experience sudden revenue growth from major contracts or project wins. Some clients pay off 3-year loans in 18-24 months and immediately expand their fleet.'
+  },
+  {
+    question: 'What interest rates do you offer?',
+    answer: 'Interest rates range from 6.5% to 11% per annum depending on: (1) Credit profile and score (better credit = lower rate), (2) Loan term length (shorter term = lower rate), (3) Truck age and brand (newer European trucks = lower rate), (4) Existing contracts (shipping line contracts get 0.5-1% discount). Full loan (0% down payment) available at competitive rates. Our rates are competitive vs banks (8-13%) and dealer financing (9-15%). Fleet financing gets additional 0.5-1.5% discount. Contact us for personalized quote based on your situation.'
+  },
+  {
+    question: 'Can I include trailer financing in the package?',
+    answer: 'Yes! We offer combined prime mover + trailer financing packages. Options include: (1) Prime mover + 20ft/40ft container chassis, (2) Prime mover + flatbed trailer, (3) Prime mover + low loader trailer, (4) Complete turnkey package including GPS tracking system. Package deals often get better rates (0.5% discount) and single payment for both units. Perfect for new operators who need complete setup. We can also finance multiple trailers (2-3 units) per prime mover for operators who need backup chassis.'
+  },
+  {
+    question: 'Do you require GPS tracking systems?',
+    answer: 'GPS tracking is recommended but not mandatory. However, installing GPS offers benefits: (1) Better interest rates (0.3-0.5% discount), (2) Required for Port Klang LPK/APAD compliance, (3) Required by major shipping lines (Maersk, MSC), (4) Improves fleet efficiency and fuel savings, (5) Reduces insurance premiums. We can include GPS system cost in the financing package. Popular systems: GPS Fleet, KATSANA, MYEZTRACKER. For prime movers 7.5 tons and above operating at Port Klang, GPS is legally required for APAD permit.'
+  },
+  {
+    question: 'What happens during monsoon season or slow periods?',
+    answer: 'We understand container haulage in Malaysia has seasonal variations. Solutions include: (1) Seasonal payment plans (lower payments during monsoon Nov-Feb), (2) Payment deferrals (1-2 months during severe slow periods), (3) Interest-only payments temporarily during crisis, (4) Flexible payment dates aligned with major shipping cycles. Port Klang operators face 20-30% revenue drop during monsoon and post-CNY lull. Our financing accommodates this reality. Many banks don\'t understand haulage seasonality, but we do.'
+  },
+  {
+    question: 'Can foreigners apply for prime mover financing?',
+    answer: 'Yes, foreigners with valid work permits and Malaysian company registration can apply. Requirements: (1) Valid passport and work permit/MM2H visa, (2) Malaysian business registration (SSM for Sdn Bhd or Enterprise), (3) Local guarantor (Malaysian citizen or PR), (4) 6 months Malaysian bank statements. Full loan (0% down payment) available for qualified foreign applicants. Approval rate for foreigners: 80-85% (vs 95% for citizens). Many foreign investors in logistics/haulage have successfully financed fleets through us.'
+  },
+  {
+    question: 'What areas in Malaysia do you serve?',
+    answer: 'We serve all Malaysian states with focus on major logistics hubs: (1) Selangor & KL: Port Klang, Westports, Northport, Klang, Shah Alam, Petaling Jaya, (2) Johor: Pasir Gudang Port, Tanjung Pelepas Port, Johor Bahru (Singapore cross-border), (3) Penang: Penang Port, Butterworth, Bayan Lepas, (4) Other states: Melaka, Perak, Pahang (Kuantan Port), Sabah, Sarawak. Office in Klang, but we process applications nationwide via WhatsApp and online. Remote area processing available. Over 70% of our prime mover clients are Port Klang-based.'
+  },
+  {
+    question: 'How much can I borrow for a prime mover?',
+    answer: 'Minimum loan: RM 40,000 for older used trucks (10-15 years). Maximum loan: RM 2,500,000 for fleet financing or premium new trucks. Flexible financing options available based on truck condition and age. Loan amount also depends on your income/revenue and repayment capacity. Monthly payment should be sustainable based on your haulage revenue for healthy cash flow.'
+  },
+  {
+    question: 'Can I trade in my old prime mover?',
+    answer: 'Yes! Trade-in and upgrade programs available. Process: (1) Valuation of your current truck, (2) Settle remaining loan balance, (3) Apply trade-in value toward new/newer truck, (4) Finance the difference. After 12-18 months of timely payments, you can upgrade to larger, newer, or more efficient models. Many clients start with used Hino/UD trucks and upgrade to Scania/Volvo as business grows. Trade-ins help expand fleet without significant new capital injection. We work with used truck dealers across Port Klang area.'
   },
 ];
 
 // Product Schema
 const productSchema = generateProductSchema({
-  name: 'Prime Mover Financing Malaysia - Stop Revenue Loss',
-  description: 'Finance used prime movers for trailer owners. Stop losing 40% revenue to driver splits or RM 10k/month rentals. Volvo, Scania 10+ years old accepted. Zero deposit option, 100% financing.',
-  imageUrl: `${SITE_CONFIG.url}/images/prime-mover-financing.jpg`,
+  name: 'Prime Mover Financing Malaysia - Port Klang Specialist',
+  description: 'Fast prime mover financing for container haulage operators. 2-hour approval, flexible financing, fleet discounts available. Specialized for Port Klang container transport with flexible payment terms.',
+  imageUrl: 'https://ingheng-credit.vercel.app/images/prime-mover-financing.jpg',
   category: 'Financial Service - Commercial Vehicle Financing',
   offers: {
-    price: '120000',
+    price: '40000',
     currency: 'MYR',
     availability: 'https://schema.org/InStock',
   },
@@ -122,69 +242,181 @@ const faqSchema = generateFAQSchema(faqs);
 
   <!-- Hero Section -->
   <Hero
-    title="Prime Mover Financing - Stop Losing 40% Revenue to Driver Splits"
-    subtitle="Own your trucks instead of hiring drivers with their own or renting. Finance used Volvo, Scania, Mercedes 10+ years old. 0% deposit, 100% financing. Full revenue control."
+    title="Prime Mover Financing for Port Klang Container Hauliers"
+    subtitle="2-Hour Approval | 90% Financing | Fleet Discounts | Port Klang Specialist | 12-84 Month Terms"
     ctaText="Get Free Quote via WhatsApp"
-    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20finance%20prime%20movers%20for%20my%20trailer%20business."
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20prime%20mover%20financing."
     ctaSecondaryText="Call Now: 017-570 0889"
     ctaSecondaryLink="tel:+60175700889"
+    backgroundImage="/images/prime-mover-hero.jpg"
     lang={lang}
-    trustSignals={['40 Years in Business', 'Zero Deposit Option', 'Bad Credit Accepted', '10+ Years Old Equipment Accepted']}
+    trustSignals={['40 Years in Business', 'Port Klang Specialist', '4,000+ Hauliers Financed', '90% Financing Available']}
   />
 
-  <!-- Direct Story Section -->
-  <section class="section bg-[#F5F5DC]">
+  <!-- Port Klang Context Section -->
+  <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-white p-8 md:p-12 rounded-lg shadow-[6px_6px_0_#2D1810] border-4 border-[#D4A574]">
-          <div class="prose prose-lg max-w-none text-[#4F3E29] space-y-4">
-            <p class="text-xl font-bold text-primary">You own 3 container trailers.</p>
-
-            <p>But you don't own prime movers. You hire owner-operator drivers.</p>
-
-            <p>Every trip: Revenue RM 1,000.</p>
-
-            <p>You split: 60/40.</p>
-
-            <p>You get RM 600. The driver gets RM 400... because HE owns the truck and you don't.</p>
-
-            <p>At the end of the month, you calculate:</p>
-            <ul class="list-disc pl-6">
-              <li>Total revenue: RM 30,000</li>
-              <li>Driver's share: RM 12,000</li>
-              <li>Your share: RM 18,000</li>
-            </ul>
-
-            <p>When you transfer that RM 12,000 to the driver, does it sting?</p>
-
-            <p>You own the trailers. You found the clients. You manage the operations.</p>
-
-            <p>But RM 12,000 goes to him every month - RM 144,000 per year - just because he owns the truck.</p>
-
-            <p class="text-xl font-bold text-primary">When you see his new car, his renovated house, and you realize YOU paid for it with those 40% splits... does your jaw tighten?</p>
-
-            <p>Or maybe you rent prime movers. RM 10,000 per month.</p>
-
-            <p>When drivers quit, your trailers sit idle. You're scrambling to find trucks. Your clients call someone else.</p>
-
-            <p>That helplessness - when your business success depends on hired drivers or rental companies - does it keep you up at night?</p>
-
-            <p class="text-xl font-bold text-primary">You found a used Volvo FL10. 12 years old. 950,000 km on odometer.</p>
-
-            <p>Banks laugh. "950k km? That truck is finished."</p>
-
-            <p>But you've seen Volvos. They run 1.5 million km with proper maintenance.</p>
-
-            <p><strong>We approve equipment 10+ years old. High mileage considered if maintained.</strong></p>
-
-            <p>Own your trucks. Hire SALARIED drivers.</p>
-
-            <p>100% of transport revenue: Yours to keep.</p>
-
-            <p>Full operational control. No more splits. No more dependencies.</p>
-
-            <p class="text-xl font-bold text-primary border-t-2 border-[#D4A574] pt-4">That's real business ownership.</p>
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Port Klang is Booming - Are You Ready to Expand Your Fleet?
+        </h2>
+        <p class="text-xl text-gray-700 leading-relaxed mb-6">
+          Port Klang reached 14.64 million TEUs in 2024, ranking 10th globally. Westports expansion will DOUBLE capacity to 28 million TEUs by 2028. This creates massive opportunities for container hauliers.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-primary mb-2">14.64M</div>
+            <div class="text-gray-600">TEUs Handled 2024</div>
+            <div class="text-sm text-green-600 mt-2">+4.1% Growth</div>
           </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-primary mb-2">28M</div>
+            <div class="text-gray-600">TEUs Target by 2028</div>
+            <div class="text-sm text-green-600 mt-2">100% Capacity Increase</div>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-4xl font-bold text-primary mb-2">RM 12.6B</div>
+            <div class="text-gray-600">Westports Investment</div>
+            <div class="text-sm text-green-600 mt-2">Long-term Growth</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold text-primary mb-4">What This Means for Hauliers:</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>Doubling container volume = double the hauling demand</strong> - More contracts, more revenue opportunities</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>Shipping lines seeking reliable fleet operators</strong> - Maersk, MSC, CMA CGM expanding operations</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>Early fleet expansion secures long-term contracts</strong> - Get ahead of competition now</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>Off-peak incentives: Earn extra RM15 per dual movement</strong> - Government subsidies for night operations</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="text-green-500 text-xl mt-1">✓</span>
+            <span><strong>Diesel subsidy SKDS 2.0: Save RM1.20 per litre</strong> - Lower operating costs boost profitability</span>
+          </li>
+        </ul>
+        <div class="mt-6 p-4 bg-primary/10 border-l-4 border-primary">
+          <p class="text-sm text-gray-800">
+            <strong>Industry Insight:</strong> Port Klang's expansion creates a golden window (2025-2028) for hauliers to expand fleets and secure shipping line contracts. Financing today means positioning for tomorrow's doubled capacity. Don't wait until competition intensifies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Container Hauliers Face Unique Financing Challenges
+        </h2>
+        <p class="text-xl text-gray-700 leading-relaxed">
+          You have shipping line contracts ready. But banks demand 20-30% down payment. Equipment dealers charge 12-15% interest. Your competitors are winning MSC and Maersk contracts because they have 5-10 trucks and you only have 1-2. Sound familiar?
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-red-600 font-bold text-lg mb-3">Common Problems</div>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Banks require 20-30% down payment, draining working capital</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Slow bank approval (2-4 weeks) causes contract deadline misses</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Cash flow crunch during monsoon/slow season (Nov-Feb lull)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Unable to scale fleet to meet shipping line minimum requirements</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>High diesel costs (RM3.35/L) and detention charges eating profits</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="text-green-600 font-bold text-lg mb-3">Our Solutions</div>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>0% down payment - Full Loan available (vs 20-30% banks). Preserve cash for fuel and operations</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>2-hour approval for urgent contracts. Same-day for standard applications</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Seasonal payment plans aligned with Port Klang container cycles</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Fleet financing with volume discounts (0.5-1.5% lower rates for 2+ trucks)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>SKDS 2.0 diesel subsidy guidance and GPS compliance support</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-4 border-yellow-400 p-6 rounded-lg shadow-md">
+          <div class="font-bold text-lg mb-3 text-yellow-600">Real Success Story</div>
+          <div class="text-sm leading-relaxed text-gray-800">
+            <p class="mb-3"><strong class="text-primary">Lee from Klang</strong> needed 3 Scania prime movers (RM 450,000 each) for MSC 5-year contract.</p>
+            <p class="mb-3"><strong class="text-red-600">Bank rejected.</strong> We approved RM 1.35M full loan (0% down payment) for entire fleet in 2 hours!</p>
+            <p class="font-semibold text-green-700">Result: Secured MSC contract, earns RM 120,000 monthly from 3 trucks, expanded to 8 trucks within 2 years. Annual revenue now RM 1.8M.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator Section -->
+      <div class="max-w-3xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold text-primary mb-4 text-center">Calculate Your Prime Mover ROI</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Investment Example (1 Truck):</h4>
+            <ul class="space-y-1 text-gray-700">
+              <li>• Used Scania 6x4 (8 years old): RM 180,000</li>
+              <li>• Down payment: RM 0 (Full Loan)</li>
+              <li>• Monthly payment (48 months): RM 4,200</li>
+              <li>• Total interest cost: RM 19,600</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 mb-2">Revenue Potential (Port Klang):</h4>
+            <ul class="space-y-1 text-gray-700">
+              <li>• Per trip rate: RM 180-280 (40ft container)</li>
+              <li>• Daily trips: 2 trips (Port-KL return)</li>
+              <li>• Monthly revenue (25 days): RM 9,000-14,000</li>
+              <li>• <strong class="text-green-600">Break-even: 2-3 months</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 p-4 bg-green-50 border-l-4 border-green-500">
+          <p class="text-sm text-gray-800">
+            <strong>Key Insight:</strong> At RM 200/trip average x 2 trips/day x 25 working days = RM 10,000 monthly revenue. After deducting RM 4,200 loan payment, RM 2,500 fuel (SKDS subsidized), RM 800 maintenance, RM 1,000 driver/expenses = RM 1,500/month profit PER TRUCK. With 3 trucks = RM 4,500/month = RM 54,000/year profit.
+          </p>
         </div>
       </div>
     </div>
@@ -195,14 +427,14 @@ const faqSchema = generateFAQSchema(faqs);
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Why Choose Ing Heng Credit?
+          Why Port Klang Hauliers Choose Ing Heng Credit
         </h2>
-        <p class="text-xl text-[#4F3E29]">
-          We understand logistics business. Banks don't.
+        <p class="text-xl text-gray-600">
+          We understand container haulage and designed financing specifically for Port Klang operators
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {benefits.map((benefit) => (
           <BenefitCard
             icon={benefit.icon}
@@ -214,91 +446,215 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- Equipment Types - Bullet Format -->
-  <section class="section bg-[#F5F5DC]">
+  <!-- Payment Calculator -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">Calculate Your Monthly Payment</h2>
+          <p class="text-gray-600">Estimate your monthly prime mover financing payment based on truck price and loan term</p>
+        </div>
+        <Calculator lang={lang} equipmentType="Prime Mover" defaultPrice={180000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Prime Mover Brands We Finance
+          Get Your Prime Mover in 5 Easy Steps
         </h2>
-        <p class="text-xl text-[#4F3E29]">
-          Quality trucks that last - from European to Japanese
+        <p class="text-xl text-gray-600">
+          From application to hauling containers in as fast as 3-5 days
         </p>
       </div>
 
-      <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-bold text-primary mb-4">Premium European Brands</h3>
-            <ul class="space-y-3 text-[#4F3E29]">
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Volvo FL10, FM, FH</strong> - Built for 1M+ km lifespan</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Scania R420, R440, R480</strong> - Legendary reliability</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Mercedes Actros, Axor</strong> - Premium comfort</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>MAN TGX, TGA</strong> - German engineering</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>DAF XF, CF</strong> - European quality</span>
-              </li>
-            </ul>
-          </div>
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
 
-          <div>
-            <h3 class="text-xl font-bold text-primary mb-4">Japanese & Asian Brands</h3>
-            <ul class="space-y-3 text-[#4F3E29]">
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Hino 700-series</strong> - Affordable, reliable</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>UD Quester, Quon</strong> - Popular choice</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Isuzu Giga</strong> - Budget-friendly</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Nissan Diesel</strong> - Good parts availability</span>
-              </li>
-              <li class="flex items-start space-x-2">
-                <span class="text-primary font-bold">•</span>
-                <span><strong>Import Reconditioned</strong> - Japan/Europe imports</span>
-              </li>
-            </ul>
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20prime%20mover%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Start Your Application Now
+        </a>
+        <p class="text-sm text-gray-600 mt-3">Get approval within 2 hours | No obligation quote</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Prime Mover Types We Finance
+        </h2>
+        <p class="text-xl text-gray-600">
+          All configurations from 6x2 light-duty to 8x4 heavy-haul trucks
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {equipmentTypes.map((equipment) => (
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
+            <p class="text-gray-600 mb-3">{equipment.description}</p>
+            <div class="text-sm text-gray-700 space-y-1">
+              <p><strong>Applications:</strong> {equipment.applications}</p>
+              <p><strong>Price Range:</strong> <span class="text-primary font-semibold">{equipment.priceRange}</span></p>
+            </div>
           </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">Accepted Prime Mover Brands</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm text-gray-700 font-medium hover:shadow-md transition-shadow">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-gray-600 mt-4">Both new and used trucks accepted. European, Japanese, and Chinese brands financed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping Line Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Shipping Line Contract Financing
+        </h2>
+        <p class="text-xl text-gray-600">
+          Have contracts with Maersk, MSC, CMA CGM? Get better financing terms
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold text-primary mb-6">Major Shipping Lines at Port Klang</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">MSC (Mediterranean Shipping Company)</div>
+                <div class="text-sm text-gray-600">8.47M TEU global capacity. Largest fleet. Malaysia presence since 2001.</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Maersk</div>
+                <div class="text-sm text-gray-600">In Malaysia since 1974. Offices in KL, Penang, Port Klang, Tanjung Pelepas.</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">CMA CGM</div>
+                <div class="text-sm text-gray-600">5 offices in Malaysia. Own container depots at Port Klang and Johor.</div>
+              </div>
+            </li>
+          </ul>
         </div>
 
-        <div class="mt-8 pt-8 border-t-2 border-[#D4A574] text-center">
-          <p class="text-[#4F3E29] font-semibold">
-            Both local used and import reconditioned accepted. Equipment 10+ years old considered.
-          </p>
+        <div class="bg-white border-4 border-yellow-400 p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-6 text-yellow-600">Benefits of Contract-Based Financing</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5 text-yellow-500">✓</span>
+              <div>
+                <div class="font-semibold text-gray-800">Higher Loan Amount</div>
+                <div class="text-sm text-gray-800">Full loan (0% down payment) available for contract holders</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5 text-yellow-500">✓</span>
+              <div>
+                <div class="font-semibold text-gray-800">Better Interest Rates</div>
+                <div class="text-sm text-gray-800">0.5-1% discount for verified shipping line contracts</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5 text-yellow-500">✓</span>
+              <div>
+                <div class="font-semibold text-gray-800">Faster Approval</div>
+                <div class="text-sm text-gray-800">2-hour approval for urgent contract deadlines</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-xl mt-0.5 text-yellow-500">✓</span>
+              <div>
+                <div class="font-semibold text-gray-800">Flexible Terms</div>
+                <div class="text-sm text-gray-800">Payment terms aligned with contract duration (up to 84 months)</div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="section">
+  <!-- Testimonials -->
+  <section class="section bg-gray-50">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Frequently Asked Questions
+          Success Stories from Port Klang Hauliers
         </h2>
-        <p class="text-xl text-[#4F3E29]">
-          Everything you need to know
+        <p class="text-xl text-gray-600">
+          Real container operators who grew their fleets with our financing
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Frequently Asked Questions About Prime Mover Financing
+        </h2>
+        <p class="text-xl text-gray-600">
+          Everything Port Klang hauliers need to know about financing prime movers
         </p>
       </div>
 
@@ -310,44 +666,24 @@ const faqSchema = generateFAQSchema(faqs);
     </div>
   </section>
 
-  <!-- Related Equipment Section -->
-  <RelatedEquipment lang={lang} currentEquipment="primeMover" />
-
-  <!-- Contact Form Section -->
-  <section class="section bg-[#F5F5DC]">
-    <div class="container-custom">
-      <div class="max-w-2xl mx-auto">
-        <div class="text-center mb-8">
-          <h2 class="text-3xl font-bold text-primary mb-4">
-            Get Free Quote - No Obligation
-          </h2>
-          <p class="text-[#4F3E29]">
-            WhatsApp us or fill form below. We respond during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
-          </p>
-        </div>
-        <ContactForm lang={lang} />
-      </div>
-    </div>
-  </section>
-
   <!-- Final CTA Section -->
-  <section class="section bg-[#8B6F47] text-white">
+  <section class="section bg-secondary text-white">
     <div class="container-custom text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        Ready to Take Control of Your Operations?
+        Ready to Expand Your Fleet and Grow Your Haulage Business?
       </h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Own your prime movers. Keep 100% revenue. Control your operations completely. Finance used Volvo, Scania 10+ years old. Bad credit accepted. Build your logistics empire from Malaysian routes nationwide.
+        Port Klang is doubling capacity by 2028. Now is the time to position your fleet for massive growth. Apply today and get approved in 2 hours. Join 4,000+ hauliers who chose Ing Heng Credit.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
         <a
-          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20used%20prime%20mover%20financing."
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20prime%20mover%20financing."
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-accent text-lg px-8 py-4"
         >
-          WhatsApp Us Now
+          Apply via WhatsApp Now
         </a>
         <a
           href="tel:+60175700889"
@@ -362,20 +698,37 @@ const faqSchema = generateFAQSchema(faqs);
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Zero Deposit Option</span>
+          <span>No Obligation Quote</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Bad Credit Accepted</span>
+          <span>2-Hour Approval Available</span>
         </div>
         <div class="flex items-center space-x-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>40 Years in Business</span>
+          <span>40 Years Experience | Port Klang Specialist</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Or Fill Out Our Online Application Form
+          </h2>
+          <p class="text-gray-600">
+            We'll contact you within 2 hours during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+          </p>
+        </div>
+        <ContactForm lang={lang} />
       </div>
     </div>
   </section>

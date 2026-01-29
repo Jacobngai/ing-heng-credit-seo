@@ -1,7 +1,7 @@
 ---
 title: Pembiayaan Subaru Legacy RS Turbo Malaysia - 0% Deposit Impian Wagon AWD
 description: Biayai Subaru Legacy RS Turbo dengan 0% deposit di Malaysia. Bank tolak wagon AWD tapi kami lulus. Kredit buruk diterima. Kelulusan pantas untuk legenda rally.
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: ms
 publishDate: 2025-12-27
