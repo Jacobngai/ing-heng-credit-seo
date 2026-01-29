@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 混凝土搅拌机 - 2026建筑设备融资
 
 ## 什么是混凝土搅拌机
@@ -75,7 +38,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 ## 搅拌机类型
 
 ### 按用途分类
-```
+\`\`\`
 小型搅拌机:
 - 容量: 250-500升
 - 用途: 小型项目
@@ -93,10 +56,10 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 用途: 大型项目
 - 移动: 固定式
 - 价格: RM 80,000-200,000
-```
+\`\`\`
 
 ### 按移动性
-```
+\`\`\`
 移动式:
 - 灵活方便
 - 小型项目
@@ -108,27 +71,27 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 高产量
 - 质量稳定
 - 价格较高
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -142,7 +105,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 ## 适用场景
 
 ### 建筑工地
-```
+\`\`\`
 混凝土需求:
 - 基础浇筑
 - 柱梁浇筑
@@ -154,10 +117,10 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 质量控制
 - 随时使用
 - 节省成本
-```
+\`\`\`
 
 ### 预制厂
-```
+\`\`\`
 预制生产:
 - 混凝土砖块
 - 预制构件
@@ -168,10 +131,10 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 连续生产
 - 质量稳定
 - 大批量
-```
+\`\`\`
 
 ### 小型工程
-```
+\`\`\`
 小型项目:
 - 装修工程
 - 围墙建设
@@ -182,12 +145,12 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 灵活方便
 - 成本低
 - 易操作
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡建筑承包商:**
-```
+\`\`\`
 项目: 双层排屋建设(10栋)
 混凝土需求: 3,000m³
 设备需求: 中型搅拌机
@@ -203,7 +166,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 项目期节省: RM 27,000
 - 设备成本: RM 18,500
 - 净节省: RM 8,500
-```
+\`\`\`
 
 ## 融资好处
 
@@ -229,7 +192,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 ## 工作效率
 
 ### 外购混凝土
-```
+\`\`\`
 采购方式:
 - 成本: RM 280/m³
 - 运输: 等待时间
@@ -237,10 +200,10 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 每天: 20m³
 
 月成本(20天): RM 112,000
-```
+\`\`\`
 
 ### 自备搅拌机
-```
+\`\`\`
 现场搅拌:
 - 材料成本: RM 200/m³
 - 随时搅拌: 无等待
@@ -249,12 +212,12 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 
 月成本(20天): RM 80,000
 节省: RM 32,000/月
-```
+\`\`\`
 
 ## 成本对比
 
 ### 3,000m³混凝土
-```
+\`\`\`
 外购成本:
 - 单价: RM 280/m³
 - 总成本: RM 840,000
@@ -269,7 +232,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 总计: RM 673,500
 
 节省: RM 196,500
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -283,7 +246,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 ## 收入潜力
 
 ### 日收入
-```
+\`\`\`
 租赁:
 - 8小时: RM 400-800
 - 按天: RM 350-700
@@ -292,20 +255,20 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 自拌节省: RM 150-200/m³
 - 销售: RM 50-80/m³利润
 - 服务费: RM 30-50/m³
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作20天:
 - 保守: RM 8,000(节省)
 - 一般: RM 16,000(销售)
 - 乐观: RM 32,000(综合)
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 小型(350升):
 - 电力/燃料: RM 600
 - 保养: RM 200
@@ -323,12 +286,12 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 保养: RM 800
 - 零件: RM 600
 总计: RM 4,400/月
-```
+\`\`\`
 
 ## 配套设备
 
 ### 必需设备
-```
+\`\`\`
 称重系统:
 - 精确配比
 - 质量保证
@@ -338,10 +301,10 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 材料输送
 - 提高效率
 - 减少人工
-```
+\`\`\`
 
 ### 可选设备
-```
+\`\`\`
 配料机:
 - 自动配料
 - 精确控制
@@ -351,7 +314,7 @@ const keywords = ["混凝土搅拌机","搅拌站","混凝土设备","搅拌机�
 - 大容量储存
 - 连续供应
 - 降低成本
-```
+\`\`\`
 
 ## 申请资格
 
@@ -384,7 +347,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 20,000设备
-```
+\`\`\`
 3年期:
 月供: RM 630
 总利息: RM 2,680
@@ -396,12 +359,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 280
 总利息: RM 3,520
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(中型)
-```
+\`\`\`
 投资: RM 20,000
 首付: RM 0
 月供: RM 390
@@ -413,7 +376,7 @@ WhatsApp: +60175700889
 回本: 7个月
 5年利润: RM 180,000
 ROI: 900%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -457,8 +420,46 @@ A: 较好，保值率75-85%
 **英兴信贷 - 混凝土设备融资专家**
 
 搅拌成功，建设未来！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

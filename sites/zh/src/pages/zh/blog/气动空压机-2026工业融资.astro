@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 气动空压机 - 2026工业设备融资
 
 ## 什么是空气压缩机
@@ -75,7 +38,7 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 ## 空压机类型
 
 ### 按类型分类
-```
+\`\`\`
 活塞式:
 - 小型便携
 - 价格便宜
@@ -93,10 +56,10 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 极高效率
 - 适合工业
 - 价格: RM 100,000+
-```
+\`\`\`
 
 ### 按功率分类
-```
+\`\`\`
 小型(5-15HP):
 - 修车厂
 - 小工厂
@@ -114,27 +77,27 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 重工业
 - 连续生产
 - 价格: RM 50,000-100,000+
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -147,7 +110,7 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 ## 适用场景
 
 ### 汽车维修
-```
+\`\`\`
 修车厂:
 - 气动扳手
 - 气动打气
@@ -158,10 +121,10 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 10-20HP
 - 螺杆式
 - 静音型
-```
+\`\`\`
 
 ### 木工家具
-```
+\`\`\`
 家具厂:
 - 气动钉枪
 - 气动打磨
@@ -172,10 +135,10 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 15-30HP
 - 螺杆式
 - 稳定供气
-```
+\`\`\`
 
 ### 制造加工
-```
+\`\`\`
 制造厂:
 - 气动工具
 - 自动化设备
@@ -186,12 +149,12 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 30-75HP
 - 螺杆式
 - 连续供气
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡家具厂:**
-```
+\`\`\`
 业务: 定制家具
 设备需求: 30HP螺杆式
 用途:
@@ -210,7 +173,7 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 每月26天
 - 生产效率提升30%
 - 产品质量提高
-```
+\`\`\`
 
 ## 融资好处
 
@@ -237,7 +200,7 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 ## 工作效率
 
 ### 电动 vs 气动
-```
+\`\`\`
 电动工具:
 - 重量: 重
 - 扭矩: 小
@@ -251,16 +214,16 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 维护: 少
 
 效率提升: 40-60%
-```
+\`\`\`
 
 ### 生产力提升
-```
+\`\`\`
 使用气动:
 - 工作速度: +40%
 - 产品质量: +30%
 - 工人疲劳: -50%
 - 工具寿命: +100%
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -275,7 +238,7 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 ## 配套设备
 
 ### 必需设备
-```
+\`\`\`
 储气罐:
 - 缓冲压力
 - 稳定供气
@@ -287,30 +250,30 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 保护工具
 - 提高质量
 - 价格: RM 5,000-15,000
-```
+\`\`\`
 
 ### 气动工具
-```
+\`\`\`
 常用工具:
 - 气动扳手: RM 200-800
 - 气动钉枪: RM 300-1,200
 - 气动打磨机: RM 300-900
 - 喷漆设备: RM 800-3,000
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 效率提升价值
-```
+\`\`\`
 家具厂:
 - 原生产: 50件/月
 - 现生产: 70件/月
 - 每件利润: RM 300
 - 月增收: RM 6,000
-```
+\`\`\`
 
 ### 成本节约
-```
+\`\`\`
 人工成本:
 - 原需要: 6人
 - 现需要: 4人
@@ -320,12 +283,12 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 电动工具寿命: 1年
 - 气动工具寿命: 3-5年
 - 年节省: RM 3,000-5,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 小型(10HP):
 - 电力: RM 1,500
 - 保养: RM 200
@@ -343,7 +306,7 @@ const keywords = ["空压机","空气压缩机","气动设备","空压机融资"
 - 保养: RM 1,200
 - 零件: RM 1,000
 总计: RM 10,200/月
-```
+\`\`\`
 
 ## 申请资格
 
@@ -380,7 +343,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 22,000空压机
-```
+\`\`\`
 3年期:
 月供: RM 690
 总利息: RM 2,840
@@ -392,12 +355,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 310
 总利息: RM 4,040
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 投资: RM 22,000
 首付: RM 0
 月供: RM 420
@@ -411,7 +374,7 @@ WhatsApp: +60175700889
 回本: 5个月
 5年利润: RM 276,000
 ROI: 1,255%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -455,8 +418,46 @@ A: 中等，每月RM 1,500-8,000
 **英兴信贷 - 工业设备融资专家**
 
 气动动力，高效生产！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

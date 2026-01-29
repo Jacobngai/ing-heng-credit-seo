@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,77 +23,39 @@ const keywords = ["承包商首台设备","新承包商融资","建筑设备","�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 承包商首台设备 2026
 
 ## 新承包商的挑战
 
 成为承包商需要设备:
 
-```
+\`\`\`
 新承包商 → 需要设备 → 没有资金 → Ing Heng帮助
-```
+\`\`\`
 
 ## 银行vs Ing Heng
 
 ### 银行要求
 
-```
+\`\`\`
 经验: 2-3年
 首付: 10-20%
 融资: 最多90%
 年龄限制: 5年
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng优势
 
-```
+\`\`\`
 经验: 6个月
 首付: 0%
 融资: 100%
 年龄限制: 无
 审批: 快速
-```
+\`\`\`
 
 ## 真实例子
 
@@ -147,8 +110,46 @@ RM 5,000-30,000用于:
 **WhatsApp: +60175700889**
 
 **新承包商，选择Ing Heng**
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

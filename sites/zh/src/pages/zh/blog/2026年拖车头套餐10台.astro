@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["拖车头套餐","10台拖车头","车队套餐","拖车头�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">运输</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 2026年拖车头套餐10台融资 - 完整车队解决方案
 
 ## 完整10台车队套餐
@@ -77,13 +40,13 @@ const keywords = ["拖车头套餐","10台拖车头","车队套餐","拖车头�
 
 ### 银行车队套餐条件
 
-```
+\`\`\`
 首付: 10-20%每台
 贷款: 最高90%
 年限: 5年内设备
 利率: 4.6-6.0%每年
 审批: 4-8周
-```
+\`\`\`
 
 **10台银行成本:**
 - 设备: RM 120,000/台
@@ -96,13 +59,13 @@ const keywords = ["拖车头套餐","10台拖车头","车队套餐","拖车头�
 
 ### 完整车队融资方案
 
-```
+\`\`\`
 首付: 0%
 贷款: 100%全额
 年限: 无限制
 审批: 快速
 利率: 批量优惠
-```
+\`\`\`
 
 **10台盈恒成本:**
 - 设备: RM 120,000/台
@@ -151,23 +114,23 @@ const keywords = ["拖车头套餐","10台拖车头","车队套餐","拖车头�
 - **选择**: 混合品牌套餐
 
 **银行方案:**
-```
+\`\`\`
 总价: RM 1,200,000
 首付: RM 120,000-240,000
 贷款: RM 1,080,000-960,000
 利率: 5.5%左右
 审批: 6周
-```
+\`\`\`
 
 **盈恒方案:**
-```
+\`\`\`
 总价: RM 1,200,000
 首付: RM 0
 贷款: RM 1,200,000
 利率: 批量优惠
 审批: 快速
 节省: RM 120,000-240,000
-```
+\`\`\`
 
 ## 10台车队套餐详细
 
@@ -377,8 +340,46 @@ A: 有的!10台车队享受批量利率优惠
 **建立您的完整车队**
 
 立即联系盈恒信贷，获得10台拖车头车队套餐融资。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">运输</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

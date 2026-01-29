@@ -6,4 +6,7 @@ export default defineConfig({
   site: 'https://www.inghengcredit.com',
   integrations: [tailwind(), sitemap()],
   output: 'static',
+  server: {
+    allowedHosts: ['.ngrok-free.app'],
+  },
 });

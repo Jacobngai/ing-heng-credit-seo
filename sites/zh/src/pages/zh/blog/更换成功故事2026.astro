@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,32 @@ const keywords = ["更换成功故事","更换案例","升级成功","更换ROI"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 更换成功故事 2026
+
+## 更换成功案例
+
+### 案例1: 叉车更换
+
+- 旧叉车: 月维修RM 2,000
+- 新叉车: 0%首付RM 30,000
+- 结果: 维修降至RM 200，节省RM 1,800/月
+
+### 案例2: 货车更换
+
+- 旧货车: 油耗RM 4,000/月
+- 新货车: 0%首付RM 70,000
+- 结果: 油耗降至RM 2,800，节省RM 1,200/月
+
+### 案例3: 挖掘机更换
+
+- 旧机: 10天完成项目
+- 新机: 0%首付RM 150,000
+- 结果: 6天完成，效率提升40%
+
+**您的成功故事!WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,33 +87,7 @@ const keywords = ["更换成功故事","更换案例","升级成功","更换ROI"
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 更换成功故事 2026
-
-## 更换成功案例
-
-### 案例1: 叉车更换
-
-- 旧叉车: 月维修RM 2,000
-- 新叉车: 0%首付RM 30,000
-- 结果: 维修降至RM 200，节省RM 1,800/月
-
-### 案例2: 货车更换
-
-- 旧货车: 油耗RM 4,000/月
-- 新货车: 0%首付RM 70,000
-- 结果: 油耗降至RM 2,800，节省RM 1,200/月
-
-### 案例3: 挖掘机更换
-
-- 旧机: 10天完成项目
-- 新机: 0%首付RM 150,000
-- 结果: 6天完成，效率提升40%
-
-**您的成功故事!WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["紧急设备融资","快速批准","快速设备贷款","急�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 紧急需求 - 快速批准 2026
 
 ## 紧急设备需求情况
@@ -76,22 +39,22 @@ const keywords = ["紧急设备融资","快速批准","快速设备贷款","急�
 ## 银行vs Ing Heng速度对比
 
 ### 银行审批
-```
+\`\`\`
 申请: 2-4周
 文件: 复杂
 审批: 慢
 放款: 更慢
 总时间: 1个月+
-```
+\`\`\`
 
 ### Ing Heng审批
-```
+\`\`\`
 申请: 快速
 文件: 简化
 审批: 快
 放款: 快速
 总时间: 2天
-```
+\`\`\`
 
 ## 真实例子
 
@@ -322,8 +285,46 @@ A: 某些情况快速也可以
 **速度就是金钱**
 
 项目不能等，设备不能等。Ing Heng提供快速快速批准，确保您不延误任何机会。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

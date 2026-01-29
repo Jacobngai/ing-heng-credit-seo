@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["康明斯发电机","Cummins发电机","柴油发电机","Cum
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 康明斯发电机组 - 2026Cummins发电机融资
 
 ## 康明斯发电机优势
 
 ### Cummins品牌
-```
+\`\`\`
 美国品牌:
 - 全球领导
 - 技术领先
@@ -79,10 +42,10 @@ const keywords = ["康明斯发电机","Cummins发电机","柴油发电机","Cum
 - 燃油经济
 - 技术先进
 - 环保低排
-```
+\`\`\`
 
 ### 适合场景
-```
+\`\`\`
 数据中心:
 - 微软、Google
 - 银行系统
@@ -100,12 +63,12 @@ const keywords = ["康明斯发电机","Cummins发电机","柴油发电机","Cum
 - 港口
 - 医院
 - 要求: 快速响应
-```
+\`\`\`
 
 ## 发电机规格
 
 ### 按功率分类
-```
+\`\`\`
 小型(30-50kVA):
 - 小型数据中心
 - 实验室
@@ -129,27 +92,27 @@ const keywords = ["康明斯发电机","Cummins发电机","柴油发电机","Cum
 - 大型设施
 - 新机: RM 600,000+
 - 二手: RM 350,000+
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -163,7 +126,7 @@ const keywords = ["康明斯发电机","Cummins发电机","柴油发电机","Cum
 ## 适用场景
 
 ### 数据中心
-```
+\`\`\`
 Tier标准:
 - Tier III: 双电源
 - Tier IV: 容错
@@ -173,10 +136,10 @@ Cummins优势:
 - 快速启动: 10-15秒
 - 并机运行: 多台并机
 - 负载响应: 快速稳定
-```
+\`\`\`
 
 ### 医疗设施
-```
+\`\`\`
 医院要求:
 - 生命支持系统
 - 手术室供电
@@ -187,10 +150,10 @@ Cummins优势:
 - 高可靠: 极低故障
 - 快速响应: 立即启动
 - 稳定运行: 电压稳定
-```
+\`\`\`
 
 ### 金融中心
-```
+\`\`\`
 银行数据中心:
 - 核心机房
 - 交易系统
@@ -201,12 +164,12 @@ Cummins优势:
 - 99.999%可靠
 - N+1冗余
 - 快速切换
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡数据中心:**
-```
+\`\`\`
 业务: 银行数据中心
 标准: Tier III
 需求: 200kVA x2台(冗余)
@@ -229,7 +192,7 @@ ROI:
 - 年避免损失: 无法估量
 - 系统可靠: 99.999%
 - 客户信心: 提升
-```
+\`\`\`
 
 ## 融资好处
 
@@ -255,7 +218,7 @@ ROI:
 ## Cummins优势
 
 ### 技术领先
-```
+\`\`\`
 先进技术:
 - 电子控制: 精确控制
 - 燃油系统: 高效燃烧
@@ -266,10 +229,10 @@ ROI:
 - 功率强劲: 比同级高5-10%
 - 响应快速: 负载变化快
 - 燃油经济: 比一般省10-15%
-```
+\`\`\`
 
 ### 可靠性
-```
+\`\`\`
 故障率:
 - 平均故障间隔: 1,000-2,000小时
 - 寿命: 20,000-40,000小时
@@ -278,59 +241,59 @@ ROI:
 对比:
 - 比一般品牌: 寿命长50-100%
 - 比便宜品牌: 寿命长150-200%
-```
+\`\`\`
 
 ### 服务网络
-```
+\`\`\`
 全球支持:
 - 190+国家
 - 7,000+经销商
 - 零件供应: 充足
 - 技术支持: 快速
-```
+\`\`\`
 
 ## 型号选择
 
 ### 6BT系列
-```
+\`\`\`
 30-80kVA:
 - 适合: 小型数据中心
 - 特点: 紧凑、经济
 - 转速: 1500/1800RPM
 - 价格: RM 25,000-55,000(二手)
-```
+\`\`\`
 
 ### 6CT系列
-```
+\`\`\`
 100-200kVA:
 - 适合: 中型数据中心
 - 特点: 可靠、稳定
 - 转速: 1500RPM
 - 价格: RM 60,000-120,000(二手)
-```
+\`\`\`
 
 ### QSX系列
-```
+\`\`\`
 200-400kVA:
 - 适合: 大型数据中心
 - 特点: 强劲、高效
 - 转速: 1500RPM
 - 价格: RM 120,000-250,000(二手)
-```
+\`\`\`
 
 ### KTA系列
-```
+\`\`\`
 400-800kVA:
 - 适合: 园区级数据中心
 - 特点: 重型、专业
 - 转速: 1500RPM
 - 价格: RM 250,000-500,000(二手)
-```
+\`\`\`
 
 ## 并机系统
 
 ### N+1冗余
-```
+\`\`\`
 配置:
 - N台主用: 承载负载
 - 1台备用: 冗余备份
@@ -340,10 +303,10 @@ ROI:
 - 单台故障: 不影响
 - 维护方便: 轮流维护
 - 可靠性: 99.999%
-```
+\`\`\`
 
 ### 负载均衡
-```
+\`\`\`
 并机运行:
 - 自动同步
 - 负载分配
@@ -354,12 +317,12 @@ ROI:
 - 延长寿命
 - 降低油耗
 - 提高效率
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 避免损失
-```
+\`\`\`
 数据中心:
 - 停机损失: 无法估量
 - 交易中断: RM 100,000-1,000,000/分钟
@@ -370,12 +333,12 @@ ROI:
 - 发电机: RM 500,000
 - 价值: 保全业务
 - 回本: 无法用金钱衡量
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(200kVA)
-```
+\`\`\`
 备用运行:
 - 测试运行: RM 3,000/月
 - 保养: RM 1,200/月
@@ -387,12 +350,12 @@ ROI:
 - 保养: RM 3,000/月
 - 零件: RM 1,500/月
 总计: RM 49,500/月
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期备用(200kVA x2)
-```
+\`\`\`
 投资: RM 520,000
 首付: RM 0
 月供: RM 9,800
@@ -401,7 +364,7 @@ ROI:
 - 保全业务: 每月数千万
 - 客户信心: 无法估量
 - 声誉提升: 长期价值
-```
+\`\`\`
 
 ## 申请资格
 
@@ -438,7 +401,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 500,000发电机x2
-```
+\`\`\`
 3年期:
 月供: RM 15,600
 总利息: RM 61,600
@@ -450,7 +413,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 7,000
 总利息: RM 88,000
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -497,8 +460,46 @@ A: 极高，80-90%保值率
 **英兴信贷 - Cummins发电机专家**
 
 卓越动力，业务保障！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

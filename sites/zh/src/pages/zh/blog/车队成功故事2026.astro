@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,36 @@ const keywords = ["车队成功故事","车队扩展案例","车队增长","成�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 车队成功故事 2026
+
+## 车队扩展故事
+
+### 故事1: 2台到10台
+
+\`\`\`
+2024: 2台货车，0%首付RM 100,000
+2025: 扩展到5台
+2026: 扩展到10台，月收入RM 150,000+
+\`\`\`
+
+### 故事2: 建筑车队
+
+\`\`\`
+2024: 3台挖掘机
+2025: 扩展到7台
+2026: 15台设备车队
+\`\`\`
+
+## 成功要素
+
+- 0%首付保留现金
+- 快速扩展
+- 按时还款建立信用
+
+**您的成功故事开始!WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,37 +91,7 @@ const keywords = ["车队成功故事","车队扩展案例","车队增长","成�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 车队成功故事 2026
-
-## 车队扩展故事
-
-### 故事1: 2台到10台
-
-```
-2024: 2台货车，0%首付RM 100,000
-2025: 扩展到5台
-2026: 扩展到10台，月收入RM 150,000+
-```
-
-### 故事2: 建筑车队
-
-```
-2024: 3台挖掘机
-2025: 扩展到7台
-2026: 15台设备车队
-```
-
-## 成功要素
-
-- 0%首付保留现金
-- 快速扩展
-- 按时还款建立信用
-
-**您的成功故事开始!WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

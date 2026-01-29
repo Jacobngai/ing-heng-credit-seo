@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 汽油发电机 - 2026便携式发电机组融资
 
 ## 汽油发电机优势
 
 ### 便携灵活
-```
+\`\`\`
 移动方便:
 - 重量轻: 50-150kg
 - 轮子设计: 移动轻松
@@ -79,30 +42,30 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 - 应急备用
 - 小型工地
 - 家庭备用
-```
+\`\`\`
 
 ### 价格优势
-```
+\`\`\`
 成本较低:
 - 设备价格: 比柴油便宜50-70%
 - 初期投资: RM 2,000-15,000
 - 维护简单: 自己可做
 - 燃料方便: 加油站可得
-```
+\`\`\`
 
 ### 即买即用
-```
+\`\`\`
 快速部署:
 - 无需安装: 加油启动
 - 随时使用: 移动方便
 - 操作简单: 一键启动
 - 维护容易: 基本保养
-```
+\`\`\`
 
 ## 汽油发电机类型
 
 ### 按功率分类
-```
+\`\`\`
 微型(1-3kVA):
 - 户外露营
 - 小摊位
@@ -120,10 +83,10 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 - 餐厅
 - 价格: RM 8,000-18,000(新)
 - 二手: RM 5,000-12,000
-```
+\`\`\`
 
 ### 按启动方式
-```
+\`\`\`
 手启动:
 - 最便宜
 - 体力需求
@@ -138,29 +101,29 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 - ATS连接
 - 自动启动
 - 适合: 备用电源
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 3年内
 利率: 4.6-6%
 审批: 2-4周
 金额小: 不愿批
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 金额小: 欢迎申请
-```
+\`\`\`
 
 ## 价格对比
 
@@ -174,7 +137,7 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 ## 适用场景
 
 ### 户外活动
-```
+\`\`\`
 活动类型:
 - 音乐会
 - 夜市
@@ -187,10 +150,10 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 - 静音要求
 - 稳定供电
 - 租赁收入高
-```
+\`\`\`
 
 ### 小型商业
-```
+\`\`\`
 商业场所:
 - 便利店
 - 小餐厅
@@ -202,10 +165,10 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 - 停业损失: RM 1,000-5,000/天
 - 食物变质: RM 500-3,000
 - 客户流失: 长期影响
-```
+\`\`\`
 
 ### 家庭备用
-```
+\`\`\`
 家庭用途:
 - 照明
 - 冰箱
@@ -216,12 +179,12 @@ const keywords = ["汽油发电机","便携式发电机","小型发电机","汽�
 - 静音
 - 方便
 - 安全
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡夜市摊主:**
-```
+\`\`\`
 业务: 夜市食品摊
 需求: 照明+冷藏
 选择: 3kVA汽油发电机
@@ -241,7 +204,7 @@ ROI:
 - 月成本: RM 500
 - 月净利: RM 2,500
 - 回本: 1个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -267,7 +230,7 @@ ROI:
 ## 便携优势
 
 ### 移动方便
-```
+\`\`\`
 小型轻便:
 - 重量: 50-100kg
 - 轮子: 轻松移动
@@ -278,24 +241,24 @@ ROI:
 - 多个场地
 - 租赁业务
 - 应急响应
-```
+\`\`\`
 
 ### 操作简单
-```
+\`\`\`
 一键启动:
 - 电启动: 按钮
 - 手启动: 拉绳
 - 简单培训: 即会
-```
+\`\`\`
 
 ### 维护容易
-```
+\`\`\`
 基本保养:
 - 机油: 每50-100小时
 - 火花塞: 每100小时
 - 空滤: 每100小时
 - 成本: RM 100-300/次
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -310,7 +273,7 @@ ROI:
 ## 收入潜力
 
 ### 租赁收入
-```
+\`\`\`
 日租金:
 - 3kVA: RM 80-150/天
 - 5kVA: RM 120-200/天
@@ -324,10 +287,10 @@ ROI:
 年租金(按10个月):
 - 3kVA: RM 16,000-30,000
 - 5kVA: RM 24,000-40,000
-```
+\`\`\`
 
 ### 自用价值
-```
+\`\`\`
 夜市摊:
 - 月增收: RM 3,000-5,000
 - 投资: RM 3,000-5,000
@@ -337,12 +300,12 @@ ROI:
 - 避免损失: RM 1,000-3,000/次
 - 投资: RM 3,000-5,000
 - 回本: 1-3次停电
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(5kVA)
-```
+\`\`\`
 备用运行:
 - 汽油: RM 200(测试)
 - 机油: RM 50
@@ -356,12 +319,12 @@ ROI:
 - 火花塞: RM 40
 - 空滤: RM 60
 总计: RM 1,000-1,200/月
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期租赁
-```
+\`\`\`
 投资: RM 5,000(5kVA)
 首付: RM 0
 月供: RM 95
@@ -373,7 +336,7 @@ ROI:
 回本: 2个月
 5年利润: RM 150,000
 ROI: 3,000%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -414,7 +377,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 5,000发电机
-```
+\`\`\`
 3年期:
 月供: RM 160
 总利息: RM 760
@@ -426,7 +389,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 70
 总利息: RM 880
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -473,8 +436,46 @@ A: 需要通风，室外最佳
 **英兴信贷 - 便携发电专家**
 
 移动电源，随时供电！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

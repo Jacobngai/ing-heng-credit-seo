@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,33 @@ const keywords = ["车队紧急","紧急车队融资","快速车队","快速车�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 车队紧急 2026
+
+## 紧急车队需求
+
+您的公司紧急需要车队:
+
+\`\`\`
+紧急项目 → 需要车队 → 快速批准 → 立即运营
+\`\`\`
+
+## 紧急车队
+
+| 车队 | 价值 | 批准时间 | Ing Heng首付 |
+|------|------|---------|-------------|
+| 2-3台 | RM 100,000-200,000 | 快速 | RM 0 |
+| 5台 | RM 250,000-400,000 | 快速 | RM 0 |
+
+## 快速流程
+
+- 第1天: 提交申请
+- 第2天: 获得批准
+- 第3天: 获得车队
+
+**紧急车队?立即联系 WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,34 +88,7 @@ const keywords = ["车队紧急","紧急车队融资","快速车队","快速车�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 车队紧急 2026
-
-## 紧急车队需求
-
-您的公司紧急需要车队:
-
-```
-紧急项目 → 需要车队 → 快速批准 → 立即运营
-```
-
-## 紧急车队
-
-| 车队 | 价值 | 批准时间 | Ing Heng首付 |
-|------|------|---------|-------------|
-| 2-3台 | RM 100,000-200,000 | 快速 | RM 0 |
-| 5台 | RM 250,000-400,000 | 快速 | RM 0 |
-
-## 快速流程
-
-- 第1天: 提交申请
-- 第2天: 获得批准
-- 第3天: 获得车队
-
-**紧急车队?立即联系 WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

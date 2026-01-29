@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,269 +23,231 @@ const keywords = ["集装箱罗里","40尺罗里","20尺罗里","集装箱运输
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">运输设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 集装箱罗里融资 - 2026指南
 
 ## 什么是集装箱罗里?
 
 集装箱罗里是专门运输集装箱的货车:
 
-```
+\`\`\`
 20尺罗里: 运输1个20尺集装箱
 40尺罗里: 运输1个40尺集装箱
 用途: 港口、货运、物流
-```
+\`\`\`
 
 ## 集装箱罗里类型
 
 ### 20尺集装箱罗里
-```
+\`\`\`
 用途: 20尺集装箱运输
 长度: 约6-7米
 载重: 20-25吨
 价格: RM 120,000-180,000
 融资: 100%
-```
+\`\`\`
 
 ### 40尺集装箱罗里
-```
+\`\`\`
 用途: 40尺集装箱运输
 长度: 约10-12米
 载重: 30-35吨
 价格: RM 180,000-250,000
 融资: 100%
-```
+\`\`\`
 
 ### 侧帘罗里
-```
+\`\`\`
 用途: 灵活装卸
 优点: 侧边开放
 价格: RM 150,000-200,000
 融资: 100%
-```
+\`\`\`
 
 ## 集装箱罗里融资对比
 
 ### 银行融资
-```
+\`\`\`
 首付: 10-20%
 贷款: 最高90%
 利率: 4.6-6.0%
 年限: 最长5年
 年龄限制: 不超过10年
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng融资
-```
+\`\`\`
 首付: 0%
 贷款: 100%
 利率: 从2.88%
 年限: 最长7年
 年龄: 无限制
 审批: 快速
-```
+\`\`\`
 
 ## 集装箱罗里业务
 
 ### 港口运输
-```
+\`\`\`
 路线: 巴生港-各地
 需求: 稳定
 收入: RM 8,000-15,000/月
-```
+\`\`\`
 
 ### 工厂运输
-```
+\`\`\`
 路线: 工厂-港口/仓库
 需求: 定期
 收入: RM 10,000-18,000/月
-```
+\`\`\`
 
 ### 跨境运输
-```
+\`\`\`
 路线: 马来西亚-新加坡/泰国
 需求: 高增长
 收入: RM 12,000-20,000/月
-```
+\`\`\`
 
 ## 集装箱罗里品牌
 
 ### 三菱(Mitsubishi)
-```
+\`\`\`
 型号: Canter
 价格: RM 120,000-160,000
 特点: 可靠耐用
 融资: 100%
-```
+\`\`\`
 
 ### 五十铃(Isuzu)
-```
+\`\`\`
 型号: NPR/ NQR
 价格: RM 130,000-170,000
 特点: 燃油效率
 融资: 100%
-```
+\`\`\`
 
 ### 日野(Hino)
-```
+\`\`\`
 型号: 300系列
 价格: RM 140,000-180,000
 特点: 舒适安全
 融资: 100%
-```
+\`\`\`
 
 ### 扶桑(Fuso)
-```
+\`\`\`
 型号: Canter
 价格: RM 125,000-165,000
 特点: 性价比高
 融资: 100%
-```
+\`\`\`
 
 ## 新vs二手集装箱罗里
 
 ### 新集装箱罗里
-```
+\`\`\`
 优点: 可靠, 质保, 低维护
 价格: RM 150,000-250,000
 融资: 100%
 年限: 最长7年
-```
+\`\`\`
 
 ### 二手集装箱罗里
-```
+\`\`\`
 优点: 价格便宜, 立即可用
 价格: RM 50,000-120,000
 融资: 100%(10年内)
 年限: 最长5年
-```
+\`\`\`
 
 ## 集装箱罗里融资套餐
 
 ### 单辆罗里
-```
+\`\`\`
 融资: 100%
 首付: 0%
 年限: 最长7年
 月供: RM 2,000-3,500
-```
+\`\`\`
 
 ### 车队套餐(3辆+)
-```
+\`\`\`
 融资: 100%
 首付: 0%
 年限: 最长7年
 优惠: 批量利率
 月供: 根据数量
-```
+\`\`\`
 
 ### 40尺罗里套餐
-```
+\`\`\`
 融资: 100%
 首付: 0%
 年限: 最长7年
 特殊: 大额融资
-```
+\`\`\`
 
 ## 集装箱罗里融资流程
 
 ### 1. 快速申请
-```
+\`\`\`
 时间: 今天
 方式: WhatsApp
 文件: 基本文件
-```
+\`\`\`
 
 ### 2. 快速批准
-```
+\`\`\`
 评估: 快速
 答复: 立即
 春节: 优先处理
-```
+\`\`\`
 
 ### 3. 购买罗里
-```
+\`\`\`
 支付: 直接给供应商
 交付: 安排快速
-```
+\`\`\`
 
 ### 4. 开始运营
-```
+\`\`\`
 注册: 完成
 保险: 办理
 运输: 立即开始
-```
+\`\`\`
 
 ## 集装箱罗里收入分析
 
 ### 20尺罗里收入
-```
+\`\`\`
 短途: RM 6,000-10,000/月
 中途: RM 8,000-12,000/月
 长途: RM 10,000-15,000/月
-```
+\`\`\`
 
 ### 40尺罗里收入
-```
+\`\`\`
 短途: RM 8,000-12,000/月
 中途: RM 10,000-15,000/月
 长途: RM 12,000-18,000/月
-```
+\`\`\`
 
 ### 运营成本
-```
+\`\`\`
 油费: RM 2,000-4,000/月
 司机: RM 2,000-3,000/月
 维修: RM 500-1,000/月
 保险路税: RM 600/月
-```
+\`\`\`
 
 ### 净收入
-```
+\`\`\`
 保守: RM 2,500-4,000/月
 良好: RM 4,000-7,000/月
 优秀: RM 7,000-10,000/月
-```
+\`\`\`
 
 ## 集装箱罗里融资成功案例
 
@@ -326,119 +289,119 @@ const keywords = ["集装箱罗里","40尺罗里","20尺罗里","集装箱运输
 ## 20尺vs 40尺罗里
 
 ### 20尺罗里
-```
+\`\`\`
 优点: 灵活, 停车方便
 价格: 较便宜
 用途: 市内运输
 适合: 新手
-```
+\`\`\`
 
 ### 40尺罗里
-```
+\`\`\`
 优点: 载重大, 收入高
 价格: 较贵
 用途: 长途运输
 适合: 有经验
-```
+\`\`\`
 
 ## 集装箱罗里融资建议
 
 ### 1. 选择合适尺寸
-```
+\`\`\`
 新业务: 20尺罗里
 有经验: 40尺罗里
 多样化: 两种都买
-```
+\`\`\`
 
 ### 2. 考虑品牌
-```
+\`\`\`
 可靠性: 三菱/日野
 经济: 扶桑/五十铃
 燃油: 五十铃
-```
+\`\`\`
 
 ### 3. 新vs二手
-```
+\`\`\`
 预算充足: 新罗里
 预算有限: 二手罗里
 急需: 二手立即可用
-```
+\`\`\`
 
 ### 4. 春节前准备
-```
+\`\`\`
 春节前: 购买和准备
 春节后: 立即运营
 旺季: 抓住需求
-```
+\`\`\`
 
 ## 集装箱罗里维护
 
 ### 日常维护
-```
+\`\`\`
 检查: 每日
 油水: 定期更换
 轮胎: 定期检查
-```
+\`\`\`
 
 ### 年度维护
-```
+\`\`\`
 服务: 每10,000公里
 检查: Puspakom
 保险: 每年续保
-```
+\`\`\`
 
 ### 成本预算
-```
+\`\`\`
 日常: RM 500/月
 年度: RM 3,000-5,000
 意外: RM 2,000-5,000
-```
+\`\`\`
 
 ## 集装箱罗里特殊要求
 
 ### 执照要求
-```
+\`\`\`
 驾照: GDL(重型)
 驾照: CDL(拖车)
 年龄: 21岁以上
-```
+\`\`\`
 
 ### AP要求
-```
+\`\`\`
 新罗里: 需要AP
 二手罗里: 不需要AP
 处理: 供应商协助
-```
+\`\`\`
 
 ### JPJ要求
-```
+\`\`\`
 注册: 必须注册
 路税: 每年缴交
  inspection: Puspakom
-```
+\`\`\`
 
 ## 集装箱罗里春节准备
 
 ### 节前准备
-```
+\`\`\`
 维护: 全面检查
 文件: 准备完毕
 司机: 安排值班
-```
+\`\`\`
 
 ### 春节期间
-```
+\`\`\`
 需求: 降低
 运营: 可减少
 收入: 预期减少
-```
+\`\`\`
 
 ### 节后准备
-```
+\`\`\`
 需求: 增加
 运营: 全力
 收入: 恢复正常
-```
+\`\`\`
 
 ## 集装箱罗里融资常见问题
 
@@ -460,20 +423,20 @@ A: 可以，基于收入评估。
 ## 集装箱罗里融资计算
 
 ### 20尺罗里(RM 150,000)
-```
+\`\`\`
 融资: 100% (RM 150,000)
 年限: 7年
 利率: 2.88%
 月供: 约 RM 2,000
-```
+\`\`\`
 
 ### 40尺罗里(RM 200,000)
-```
+\`\`\`
 融资: 100% (RM 200,000)
 年限: 7年
 利率: 2.88%
 月供: 约 RM 2,700
-```
+\`\`\`
 
 ## 立即申请
 
@@ -495,8 +458,46 @@ A: 可以，基于收入评估。
 **立即申请，开始集装箱运输业务**
 
 集装箱罗里融资简单快速。Ing Heng提供100%融资，0%首付，快速批准，助您成功开展集装箱运输业务。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">运输设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

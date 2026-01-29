@@ -1,0 +1,25 @@
+---
+/**
+ * MarkdownContent - Renders markdown content as HTML
+ * Uses marked library to parse markdown at build time
+ */
+import { marked } from 'marked';
+
+interface Props {
+  content: string;
+  class?: string;
+}
+
+const { content, class: className = '' } = Astro.props;
+
+// Configure marked for better output
+marked.setOptions({
+  gfm: true,
+  breaks: false,
+});
+
+// Parse markdown to HTML
+const htmlContent = marked.parse(content);
+---
+
+<div class={`prose prose-lg max-w-none ${className}`} set:html={htmlContent} />

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 电力故障紧急 - 2026应急发电融资
 
 ## 电力故障影响
 
 ### 停电损失
-```
+\`\`\`
 商业:
 - 零售店: RM 2,000-10,000/天
 - 餐厅: RM 3,000-15,000/天
@@ -78,12 +41,12 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 突然停电: 无法准备
 - 应急不及: 损失惨重
 - 客户流失: 长期影响
-```
+\`\`\`
 
 ## 应急发电方案
 
 ### 快速部署
-```
+\`\`\`
 应急发电机:
 - 便携式: 即刻使用
 - 拖车式: 2-4小时到位
@@ -94,34 +57,34 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 快速配送: 2-6小时
 - 专业安装: 1-2小时
 - 总时间: 4-8小时
-```
+\`\`\`
 
 ### 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
 应急: 不支持
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 应急: 优先处理
-```
+\`\`\`
 
 ## 应急发电机配置
 
 ### 按响应时间
-```
+\`\`\`
 即时(便携式):
 - 功率: 3-10kVA
 - 启动: 即时
@@ -139,10 +102,10 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 启动: 自动10-30秒
 - 安装: 永久安装
 - 价格: RM 35,000-120,000(二手)
-```
+\`\`\`
 
 ### 按行业需求
-```
+\`\`\`
 零售餐厅:
 - 10-20kVA
 - 便携或拖车
@@ -157,12 +120,12 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 100-200kVA
 - 固定式+ATS
 - 价格: RM 80,000-150,000(二手)
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡超市:**
-```
+\`\`\`
 情况: 频繁停电
 损失: 每次5万-10万
 需求: 应急备用
@@ -177,7 +140,7 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 营业继续
 - 客户满意
 - 避免损失: RM 300,000/年
-```
+\`\`\`
 
 ## 融资好处
 
@@ -196,18 +159,18 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 总融资: RM 29,000
 
 ### 应急优先
-```
+\`\`\`
 快速处理:
 - 审批: 快速
 - 交付: 快速
 - 安装: 快速
 - 总时间: 3-5天
-```
+\`\`\`
 
 ## 应急准备
 
 ### 节前准备
-```
+\`\`\`
 雨季前:
 - 检查发电机
 - 储备燃料
@@ -219,10 +182,10 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 - 机油: 备用
 - 滤芯: 备用
 - 启动电池: 检查
-```
+\`\`\`
 
 ### 应急流程
-```
+\`\`\`
 停电时:
 1. 确认停电
 2. 启动发电机
@@ -231,12 +194,12 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 5. 正常运行
 
 时间: 10-30分钟
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 避免损失
-```
+\`\`\`
 零售店:
 - 停业损失: RM 5,000/天
 - 食物变质: RM 2,000
@@ -245,20 +208,20 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 
 投资: RM 20,000
 回报: 避免2-3次即可
-```
+\`\`\`
 
 ### 租赁收入
-```
+\`\`\`
 应急租赁:
 - 日租金: RM 500-1,500/天
 - 高需求期: 雨季、热季
 - 月收入: RM 10,000-20,000
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期应急发电机
-```
+\`\`\`
 投资: RM 25,000
 首付: RM 0
 月供: RM 475
@@ -270,7 +233,7 @@ const keywords = ["电力故障","应急发电","停电应对","应急电源"],
 回本: 3个月
 5年节省: RM 710,000
 ROI: 2,840%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -307,7 +270,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 25,000应急发电机
-```
+\`\`\`
 3年期:
 月供: RM 780
 总利息: RM 3,080
@@ -319,7 +282,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 350
 总利息: RM 4,400
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -368,8 +331,46 @@ A: 不包括，但我们可协助安排
 **英兴信贷 - 应急发电专家**
 
 快速响应，业务连续！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

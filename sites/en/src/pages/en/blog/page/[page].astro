@@ -12,20 +12,22 @@ import CTAButton from '../../../../components/CTAButton.astro';
 import { COMPANY_INFO, SITE_CONFIG } from '../../../../utils/constants';
 
 export async function getStaticPaths() {
+  // Get markdown posts from content collection
   const allMdPosts = await getCollection('blogs');
-  const allPosts = allMdPosts
-    .filter(post => post.data.locale === 'en')
-    .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
+  const mdCount = allMdPosts.filter(post => post.data.locale === 'en').length;
+  
+  // Total posts = markdown + astro files (approximately 460 .astro blog files)
+  const totalPostsCount = mdCount + 460;
   
   const POSTS_PER_PAGE = 12;
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(totalPostsCount / POSTS_PER_PAGE);
   
   return Array.from({ length: totalPages - 1 }, (_, i) => ({
     params: { page: String(i + 2) }, // Start from page 2 (page 1 is /en/blog)
     props: { 
       page: i + 2,
       totalPages,
-      totalPosts: allPosts.length 
+      totalPosts: totalPostsCount 
     }
   }));
 }
@@ -35,9 +37,9 @@ const { totalPages, totalPosts } = Astro.props;
 const currentPage = parseInt(page as string);
 const lang = 'en';
 
-// Get all posts for this language
+// Get markdown posts from content collection
 const allMdPosts = await getCollection('blogs');
-const allPosts = allMdPosts
+const mdPosts = allMdPosts
   .filter(post => post.data.locale === lang)
   .map(post => ({
     title: post.data.title,
@@ -49,7 +51,36 @@ const allPosts = allMdPosts
     readTime: post.data.readingTime || 5,
     featured: post.data.featured,
     image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
-  }))
+  }));
+
+// Get .astro blog posts using import.meta.glob
+const astroBlogFiles = import.meta.glob('../*.astro', { eager: true });
+const astroPosts = Object.entries(astroBlogFiles)
+  .filter(([path]) => !path.includes('index.astro') && !path.includes('['))
+  .map(([path, module]: [string, any]) => {
+    const slug = path.replace('../', '').replace('.astro', '');
+    const post = module?.post || module?.frontmatter?.post || {};
+    return {
+      title: post.title || slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      excerpt: post.excerpt || post.description || 'Equipment financing guide.',
+      slug: slug,
+      date: post.date || '2026-01-15',
+      author: post.author || 'Ing Heng Credit Team',
+      category: post.category || 'Equipment Financing',
+      readTime: post.readTime || 5,
+      featured: post.featured || false,
+      image: post.image || `/images/blog/${slug}.jpg`,
+    };
+  });
+
+// Combine and deduplicate by slug
+const slugSet = new Set<string>();
+const allPosts = [...mdPosts, ...astroPosts]
+  .filter(post => {
+    if (slugSet.has(post.slug)) return false;
+    slugSet.add(post.slug);
+    return true;
+  })
   .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
 // Pagination setup

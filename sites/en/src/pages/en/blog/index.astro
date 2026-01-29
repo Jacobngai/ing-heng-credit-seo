@@ -12,9 +12,9 @@ import { COMPANY_INFO } from '../../../utils/constants';
 
 const lang = 'en';
 
-// Get blog posts from Content Collections
+// Get blog posts from Content Collections (markdown files)
 const allMdPosts = await getCollection('blogs');
-const allPosts = allMdPosts
+const mdPosts = allMdPosts
   .filter(post => post.data.locale === lang)
   .map(post => ({
     title: post.data.title,
@@ -27,6 +27,42 @@ const allPosts = allMdPosts
     featured: post.data.featured,
     image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
   }));
+
+// Get blog posts from .astro page files
+const astroBlogFiles = import.meta.glob('./*.astro', { eager: true });
+const astroPosts = Object.entries(astroBlogFiles)
+  .filter(([path]) => !path.includes('index.astro') && !path.includes('['))
+  .map(([path, module]: [string, any]) => {
+    const slug = path.replace('./', '').replace('.astro', '');
+    // Try to extract post data from the module if available
+    const post = module?.post || module?.frontmatter?.post || {
+      title: slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      excerpt: 'Equipment financing guide and tips.',
+      date: '2026-01-15',
+      author: 'Ing Heng Credit Team',
+      readTime: 5,
+      category: 'Equipment Financing',
+    };
+    return {
+      title: post.title || slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      excerpt: post.excerpt || post.description || 'Equipment financing guide.',
+      slug: slug,
+      date: post.date || '2026-01-15',
+      author: post.author || 'Ing Heng Credit Team',
+      category: post.category || 'Equipment Financing',
+      readTime: post.readTime || 5,
+      featured: post.featured || false,
+      image: post.image || `/images/blog/${slug}.jpg`,
+    };
+  });
+
+// Combine both sources and remove duplicates by slug
+const slugSet = new Set<string>();
+const allPosts = [...mdPosts, ...astroPosts].filter(post => {
+  if (slugSet.has(post.slug)) return false;
+  slugSet.add(post.slug);
+  return true;
+});
 
 // Sort by date (newest first)
 const sortedPosts = allPosts.sort((a, b) =>
@@ -92,71 +128,71 @@ if (totalPages <= maxPagesToShow) {
     'contractor financial tips'
   ]}
 >
-  <!-- Breadcrumbs -->
-  <section class="bg-gray-50 border-b border-gray-200">
-    <div class="container-custom">
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: `/${lang}/` },
-          { label: 'Blog', href: `/${lang}/blog` }
-        ]}
-      />
-    </div>
-  </section>
+  <!-- Hero Section - Super Dark Background with Light Text -->
+  <section class="hero-section relative overflow-hidden bg-gradient-to-br from-accent to-primary-dark min-h-[80vh] flex items-center">
+    <!-- Strong dark overlay for maximum text contrast -->
+    <div class="absolute inset-0 bg-black/60 z-0"></div>
+    <!-- Additional gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-5"></div>
 
-  <!-- Hero Section - Navy Blue with Yellow Text -->
-  <section class="hero-section bg-navy-900">
-    <div class="container-custom text-center">
-      <h1 class="hero-title text-yellow-400">
-        Equipment Financing Insights & Expert Guides
-      </h1>
-      <p class="hero-subtitle">
-        Learn from 40+ years of equipment financing expertise. Practical tips, industry insights, and proven strategies to help your construction, logistics, or manufacturing business thrive.
-      </p>
-
-      <!-- Search Bar -->
-      <div class="search-bar max-w-2xl mx-auto">
-        <div class="relative">
-          <input
-            type="search"
-            placeholder="Search articles about financing, equipment, business tips..."
-            class="search-input"
-            aria-label="Search blog posts"
+    <div class="container-custom relative z-10">
+      <div class="max-w-5xl mx-auto text-center">
+        <!-- Breadcrumbs -->
+        <div class="mb-8">
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: `/${lang}/` },
+              { label: 'Blog', href: `/${lang}/blog` }
+            ]}
           />
-          <button
-            type="button"
-            class="search-button"
-            aria-label="Search"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </button>
         </div>
-      </div>
 
-      <!-- Trust Signals -->
-      <div class="trust-signals">
-        <div class="trust-item">
-          <svg class="trust-icon" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4" clip-rule="evenodd" />
-          </svg>
-          <span>40+ Years Experience</span>
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-display uppercase leading-none mb-6 text-white font-black" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">
+          Expert <span class="text-yellow-400" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">Insights</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white mb-8 font-medium leading-relaxed max-w-3xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 1px 1px 2px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.6);">
+          Learn from 40+ years of equipment financing expertise. Practical tips, industry insights, and proven strategies.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-bar max-w-2xl mx-auto mb-8">
+          <div class="relative">
+            <input
+              type="search"
+              placeholder="Search articles about financing, equipment, business tips..."
+              class="search-input"
+              aria-label="Search blog posts"
+            />
+            <button
+              type="button"
+              class="search-button"
+              aria-label="Search"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
         </div>
-        <div class="trust-item">
-          <svg class="trust-icon" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4" clip-rule="evenodd" />
-          </svg>
-          <span>4,000+ Companies Helped</span>
-        </div>
-        <div class="trust-item">
-          <svg class="trust-icon" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4" clip-rule="evenodd" />
-          </svg>
-          <span>KPKT Licensed</span>
+
+        <!-- Trust Signals -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">40+</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Years Experience</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">4,000+</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Companies Helped</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4 col-span-2 md:col-span-1">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">KPKT</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Licensed</div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400 z-20"></div>
   </section>
 
   <!-- Category Navigation -->
@@ -355,17 +391,19 @@ if (totalPages <= maxPagesToShow) {
   }
 
   .hero-section {
-    @apply py-20 md:py-24;
     font-family: 'Bebas Neue', sans-serif;
   }
 
-  .hero-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight;
-    text-transform: uppercase;
+  .from-accent {
+    --tw-gradient-from: #0F172A;
   }
 
-  .hero-subtitle {
-    @apply text-xl text-white leading-relaxed mb-8 max-w-4xl mx-auto;
+  .to-primary-dark {
+    --tw-gradient-to: #1E3A8A;
+  }
+
+  .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to));
   }
 
   .search-bar {
@@ -383,25 +421,12 @@ if (totalPages <= maxPagesToShow) {
     box-shadow: 4px 4px 0 rgba(30, 58, 138, 0.3);
   }
 
-  .trust-signals {
-    @apply flex flex-wrap justify-center gap-6 mt-8;
-  }
-
-  .trust-item {
-    @apply flex items-center gap-2;
-    @apply text-sm text-yellow-400 font-bold;
-  }
-
-  .trust-icon {
-    @apply w-5 h-5 text-yellow-400;
-  }
-
-  .bg-navy-900 {
-    background-color: #0F172A;
-  }
-
   .text-yellow-400 {
     color: #FBBF24;
+  }
+
+  .bg-yellow-400 {
+    background-color: #FBBF24;
   }
 
   .category-nav {

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["LED灯塔","LED照明","节能灯塔","LED照明塔"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # LED灯塔 - 2026节能照明融资
 
 ## LED灯塔优势
 
 ### LED技术
-```
+\`\`\`
 节能特点:
 - 功率低: 比金卤灯省80-90%
 - 寿命长: 50,000小时
@@ -78,21 +41,21 @@ const keywords = ["LED灯塔","LED照明","节能灯塔","LED照明塔"],
 - 无汞: 环保材料
 - 低热: 减少热量
 - 可回收: 环境友好
-```
+\`\`\`
 
 ### 经济优势
-```
+\`\`\`
 能源节省:
 - 电费: -80-90%
 - 寿命: 长5-10倍
 - 维护: 极少
 - ROI: 12-24个月回本
-```
+\`\`\`
 
 ## LED灯塔类型
 
 ### 按功率分类
-```
+\`\`\`
 小型(200-400W):
 - 小工地
 - 小型活动
@@ -110,10 +73,10 @@ const keywords = ["LED灯塔","LED照明","节能灯塔","LED照明塔"],
 - 机场港口
 - 价格: RM 35,000-60,000(新)
 - 二手: RM 20,000-35,000
-```
+\`\`\`
 
 ### 按移动性
-```
+\`\`\`
 拖车式:
 - 机动灵活
 - 大型照明
@@ -127,27 +90,27 @@ const keywords = ["LED灯塔","LED照明","节能灯塔","LED照明塔"],
 固定式:
 - 永久照明
 - 价格: RM 20,000-50,000(二手)
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 3年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -160,7 +123,7 @@ const keywords = ["LED灯塔","LED照明","节能灯塔","LED照明塔"],
 ## 适用场景
 
 ### 工地照明
-```
+\`\`\`
 夜间施工:
 - 建筑工地
 - 道路工程
@@ -171,10 +134,10 @@ LED优势:
 - 耗电少: 省电费80%
 - 寿命长: 无需常换
 - 灯光好: 作业安全
-```
+\`\`\`
 
 ### 活动场地
-```
+\`\`\`
 户外活动:
 - 音乐会
 - 体育赛事
@@ -186,10 +149,10 @@ LED优势:
 - 色彩好
 - 静音
 - 环保
-```
+\`\`\`
 
 ### 应急照明
-```
+\`\`\`
 应急用途:
 - 灾害现场
 - 抢险救灾
@@ -200,12 +163,12 @@ LED优势:
 - 启动快
 - 电池供电
 - 便携轻便
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡活动公司:**
-```
+\`\`\`
 业务: 活动照明租赁
 需求: LED灯塔
 选择: 4x200W LED灯塔 x4台
@@ -224,7 +187,7 @@ LED优势:
 ROI:
 - 回本: 2个月
 - 5年利润: RM 3,360,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -250,7 +213,7 @@ ROI:
 ## LED vs 金卤灯
 
 ### 能耗对比
-```
+\`\`\`
 金卤灯400W:
 - 功率: 400W
 - 每台: 400W
@@ -263,10 +226,10 @@ LED 50W:
 - 4台: 200W
 - 电费: RM 1.25/天
 节省: 87.5%
-```
+\`\`\`
 
 ### 寿命对比
-```
+\`\`\`
 金卤灯:
 - 寿命: 5,000-10,000小时
 - 更换频率: 每1-2年
@@ -276,12 +239,12 @@ LED:
 - 寿命: 50,000小时
 - 更换频率: 每10年+
 - 灯泡成本: 很少
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(4台LED灯塔)
-```
+\`\`\`
 投资: RM 60,000
 首付: RM 0
 月供: RM 1,140
@@ -293,7 +256,7 @@ LED:
 回本: 2个月
 5年利润: RM 3,360,000
 ROI: 5,600%
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -307,7 +270,7 @@ ROI: 5,600%
 ## 节能计算
 
 ### 年节省
-```
+\`\`\`
 4台4x200W LED:
 - 功率: 800W
 - 年电费: RM 450
@@ -318,12 +281,12 @@ ROI: 5,600%
 
 年节省: RM 2,925
 ROI: 2年
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(LED)
-```
+\`\`\`
 LED灯塔:
 - 电费: RM 450-900
 - 保养: RM 50/月
@@ -335,7 +298,7 @@ LED灯塔:
 - 保养: RM 200/月
 - 灯泡: RM 100-300/月
 总计: RM 3,675-7,250/月
-```
+\`\`\`
 
 ## 申请流程
 
@@ -357,7 +320,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 60,000LED灯塔x4
-```
+\`\`\`
 3年期:
 月供: RM 1,880
 总利息: RM 7,680
@@ -369,7 +332,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 840
 总利息: RM 10,560
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -413,8 +376,46 @@ A: 50W LED = 400W 金卤灯
 **英兴信贷 - LED照明专家**
 
 LED技术，节能环保！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

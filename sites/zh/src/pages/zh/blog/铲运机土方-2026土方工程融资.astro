@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 铲运机土方 - 2026土方工程融资
 
 ## 什么是铲运机
@@ -75,7 +38,7 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 ## 铲运机类型
 
 ### 按容量分类
-```
+\`\`\`
 小型(8-12m³):
 - 短距离
 - 小型项目
@@ -93,10 +56,10 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 大型项目
 - 高效率
 - 价格: RM 350,000-600,000
-```
+\`\`\`
 
 ### 按操作方式
-```
+\`\`\`
 拖式:
 - 价格便宜
 - 需要牵引
@@ -108,27 +71,27 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 独立作业
 - 适合长距离
 - 价格较高
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -141,7 +104,7 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 ## 适用场景
 
 ### 大型土方
-```
+\`\`\`
 基础设施:
 - 高速公路
 - 机场建设
@@ -153,10 +116,10 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 长距离运输
 - 大容量
 - 成本低
-```
+\`\`\`
 
 ### 场地平整
-```
+\`\`\`
 大面积开发:
 - 工业园区
 - 住宅小区
@@ -167,10 +130,10 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 大量土方
 - 快速完成
 - 成本控制
-```
+\`\`\`
 
 ### 农田建设
-```
+\`\`\`
 农业开发:
 - 农田平整
 - 水渠建设
@@ -181,12 +144,12 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 高效率
 - 大面积
 - 省人工
-```
+\`\`\`
 
 ## 真实案例
 
 **彭亨土方承包商:**
-```
+\`\`\`
 项目: 200英亩土地开发
 土方量: 500,000m³
 运距: 800米
@@ -203,7 +166,7 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 设备成本: RM 145,000
 - 其他成本: RM 200,000
 - 净利润: RM 255,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -229,17 +192,17 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 ## 工作效率
 
 ### 传统方法
-```
+\`\`\`
 挖掘机 + 卡车:
 - 挖掘机: 1台
 - 卡车: 5台
 - 工人: 8人
 - 效率: 每天800m³
 - 成本: RM 3,200/天
-```
+\`\`\`
 
 ### 铲运机
-```
+\`\`\`
 自行式铲运机:
 - 设备: 1台
 - 工人: 2人
@@ -247,7 +210,7 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 成本: RM 1,800/天
 效率提升: 50%
 成本降低: 44%
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -262,7 +225,7 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 ## 收入潜力
 
 ### 日收入
-```
+\`\`\`
 租赁:
 - 8小时: RM 2,000-3,500
 - 按天: RM 1,800-3,000
@@ -271,20 +234,20 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 按立方: RM 1.5-2.5/m³
 - 按小时: RM 400-600
 - 项目承包: RM 3-5/m³(含作业)
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作22天:
 - 保守: RM 39,600
 - 一般: RM 57,200
 - 乐观: RM 77,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 小型(10m³):
 - 燃料: RM 4,000
 - 保养: RM 1,000
@@ -305,12 +268,12 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 零件: RM 2,000
 - 轮胎: RM 1,500
 总计: RM 16,000/月
-```
+\`\`\`
 
 ## 技术要求
 
 ### 操作技能
-```
+\`\`\`
 培训要求:
 - 专业培训
 - 实践经验
@@ -321,10 +284,10 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 装载控制
 - 运输安全
 - 卸土均匀
-```
+\`\`\`
 
 ### 作业要求
-```
+\`\`\`
 适用距离:
 - 最优: 300-1,500米
 - 太短: 效率低
@@ -334,7 +297,7 @@ const keywords = ["铲运机","土方工程","土方运输","铲运机融资"],
 - 坡度: &lt;15%
 - 地面: 坚实
 - 转弯: 有足够空间
-```
+\`\`\`
 
 ## 申请资格
 
@@ -367,7 +330,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 150,000设备
-```
+\`\`\`
 3年期:
 月供: RM 4,700
 总利息: RM 19,200
@@ -379,12 +342,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 2,100
 总利息: RM 26,400
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 投资: RM 150,000
 首付: RM 0
 月供: RM 2,900
@@ -396,7 +359,7 @@ WhatsApp: +60175700889
 回本: 5个月
 5年利润: RM 2,100,000
 ROI: 1,400%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -440,8 +403,46 @@ A: 中等，保值率70-80%
 **英兴信贷 - 土方设备融资专家**
 
 高效土方，成功工程！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

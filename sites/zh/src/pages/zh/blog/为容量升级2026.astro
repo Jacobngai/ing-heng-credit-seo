@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,35 @@ const keywords = ["为容量升级","产能增加","设备容量","满足订单"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 为容量升级 2026
+
+## 容量升级
+
+增加设备容量满足订单:
+
+\`\`\`
+订单增加 → 产能不足 → 增加设备 → 容量提升 → 满足需求
+\`\`\`
+
+## 容量升级选项
+
+| 现有 | 升级到 | 容量提升 | 成本 | Ing Heng首付 |
+|------|--------|---------|------|-------------|
+| 1台叉车 | 3台叉车 | 200% | RM 40,000-80,000 | RM 0 |
+| 2台货车 | 5台货车 | 150% | RM 150,000-300,000 | RM 0 |
+| 1台挖掘机 | 3台挖掘机 | 200% | RM 100,000-250,000 | RM 0 |
+
+## 容量升级好处
+
+- 满足更多订单
+- 收入增加100-200%
+- 0%首付
+- 快速扩展
+
+**立即申请: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,36 +90,7 @@ const keywords = ["为容量升级","产能增加","设备容量","满足订单"
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 为容量升级 2026
-
-## 容量升级
-
-增加设备容量满足订单:
-
-```
-订单增加 → 产能不足 → 增加设备 → 容量提升 → 满足需求
-```
-
-## 容量升级选项
-
-| 现有 | 升级到 | 容量提升 | 成本 | Ing Heng首付 |
-|------|--------|---------|------|-------------|
-| 1台叉车 | 3台叉车 | 200% | RM 40,000-80,000 | RM 0 |
-| 2台货车 | 5台货车 | 150% | RM 150,000-300,000 | RM 0 |
-| 1台挖掘机 | 3台挖掘机 | 200% | RM 100,000-250,000 | RM 0 |
-
-## 容量升级好处
-
-- 满足更多订单
-- 收入增加100-200%
-- 0%首付
-- 快速扩展
-
-**立即申请: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

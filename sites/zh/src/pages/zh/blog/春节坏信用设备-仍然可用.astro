@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,56 +23,18 @@ const keywords = ["春节坏信用","CCRIS问题","春节融资","第二次机�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 春节坏信用设备 - 仍然可用
 
 ## CCRIS问题不影响春节融资
 
 春节前需要设备但有CCRIS问题?
 
-```
+\`\`\`
 银行: CCRIS问题 = 拒绝 ❌
 Ing Heng: CCRIS问题 = 仍然考虑 ✅
-```
+\`\`\`
 
 ## 春节前CCRIS问题
 
@@ -82,19 +45,19 @@ Ing Heng: CCRIS问题 = 仍然考虑 ✅
 4. 被追讨债务
 
 ### 银行态度
-```
+\`\`\`
 看到CCRIS问题 → 自动拒绝
 不解释原因
 不给机会
-```
+\`\`\`
 
 ### Ing Heng态度
-```
+\`\`\`
 看到CCRIS问题 → 了解具体情况
 查看当前状况
 灵活评估
 给第二次机会
-```
+\`\`\`
 
 ## 真实例子
 
@@ -148,28 +111,28 @@ Ing Heng: CCRIS问题 = 仍然考虑 ✅
 ## 春节前坏信用融资方案
 
 ### 方案1: CCRIS修复方案
-```
+\`\`\`
 融资: 100%
 首付: 0%
 目的: 重建信用
 特点: 按时付款记录
-```
+\`\`\`
 
 ### 方案2: 第二次机会方案
-```
+\`\`\`
 融资: 80-100%
 首付: 0-20%
 目的: 给予机会
 特点: 灵活条款
-```
+\`\`\`
 
 ### 方案3: 改善记录方案
-```
+\`\`\`
 融资: 100%
 首付: 0%
 目的: 证明能力
 特点: 12个月后重审
-```
+\`\`\`
 
 ## CCRIS问题类型
 
@@ -194,25 +157,25 @@ Ing Heng: CCRIS问题 = 仍然考虑 ✅
 ## 春节前申请时间表
 
 ### 轻微问题
-```
+\`\`\`
 1月15日: 申请
 1月17日: 批准
 1月20日: 设备到位
-```
+\`\`\`
 
 ### 中等问题
-```
+\`\`\`
 1月10日: 申请(预留更多时间)
 1月15日: 批准
 1月20日: 设备到位
-```
+\`\`\`
 
 ### 严重问题
-```
+\`\`\`
 1月5日: 申请(最早)
 1月12日: 评估
 1月20日: 可能批准
-```
+\`\`\`
 
 ## 春节前vs春节后
 
@@ -338,8 +301,46 @@ CCRIS问题但春节前需要设备? 立即申请。
 **立即申请，春节前获得设备**
 
 CCRIS问题不是终点。Ing Heng春节前仍提供设备融资，给您第二次机会。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

@@ -35,7 +35,7 @@ const {
 ---
 
 <section
-  class="relative hero overflow-hidden"
+  class="relative hero overflow-hidden bg-gradient-to-br from-accent to-primary-dark min-h-[80vh] flex items-center"
   style={backgroundImage ? `background-image: url('${backgroundImage}')` : undefined}
 >
   <!-- Background Image (if provided) -->
@@ -50,9 +50,12 @@ const {
     </div>
   )}
 
-  <!-- Overlay with Enhanced Dark Gradient for Better Text Contrast -->
+  <!-- Strong dark overlay for maximum text contrast -->
   {overlay && (
-    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-bronze/80 to-brown-dark/95 z-10"></div>
+    <>
+      <div class="absolute inset-0 bg-black/60 z-5"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-10"></div>
+    </>
   )}
 
   <!-- Content -->
@@ -105,12 +108,8 @@ const {
     </div>
   </div>
 
-  <!-- Scroll Down Indicator (optional) -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-    <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
-  </div>
+  <!-- Yellow bottom bar -->
+  <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400 z-30"></div>
 </section>
 
 <style>
@@ -120,16 +119,15 @@ const {
     background-repeat: no-repeat;
   }
 
-  /* Enhanced gradients for better text contrast */
-  .from-black\/70 {
-    --tw-gradient-from: rgba(0, 0, 0, 0.7);
+  .from-accent {
+    --tw-gradient-from: #0F172A;
   }
 
-  .via-bronze\/80 {
-    --tw-gradient-via: rgba(139, 111, 71, 0.8);
+  .to-primary-dark {
+    --tw-gradient-to: #1E3A8A;
   }
 
-  .to-brown-dark\/95 {
-    --tw-gradient-to: rgba(45, 24, 16, 0.95);
+  .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to));
   }
 </style>

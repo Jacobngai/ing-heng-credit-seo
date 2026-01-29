@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,328 +23,290 @@ const keywords = ["梅赛德斯拖车头","奔驰拖车头","Mercedes Benz","德
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">运输设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 梅赛德斯拖车头融资 - 2026奔驰品质
 
 ## 为什么选择梅赛德斯?
 
 梅赛德斯-奔驰是德国顶级汽车品牌:
 
-```
+\`\`\`
 品质: 德国制造
 豪华: 顶级豪华
 可靠: 极其可靠
 品牌: 世界顶级
-```
+\`\`\`
 
 ## 梅赛德斯拖车头价格
 
 ### 新车价格
-```
+\`\`\`
 Actros: RM 350,000-450,000
 Arocs: RM 380,000-480,000
 Atego: RM 280,000-350,000
 融资: 100%
 首付: 0%
-```
+\`\`\`
 
 ### 二手价格
-```
+\`\`\`
 Actros(3-5年): RM 150,000-280,000
 Arocs(3-5年): RM 170,000-300,000
 Atego(3-5年): RM 120,000-220,000
 融资: 100%
-```
+\`\`\`
 
 ## 梅赛德斯技术优势
 
 ### 发动机技术
-```
+\`\`\`
 OM 471: 直列6缸
 马力: 400-530 PS
 扭矩: 强劲扭矩
 技术: BlueTec技术
 环保: Euro 6标准
-```
+\`\`\`
 
 ### 变速箱
-```
+\`\`\`
 类型: Powershift自动
 档位: 12档/16档
 换挡: 智能换挡
 效率: 燃油效率高
-```
+\`\`\`
 
 ### 安全系统
-```
+\`\`\`
 刹车: 第三代刹车系统
 稳定: 车身稳定系统
 辅助: 驾驶辅助系统
 安全: 全面安全配置
-```
+\`\`\`
 
 ## 梅赛德斯优势
 
 ### 1. 品质
-```
+\`\`\`
 优势: 德国品质
 做工: 精细工艺
 材料: 优质材料
 可靠性: 极其可靠
-```
+\`\`\`
 
 ### 2. 豪华
-```
+\`\`\`
 驾驶室: 顶级豪华
 座椅: 豪华座椅
 配置: 高级配置
 舒适: 最舒适
-```
+\`\`\`
 
 ### 3. 安全
-```
+\`\`\`
 系统: 全面安全系统
 技术: 先进安全技术
 保护: 最佳保护
 评级: 最高评级
-```
+\`\`\`
 
 ### 4. 品牌价值
-```
+\`\`\`
 品牌: 世界顶级
 形象: 高端形象
 信誉: 最佳信誉
 转售: 价值高
-```
+\`\`\`
 
 ## 梅赛德斯拖车头型号
 
 ### Actros系列
-```
+\`\`\`
 用途: 长途运输
 马力: 400-530 PS
 特点: 豪华长途
 价格: RM 350,000-450,000
 适合: 跨境/长途
-```
+\`\`\`
 
 ### Arocs系列
-```
+\`\`\`
 用途: 重载建筑
 马力: 420-530 PS
 特点: 强劲重载
 价格: RM 380,000-480,000
 适合: 建筑/重载
-```
+\`\`\`
 
 ### Atego系列
-```
+\`\`\`
 用途: 中短途配送
 马力: 250-330 PS
 特点: 灵活配送
 价格: RM 280,000-350,000
 适合: 配送/运输
-```
+\`\`\`
 
 ## 收入分析
 
 ### Actros收入
-```
+\`\`\`
 长途: RM 16,000-24,000/月
 跨境: RM 20,000-28,000/月
 高速: RM 14,000-20,000/月
-```
+\`\`\`
 
 ### Arocs收入
-```
+\`\`\`
 重载: RM 15,000-22,000/月
 建筑: RM 18,000-26,000/月
 特殊: RM 20,000-30,000/月
-```
+\`\`\`
 
 ### Atego收入
-```
+\`\`\`
 配送: RM 10,000-15,000/月
 中短途: RM 11,000-16,000/月
 运输: RM 12,000-17,000/月
-```
+\`\`\`
 
 ## 运营成本
 
 ### 固定成本
-```
+\`\`\`
 月供: RM 4,000-6,000
 司机: RM 3,500-5,000
 保险路税: RM 1,000-1,500
 总计: RM 8,500-12,500/月
-```
+\`\`\`
 
 ### 变动成本
-```
+\`\`\`
 油费: RM 3,500-5,500/月
 过路费: RM 1,000-2,000/月
 维修: RM 800-1,500/月
 轮胎: RM 500-1,000/月
 总计: RM 5,800-10,000/月
-```
+\`\`\`
 
 ### 总成本
-```
+\`\`\`
 保守: RM 14,000-18,000/月
 标准: RM 16,000-21,000/月
 高: RM 18,000-23,000/月
-```
+\`\`\`
 
 ### 净收入
-```
+\`\`\`
 保守: RM 2,000-5,000/月
 标准: RM 5,000-9,000/月
 优秀: RM 9,000-14,000/月
-```
+\`\`\`
 
 ## 融资套餐
 
 ### 标准套餐
-```
+\`\`\`
 融资: 100%
 首付: 0%
 年限: 最长7年
 利率: 从2.88%
-```
+\`\`\`
 
 ### 豪华套餐
-```
+\`\`\`
 融资: 100%
 首付: 0%
 年限: 最长7年
 特殊: RM 400,000+融资
 服务: 优先服务
-```
+\`\`\`
 
 ### 车队套餐
-```
+\`\`\`
 融资: 100%
 首付: 0%
 年限: 最长7年
 数量: 2辆以上
 优惠: 批量利率
-```
+\`\`\`
 
 ## 融资流程
 
 ### 1. 咨询评估
-```
+\`\`\`
 时间: 1小时
 方式: WhatsApp
 评估: 免费评估
-```
+\`\`\`
 
 ### 2. 申请提交
-```
+\`\`\`
 文件: 基本文件
 时间: 当天
 处理: 立即
-```
+\`\`\`
 
 ### 3. 快速批准
-```
+\`\`\`
 时间: 快速
 评估: 快速评估
 结果: 立即通知
-```
+\`\`\`
 
 ### 4. 购买交付
-```
+\`\`\`
 支付: 直接支付
 交付: 安排快速
 培训: 提供培训
-```
+\`\`\`
 
 ### 5. 开始运营
-```
+\`\`\`
 证件: 协助办理
 保险: 安排保险
 运营: 立即开始
-```
+\`\`\`
 
 ## 梅赛德斯vs其他品牌
 
 ### vs 五十铃/日野
-```
+\`\`\`
 价格: 贵50-80%
 品质: 更好
 豪华: 更豪华
 品牌: 更高端
 适合: 高端市场
-```
+\`\`\`
 
 ### vs 沃尔沃/斯堪尼亚
-```
+\`\`\`
 价格: 相似
 品质: 相似
 豪华: 相似
 品牌: 奔驰知名度更高
 适合: 品牌形象
-```
+\`\`\`
 
 ## 选择建议
 
 ### 选择梅赛德斯如果:
-```
+\`\`\`
 ✅ 重视品牌形象
 ✅ 注重德国品质
 ✅ 预算充足
 ✅ 高端运输业务
 ✅ 重视豪华
 ✅ 长期投资
-```
+\`\`\`
 
 ### 选择其他品牌如果:
-```
+\`\`\`
 ✅ 预算有限
 ✅ 注重性价比
 ✅ 实用为主
 ✅ 中端市场
-```
+\`\`\`
 
 ## 成功案例
 
@@ -368,7 +331,7 @@ OM 471: 直列6缸
 ## 融资计算
 
 ### Actros(RM 400,000)
-```
+\`\`\`
 融资: 100%
 年限: 7年
 利率: 2.88%
@@ -377,10 +340,10 @@ OM 471: 直列6缸
 收入: RM 22,000/月
 成本: RM 16,500/月
 净收入: RM 5,500/月
-```
+\`\`\`
 
 ### Atego(RM 300,000)
-```
+\`\`\`
 融资: 100%
 年限: 7年
 利率: 2.88%
@@ -389,47 +352,47 @@ OM 471: 直列6缸
 收入: RM 14,000/月
 成本: RM 11,500/月
 净收入: RM 2,500/月
-```
+\`\`\`
 
 ## 司机反馈
 
 ### 优点
-```
+\`\`\`
 豪华: 非常豪华
 舒适: 极其舒适
 品牌: 奔驰品牌自豪
 品质: 德国品质可靠
-```
+\`\`\`
 
 ### 缺点
-```
+\`\`\`
 价格: 价格最贵
 维修: 维修成本高
 零件: 零件昂贵
-```
+\`\`\`
 
 ## 维护保养
 
 ### 日常维护
-```
+\`\`\`
 检查: 每日检查
 油水: 定期更换
 清洁: 保持清洁
-```
+\`\`\`
 
 ### 定期维护
-```
+\`\`\`
 服务: 授权服务中心
 保养: 每15,000公里
 检查: 全面检查
-```
+\`\`\`
 
 ### 维修预算
-```
+\`\`\`
 日常: RM 800-1,200/月
 定期: RM 5,000-8,000/年
 意外: RM 8,000-15,000/年
-```
+\`\`\`
 
 ## 常见问题
 
@@ -468,8 +431,46 @@ A: 适合有经验的司机。
 **立即申请，拥有奔驰拖车头**
 
 梅赛德斯拖车头是德国品质的代表。0%首付，100%融资，让豪华拖车头触手可及。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">运输设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

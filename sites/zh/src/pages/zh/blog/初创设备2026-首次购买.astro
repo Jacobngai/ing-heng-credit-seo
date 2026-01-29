@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,74 +23,36 @@ const keywords = ["初创设备","新公司融资","首次购买","设备融资"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">初创融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 初创设备 2026 - 首次购买
 
 ## 新公司设备融资
 
 刚开始业务?需要购买设备?
 
-```
+\`\`\`
 银行: 新公司通常拒绝 ❌
 Ing Heng: 我们帮助初创 ✅
-```
+\`\`\`
 
 ## 银行vs Ing Heng对待新公司
 
 ### 银行态度
-```
+\`\`\`
 营业时间: 必须2-3年
 文件要求: 非常严格
 历史记录: 必须有
 审批倾向: 自动拒绝新公司
-```
+\`\`\`
 
 ### Ing Heng态度
-```
+\`\`\`
 营业时间: 6个月即可
 文件要求: 简化
 历史记录: 看当前收入
 审批倾向: 理解和支持
-```
+\`\`\`
 
 ## 新公司真实例子
 
@@ -169,31 +132,31 @@ Ing Heng: 我们帮助初创 ✅
 ## 初创融资方案
 
 ### 方案1: 6-12个月新公司
-```
+\`\`\`
 融资: 100%
 首付: 0%
 期限: 最长5年
 利率: 标准利率
 文件: 简化
-```
+\`\`\`
 
 ### 方案2: 12-24个月新公司
-```
+\`\`\`
 融资: 100%
 首付: 0%
 期限: 最长7年
 利率: 标准利率
 文件: 标准
-```
+\`\`\`
 
 ### 方案3: 项目导向融资
-```
+\`\`\`
 融资: 基于项目
 首付: 0%
 期限: 匹配项目
 利率: 有竞争力
 文件: 项目合同重点
-```
+\`\`\`
 
 ## 新公司融资流程
 
@@ -382,8 +345,46 @@ A: 设备本身作为担保。
 **立即申请，获得首次设备融资**
 
 刚开始业务?Ing Heng理解并支持新公司。不要让"新"成为障碍，立即申请。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">初创融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

@@ -1,0 +1,423 @@
+---
+/**
+ * Mobile Crane Financing Landing Page - Bahasa Malaysia
+ * New Equipment Page for Mobile Crane (Hitachi CX200-600)
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import TestimonialCard from '../../../../components/TestimonialCard.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../../utils/constants';
+const lang = 'ms';
+
+// SEO Data - Optimized for mobile crane financing Malaysia
+const pageTitle = 'Pembiayaan Kren Bergerak Malaysia | Hitachi CX200-600, 20-60 Tan';
+const pageDescription = 'Biayai kren bergerak untuk projek pembinaan dan infrastruktur. Kelulusan pantas, terma fleksibel. Biayai Hitachi CX200-600 dan model serupa dari RM300k-RM1.2M.';
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Kren Bergerak', url: '/ms/equipment/crane/mobile-crane-financing' },
+];
+
+// Equipment Specs
+const equipment = {
+  brand: 'Hitachi',
+  model: 'CX200-600',
+  type: 'Mobile Crane',
+  capacity: '20-60 tan',
+  priceRange: { min: 300000, max: 1200000, currency: 'MYR' },
+  category: 'Crane',
+  subCategory: 'Mobile Crane'
+};
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Kelulusan Pantas', description: 'Dapat kelulusan dengan pantas. Pembiayaan kren bergerak dalam 24-48 jam dari penyerahan dokumen lengkap. Kes segera diproses secara keutamaan.' },
+  { icon: 'percentage', title: 'Kadar Kelulusan Tinggi', description: 'Kadar kelulusan terkemuka dalam industri. Kami meluluskan permohonan kren bergerak yang ditolak oleh bank. Kadar kelulusan cemerlang untuk kontraktor pembinaan dan infrastruktur.' },
+  { icon: 'calendar', title: 'Terma Fleksibel 12-60 Bulan', description: 'Pilih tempoh bayaran yang sepadan dengan aliran tunai projek anda. Bayaran bulanan dari RM5,000-RM50,000 bergantung kepada nilai kren dan tempoh pinjaman.' },
+  { icon: 'shield', title: 'Semua Jenama Utama Diterima', description: 'Biayai Hitachi, Kato, Kobelco, Demag, Liebherr, dan banyak lagi jenama kren bergerak. Kedua-dua jenama Jepun dan Eropah tersedia dengan kadar yang kompetitif.' },
+  { icon: 'users', title: 'Bayaran Muka Serendah 0%', description: 'Pelaburan muka yang minimum. Pinjaman sehingga 100% untuk pemohon yang layak. Simpan modal kerja untuk operasi dan kos projek.' },
+  { icon: 'lightning', title: 'Semua Peralatan Diterima Berdasarkan Keadaan', description: 'Biayai kren bergerak terpakai. Semua peralatan diterima berdasarkan keadaan dari mana-mana jenama bereputasi. Peralatan mesti dalam keadaan baik dan lulus pemeriksaan kami. Pembiayaan kren bergerak terpakai biasanya memerlukan bayaran muka 10-20%.' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Hubungi Kami Melalui WhatsApp', description: 'Sembang dengan pakar pembiayaan kren bergerak kami. Dapatkan jawapan segera untuk soalan anda tentang Hitachi CX200-600 dan model serupa. Tersedia semasa waktu perniagaan (Isnin-Jumaat 9PG-5PTG, Sabtu 9PG-1PTG).' },
+  { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen', description: 'Sediakan IC (untuk individu) atau pendaftaran SSM (untuk syarikat). Untuk syarikat: Borang SSM 9/24/49, penyata bank syarikat, salinan IC pengarah, dan penyata kewangan jika ada. Proses yang mudah dan jelas.' },
+  { stepNumber: 3, icon: 'check', title: 'Dapat Kelulusan Pantas', description: 'Terima keputusan kelulusan dengan pantas. Kelulusan pembiayaan kren bergerak standard dalam 24-48 jam dari penyerahan dokumen lengkap. Kes segera dengan tarikh akhir projek segera diproses secara keutamaan.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Tandatangani Perjanjian Pinjaman', description: 'Semak dan tandatangani perjanjian pinjaman. Terma yang telus tanpa klausa tersembunyi. Kren bergerak berfungsi sebagai cagaran. Tanya soalan bila-bila semasa penandatanganan.' },
+  { stepNumber: 5, icon: 'truck', title: 'Terima Kren Bergerak Anda', description: 'Dana dilepaskan terus ke pembekal atau penjual peralatan yang anda pilih. Ambil milik Hitachi CX200-600 anda atau kren bergerak serupa. Mula operasi dengan segera dan mula memperoleh pendapatan dari projek pembinaan dan infrastruktur.' },
+];
+
+// Applications
+const applications = [
+  {
+    type: 'Construction Projects',
+    title: 'Pembinaan Jalan & Jambatan',
+    description: 'Pembiayaan kren bergerak untuk projek lebuh raya, pembinaan jambatan, dan pembangunan infrastruktur. Hitachi CX200-600 sesuai untuk pelebaran jalan, pembinaan geladak jambatan, dan persediaan tapak.',
+    features: ['20-60 tan', 'reka bentuk padat', 'persediaan pantas', 'kestabilan cemerlang']
+  },
+  {
+    type: 'Building Construction',
+    title: 'Bangunan Tinggi',
+    description: 'Pembiayaan kren bergerak untuk pembinaan bangunan tinggi, pendirian struktur keluli, dan pemasangan dinding tirai. Hitachi CX200-600 sesuai untuk pembinaan bandar dengan keperluan ruang yang terhad.',
+    features: ['jejak padat', 'jangkauan panjang', 'pengangkutan mudah', 'mesra bandar']
+  },
+  {
+    type: 'Industrial Projects',
+    title: 'Infrastruktur & Industri',
+    description: 'Pembiayaan kren bergerak untuk loji perindustrian, kilang, pembinaan gudang, dan pemasangan peralatan. Hitachi CX200-600 dan model serupa sempurna untuk pengendalian bahan dan projek pemasangan peralatan.',
+    features: ['20-60 tan', 'prestasi dipercayai', 'penyelenggaraan rendah', 'aplikasi serba guna']
+  },
+  {
+    type: 'Maintenance & Repair',
+    title: 'Perkhidmatan Penyelenggaraan & Pembaikan',
+    description: 'Pembiayaan kren bergerak untuk penyedia perkhidmatan penyelenggaraan. Gunakan Hitachi CX200-600 anda sendiri atau model serupa untuk sewa peralatan, perkhidmatan penyelenggaraan, dan projek pembaikan. Jana pendapatan mantap semasa berkhidmat kepada pelanggan anda.',
+    features: ['biayai peralatan', 'pendapatan sewa', 'kontrak penyelenggaraan', 'pembiayaan penyedia perkhidmatan']
+  }
+];
+
+// Testimonials - Real Success Stories
+const testimonials = [
+  {
+    name: 'Ahmad bin Hassan',
+    company: 'Alam Construction Sdn Bhd',
+    location: 'Klang, Selangor',
+    rating: 5,
+    testimonial: 'Memerlukan kren bergerak 20 tan untuk projek lebuh raya. Memohon melalui ING Heng. Diluluskan dalam 18 jam. Mendapat Hitachi CX200-600 dihantar dalam 3 hari. Menyelesaikan projek lebuh raya RM 850,000. Kini memiliki 3 kren bergerak dan mengembangkan armada.'
+  },
+  {
+    name: 'Tan Chee Keong',
+    company: 'TCK Infrastructure Sdn Bhd',
+    location: 'Johor Bahru',
+    rating: 5,
+    testimonial: 'Bank menolak permohonan pembiayaan kren bergerak saya disebabkan sejarah kredit terhad. ING Heng meluluskan permohonan saya dengan bayaran muka 10%. Membiayai Hitachi CX200-600 untuk projek pemasangan loji perindustrian. Projek selesai tepat pada masanya. Kini membiayai kren kedua untuk pengembangan.'
+  },
+  {
+    name: 'Muthu a/l Suppiah',
+    company: 'Prime Maintenance Sdn Bhd',
+    location: 'Ipoh, Perak',
+    rating: 5,
+    testimonial: 'Kadar kelulusan cemerlang. Pemprosesan pantas dalam masa 24 jam. Terma bayaran fleksibel sepadan dengan aliran tunai saya semasa bulan monsun. ING Heng menerima peralatan terpakai. Semua peralatan diterima berdasarkan keadaan - penting untuk perniagaan penyelenggaraan kren bergerak.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Bolehkah saya membiayai kren bergerak terpakai?',
+    answer: 'Ya! Kami membiayai kren bergerak terpakai. Semua peralatan diterima berdasarkan keadaan dari mana-mana jenama bereputasi termasuk Hitachi, Kato, Kobelco, Demag, Liebherr, dan lain-lain. Peralatan mesti dalam keadaan baik dan lulus pemeriksaan kami. Pembiayaan kren bergerak terpakai biasanya memerlukan bayaran muka 10-20% bergantung kepada umur dan keadaan peralatan. Kami juga menerima pertukaran peralatan terpakai sebagai sebahagian daripada bayaran muka.'
+  },
+  {
+    question: 'Model kren bergerak apa yang anda biayai?',
+    answer: 'Kami membiayai semua model kren bergerak utama dari jenama terkemuka: Hitachi (siri CX, siri ZX), Kato (siri KR), Kobelco (siri SK), Demag (siri AC), Liebherr (siri LTM), Grove (siri GM), dan banyak lagi. Model termasuk kren bergerak 20 tan, 30 tan, 50 tan, 60 tan, 80 tan, dan 100+ tan. Hubungi kami untuk ketersediaan dan harga model tertentu.'
+  },
+  {
+    question: 'Berapa lama kelulusan pembiayaan kren bergerak mengambil masa?',
+    answer: 'Kelulusan standard adalah 24-48 jam dari penyerahan dokumen lengkap. Kes segera dengan tarikh akhir projek segera (projek lebuh raya, pembinaan jambatan, dll.) diproses secara keutamaan dan boleh menerima kelulusan dalam masa 12 jam. Kelulusan awal pantas tersedia melalui WhatsApp dengan maklumat asas.'
+  },
+  {
+    question: 'Apakah jumlah pinjaman minimum dan maksimum kren bergerak?',
+    answer: 'Pinjaman minimum: RM 300,000 untuk kren bergerak 20 tan. Pinjaman maksimum: RM 1,200,000 untuk kren bergerak 80-100 tan. Kami boleh membiayai sehingga 90% nilai peralatan dengan bayaran muka dari 0% hingga 10%. Jumlah pinjaman tepat bergantung kepada model kren, umur, keadaan, jenama, dan profil kewangan anda.'
+  },
+  {
+    question: 'Apakah keperluan bayaran muka?',
+    answer: 'Bayaran muka dari 0% hingga 10% tersedia untuk pemohon yang layak. Untuk kren bergerak terpakai (5+ tahun), kami biasanya memerlukan bayaran muka 10-20%. Untuk kren baharu, kami menawarkan pilihan bayaran muka 0%. Untuk jenama premium seperti Hitachi dan Kobelco, terma yang lebih baik mungkin tersedia. Bayaran muka boleh dibuat melalui tunai, pertukaran peralatan sedia ada, atau peningkatan peralatan.'
+  },
+  {
+    question: 'Bolehkah saya membiayai lampiran kren bergerak?',
+    answer: 'Ya! Kami boleh membiayai lampiran kren bergerak termasuk baldi cengkaman, magnet, cangkuk, penyebar, rasuk pengangkat, dan lampiran khusus untuk projek pembinaan dan infrastruktur. Lampiran boleh dimasukkan dalam pakej pembiayaan kren bergerak atau dibiayai secara berasingan sebagai sebahagian daripada jumlah nilai peralatan. Kami menawarkan pembiayaan fleksibel untuk pakej kren bergerak lengkap dengan lampiran.'
+  },
+  {
+    question: 'Adakah anda membiayai kren bergerak untuk kredit buruk atau lalai pinjaman?',
+    answer: 'Ya! Kami mempertimbangkan setiap permohonan secara individu dan banyak klien berjaya mempunyai isu kredit atau lalai pinjaman sebelumnya. Kami melihat prestasi perniagaan semasa anda, kontrak projek, dan nilai kren bergerak berbanding hanya skor kredit. Kredit buruk atau lalai sebelum ini tidak bermakna penolakan automatik. Kren bergerak itu sendiri berfungsi sebagai cagaran, mengurangkan risiko kami dan meningkatkan peluang kelulusan anda. Kami mempunyai kadar kelulusan cemerlang untuk pembiayaan kren bergerak walaupun dengan cabaran kredit.'
+  },
+  {
+    question: 'Bolehkah saya meningkatkan kren bergerak saya kemudian?',
+    answer: 'Ya! Kami menawarkan program pertukaran dan peningkatan kren bergerak. Selepas 12-18 bulan pembayaran tepat pada masanya, anda boleh menukar kren semasa anda dan meningkatkan kepada model yang lebih besar atau lebih baharu (contohnya, peningkatan dari 20 tan hingga 30 tan, atau dari Hitachi CX200-600 hingga CX300-7). Kami membiayai semula baki yang tinggal dan menambah dana untuk peralatan baharu. Banyak klien bermula dengan kren 20 tan dan meningkatkan kepada model 50 tan ketika perniagaan mereka berkembang.'
+  },
+  {
+    question: 'Apakah dokumen yang saya perlukan untuk pembiayaan kren bergerak?',
+    answer: 'Untuk individu: (1) Salinan IC Malaysia atau Pasport, (2) 6 bulan penyata bank menunjukkan pendapatan dan transaksi, (3) Bukti pendapatan (slip gaji, penyata EPF, atau salinan kontrak projek). Untuk syarikat: (1) Sijil pendaftaran SSM (Borang 9/24/49), (2) Penyata bank syarikat (6 bulan), (3) Salinan IC pengarah untuk semua pengarah dan pemegang saham utama (pemilikan 25%+), (4) Penyata kewangan jika ada (akaudit membantu tetapi tidak wajib), (5) Kontrak projek atau sebut harga jika memohon untuk projek tertentu, (6) Lembaran spesifikasi kren bergerak atau invois proforma dari pembekal. Prosesnya mudah dan jelas dengan kertas kerja yang minimum.'
+  },
+  {
+    question: 'Adakah anda melayani semua negeri Malaysia?',
+    answer: 'Ya! Kami melayani semua negeri Malaysia termasuk Selangor, Kuala Lumpur, Johor, Pulau Pinang, Perak, Pahang, Negeri Sembilan, Melaka, Kelantan, Terengganu, Sabah, dan Sarawak. Pejabat kami terletak di Klang, Selangor, tetapi kami memproses permohonan di seluruh negara melalui penyerahan dalam talian dan WhatsApp. Pemprosesan kawasan jauh tersedia untuk Sabah, Sarawak, dan Malaysia Timur. Penghantaran kren bergerak tersedia di seluruh negara melalui rangkaian pembekal kami.'
+  },
+  {
+    question: 'Adakah terdapat penalti bayaran awal?',
+    answer: 'Tiada penalti bayaran awal! Anda boleh melunaskan pinjaman kren bergerak anda bila-bila masa tanpa caj tambahan. Banyak klien membiayai semula selepas 12-18 bulan ketika perniagaan mereka berkembang dan mereka layak untuk kadar yang lebih baik. Anda juga boleh membuat pembayaran tambahan semasa musim puncak untuk mengurangkan kos faedah. Fleksibiliti ini membantu kontraktor mengoptimumkan kewangan dan penggunaan kren bergerak mereka.'
+  },
+  {
+    question: 'Apakah julat kadar faedah?',
+    answer: 'Kadar faedah untuk pembiayaan kren bergerak biasanya julat dari 7.5% hingga 12% setahun bergantung kepada: (1) Profil kredit dan skor kredit, (2) Jumlah bayaran muka (bayaran muka lebih tinggi = kadar lebih rendah), (3) Panjang tempoh pinjaman (tempoh lebih pendek = kadar lebih rendah), (4) Umur dan jenama peralatan (peralatan lebih baharu = kadar lebih rendah, jenama premium = kadar lebih rendah), (5) Hubungan perniagaan anda dengan ING Heng. Kadar kami kompetitif berbanding bank (9-15%) dan pembiayaan pembekal (10-18%). Hubungi kami untuk sebut harga diperibadikan dan lihat kadar sebenar untuk situasi khusus anda.'
+  }
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Pembiayaan Kren Bergerak Hitachi CX200-600 Malaysia',
+  description: 'Pembiayaan kren bergerak pantas untuk projek pembinaan dan infrastruktur. Biayai Hitachi CX200-600 dan kren bergerak serupa dari RM300k-RM1.2M dengan pilihan bayaran muka 0%. Tempoh 12-60 bulan, kredit buruk diterima.',
+  imageUrl: `${SITE_CONFIG.url}/images/equipment/mobile-crane-hitachi.jpg`,
+  category: 'Financial Service - Equipment Financing',
+  offers: {
+    price: '300000',
+    priceCurrency: 'MYR',
+    availability: 'https://schema.org/InStock',
+    seller: {
+      '@type': 'Organization',
+      name: 'Ing Heng Credit & Leasing'
+    }
+  }
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={['pembiayaan kren bergerak Malaysia', 'pinjaman kren bergerak', 'pembiayaan kren pembinaan', 'pembiayaan peralatan infrastruktur', 'Hitachi CX200-600', 'kren 20 tan', 'kren 30 tan', 'pembelian kren bergerak', 'pajakan kren bergerak']}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Pembiayaan Kren Bergerak Hitachi CX200-600 Malaysia"
+    subtitle="Kelulusan Pantas | 20-60 Tan | 0% Bayaran Muka | Terma 12-60 Bulan | Kredit Buruk Diterima"
+    ctaText="Dapatkan Sebut Harga Percuma Melalui WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20mobile%20crane%20financing."
+    ctaSecondaryText="Hubungi: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Tahun dalam Perniagaan', 'Berlesen KPKT', 'Kadar Kelulusan Tinggi', 'Kelulusan Pantas']}
+  />
+
+  <!-- Application Types Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Aplikasi Pembiayaan Kren Bergerak
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Biayai kren bergerak untuk pembinaan jalan, pembinaan jambatan, bangunan tinggi, loji perindustrian, projek infrastruktur, dan perkhidmatan penyelenggaraan.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {applications.map((app) => (
+          <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-all hover:-translate-y-1">
+            <div class="text-2xl font-bold text-navy-900 mb-4">{app.title}</div>
+            <p class="text-[#4F3E29] mb-4">{app.description}</p>
+            <div class="space-y-3 mb-6">
+              {app.features.map((feature) => (
+                <div class="flex items-start space-x-3">
+                  <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900 flex-shrink-0 mt-0.5"></div>
+                  <span class="text-sm text-[#4F3E29]">{feature}</span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-6 pt-6 border-t-4 border-navy-900">
+              <a
+                href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20mobile%20crane%20financing."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary text-lg px-8 py-4 w-full"
+              >
+                Dapatkan Sebut Harga untuk {app.type}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Mengapa Pilih <span class="text-secondary">Ing Heng Credit</span> untuk Pembiayaan Kren Bergerak?
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Kelulusan pantas, terma fleksibel, kadar kompetitif, kadar kelulusan cemerlang untuk kren bergerak termasuk Hitachi, Kato, Kobelco, dan banyak lagi jenama.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Kira Bayaran Bulanan <span class="text-secondary">Kren Bergerak</span> Anda
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-3xl mx-auto">
+          Lihat betapa mampunya pembiayaan kren bergerak untuk perniagaan anda. Laraskan harga, tempoh, dan bayaran muka untuk sesuaikan bajet anda.
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        <Calculator
+          lang={lang}
+          equipmentType="Kren Bergerak"
+          defaultPrice={450000}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Cara Mendapatkan <span class="text-secondary">Kren Bergerak</span> Anda dalam 5 Langkah Mudah
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20mobile%20crane%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary btn-lg inline-block text-lg px-8 py-4"
+        >
+          Mulakan Permohonan Anda Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Kisah Kejayaan dari Kontraktor Kren Bergerak Malaysia
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Kontraktor sebenar yang membiayai Hitachi CX200-600 dan kren bergerak serupa melalui ING Heng. Menyelesaikan projek, mengembangkan armada, dan berkembang perniagaan mereka.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Soalan Lazim Mengenai <span class="text-secondary">Pembiayaan Kren Bergerak</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Semua yang perlu anda tahu tentang membiayai kren bergerak untuk projek pembinaan, infrastruktur, dan penyelenggaraan.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem
+            question={faq.question}
+            answer={faq.answer}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Sedia untuk Membiayai <span class="text-yellow-400">Hitachi CX200-600</span> atau Kren Bergerak Serupa Anda?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-3xl mx-auto leading-relaxed">
+        Mohon hari ini dan dapatkan kelulusan esok. Sertai ribuan kontraktor yang memilih Ing Heng Credit untuk keperluan pembiayaan kren bergerak mereka. 40 tahun pengalaman, kadar kelulusan terkemuka industri, terma telus.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20mobile%20crane%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4 inline-block text-center"
+        >
+          Mohon Melalui WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white text-lg px-8 py-4 inline-block text-center"
+        >
+          Hubungi: 017-570 0889
+        </a>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

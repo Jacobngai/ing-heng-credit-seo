@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,58 +23,20 @@ const keywords = ["槟城","北部地区","制造设备","设备融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 槟城设备融资 2026
 
 ## 槟城经济特色
 
 槟城是马来西亚北部经济中心:
 
-```
+\`\`\`
 制造业: 电子、电气
 旅游业: 文化遗产
 建筑业: 持续发展
 服务业: 稳定增长
-```
+\`\`\`
 
 ## 槟城设备需求
 
@@ -130,82 +93,82 @@ const keywords = ["槟城","北部地区","制造设备","设备融资"],
 ## 槟城热门设备
 
 ### 制造设备
-```
+\`\`\`
 CNC机器: RM 100,000-500,000
 注塑机: RM 80,000-300,000
 包装机: RM 30,000-150,000
 流水线: RM 200,000-1,000,000
-```
+\`\`\`
 
 ### 建筑设备
-```
+\`\`\`
 塔式起重机: RM 300,000-600,000
 混凝土泵车: RM 200,000-400,000
 挖掘机: RM 150,000-300,000
-```
+\`\`\`
 
 ### 旅游设备
-```
+\`\`\`
 酒店厨房设备: RM 50,000-200,000
 旅游巴士: RM 150,000-400,000
 游艇: RM 200,000-1,000,000
-```
+\`\`\`
 
 ## 槟城地区融资
 
 ### 乔治敦
-```
+\`\`\`
 重点: 商业、旅游
 设备: 酒店、餐厅
 投资: RM 50,000-500,000
-```
+\`\`\`
 
 ### 威省
-```
+\`\`\`
 重点: 制造业
 设备: 生产机器
 投资: RM 100,000-2,000,000
-```
+\`\`\`
 
 ### 北海
-```
+\`\`\`
 重点: 建筑、住宅
 设备: 建筑设备
 投资: RM 200,000-800,000
-```
+\`\`\`
 
 ### 峇都交湾
-```
+\`\`\`
 重点: 工业
 设备: 制造、仓储
 投资: RM 100,000-500,000
-```
+\`\`\`
 
 ## 行业专精方案
 
 ### 制造业方案
-```
+\`\`\`
 特点: 生产设备专精
 融资: 长期支持
 还款: 匹配生产周期
 期限: 5-7年
-```
+\`\`\`
 
 ### 建筑业方案
-```
+\`\`\`
 特点: 项目支持
 融资: 基于合同
 还款: 分阶段
 期限: 3-5年
-```
+\`\`\`
 
 ### 旅游业方案
-```
+\`\`\`
 特点: 季节性支持
 融资: 灵活条款
 还款: 匹配旅游旺季
 期限: 3-5年
-```
+\`\`\`
 
 ## 槟城经济趋势
 
@@ -319,8 +282,46 @@ A: 不必，可以在线完成。
 **立即申请，槟城设备融资**
 
 槟城设备需求?Ing Heng提供快速灵活的融资方案，了解北部市场。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

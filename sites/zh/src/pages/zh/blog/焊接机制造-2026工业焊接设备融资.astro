@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["焊接机","电焊机","焊接设备","焊接机融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 焊接机制造 - 2026工业焊接设备融资
 
 ## 什么是焊接机
@@ -75,7 +38,7 @@ const keywords = ["焊接机","电焊机","焊接设备","焊接机融资"],
 ## 焊接机类型
 
 ### 按用途分类
-```
+\`\`\`
 手工电弧焊:
 - 小型维修
 - 户外作业
@@ -99,10 +62,10 @@ TIG焊:
 - 机器人焊接
 - 效率极高
 - 价格: RM 50,000+
-```
+\`\`\`
 
 ### 按功率分类
-```
+\`\`\`
 小型(200A以下):
 - 维修店
 - 小型加工
@@ -120,27 +83,27 @@ TIG焊:
 - 大型结构
 - 专业焊接
 - 价格: RM 20,000-60,000+
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -154,7 +117,7 @@ TIG焊:
 ## 适用场景
 
 ### 结构制造
-```
+\`\`\`
 钢结构:
 - 工厂结构
 - 建筑结构
@@ -165,10 +128,10 @@ TIG焊:
 - 400A MIG焊
 - 效率高
 - 质量好
-```
+\`\`\`
 
 ### 不锈钢制品
-```
+\`\`\`
 不锈钢:
 - 厨房设备
 - 食品机械
@@ -179,10 +142,10 @@ TIG焊:
 - TIG焊
 - 精密焊接
 - 外观美观
-```
+\`\`\`
 
 ### 维修服务
-```
+\`\`\`
 维修店:
 - 车辆维修
 - 设备维修
@@ -193,12 +156,12 @@ TIG焊:
 - 便携式
 - 多功能
 - 价格便宜
-```
+\`\`\`
 
 ## 真实案例
 
 **雪兰莪钢结构厂:**
-```
+\`\`\`
 业务: 钢结构制造
 设备需求: 400A MIG焊机
 用途:
@@ -217,7 +180,7 @@ TIG焊:
 - 每月26天
 - 焊接效率提升50%
 - 月增收: RM 12,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -243,7 +206,7 @@ TIG焊:
 ## 工作效率
 
 ### 手工 vs 半自动
-```
+\`\`\`
 手工焊接:
 - 速度: 慢
 - 质量: 不稳定
@@ -255,16 +218,16 @@ TIG焊:
 - 质量: 稳定
 - 技能要求: 中
 - 成本: 效率高
-```
+\`\`\`
 
 ### 生产效率
-```
+\`\`\`
 使用MIG焊:
 - 焊接速度: +200%
 - 质量稳定: +50%
 - 返工减少: -80%
 - 材料节省: 10%
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -280,7 +243,7 @@ TIG焊:
 ## 配套设备
 
 ### 必需设备
-```
+\`\`\`
 保护气体:
 - CO2气瓶
 - 混合气体
@@ -292,20 +255,20 @@ TIG焊:
 - 焊接手套: RM 50-200
 - 焊接电缆: RM 500-1,500
 - 地线夹: RM 100-300
-```
+\`\`\`
 
 ### 可选设备
-```
+\`\`\`
 自动化:
 - 焊接转台: RM 3,000-10,000
 - 焊接机器人: RM 50,000+
 - 送丝机: RM 1,500-5,000
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 日收入
-```
+\`\`\`
 焊接服务:
 - 结构焊接: RM 800-1,500/天
 - 不锈钢: RM 1,000-2,000/天
@@ -314,20 +277,20 @@ TIG焊:
 制造加工:
 - 来料加工: RM 30-80/kg
 - 按件计费: RM 50-500/件
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作26天:
 - 焊接服务: RM 20,000-40,000
 - 制造加工: RM 30,000-60,000
 - 综合收入: RM 40,000-80,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 中型MIG焊:
 - 焊条/焊丝: RM 800-1,500
 - 保护气体: RM 400-800
@@ -341,7 +304,7 @@ TIG焊:
 - 保养: RM 300
 - 零件: RM 200
 总计: RM 2,100-3,500/月
-```
+\`\`\`
 
 ## 申请资格
 
@@ -378,7 +341,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 18,000焊接机
-```
+\`\`\`
 3年期:
 月供: RM 560
 总利息: RM 2,160
@@ -390,12 +353,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 250
 总利息: RM 3,000
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(2台焊机)
-```
+\`\`\`
 投资: RM 18,000
 首付: RM 0
 月供: RM 340
@@ -407,7 +370,7 @@ WhatsApp: +60175700889
 回本: 1个月
 5年利润: RM 1,200,000
 ROI: 6,667%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -451,8 +414,46 @@ A: 需要防护设备，培训包括安全
 **英兴信贷 - 焊接设备融资专家**
 
 焊接连接，成功制造！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

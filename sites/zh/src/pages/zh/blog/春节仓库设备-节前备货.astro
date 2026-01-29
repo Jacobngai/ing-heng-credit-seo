@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,57 +23,19 @@ const keywords = ["春节仓库","节前备货","仓库设备","库存管理"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 春节仓库设备 - 节前备货
 
 ## 春节节前备货高峰
 
 春节前是仓库备货的黄金时期:
 
-```
+\`\`\`
 12月: 备货开始
 1月: 备货高峰
 春节后: 补货爆发
-```
+\`\`\`
 
 ## 仓库设备春节前升级
 
@@ -152,99 +115,99 @@ const keywords = ["春节仓库","节前备货","仓库设备","库存管理"],
 ## 节前备货时间表
 
 ### 12月: 规划
-```
+\`\`\`
 预测节前库存
 计算设备需求
 准备融资申请
-```
+\`\`\`
 
 ### 1月第一周: 申请
-```
+\`\`\`
 提交融资申请
 快速审批
 快速批准
-```
+\`\`\`
 
 ### 1月第二周: 购买
-```
+\`\`\`
 确定设备
 签订合同
 安排交付
-```
+\`\`\`
 
 ### 1月第三周: 安装
-```
+\`\`\`
 设备交付
 安装调试
 员工培训
-```
+\`\`\`
 
 ### 1月第四周: 备货
-```
+\`\`\`
 设备就绪
 开始备货
 处理高峰
-```
+\`\`\`
 
 ### 春节后: 补货
-```
+\`\`\`
 补货需求爆发
 设备全部到位
 处理流畅
-```
+\`\`\`
 
 ## 仓库设备融资方案
 
 ### 方案1: 叉车融资
-```
+\`\`\`
 设备: 3台叉车
 投资: RM 100,000
 融资: 100%
 首付: 0%
 期限: 3-5年
-```
+\`\`\`
 
 ### 方案2: 货架系统
-```
+\`\`\`
 设备: 货架系统
 投资: RM 50,000
 融资: 100%
 首付: 0%
 期限: 3-5年
-```
+\`\`\`
 
 ### 方案3: 完整升级
-```
+\`\`\`
 设备: 叉车+货架
 投资: RM 200,000
 融资: 100%
 首付: 0%
 期限: 5年
-```
+\`\`\`
 
 ## 仓库容量规划
 
 ### 当前容量
-```
+\`\`\`
 货架数: 100个
 库存容量: 1000托盘
 叉车数: 3台
 处理能力: 50托盘/天
-```
+\`\`\`
 
 ### 节前需求
-```
+\`\`\`
 库存需求: 3000托盘
 处理需求: 150托盘/天
-```
+\`\`\`
 
 ### 升级方案
-```
+\`\`\`
 增加货架: 200个
 增加叉车: 3台
 新容量: 3000托盘
 新处理能力: 150托盘/天
-```
+\`\`\`
 
 ## 节前vs节后升级
 
@@ -318,21 +281,21 @@ A: 可以，但购买更经济长期。
 ## 2026年仓库时间表
 
 ### 电商仓库
-```
+\`\`\`
 12月: 年货备货开始
 1月: 备货高峰
 2月: 春节(暂停)
 2月底: 补货爆发
 3月: 持续高峰
-```
+\`\`\`
 
 ### 制造业仓库
-```
+\`\`\`
 1月: 原料备货
 2月: 春节(工厂关闭)
 3月: 复工+补货
 4月: 恢复正常
-```
+\`\`\`
 
 ## 成功案例
 
@@ -387,8 +350,46 @@ A: 可以，但购买更经济长期。
 **立即申请，春节仓库升级**
 
 春节前备货高峰?提前升级仓库设备确保处理能力充足，避免爆仓和效率下降。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

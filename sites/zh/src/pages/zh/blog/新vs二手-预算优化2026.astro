@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["新vs二手设备","二手设备融资","设备预算优化",
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 新vs二手 - 预算优化 2026
 
 ## 设备选择难题
@@ -74,41 +37,41 @@ const keywords = ["新vs二手设备","二手设备融资","设备预算优化",
 ## 新vs二手价格对比
 
 ### 挖掘机
-```
+\`\`\`
 新设备: RM 150,000
 二手: RM 50,000
 节省: 67%
-```
+\`\`\`
 
 ### 推土机
-```
+\`\`\`
 新设备: RM 200,000
 二手: RM 80,000
 节省: 60%
-```
+\`\`\`
 
 ### 叉车
-```
+\`\`\`
 新设备: RM 35,000
 二手: RM 15,000
 节省: 57%
-```
+\`\`\`
 
 ## 银行vs Ing Heng
 
 ### 银行限制
-```
+\`\`\`
 新设备: 可以融资
 二手设备: 5年内
 老设备: 拒绝融资
-```
+\`\`\`
 
 ### Ing Heng优势
-```
+\`\`\`
 新设备: 可以融资
 二手设备: 无年龄限制
 老设备: 也可以融资
-```
+\`\`\`
 
 ## 真实例子
 
@@ -117,20 +80,20 @@ const keywords = ["新vs二手设备","二手设备融资","设备预算优化",
 **预算: RM 50,000**
 
 ### 新设备方案
-```
+\`\`\`
 价格: RM 150,000
 银行首付: RM 15,000
 预算不足: 是
 结果: 买不起
-```
+\`\`\`
 
 ### 二手方案(Ing Heng)
-```
+\`\`\`
 价格: RM 50,000
 首付: RM 0
 预算足够: 是
 结果: 可以购买
-```
+\`\`\`
 
 ## 新vs二手对比
 
@@ -193,50 +156,50 @@ const keywords = ["新vs二手设备","二手设备融资","设备预算优化",
 ## 预算优化策略
 
 ### 策略1: 混合购买
-```
+\`\`\`
 关键设备: 新设备
 辅助设备: 二手
 节省: 30-50%
-```
+\`\`\`
 
 ### 策略2: 二手优先
-```
+\`\`\`
 启动: 全部二手
 成长: 逐步换新
 优化: 现金流
-```
+\`\`\`
 
 ### 策略3: 新二手搭配
-```
+\`\`\`
 主力: 新设备1台
 备用: 二手2台
 灵活: 应对需求
-```
+\`\`\`
 
 ## 设备寿命分析
 
 ### 新设备
-```
+\`\`\`
 购买价格: RM 150,000
 使用寿命: 10年
 年成本: RM 15,000
 转售价值(5年): RM 75,000
-```
+\`\`\`
 
 ### 二手设备
-```
+\`\`\`
 购买价格: RM 50,000
 剩余寿命: 5年
 年成本: RM 10,000
 转售价值(3年): RM 25,000
-```
+\`\`\`
 
 ### ROI对比
-```
+\`\`\`
 新设备: 每年RM 15,000
 二手设备: 每年RM 10,000
 节省: 33%
-```
+\`\`\`
 
 ## Ing Heng二手设备融资
 
@@ -273,31 +236,31 @@ Ing Heng融资任何年份
 ## 预算优化示例
 
 ### 场景1: 新建公司
-```
+\`\`\`
 预算: RM 100,000
 需求: 3台设备
 方案: 全部二手
 成本: RM 90,000
 剩余: RM 10,000
-```
+\`\`\`
 
 ### 场景2: 成长公司
-```
+\`\`\`
 预算: RM 200,000
 需求: 5台设备
 方案: 2新+3二手
 成本: RM 190,000
 剩余: RM 10,000
-```
+\`\`\`
 
 ### 场景3: 大型公司
-```
+\`\`\`
 预算: RM 500,000+
 需求: 10台设备
 方案: 按需混合
 成本: 可控
 灵活: 高
-```
+\`\`\`
 
 ## 申请流程
 
@@ -349,8 +312,46 @@ A: 是的，新旧设备都0%首付
 **明智的选择，优化的预算**
 
 新设备还是二手设备，Ing Heng提供0%首付融资，帮助您做出最佳预算决策。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

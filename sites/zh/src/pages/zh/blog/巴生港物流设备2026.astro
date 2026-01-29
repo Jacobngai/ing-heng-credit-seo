@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,58 +23,20 @@ const keywords = ["巴生港","港口物流","运输设备","物流融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 巴生港物流设备 2026
 
 ## 巴生港物流枢纽
 
 巴生港是马来西亚最大港口:
 
-```
+\`\`\`
 西港: 集装箱枢纽
 北港: 多功能港口
 腹地: 物流园区
 运输: 连接全国
-```
+\`\`\`
 
 ## 巴生港设备需求
 
@@ -129,56 +92,56 @@ const keywords = ["巴生港","港口物流","运输设备","物流融资"],
 ## 巴生港设备类型
 
 ### 运输设备
-```
+\`\`\`
 集装箱拖车头: RM 200,000-350,000
 10吨罗里: RM 120,000-180,000
 5吨罗里: RM 100,000-150,000
 货车: RM 60,000-120,000
-```
+\`\`\`
 
 ### 仓储设备
-```
+\`\`\`
 3吨叉车: RM 40,000-60,000
 5吨叉车: RM 60,000-80,000
 10吨叉车: RM 100,000-150,000
 货架系统: RM 100,000-500,000
-```
+\`\`\`
 
 ### 起重设备
-```
+\`\`\`
 集装箱正面吊: RM 800,000-2,000,000
 汽车起重机(50吨): RM 300,000-500,000
 门式起重机: RM 500,000-1,500,000
-```
+\`\`\`
 
 ## 物流融资方案
 
 ### 车队融资
-```
+\`\`\`
 设备: 5台以上
 融资: 100%
 首付: 0%
 利率: 特别优惠
 期限: 5-7年
-```
+\`\`\`
 
 ### 仓储融资
-```
+\`\`\`
 设备: 叉车+货架
 融资: 100%
 首付: 0%
 利率: 标准
 期限: 3-5年
-```
+\`\`\`
 
 ### 综合物流
-```
+\`\`\`
 设备: 运输+仓储
 融资: 100%
 首付: 0%
 利率: 优惠
 期限: 5-7年
-```
+\`\`\`
 
 ## 巴生港物流特点
 
@@ -315,8 +278,46 @@ A: 运输合同、物流协议等。
 **立即申请，巴生港物流设备**
 
 巴生港物流需求?Ing Heng提供专业的物流设备融资，帮助您扩张车队和仓储。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

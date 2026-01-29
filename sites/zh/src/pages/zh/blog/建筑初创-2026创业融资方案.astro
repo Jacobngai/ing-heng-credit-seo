@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["建筑创业","初创融资","建筑设备","创业贷款"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">初创融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 建筑初创 - 2026创业融资方案
 
 ## 建筑创业挑战
@@ -76,7 +39,7 @@ const keywords = ["建筑创业","初创融资","建筑设备","创业贷款"],
 ## Ing Heng创业支持
 
 ### 0%首付创业
-```
+\`\`\`
 传统方案:
 - 设备: RM 50,000
 - 首付: RM 5,000-10,000
@@ -86,10 +49,10 @@ Ing Heng方案:
 - 设备: RM 50,000
 - 首付: RM 0
 - 保留现金: 运营
-```
+\`\`\`
 
 ### 无经验要求
-```
+\`\`\`
 银行要求:
 - 营业2-3年
 - 稳定收入
@@ -99,34 +62,34 @@ Ing Heng:
 - 新公司可申请
 - 项目合同即可
 - 灵活评估
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 经验: 2-3年
 利率: 4.6-6%
 审批: 2-4周
 担保: 需要抵押
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 经验: 接受新公司
 利率: 有竞争力
 审批: 快速
 担保: 灵活
-```
+\`\`\`
 
 ## 初创业设备套餐
 
 ### 基础创业包
-```
+\`\`\`
 适合: 小型承包商
 设备:
 - 小型挖掘机 x1: RM 30,000
@@ -136,10 +99,10 @@ Ing Heng:
 首付: RM 0
 月供: RM 1,050(5年)
 回本: 3个月
-```
+\`\`\`
 
 ### 标准创业包
-```
+\`\`\`
 适合: 一般承包商
 设备:
 - 中型挖掘机 x1: RM 80,000
@@ -150,10 +113,10 @@ Ing Heng:
 首付: RM 0
 月供: RM 3,150(5年)
 回本: 4个月
-```
+\`\`\`
 
 ### 完整创业包
-```
+\`\`\`
 适合: 有经验的承包商
 设备:
 - 中型挖掘机 x1: RM 80,000
@@ -165,12 +128,12 @@ Ing Heng:
 首付: RM 0
 月供: RM 4,500(5年)
 回本: 5个月
-```
+\`\`\`
 
 ## 适用场景
 
 ### 新注册公司
-```
+\`\`\`
 创业初期:
 - 注册SSM
 - 购买设备
@@ -182,10 +145,10 @@ Ing Heng:
 - 设备齐全
 - 立即开工
 - 快速回本
-```
+\`\`\`
 
 ### 转型建筑
-```
+\`\`\`
 业务转型:
 - 从其他行业
 - 进入建筑
@@ -196,10 +159,10 @@ Ing Heng:
 - 降低风险
 - 设备齐全
 - 融资方便
-```
+\`\`\`
 
 ### 分拆独立
-```
+\`\`\`
 团队独立:
 - 大公司经验
 - 自己创业
@@ -210,12 +173,12 @@ Ing Heng:
 - 经验丰富
 - 客户资源
 - 快速启动
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡创业者:**
-```
+\`\`\`
 背景: 5年建筑经验
 业务: 独立承包
 选择: 标准创业包
@@ -235,12 +198,12 @@ Ing Heng:
 - 第3个月: 收入RM 25,000
 - 第6个月: 月收入RM 40,000
 - 回本: 5个月
-```
+\`\`\`
 
 ## 融资好处
 
 ### 保留现金
-```
+\`\`\`
 现金用于:
 - 营业执照
 - 材料采购
@@ -249,10 +212,10 @@ Ing Heng:
 - 应急准备
 
 总计: RM 15,000-25,000
-```
+\`\`\`
 
 ### 100%融资
-```
+\`\`\`
 覆盖:
 - 设备全额
 - 运输费用
@@ -260,21 +223,21 @@ Ing Heng:
 - 操作培训
 
 总融资: 设备价+10%
-```
+\`\`\`
 
 ### 无经验限制
-```
+\`\`\`
 新公司:
 - 接受申请
 - 灵活评估
 - 项目合同优先
 - 潜力重要
-```
+\`\`\`
 
 ## 创业步骤
 
 ### 第1步: 注册公司
-```
+\`\`\`
 SSM注册:
 - 公司名称
 - 营业范围
@@ -283,30 +246,30 @@ SSM注册:
 
 时间: 3-5天
 费用: RM 1,000-2,000
-```
+\`\`\`
 
 ### 第2步: 准备文件
-```
+\`\`\`
 申请文件:
 - SSM证书
 - 董事身份证
 - 银行月结单(个人)
 - 项目合同(如有)
 - 设备报价单
-```
+\`\`\`
 
 ### 第3步: 申请融资
-```
+\`\`\`
 Ing Heng流程:
 - 咨询: WhatsApp
 - 提交: 文件
 - 审批: 快速
 - 购买: 设备
 - 启动: 项目
-```
+\`\`\`
 
 ### 第4步: 开始运营
-```
+\`\`\`
 运营准备:
 - 设备到位
 - 操作员培训
@@ -314,12 +277,12 @@ Ing Heng流程:
 - 项目启动
 
 时间: 1-2周
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 月收入(标准包)
-```
+\`\`\`
 保守估计:
 - 小项目: RM 20,000
 - 人工成本: RM 8,000
@@ -339,12 +302,12 @@ Ing Heng流程:
 - 总成本: RM 25,000
 - 月供: RM 3,150
 月净利: RM 21,850
-```
+\`\`\`
 
 ## 成功要素
 
 ### 技能要求
-```
+\`\`\`
 技术技能:
 - 设备操作
 - 项目管理
@@ -354,10 +317,10 @@ Ing Heng流程:
 - 客户开发
 - 成本控制
 - 财务管理
-```
+\`\`\`
 
 ### 客户来源
-```
+\`\`\`
 初期客户:
 - 朋友介绍
 - 小型项目
@@ -368,16 +331,16 @@ Ing Heng流程:
 - 口碑推荐
 - 招投标
 - 长期合作
-```
+\`\`\`
 
 ### 风险控制
-```
+\`\`\`
 降低风险:
 - 小项目开始
 - 分阶段投资
 - 现金流管理
 - 质量保证
-```
+\`\`\`
 
 ## 申请资格
 
@@ -415,7 +378,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 150,000设备
-```
+\`\`\`
 3年期:
 月供: RM 4,700
 总利息: RM 19,200
@@ -427,12 +390,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 2,100
 总利息: RM 26,400
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期创业
-```
+\`\`\`
 投资: RM 150,000
 首付: RM 0
 月供: RM 2,900
@@ -444,7 +407,7 @@ WhatsApp: +60175700889
 回本: 11个月
 5年利润: RM 900,000
 ROI: 600%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -496,8 +459,46 @@ A: 可以，业务扩大后追加
 **英兴信贷 - 创业融资伙伴**
 
 支持创业，成就梦想！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">初创融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

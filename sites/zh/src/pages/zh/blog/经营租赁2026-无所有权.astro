@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,75 +23,37 @@ const keywords = ["经营租赁","设备租赁","租赁vs购买","设备融资"]
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 经营租赁 2026 - 无所有权
 
 ## 什么是经营租赁?
 
 经营租赁(Operating Lease)是一种短期设备使用方案:
 
-```
+\`\`\`
 您支付租金 → 使用设备 → 归还设备(无所有权)
-```
+\`\`\`
 
 ## 经营租赁vs分期付款
 
 ### 经营租赁特点
-```
+\`\`\`
 所有权: 无(租用)
 首付: 0%
 期限: 短期(1-3年)
 灵活性: 高
 税务: 租金可抵扣
-```
+\`\`\`
 
 ### 分期付款特点
-```
+\`\`\`
 所有权: 是(最终拥有)
 首付: 0%(Ing Heng)
 期限: 长(最长7年)
 灵活性: 中
 税务: 折旧扣除
-```
+\`\`\`
 
 ## 适合经营租赁的情况
 
@@ -122,22 +85,22 @@ const keywords = ["经营租赁","设备租赁","租赁vs购买","设备融资"]
 ## 银行vs Ing Heng经营租赁
 
 ### 银行经营租赁
-```
+\`\`\`
 首付: 10-20%
 年龄限制: 5年内设备
 审批时间: 2-4周
 灵活性: 有限
 条款: 固定
-```
+\`\`\`
 
 ### Ing Heng经营租赁
-```
+\`\`\`
 首付: 0%
 年龄限制: 无
 审批时间: 快速
 灵活性: 高
 条款: 可定制
-```
+\`\`\`
 
 ## 真实例子
 
@@ -240,22 +203,22 @@ const keywords = ["经营租赁","设备租赁","租赁vs购买","设备融资"]
 ## 经营租赁vs融资租赁
 
 ### 经营租赁
-```
+\`\`\`
 所有权: 出租人
 风险: 出租人承担
 资产负债表: 表外
 期限: 短期
 灵活性: 高
-```
+\`\`\`
 
 ### 融资租赁
-```
+\`\`\`
 所有权: 承租人(最终)
 风险: 承租人承担
 资产负债表: 表内
 期限: 长
 灵活性: 低
-```
+\`\`\`
 
 ## 申请流程
 
@@ -364,8 +327,46 @@ A: 可以，通过续租升级
 **立即申请，灵活使用设备**
 
 经营租赁提供最大的灵活性。Ing Heng提供定制租赁方案，满足您的短期设备需求。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

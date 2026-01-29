@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 静音发电机 - 2026低噪音发电机组融资
 
 ## 静音发电机优势
 
 ### 低噪音设计
-```
+\`\`\`
 静音标准:
 - 噪音水平: 65-75dB @ 7米
 - 对比普通: 低15-25dB
@@ -78,10 +41,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 消声器: 高效排气
 - 风扇: 低噪音设计
 - 安装: 减震系统
-```
+\`\`\`
 
 ### 适用场景
-```
+\`\`\`
 噪音敏感区:
 - 住宅区
 - 商业区
@@ -94,12 +57,12 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 活动场地
 - 备用电源
 - 应急供电
-```
+\`\`\`
 
 ## 静音发电机类型
 
 ### 按功率分类
-```
+\`\`\`
 小型(20-50kVA):
 - 夜市
 - 小型活动
@@ -114,10 +77,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 医院
 - 商场
 - 价格: RM 180,000-300,000(二手)
-```
+\`\`\`
 
 ### 按噪音等级
-```
+\`\`\`
 标准静音:
 - 70-75dB
 - 适合: 一般区域
@@ -132,29 +95,29 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 60-65dB
 - 适合: 住宅区
 - 价格: +40-60%
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
 静音型: 不愿批
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 静音型: 欢迎申请
-```
+\`\`\`
 
 ## 价格对比
 
@@ -168,7 +131,7 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 ## 适用场景
 
 ### 夜市活动
-```
+\`\`\`
 夜市需求:
 - 照明供电
 - 冷藏设备
@@ -179,10 +142,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 低噪音: 不扰民
 - 稳定供电
 - 移动方便
-```
+\`\`\`
 
 ### 医疗场所
-```
+\`\`\`
 医院诊所:
 - 生命支持
 - 医疗设备
@@ -193,10 +156,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 极低噪音
 - 高可靠
 - 快速启动
-```
+\`\`\`
 
 ### 商业区域
-```
+\`\`\`
 商场超市:
 - 营业继续
 - 照明空调
@@ -207,12 +170,12 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 低噪音: 不影响顾客
 - 稳定: 不中断营业
 - 美观: 不影响形象
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡夜市:**
-```
+\`\`\`
 业务: 夜市管理
 需求: 整体供电
 要求: 低噪音
@@ -228,7 +191,7 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 运行时间: 18:00-02:00
 - 噪音: 不扰民
 - 月收入: RM 30,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -254,7 +217,7 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 ## 静音技术
 
 ### 静音设计
-```
+\`\`\`
 多层隔音:
 - 外壳: 钢板+隔音棉
 - 双层结构: 空气层
@@ -263,10 +226,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 效果:
 - 降低: 15-25dB
 - 距离: 50米外基本无声
-```
+\`\`\`
 
 ### 排气静音
-```
+\`\`\`
 消声器:
 - 多级消音
 - 共振腔设计
@@ -275,10 +238,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 效果:
 - 排气噪音: 降低20-30dB
 - 总噪音: 降低5-10dB
-```
+\`\`\`
 
 ### 冷却系统
-```
+\`\`\`
 静音风扇:
 - 低转速
 - 大叶片
@@ -287,12 +250,12 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 效果:
 - 风扇噪音: 降低10-15dB
 - 总噪音: 降低3-5dB
-```
+\`\`\`
 
 ## 噪音比较
 
 ### 普通vs静音
-```
+\`\`\`
 距离7米:
 - 普通: 85-95dB
 - 静音: 65-75dB
@@ -302,15 +265,15 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 普通: 70-75dB
 - 静音: 50-55dB
 - 降低: 20dB
-```
+\`\`\`
 
 ### 实际影响
-```
+\`\`\`
 50米外:
 - 普通发电机: 明显噪音
 - 静音发电机: 轻微噪音
 - 环境影响: 大幅降低
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -324,7 +287,7 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 ## 收入潜力
 
 ### 租赁收入
-```
+\`\`\`
 静音加收:
 - 50kVA普通: RM 400-600/天
 - 50kVA静音: RM 600-900/天
@@ -333,10 +296,10 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 月租金(20天):
 - 100kVA静音: RM 12,000-18,000
 - 年租金: RM 120,000-180,000
-```
+\`\`\`
 
 ### 应用场景
-```
+\`\`\`
 高价值场景:
 - 夜市: RM 800-1,500/天
 - 活动: RM 1,000-2,000/天
@@ -346,12 +309,12 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 静音要求高
 - 普通发电机不能用
 - 竞争少
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(100kVA静音)
-```
+\`\`\`
 备用运行:
 - 测试运行: RM 2,000/月
 - 静音罩检查: RM 200/月
@@ -363,12 +326,12 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 - 隔音棉更换: 每2年 RM 1,500
 - 消声器更换: 每3年 RM 2,000
 - 年均: RM 1,500/年
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期租赁
-```
+\`\`\`
 投资: RM 90,000
 首付: RM 0
 月供: RM 1,700
@@ -380,7 +343,7 @@ const keywords = ["静音发电机","低噪音发电机","silent generator","静
 回本: 9个月
 5年利润: RM 600,000
 ROI: 667%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -417,7 +380,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 90,000静音发电机
-```
+\`\`\`
 3年期:
 月供: RM 2,820
 总利息: RM 11,520
@@ -429,7 +392,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 1,250
 总利息: RM 15,000
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -473,8 +436,46 @@ A: 降低5-10%，但很充足
 **英兴信贷 - 静音发电专家**
 
 低噪发电，和谐共存！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

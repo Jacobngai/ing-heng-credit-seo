@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["建筑车队","设备扩张","车队融资","多设备批量�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 建筑车队 - 2026设备扩张融资
 
 ## 什么是建筑车队
@@ -75,7 +38,7 @@ const keywords = ["建筑车队","设备扩张","车队融资","多设备批量�
 ## 车队类型
 
 ### 挖掘机队
-```
+\`\`\`
 配置: 3-5台挖掘机
 用途: 大型土方工程
 价格: RM 150,000-400,000(二手)
@@ -85,10 +48,10 @@ Ing Heng首付: RM 0
 - 月收入: RM 60,000-100,000
 - 月供: RM 2,900-7,700
 - ROI: 12-24个月
-```
+\`\`\`
 
 ### 罗里车队
-```
+\`\`\`
 配置: 5-10台自卸卡车
 用途: 运输工程
 价格: RM 150,000-500,000(二手)
@@ -98,10 +61,10 @@ Ing Heng首付: RM 0
 - 月收入: RM 50,000-120,000
 - 月供: RM 2,900-9,600
 - ROI: 10-20个月
-```
+\`\`\`
 
 ### 综合车队
-```
+\`\`\`
 配置: 混合设备10台以上
 用途: 大型项目
 价格: RM 500,000-2,000,000(二手)
@@ -111,29 +74,29 @@ Ing Heng首付: RM 0
 - 月收入: RM 150,000-400,000
 - 月供: RM 9,600-38,000
 - ROI: 8-18个月
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
 多设备限制: 审批更严
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 多设备: 欢迎批量
-```
+\`\`\`
 
 ## 车队价格对比
 
@@ -147,7 +110,7 @@ Ing Heng首付: RM 0
 ## 适用场景
 
 ### 大型项目
-```
+\`\`\`
 项目需求:
 - MRT工程
 - 高速公路
@@ -159,10 +122,10 @@ Ing Heng首付: RM 0
 - 项目保障
 - 效率高
 - 竞争力强
-```
+\`\`\`
 
 ### 设备租赁
-```
+\`\`\`
 租赁业务:
 - 多台出租
 - 稳定收入
@@ -173,10 +136,10 @@ Ing Heng首付: RM 0
 - 月收入稳定
 - 利用率80%+
 - 回本快
-```
+\`\`\`
 
 ### 规模扩张
-```
+\`\`\`
 业务扩张:
 - 增加产能
 - 承接更多项目
@@ -187,12 +150,12 @@ Ing Heng首付: RM 0
 - 规模经济
 - 成本降低
 - 效率提升
-```
+\`\`\`
 
 ## 真实案例
 
 **槟城大型承包商:**
-```
+\`\`\`
 扩张需求: 设备车队
 配置: 综合车队10台
 设备:
@@ -211,7 +174,7 @@ Ing Heng首付: RM 0
 - 月净利: RM 80,000
 - 回本: 7个月
 - 5年利润: RM 4,800,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -237,7 +200,7 @@ Ing Heng首付: RM 0
 ## 规模优势
 
 ### 项目能力
-```
+\`\`\`
 单设备:
 - 月承接: 1-2个项目
 - 月收入: RM 15,000-25,000
@@ -247,10 +210,10 @@ Ing Heng首付: RM 0
 - 月承接: 5-8个项目
 - 月收入: RM 100,000-150,000
 - 风险: 分散
-```
+\`\`\`
 
 ### 运营效率
-```
+\`\`\`
 规模经济:
 - 统一采购: 节省5-10%
 - 统一维护: 节省15%
@@ -258,10 +221,10 @@ Ing Heng首付: RM 0
 - 人员共享: 节省30%
 
 总节省: 20-30%
-```
+\`\`\`
 
 ### 竞争力
-```
+\`\`\`
 市场优势:
 - 大项目能力
 - 项目保障
@@ -272,12 +235,12 @@ Ing Heng首付: RM 0
 - 中标率提升
 - 项目规模扩大
 - 利润率提高
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 日收入(10台车队)
-```
+\`\`\`
 自营项目:
 - 挖掘: RM 3,000/天
 - 装载: RM 1,200/天
@@ -288,20 +251,20 @@ Ing Heng首付: RM 0
 租赁:
 - 设备租赁: RM 5,000-8,000/天
 - 长租优惠: RM 120,000/月
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作22天:
 - 自营: RM 145,000
 - 租赁: RM 120,000
 - 综合: RM 200,000+
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(10台车队)
-```
+\`\`\`
 挖掘机x3:
 - 燃料: RM 9,000
 - 保养: RM 2,400
@@ -323,12 +286,12 @@ Ing Heng首付: RM 0
 - 零件: RM 500
 
 总计: RM 31,400/月
-```
+\`\`\`
 
 ## 车队配置
 
 ### 基础配置
-```
+\`\`\`
 土方工程:
 - 挖掘机 x3
 - 推土机 x1
@@ -339,10 +302,10 @@ Ing Heng首付: RM 0
 - 压路机 x2
 - 平地机 x1
 - 自卸卡车 x5
-```
+\`\`\`
 
 ### 高级配置
-```
+\`\`\`
 综合承包:
 - 挖掘机 x5
 - 装载机 x2
@@ -350,7 +313,7 @@ Ing Heng首付: RM 0
 - 自卸卡车 x8
 - 压路机 x1
 - 起重机 x1
-```
+\`\`\`
 
 ## 申请资格
 
@@ -389,7 +352,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 500,000车队
-```
+\`\`\`
 3年期:
 月供: RM 15,600
 总利息: RM 61,600
@@ -401,12 +364,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 7,000
 总利息: RM 88,000
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(10台车队)
-```
+\`\`\`
 投资: RM 500,000
 首付: RM 0
 月供: RM 9,600
@@ -418,7 +381,7 @@ WhatsApp: +60175700889
 回本: 6个月
 5年利润: RM 6,000,000
 ROI: 1,200%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -471,8 +434,46 @@ A: 单独出售更灵活
 **英兴信贷 - 车队融资专家**
 
 规模经营，成功扩张！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

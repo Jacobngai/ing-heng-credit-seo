@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 挖掘装载机多功能 - 2026建筑融资指南
 
 ## 什么是挖掘装载机
@@ -75,7 +38,7 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 ### 多功能优势
 
 **一机代替两机：**
-```
+\`\`\`
 传统方案:
 - 挖掘机: RM 80,000
 - 装载机: RM 65,000
@@ -87,7 +50,7 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 - Ing Heng首付: RM 0
 - 节省首付: RM 14,500
 - 节省总投资: RM 50,000
-```
+\`\`\`
 
 ### 适用场景
 
@@ -112,22 +75,22 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 挖掘装载机价格对比
 
@@ -141,7 +104,7 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 ## 真实案例
 
 **吉隆坡小承包商:**
-```
+\`\`\`
 业务类型: 一般建筑工程
 项目需求: 挖掘 + 装载
 预算限制: 现金不足
@@ -156,7 +119,7 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 - 首付现金: RM 7,500
 - 存储空间: 50%
 - 维护成本: 40%
-```
+\`\`\`
 
 ## 融资好处
 
@@ -183,7 +146,7 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 ### 一天工作量
 
 **传统方案(2台机器):**
-```
+\`\`\`
 早上:
 - 挖掘机工作: 4小时
 - 装载机工作: 4小时
@@ -192,10 +155,10 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 
 效率: 挖掘50m³ + 装载80m³
 成本: RM 1,200/天
-```
+\`\`\`
 
 **挖掘装载机方案:**
-```
+\`\`\`
 全天:
 - 一台机器完成
 - 1名操作员
@@ -205,7 +168,7 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 效率: 挖掘50m³ + 装载80m³
 成本: RM 600/天
 节省: 50%
-```
+\`\`\`
 
 ## 型号选择
 
@@ -271,28 +234,28 @@ const keywords = ["挖掘装载机","两头忙","多功能建筑设备","挖掘�
 ### 年维护费用
 
 **新机:**
-```
+\`\`\`
 保养: RM 5,000/年
 零件: RM 3,000/年
 人工: RM 4,000/年
 总计: RM 12,000/年
-```
+\`\`\`
 
 **二手(5年):**
-```
+\`\`\`
 保养: RM 7,000/年
 零件: RM 6,000/年
 人工: RM 5,000/年
 总计: RM 18,000/年
-```
+\`\`\`
 
 **二手(10年):**
-```
+\`\`\`
 保养: RM 10,000/年
 零件: RM 10,000/年
 人工: RM 7,000/年
 总计: RM 27,000/年
-```
+\`\`\`
 
 ## 申请资格
 
@@ -325,7 +288,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 75,000设备
-```
+\`\`\`
 3年期:
 月供: RM 2,350
 总利息: RM 9,600
@@ -337,7 +300,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 1,050
 总利息: RM 13,200
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -389,8 +352,46 @@ A: 中等，不如专用设备但保值
 **英兴信贷 - 多功能设备融资专家**
 
 一台机器，双重功能，三倍价值！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

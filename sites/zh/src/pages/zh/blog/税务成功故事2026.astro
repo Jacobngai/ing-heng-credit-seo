@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,35 @@ const keywords = ["税务成功故事","税务案例","节税案例","税务优�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 税务成功故事 2026
+
+## 税务成功案例
+
+### 案例1: 建筑公司
+
+购买挖掘机RM 150,000:
+- 年津贴: RM 30,000
+- 税节省: RM 7,200/年
+- 5年总节省: RM 36,000
+
+### 案例2: 运输公司
+
+购买5台货车RM 300,000:
+- 年津贴: RM 60,000
+- 税节省: RM 14,400/年
+- 5年总节省: RM 72,000
+
+### 案例3: 仓储公司
+
+购买3台叉车RM 75,000:
+- 年津贴: RM 15,000
+- 税节省: RM 3,600/年
+- 5年总节省: RM 18,000
+
+**您的节税故事!WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,36 +90,7 @@ const keywords = ["税务成功故事","税务案例","节税案例","税务优�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 税务成功故事 2026
-
-## 税务成功案例
-
-### 案例1: 建筑公司
-
-购买挖掘机RM 150,000:
-- 年津贴: RM 30,000
-- 税节省: RM 7,200/年
-- 5年总节省: RM 36,000
-
-### 案例2: 运输公司
-
-购买5台货车RM 300,000:
-- 年津贴: RM 60,000
-- 税节省: RM 14,400/年
-- 5年总节省: RM 72,000
-
-### 案例3: 仓储公司
-
-购买3台叉车RM 75,000:
-- 年津贴: RM 15,000
-- 税节省: RM 3,600/年
-- 5年总节省: RM 18,000
-
-**您的节税故事!WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

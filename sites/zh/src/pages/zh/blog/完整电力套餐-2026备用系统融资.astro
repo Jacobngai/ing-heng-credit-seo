@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["电力套餐","备用系统","发电机组","电力系统融�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 完整电力套餐 - 2026备用系统融资
 
 ## 什么是电力套餐
@@ -76,7 +39,7 @@ const keywords = ["电力套餐","备用系统","发电机组","电力系统融�
 ## 套餐类型
 
 ### 小型套餐
-```
+\`\`\`
 适合: 小型工厂、餐厅
 设备:
 - 20kVA发电机 x1
@@ -87,10 +50,10 @@ const keywords = ["电力套餐","备用系统","发电机组","电力系统融�
 新机价格: RM 35,000
 二手价格: RM 20,000
 Ing Heng首付: RM 0
-```
+\`\`\`
 
 ### 中型套餐
-```
+\`\`\`
 适合: 中型工厂、超市
 设备:
 - 50kVA发电机 x1
@@ -102,10 +65,10 @@ Ing Heng首付: RM 0
 新机价格: RM 70,000
 二手价格: RM 40,000
 Ing Heng首付: RM 0
-```
+\`\`\`
 
 ### 大型套餐
-```
+\`\`\`
 适合: 大型工厂、酒店
 设备:
 - 100kVA发电机 x1
@@ -119,29 +82,29 @@ Ing Heng首付: RM 0
 新机价格: RM 150,000
 二手价格: RM 85,000
 Ing Heng首付: RM 0
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
 配套设备: 不包含
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 配套设备: 全部包含
-```
+\`\`\`
 
 ## 套餐价格对比
 
@@ -155,7 +118,7 @@ Ing Heng首付: RM 0
 ## 套餐组件
 
 ### 核心设备
-```
+\`\`\`
 发电机组:
 - 柴油发电机
 - 发电机
@@ -167,10 +130,10 @@ ATS切换:
 - 双电源切换
 - 电气互锁
 - 安全保护
-```
+\`\`\`
 
 ### 配套系统
-```
+\`\`\`
 配电系统:
 - 主配电柜
 - 分配电柜
@@ -188,12 +151,12 @@ ATS切换:
 - 报警系统
 - 运行监测
 - 数据记录
-```
+\`\`\`
 
 ## 适用场景
 
 ### 制造业
-```
+\`\`\`
 工厂备用:
 - 生产线继续
 - 设备保护
@@ -204,10 +167,10 @@ ATS切换:
 - 停工: RM 20,000-100,000/天
 - 材料: RM 5,000-30,000
 - 设备: RM 10,000-50,000
-```
+\`\`\`
 
 ### 医疗机构
-```
+\`\`\`
 医院备用:
 - 生命支持
 - 医疗设备
@@ -218,10 +181,10 @@ ATS切换:
 - 快速切换(10秒)
 - 稳定供电
 - 安全可靠
-```
+\`\`\`
 
 ### 数据中心
-```
+\`\`\`
 机房备用:
 - 服务器运行
 - 数据保护
@@ -232,12 +195,12 @@ ATS切换:
 - UPS配合
 - 快速切换
 - 长时供电
-```
+\`\`\`
 
 ## 真实案例
 
 **雪兰莪电子厂:**
-```
+\`\`\`
 业务: 快速生产
 情况: 频繁停电
 需求: 完整备用系统
@@ -259,7 +222,7 @@ ATS切换:
 - 生产连续: 100%
 - 避免损失: RM 150,000/年
 - 回本: 4个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -277,7 +240,7 @@ ATS切换:
 - 总融资: RM 48,000
 
 ### 完整方案
-```
+\`\`\`
 一体化:
 - 无需分散采购
 - 统一设计
@@ -288,12 +251,12 @@ ATS切换:
 - 单一供应商
 - 系统负责
 - 快速响应
-```
+\`\`\`
 
 ## 套餐优势
 
 ### 自动切换
-```
+\`\`\`
 ATS系统:
 - 停电检测: &lt;1秒
 - 发电启动: 5-10秒
@@ -304,10 +267,10 @@ ATS系统:
 - 无需人工
 - 快速响应
 - 可靠切换
-```
+\`\`\`
 
 ### 燃料系统
-```
+\`\`\`
 储油罐:
 - 容量: 500-2,000升
 - 运行时间: 8-快速
@@ -318,10 +281,10 @@ ATS系统:
 - 长时供电
 - 无需手动
 - 安全可靠
-```
+\`\`\`
 
 ### 监控系统
-```
+\`\`\`
 远程监控:
 - 运行状态
 - 油位监测
@@ -332,12 +295,12 @@ ATS系统:
 - 及时维护
 - 预防故障
 - 远程管理
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 避免损失
-```
+\`\`\`
 工厂停电:
 - 停工损失: RM 50,000/天
 - 材料报废: RM 15,000
@@ -347,10 +310,10 @@ ATS系统:
 
 投资: RM 40,000
 回报: 避免1次即可收回
-```
+\`\`\`
 
 ### 信心提升
-```
+\`\`\`
 客户信心:
 - 供应稳定
 - 交货准时
@@ -361,12 +324,12 @@ ATS系统:
 - 订单增加
 - 客户留存
 - 业务增长
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(中型套餐)
-```
+\`\`\`
 发电机:
 - 保养: RM 500/次(每3个月)
 - 燃料测试: RM 600/月
@@ -376,12 +339,12 @@ ATS系统:
 - 监控维护: RM 200/月
 - 配电检查: RM 100/月
 总计: RM 1,200-1,500/月
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(中型套餐)
-```
+\`\`\`
 投资: RM 40,000
 首付: RM 0
 月供: RM 760
@@ -393,7 +356,7 @@ ATS系统:
 回本: 4个月
 5年节省: RM 675,000
 ROI: 1,688%
-```
+\`\`\`
 
 ## 申请流程
 
@@ -417,7 +380,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 40,000套餐
-```
+\`\`\`
 3年期:
 月供: RM 1,250
 总利息: RM 5,000
@@ -429,7 +392,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 560
 总利息: RM 7,040
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -482,8 +445,46 @@ A: 大功率可能需要TNB审批
 **英兴信贷 - 电力系统专家**
 
 完整电力，无忧运行！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

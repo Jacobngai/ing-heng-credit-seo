@@ -1,0 +1,363 @@
+---
+/**
+ * Aircraft Category Page - English
+ * Aircraft financing category landing page
+ * SEO: Helicopter financing Malaysia, small aircraft financing, aviation financing
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import HobbyHero from '../../../../components/HobbyHero.astro';
+import HobbyCard from '../../../../components/HobbyCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { encodeJSONLD } from '../../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Aircraft Financing Malaysia | Helicopter, Small Plane & Aviation Loans';
+const pageDescription = 'Finance your dream aircraft. Helicopters, small planes, ultralights. Up to RM5 million, flexible terms. Aviation financing specialists in Malaysia.';
+const keywords = [
+  'aircraft financing Malaysia',
+  'helicopter financing',
+  'small plane loan Malaysia',
+  'aviation financing',
+  'Robinson R44 financing',
+  'Cessna financing Malaysia',
+  'private aircraft loan',
+  'helicopter loan Malaysia',
+  'ultralight financing',
+  'gyrocopter financing'
+];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Hobby Financing', url: '/en/hobby' },
+  { label: 'Aircraft', url: '/en/hobby/aircraft' },
+];
+
+// Subcategory Cards
+const subcategoryCards = [
+  {
+    title: 'Helicopters',
+    description: 'Personal and commercial helicopters. Robinson, Bell, Airbus - all brands financed.',
+    image: '/images/hobby/helicopters-card.jpg',
+    href: '#',
+    items: ['Robinson R22/R44/R66', 'Bell 206/407', 'Airbus H125', 'MD 500', 'Private Tours', 'Charter Business']
+  },
+  {
+    title: 'Single-Engine Aircraft',
+    description: 'Personal flying and training aircraft. Cessna, Piper, Cirrus - your wings await.',
+    image: '/images/hobby/single-engine-card.jpg',
+    href: '#',
+    items: ['Cessna 172/182', 'Piper Cherokee', 'Cirrus SR22', 'Beechcraft Bonanza', 'Diamond DA40', 'Training Aircraft']
+  },
+  {
+    title: 'Ultralights & Gyrocopters',
+    description: 'Recreational flying made accessible. Ultralights, gyrocopters, and sport aircraft.',
+    image: '/images/hobby/ultralight-card.jpg',
+    href: '#',
+    items: ['Gyrocopters', 'Weight-Shift', 'Powered Parachutes', 'Light Sport Aircraft', 'Trikes', 'Paramotors']
+  }
+];
+
+// Popular Models
+const popularModels = [
+  {
+    name: 'Robinson R44',
+    priceRange: 'RM1.5M - RM2.5M',
+    description: 'The world\'s best-selling civil helicopter. Perfect for private use and tourism.',
+    features: ['4-Seat Capacity', 'Piston Engine', 'Low Operating Cost', 'Tourism Ready']
+  },
+  {
+    name: 'Cessna 172 Skyhawk',
+    priceRange: 'RM800K - RM1.5M',
+    description: 'The most popular aircraft ever built. Ideal for training and personal flying.',
+    features: ['4-Seat Capacity', 'Proven Design', 'Easy to Fly', 'Global Support']
+  },
+  {
+    name: 'Robinson R66',
+    priceRange: 'RM3M - RM5M',
+    description: 'Turbine-powered performance with Robinson reliability. 5-seat luxury.',
+    features: ['Turbine Engine', '5-Seat Capacity', 'Higher Performance', 'Commercial Ready']
+  },
+  {
+    name: 'Cirrus SR22',
+    priceRange: 'RM2M - RM4M',
+    description: 'Modern composite aircraft with parachute safety system. The ultimate personal aircraft.',
+    features: ['Composite Airframe', 'Parachute System', 'Glass Cockpit', 'High Performance']
+  },
+  {
+    name: 'Bell 206 JetRanger',
+    priceRange: 'RM2M - RM4M',
+    description: 'The iconic turbine helicopter. Proven for charter, tourism, and corporate use.',
+    features: ['Turbine Engine', '5-Seat Capacity', 'Proven Reliability', 'Commercial Workhorse']
+  },
+  {
+    name: 'AutoGyro Cavalon',
+    priceRange: 'RM400K - RM800K',
+    description: 'Modern gyrocopter for recreational flying. Safe, fun, and affordable aviation.',
+    features: ['2-Seat Capacity', 'Short Takeoff', 'Cannot Stall', 'Low Cost Flying']
+  }
+];
+
+// Financing Details
+const financingDetails = [
+  {
+    icon: 'dollar-sign',
+    title: 'Up to RM5 Million',
+    description: 'Finance helicopters and aircraft with loans up to RM5,000,000 for aviation assets.'
+  },
+  {
+    icon: 'infinity',
+    title: 'Flexible Age Limits',
+    description: 'We finance well-maintained aircraft based on condition and market value, not just age.'
+  },
+  {
+    icon: 'calendar',
+    title: 'Tenure up to 10 Years',
+    description: 'Extended repayment terms for high-value aviation assets to keep payments manageable.'
+  },
+  {
+    icon: 'search',
+    title: 'Aviation Specialists',
+    description: 'Our team understands aviation values, maintenance requirements, and market dynamics.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Can I finance a helicopter in Malaysia?',
+    answer: 'Yes! We specialize in helicopter financing in Malaysia. We finance Robinson, Bell, Airbus, and other brands for private use, tourism, charter operations, and commercial applications. Our team understands the aviation market and can structure financing that works for your situation.'
+  },
+  {
+    question: 'What is the maximum loan amount for aircraft financing?',
+    answer: 'We offer financing up to RM5,000,000 for aircraft and helicopters. This covers everything from ultralights and gyrocopters to turbine helicopters and high-performance aircraft. For larger aircraft or special situations, contact us for custom quotes.'
+  },
+  {
+    question: 'Do you finance used aircraft?',
+    answer: 'Yes! We finance pre-owned aircraft based on condition, maintenance history, and market value. A well-maintained 20-year-old Cessna with good records can be financed. We work with aviation experts to assess the true value of each aircraft.'
+  },
+  {
+    question: 'What documents do I need for aircraft financing?',
+    answer: 'For personal applicants: IC (NRIC), 6 months bank statements, proof of income. For the aircraft: Registration documents, maintenance logs, airworthiness certificate, and recent inspection reports. For imported aircraft, we need import documentation and compliance certificates.'
+  },
+  {
+    question: 'Can I finance an aircraft for a charter business?',
+    answer: 'Yes! We finance aircraft for commercial operations including air charter, flight training, aerial survey, and tourism. Business applicants need SSM registration, company financials, and operating permits. We understand aviation business models and cash flow.'
+  },
+  {
+    question: 'Do you finance gyrocopters and ultralights?',
+    answer: 'Yes! We finance recreational aircraft including gyrocopters, ultralights, weight-shift aircraft, and light sport aircraft. These are more accessible entry points to aviation, and we can help you get in the air with flexible financing.'
+  },
+  {
+    question: 'What about aircraft maintenance and operating costs?',
+    answer: 'We understand that aircraft ownership includes ongoing costs. Our financing is structured to leave you with cash flow for maintenance, insurance, hangar fees, and fuel. We can also discuss refinancing options if you need to free up capital for major maintenance events.'
+  },
+  {
+    question: 'Can I finance an aircraft import?',
+    answer: 'Yes! We can finance aircraft being imported to Malaysia. Our team understands import procedures, CAAM requirements, and can time disbursement to match your import timeline. We work with importers regularly and can guide you through the process.'
+  }
+];
+
+// ItemList Schema
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Aircraft Categories',
+  description: 'Aircraft financing categories including Helicopters, Single-Engine Aircraft, and Ultralights',
+  itemListElement: subcategoryCards.map((card, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: card.title,
+      description: card.description,
+    }
+  }))
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(itemListSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <HobbyHero
+    lang={lang}
+    title="Aircraft Financing"
+    highlightedWord="Financing"
+    subtitle="Take Flight Today"
+    description="Sky's Not the Limit. We finance helicopters and aircraft that banks won't touch."
+    features={['Up to RM5 Million', 'Helicopters', 'Small Aircraft', 'Gyrocopters', 'Private Use', 'Commercial']}
+    backgroundImage="/images/hobby/aircraft-hero.jpg"
+  />
+
+  <!-- Subcategory Cards -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Aircraft <span class="text-secondary">Categories</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          From helicopters to ultralights, find your wings
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {subcategoryCards.map((card) => (
+          <HobbyCard
+            lang={lang}
+            title={card.title}
+            description={card.description}
+            image={card.image}
+            href={card.href}
+            items={card.items}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Models Section -->
+  <section class="section bg-[#F5F1EB]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Popular <span class="text-secondary">Aircraft</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Aircraft that aviation enthusiasts dream about
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {popularModels.map((model) => (
+          <div class="bg-white border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6">
+              <h3 class="text-2xl font-display uppercase text-white mb-2">{model.name}</h3>
+              <p class="text-[#D4A574] font-bold text-lg">{model.priceRange}</p>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-700 mb-4 leading-relaxed">{model.description}</p>
+              <ul class="space-y-2">
+                {model.features.map((feature) => (
+                  <li class="text-sm text-gray-600 flex items-center space-x-2">
+                    <div class="w-4 h-4 bg-[#D4A574] flex-shrink-0"></div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing Details -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Financing <span class="text-secondary">Details</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Flexible terms designed for aviation enthusiasts
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {financingDetails.map((detail) => (
+          <div class="text-center p-6 bg-[#F5F1EB] border-3 border-[#2D1810]">
+            <div class="text-4xl mb-4">{detail.icon === 'dollar-sign' && '💰'}{detail.icon === 'infinity' && '✈️'}{detail.icon === 'calendar' && '📅'}{detail.icon === 'search' && '🔍'}</div>
+            <h3 class="text-lg font-display uppercase text-[#2D1810] mb-2">{detail.title}</h3>
+            <p class="text-sm text-gray-600">{detail.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F1EB]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked <span class="text-secondary">Questions</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Aircraft financing questions answered
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#2D1810] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-white">
+        Ready to Take <span class="text-[#D4A574]">Flight</span>?
+      </h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Stop dreaming, start flying. Get fast approval for your helicopter, aircraft, or gyrocopter.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20aircraft%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-[#2D1810] px-8 py-4 font-black uppercase tracking-wider border-3 border-white hover:bg-[#D4A574] hover:border-[#D4A574] transition-all inline-flex items-center gap-2"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp Now
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="bg-transparent text-white px-8 py-4 font-black uppercase tracking-wider border-3 border-white hover:bg-white hover:text-[#2D1810] transition-all"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,43 @@ const keywords = ["日产叉车","Nissan叉车","经济叉车","日产叉车融�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 日产叉车融资 - 2026经济选择
+
+## 日产叉车优势
+
+日产叉车经济实用:
+
+\`\`\`
+价格: 价格实惠
+可靠: 日本品质
+维护: 维护便宜
+零件: 零件容易
+\`\`\`
+
+## 融资方案
+
+### 1.5-3吨日产叉车
+\`\`\`
+价格: RM 15,000-35,000
+融资: 100%
+首付: 0%
+月供: RM 270-630
+\`\`\`
+
+## 收入
+
+### 仓库作业
+\`\`\`
+标准: RM 2,500-4,000/月
+繁忙: RM 3,500-5,000/月
+\`\`\`
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,44 +98,7 @@ const keywords = ["日产叉车","Nissan叉车","经济叉车","日产叉车融�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 日产叉车融资 - 2026经济选择
-
-## 日产叉车优势
-
-日产叉车经济实用:
-
-```
-价格: 价格实惠
-可靠: 日本品质
-维护: 维护便宜
-零件: 零件容易
-```
-
-## 融资方案
-
-### 1.5-3吨日产叉车
-```
-价格: RM 15,000-35,000
-融资: 100%
-首付: 0%
-月供: RM 270-630
-```
-
-## 收入
-
-### 仓库作业
-```
-标准: RM 2,500-4,000/月
-繁忙: RM 3,500-5,000/月
-```
-
-## 立即申请
-
-**WhatsApp: +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

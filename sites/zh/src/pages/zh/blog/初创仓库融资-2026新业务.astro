@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,45 @@ const keywords = ["初创仓库","新仓库","初创仓库融资","仓库创业"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 初创仓库融资 - 2026新业务
+
+## 初创支持
+
+Ing Heng支持初创企业:
+
+\`\`\`
+初创: 欢迎初创
+经验: 无经验也可
+计划: 基于商业计划
+支持: 额外指导
+\`\`\`
+
+## 融资方案
+
+### 初创业主
+\`\`\`
+叉车: 2-3台
+货架: 基本系统
+设备: 必要设备
+总价: RM 50,000-150,000
+融资: 100%
+\`\`\`
+
+## 支持
+
+### 初创支持
+\`\`\`
+咨询: 免费咨询
+规划: 协助规划
+指导: 运营指导
+\`\`\`
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,46 +100,7 @@ const keywords = ["初创仓库","新仓库","初创仓库融资","仓库创业"
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 初创仓库融资 - 2026新业务
-
-## 初创支持
-
-Ing Heng支持初创企业:
-
-```
-初创: 欢迎初创
-经验: 无经验也可
-计划: 基于商业计划
-支持: 额外指导
-```
-
-## 融资方案
-
-### 初创业主
-```
-叉车: 2-3台
-货架: 基本系统
-设备: 必要设备
-总价: RM 50,000-150,000
-融资: 100%
-```
-
-## 支持
-
-### 初创支持
-```
-咨询: 免费咨询
-规划: 协助规划
-指导: 运营指导
-```
-
-## 立即申请
-
-**WhatsApp: +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

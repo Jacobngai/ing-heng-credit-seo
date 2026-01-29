@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 珀金斯发电机组 - 2026Perkins发电机融资
 
 ## 珀金斯发电机优势
 
 ### Perkins品牌
-```
+\`\`\`
 英国品牌:
 - 历史悠久: 85年+
 - 全球领先
@@ -79,10 +42,10 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 - 油耗低
 - 维护简单
 - 转售价值高
-```
+\`\`\`
 
 ### 适合场景
-```
+\`\`\`
 工业应用:
 - 工厂备用
 - 矿山发电
@@ -94,12 +57,12 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 - 超市备用
 - 医院备用
 - 数据中心
-```
+\`\`\`
 
 ## 发电机规格
 
 ### 按功率分类
-```
+\`\`\`
 小型(20-30kVA):
 - 小型工厂
 - 餐厅超市
@@ -123,27 +86,27 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 - 大型设施
 - 新机: RM 280,000+
 - 二手: RM 160,000+
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -157,7 +120,7 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 ## 适用场景
 
 ### 工厂备用
-```
+\`\`\`
 制造业:
 - 电子厂
 - 塑胶厂
@@ -169,10 +132,10 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 - 稳定运行
 - 长寿命
 - 低维护
-```
+\`\`\`
 
 ### 矿山发电
-```
+\`\`\`
 矿业应用:
 - 金矿
 - 锡矿
@@ -184,10 +147,10 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 - 连续运行
 - 高可靠
 - 易维护
-```
+\`\`\`
 
 ### 建筑工地
-```
+\`\`\`
 施工用电:
 - 大型工程
 - 偏远地区
@@ -198,12 +161,12 @@ const keywords = ["珀金斯发电机","Perkins发电机","柴油发电机","Per
 - 移动方便
 - 燃油经济
 - 耐用可靠
-```
+\`\`\`
 
 ## 真实案例
 
 **砂拉越矿山:**
-```
+\`\`\`
 业务: 金矿开采
 位置: 偏远山区
 需求: 主要电源
@@ -226,7 +189,7 @@ ROI:
 - 月维护: RM 3,000
 - 月供: RM 1,800
 - 月净利: RM 165,200
-```
+\`\`\`
 
 ## 融资好处
 
@@ -253,7 +216,7 @@ ROI:
 ## Perkins优势
 
 ### 可靠性
-```
+\`\`\`
 故障率低:
 - 平均故障间隔: 500-1,000小时
 - 寿命: 15,000-30,000小时
@@ -262,10 +225,10 @@ ROI:
 对比其他:
 - 比一般品牌: 寿命长50%
 - 比便宜品牌: 寿命长100%
-```
+\`\`\`
 
 ### 燃油经济
-```
+\`\`\`
 油耗低:
 - 比一般品牌: 节省10-15%
 - 比老型号: 节省20-25%
@@ -273,10 +236,10 @@ ROI:
 年节省:
 - 100kVA: RM 10,000-20,000/年
 - 200kVA: RM 20,000-40,000/年
-```
+\`\`\`
 
 ### 维护简单
-```
+\`\`\`
 维护方便:
 - 零件易得
 - 技术人员多
@@ -286,50 +249,50 @@ ROI:
 维护成本:
 - 比一般品牌: 低20-30%
 - 比稀有品牌: 低50%
-```
+\`\`\`
 
 ## 型号选择
 
 ### 400系列
-```
+\`\`\`
 30-60kVA:
 - 适合: 小工厂、餐厅
 - 转速: 1500/1800RPM
 - 特点: 紧凑、经济
 - 价格: RM 20,000-35,000(二手)
-```
+\`\`\`
 
 ### 1100系列
-```
+\`\`\`
 80-150kVA:
 - 适合: 中型工厂、酒店
 - 转速: 1500RPM
 - 特点: 可靠、耐用
 - 价格: RM 50,000-90,000(二手)
-```
+\`\`\`
 
 ### 1500系列
-```
+\`\`\`
 160-250kVA:
 - 适合: 大型工厂、医院
 - 转速: 1500RPM
 - 特点: 强劲、稳定
 - 价格: RM 90,000-160,000(二手)
-```
+\`\`\`
 
 ### 2500系列
-```
+\`\`\`
 280-500kVA:
 - 适合: 工业园区、矿山
 - 转速: 1500RPM
 - 特点: 重型、专业
 - 价格: RM 160,000-300,000(二手)
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 备用电源价值
-```
+\`\`\`
 避免损失:
 - 工厂: RM 50,000-200,000/天
 - 酒店: RM 30,000-100,000/天
@@ -339,10 +302,10 @@ ROI:
 - 发电机: RM 100,000
 - 避免损失: RM 100,000(1次)
 - 回本: 立即
-```
+\`\`\`
 
 ### 主要电源
-```
+\`\`\`
 矿山/工地:
 - 月收入: RM 100,000-300,000
 - 发电机成本: RM 100,000
@@ -350,12 +313,12 @@ ROI:
 - 月维护: RM 3,000
 - 月净利: RM 67,000-167,000
 - 回本: 1-2个月
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(150kVA)
-```
+\`\`\`
 连续运行:
 - 燃料: RM 30,000(快速x30天)
 - 机油: RM 2,000/月(每250小时)
@@ -367,7 +330,7 @@ ROI:
 - 测试运行: RM 2,000/月
 - 保养: RM 800/月
 总计: RM 2,800/月
-```
+\`\`\`
 
 ## 申请资格
 
@@ -404,7 +367,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 100,000发电机
-```
+\`\`\`
 3年期:
 月供: RM 3,130
 总利息: RM 12,680
@@ -416,12 +379,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 1,390
 总利息: RM 16,760
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期备用
-```
+\`\`\`
 投资: RM 100,000
 首付: RM 0
 月供: RM 1,920
@@ -433,7 +396,7 @@ WhatsApp: +60175700889
 回本: 7个月
 5年节省: RM 950,000
 ROI: 950%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -477,8 +440,46 @@ A: 很高，70-80%保值率
 **英兴信贷 - Perkins发电机专家**
 
 可靠动力，持久保障！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

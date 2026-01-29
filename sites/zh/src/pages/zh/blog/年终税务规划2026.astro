@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,35 @@ const keywords = ["年终税务规划","税务策略","降低税务","税务规�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 年终税务规划 2026
+
+## 年终税务规划
+
+设备购买降低税单:
+
+\`\`\`
+评估税单 → 购买设备 → 资本津贴 → 降低税务
+\`\`\`
+
+## 税务规划
+
+| 预计税单 | 设备购买 | 资本津贴 | 降低税单 |
+|---------|---------|---------|---------|
+| RM 50,000 | RM 100,000设备 | RM 20,000 | RM 4,800 |
+| RM 100,000 | RM 200,000设备 | RM 40,000 | RM 9,600 |
+| RM 200,000 | RM 400,000设备 | RM 80,000 | RM 19,200 |
+
+## 规划好处
+
+- 降低当年税单
+- 0%首付保留现金
+- 获得新设备
+- 增加收入
+
+**立即申请: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,36 +90,7 @@ const keywords = ["年终税务规划","税务策略","降低税务","税务规�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 年终税务规划 2026
-
-## 年终税务规划
-
-设备购买降低税单:
-
-```
-评估税单 → 购买设备 → 资本津贴 → 降低税务
-```
-
-## 税务规划
-
-| 预计税单 | 设备购买 | 资本津贴 | 降低税单 |
-|---------|---------|---------|---------|
-| RM 50,000 | RM 100,000设备 | RM 20,000 | RM 4,800 |
-| RM 100,000 | RM 200,000设备 | RM 40,000 | RM 9,600 |
-| RM 200,000 | RM 400,000设备 | RM 80,000 | RM 19,200 |
-
-## 规划好处
-
-- 降低当年税单
-- 0%首付保留现金
-- 获得新设备
-- 增加收入
-
-**立即申请: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

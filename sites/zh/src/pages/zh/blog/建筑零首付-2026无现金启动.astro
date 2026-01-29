@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,89 +23,51 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 建筑零首付 - 2026无现金启动方案
 
 ## 零首付优势
 
 ### 传统融资问题
-```
+\`\`\`
 银行首付:
 - 10-20%首付
 - RM 100,000设备
 - 需RM 10,000-20,000现金
 - 现金流压力
-```
+\`\`\`
 
 ### Ing Heng零首付
-```
+\`\`\`
 0首付方案:
 - RM 100,000设备
 - 首付: RM 0
 - 保留现金: RM 10,000-20,000
 - 现金用于: 运营
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%必须
 融资: 最高90%
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
 现金要求: 高
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%可选
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 现金要求: 低
-```
+\`\`\`
 
 ## 零首付设备
 
@@ -132,7 +95,7 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 ## 现金用途
 
 ### 燃料采购
-```
+\`\`\`
 月燃料需求:
 - 挖掘机: RM 2,500
 - 罗里: RM 2,000
@@ -141,10 +104,10 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 
 零首付节省现金可支付:
 - 2-3个月燃料
-```
+\`\`\`
 
 ### 人工工资
-```
+\`\`\`
 月人工成本:
 - 操作员x3: RM 9,000
 - 辅助工人x3: RM 6,000
@@ -152,10 +115,10 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 
 零首付节省现金可支付:
 - 1个月工资
-```
+\`\`\`
 
 ### 材料采购
-```
+\`\`\`
 项目材料:
 - 水泥沙石: RM 5,000
 - 钢筋材料: RM 8,000
@@ -164,12 +127,12 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 
 零首付节省现金可支付:
 - 部分材料
-```
+\`\`\`
 
 ## 适用场景
 
 ### 新公司启动
-```
+\`\`\`
 创业初期:
 - 现金有限
 - 需要设备
@@ -179,10 +142,10 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 - 保留现金
 - 设备齐全
 - 启动容易
-```
+\`\`\`
 
 ### 项目承接
-```
+\`\`\`
 新项目:
 - 需要新设备
 - 现金用于项目
@@ -192,10 +155,10 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 - 现金流健康
 - 项目顺利进行
 - 利润最大化
-```
+\`\`\`
 
 ### 设备更新
-```
+\`\`\`
 设备更新:
 - 旧设备淘汰
 - 购买新设备
@@ -205,12 +168,12 @@ const keywords = ["零首付","0首付","无首付融资","建筑设备贷款"],
 - 无现金压力
 - 设备升级
 - 效率提升
-```
+\`\`\`
 
 ## 真实案例
 
 **雪兰莪承包商:**
-```
+\`\`\`
 需求: 购买挖掘机
 选择: 20吨CAT(二手)
 价格: RM 85,000
@@ -230,12 +193,12 @@ Ing Heng方案:
 - 现金流健康
 - 项目顺利
 - 回本快
-```
+\`\`\`
 
 ## 零首付好处
 
 ### 现金流健康
-```
+\`\`\`
 有首付:
 - 设备: RM 85,000
 - 首付: -RM 8,500
@@ -246,10 +209,10 @@ Ing Heng方案:
 - 首付: RM 0
 - 保留: RM 8,500
 - 现金: 充足
-```
+\`\`\`
 
 ### 快速启动
-```
+\`\`\`
 有首付:
 - 储蓄首付: 3-6个月
 - 延迟启动
@@ -258,10 +221,10 @@ Ing Heng方案:
 - 立即启动
 - 快速赚钱
 - 不等待
-```
+\`\`\`
 
 ### 灵活运营
-```
+\`\`\`
 现金用途:
 - 应急资金
 - 燃料采购
@@ -270,12 +233,12 @@ Ing Heng方案:
 - 业务发展
 
 零首付保留现金用于这些
-```
+\`\`\`
 
 ## 收入计算
 
 ### 日收入(挖掘机)
-```
+\`\`\`
 租赁:
 - 8小时: RM 800-1,200
 - 按天: RM 700-1,000
@@ -284,20 +247,20 @@ Ing Heng方案:
 - 按小时: RM 150-200
 - 按天: RM 1,000-1,500
 - 项目: RM 2,000-3,000
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作22天:
 - 租赁: RM 15,400-22,000
 - 自营: RM 22,000-44,000
 - 平均: RM 25,000
-```
+\`\`\`
 
 ## 成本分析
 
 ### 月成本
-```
+\`\`\`
 挖掘机:
 - 燃料: RM 2,500
 - 保养: RM 600
@@ -311,12 +274,12 @@ Ing Heng方案:
 - 零件: RM 400
 - 月供: RM 950(5年)
 总计: RM 3,850/月
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(挖掘机)
-```
+\`\`\`
 设备: RM 85,000
 首付: RM 0
 月供: RM 1,620
@@ -328,7 +291,7 @@ Ing Heng方案:
 回本: 5个月
 5年利润: RM 1,186,800
 ROI: 1,396%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -368,7 +331,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 85,000设备
-```
+\`\`\`
 3年期:
 月供: RM 2,660
 总利息: RM 10,760
@@ -380,7 +343,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 1,170
 总利息: RM 13,280
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -435,8 +398,46 @@ A: 可以，无罚款
 **英兴信贷 - 零首付融资专家**
 
 无现金启动，成功开始！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

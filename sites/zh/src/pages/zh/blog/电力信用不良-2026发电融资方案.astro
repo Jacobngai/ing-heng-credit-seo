@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["信用不良","CCRIS","坏账电力","发电融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 电力信用不良 - 2026发电融资方案
 
 ## 信用不良挑战
 
 ### CCRIS问题
-```
+\`\`\`
 常见记录:
 - 信用卡逾期
 - 贷款违约
@@ -79,10 +42,10 @@ const keywords = ["信用不良","CCRIS","坏账电力","发电融资"],
 - 无法融资
 - 无法买设备
 - 业务受限
-```
+\`\`\`
 
 ### Ing Heng理解
-```
+\`\`\`
 我们考虑:
 - 现在收入
 - 还款能力
@@ -94,34 +57,34 @@ const keywords = ["信用不良","CCRIS","坏账电力","发电融资"],
 - CCRIS记录
 - CTOS分数
 - PAKS黑名单
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 信用: 必须良好
 CCRIS: 无不良记录
 CTOS: 分数高
 PAKS: 不在黑名单
 首付: 10-20%
 审批: 几乎拒绝
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 信用: 灵活考虑
 CCRIS: 可有记录
 CTOS: 综合评估
 PAKS: 可讨论
 首付: 0%
 审批: 70%通过率
-```
+\`\`\`
 
 ## 信用不良方案
 
 ### 方案1: 有项目合同
-```
+\`\`\`
 要求:
 - 有效项目
 - 月收入RM 20,000+
@@ -131,10 +94,10 @@ PAKS: 可讨论
 - 0%首付
 - 100%融资
 - 项目收入还款
-```
+\`\`\`
 
 ### 方案2: 有担保人
-```
+\`\`\`
 要求:
 - 担保人信用良好
 - 担保人有收入
@@ -144,10 +107,10 @@ PAKS: 可讨论
 - 0%首付
 - 100%融资
 - 担保人联合签字
-```
+\`\`\`
 
 ### 方案3: 部分首付
-```
+\`\`\`
 要求:
 - 可付部分首付
 - 月收入稳定
@@ -157,12 +120,12 @@ PAKS: 可讨论
 - 首付: 5-10%
 - 融资: 90-95%
 - 逐步改善
-```
+\`\`\`
 
 ## 适用场景
 
 ### 业务恢复
-```
+\`\`\`
 情况:
 - 过去困难
 - 现在好转
@@ -173,10 +136,10 @@ PAKS: 可讨论
 - 0%首付
 - 按时还款
 - 清除记录
-```
+\`\`\`
 
 ### 新机会
-```
+\`\`\`
 情况:
 - 有新项目
 - 需要设备
@@ -187,10 +150,10 @@ PAKS: 可讨论
 - Ing Heng融资
 - 项目收入还款
 - 成功改善信用
-```
+\`\`\`
 
 ### 第二次机会
-```
+\`\`\`
 情况:
 - 过去违约
 - 现在稳定
@@ -202,12 +165,12 @@ PAKS: 可讨论
 - 灵活条件
 - 支持改善
 - 长期合作
-```
+\`\`\`
 
 ## 真实案例
 
 **柔佛工厂:**
-```
+\`\`\`
 背景:
 - 2020年COVID困难
 - CCRIS不良: RM 20,000
@@ -231,12 +194,12 @@ Ing Heng方案:
 - CCRIS清除
 - 信用恢复
 - 现在可银行贷款
-```
+\`\`\`
 
 ## 融资好处
 
 ### 第二次机会
-```
+\`\`\`
 改善信用:
 - 按时还款
 - 清除旧记录
@@ -247,10 +210,10 @@ Ing Heng方案:
 - 12-24个月良好记录
 - CCRIS改善
 - 信用提升
-```
+\`\`\`
 
 ### 业务支持
-```
+\`\`\`
 设备融资:
 - 获得设备
 - 项目顺利进行
@@ -261,49 +224,49 @@ Ing Heng方案:
 - 业务增长
 - 信用改善
 - 成功循环
-```
+\`\`\`
 
 ## 改善信用步骤
 
 ### 第1步: 获得融资
-```
+\`\`\`
 Ing Heng:
 - 批准发电机
 - 获得设备
 - 开始赚钱
-```
+\`\`\`
 
 ### 第2步: 按时还款
-```
+\`\`\`
 还款记录:
 - 每月准时
 - 金额正确
 - 不逾期
 - 建立良好记录
-```
+\`\`\`
 
 ### 第3步: 清除旧账
-```
+\`\`\`
 CCRIS:
 - 逐步还清
 - 旧债务
 - 12-24个月
 - 记录清除
-```
+\`\`\`
 
 ### 第4步: 重建信用
-```
+\`\`\`
 信用恢复:
 - CTOS分数上升
 - PAKS移除
 - 银行接受
 - 未来容易
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 月收入(50kVA发电机租赁)
-```
+\`\`\`
 信用不良客户:
 - 保守: RM 15,000
 - 一般: RM 25,000
@@ -311,7 +274,7 @@ CCRIS:
 
 月供: RM 690
 还款占比: 2-5%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -357,7 +320,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 36,000发电机
-```
+\`\`\`
 3年期:
 月供: RM 1,130
 总利息: RM 4,680
@@ -369,12 +332,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 500
 总利息: RM 6,000
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 设备: RM 36,000
 首付: RM 0
 月供: RM 690
@@ -386,7 +349,7 @@ WhatsApp: +60175700889
 回本: 3个月
 5年利润: RM 1,020,000
 同时: 信用改善
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -442,8 +405,46 @@ A: 12-24个月良好记录
 **英兴信贷 - 第二次机会专家**
 
 信用不佳，机会犹在！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

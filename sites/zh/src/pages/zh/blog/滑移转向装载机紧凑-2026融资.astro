@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 滑移转向装载机紧凑 - 2026融资方案
 
 ## 什么是滑移转向装载机
@@ -77,7 +40,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 ### 紧凑优势
 
 **狭窄空间作业：**
-```
+\`\`\`
 普通装载机:
 - 宽度: 2.5米
 - 转弯半径: 5米
@@ -87,7 +50,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 - 宽度: 1.2-1.5米
 - 转弯半径: 原地
 - 优势: 室内外皆可
-```
+\`\`\`
 
 ### 多功能能力
 
@@ -102,22 +65,22 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -131,7 +94,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 ## 适用场景
 
 ### 室内作业
-```
+\`\`\`
 仓库:
 - 货物搬运
 - 场地清理
@@ -143,10 +106,10 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 - 废料清理
 - 设备移动
 - 维护辅助
-```
+\`\`\`
 
 ### 狭窄空间
-```
+\`\`\`
 城市工地:
 - 小型拆除
 - 材料搬运
@@ -158,12 +121,12 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 - 景观施工
 - 材料配送
 - 场地平整
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡室内装修公司:**
-```
+\`\`\`
 业务: 室内拆除和装修
 设备需求: 紧凑型装载设备
 选择: Bobcat S70(二手)
@@ -174,7 +137,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 每月项目: 8-10个
 月收入: RM 18,000
 回本期: 2个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -200,7 +163,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 ## 附件系统
 
 ### 常用附件
-```
+\`\`\`
 铲斗系列:
 - 标准铲斗
 - 大容量铲斗
@@ -224,26 +187,26 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 - 铲雪板
 - 推土板
 - 斜坡机
-```
+\`\`\`
 
 ## 工作效率
 
 ### 人工 vs 机器
 
 **人工搬运(仓库):**
-```
+\`\`\`
 工人: 4人
 效率: 每天5吨
 成本: RM 320/天
-```
+\`\`\`
 
 **滑移装载机:**
-```
+\`\`\`
 操作员: 1人
 效率: 每天30吨
 成本: RM 450/天(含人工)
 效率提升: 6倍
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -281,7 +244,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 ## 收入潜力
 
 ### 日收入
-```
+\`\`\`
 租赁:
 - 8小时: RM 500-700
 - 按天: RM 400-600
@@ -291,20 +254,20 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 - 材料搬运: RM 600/天
 - 园林工程: RM 700/天
 - 综合服务: RM 1,000/天
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作22天:
 - 保守: RM 8,800
 - 一般: RM 13,200
 - 乐观: RM 18,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 小型机:
 - 燃料: RM 800
 - 保养: RM 300
@@ -316,7 +279,7 @@ const keywords = ["滑移转向装载机","小型装载机","紧凑设备融资"
 - 保养: RM 500
 - 零件: RM 400
 总计: RM 2,100/月
-```
+\`\`\`
 
 ## 申请流程
 
@@ -335,7 +298,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 35,000设备
-```
+\`\`\`
 3年期:
 月供: RM 1,100
 总利息: RM 4,200
@@ -347,12 +310,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 490
 总利息: RM 6,160
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 投资: RM 35,000
 首付: RM 0
 月供: RM 680
@@ -364,7 +327,7 @@ WhatsApp: +60175700889
 回本: 4个月
 5年利润: RM 540,000
 ROI: 1,543%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -413,8 +376,46 @@ A: 较好，保值率70-80%
 **英兴信贷 - 紧凑设备融资专家**
 
 小设备，大作为，立即开始！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

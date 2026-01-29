@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,43 @@ const keywords = ["建筑水罐","工地供水","建筑用水","水罐车融资"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 水罐建筑融资 - 2026工地供水
+
+## 工地供水需求
+
+建筑工地需要稳定供水:
+
+\`\`\`
+需求: 持续用水
+建筑: 混凝土搅拌
+灰尘: 压尘
+清洗: 设备清洗
+\`\`\`
+
+## 融资方案
+
+### 水罐车融资
+\`\`\`
+5吨水罐: RM 100,000-140,000
+10吨水罐: RM 150,000-200,000
+融资: 100%
+首付: 0%
+\`\`\`
+
+## 收入
+
+### 工地供水
+\`\`\`
+按天: RM 400-800/天
+按月: RM 10,000-16,000/月
+\`\`\`
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,44 +98,7 @@ const keywords = ["建筑水罐","工地供水","建筑用水","水罐车融资"
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 水罐建筑融资 - 2026工地供水
-
-## 工地供水需求
-
-建筑工地需要稳定供水:
-
-```
-需求: 持续用水
-建筑: 混凝土搅拌
-灰尘: 压尘
-清洗: 设备清洗
-```
-
-## 融资方案
-
-### 水罐车融资
-```
-5吨水罐: RM 100,000-140,000
-10吨水罐: RM 150,000-200,000
-融资: 100%
-首付: 0%
-```
-
-## 收入
-
-### 工地供水
-```
-按天: RM 400-800/天
-按月: RM 10,000-16,000/月
-```
-
-## 立即申请
-
-**WhatsApp: +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,46 @@ const keywords = ["项目竞标","中标设备","中标后采购","项目设备"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 项目竞标 2026
+
+## 中标后设备
+
+中标后快速获得设备:
+
+\`\`\`
+中标 → 立即申请 → 快速批准 → 设备到位 → 项目开始
+\`\`\`
+
+## 中标设备
+
+| 项目 | 设备 | 时间 | Ing Heng首付 |
+|------|------|------|-------------|
+| 政府建筑 | 挖掘机×3 | 2周 | RM 0 |
+| 物流合同 | 货车×5 | 2周 | RM 0 |
+| 仓储合同 | 叉车×3 | 2周 | RM 0 |
+
+## 中标流程
+
+### 第1步: 中标通知
+
+- 确认设备需求
+- 列出设备清单
+
+### 第2步: 立即申请
+
+- WhatsApp: +60175700889
+- 快速批准
+
+### 第3步: 快速采购
+
+- 立即购买
+- 设备到位
+- 项目开始
+
+**中标后立即: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,47 +101,7 @@ const keywords = ["项目竞标","中标设备","中标后采购","项目设备"
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 项目竞标 2026
-
-## 中标后设备
-
-中标后快速获得设备:
-
-```
-中标 → 立即申请 → 快速批准 → 设备到位 → 项目开始
-```
-
-## 中标设备
-
-| 项目 | 设备 | 时间 | Ing Heng首付 |
-|------|------|------|-------------|
-| 政府建筑 | 挖掘机×3 | 2周 | RM 0 |
-| 物流合同 | 货车×5 | 2周 | RM 0 |
-| 仓储合同 | 叉车×3 | 2周 | RM 0 |
-
-## 中标流程
-
-### 第1步: 中标通知
-
-- 确认设备需求
-- 列出设备清单
-
-### 第2步: 立即申请
-
-- WhatsApp: +60175700889
-- 快速批准
-
-### 第3步: 快速采购
-
-- 立即购买
-- 设备到位
-- 项目开始
-
-**中标后立即: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

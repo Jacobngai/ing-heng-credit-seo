@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,35 @@ const keywords = ["挖掘机税务优惠","挖掘机津贴","设备税务","建�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 挖掘机税务优惠 2026
+
+## 挖掘机税务
+
+购买挖掘机享受税务优惠:
+
+\`\`\`
+购买挖掘机 → 资本津贴20% → 利息抵税 → 税节省
+\`\`\`
+
+## 税务优惠
+
+| 优惠类型 | 金额 | 税节省 |
+|---------|------|-------|
+| 资本津贴 | 20%×RM 100,000 | RM 4,800/年 |
+| 利息抵税 | RM 6,000/年 | RM 1,440/年 |
+| 总节省 | | RM 6,240/年 |
+
+## 5年总节省
+
+- 5年资本津贴: RM 100,000
+- 5年利息抵税: RM 30,000
+- 总抵税: RM 130,000
+- 税节省(24%): RM 31,200
+
+**立即申请: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,36 +90,7 @@ const keywords = ["挖掘机税务优惠","挖掘机津贴","设备税务","建�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 挖掘机税务优惠 2026
-
-## 挖掘机税务
-
-购买挖掘机享受税务优惠:
-
-```
-购买挖掘机 → 资本津贴20% → 利息抵税 → 税节省
-```
-
-## 税务优惠
-
-| 优惠类型 | 金额 | 税节省 |
-|---------|------|-------|
-| 资本津贴 | 20%×RM 100,000 | RM 4,800/年 |
-| 利息抵税 | RM 6,000/年 | RM 1,440/年 |
-| 总节省 | | RM 6,240/年 |
-
-## 5年总节省
-
-- 5年资本津贴: RM 100,000
-- 5年利息抵税: RM 30,000
-- 总抵税: RM 130,000
-- 税节省(24%): RM 31,200
-
-**立即申请: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

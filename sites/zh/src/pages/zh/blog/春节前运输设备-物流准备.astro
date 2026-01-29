@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,58 +23,20 @@ const keywords = ["春节运输","物流准备","运输设备","春节罗里"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 春节前运输设备 - 物流准备
 
 ## 春节后物流旺季
 
 春节后是物流业的超级旺季:
 
-```
+\`\`\`
 电商年货: 春节前开始
 节后补货: 春节后爆发
 工厂复工: 原材料运输
 运输需求: 增加50-100%
-```
+\`\`\`
 
 ## 春节前物流准备
 
@@ -153,12 +116,12 @@ const keywords = ["春节运输","物流准备","运输设备","春节罗里"],
 - 节前优先处理
 
 ### 运输设备融资
-```
+\`\`\`
 1吨罗里: RM 60,000-90,000
 3吨罗里: RM 80,000-120,000
 5吨罗里: RM 100,000-150,000
 拖车头: RM 150,000-300,000
-```
+\`\`\`
 
 ## 真实例子
 
@@ -246,31 +209,31 @@ const keywords = ["春节运输","物流准备","运输设备","春节罗里"],
 ## 运输设备融资方案
 
 ### 方案1: 单台罗里
-```
+\`\`\`
 设备: 3吨罗里RM 100,000
 融资: 100%
 首付: 0%
 月供: 可负担
 审批: 快速
-```
+\`\`\`
 
 ### 方案2: 罗里车队
-```
+\`\`\`
 设备: 5台罗里RM 500,000
 融资: 100%
 首付: 0%
 特别利率
 审批: 72小时
-```
+\`\`\`
 
 ### 方案3: 拖车头
-```
+\`\`\`
 设备: 拖车头RM 200,000
 融资: 100%
 首付: 0%
 长期还款
 审批: 快速
-```
+\`\`\`
 
 ## 春节前物流建议
 
@@ -331,19 +294,19 @@ A: 可以，二手罗里性价比高。
 ## 2026年物流时间表
 
 ### 电商物流
-```
+\`\`\`
 1月: 年货运输(小高峰)
 2月: 春节(暂停)
 2月底: 补货开始(大高峰)
 3月: 持续高峰
-```
+\`\`\`
 
 ### 工厂物流
-```
+\`\`\`
 2月: 春节(工厂关闭)
 3月初: 工厂复工
 3月: 原材料需求爆发
-```
+\`\`\`
 
 ## 成功案例
 
@@ -398,8 +361,46 @@ A: 可以，二手罗里性价比高。
 **立即申请，春节前物流准备完毕**
 
 春节后物流旺季?提前准备运输设备确保能够应对需求增长，抓住收入机会。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 混凝土泵 - 2026浇筑设备融资
 
 ## 什么是混凝土泵
@@ -75,7 +38,7 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 ## 混凝土泵类型
 
 ### 按移动性
-```
+\`\`\`
 拖式混凝土泵:
 - 价格便宜
 - 需要拖车
@@ -93,10 +56,10 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 灵活性最高
 - 价格最贵
 - 价格: RM 400,000-800,000
-```
+\`\`\`
 
 ### 按输送距离
-```
+\`\`\`
 短距离(水平50-100米):
 - 小型项目
 - 低楼层
@@ -111,27 +74,27 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 大型项目
 - 高楼层
 - 价格: RM 150,000-300,000
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -145,7 +108,7 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 ## 适用场景
 
 ### 高层建筑
-```
+\`\`\`
 混凝土输送:
 - 高楼层浇筑
 - 连续输送
@@ -157,10 +120,10 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 输送高度100米+
 - 连续作业
 - 省时省力
-```
+\`\`\`
 
 ### 大型基础
-```
+\`\`\`
 基础浇筑:
 - 大体积混凝土
 - 连续浇筑
@@ -171,21 +134,21 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 大方量
 - 连续性
 - 速度要求
-```
+\`\`\`
 
 ### 隧道工程
-```
+\`\`\`
 隧道衬砌:
 - 长距离输送
 - 湿喷混凝土
 - 高效率
 - 质量好
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡建筑承包商:**
-```
+\`\`\`
 项目: 20层公寓
 高度: 75米
 混凝土: 8,000m³
@@ -202,7 +165,7 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 项目期节省: RM 128,000
 - 设备成本: RM 105,000
 - 净节省: RM 23,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -228,16 +191,16 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 ## 工作效率
 
 ### 人工浇筑
-```
+\`\`\`
 传统方法:
 - 工人: 30人
 - 效率: 每天20m³
 - 高层: 无法作业
 - 成本: RM 2,400/天
-```
+\`\`\`
 
 ### 混凝土泵
-```
+\`\`\`
 机械输送:
 - 操作员: 3人
 - 辅助: 5人
@@ -246,7 +209,7 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 成本: RM 2,000/天
 效率提升: 2.5倍
 成本降低: 17%
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -260,7 +223,7 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 ## 收入潜力
 
 ### 日收入
-```
+\`\`\`
 租赁:
 - 8小时: RM 1,500-3,000
 - 按天: RM 1,300-2,500
@@ -269,20 +232,20 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 按方: RM 15-25/m³
 - 项目承包: RM 30-50/m³
 - 高层加收: RM 5-10/m³
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作20天:
 - 保守: RM 26,000
 - 一般: RM 40,000
 - 乐观: RM 60,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 拖式小型:
 - 燃料: RM 1,500
 - 保养: RM 500
@@ -303,12 +266,12 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 零件: RM 1,500
 - 管道: RM 1,000
 总计: RM 9,500/月
-```
+\`\`\`
 
 ## 配套设备
 
 ### 必需设备
-```
+\`\`\`
 输送管道:
 - 直管
 - 弯管
@@ -319,10 +282,10 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 人工布料杆
 - 机械布料杆
 - 臂架系统
-```
+\`\`\`
 
 ### 可选设备
-```
+\`\`\`
 清洗系统:
 - 自动清洗
 - 水洗系统
@@ -332,12 +295,12 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 自动添加
 - 精确控制
 - 提高质量
-```
+\`\`\`
 
 ## 技术要求
 
 ### 操作技能
-```
+\`\`\`
 培训要求:
 - 专业培训
 - 安全意识
@@ -348,16 +311,16 @@ const keywords = ["混凝土泵","混凝土输送泵","浇筑设备","混凝土�
 - 压力控制
 - 故障处理
 - 清洗保养
-```
+\`\`\`
 
 ### 安全要求
-```
+\`\`\`
 作业安全:
 - 管道固定
 - 压力监测
 - 安全距离
 - 应急预案
-```
+\`\`\`
 
 ## 申请资格
 
@@ -390,7 +353,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 110,000设备
-```
+\`\`\`
 3年期:
 月供: RM 3,450
 总利息: RM 14,200
@@ -402,12 +365,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 1,540
 总利息: RM 19,360
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 投资: RM 110,000
 首付: RM 0
 月供: RM 2,130
@@ -419,7 +382,7 @@ WhatsApp: +60175700889
 回本: 5个月
 5年利润: RM 1,560,000
 ROI: 1,418%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -463,8 +426,46 @@ A: 中等，保值率70-80%
 **英兴信贷 - 混凝土设备融资专家**
 
 输送成功，建设高楼！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

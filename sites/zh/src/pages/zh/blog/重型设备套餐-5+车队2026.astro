@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["重型设备套餐","车队融资","批量设备融资","多�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 重型设备套餐 - 5+车队 2026
 
 ## 车队融资需求
@@ -75,20 +38,20 @@ const keywords = ["重型设备套餐","车队融资","批量设备融资","多�
 ## 银行vs Ing Heng车队融资
 
 ### 银行逐台融资
-```
+\`\`\`
 每台首付: 10-20%
 多次申请: 每台单独
 多次审批: 费时费力
 总首付: 高额
-```
+\`\`\`
 
 ### Ing Heng车队套餐
-```
+\`\`\`
 0%首付: 所有设备
 一次申请: 整个车队
 一次审批: 快速
 总首付: RM 0
-```
+\`\`\`
 
 ## 真实例子
 
@@ -115,34 +78,34 @@ const keywords = ["重型设备套餐","车队融资","批量设备融资","多�
 ## 车队套餐组合
 
 ### 小型车队套餐(5台)
-```
+\`\`\`
 2台挖掘机: RM 100,000
 2台推土机: RM 160,000
 1台罗里: RM 50,000
 总价: RM 310,000
 银行首付: RM 31,000
 Ing Heng首付: RM 0
-```
+\`\`\`
 
 ### 中型车队套餐(8台)
-```
+\`\`\`
 3台挖掘机: RM 150,000
 3台推土机: RM 240,000
 2台罗里: RM 100,000
 总价: RM 490,000
 银行首付: RM 49,000
 Ing Heng首付: RM 0
-```
+\`\`\`
 
 ### 大型车队套餐(10+台)
-```
+\`\`\`
 5台挖掘机: RM 250,000
 5台推土机: RM 400,000
 2台起重机: RM 400,000
 总价: RM 1,050,000
 银行首付: RM 105,000
 Ing Heng首付: RM 0
-```
+\`\`\`
 
 ## 0%首付车队套餐的好处
 
@@ -325,8 +288,46 @@ A: 可以，可以随时追加
 **车队融资一站式解决方案**
 
 Ing Heng提供0%首付重型设备套餐融资，帮助承包商快速建立车队，赢得大型项目。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

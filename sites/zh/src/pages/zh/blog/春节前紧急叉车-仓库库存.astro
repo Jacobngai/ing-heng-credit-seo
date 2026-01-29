@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,56 +23,18 @@ const keywords = ["春节叉车","紧急叉车","仓库叉车","快速融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">叉车融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 春节前紧急叉车 - 仓库库存
 
 ## 春节前叉车紧急需求
 
 仓库春节前突然叉车不够?
 
-```
+\`\`\`
 正常融资: 1-2周
 紧急通道: 快速
-```
+\`\`\`
 
 ## 为什么紧急?
 
@@ -90,20 +53,20 @@ const keywords = ["春节叉车","紧急叉车","仓库叉车","快速融资"],
 ## 快速叉车融资
 
 ### 超级紧急(快速)
-```
+\`\`\`
 第1天: 申请和评估
 第2天: 批准和放款
 第3天: 购买叉车
 第4-5天: 交付
-```
+\`\`\`
 
 ### 标准紧急(72小时)
-```
+\`\`\`
 第1天: 申请
 第2天: 评估和补充文件
 第3天: 批准
 第4-7天: 购买和交付
-```
+\`\`\`
 
 ## 真实例子
 
@@ -209,28 +172,28 @@ const keywords = ["春节叉车","紧急叉车","仓库叉车","快速融资"],
 ## 叉车融资方案
 
 ### 方案1: 单台叉车
-```
+\`\`\`
 设备: 2吨电动叉车RM 40,000
 融资: 100%
 首付: 0%
 时间: 快速
-```
+\`\`\`
 
 ### 方案2: 叉车队
-```
+\`\`\`
 设备: 3台叉车RM 100,000
 融资: 100%
 首付: 0%
 时间: 72小时
-```
+\`\`\`
 
 ### 方案3: 替换叉车
-```
+\`\`\`
 情况: 叉车故障
 融资: 快速批准
 时间: 快速
 特别: 优先处理
-```
+\`\`\`
 
 ## 春节前时间管理
 
@@ -299,12 +262,12 @@ A: 可以，但选择可能有限。
 ## 2026年春节时间表
 
 ### 关键日期
-```
+\`\`\`
 1月15日: 理想截止
 1月20日: 紧急截止
 1月25日: 超级紧急截止
 1月31日: 最后机会
-```
+\`\`\`
 
 ## 成功案例
 
@@ -362,8 +325,46 @@ A: 可以，但选择可能有限。
 **立即申请，紧急叉车融资**
 
 春节前叉车紧急需求?Ing Heng 快速快速通道确保您及时获得叉车。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

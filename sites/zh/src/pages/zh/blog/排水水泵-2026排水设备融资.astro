@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 排水泵泵 - 2026排水设备融资
 
 ## 什么是排水水泵
@@ -75,7 +38,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 ## 水泵类型
 
 ### 按用途分类
-```
+\`\`\`
 潜水泵:
 - 深水抽水
 - 工程降水
@@ -93,10 +56,10 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 园林灌溉
 - 一般排水
 - 价格: RM 1,500-8,000
-```
+\`\`\`
 
 ### 按功率分类
-```
+\`\`\`
 小型(1-3寸):
 - 小工地
 - 轻型排水
@@ -112,27 +75,27 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 大型工地
 - 重型排水
 - 价格: RM 10,000-30,000
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -145,7 +108,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 ## 适用场景
 
 ### 建筑工地
-```
+\`\`\`
 基坑降水:
 - 降低地下水位
 - 保持基坑干燥
@@ -156,10 +119,10 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 持续排水
 - 大流量
 - 耐用可靠
-```
+\`\`\`
 
 ### 隧道工程
-```
+\`\`\`
 隧道排水:
 - 渗水抽排
 - 保持干燥
@@ -170,10 +133,10 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 泥浆泵
 - 耐磨损
 - 高扬程
-```
+\`\`\`
 
 ### 应急排水
-```
+\`\`\`
 洪涝应急:
 - 快速排水
 - 减少损失
@@ -184,12 +147,12 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 便携式
 - 大流量
 - 快速部署
-```
+\`\`\`
 
 ## 真实案例
 
 **吉隆坡建筑工地:**
-```
+\`\`\`
 项目: 地下室施工
 问题: 地下水位高
 需求: 基坑降水
@@ -204,7 +167,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 水位降低3米
 - 施工顺利进行
 - 避免损失: RM 50,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -230,7 +193,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 ## 工作效率
 
 ### 有无排水对比
-```
+\`\`\`
 无排水:
 - 基坑积水
 - 无法施工
@@ -242,10 +205,10 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 正常施工
 - 按期完成
 - 避免: RM 10,000-50,000/天损失
-```
+\`\`\`
 
 ### 排水能力
-```
+\`\`\`
 4寸潜水泵:
 - 流量: 100-200m³/h
 - 扬程: 10-20米
@@ -255,7 +218,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 流量: 200-400m³/h
 - 扬程: 15-30米
 - 适合: 大型基坑、隧道
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -270,7 +233,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 ## 选型指南
 
 ### 按流量选择
-```
+\`\`\`
 小型工地:
 - 流量: 50-100m³/h
 - 水泵: 2-3寸
@@ -285,10 +248,10 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 流量: 200-400m³/h
 - 水泵: 6-8寸
 - 价格: RM 7,000-15,000(二手)
-```
+\`\`\`
 
 ### 按扬程选择
-```
+\`\`\`
 低扬程(5-10米):
 - 浅基坑
 - 地面排水
@@ -303,12 +266,12 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 深井
 - 隧道工程
 - 专业设备
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 租赁收入
-```
+\`\`\`
 日租金:
 - 小型: RM 100-200/天
 - 中型: RM 200-400/天
@@ -318,22 +281,22 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 小型: RM 2,000-4,000
 - 中型: RM 4,000-8,000
 - 大型: RM 8,000-12,000
-```
+\`\`\`
 
 ### 自用价值
-```
+\`\`\`
 避免损失:
 - 停工损失: RM 10,000-50,000/天
 - 设备损坏: RM 5,000-20,000
 - 工期延误: RM 20,000-100,000
 
 投资回报: 避免1次即可收回
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 小型水泵:
 - 电力/燃料: RM 800-1,500
 - 保养: RM 200
@@ -345,7 +308,7 @@ const keywords = ["排水水泵","抽水泵","排水设备","水泵融资"],
 - 保养: RM 400
 - 零件: RM 300
 总计: RM 2,200-3,700/月
-```
+\`\`\`
 
 ## 申请资格
 
@@ -382,7 +345,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 15,000水泵套装
-```
+\`\`\`
 3年期:
 月供: RM 470
 总利息: RM 1,920
@@ -394,12 +357,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 210
 总利息: RM 2,640
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 投资: RM 15,000
 首付: RM 0
 月供: RM 280
@@ -411,7 +374,7 @@ WhatsApp: +60175700889
 回本: 1个月
 5年节省: RM 1,050,000
 ROI: 7,000%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -455,8 +418,46 @@ A: 潜水泵噪音小
 **英兴信贷 - 排水设备融资专家**
 
 排水畅通，工程成功！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

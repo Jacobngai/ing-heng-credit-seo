@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,51 @@ const keywords = ["车队租赁","车队购买","租赁vs购买","车队分期�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 车队租赁 2026
+
+## 车队租赁选择
+
+租赁还是购买车队:
+
+\`\`\`
+分析需求 → 比较选项 → 选择最佳 → 开始融资
+\`\`\`
+
+## 选项对比
+
+### 分期付款(购买)
+
+\`\`\`
+所有权: 是(付款完成后)
+首付: 0%(Ing Heng)
+期限: 最长7年
+税务: 利息抵税
+适合: 长期使用
+\`\`\`
+
+### 经营租赁
+
+\`\`\`
+所有权: 否
+首付: 0%
+期限: 1-5年
+税务: 租金抵税
+适合: 短期/项目
+\`\`\`
+
+## 车队选择
+
+| 情况 | 推荐 | 原因 |
+|------|------|------|
+| 核心车队 | 分期付款 | 长期拥有 |
+| 临时需求 | 租赁 | 灵活 |
+| 项目需求 | 租赁 | 项目结束后归还 |
+| 稳定业务 | 分期付款 | 建立资产 |
+
+**立即申请: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,52 +106,7 @@ const keywords = ["车队租赁","车队购买","租赁vs购买","车队分期�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 车队租赁 2026
-
-## 车队租赁选择
-
-租赁还是购买车队:
-
-```
-分析需求 → 比较选项 → 选择最佳 → 开始融资
-```
-
-## 选项对比
-
-### 分期付款(购买)
-
-```
-所有权: 是(付款完成后)
-首付: 0%(Ing Heng)
-期限: 最长7年
-税务: 利息抵税
-适合: 长期使用
-```
-
-### 经营租赁
-
-```
-所有权: 否
-首付: 0%
-期限: 1-5年
-税务: 租金抵税
-适合: 短期/项目
-```
-
-## 车队选择
-
-| 情况 | 推荐 | 原因 |
-|------|------|------|
-| 核心车队 | 分期付款 | 长期拥有 |
-| 临时需求 | 租赁 | 灵活 |
-| 项目需求 | 租赁 | 项目结束后归还 |
-| 稳定业务 | 分期付款 | 建立资产 |
-
-**立即申请: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

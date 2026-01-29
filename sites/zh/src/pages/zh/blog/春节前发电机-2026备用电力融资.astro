@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 春节前发电机 - 2026备用电力融资
 
 ## 农历新年电力挑战
 
 ### 假期电力风险
-```
+\`\`\`
 2026年农历新年:
 - 电网维护: 可能停电
 - 天气影响: 雷雨风暴
@@ -79,22 +42,22 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 - 设备损坏
 - 产品报废
 - 收入损失
-```
+\`\`\`
 
 ### 备用电力需求
-```
+\`\`\`
 必需行业:
 - 制造业: 生产线
 - 餐饮业: 冷藏设备
 - 零售业: POS系统
 - 医疗业: 生命支持
 - 服务业: 照明空调
-```
+\`\`\`
 
 ## 发电机类型
 
 ### 柴油发电机
-```
+\`\`\`
 优点:
 - 燃料便宜
 - 功率大
@@ -105,10 +68,10 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 - 20kVA: RM 12,000-20,000
 - 50kVA: RM 25,000-40,000
 - 100kVA: RM 45,000-70,000
-```
+\`\`\`
 
 ### 汽油发电机
-```
+\`\`\`
 优点:
 - 价格便宜
 - 便携式
@@ -119,27 +82,27 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 - 3kVA: RM 2,000-4,000
 - 5kVA: RM 4,000-7,000
 - 10kVA: RM 8,000-14,000
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -153,7 +116,7 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 ## 适用场景
 
 ### 制造业
-```
+\`\`\`
 工厂备用:
 - 生产线继续
 - 设备保护
@@ -164,10 +127,10 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 - 停电损失: RM 10,000-50,000/天
 - 设备损坏: RM 20,000-100,000
 - 产品报废: RM 5,000-30,000
-```
+\`\`\`
 
 ### 餐饮业
-```
+\`\`\`
 餐厅备用:
 - 冷藏设备
 - 烹饪设备
@@ -177,10 +140,10 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 春节损失:
 - 食物变质: RM 3,000-15,000
 - 营业损失: RM 2,000-10,000/天
-```
+\`\`\`
 
 ### 零售业
-```
+\`\`\`
 商店备用:
 - 照明系统
 - 收银系统
@@ -190,12 +153,12 @@ const keywords = ["春节发电机","备用电力","农历新年","发电机融�
 春节损失:
 - 营业损失: RM 3,000-20,000/天
 - 产品变质: RM 2,000-15,000
-```
+\`\`\`
 
 ## 真实案例
 
 **雪兰莪工厂:**
-```
+\`\`\`
 情况:
 - 电子制造业
 - 快速生产
@@ -217,7 +180,7 @@ Ing Heng方案:
 - 发电机立即启动
 - 生产继续
 - 避免损失: RM 50,000
-```
+\`\`\`
 
 ## 融资好处
 
@@ -243,7 +206,7 @@ Ing Heng方案:
 ## 停电损失计算
 
 ### 工厂停电
-```
+\`\`\`
 损失项目:
 - 停工损失: RM 20,000/天
 - 材料报废: RM 5,000
@@ -253,10 +216,10 @@ Ing Heng方案:
 
 发电机成本: RM 21,000
 投资回报: 避免1次停电即可收回
-```
+\`\`\`
 
 ### 餐厅停电
-```
+\`\`\`
 损失项目:
 - 食物变质: RM 8,000
 - 营业损失: RM 5,000
@@ -265,7 +228,7 @@ Ing Heng方案:
 
 发电机成本: RM 8,000
 投资回报: 避免1次停电即可收回
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -281,7 +244,7 @@ Ing Heng方案:
 ## 选型指南
 
 ### 按功率选择
-```
+\`\`\`
 小型(5-10kVA):
 - 便利店
 - 小餐厅
@@ -299,10 +262,10 @@ Ing Heng方案:
 - 酒店
 - 医院
 - 价格: RM 35,000-60,000(二手)
-```
+\`\`\`
 
 ### 按使用时间
-```
+\`\`\`
 短时备用(2-4小时):
 - 汽油发电机
 - 小型柴油
@@ -312,12 +275,12 @@ Ing Heng方案:
 - 柴油发电机
 - 大油箱
 - 持续供电
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 小型(5-10kVA):
 - 保养: RM 200/次(每3个月)
 - 燃料测试: RM 100/月
@@ -332,12 +295,12 @@ Ing Heng方案:
 - 保养: RM 1,000/次(每3个月)
 - 燃料测试: RM 600/月
 总计: RM 1,500/月平均
-```
+\`\`\`
 
 ## 春节准备
 
 ### 节前检查
-```
+\`\`\`
 1-2周前:
 - 运行测试
 - 检查油路
@@ -345,10 +308,10 @@ Ing Heng方案:
 - 储备燃料
 - 更换机油
 - 测试启动
-```
+\`\`\`
 
 ### 应急准备
-```
+\`\`\`
 燃料储备:
 - 柴油: 200-500升
 - 储油桶: 准备
@@ -358,7 +321,7 @@ Ing Heng方案:
 - 培训: 1-2天
 - 手册: 准备
 - 快速: 联系方式
-```
+\`\`\`
 
 ## 申请流程
 
@@ -381,7 +344,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 20,000发电机
-```
+\`\`\`
 3年期:
 月供: RM 630
 总利息: RM 2,680
@@ -393,12 +356,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 280
 总利息: RM 3,520
-```
+\`\`\`
 
 ## ROI分析
 
 ### 避免损失
-```
+\`\`\`
 发电机: RM 20,000
 月供: RM 390
 
@@ -410,7 +373,7 @@ WhatsApp: +60175700889
 - 避免5次停电: RM 150,000
 - 发电机成本: RM 20,000
 - 净节省: RM 130,000
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -459,8 +422,46 @@ A: 可选择静音型号
 **英兴信贷 - 电力安全保障**
 
 假期电力，永不中断！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

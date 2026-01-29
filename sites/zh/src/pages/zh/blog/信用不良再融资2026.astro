@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,28 @@ const keywords = ["信用不良再融资","CCRIS重组","坏信用再融资","�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 信用不良再融资 2026
+
+## 信用不良再融资
+
+CCRIS问题也可以再融资:
+
+\`\`\`
+高月供 + CCRIS问题 → Ing Heng再融资 → 降低月供
+\`\`\`
+
+## 再融资方案
+
+| 设备 | 现有月供 | 再融资月供 | CCRIS友好 |
+|------|---------|-----------|---------|
+| 货车 | RM 4,000 | RM 2,500 | 是 |
+| 挖掘机 | RM 6,000 | RM 3,500 | 是 |
+| 车队 | RM 15,000 | RM 9,000 | 是 |
+
+**立即申请: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,29 +83,7 @@ const keywords = ["信用不良再融资","CCRIS重组","坏信用再融资","�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 信用不良再融资 2026
-
-## 信用不良再融资
-
-CCRIS问题也可以再融资:
-
-```
-高月供 + CCRIS问题 → Ing Heng再融资 → 降低月供
-```
-
-## 再融资方案
-
-| 设备 | 现有月供 | 再融资月供 | CCRIS友好 |
-|------|---------|-----------|---------|
-| 货车 | RM 4,000 | RM 2,500 | 是 |
-| 挖掘机 | RM 6,000 | RM 3,500 | 是 |
-| 车队 | RM 15,000 | RM 9,000 | 是 |
-
-**立即申请: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

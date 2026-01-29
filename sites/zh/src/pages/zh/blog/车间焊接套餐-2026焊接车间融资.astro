@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 车间焊接套餐 - 2026焊接车间融资
 
 ## 焊接车间套餐
 
 ### 完整方案
-```
+\`\`\`
 焊接车间:
 - 焊接机 x3-5台
 - 配电系统
@@ -80,10 +43,10 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 - 统一设计
 - 系统集成
 - 价格优惠
-```
+\`\`\`
 
 ### 套餐类型
-```
+\`\`\`
 小型车间:
 - 焊机: 3台
 - 工位: 3个
@@ -101,27 +64,27 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 - 工位: 10个
 - 面积: 200-300m²
 - 价格: RM 150,000-300,000
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 套餐价格对比
 
@@ -135,7 +98,7 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 ## 套餐配置
 
 ### 小型车间(3工位)
-```
+\`\`\`
 焊接设备:
 - 400A MIG焊 x2
 - 250A TIG焊 x1
@@ -148,10 +111,10 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 
 总计: RM 27,000(二手)
 首付: RM 0
-```
+\`\`\`
 
 ### 中型车间(5工位)
-```
+\`\`\`
 焊接设备:
 - 400A MIG焊 x3
 - 250A TIG焊 x1
@@ -166,10 +129,10 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 
 总计: RM 45,000(二手)
 首付: RM 0
-```
+\`\`\`
 
 ### 大型车间(10工位)
-```
+\`\`\`
 焊接设备:
 - 400A MIG焊 x6
 - 250A TIG焊 x3
@@ -185,12 +148,12 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 
 总计: RM 150,000(二手)
 首付: RM 0
-```
+\`\`\`
 
 ## 适用场景
 
 ### 钢结构厂
-```
+\`\`\`
 钢结构:
 - 梁柱焊接
 - 框架结构
@@ -201,10 +164,10 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 - MIG焊为主
 - 大电流
 - 高效率
-```
+\`\`\`
 
 ### 不锈钢厂
-```
+\`\`\`
 不锈钢:
 - 厨房设备
 - 食品机械
@@ -215,10 +178,10 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 - TIG焊为主
 - 精密焊接
 - 外观美观
-```
+\`\`\`
 
 ### 维修车间
-```
+\`\`\`
 维修服务:
 - 车辆维修
 - 设备维修
@@ -229,12 +192,12 @@ const keywords = ["焊接车间","焊接设备","焊接系统","车间套餐融�
 - 混合配置
 - 多功能
 - 灵活适应
-```
+\`\`\`
 
 ## 真实案例
 
 **雪兰莪钢结构厂:**
-```
+\`\`\`
 业务: 钢结构制造
 需求: 扩大产能
 选择: 中型车间(5工位)
@@ -257,7 +220,7 @@ ROI:
 - 月成本: RM 12,000
 - 月净利: RM 13,000
 - 回本: 5个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -276,7 +239,7 @@ ROI:
 - 总融资: RM 63,000
 
 ### 套餐优惠
-```
+\`\`\`
 批量采购:
 - 省略: 10-15%
 - 单台: 无折扣
@@ -286,12 +249,12 @@ ROI:
 - 安装调试
 - 培训指导
 - 质保服务
-```
+\`\`\`
 
 ## 生产效率
 
 ### 单工位 vs 车间
-```
+\`\`\`
 单工位:
 - 焊机: 1台
 - 效率: 受限
@@ -302,10 +265,10 @@ ROI:
 - 效率: 高5倍
 - 灵活性: 高
 - 协同: 强
-```
+\`\`\`
 
 ### 收入增加
-```
+\`\`\`
 产能提升:
 - 原产能: 20吨/月
 - 新产能: 50吨/月
@@ -313,12 +276,12 @@ ROI:
 
 月增收:
 - 30吨 x RM 1,000/吨 = RM 30,000
-```
+\`\`\`
 
 ## 配套系统
 
 ### 通风系统
-```
+\`\`\`
 烟雾排放:
 - 排烟罩: 每工位1个
 - 排风扇: 集中排放
@@ -326,10 +289,10 @@ ROI:
 - 作用: 环保合规
 
 价格: RM 3,000-10,000
-```
+\`\`\`
 
 ### 安全系统
-```
+\`\`\`
 安全设备:
 - 焊接头盔: 每位1个
 - 手套: 每位2双
@@ -337,12 +300,12 @@ ROI:
 - 灭火器: 车间必备
 
 价格: RM 2,000-5,000
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期中型车间
-```
+\`\`\`
 投资: RM 53,000
 首付: RM 0
 月供: RM 1,000
@@ -354,7 +317,7 @@ ROI:
 回本: 2个月
 5年利润: RM 1,680,000
 ROI: 3,170%
-```
+\`\`\`
 
 ## 申请流程
 
@@ -377,7 +340,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 50,000车间
-```
+\`\`\`
 3年期:
 月供: RM 1,570
 总利息: RM 6,520
@@ -389,7 +352,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 700
 总利息: RM 8,800
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -433,8 +396,46 @@ A: 是的，基本操作培训
 **英兴信贷 - 焊接车间专家**
 
 全套焊接，高效生产！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

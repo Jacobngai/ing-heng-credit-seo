@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,31 @@ const keywords = ["再融资成功故事","再融资案例","重组成功","成�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 再融资成功故事 2026
+
+## 再融资成功案例
+
+### 案例1: 降低月供
+
+- 现有: 月供RM 12,000(3台货车)
+- 再融资: 月供RM 7,500
+- 节省: RM 4,500/月
+
+### 案例2: 释放现金
+
+- 设备价值: RM 150,000
+- 释放现金: RM 80,000
+- 用途: 购买第4台货车
+
+### 案例3: 信用改善
+
+- CCRIS问题: 可以再融资
+- 按时付款: 信用重建
+
+**您的成功故事!WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,32 +86,7 @@ const keywords = ["再融资成功故事","再融资案例","重组成功","成�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 再融资成功故事 2026
-
-## 再融资成功案例
-
-### 案例1: 降低月供
-
-- 现有: 月供RM 12,000(3台货车)
-- 再融资: 月供RM 7,500
-- 节省: RM 4,500/月
-
-### 案例2: 释放现金
-
-- 设备价值: RM 150,000
-- 释放现金: RM 80,000
-- 用途: 购买第4台货车
-
-### 案例3: 信用改善
-
-- CCRIS问题: 可以再融资
-- 按时付款: 信用重建
-
-**您的成功故事!WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

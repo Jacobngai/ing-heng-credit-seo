@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">叉车融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 伸缩臂叉车多用 - 2026建筑融资
 
 ## 什么是伸缩臂叉车
@@ -75,7 +38,7 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 ## 主要功能
 
 ### 高空作业
-```
+\`\`\`
 人员举升:
 - 高度: 10-17米
 - 载重: 500kg-1吨
@@ -87,10 +50,10 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 灵活移动
 - 载人载物
 - 节省时间
-```
+\`\`\`
 
 ### 物料搬运
-```
+\`\`\`
 重物搬运:
 - 高度: 3层楼
 - 载重: 2.5-4吨
@@ -102,10 +65,10 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 混凝土板
 - 屋顶材料
 - 玻璃安装
-```
+\`\`\`
 
 ### 场地作业
-```
+\`\`\`
 多功能:
 - 挖掘: 挖掘铲斗
 - 装载: 装载铲斗
@@ -113,27 +76,27 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 推土: 推土板
 - 扫地: 扫地器
 - 铲雪: 铲雪板
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 最高90%
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -147,7 +110,7 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 ## 适用场景
 
 ### 建筑施工
-```
+\`\`\`
 高层建筑:
 - 材料吊装到楼层
 - 人员高空作业
@@ -159,10 +122,10 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 灵活移动
 - 快速作业
 - 成本更低
-```
+\`\`\`
 
 ### 工业设施
-```
+\`\`\`
 厂房建设:
 - 钢结构安装
 - 屋顶板安装
@@ -174,10 +137,10 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 屋顶维修
 - 灯具更换
 - 设备安装
-```
+\`\`\`
 
 ### 基础设施
-```
+\`\`\`
 桥梁工程:
 - 材料吊装
 - 人员作业
@@ -189,12 +152,12 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 路灯维护
 - 修剪树木
 - 广告牌安装
-```
+\`\`\`
 
 ## 真实案例
 
 **槟城建筑承包商:**
-```
+\`\`\`
 项目: 4层工厂建设
 需求: 材料吊装 + 高空作业
 选择: JCB 540-140(二手)
@@ -207,7 +170,7 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 人员作业: 每天4小时
 - 节省成本: RM 15,000/月
 - 项目周期: 6个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -233,55 +196,55 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 ## 附件系统
 
 ### 叉类附件
-```
+\`\`\`
 货叉:
 - 标准货叉: 托盘
 - 长货叉: 长材料
 - 砖块叉: 砖块搬运
 - 管道叉: 管道吊装
-```
+\`\`\`
 
 ### 铲斗类
-```
+\`\`\`
 铲斗:
 - 通用铲斗: 装载
 - 大容量铲斗: 轻材料
 - 岩石铲斗: 重型
 - 四合一: 多功能
-```
+\`\`\`
 
 ### 抓取类
-```
+\`\`\`
 抓具:
 - 抓斗: 散料
 - 砖块抓: 砖块
 - 管道抓: 管道
 - 圆木抓: 木材
-```
+\`\`\`
 
 ### 作业平台
-```
+\`\`\`
 人员平台:
 - 1人平台: 基本型
 - 2人平台: 标准型
 - 3人平台: 大型
 - 带护栏: 安全型
-```
+\`\`\`
 
 ## 工作效率
 
 ### 传统方法
-```
+\`\`\`
 脚手架 + 人工:
 - 搭建: 1天
 - 作业: 3天
 - 拆除: 0.5天
 - 人工: 4人
 - 成本: RM 4,000
-```
+\`\`\`
 
 ### 伸缩臂叉车
-```
+\`\`\`
 直接作业:
 - 准备: 0.5小时
 - 作业: 1天
@@ -289,7 +252,7 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 成本: RM 1,000
 节省: RM 3,000
 效率: 提升4倍
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -304,7 +267,7 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 ## 选型指南
 
 ### 按高度选择
-```
+\`\`\`
 10米(3层):
 - 小型项目
 - 室内作业
@@ -322,10 +285,10 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 高层建筑
 - 专业作业
 - RM 150,000-180,000(二手)
-```
+\`\`\`
 
 ### 按载重选择
-```
+\`\`\`
 2.5吨:
 - 一般材料
 - 人员平台
@@ -340,12 +303,12 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 超重材料
 - 特殊应用
 - 工业用途
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 日收入
-```
+\`\`\`
 租赁:
 - 8小时: RM 1,000-1,500
 - 按天: RM 800-1,200
@@ -355,20 +318,20 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 高空作业: RM 1,500/天
 - 综合服务: RM 2,000/天
 - 项目承包: RM 3,000/天
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作22天:
 - 保守: RM 17,600
 - 一般: RM 26,400
 - 乐观: RM 44,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护
-```
+\`\`\`
 中型机(14米):
 - 燃料: RM 2,500
 - 保养: RM 800
@@ -382,12 +345,12 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 零件: RM 900
 - 检查: RM 600
 总计: RM 6,200/月
-```
+\`\`\`
 
 ## 安全要求
 
 ### 操作培训
-```
+\`\`\`
 认证要求:
 - 需要操作证
 - 厂商培训
@@ -399,17 +362,17 @@ const keywords = ["伸缩臂叉车","伸缩臂搬运车","Telehandler融资","�
 - 附件更换
 - 安全规程
 - 应急处理
-```
+\`\`\`
 
 ### 安全措施
-```
+\`\`\`
 作业安全:
 - 佩戴安全帽
 - 系安全带
 - 检查设备
 - 遵守载重
 - 稳定支腿
-```
+\`\`\`
 
 ## 申请资格
 
@@ -442,7 +405,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 110,000设备
-```
+\`\`\`
 3年期:
 月供: RM 3,450
 总利息: RM 14,200
@@ -454,12 +417,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 1,540
 总利息: RM 19,360
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期
-```
+\`\`\`
 投资: RM 110,000
 首付: RM 0
 月供: RM 2,130
@@ -471,7 +434,7 @@ WhatsApp: +60175700889
 回本: 7个月
 5年利润: RM 1,020,000
 ROI: 927%
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -520,8 +483,46 @@ A: 较好，保值率75-85%
 **英兴信贷 - 伸缩臂设备融资专家**
 
 高Reach，高回报，立即投资！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

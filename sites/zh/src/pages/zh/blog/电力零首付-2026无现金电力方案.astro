@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,72 +23,34 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 电力零首付 - 2026无现金电力方案
 
 ## 零首付电力优势
 
 ### 传统融资问题
-```
+\`\`\`
 银行首付:
 - 发电机: RM 50,000
 - 首付: RM 5,000-10,000
 - 现金流: 紧张
 - 等待: 3-6个月储蓄
-```
+\`\`\`
 
 ### Ing Heng零首付
-```
+\`\`\`
 0首付方案:
 - 发电机: RM 50,000
 - 首付: RM 0
 - 保留现金: RM 5,000-10,000
 - 立即获得: 设备
-```
+\`\`\`
 
 ## 适用设备
 
 ### 所有电力设备
-```
+\`\`\`
 发电机组:
 - 柴油发电机
 - 汽油发电机
@@ -102,29 +65,29 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 储油罐
 - 通风系统
 - 监控系统
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%必须
 融资: 最高90%
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
 现金: 必需充足
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%可选
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
 现金: 非必需
-```
+\`\`\`
 
 ## 零首付设备价格
 
@@ -138,7 +101,7 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 ## 现金用途
 
 ### 保留现金
-```
+\`\`\`
 燃料储备:
 - 柴油: 500-1,000升
 - 汽油: 200-500升
@@ -151,12 +114,12 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 应急准备
 
 总计: RM 5,000-20,000
-```
+\`\`\`
 
 ## 适用场景
 
 ### 新公司
-```
+\`\`\`
 创业初期:
 - 现金有限
 - 需要备用
@@ -166,10 +129,10 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 保留现金
 - 设备齐全
 - 启动容易
-```
+\`\`\`
 
 ### 现金流紧张
-```
+\`\`\`
 资金紧张:
 - 项目付款
 - 库存采购
@@ -180,10 +143,10 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 无需现金
 - 获得设备
 - 解决问题
-```
+\`\`\`
 
 ### 突然需求
-```
+\`\`\`
 应急需求:
 - 停电频繁
 - 突然项目
@@ -194,12 +157,12 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 快速审批
 - 立即采购
 - 快速到位
-```
+\`\`\`
 
 ## 真实案例
 
 **新开餐厅:**
-```
+\`\`\`
 情况:
 - 新开业
 - 现金不足
@@ -215,12 +178,12 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 设备: RM 20,000
 - 食材: RM 10,000
 - 现金: RM 5,000应急
-```
+\`\`\`
 
 ## 融资好处
 
 ### 0%首付
-```
+\`\`\`
 节省现金:
 - RM 1,500(小型)
 - RM 3,600(中型)
@@ -231,10 +194,10 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 运营资金
 - 应急准备
 - 业务发展
-```
+\`\`\`
 
 ### 100%融资
-```
+\`\`\`
 全额覆盖:
 - 设备: 100%
 - 运输: 100%
@@ -243,10 +206,10 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 
 总融资:
 - 设备价格 + 10-15%
-```
+\`\`\`
 
 ### 快速启动
-```
+\`\`\`
 立即行动:
 - 无需等待储蓄
 - 立即申请
@@ -254,12 +217,12 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 立即使用
 
 时间节省: 3-6个月
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(50kVA)
-```
+\`\`\`
 投资: RM 36,000
 首付: RM 0
 月供: RM 690
@@ -269,7 +232,7 @@ const keywords = ["电力零首付","发电0首付","无首付电力","应急电
 - 5年: RM 500,000
 
 投资回报: 13倍
-```
+\`\`\`
 
 ## 申请资格
 
@@ -311,7 +274,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 35,000发电机
-```
+\`\`\`
 3年期:
 月供: RM 1,100
 总利息: RM 4,600
@@ -323,7 +286,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 490
 总利息: RM 6,160
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -372,8 +335,46 @@ A: 快速
 **英兴信贷 - 零首付电力专家**
 
 无现金启动，电力畅通！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

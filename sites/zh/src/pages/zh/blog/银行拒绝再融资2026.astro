@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,6 +23,29 @@ const keywords = ["银行拒绝再融资","拒绝后重组","第二次机会","�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
+
+const markdownContent = `
+# 银行拒绝再融资 2026
+
+## 银行拒绝再融资
+
+被银行拒绝可以再融资:
+
+\`\`\`
+银行拒绝 → Ing Heng接受 → 再融资成功
+\`\`\`
+
+## 拒绝解决方案
+
+| 拒绝原因 | Ing Heng方案 |
+|---------|-------------|
+| 设备太旧 | 可以再融资 |
+| 信用不良 | 可以再融资 |
+| 收入不够 | 灵活评估 |
+| 行业风险 | 所有行业 |
+
+**立即申请: WhatsApp +60175700889**
+`;
 ---
 
 <BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
@@ -60,30 +84,7 @@ const keywords = ["银行拒绝再融资","拒绝后重组","第二次机会","�
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-
-# 银行拒绝再融资 2026
-
-## 银行拒绝再融资
-
-被银行拒绝可以再融资:
-
-```
-银行拒绝 → Ing Heng接受 → 再融资成功
-```
-
-## 拒绝解决方案
-
-| 拒绝原因 | Ing Heng方案 |
-|---------|-------------|
-| 设备太旧 | 可以再融资 |
-| 信用不良 | 可以再融资 |
-| 收入不够 | 灵活评估 |
-| 行业风险 | 所有行业 |
-
-**立即申请: WhatsApp +60175700889**
-
-    </div>
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,57 +23,19 @@ const keywords = ["春节建筑","项目连续性","建筑设备","春节准备"
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 春节前建筑设备 - 项目连续性
 
 ## 春节后建筑项目
 
 春节后是建筑项目的旺季:
 
-```
+\`\`\`
 政府项目: 2月陆续启动
 私人项目: 春节后开工
 基础设施: 年度计划开始
-```
+\`\`\`
 
 ## 建筑设备春节前购买
 
@@ -138,47 +101,47 @@ const keywords = ["春节建筑","项目连续性","建筑设备","春节准备"
 ## 银行vs Ing Heng春节前
 
 ### 银行时间表
-```
+\`\`\`
 申请时间: 12月初
 审批时间: 2-4周
 放款时间: 1月初
 购买设备: 1月中旬
-```
+\`\`\`
 
 ### Ing Heng时间表
-```
+\`\`\`
 申请时间: 1月中旬
 审批时间: 快速
 放款时间: 1月中旬
 购买设备: 1月下旬
-```
+\`\`\`
 
 ## 建筑设备融资方案
 
 ### 方案1: 单台设备
-```
+\`\`\`
 设备: 挖掘机RM 150,000
 融资: 100%
 首付: 0%
 审批: 快速
-```
+\`\`\`
 
 ### 方案2: 车队设备
-```
+\`\`\`
 设备: 5台设备RM 500,000
 融资: 100%
 首付: 0%
 审批: 72小时
 特别利率
-```
+\`\`\`
 
 ### 方案3: 项目配套
-```
+\`\`\`
 设备: 项目所需全套
 融资: 基于项目价值
 首付: 0%
 还款: 匹配项目付款
-```
+\`\`\`
 
 ## 春节前建筑设备清单
 
@@ -293,19 +256,19 @@ A: 可能延迟2-4周，影响项目开工。
 ## 2026年建筑项目时间表
 
 ### 典型项目
-```
+\`\`\`
 1月: 春节前准备
 2月: 春节假期
 2月20日: 项目开工
 3月: 全面施工
-```
+\`\`\`
 
 ### 设备需求
-```
+\`\`\`
 1月15日: 必须订购设备
 1月30日: 设备到位
 2月20日: 设备就位开工
-```
+\`\`\`
 
 ## 成功案例
 
@@ -368,8 +331,46 @@ A: 可能延迟2-4周，影响项目开工。
 **立即申请，确保项目连续性**
 
 春节后建筑项目开工?提前购买设备确保项目按时启动，避免延误和罚款。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">农历年特惠</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

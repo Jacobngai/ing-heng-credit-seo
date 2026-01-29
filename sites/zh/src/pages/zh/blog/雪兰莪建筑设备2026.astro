@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,58 +23,20 @@ const keywords = ["雪兰莪","建筑设备","MRT3","基础设施"],
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 雪兰莪建筑设备 2026
 
 ## 雪兰莪建筑热潮
 
 雪兰莪是马来西亚建筑热点:
 
-```
+\`\`\`
 MRT3项目: 持续建设
 高速公路: 扩建工程
 住宅开发: 到处可见
 商业建筑: 持续增长
-```
+\`\`\`
 
 ## 雪兰莪建筑设备需求
 
@@ -85,12 +48,12 @@ MRT3项目: 持续建设
 - **商业**: 莎阿南、巴生
 
 ### 设备需求
-```
+\`\`\`
 挖掘机: 土方工程
 起重机: 吊装作业
 推土机: 场地准备
 混凝土设备: 浇筑
-```
+\`\`\`
 
 ## 真实例子
 
@@ -127,81 +90,81 @@ MRT3项目: 持续建设
 ## 雪兰莪建筑设备类型
 
 ### 土方设备
-```
+\`\`\`
 挖掘机(20吨): RM 150,000-250,000
 挖掘机(30吨): RM 250,000-350,000
 推土机: RM 150,000-300,000
 装载机: RM 120,000-250,000
-```
+\`\`\`
 
 ### 起重设备
-```
+\`\`\`
 汽车起重机(50吨): RM 300,000-500,000
 汽车起重机(100吨): RM 500,000-800,000
 塔式起重机: RM 300,000-700,000
-```
+\`\`\`
 
 ### 混凝土设备
-```
+\`\`\`
 混凝土搅拌车: RM 150,000-250,000
 混凝土泵车: RM 200,000-400,000
-```
+\`\`\`
 
 ## 雪兰莪热门建筑地区
 
 ### 蕉赖-加影地区
-```
+\`\`\`
 项目类型: 住宅、商业
 设备需求: 挖掘机、起重机
 投资范围: RM 300,000-1,000,000
-```
+\`\`\`
 
 ### 万挠地区
-```
+\`\`\`
 项目类型: 住宅、混合
 设备需求: 全套设备
 投资范围: RM 200,000-800,000
-```
+\`\`\`
 
 ### 瓜拉雪兰莪
-```
+\`\`\`
 项目类型: 新兴发展
 设备需求: 基础设备
 投资范围: RM 150,000-500,000
-```
+\`\`\`
 
 ### 莎阿南周边
-```
+\`\`\`
 项目类型: 商业、政府
 设备需求: 大型设备
 投资范围: RM 500,000-2,000,000
-```
+\`\`\`
 
 ## 项目导向融资
 
 ### MRT3项目融资
-```
+\`\`\`
 特点: 项目合同支持
 融资: 基于合同价值
 还款: 匹配项目付款
 期限: 灵活
-```
+\`\`\`
 
 ### 住宅项目融资
-```
+\`\`\`
 特点: 销售周期匹配
 融资: 开发商友好
 还款: 分阶段
 期限: 2-5年
-```
+\`\`\`
 
 ### 基础设施融资
-```
+\`\`\`
 特点: 长期项目
 融资: 大额支持
 还款: 政府付款
 期限: 3-7年
-```
+\`\`\`
 
 ## 雪兰莪建筑趋势
 
@@ -220,32 +183,32 @@ MRT3项目: 持续建设
 ## 融资方案
 
 ### 方案1: 小型项目
-```
+\`\`\`
 设备: 1-2台
 投资: RM 200,000-400,000
 融资: 100%
 首付: 0%
 期限: 3-5年
-```
+\`\`\`
 
 ### 方案2: 中型项目
-```
+\`\`\`
 设备: 3-5台
 投资: RM 500,000-1,000,000
 融资: 100%
 首付: 0%
 期限: 5-7年
-```
+\`\`\`
 
 ### 方案3: 大型项目
-```
+\`\`\`
 设备: 全套设备
 投资: RM 1,000,000-3,000,000
 融资: 100%
 首付: 0%
 期限: 5-7年
 特别利率
-```
+\`\`\`
 
 ## 申请流程
 
@@ -331,8 +294,46 @@ A: 是的，全雪兰莪都可以。
 **立即申请，雪兰莪建筑设备**
 
 雪兰莪建筑热潮?Ing Heng提供快速灵活的设备融资，帮助您抓住建筑机会。
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

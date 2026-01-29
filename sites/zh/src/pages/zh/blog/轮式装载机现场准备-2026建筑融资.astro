@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,46 +23,8 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 轮式装载机现场准备 - 2026建筑融资
 
 ## 什么是轮式装载机
@@ -75,7 +38,7 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 ## 轮式装载机的用途
 
 ### 建筑工地
-```
+\`\`\`
 材料装载:
 - 砂石装载
 - 水泥搬运
@@ -84,10 +47,10 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 
 效率: 每小时60-100铲
 容量: 2-5立方米
-```
+\`\`\`
 
 ### 场地准备
-```
+\`\`\`
 平整工作:
 - 土地平整
 - 材料堆放
@@ -95,10 +58,10 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 - 基础准备
 
 速度: 比人工快20倍
-```
+\`\`\`
 
 ### 道路工程
-```
+\`\`\`
 材料运输:
 - 沥青装载
 - 碎石搬运
@@ -106,27 +69,27 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 - 材料配送
 
 效率: 每天200-300吨
-```
+\`\`\`
 
 ## 银行 vs Ing Heng对比
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 最高90%
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 轮式装载机价格
 
@@ -139,7 +102,7 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 ## 真实案例
 
 **雪兰莪承包商:**
-```
+\`\`\`
 项目: 工业园区开发
 需求: 装载砂石材料
 选择: 中型轮式装载机
@@ -152,7 +115,7 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 每月收入: RM 15,000
 月供占比: 7.5%
 回本期: 4个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -178,23 +141,23 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 ## 工作效率对比
 
 ### 人工装载
-```
+\`\`\`
 工人: 10人
 效率: 每天50吨
 成本: RM 800/天
 时间: 20天完成1000吨
 总成本: RM 16,000
-```
+\`\`\`
 
 ### 轮式装载机
-```
+\`\`\`
 操作员: 1人
 效率: 每天250吨
 成本: RM 600/天(含人工)
 时间: 4天完成1000吨
 总成本: RM 2,400
 节省: RM 13,600
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -244,7 +207,7 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 ## 维护成本
 
 ### 月维护费用
-```
+\`\`\`
 小型(1-2吨):
 - 燃料: RM 2,000
 - 保养: RM 400
@@ -262,7 +225,7 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 - 保养: RM 900
 - 零件: RM 800
 总计: RM 6,200/月
-```
+\`\`\`
 
 ## 附件选择
 
@@ -281,7 +244,7 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 ## 收入计算
 
 ### 日收入
-```
+\`\`\`
 租赁收入:
 - 8小时: RM 800-1,200
 - 按天计: RM 600-900
@@ -291,15 +254,15 @@ const keywords = ["轮式装载机","装载机融资","场地准备","建筑设�
 - 装载服务: RM 800/天
 - 运输配合: RM 1,000/天
 - 项目承包: RM 1,500/天
-```
+\`\`\`
 
 ### 月收入
-```
+\`\`\`
 工作22天:
 - 保守: RM 13,200
 - 一般: RM 17,600
 - 乐观: RM 22,000
-```
+\`\`\`
 
 ## 申请资格
 
@@ -342,7 +305,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 60,000设备
-```
+\`\`\`
 3年期:
 月供: RM 1,880
 总利息: RM 7,680
@@ -354,12 +317,12 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 840
 总利息: RM 10,560
-```
+\`\`\`
 
 ## ROI计算
 
 ### 5年期投资
-```
+\`\`\`
 设备: RM 60,000
 首付: RM 0
 月供: RM 1,160
@@ -370,7 +333,7 @@ WhatsApp: +60175700889
 
 回本: 7个月
 5年总利润: RM 528,000
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -421,8 +384,46 @@ A: 可以，0%首付，100%融资
 **英兴信贷 - 装载设备融资专家**
 
 今天申请，明天装载赚钱！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

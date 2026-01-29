@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 螺杆空压机 - 2026工业级空压机融资
 
 ## 螺杆空压机优势
 
 ### 螺杆技术
-```
+\`\`\`
 工作原理:
 - 两个螺杆转子
 - 连续压缩
@@ -79,10 +42,10 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 稳定: 气压稳定
 - 寿命: 长40,000+小时
 - 维护: 少
-```
+\`\`\`
 
 ### 工业应用
-```
+\`\`\`
 制造业:
 - 自动化生产线
 - 气动工具
@@ -93,12 +56,12 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 连续运行: 24/7
 - 大气量: 5-50m³/min
 - 稳定压力: 无波动
-```
+\`\`\`
 
 ## 螺杆空压机类型
 
 ### 按功率分类
-```
+\`\`\`
 小型(10-20HP):
 - 小型工厂
 - 维修车间
@@ -116,10 +79,10 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 重工业
 - 流量: 8-15m³/min
 - 价格: RM 80,000-150,000(二手)
-```
+\`\`\`
 
 ### 按结构分类
-```
+\`\`\`
 喷油螺杆:
 - 润滑方式: 喷油
 - 压力: 7-10bar
@@ -131,27 +94,27 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 压力: 7-12bar
 - 价格: 贵50-80%
 - 用途: 食品、医药、电子
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -165,7 +128,7 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 ## 适用场景
 
 ### 自动化生产线
-```
+\`\`\`
 制造业:
 - 电子装配
 - 食品加工
@@ -176,10 +139,10 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 稳定气压
 - 连续供气
 - 空气质量
-```
+\`\`\`
 
 ### 喷涂行业
-```
+\`\`\`
 喷涂应用:
 - 家具喷漆
 - 汽车喷漆
@@ -190,10 +153,10 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 大气量
 - 稳定压力
 - 无油压缩
-```
+\`\`\`
 
 ### 大型工厂
-```
+\`\`\`
 综合应用:
 - 多条生产线
 - 大量气动工具
@@ -203,12 +166,12 @@ const keywords = ["螺杆空压机","工业空压机","螺杆压缩机","空压�
 - 高流量
 - 稳定可靠
 - 低维护
-```
+\`\`\`
 
 ## 真实案例
 
 **槟城家具厂:**
-```
+\`\`\`
 业务: 定制家具
 需求: 喷涂系统
 选择: 50HP无油螺杆
@@ -229,7 +192,7 @@ ROI:
 - 月成本: RM 5,000
 - 月净利: RM 15,000
 - 回本: 5个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -256,7 +219,7 @@ ROI:
 ## 螺杆 vs 活塞
 
 ### 性能对比
-```
+\`\`\`
 活塞式:
 - 流量: 不稳定
 - 压力: 有波动
@@ -270,10 +233,10 @@ ROI:
 - 寿命: 40,000+小时
 - 噪音: 小
 - 维护: 少
-```
+\`\`\`
 
 ### 成本对比
-```
+\`\`\`
 初始投资:
 - 螺杆: 比活塞贵50-80%
 - 但寿命: 长3-4倍
@@ -284,7 +247,7 @@ ROI:
 
 总成本:
 - 螺杆: 5年更便宜30-40%
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -299,7 +262,7 @@ ROI:
 ## 收入潜力
 
 ### 效率提升
-```
+\`\`\`
 使用螺杆:
 - 停机减少: 80%
 - 效率提升: 30-40%
@@ -309,10 +272,10 @@ ROI:
 月增收:
 - RM 30,000-80,000
 - 取决于行业
-```
+\`\`\`
 
 ### 成本节约
-```
+\`\`\`
 维护节约:
 - 零件成本: -40%
 - 人工成本: -60%
@@ -321,12 +284,12 @@ ROI:
 年节省:
 - RM 20,000-60,000
 - 取决于规模
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(50HP)
-```
+\`\`\`
 螺杆空压机:
 - 电力: RM 8,000-12,000
 - 保养: RM 800/次(每2000小时)
@@ -338,12 +301,12 @@ ROI:
 - 螺杆: 省RM 2,000-4,000/月
 - 寿命: 长3倍
 - 停机: 少80%
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期(50HP)
-```
+\`\`\`
 投资: RM 55,000
 首付: RM 0
 月供: RM 1,050
@@ -355,7 +318,7 @@ ROI:
 回本: 4个月
 5年利润: RM 1,080,000
 ROI: 1,964%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -392,7 +355,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 50,000空压机
-```
+\`\`\`
 3年期:
 月供: RM 1,570
 总利息: RM 6,520
@@ -404,7 +367,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 700
 总利息: RM 8,800
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -448,8 +411,46 @@ A: 比活塞式小很多
 **英兴信贷 - 螺杆空压机专家**
 
 螺杆技术，高效生产！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>

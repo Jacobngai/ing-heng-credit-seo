@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
 
 const lang = 'zh';
 const post = {
@@ -22,52 +23,14 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
   { label: '博客', href: '/zh/blog' },
   { label: post.title, href: `/zh/blog/${post.slug}` }
 ];
----
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Ing Heng Credit & Leasing Sdn Bhd",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://inghengcredit.com/logo.png"
-        }
-      }
-    }
-  </script>
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
-    <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} 分钟阅读</span>
-      </div>
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-
+const markdownContent = `
 # 柴油发电机 - 2026柴油发电机组融资
 
 ## 柴油发电机优势
 
 ### 为什么选择柴油
-```
+\`\`\`
 经济性:
 - 柴油便宜: 比汽油便宜20-30%
 - 油耗低: 热效率高
@@ -78,10 +41,10 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 - 功率稳定: 持续供电
 - 负载能力强: 可抗冲击
 - 环境适应: 温湿度范围广
-```
+\`\`\`
 
 ### 适用场景
-```
+\`\`\`
 备用电源:
 - 工厂
 - 酒店
@@ -93,12 +56,12 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 - 偏远地区
 - 建筑工地
 - 活动场地
-```
+\`\`\`
 
 ## 柴油发电机类型
 
 ### 按转速分类
-```
+\`\`\`
 高速(1500/1800RPM):
 - 体积小
 - 重量轻
@@ -119,10 +82,10 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 - 价格昂贵
 - 寿命: 40,000-60,000小时
 - 适合: 连续运行
-```
+\`\`\`
 
 ### 按功率分类
-```
+\`\`\`
 小型(5-20kVA):
 - 便利店
 - 小餐厅
@@ -142,27 +105,27 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 - 工业园区
 - 矿山
 - 价格: RM 300,000+
-```
+\`\`\`
 
 ## 银行 vs Ing Heng
 
 ### 银行条件
-```
+\`\`\`
 首付: 10-20%
 融资: 90%最高
 设备年龄: 5年内
 利率: 4.6-6%
 审批: 2-4周
-```
+\`\`\`
 
 ### Ing Heng条件
-```
+\`\`\`
 首付: 0%
 融资: 100%
 设备年龄: 无限制
 利率: 有竞争力
 审批: 快速
-```
+\`\`\`
 
 ## 价格对比
 
@@ -176,7 +139,7 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 ## 适用场景
 
 ### 工厂备用
-```
+\`\`\`
 制造业:
 - 电子厂: 快速生产
 - 塑胶厂: 连续加热
@@ -186,10 +149,10 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 - 快速启动: 10-30秒
 - 稳定运行: 持续供电
 - 负载能力: 抗冲击
-```
+\`\`\`
 
 ### 酒店备用
-```
+\`\`\`
 酒店业:
 - 照明空调
 - 电梯
@@ -199,10 +162,10 @@ const keywords = ["柴油发电机","柴油发电","发电机组","柴油发电�
 损失:
 - 客人流失: RM 10,000-50,000/天
 - 声誉损失: 长期影响
-```
+\`\`\`
 
 ### 矿山发电
-```
+\`\`\`
 矿业:
 - 金矿开采
 - 采石场
@@ -214,12 +177,12 @@ ROI:
 - 发电机: RM 100,000
 - 月燃料: RM 30,000
 - 回本: 1-2个月
-```
+\`\`\`
 
 ## 真实案例
 
 **柔佛工厂:**
-```
+\`\`\`
 业务: 塑料制造
 问题: 频繁停电
 损失: 每次5万-10万
@@ -235,7 +198,7 @@ ROI:
 - 供电稳定: 100%
 - 避免损失: RM 80,000/年
 - 回本: 9个月
-```
+\`\`\`
 
 ## 融资好处
 
@@ -262,7 +225,7 @@ ROI:
 ## 柴油 vs 其他
 
 ### 柴油 vs 汽油
-```
+\`\`\`
 燃料成本:
 - 柴油: RM 2.5-3.0/升
 - 汽油: RM 3.0-3.5/升
@@ -277,10 +240,10 @@ ROI:
 - 柴油: 15,000-30,000小时
 - 汽油: 5,000-10,000小时
 - 长寿命: 2-3倍
-```
+\`\`\`
 
 ### 柴油 vs 燃气
-```
+\`\`\`
 燃料:
 - 柴油: 易得
 - 燃气: 需要管道
@@ -292,7 +255,7 @@ ROI:
 选择:
 - 备用: 柴油方便
 - 连续: 燃气经济
-```
+\`\`\`
 
 ## 品牌比较
 
@@ -307,7 +270,7 @@ ROI:
 ## 选型指南
 
 ### 按负载选择
-```
+\`\`\`
 备用电源:
 - 负载70-80%
 - 寿命优先
@@ -317,10 +280,10 @@ ROI:
 - 负载80-90%
 - 效率优先
 - 价格较高
-```
+\`\`\`
 
 ### 按品牌选择
-```
+\`\`\`
 顶级品牌:
 - Cummins, Perkins
 - 寿命: 20,000-30,000小时
@@ -335,12 +298,12 @@ ROI:
 - 国产组装
 - 寿命: 10,000-15,000小时
 - 价格: 低
-```
+\`\`\`
 
 ## 收入潜力
 
 ### 避免损失
-```
+\`\`\`
 工厂停电:
 - 停工损失: RM 30,000-150,000/天
 - 材料: RM 5,000-30,000
@@ -350,10 +313,10 @@ ROI:
 
 投资: RM 60,000
 回报: 避免1次即可
-```
+\`\`\`
 
 ### 租赁收入
-```
+\`\`\`
 日租金:
 - 50kVA: RM 400-700/天
 - 100kVA: RM 700-1,200/天
@@ -363,12 +326,12 @@ ROI:
 - 50kVA: RM 8,000-14,000
 - 100kVA: RM 14,000-24,000
 - 200kVA: RM 24,000-40,000
-```
+\`\`\`
 
 ## 维护成本
 
 ### 月维护(100kVA备用)
-```
+\`\`\`
 备用运行:
 - 测试运行: RM 1,500/月
 - 保养: RM 600/次(每3个月)
@@ -380,12 +343,12 @@ ROI:
 - 机油: RM 1,500/月
 - 保养: RM 1,000/月
 总计: RM 25,000/月
-```
+\`\`\`
 
 ## ROI分析
 
 ### 5年期备用
-```
+\`\`\`
 投资: RM 60,000
 首付: RM 0
 月供: RM 1,140
@@ -397,7 +360,7 @@ ROI:
 回本: 14个月
 5年节省: RM 280,000
 ROI: 467%
-```
+\`\`\`
 
 ## 申请资格
 
@@ -433,7 +396,7 @@ WhatsApp: +60175700889
 ## 还款方案
 
 ### RM 60,000发电机
-```
+\`\`\`
 3年期:
 月供: RM 1,880
 总利息: RM 7,680
@@ -445,7 +408,7 @@ WhatsApp: +60175700889
 7年期:
 月供: RM 830
 总利息: RM 9,720
-```
+\`\`\`
 
 ## 为什么选择Ing Heng
 
@@ -489,8 +452,46 @@ A: 简单，每250-500小时保养
 **英兴信贷 - 柴油发电机融资专家**
 
 柴油动力，长久保障！
+`;
+---
 
-    </div>
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
 
     <div class="mt-12 text-center">
       <CTAButton href="/zh/contact">申请设备融资</CTAButton>
