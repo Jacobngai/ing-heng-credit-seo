@@ -1,9 +1,9 @@
 ---
 title: "Warehouse equipment financing | ING Heng Credit"
 description: "Learn everything about warehouse equipment financing. Professional services from ING Heng Credit. Get started today."
-date: "2026-01-29"
+date: "2026-01-30"
 author: "ING Heng Credit"
-lastUpdated: "2026-01-29"
+lastUpdated: "2026-01-30"
 tags: ["warehouse equipment financing"]
 ---
 
@@ -45,4 +45,4 @@ A: Yes, we offer flexible repayment options.
 ING Heng Credit is committed to providing you with quality warehouse equipment financing services. If you have any questions or need consultation, please contact our professional team immediately.
 
 ---
-*Last updated: 2026-01-29 | ING Heng Credit*
+*Last updated: 2026-01-30 | ING Heng Credit*
