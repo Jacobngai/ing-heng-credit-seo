@@ -374,6 +374,50 @@ export const BLOG_NAV_ITEMS = [
 ];
 
 /**
+ * Hobby Navigation Menu
+ */
+export const HOBBY_NAV_ITEMS = [
+  {
+    label: 'hobby.allHobby',
+    href: '/hobby',
+    description: 'hobby.allHobbyDesc',
+    icon: '📋',
+  },
+  {
+    label: 'hobby.classicCars',
+    href: '/hobby/classic-cars',
+    description: 'hobby.classicCarsDesc',
+    icon: '🚗',
+    badge: 'popular',
+  },
+  {
+    label: 'hobby.motorcycles',
+    href: '/hobby/motorcycles',
+    description: 'hobby.motorcyclesDesc',
+    icon: '🏍️',
+  },
+  {
+    label: 'hobby.marine',
+    href: '/hobby/marine',
+    description: 'hobby.marineDesc',
+    icon: '🚤',
+  },
+  {
+    label: 'hobby.recreational',
+    href: '/hobby/recreational',
+    description: 'hobby.recreationalDesc',
+    icon: '🎿',
+  },
+  {
+    label: 'hobby.aircraft',
+    href: '/hobby/aircraft',
+    description: 'hobby.aircraftDesc',
+    icon: '🚁',
+    comingSoon: true,
+  },
+];
+
+/**
  * Navigation Links
  */
 export const NAV_LINKS = [
@@ -381,6 +425,7 @@ export const NAV_LINKS = [
   { href: '/about', label: 'nav.about' },
   { href: '/services', label: 'nav.services' },
   { href: '/equipment', label: 'nav.equipment', hasDropdown: true },
+  { href: '/hobby', label: 'nav.hobby', hasDropdown: true },
   { href: '/blog', label: 'nav.blog' },
   { href: '/contact', label: 'nav.contact' },
 ];
