@@ -2,7 +2,7 @@
 title: "Lorry Hire Purchase vs Operating Lease: What Logistics Companies Need"
 description: "Lorry Hire Purchase vs Operating Lease: What Logistics Companies Need"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -466,3 +466,4 @@ Meet urgent contract deadlines
 
 
           **Still unsure?** Contact our logistics financing specialists for a personalized recommendation based on your business needs.
+

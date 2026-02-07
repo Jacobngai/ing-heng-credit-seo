@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan peralatan pergigian di Malaysia dengan 0% depos
   dan kelulusan pantas. Membiayai kerusi pergigian, mesin X-ray, sistem CAD/CAM untuk
   klinik dan amalan pergigian.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - peralatan pergigian

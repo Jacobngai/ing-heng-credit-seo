@@ -5,7 +5,7 @@ description: Dapatkan pinjaman kecemasan baik pulih rumah segera di Malaysia. 10
   pembiayaan, 0% deposit, kelulusan pantas untuk bumbung bocor, rumah banjir, masalah
   elektrik. Tiada menunggu bila rumah anda memerlukan pembaikan segera.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pembiayaan kecemasan

@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan mesin suntikan acuan di Malaysia dengan 0% depo
   dan 100% pembiayaan. Kelulusan pantas untuk peralatan pembuatan plastik baharu dan
   terpakai hingga 15 tahun.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - mesin suntikan acuan

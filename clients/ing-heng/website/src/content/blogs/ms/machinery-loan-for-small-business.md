@@ -5,7 +5,7 @@ description: Dapatkan pinjaman mesin untuk perniagaan pembuatan kecil dengan 0% 
   diperlukan. Biayai mesin CNC, peralatan acuan suntikan, talian pembungkusan sehingga
   100% nilai. Kelulusan pantas untuk pengilang kecil.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pinjaman mesin

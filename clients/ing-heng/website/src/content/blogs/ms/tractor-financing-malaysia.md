@@ -4,7 +4,7 @@ title: 'Pembiayaan Traktor Malaysia: Panduan Lengkap Pinjaman Peralatan Ladang d
 description: Biayai traktor di Malaysia dengan pilihan 0% deposit. Pelajari proses
   kelulusan, kadar faedah, dan panduan lengkap untuk pembiayaan peralatan pertanian.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan traktor

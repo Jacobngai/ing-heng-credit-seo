@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan excavator di Malaysia dengan 0% deposit dan 100
   pembiayaan. Kelulusan pantas untuk excavator baru dan terpakai hingga 15 tahun.
   Tiada penolakan bank di sini.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - excavator

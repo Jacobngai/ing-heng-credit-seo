@@ -4,7 +4,7 @@ description: Ketahui proses pinjaman lori di Malaysia. Keperluan permohonan, dok
   diperlukan, kadar kelulusan high approval rate, kelulusan pantas. Untuk syarikat
   logistik dan perniagaan pengangkutan.
 author: "ING HENG Credit"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 category: Equipment Financing
 tags:
 - lori
@@ -669,3 +669,4 @@ Pilih Ing Heng Credit, anda akan dapat:
 *Maklumat yang disediakan dalam artikel ini adalah untuk rujukan sahaja. Syarat pinjaman sebenar mungkin berbeza bergantung kepada keadaan individu. Sila hubungi kami untuk sebut harga peribadi.*
 
 *Ing Heng Credit & Leasing Sdn Bhd - Rakan kongsi pembiayaan peralatan anda sejak 1985.*
+

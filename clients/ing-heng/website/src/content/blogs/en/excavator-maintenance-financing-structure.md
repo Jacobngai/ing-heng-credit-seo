@@ -2,7 +2,7 @@
 title: "Excavator Maintenance Costs: How Financing Structure Impacts Your Bottom Line"
 description: "Excavator Maintenance Costs: How Financing Structure Impacts Your Bottom Line"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -327,3 +327,4 @@ Separate credit facility for maintenance
                   
 - 
                     Fleet Expansion Strategy
+

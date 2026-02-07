@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Honda Accord Euro R dengan 0% deposit di Malay
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["honda accord euro r", "pembiayaan vtec", "sedan sleeper jdm", "pelaburan sedan sports", "pembiayaan prestasi honda"]
 keywords: ["pembiayaan honda accord euro r malaysia", "pembiayaan sedan vtec", "pinjaman sedan sports jdm", "pembiayaan enjin k20a", "pelaburan sedan sleeper", "pinjaman prestasi honda", "pembiayaan euro r", "pinjaman pelaburan vtec"]

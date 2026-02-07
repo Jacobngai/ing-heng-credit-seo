@@ -2,7 +2,7 @@
 title: "Pembiayaan Peralatan di Malaysia: Cara Mudah Kembangkan Bisnes Anda"
 description: "Ingin beli mesin baru? Ketahui kelebihan equipment financing malaysia dengan 0% bayaran pendahuluan dan proses pantas di Ing Heng Credit."
 author: "Pasukan Kredit Ing Heng"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Pembiayaan Peralatan
 tags:
   - pembiayaan peralatan
@@ -53,3 +53,4 @@ Jangan biarkan kekangan modal menghalang anda daripada memiliki peralatan terbai
 Ingin tahu lebih lanjut tentang bagaimana kami boleh membantu anda memiliki peralatan impian? Semak kelayakan anda dalam masa 5 minit sahaja.
 
 [WhatsApp kami sekarang untuk bantuan pakar!](https://wa.me/60123456789)
+

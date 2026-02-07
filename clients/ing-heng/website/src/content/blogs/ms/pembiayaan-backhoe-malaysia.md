@@ -4,7 +4,7 @@ description: "Pembiayaan backhoe di Malaysia dengan opsyen deposit 0%. Jentera p
 category: "Equipment Financing"
 tags: ["backhoe", "jentera pembinaan", "pembiayaan peralatan", "infrastruktur", "utiliti"]
 locale: ms
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 updatedAt: 2024-12-26
 author: "ING HENG Credit"
 slug: "pembiayaan-backhoe-malaysia"

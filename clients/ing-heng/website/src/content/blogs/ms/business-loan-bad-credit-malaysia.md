@@ -5,7 +5,7 @@ description: Kredit buruk halang pinjaman perniagaan anda? Dapatkan pembiayaan j
   0% deposit untuk excavator, lori, dan kren. Pemberi pinjaman alternatif luluskan
   bila bank tak mahu.
 author: "ING HENG Credit"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - pinjaman perniagaan kredit buruk

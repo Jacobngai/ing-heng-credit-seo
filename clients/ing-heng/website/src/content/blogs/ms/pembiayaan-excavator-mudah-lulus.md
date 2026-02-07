@@ -2,7 +2,7 @@
 title: "Pembiayaan Excavator Mudah Lulus Malaysia 2025 - Tanpa Deposit"
 description: "Dapatkan kelulusan pembiayaan excavator dengan mudah. Tanpa deposit, 100% pembiayaan untuk excavator terpakai. Proses pantas dan syarat mudah untuk kontraktor."
 category: "Equipment Financing"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["excavator", "pembiayaan", "kelulusan mudah", "tanpa deposit"]
 image: "/images/excavator-financing-malaysia.jpg"

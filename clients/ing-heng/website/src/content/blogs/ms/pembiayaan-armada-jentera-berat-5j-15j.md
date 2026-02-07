@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan armada jentera berat RM 5-15 juta di Malaysia. 
   deposit, 100% pembiayaan untuk pembelian berbilang unit. Pakej pembiayaan excavator,
   bulldozer, kren, loader untuk kontraktor.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan armada

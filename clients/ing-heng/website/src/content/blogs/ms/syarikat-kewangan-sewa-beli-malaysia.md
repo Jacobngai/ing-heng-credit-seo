@@ -2,7 +2,7 @@
 title: "Syarikat Kewangan Sewa Beli di Malaysia: Solusi Aset Perniagaan"
 description: "Mencari hire purchase finance company terbaik? Ing Heng Credit menawarkan 0% deposit untuk jentera dan peralatan dengan pengalaman 40 tahun."
 author: "Pasukan Kredit Ing Heng"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Pembiayaan Peralatan
 tags:
   - sewa beli
@@ -53,3 +53,4 @@ Memiliki aset perniagaan yang berkualiti tidak lagi mustahil dengan sokongan kew
 Jangan biarkan impian memiliki mesin atau jentera baru terhenti di sini. Hubungi kami sekarang untuk bincangkan keperluan perniagaan anda.
 
 [WhatsApp kami untuk konsultasi 5 minit yang pantas!](https://wa.me/60123456789)
+

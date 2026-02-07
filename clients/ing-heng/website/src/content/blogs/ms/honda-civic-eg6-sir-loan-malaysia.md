@@ -4,7 +4,7 @@ description: Biayai Honda Civic EG6 SiR dengan 0% deposit di Malaysia. Bank tola
 category: Equipment Financing
 persona: General
 locale: ms
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags:
 - Honda Civic EG6

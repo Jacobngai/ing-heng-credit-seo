@@ -2,7 +2,7 @@
 title: "Logistics Cash Flow Management: Balancing Lorry Installments and Operations"
 description: "Client delays are Net-90 in logistics. Learn how to structure lorry financing installments that match payment reality and prevent default while growing your fleet."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -667,3 +667,4 @@ We structure payments around logistics reality, not rigid banking schedules. Get
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

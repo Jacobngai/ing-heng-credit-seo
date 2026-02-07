@@ -5,7 +5,7 @@ description: Biayai peralatan pertanian di Malaysia dengan pilihan 0% deposit. P
   lengkap pembiayaan peralatan pertanian, penuai, bajak, penanam dan pinjaman jentera
   ladang.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - peralatan pertanian

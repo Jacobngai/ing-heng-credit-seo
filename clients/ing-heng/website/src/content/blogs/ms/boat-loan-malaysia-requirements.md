@@ -2,7 +2,7 @@
 title: "Keperluan Pinjaman Bot Malaysia | Panduan Pembiayaan Kapal Marin"
 description: "Dapatkan pembiayaan bot deposit 0% di Malaysia. Kami luluskan bot nelayan, kapal rekreasi, dan kapal komersial yang ditolak bank. Panduan lengkap keperluan pinjaman marin."
 author: "ING HENG Credit"
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 category: Equipment Financing
 tags: ["pinjaman bot", "pembiayaan marin", "pinjaman kapal", "bot nelayan", "kapal rekreasi"]
 keywords:

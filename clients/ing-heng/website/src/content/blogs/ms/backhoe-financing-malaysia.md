@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan backhoe di Malaysia dengan pilihan 0% deposit. 
   pantas untuk backhoe baru dan terpakai sehingga 10 tahun. Kadar kompetitif dari
   7.5% s.a.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - backhoe

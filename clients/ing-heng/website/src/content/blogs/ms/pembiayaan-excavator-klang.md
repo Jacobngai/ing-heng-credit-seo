@@ -2,7 +2,7 @@
 title: "Pembiayaan Excavator Klang 2025 - Tanpa Deposit, Kelulusan Pantas"
 description: "Pembiayaan excavator di Klang dengan syarat mudah dan kelulusan pantas. Tanpa deposit, 100% financing untuk semua jenis excavator di kawasan Klang Valley."
 category: "Equipment Financing"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["excavator klang", "pembiayaan klang", "tanpa deposit", "klang valley"]
 image: "/images/excavator-financing-klang.jpg"

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Toyota Celica GT-Four dengan 0% deposit di Mal
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["Toyota Celica GT-Four", "Pembiayaan Kereta Rally", "Pinjaman Performance AWD", "Pembiayaan Kereta Klasik", "Homologasi Khas"]
 keywords: ["pinjaman Toyota Celica GT-Four", "pembiayaan kereta rally", "pinjaman kereta sport AWD", "pembiayaan homologasi khas", "0% deposit Celica", "pinjaman legenda rally Malaysia", "pembiayaan kenderaan kenaikan nilai", "pembiayaan AWD klasik"]

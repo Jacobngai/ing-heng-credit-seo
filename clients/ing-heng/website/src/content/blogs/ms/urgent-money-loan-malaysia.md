@@ -5,7 +5,7 @@ description: Perlukan pinjaman wang segera di Malaysia? Kelulusan pantas untuk k
   tulen apabila bank tradisional mengambil masa terlalu lama. Dapatkan bantuan kewangan
   segera untuk krisis peribadi dan perniagaan.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pinjaman segera

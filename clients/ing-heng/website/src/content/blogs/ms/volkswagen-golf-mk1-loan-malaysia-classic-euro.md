@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk klasik Volkswagen Golf MK1. B
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 readingTime: 10
 tags: ["volkswagen golf mk1", "pembiayaan kereta klasik", "klasik euro", "pembiayaan gti", "vintage volkswagen"]
 keywords: ["pinjaman volkswagen golf mk1", "pembiayaan golf mk1 malaysia", "pinjaman vw klasik", "pembiayaan golf vintage", "pembiayaan mk1 gti", "0 deposit klasik euro", "pembiayaan volkswagen klasik", "pinjaman pelaburan kereta euro"]

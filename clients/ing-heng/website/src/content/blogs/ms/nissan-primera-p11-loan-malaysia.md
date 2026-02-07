@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Nissan Primera P11 di Malaysia dengan pilihan 
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman nissan primera p11", "pembiayaan enjin sr20", "pembiayaan nissan jarang", "pembiayaan prestasi keluarga", "pembiayaan primera 0 deposit"]
 keywords: ["pinjaman nissan primera p11 malaysia", "pembiayaan sr20", "pembiayaan primera p11", "pinjaman nissan jarang", "pembiayaan prestasi keluarga", "pembiayaan nissan 0 deposit", "pinjaman primera meningkat nilai", "kelulusan pembiayaan p11"]

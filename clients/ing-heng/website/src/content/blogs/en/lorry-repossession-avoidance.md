@@ -2,7 +2,7 @@
 title: "Lorry Repossession Avoidance: How to Structure Your Installment Plan"
 description: "Avoid lorry repossession in Malaysia. Learn installment planning strategies, restructuring options, and what to do if you can't pay. 40+ years experience helping logistics businesses."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -386,3 +386,4 @@ Understanding Lorry Repossession in Malaysia
                   
 - 
                     Fleet Expansion
+

@@ -4,7 +4,7 @@ description: Pembiayaan bulldozer kawalan mesin 3D di Malaysia. Capai ketepatan 
   dengan kawalan pisau automatik. Pembiayaan 0% deposit untuk teknologi pembinaan
   presisi.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - bulldozer

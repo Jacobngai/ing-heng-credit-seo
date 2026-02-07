@@ -2,7 +2,7 @@
 title: "Toyota vs Komatsu Forklifts Malaysia: Price, Performance & Financing Guide"
 description: "Compare Toyota vs Komatsu forklifts for Malaysian warehouses. Price, performance, reliability, financing options. 0% down payment, 24-hour approval, rates from 2.88% p.a."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -515,3 +515,4 @@ Heavy Outdoor Use?
                   
 
 → Choose Komatsu (robust)
+

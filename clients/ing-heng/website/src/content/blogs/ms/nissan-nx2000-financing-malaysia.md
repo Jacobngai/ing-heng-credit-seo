@@ -4,7 +4,7 @@ description: "Biayai Nissan NX2000 nadir anda dengan 0% deposit. Coupe berkuasa 
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Nissan NX2000", "pinjaman kereta sport T-top", "pembiayaan enjin SR20DE", "pinjaman coupe JDM 90an", "pembiayaan kereta sport sedutan semula jadi"]
 keywords: ["pembiayaan Nissan NX2000 Malaysia", "pinjaman NX2000", "pembiayaan coupe T-top", "pembiayaan SR20DE", "pinjaman Nissan 200SX", "pinjaman kereta sport 90an Malaysia", "pembiayaan NX 0% deposit", "pinjaman Nissan sedutan semula jadi"]

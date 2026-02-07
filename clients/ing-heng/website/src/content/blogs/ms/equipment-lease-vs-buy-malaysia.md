@@ -4,7 +4,7 @@ description: Bandingkan pajak dan pembelian peralatan di Malaysia. Ketahui pilih
   yang menawarkan aliran tunai lebih baik, faedah cukai, dan ROI. Analisis pakar untuk
   keputusan perniagaan.
 author: "ING HENG Credit"
-publishDate: 2024-12-22
+publishDate: 2024-12-22T00:00:00.000Z
 category: Financing Guides
 tags:
 - pajak peralatan

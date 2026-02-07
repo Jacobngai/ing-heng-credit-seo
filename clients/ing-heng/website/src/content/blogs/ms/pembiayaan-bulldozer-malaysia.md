@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan bulldozer tanpa deposit di Malaysia. Biayai seh
   100% nilai bulldozer. Kelulusan pantas untuk dozer baru dan terpakai dari perniagaan
   1 tahun.
 author: "ING HENG Credit"
-publishDate: 2026-01-09
+publishDate: 2026-01-09T00:00:00.000Z
 category: Equipment Financing
 tags:
 - bulldozer

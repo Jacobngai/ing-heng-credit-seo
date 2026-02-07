@@ -4,7 +4,7 @@ description: Strategi pembiayaan pembelian pukal jentera komprehensif untuk kont
   Malaysia. 0% deposit pakej multi-mesin. Excavator, bulldozer, kren, loader pembiayaan
   pukal untuk armada pembinaan.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan pembelian pukal

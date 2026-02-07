@@ -2,7 +2,7 @@
 title: "Budget 2025 Equipment Financing: What Contractors Must Know"
 description: "Malaysia Budget 2025 allocated RM86 billion for development projects. Discover how contractors can leverage 0% down payment excavator financing to capitalize on roads, highways, and flood mitigation opportunities."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -741,3 +741,4 @@ Get 0% down payment excavator financing approved in 24 hours. We'll help you pos
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

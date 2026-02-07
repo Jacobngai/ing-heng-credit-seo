@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Mazda Cosmo dengan 0% deposit di Malaysia. Ken
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["mazda cosmo", "pembiayaan enjin rotary", "pinjaman kereta klasik jdm", "pelaburan kereta sports", "pembiayaan kenderaan kolektor"]
 keywords: ["pembiayaan mazda cosmo malaysia", "pinjaman kereta enjin rotary", "pembiayaan kereta sports jdm", "pinjaman mazda klasik", "pembiayaan kereta kolektor", "pinjaman pelaburan kereta sports", "pembiayaan mazda wankel", "pinjaman kereta sports vintej"]

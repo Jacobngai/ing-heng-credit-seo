@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan kren menara dengan 0% deposit di Malaysia. Kami
   kren menara baru & terpakai 10+ tahun, 100% pembiayaan tersedia. Kelulusan pantas
   untuk kontraktor bangunan & pembangun.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - kren menara

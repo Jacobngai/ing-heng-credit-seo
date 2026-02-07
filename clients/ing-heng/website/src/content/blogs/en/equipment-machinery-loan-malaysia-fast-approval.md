@@ -2,7 +2,7 @@
 title: "Equipment Machinery Loan Malaysia: Fast Approval with 0% Down Payment"
 description: "Get equipment machinery loan in Malaysia fast. 0% down payment, no age limit on used equipment. Bank rejects welcome. Apply today."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Loan
@@ -404,3 +404,4 @@ Stop waiting for slow bank processes. Stop saving for down payments. Get the equ
 ---
 
 *Fast approval. 0% down payment. No age limit. Get your equipment now.*
+

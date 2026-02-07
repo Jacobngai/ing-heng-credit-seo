@@ -4,7 +4,7 @@ description: Kelulusan pembiayaan lori pantas di Malaysia. Ketahui cara lulus de
   cepat menggunakan dokumen minimum. Kadar kompetitif bermula 7.5% setahun untuk syarikat
   logistik.
 author: "ING HENG Credit"
-publishDate: 2025-12-09
+publishDate: 2025-12-09T00:00:00.000Z
 category: Equipment Financing
 tags:
 - lori
@@ -664,3 +664,4 @@ Di Ing Heng Credit, kami pakar dalam pembiayaan peralatan selama 40 tahun. Kami 
 - [Pembiayaan Sewa Beli](/ms/services/hire-purchase)
 - [Pembiayaan Pinjaman](/ms/services/loan-financing)
 - [Insurans Peralatan](/ms/services/insurance)
+

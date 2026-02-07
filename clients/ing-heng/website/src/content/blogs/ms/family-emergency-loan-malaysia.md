@@ -4,7 +4,7 @@ description: Dapatkan pinjaman kecemasan keluarga di Malaysia dengan 0% deposit 
   pemprosesan segera. Pelajari cara mendapatkan bantuan kewangan segera untuk bil
   perubatan, pembaikan, dan keperluan keluarga mendesak.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pinjaman kecemasan

@@ -3,7 +3,7 @@ title: "Pembiayaan Subaru WRX STI Kredit Buruk: Penyelesaian Kelulusan 0% Deposi
 description: "Dapatkan pembiayaan Subaru WRX STI walaupun dengan kredit buruk di Malaysia. 0% deposit, kelulusan pantas, tiada penolakan bank. Pinjaman kereta prestasi untuk pembeli bermasalah kredit."
 category: Equipment Financing
 tags: ["Subaru WRX STI", "pembiayaan kredit buruk", "pinjaman kereta prestasi", "0% deposit", "Malaysia"]
-publishDate: 2025-01-15
+publishDate: 2025-01-15T00:00:00.000Z
 author: "ING HENG Credit"
 locale: "ms"
 readingTime: 8

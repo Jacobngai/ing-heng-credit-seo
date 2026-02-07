@@ -2,7 +2,7 @@
 title: "E-Commerce Boom Forklift Demand: Malaysia"
 description: "Malaysia e-commerce grew 23% in 2024, driving unprecedented warehouse demand. Learn how 0% down payment forklift financing positions your facility for e-commerce fulfillment growth."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -704,3 +704,4 @@ Finance e-commerce fulfillment equipment with 0% down payment. Get approved in 2
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

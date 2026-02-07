@@ -2,7 +2,7 @@
 title: "Heavy Machinery Financing Malaysia: Excavators, Bulldozers & Cranes"
 description: "Finance heavy machinery in Malaysia with 0% down payment. Excavators, bulldozers, cranes approved fast. No age limit on used construction equipment."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Heavy Machinery
@@ -429,3 +429,4 @@ Don't let equipment costs keep you from winning contracts. Heavy machinery finan
 ---
 
 *Get the machinery. Win the contracts. Build your construction business.*
+

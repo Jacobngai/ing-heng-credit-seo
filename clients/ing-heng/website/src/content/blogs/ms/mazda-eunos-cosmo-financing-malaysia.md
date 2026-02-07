@@ -4,7 +4,7 @@ description: "Biayai Mazda Eunos Cosmo langka anda dengan 0% deposit. Rasai buny
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Mazda Eunos Cosmo", "pinjaman enjin rotary", "pinjaman kereta JDM mewah", "pembiayaan kenderaan era bubble", "pinjaman kereta 0% deposit"]
 keywords: ["pembiayaan Mazda Eunos Cosmo Malaysia", "pinjaman kereta enjin rotary", "pembiayaan JDM mewah", "0% deposit Cosmo", "pembiayaan kereta era bubble", "pembiayaan twin rotor", "pinjaman coupe mewah Malaysia", "pembiayaan JDM menghargai"]

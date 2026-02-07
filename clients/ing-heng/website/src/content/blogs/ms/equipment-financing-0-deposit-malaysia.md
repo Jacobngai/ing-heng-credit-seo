@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan peralatan tanpa deposit di Malaysia. Biayai exc
   lori, forklift, jentera kilang dengan bayaran pendahuluan kosong. Kadar kelulusan
   tinggi, kelulusan pantas.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - kosong deposit

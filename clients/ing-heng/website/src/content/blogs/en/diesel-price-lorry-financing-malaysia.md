@@ -2,7 +2,7 @@
 title: "Diesel Price Up 55%: Lorry Financing Strategies to Survive RM3.35/Liter"
 description: "Malaysia's diesel subsidy rationalization increased prices to RM3.35/liter. Finance your lorry with 0% down payment, 24-hour approval, and rates from 2.88% p.a."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -308,3 +308,4 @@ Competitive flat rates help maximize profitability despite higher diesel costs.
                     
                   
                   Maintain vehicles for optimal mileage
+

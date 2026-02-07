@@ -2,7 +2,7 @@
 title: "Driver Shortage Crisis: Impact on Prime Mover Haulage Rates & Solutions"
 description: "Malaysia's 5,000 driver shortage impacts haulage rates. Learn driver retention strategies and finance your fleet expansion with 0% down payment."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -326,3 +326,4 @@ Consider helping drivers with Goods Driving Licence fees (RM4,000-5,000) in exch
                     
                   
                   Consider license cost assistance
+

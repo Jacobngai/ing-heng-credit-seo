@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Volkswagen Beetle klasik di Malaysia dengan 0%
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan volkswagen beetle", "pinjaman vw klasik", "pembiayaan beetle vintage", "pinjaman vw bug", "pembiayaan kereta klasik"]
 keywords: ["pinjaman volkswagen beetle klasik", "pembiayaan vw beetle malaysia", "pinjaman beetle klasik", "pembiayaan vw bug vintage", "pinjaman kereta klasik malaysia"]

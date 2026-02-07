@@ -2,7 +2,7 @@
 title: "Urgent Cash Personal Loan Malaysia - Emergency Financing When You Can't Wait"
 description: "Get urgent cash personal loans in Malaysia when emergencies strike. Fast approval for medical bills, family crisis, and urgent financial needs. Apply now for immediate cash assistance."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

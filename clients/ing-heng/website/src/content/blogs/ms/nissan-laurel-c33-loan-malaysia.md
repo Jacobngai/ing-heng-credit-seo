@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Nissan Laurel C33 dengan 0% deposit di Malaysi
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["nissan laurel c33", "pembiayaan kereta drift", "pinjaman sedan jdm", "pelaburan sedan sports", "pembiayaan budaya drift"]
 keywords: ["pinjaman nissan laurel c33 malaysia", "pembiayaan kereta drift", "pinjaman sedan sports jdm", "pembiayaan enjin rb25", "pelaburan budaya drift", "pinjaman sedan sports", "pembiayaan nissan laurel", "pinjaman sedan jdm 90s"]

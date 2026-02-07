@@ -5,7 +5,7 @@ description: Biayai lori terpakai sehingga 10+ tahun di Malaysia dengan pilihan 
   deposit. Ketahui proses kelulusan, kadar faedah, dan panduan lengkap pembiayaan
   lori second hand.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - lori terpakai
@@ -786,3 +786,4 @@ Kami jadikan pembiayaan lori terpakai mudah dan cepat:
 - Ahad: Tutup (WhatsApp tersedia)
 
 *Biayai lori terpakai anda hari ini. Kelulusan cepat. Kadar kompetitif. Sehingga 10 tahun diterima.*
+

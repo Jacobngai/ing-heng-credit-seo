@@ -2,7 +2,7 @@
 title: "Pembiayaan Modal Kerja di Malaysia: Solusi Kewangan Untuk Syarikat"
 description: "Cari working capital finance malaysia terbaik untuk syarikat anda. Ing Heng Credit menawarkan 0% bayaran pendahuluan dan tanpa had umur pemohon."
 author: "Pasukan Kredit Ing Heng"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Pembiayaan Perniagaan
 tags:
   - pembiayaan modal kerja
@@ -53,3 +53,4 @@ Kestabilan kewangan syarikat anda bergantung kepada pengurusan modal kerja yang 
 Jangan biarkan peluang perniagaan berlalu begitu sahaja. Hubungi pakar kewangan kami sekarang untuk mendapatkan nasihat profesional.
 
 [Klik di sini untuk WhatsApp kami dan semak kelayakan dalam 5 minit!](https://wa.me/60123456789)
+

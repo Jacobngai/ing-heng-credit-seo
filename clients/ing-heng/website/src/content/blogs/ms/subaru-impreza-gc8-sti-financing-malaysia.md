@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Subaru Impreza GC8 STI dengan 0% deposit di Ma
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["subaru impreza gc8 sti", "pembiayaan kereta rally", "pinjaman kereta sports jdm", "pelaburan sti", "pembiayaan legenda rally"]
 keywords: ["pembiayaan subaru impreza gc8 sti malaysia", "pembiayaan kereta rally", "pinjaman kereta sports jdm", "pembiayaan ej20 turbo", "pinjaman pelaburan sti", "pembiayaan prestasi subaru", "pinjaman legenda rally", "pelaburan gc8 sti"]

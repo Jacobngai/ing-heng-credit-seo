@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan jentera pembinaan di Malaysia dengan 0% deposit
   Kami membiayai excavator, kren, bulldozer, lori - malah jentera 10+ tahun. Kelulusan
   pantas untuk kontraktor.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - jentera pembinaan

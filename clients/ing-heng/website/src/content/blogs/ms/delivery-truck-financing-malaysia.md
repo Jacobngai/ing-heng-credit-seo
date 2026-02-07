@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan lori penghantaran di Malaysia dengan pilihan d
 keywords: ["pembiayaan lori penghantaran Malaysia", "pinjaman lori komersial", "pembiayaan van penghantaran", "pembiayaan lori Malaysia", "pinjaman kenderaan penghantaran", "pembiayaan kenderaan logistik", "pinjaman lori perdagangan", "pembiayaan van komersial"]
 category: "Equipment Financing"
 readingTime: 12
-publishDate: 2024-12-22
+publishDate: 2024-12-22T00:00:00.000Z
 image: "/images/equipment/lorry.jpg"
 imageAlt: "Lori penghantaran untuk pembiayaan logistik di Malaysia"
 locale: "ms"

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk wagon turbo Toyota Caldina GT
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman Toyota Caldina GT-Four", "pembiayaan wagon turbo AWD", "pembiayaan prestasi JDM", "pinjaman wagon turbo", "pembiayaan estate prestasi"]
 keywords: ["pinjaman Toyota Caldina GT-Four Malaysia", "pembiayaan turbo Caldina", "pinjaman wagon AWD Malaysia", "pembiayaan turbo 3S-GTE", "pinjaman wagon prestasi JDM", "pembiayaan import Caldina", "pinjaman estate turbo Malaysia", "beli ansuran wagon prestasi"]

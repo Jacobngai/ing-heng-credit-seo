@@ -4,7 +4,7 @@ description: "Pembiayaan Nissan Stagea 260RS langka dengan 0% deposit. Bank tola
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["Nissan Stagea 260RS", "pembiayaan RB26DETT", "pinjaman wagon AWD", "pembiayaan sleeper JDM", "Nissan meningkat nilai"]
 keywords: ["pinjaman Nissan Stagea 260RS", "pembiayaan Stagea Malaysia", "pembiayaan wagon RB26", "pinjaman Nissan AWD", "pembiayaan wagon JDM", "pembiayaan kereta sleeper", "Stagea meningkat nilai", "pembiayaan Nissan langka"]

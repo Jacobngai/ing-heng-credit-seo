@@ -4,7 +4,7 @@ description: Bandingkan sewa vs beli forklift dengan pembiayaan di Malaysia. Lih
   analisis kos 5 tahun, faedah cukai, dan mengapa pembiayaan beli 0% deposit lebih
   jimat daripada sewa berterusan.
 author: "ING HENG Credit"
-publishDate: 2026-02-11
+publishDate: 2026-02-11T00:00:00.000Z
 category: Equipment Financing
 tags:
 - forklift
@@ -1032,3 +1032,4 @@ Bandingkan dengan sewa semasa anda dan lihat berapa banyak anda jimat!
 **Tentang Ing Heng Credit:**
 
 Ditubuhkan pada 1985, Ing Heng Credit & Leasing adalah pakar pembiayaan peralatan yang dipercayai di Malaysia. Kami telah membantu lebih 4,000 perniagaan memperoleh peralatan yang mereka perlukan dengan penyelesaian pembiayaan fleksibel, kadar kompetitif, dan kelulusan pantas. Pilihan pembiayaan 0% deposit kami menjadikan pemilikan peralatan mudah diakses untuk perniagaan semua saiz.
+

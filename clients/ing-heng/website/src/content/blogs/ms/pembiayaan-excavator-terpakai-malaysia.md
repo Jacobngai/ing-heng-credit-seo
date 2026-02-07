@@ -5,7 +5,7 @@ description: Pembiayaan excavator terpakai sehingga 10 tahun di Malaysia. 0% dep
   tersedia. Ketahui had umur, kadar faedah, proses penilaian dan keperluan kelulusan
   untuk excavator terpakai.
 author: "ING HENG Credit"
-publishDate: 2026-01-13
+publishDate: 2026-01-13T00:00:00.000Z
 category: Equipment Financing
 tags:
 - excavator terpakai
@@ -1055,3 +1055,4 @@ Kami mudahkan pembiayaan excavator terpakai dan pantas:
 - Ahad: Tutup (WhatsApp tersedia 24/7)
 
 *Biayai excavator terpakai anda hari ini. 0% deposit tersedia. Sehingga 10 tahun diterima. Proses kelulusan pantas.*
+

@@ -2,7 +2,7 @@
 title: "Forklift Fleet Financing Strategy: Scale from 1 to 10 Machines"
 description: "Expanding your forklift fleet? Finance growth from 1 to 10 machines with 0% down payment. Fleet consolidation, scaling strategies for Malaysian warehouses."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -428,3 +428,4 @@ Trade in older units for newer technology without penalties. Keep fleet modern a
                     
                   
                   Reserve financing for emergency replacements
+

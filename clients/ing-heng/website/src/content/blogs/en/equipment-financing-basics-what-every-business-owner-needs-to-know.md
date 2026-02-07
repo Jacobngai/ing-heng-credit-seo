@@ -2,7 +2,7 @@
 title: "Equipment Financing Basics: What Every Malaysian Business Owner Needs to Know"
 description: "Learn equipment financing basics for Malaysian businesses. Understand loan types, requirements, and how to get 0% down payment. Complete beginner's guide."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -356,3 +356,4 @@ Ready to explore equipment financing? Here's what to do:
 ---
 
 *Start with the basics. Get the equipment. Grow your business.*
+

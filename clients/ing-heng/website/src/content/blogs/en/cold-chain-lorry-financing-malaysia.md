@@ -2,7 +2,7 @@
 title: "Cold Chain Lorry Financing: Malaysia"
 description: "Malaysia cold chain logistics market growing 12% annually. Learn how to finance refrigerated lorries for frozen food transport with 0% down payment while capturing food security expansion opportunities."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -634,3 +634,4 @@ Finance refrigerated lorries with 0% down payment. Get approved in 24 hours and 
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

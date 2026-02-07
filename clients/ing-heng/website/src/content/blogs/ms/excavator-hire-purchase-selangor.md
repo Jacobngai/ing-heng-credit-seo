@@ -3,7 +3,7 @@ title: 'Pajakan Beli Jengkaut Selangor: Kelulusan Pantas untuk Kontraktor Klang 
 description: Dapatkan pembiayaan pajakan beli jengkaut di Selangor. Melayani kontraktor
   Klang, Shah Alam, Petaling Jaya. Kelulusan pantas, kadar kompetitif dari 6.5% setahun.
 author: "ING HENG Credit"
-publishDate: 2025-12-30
+publishDate: 2025-12-30T00:00:00.000Z
 category: Equipment Financing
 tags:
 - jengkaut
@@ -673,3 +673,4 @@ Jangan tunggu kelulusan bank yang panjang. Dapatkan jengkaut anda dibiayai denga
 ---
 
 *Ing Heng Credit & Leasing Sdn Bhd - Syarikat pembiayaan peralatan berlesen berpangkalan di Klang, Selangor. Pakar dalam pajakan beli peralatan pembinaan, pembiayaan pinjaman, dan penyelesaian insurans untuk PKS Malaysia.*
+

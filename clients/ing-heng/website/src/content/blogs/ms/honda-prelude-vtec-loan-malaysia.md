@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Honda Prelude VTEC yang ikoni
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["honda-prelude-vtec", "pembiayaan-coupe-prestasi", "pinjaman-enjin-vtec", "0-deposit-honda", "kereta-sukan-klasik"]
 keywords: ["pinjaman honda prelude vtec malaysia", "pembiayaan prelude vtec", "pembiayaan enjin vtec", "pinjaman coupe prestasi", "kereta sukan 0 deposit", "pinjaman honda vtec", "pembiayaan honda klasik", "pembiayaan coupe sukan malaysia"]

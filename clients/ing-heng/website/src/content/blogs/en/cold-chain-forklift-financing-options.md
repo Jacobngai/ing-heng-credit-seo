@@ -2,7 +2,7 @@
 title: "Cold Chain Warehouse Forklift: Specialized Financing Options"
 description: "Malaysia cold chain market growing 12% annually with food security expansion. Learn how to finance specialized refrigerated forklifts that maintain performance in -25°C environments."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -779,3 +779,4 @@ We specialize in cold chain-rated equipment with 0% down payment. Get approved i
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

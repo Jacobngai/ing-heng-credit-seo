@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Toyota KE70 Corolla drift bui
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 readingTime: 10
 tags: ["toyota ke70", "pembiayaan kereta drift", "corolla ae86", "rwd toyota", "pembiayaan motorsport"]
 keywords: ["pembiayaan toyota ke70", "pinjaman ke70 malaysia", "pinjaman kereta drift", "pembiayaan toyota corolla", "pembiayaan toyota rwd", "0 deposit kereta drift", "pembiayaan alternatif ae86", "pinjaman kenderaan motorsport"]

@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan kren mudah alih dengan kelulusan pantas di Mala
   0% deposit, 100% pembiayaan untuk kren mobile, rough terrain & all terrain. Kren
   25-500 tan tersedia.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan kren mudah alih

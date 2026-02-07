@@ -2,7 +2,7 @@
 title: Pembiayaan Nissan 350Z Malaysia - Panduan Pinjaman Kereta Sukan 0% Deposit 2025
 description: Dapatkan pembiayaan Nissan 350Z di Malaysia dengan 0% deposit. Panduan lengkap untuk pinjaman kereta sukan Jepun, mengapa bank menolak kereta sukan lama, dan kisah kejayaan daripada pemilik 350Z.
 author: "ING HENG Credit"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 updatedDate: 2025-12-24
 metaTitle: Pembiayaan Nissan 350Z Malaysia | Pinjaman Kereta Sukan Jepun 0% Deposit
 metaDescription: Pembiayaan Nissan 350Z Malaysia dengan 0% deposit. Pinjaman kereta sukan Jepun, kelulusan pantas, kredit teruk diterima. Biayai 350Z impian anda hari ini.

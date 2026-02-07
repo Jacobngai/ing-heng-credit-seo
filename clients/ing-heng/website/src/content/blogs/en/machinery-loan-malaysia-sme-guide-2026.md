@@ -2,7 +2,7 @@
 title: "Machinery Loan Malaysia for SMEs: How to Get Approved in 2026"
 description: "Get machinery loan approval in Malaysia with 0% down payment. No age limit, fast approval. Complete SME financing guide with tips for bank rejects."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Machinery Loan

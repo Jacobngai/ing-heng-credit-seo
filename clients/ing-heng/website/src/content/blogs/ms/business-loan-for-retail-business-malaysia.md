@@ -4,7 +4,7 @@ title: 'Pinjaman Perniagaan untuk Bisnes Runcit Malaysia: Panduan Lengkap Pembia
 description: Pinjaman perniagaan runcit di Malaysia. Pembiayaan peralatan untuk sistem
   POS, rak, penyejukan, dan operasi kedai. Kelulusan pantas dengan kadar kompetitif.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - pinjaman runcit

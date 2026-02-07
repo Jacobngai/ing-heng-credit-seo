@@ -2,7 +2,7 @@
 title: "Westports Expansion to 28M TEUs: Prime Mover Financing Guide for Hauliers"
 description: "Port Klang's Westports expansion doubles capacity to 28M TEUs by 2028. Finance your prime mover fleet with 0% down payment, 24-hour approval, and rates from 2.88% p.a."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -304,3 +304,4 @@ Competitive flat rates help you maximize profitability while investing in growth
                     
                   
                   Invest in driver retention programs
+

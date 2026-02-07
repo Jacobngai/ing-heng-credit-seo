@@ -2,7 +2,7 @@
 title: Pembiayaan Speedboat Malaysia - Panduan Pinjaman Kapal Laju 0% Deposit 2025
 description: Dapatkan pembiayaan speedboat di Malaysia dengan 0% deposit. Panduan lengkap untuk pinjaman kapal laut, mengapa bank tolak pembiayaan bot, dan kisah kejayaan pemilik speedboat.
 author: "ING HENG Credit"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 updatedDate: 2025-12-24
 metaTitle: Pembiayaan Speedboat Malaysia | Pinjaman Kapal Laut 0% Deposit
 metaDescription: Pembiayaan speedboat Malaysia dengan 0% deposit. Pinjaman kapal laut, kelulusan pantas, kredit teruk diterima. Biayai speedboat impian anda hari ini.

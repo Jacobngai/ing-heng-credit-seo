@@ -4,7 +4,7 @@ title: 'Pembiayaan Wheel Loader Malaysia: Pinjaman Jentera 0% Deposit untuk Kont
 description: Dapatkan pembiayaan wheel loader di Malaysia dengan 0% deposit dan 100%
   pembiayaan. Kelulusan pantas untuk wheel loader baru dan terpakai sehingga 15 tahun.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - wheel loader

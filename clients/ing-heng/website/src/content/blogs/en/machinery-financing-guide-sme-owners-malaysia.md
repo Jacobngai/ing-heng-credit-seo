@@ -2,7 +2,7 @@
 title: "Machinery Financing: The Ultimate Guide for Malaysian SME Owners"
 description: "Complete machinery financing guide for Malaysian SMEs. Learn how to finance equipment with 0% down payment, no age limit. Bank alternatives explained."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Machinery Financing
@@ -407,3 +407,4 @@ Stop letting equipment costs hold back your business. Machinery financing option
 ---
 
 *Finance your machinery. Build your business. Achieve your goals.*
+

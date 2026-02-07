@@ -2,7 +2,7 @@
 title: "Labor Shortage Crisis: Why Your Excavator Investment is More Critical Than Ever"
 description: "Malaysia faces 100,000+ construction worker shortage. Discover why investing in automated excavators with 0% down payment financing is the smartest strategy to offset labor costs and win more contracts in 2025."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -679,3 +679,4 @@ Get 0% down payment financing for automated excavators. We'll help you calculate
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

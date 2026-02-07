@@ -4,7 +4,7 @@ description: "Biayai Mitsubishi Diamante anda dengan 0% deposit. Rasai kemewahan
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Mitsubishi Diamante", "pembiayaan sedan eksekutif V6", "pembiayaan Mitsubishi mewah", "pinjaman sedan premium", "0% deposit Diamante"]
 keywords: ["pembiayaan Mitsubishi Diamante Malaysia", "pembiayaan sedan eksekutif V6", "pembiayaan Mitsubishi mewah", "0% deposit Diamante", "pinjaman sedan premium", "pembiayaan kereta eksekutif", "pembiayaan Diamante menghargai", "pinjaman Mitsubishi flagship"]

@@ -2,7 +2,7 @@
 title: "Manufacturing Equipment Financing Malaysia: 0% Down Payment Options"
 description: "Get manufacturing equipment financing in Malaysia with 0% down payment. CNC machines, injection molding, lathes financed even if banks reject you."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Manufacturing Equipment
@@ -356,3 +356,4 @@ Don't let equipment costs limit your factory's growth. Whether you need one CNC 
 ---
 
 *Upgrade your factory. Increase production. Grow your manufacturing business.*
+

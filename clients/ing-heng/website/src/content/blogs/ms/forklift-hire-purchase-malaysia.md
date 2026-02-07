@@ -3,7 +3,7 @@ title: 'Pembiayaan Forklift Sewa Beli Malaysia: Panduan Lengkap Pemilikan & Kewa
 description: Semua tentang sewa beli forklift di Malaysia. Ketahui cara HP berfungsi,
   bayaran bulanan, pemindahan pemilikan, faedah cukai, dan proses permohonan.
 author: "ING HENG Credit"
-publishDate: 2025-12-19
+publishDate: 2025-12-19T00:00:00.000Z
 category: Equipment Financing
 tags:
 - forklift

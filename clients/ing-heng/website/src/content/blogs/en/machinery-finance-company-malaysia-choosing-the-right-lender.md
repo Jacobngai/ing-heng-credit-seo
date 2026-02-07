@@ -2,7 +2,7 @@
 title: "Machinery Finance Company Malaysia: How to Choose the Right Lender"
 description: "Compare machinery finance companies in Malaysia. Bank vs private lender comparison. 0% down payment options, no age limit. Find the best fit for your business."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Machinery Financing
@@ -374,3 +374,4 @@ Ready to finance equipment for your business? Here's what to do:
 ---
 
 *Choose the right partner. Finance your equipment. Grow your business.*
+

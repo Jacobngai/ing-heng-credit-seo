@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Mercedes W123 anda. Penyelesa
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["Mercedes W123", "Pembiayaan Kereta Klasik", "0% Deposit", "Kemewahan Jerman", "Kenderaan Pelaburan"]
 keywords: ["pinjaman Mercedes W123", "pembiayaan Mercedes klasik", "pembiayaan kenderaan 0% deposit", "pinjaman kereta mewah Jerman", "pembiayaan W123 diesel", "pinjaman Mercedes vintaj", "pembiayaan kenderaan khas", "pelaburan Mercedes klasik"]

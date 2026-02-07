@@ -2,7 +2,7 @@
 title: "Pembiayaan Lori Malaysia 2025 - Tanpa Deposit, Syarat Mudah"
 description: "Pembiayaan lori di Malaysia dengan 100% financing tanpa deposit. Untuk pickup truck, box lorry, tipper truck, container truck dan semua jenis commercial vehicle."
 category: "Equipment Financing"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["pembiayaan lori", "truck financing", "commercial vehicle", "logistics"]
 image: "/images/truck-financing-malaysia.jpg"

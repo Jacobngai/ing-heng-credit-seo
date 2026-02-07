@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk BMW E30 anda. Penyelesaian pi
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["BMW E30", "Pembiayaan Kereta Klasik", "0% Deposit", "Kejuruteraan Jerman", "Kenderaan Pelaburan"]
 keywords: ["pembiayaan BMW E30", "pinjaman E30 M3", "pembiayaan BMW klasik", "pembiayaan kenderaan 0% deposit", "pinjaman kereta sukan Jerman", "pinjaman BMW vintaj", "pembiayaan kenderaan khas", "pembiayaan pelaburan E30"]

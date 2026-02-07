@@ -2,7 +2,7 @@
 title: "Prime Mover Fleet Expansion: From 2 to 10 Units Financing Strategy"
 description: "Growing from 2 prime movers to a 10-unit fleet requires strategic financing. Learn how Malaysian haulage companies use 0% down payment to scale operations progressively while managing cash flow."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -688,3 +688,4 @@ Finance multiple prime movers with 0% down payment. Get approved in 24 hours and
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

@@ -4,7 +4,7 @@ description: "Biayai Toyota Sera nadir anda dengan 0% deposit. Coupe kubah kaca 
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman Toyota Sera", "pembiayaan pintu gullwing", "pinjaman coupe kubah kaca", "pembiayaan Toyota nadir", "pinjaman kereta pintu rama-rama"]
 keywords: ["pinjaman Toyota Sera Malaysia", "pembiayaan Sera", "pinjaman kereta pintu gullwing", "pembiayaan kubah kaca Toyota", "pembiayaan pintu rama-rama", "pinjaman Toyota nadir", "pembiayaan Sera 0% deposit", "pinjaman kereta eksperimen Toyota"]

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Subaru Alcyone SVX anda. Jang
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Subaru Alcyone", "pinjaman SVX coupe", "pembiayaan JDM jarang", "pinjaman kereta sport mewah", "pembiayaan kenderaan kolektor"]
 keywords: ["pembiayaan Subaru Alcyone Malaysia", "pinjaman SVX coupe", "pembiayaan Subaru jarang", "pinjaman kereta sport mewah Malaysia", "pembiayaan import Alcyone", "pembiayaan kolektor JDM", "beli ansuran Subaru SVX", "pinjaman kenderaan nadir Malaysia"]

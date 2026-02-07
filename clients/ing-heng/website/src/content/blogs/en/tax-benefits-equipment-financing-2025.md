@@ -2,7 +2,7 @@
 title: "Tax Benefits of Equipment Financing: Maximize Your Deductions in 2025"
 description: "Understand the tax advantages of equipment financing in Malaysia. Learn how to claim capital allowances and reduce your tax burden legally."
 author: "Ing Heng Credit Team"
-publishDate: 2025-05-07
+publishDate: 2025-05-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -854,3 +854,4 @@ We structure equipment financing to maximize your tax deductions. Get approved i
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

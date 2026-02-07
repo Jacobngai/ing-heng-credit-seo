@@ -4,7 +4,7 @@ description: "Pembiayaan Mitsubishi FTO GPX langka dengan 0% deposit. Bank tolak
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["Mitsubishi FTO GPX", "pembiayaan JDM", "pinjaman kereta klasik", "twin cam MIVEC", "aset meningkat nilai"]
 keywords: ["pembiayaan Mitsubishi FTO GPX", "pinjaman FTO Malaysia", "pembiayaan kereta JDM", "pembiayaan Mitsubishi klasik", "pinjaman twin cam MIVEC", "pembiayaan kereta sukan 90an", "kereta JDM meningkat nilai", "pembiayaan Mitsubishi langka"]

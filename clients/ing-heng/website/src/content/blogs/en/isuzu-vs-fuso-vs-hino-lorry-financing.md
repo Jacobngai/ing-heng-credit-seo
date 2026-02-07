@@ -2,7 +2,7 @@
 title: "Isuzu vs FUSO vs Hino: Malaysia"
 description: "Isuzu vs FUSO vs Hino: Malaysia"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -508,3 +508,4 @@ Meet urgent contract deadlines without brand-specific delays.
 
 
           **Not sure which brand?** Our logistics specialists can provide a personalized recommendation based on your routes, cargo, and budget.
+

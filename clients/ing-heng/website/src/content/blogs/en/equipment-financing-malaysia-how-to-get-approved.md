@@ -2,7 +2,7 @@
 title: "Equipment Financing Malaysia: How to Get Approved When Banks Say No"
 description: "Equipment financing in Malaysia with 0% down payment. Get approved even if banks rejected you. Finance old equipment, no age limit. Fast approval."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -348,3 +348,4 @@ Equipment financing options exist for your business—you just need to know wher
 ---
 
 *Get the equipment. Grow your business. Start today.*
+

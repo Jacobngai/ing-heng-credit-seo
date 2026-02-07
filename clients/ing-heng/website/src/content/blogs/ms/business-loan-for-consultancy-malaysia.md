@@ -5,7 +5,7 @@ description: Dapatkan 100% pembiayaan untuk perniagaan konsultansi anda di Malay
   Kelulusan pantas, kadar kejayaan tinggi. Sesuai untuk firma IT, pengurusan, HR,
   kewangan.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pembiayaan konsultansi

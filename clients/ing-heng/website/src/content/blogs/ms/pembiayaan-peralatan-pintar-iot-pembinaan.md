@@ -3,7 +3,7 @@ title: 'Pembiayaan Peralatan Pembinaan Pintar IoT: Teknologi Masa Depan'
 description: Pembiayaan peralatan pembinaan pintar IoT di Malaysia. Sistem monitoring
   real-time, analitik data, dan automasi. 0% deposit untuk teknologi IoT canggih.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - peralatan pintar

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Mazda RX-3 dengan 0% deposit di Malaysia. Pinj
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["Mazda RX-3", "Pembiayaan Enjin Rotary", "Pinjaman Kereta Klasik", "Legenda JDM", "Pembiayaan Enjin Unik"]
 keywords: ["pembiayaan Mazda RX-3", "pinjaman kereta enjin rotary", "pembiayaan kereta sport klasik", "pembiayaan enjin unik", "0% deposit RX-3", "pembiayaan kenderaan kenaikan nilai", "pinjaman Mazda vintage", "pinjaman kereta sport rotary Malaysia"]

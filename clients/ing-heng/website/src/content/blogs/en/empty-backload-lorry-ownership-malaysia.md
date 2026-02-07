@@ -2,7 +2,7 @@
 title: "Malaysia's 77% Empty Backload Problem: How Lorry Ownership Helps"
 description: "Malaysia's logistics industry faces 77% empty backload rates. Finance your lorry with 0% down payment, 24-hour approval, and rates from 2.88% p.a."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -297,3 +297,4 @@ Install GPS tracking and route optimization software. Ownership lets you choose 
                     
                   
                   Install GPS tracking systems
+

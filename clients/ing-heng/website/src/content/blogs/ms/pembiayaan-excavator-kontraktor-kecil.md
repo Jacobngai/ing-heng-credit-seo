@@ -5,7 +5,7 @@ description: Kontraktor kecil boleh bersaing dengan syarikat besar menggunakan p
   excavator 0% deposit. Dapatkan 100% pembiayaan, menang tender segera, dan kekalkan
   modal kerja untuk pertumbuhan.
 author: "ING HENG Credit"
-publishDate: 2026-01-23
+publishDate: 2026-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
 - excavator
@@ -1192,3 +1192,4 @@ Setiap hari anda tangguhkan adalah satu lagi hari bayar kos sewa dan kalah tende
 **Khalayak Sasaran:** Kontraktor kecil (CIDB G1-G3), kontraktor baru, kontraktor bersaing terhadap firma lebih besar
 **Kata Kunci Utama:** pembiayaan excavator kontraktor kecil
 **Masa Bacaan:** 8 minit
+

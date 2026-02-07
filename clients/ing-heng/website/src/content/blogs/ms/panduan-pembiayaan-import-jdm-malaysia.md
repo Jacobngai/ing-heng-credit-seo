@@ -4,7 +4,7 @@ description: "Biayai kereta impian JDM anda dengan 0% deposit. Skyline GT-R, Sup
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 featured: false
 readingTime: 8
 tags: ["jdm import", "skyline pembiayaan", "supra pembiayaan", "nsx pembiayaan", "kereta import", "0% deposit", "malaysia"]

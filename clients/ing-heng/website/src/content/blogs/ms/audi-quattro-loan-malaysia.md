@@ -4,7 +4,7 @@ description: "Dapatkan Audi Quattro anda dengan pinjaman 0% deposit di Malaysia.
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["Audi Quattro", "Pembiayaan Perintis AWD", "Ikon Rali Group B", "Kejuruteraan Jerman", "0% Deposit Pinjaman Klasik"]
 keywords: ["pinjaman Audi Quattro Malaysia", "pembiayaan quattro asal", "pinjaman perintis AWD", "pembiayaan Audi Group B", "pinjaman Audi ur-Quattro", "0% deposit pembiayaan Audi", "pelaburan ikon rali", "pembiayaan Audi klasik Malaysia"]

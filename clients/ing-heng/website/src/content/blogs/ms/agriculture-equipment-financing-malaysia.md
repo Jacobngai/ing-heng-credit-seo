@@ -2,7 +2,7 @@
 title: Pembiayaan Peralatan Pertanian Malaysia - Pinjaman Jentera Ladang 0% Deposit
 description: Biayai traktor, mesin tuai, sistem pengairan dengan 0% deposit. Kelulusan pantas untuk pinjaman peralatan pertanian Malaysia. Sokong petani Malaysia dengan pilihan pembiayaan fleksibel.
 author: "ING HENG Credit"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 updatedDate: 2025-11-13
 metaTitle: Pembiayaan Peralatan Pertanian Malaysia | Pinjaman Jentera Ladang 0% Deposit
 metaDescription: Biayai traktor, mesin tuai, sistem pengairan dengan 0% deposit di Malaysia. Kelulusan pantas pinjaman peralatan pertanian untuk petani. Terma fleksibel, kadar kompetitif.

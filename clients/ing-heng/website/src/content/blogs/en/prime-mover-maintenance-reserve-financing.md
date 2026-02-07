@@ -2,7 +2,7 @@
 title: "Prime Mover Maintenance Reserve: How to Build It Into Your Financing Package"
 description: "Prime mover maintenance costs RM20,000-RM30,000 annually. Learn how to build a maintenance reserve into your financing package and prevent unexpected repairs from draining your haulage business cash flow."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -633,3 +633,4 @@ We build maintenance reserves into your prime mover financing with 0% down payme
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

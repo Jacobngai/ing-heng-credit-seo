@@ -2,7 +2,7 @@
 title: "Warehouse Equipment Financing Malaysia: 0% Deposit for Forklifts & More"
 description: "Finance warehouse equipment in Malaysia with 0% deposit. Forklifts, reach trucks, pallet jacks financed fast. No age limit on used equipment."
 author: "Ing Heng Credit Team"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Warehouse Equipment
@@ -410,3 +410,4 @@ Don't let equipment costs limit your warehouse capacity. Whether you need one fo
 ---
 
 *Get the equipment. Move more product. Grow your warehouse business.*
+

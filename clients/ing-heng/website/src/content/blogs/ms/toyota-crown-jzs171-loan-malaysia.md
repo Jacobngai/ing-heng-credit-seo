@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Toyota Crown JZS171 dengan 0% deposit di Malay
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["toyota crown jzs171", "pembiayaan sedan vip", "pinjaman kereta mewah jdm", "pelaburan sedan eksekutif", "pembiayaan toyota vip"]
 keywords: ["pinjaman toyota crown jzs171 malaysia", "pembiayaan sedan vip", "pinjaman kereta eksekutif jdm", "pembiayaan 1jz vvti", "pelaburan sedan mewah", "pinjaman toyota crown", "pembiayaan gaya vip", "pinjaman sedan eksekutif jepun"]

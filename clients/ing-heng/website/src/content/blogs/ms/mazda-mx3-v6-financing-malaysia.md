@@ -4,7 +4,7 @@ description: "Biayai Mazda MX-3 V6 nadir anda dengan 0% deposit. Coupe kompak in
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Mazda MX-3 V6", "pinjaman enjin V6 terkecil", "pembiayaan coupe sport kompak", "pembiayaan Mazda nadir", "pinjaman coupe JDM 90an"]
 keywords: ["pembiayaan Mazda MX-3 V6 Malaysia", "pinjaman MX-3 V6", "pembiayaan enjin V6 terkecil", "pinjaman coupe sport Mazda", "pembiayaan enjin K8", "pinjaman coupe kompak Malaysia", "pembiayaan MX-3 0% deposit", "pinjaman Mazda nadir"]

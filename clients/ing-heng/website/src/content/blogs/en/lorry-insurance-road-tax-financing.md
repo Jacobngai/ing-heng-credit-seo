@@ -2,7 +2,7 @@
 title: "Lorry Insurance & Road Tax: How to Bundle in Your Financing Package"
 description: "Annual insurance and road tax can exceed RM10,000 per lorry. Learn how to bundle these compliance costs into your lorry financing package and preserve working capital for operations."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -684,3 +684,4 @@ We bundle all compliance costs into your lorry financing with 0% down payment. G
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

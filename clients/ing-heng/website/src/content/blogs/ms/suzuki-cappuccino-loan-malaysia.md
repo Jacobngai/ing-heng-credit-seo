@@ -4,7 +4,7 @@ description: "Pembiayaan Suzuki Cappuccino langka dengan 0% deposit. Bank tolak 
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman Suzuki Cappuccino", "pembiayaan turbo kei", "convertible kei car", "pembiayaan roadster JDM", "Suzuki meningkat nilai"]
 keywords: ["pinjaman Suzuki Cappuccino", "pembiayaan Cappuccino Malaysia", "pinjaman turbo kei car", "pembiayaan convertible kei", "pinjaman roadster Suzuki", "pembiayaan convertible kei", "pembiayaan JDM Cappuccino", "Cappuccino meningkat nilai"]

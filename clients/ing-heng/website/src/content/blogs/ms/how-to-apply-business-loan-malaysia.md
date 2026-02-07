@@ -4,7 +4,7 @@ description: Pelajari cara mohon pinjaman perniagaan di Malaysia. Panduan langka
   demi langkah dengan pilihan 0% deposit, proses kelulusan pantas, dan keperluan untuk
   kejayaan pembiayaan PKS.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Financing Guides
 tags:
 - pinjaman perniagaan

@@ -2,7 +2,7 @@
 title: "Pembiayaan Forklift Elektrik Malaysia 2025 - Green Technology Financing"
 description: "Pembiayaan forklift elektrik di Malaysia dengan syarat mudah. Electric forklift untuk warehouse modern, clean environment, energy efficient operations."
 category: "Equipment Financing"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["forklift elektrik", "electric forklift", "green technology", "warehouse automation"]
 image: "/images/electric-forklift-financing-malaysia.jpg"

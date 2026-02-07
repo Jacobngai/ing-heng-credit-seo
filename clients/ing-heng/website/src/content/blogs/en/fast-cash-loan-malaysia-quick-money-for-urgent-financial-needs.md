@@ -2,7 +2,7 @@
 title: "Fast Cash Loan Malaysia - Quick Money for Urgent Financial Needs"
 description: "Get fast cash loans in Malaysia with urgent processing. 0% deposit required, 100% financing available for genuine emergency cash needs."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

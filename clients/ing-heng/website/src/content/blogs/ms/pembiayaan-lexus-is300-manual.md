@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Lexus IS300 Manual Malaysia - 0% Deposit Pinjaman Sedan Sukan"
 description: "Dapatkan kelulusan pembiayaan Lexus IS300 transmisi manual di Malaysia. Bank tolak sedan sukan langka? Kami pakar dalam pinjaman kereta prestasi dengan 0% deposit."
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 tags: ["pembiayaan lexus is300", "pinjaman transmisi manual", "pembiayaan sedan sukan", "pembiayaan lexus malaysia"]
 category: Equipment Financing
 lang: "ms"

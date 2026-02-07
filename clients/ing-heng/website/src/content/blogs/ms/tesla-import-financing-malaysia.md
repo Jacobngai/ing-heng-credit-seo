@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Import Tesla Malaysia: Pembiayaan Armada Elektrik untuk Perniagaan"
 description: "Pembiayaan import Tesla untuk armada komersial di Malaysia. Pembiayaan kenderaan elektrik 0% deposit untuk teksi, ride-hail, dan pengendali armada korporat. Proses kelulusan pantas."
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 category: Equipment Financing
 tags: ["pembiayaan tesla", "pembiayaan kenderaan elektrik", "pembiayaan armada", "pembiayaan kenderaan import", "pembiayaan perniagaan"]
 keywords: ["pembiayaan import tesla malaysia", "pembiayaan armada kenderaan elektrik", "pinjaman perniagaan tesla", "pembiayaan import EV", "pembiayaan tesla model 3", "pembiayaan teksi elektrik"]

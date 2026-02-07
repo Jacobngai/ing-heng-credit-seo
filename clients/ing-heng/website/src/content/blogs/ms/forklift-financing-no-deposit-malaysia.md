@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan forklift tanpa bayaran pendahuluan di Malaysia.
   keperluan kelayakan, kadar faedah dan proses kelulusan untuk pinjaman forklift tanpa
   deposit.
 author: "ING HENG Credit"
-publishDate: 2025-12-16
+publishDate: 2025-12-16T00:00:00.000Z
 category: Equipment Financing
 tags:
 - forklift
@@ -598,3 +598,4 @@ Bersedia untuk terokai pembiayaan forklift tanpa deposit? Inilah cara untuk mula
 **Khalayak Sasaran:** Pengendali gudang, syarikat logistik, perniagaan pembuatan
 **Kata Kunci Utama:** pembiayaan forklift tanpa deposit Malaysia
 **Masa Bacaan:** 7 minit
+

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan supermoto Malaysia dengan 0% deposit. Bank tol
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan supermoto", "pinjaman dual sport", "kewangan KTM", "pinjaman husqvarna", "custom supermoto"]
 keywords: ["pembiayaan supermoto malaysia", "pinjaman motosikal dual sport", "kewangan KTM supermoto", "pinjaman husqvarna supermoto", "pembiayaan custom supermoto"]

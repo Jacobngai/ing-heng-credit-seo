@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan SME dengan kelulusan pantas di Malaysia. Pembia
   peralatan 0% deposit, kadar kompetitif, dan panduan pakar. Pelajari keperluan dan
   proses permohonan untuk pendanaan cepat.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pembiayaan SME

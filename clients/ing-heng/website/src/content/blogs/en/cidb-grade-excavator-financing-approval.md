@@ -2,7 +2,7 @@
 title: "How CIDB Grade Upgrade Can Boost Your Excavator Financing Approval"
 description: "CIDB registration is mandatory for Malaysian contractors. Learn how upgrading from G3 to G7 affects your excavator financing approval, tender eligibility, and business growth potential with 0% down payment options."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -524,3 +524,4 @@ Get 0% down payment excavator financing approved in 24 hours. We'll help you cal
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

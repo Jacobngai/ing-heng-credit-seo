@@ -5,7 +5,7 @@ description: Pembiayaan pembelian peralatan pukal pintar untuk syarikat pembinaa
   Pelajari strategi pembiayaan armada, diskaun volum, pengoptimuman aliran tunai,
   dan pilihan deposit 0% untuk armada peralatan.
 author: "ING HENG Credit"
-publishDate: 2024-03-15
+publishDate: 2024-03-15T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan peralatan pukal

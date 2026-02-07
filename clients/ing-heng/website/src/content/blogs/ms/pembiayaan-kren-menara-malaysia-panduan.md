@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan kren menara di Malaysia dengan kelulusan pantas
   0% deposit, 100% pembiayaan untuk projek pembinaan tinggi. Kren topless, hammerhead
   & self-erecting tersedia.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan kren menara

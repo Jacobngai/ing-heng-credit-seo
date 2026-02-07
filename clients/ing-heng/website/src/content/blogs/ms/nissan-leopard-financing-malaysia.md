@@ -4,7 +4,7 @@ description: "Biayai Nissan Leopard langka anda dengan 0% deposit. Rasai kemewah
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Nissan Leopard", "sedan mewah enjin RB", "pembiayaan eksekutif era bubble", "pembiayaan gaya VIP", "0% deposit Leopard"]
 keywords: ["pembiayaan Nissan Leopard Malaysia", "pembiayaan sedan enjin RB", "pembiayaan mewah era bubble", "0% deposit Leopard", "pinjaman sedan eksekutif", "pembiayaan kenderaan gaya VIP", "pembiayaan Nissan menghargai", "pinjaman sedan JDM mewah"]

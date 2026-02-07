@@ -4,7 +4,7 @@ title: 'Pembiayaan Jentera Kilang Malaysia: Panduan Lengkap Pembiayaan Jentera I
 description: Dapatkan pembiayaan jentera kilang 0% deposit di Malaysia. Panduan pakar
   untuk pinjaman jentera industri, kadar, kelayakan, dan proses kelulusan untuk pengeluar.
 author: "ING HENG Credit"
-publishDate: 2024-12-22
+publishDate: 2024-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - equipment financing

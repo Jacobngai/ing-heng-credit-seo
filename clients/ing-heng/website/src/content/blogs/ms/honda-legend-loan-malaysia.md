@@ -4,7 +4,7 @@ description: "Biayai Honda Legend anda dengan 0% deposit. Rasai kemewahan flagsh
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Honda Legend", "pembiayaan sedan mewah V6", "pembiayaan flagship Jepun", "pinjaman sedan premium", "0% deposit Legend"]
 keywords: ["pembiayaan Honda Legend Malaysia", "pembiayaan sedan flagship V6", "pembiayaan Honda mewah", "0% deposit Legend", "pinjaman sedan premium", "pembiayaan kereta eksekutif Jepun", "pembiayaan Legend menghargai", "pinjaman Honda flagship"]

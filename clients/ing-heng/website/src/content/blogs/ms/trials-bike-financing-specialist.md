@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan trials bike Malaysia dengan 0% deposit. Pembia
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan trials bike", "pinjaman motosikal kompetisi", "kewangan beta trials", "pembiayaan montesa", "pakar trials bike"]
 keywords: ["pakar pembiayaan trials bike", "pembiayaan motosikal kompetisi", "pinjaman beta trials bike", "pembiayaan montesa trials", "kewangan sherco trials bike", "pakar motosikal trials malaysia"]

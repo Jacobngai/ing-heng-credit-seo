@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan peralatan perubatan di Malaysia dengan 0% depos
   dan kelulusan pantas. Membiayai peralatan hospital, mesin diagnostik, dan peranti
   perubatan untuk klinik dan hospital.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - peralatan perubatan

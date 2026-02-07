@@ -2,7 +2,7 @@
 title: "Late Payment Penalties: How to Structure Excavator Loan Installments in Malaysia"
 description: "Missed excavator loan payment? Learn about late penalties, repossession timeline, and how to restructure your loan. Protect your business with smart installment planning."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -507,3 +507,4 @@ RM 4,500
                   
 - 
                     Fleet Expansion Financing: Adding Your 3rd, 5th, or 10th Excavator
+

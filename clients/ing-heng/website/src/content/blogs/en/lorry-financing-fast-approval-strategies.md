@@ -2,7 +2,7 @@
 title: "Lorry Financing for Logistics Companies: Fast Approval Strategies"
 description: "Fast-track your lorry financing approval with these expert tips. Learn what documents you need and how to qualify for the best rates."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -716,3 +716,4 @@ Get approved in 24-48 hours with 0% down payment. We understand logistics cash f
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

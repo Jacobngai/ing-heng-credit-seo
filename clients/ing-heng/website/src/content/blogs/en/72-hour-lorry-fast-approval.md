@@ -2,7 +2,7 @@
 title: "Lorry Fast Approval: 72-Hour Financing for Time-Sensitive Logistics"
 description: "Need lorry financing fast? Get approval within 72 hours with 0% down payment, rates from 2.88% p.a. Perfect for urgent contracts."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -306,3 +306,4 @@ Funds released to dealer or seller upon agreement finalization. Get your lorry i
                     
                   
                   Provide direct contact number
+

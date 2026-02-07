@@ -2,7 +2,7 @@
 title: "Pembiayaan Peralatan Perniagaan: Solusi Aliran Tunai SME Malaysia"
 description: "Dapatkan business equipment financing malaysia dengan 0% bayaran pendahuluan. Ing Heng Credit membiayai mesin industri baru dan terpakai."
 author: "Pasukan Kredit Ing Heng"
-publishDate: 2026-02-07
+publishDate: 2026-02-07T00:00:00.000Z
 category: Pembiayaan Peralatan
 tags:
   - pembiayaan peralatan
@@ -55,3 +55,4 @@ Jangan biarkan modal yang terhad menghalang pertumbuhan perniagaan anda. Dengan 
 Adakah anda sudah bersedia untuk menaik taraf peralatan perniagaan anda? Hubungi kami hari ini untuk konsultasi tanpa sebarang komitmen.
 
 [WhatsApp kami sekarang dan semak kelayakan anda dalam 5 minit!](https://wa.me/60123456789)
+

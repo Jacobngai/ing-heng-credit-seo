@@ -4,7 +4,7 @@ description: Maksimumkan penjimatan cukai dengan elaun modal bulldozer di Malays
   Pelajari kadar susut nilai Jadual 3, faedah pembiayaan vs tunai, dan pilihan deposit
   0% untuk pengoptimuman cukai.
 author: "ING HENG Credit"
-publishDate: 2024-03-15
+publishDate: 2024-03-15T00:00:00.000Z
 category: Equipment Financing
 tags:
 - elaun modal

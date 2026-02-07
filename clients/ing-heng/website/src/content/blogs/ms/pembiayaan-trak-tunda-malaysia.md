@@ -4,7 +4,7 @@ description: "Pembiayaan trak tunda di Malaysia dengan opsyen deposit 0%. Penyel
 category: "Equipment Financing"
 tags: ["trak tunda", "kenderaan pemulihan", "bantuan tepi jalan", "perkhidmatan automotif", "respons kecemasan"]
 locale: ms
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 updatedAt: 2024-12-26
 author: "ING HENG Credit"
 slug: "pembiayaan-trak-tunda-malaysia"

@@ -2,7 +2,7 @@
 title: "Forklift Operating Lease vs Hire Purchase Malaysia: Complete Warehouse Owner Guide"
 description: "Compare operating lease vs hire purchase for forklifts in Malaysia. Cost analysis, tax benefits, ownership. 0% down payment, rates from 2.88% p.a., 24-hour approval."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -477,3 +477,4 @@ Longer tenure means lower monthly payments, helping you manage cash flow while o
                 
 
 *HP = Hire Purchase
+
