@@ -9,23 +9,11 @@ import vercel from '@astrojs/vercel';
 const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || process.env.PUBLIC_DEFAULT_LOCALE || 'en';
 const SITE_URL = process.env.SITE_URL || process.env.PUBLIC_SITE_URL || 'https://ingheng-credit.vercel.app';
 
-// Determine which locale to build based on domain
-// Each domain only builds its own language to save build time
-const getLocalesForDomain = () => {
-  if (SITE_URL.includes('inghengcredit.com')) {
-    return ['en']; // .com = English only
-  } else if (SITE_URL.includes('kreditloan.my')) {
-    return ['ms']; // kreditloan.my = Malay only
-  } else if (SITE_URL.includes('inghengcredit.my')) {
-    return ['zh']; // .my = Chinese only
-  }
-  // Default: build all locales (for preview/dev)
-  return ['en', 'zh', 'ms'];
-};
-
+// All locales for i18n routing
+// Note: All domains build all locales for now. Redirects in vercel.json handle cross-domain navigation.
+// Future optimization: use environment variables to build only needed locale per domain.
 const ALL_LOCALES = ['en', 'zh', 'ms'];
-const LOCALES = getLocalesForDomain();
-const SINGLE_LOCALE_MODE = LOCALES.length === 1;
+const LOCALES = [DEFAULT_LOCALE, ...ALL_LOCALES.filter(loc => loc !== DEFAULT_LOCALE)];
 
 // Build redirects based on deployment domain
 const getRedirects = () => {
@@ -140,19 +128,18 @@ export default defineConfig({
     }),
   ],
   i18n: {
-    defaultLocale: LOCALES[0], // Use first (and possibly only) locale as default
+    defaultLocale: DEFAULT_LOCALE,
     locales: LOCALES,
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false, // Disable to prevent redirect loops
     },
-    // Only add fallback if building multiple locales
-    ...(LOCALES.length > 1 ? {
-      fallback: Object.fromEntries(
-        LOCALES
-          .filter(loc => loc !== LOCALES[0])
-          .map(loc => [loc, LOCALES[0]])
-      ),
-    } : {}),
+    // Dynamic fallback: only include non-default locales
+    // Astro doesn't allow the default locale to be used as a fallback key
+    fallback: Object.fromEntries(
+      ALL_LOCALES
+        .filter(loc => loc !== DEFAULT_LOCALE)
+        .map(loc => [loc, DEFAULT_LOCALE])
+    ),
   },
 });
