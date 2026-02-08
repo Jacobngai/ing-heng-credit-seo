@@ -43,8 +43,22 @@ export default defineConfig({
       },
       filter: (page) => {
         // Exclude language selector root page from sitemap
-        // Only exclude the exact root URL, not language-prefixed pages
-        return page !== `${SITE_URL}/`;
+        if (page === `${SITE_URL}/`) return false;
+        
+        // Exclude wrong-language pages based on deployment domain
+        // .com = English only, .my (inghengcredit.my) = Chinese only, kreditloan.my = Malay only
+        if (SITE_URL.includes('inghengcredit.com')) {
+          // English domain: exclude /ms/ and /zh/
+          if (page.includes('/ms/') || page.includes('/zh/')) return false;
+        } else if (SITE_URL.includes('kreditloan.my')) {
+          // Malay domain: exclude /en/ and /zh/
+          if (page.includes('/en/') || page.includes('/zh/')) return false;
+        } else if (SITE_URL.includes('inghengcredit.my')) {
+          // Chinese domain: exclude /en/ and /ms/
+          if (page.includes('/en/') || page.includes('/ms/')) return false;
+        }
+        
+        return true;
       },
       serialize: (item) => {
         // Add lastmod to all pages (today's date to trigger re-crawl)
