@@ -9,9 +9,23 @@ import vercel from '@astrojs/vercel';
 const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || process.env.PUBLIC_DEFAULT_LOCALE || 'en';
 const SITE_URL = process.env.SITE_URL || process.env.PUBLIC_SITE_URL || 'https://ingheng-credit.vercel.app';
 
-// Ensure default locale is first in the array (Astro requirement)
+// Determine which locale to build based on domain
+// Each domain only builds its own language to save build time
+const getLocalesForDomain = () => {
+  if (SITE_URL.includes('inghengcredit.com')) {
+    return ['en']; // .com = English only
+  } else if (SITE_URL.includes('kreditloan.my')) {
+    return ['ms']; // kreditloan.my = Malay only
+  } else if (SITE_URL.includes('inghengcredit.my')) {
+    return ['zh']; // .my = Chinese only
+  }
+  // Default: build all locales (for preview/dev)
+  return ['en', 'zh', 'ms'];
+};
+
 const ALL_LOCALES = ['en', 'zh', 'ms'];
-const LOCALES = [DEFAULT_LOCALE, ...ALL_LOCALES.filter(loc => loc !== DEFAULT_LOCALE)];
+const LOCALES = getLocalesForDomain();
+const SINGLE_LOCALE_MODE = LOCALES.length === 1;
 
 // Build redirects based on deployment domain
 const getRedirects = () => {
@@ -126,18 +140,19 @@ export default defineConfig({
     }),
   ],
   i18n: {
-    defaultLocale: DEFAULT_LOCALE,
+    defaultLocale: LOCALES[0], // Use first (and possibly only) locale as default
     locales: LOCALES,
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false, // Disable to prevent redirect loops
     },
-    // Dynamic fallback: only include non-default locales
-    // Astro doesn't allow the default locale to be used as a fallback key
-    fallback: Object.fromEntries(
-      ALL_LOCALES
-        .filter(loc => loc !== DEFAULT_LOCALE)
-        .map(loc => [loc, DEFAULT_LOCALE])
-    ),
+    // Only add fallback if building multiple locales
+    ...(LOCALES.length > 1 ? {
+      fallback: Object.fromEntries(
+        LOCALES
+          .filter(loc => loc !== LOCALES[0])
+          .map(loc => [loc, LOCALES[0]])
+      ),
+    } : {}),
   },
 });
