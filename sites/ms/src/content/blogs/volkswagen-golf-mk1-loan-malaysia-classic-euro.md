@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Volkswagen Golf MK1 Malaysia - 0% Deposit Pelaburan Klasik Euro"
 description: "Dapatkan pembiayaan 0% deposit untuk klasik Volkswagen Golf MK1. Bank tolak kereta Jerman vintage, kami luluskan legenda GTI asal dan potensi pelaburan Euro. Pembiayaan pakar tersedia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-23

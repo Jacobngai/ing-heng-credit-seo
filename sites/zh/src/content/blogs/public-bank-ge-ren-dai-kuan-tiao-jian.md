@@ -1,9 +1,9 @@
----
+﻿---
 title: "Public Bank 个人贷款条件详解：中小企业老板的另一种方案"
 description: "搜索 Public Bank 个人贷款条件？了解银行申请要求的同时，也看看兴恒信贷提供的 0% 头期设备融资。无年龄限制，旧机械也可贷款，是您业务扩张的坚强后盾。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - Public Bank
   - 贷款条件

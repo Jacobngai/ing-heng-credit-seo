@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Nissan NX2000 Malaysia - 0% Deposit untuk Pakar T-Top SR20DE"
 description: "Biayai Nissan NX2000 nadir anda dengan 0% deposit. Coupe berkuasa SR20DE dilengkapi T-top ini mewakili DNA kereta sport 90an tulen - dapatkan pembiayaan untuk permata sedutan semula jadi yang meningkat nilai ini hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

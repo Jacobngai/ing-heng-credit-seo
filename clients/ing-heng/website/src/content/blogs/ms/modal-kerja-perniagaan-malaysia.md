@@ -3,7 +3,7 @@ title: "Modal Kerja Perniagaan Malaysia: Panduan Memperkukuh Aliran Tunai SME"
 description: "Ketahui cara mengurus modal kerja perniagaan di Malaysia untuk kelangsungan SME. Ing Heng Credit menawarkan penyelesaian pembiayaan tanpa bayaran pendahuluan."
 author: "Pasukan Kredit Ing Heng"
 publishDate: 2026-02-07T00:00:00.000Z
-category: Pembiayaan Perniagaan
+category: Business Tips
 tags:
   - modal kerja
   - SME Malaysia

@@ -1,11 +1,11 @@
----
+﻿---
 title: Cara Mohon Pinjaman Perniagaan Malaysia - Panduan Lengkap 2025
 description: Pelajari cara mohon pinjaman perniagaan di Malaysia. Panduan langkah
   demi langkah dengan pilihan 0% deposit, proses kelulusan pantas, dan keperluan untuk
   kejayaan pembiayaan PKS.
 author: "ING HENG Credit"
 publishDate: 2025-12-20
-category: Business Financing
+category: Business Tips
 tags:
 - pinjaman perniagaan
 - pembiayaan PKS

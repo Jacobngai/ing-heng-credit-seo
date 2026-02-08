@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Nissan Primera P11 Malaysia - Pembiayaan Enjin SR20 0% Deposit"
 description: "Dapatkan pembiayaan Nissan Primera P11 di Malaysia dengan pilihan 0% deposit. Lulus untuk sedan keluarga berkuasa SR20 jarang ini yang mendapat pengiktirafan di kalangan peminat."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

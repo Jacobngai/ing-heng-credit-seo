@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Volvo 240 Turbo Malaysia - Pelaburan Kejuruteraan Sweden 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk Volvo 240 Turbo anda. Penyelesaian pinjaman kereta klasik pakar untuk kecemerlangan kejuruteraan Sweden yang menghargai dan watak unik."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

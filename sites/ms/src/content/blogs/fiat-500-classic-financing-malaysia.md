@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Fiat 500 Klasik Malaysia - 0% Deposit Impian Kolektor"
 description: "Dapatkan Fiat 500 klasik dengan pembiayaan 0% deposit di Malaysia. Kelulusan pakar untuk pelaburan automotif vintage Itali. Mohon pembiayaan kereta kolektor hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

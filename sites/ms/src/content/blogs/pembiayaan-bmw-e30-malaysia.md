@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan BMW E30 Malaysia - Pelaburan Mesin Memandu Ultimat 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk BMW E30 anda. Penyelesaian pinjaman kereta klasik pakar untuk kecemerlangan kejuruteraan Jerman yang menghargai dan potensi pelaburan."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

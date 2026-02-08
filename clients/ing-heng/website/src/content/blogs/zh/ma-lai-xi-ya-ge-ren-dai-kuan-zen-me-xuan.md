@@ -1,9 +1,9 @@
----
+﻿---
 title: "在马来西亚申请个人贷款：选择银行还是信贷公司？"
 description: "想要在馬來西亞個人貸款？对比银行贷款与兴恒信贷的设备融资。我们提供 0% 头期、无年龄限制、旧设备融资，是中小企业购买生产工具的首选方案。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 马来西亚金融
   - 贷款攻略

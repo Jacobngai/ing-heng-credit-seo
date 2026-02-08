@@ -3,7 +3,7 @@ title: "Modal Kerja untuk Perniagaan Kecil: Panduan Pinjaman SME Malaysia"
 description: "Dapatkan working capital for small business malaysia untuk tingkatkan operasi SME anda. 0% down payment dan pengalaman 40 tahun di Ing Heng Credit."
 author: "Pasukan Kredit Ing Heng"
 publishDate: 2026-02-07T00:00:00.000Z
-category: Pembiayaan Perniagaan
+category: Business Tips
 tags:
   - modal kerja
   - perniagaan kecil

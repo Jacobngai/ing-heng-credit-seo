@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mazda Eunos Cosmo Malaysia - 0% Deposit Impian Rotary"
 description: "Biayai Mazda Eunos Cosmo langka anda dengan 0% deposit. Rasai bunyi memukau enjin twin-rotor 13B-RE. Kelulusan pantas untuk peminat rotary yang mencari kemewahan era bubble."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

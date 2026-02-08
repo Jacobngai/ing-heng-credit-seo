@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Toyota Celica GT-Four Malaysia - 0% Deposit Legenda Rally"
 description: "Dapatkan pembiayaan Toyota Celica GT-Four dengan 0% deposit di Malaysia. Pinjaman khas untuk homologasi all-wheel drive berlegenda ini dengan potensi kenaikan nilai."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

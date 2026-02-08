@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Mitsubishi Emeraude Malaysia - 0% Deposit Kecemerlangan Eksekutif"
 description: "Dapatkan pembiayaan 0% deposit untuk sedan mewah Mitsubishi Emeraude anda. Jangan biar kerumitan import hancurkan impian eksekutif premium anda di Malaysia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

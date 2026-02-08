@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mercedes Benz Klasik Malaysia - 0% Deposit Untuk Model Vintage"
 description: "Biayai Mercedes klasik anda dengan 0% deposit. Pembiayaan W123, W124, W126, W140 S-Class apabila bank tolak model vintage. Pakar kereta kolektor."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2024-12-24

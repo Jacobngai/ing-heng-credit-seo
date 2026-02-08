@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Toyota Soarer JZZ30 Malaysia - 0% Deposit Impian Twin-Turbo"
 description: "Biayai Toyota Soarer JZZ30 anda dengan 0% deposit. Rasai raungan ganas 1JZ-GTE twin-turbo. Kelulusan pantas untuk peminat coupe mewah era bubble yang mencari kesempurnaan."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

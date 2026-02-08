@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mazda Cosmo Malaysia - 0% Deposit Legenda Rotary Pelaburan"
 description: "Dapatkan pembiayaan Mazda Cosmo dengan 0% deposit di Malaysia. Kenaikan nilai kereta sports rotary ikonik ini membuatkan bayaran bulanan terasa seperti wang poket."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

@@ -1,9 +1,9 @@
----
+﻿---
 title: "Pinjaman Jentera di Malaysia: Panduan Pembiayaan Mesin Industri"
 description: "Ketahui cara memohon machinery loan malaysia dengan 0% bayaran pendahuluan. Ing Heng Credit membiayai mesin baru dan terpakai tanpa had umur."
 author: "Pasukan Kredit Ing Heng"
 publishDate: 2026-02-07
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - pinjaman jentera
   - machinery loan

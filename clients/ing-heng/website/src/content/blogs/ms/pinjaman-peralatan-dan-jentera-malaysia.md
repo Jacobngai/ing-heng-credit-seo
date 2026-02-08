@@ -3,7 +3,7 @@ title: "Pinjaman Peralatan dan Jentera: Solusi Pembiayaan Industri Malaysia"
 description: "Dapatkan equipment machinery loan terbaik di Malaysia. 0% deposit, pembiayaan jentera lama, dan pengalaman 40 tahun di Ing Heng Credit."
 author: "Pasukan Kredit Ing Heng"
 publishDate: 2026-02-07T00:00:00.000Z
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - pinjaman jentera
   - machinery loan

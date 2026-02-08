@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Nissan Bluebird SSS Malaysia - 0% Deposit Legenda Prestasi JDM"
 description: "Dapatkan pembiayaan 0% deposit untuk Nissan Bluebird SSS yang berlegenda. Nikmati kuasa turbo SR20 dengan terma pembayaran fleksibel yang direka untuk penggemar dan pengumpul JDM."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

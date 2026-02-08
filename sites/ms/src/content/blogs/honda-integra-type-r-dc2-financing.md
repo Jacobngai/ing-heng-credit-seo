@@ -1,4 +1,4 @@
----
+﻿---
 title: Pembiayaan Honda Integra Type R DC2 Malaysia - Pinjaman Kereta Prestasi 0% Deposit
 description: Biayai Honda Integra Type R DC2 impian anda dengan 0% deposit di Malaysia. Bank tolak kereta prestasi tapi kami luluskan. Kredit teruk diterima. Kelulusan pantas.
 author: "ING HENG Credit"
@@ -13,7 +13,7 @@ keywords:
 - pembiayaan kereta prestasi
 - pinjaman Honda DC2 Malaysia
 - beli Honda Integra Type R
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - Honda Integra
 - Type R DC2

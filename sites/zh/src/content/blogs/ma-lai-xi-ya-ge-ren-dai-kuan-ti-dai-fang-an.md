@@ -1,9 +1,9 @@
----
+﻿---
 title: "在马来西亚如何轻松获得个人贷款？设备融资的替代方案"
 description: "想知道在馬來西亞個人貸款的申请技巧？兴恒信贷为您提供另一种商业增长方案。0%头期、无年龄限制、支持旧机械融资，让您的企业无需个人贷款也能快速扩张。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 贷款指南
   - 商业扩张

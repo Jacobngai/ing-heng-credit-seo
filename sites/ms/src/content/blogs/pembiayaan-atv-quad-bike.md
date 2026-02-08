@@ -1,9 +1,9 @@
----
+﻿---
 title: "Pembiayaan ATV Quad Bike Malaysia - 0% Deposit Pinjaman Kenderaan Off-Road"
 description: "Dapatkan kelulusan pembiayaan ATV quad bike di Malaysia. Bank tolak pinjaman kenderaan rekreasi? Kami pakar dalam pembiayaan kenderaan off-road dengan 0% deposit."
 publishDate: 2024-12-24
 tags: ["pembiayaan atv quad bike", "pinjaman kenderaan off road", "pembiayaan kenderaan rekreasi", "pinjaman quad bike malaysia"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

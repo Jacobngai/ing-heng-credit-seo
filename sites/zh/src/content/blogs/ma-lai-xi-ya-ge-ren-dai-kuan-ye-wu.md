@@ -1,9 +1,9 @@
----
+﻿---
 title: "马来西亚个人贷款与商业扩张：为什么设备融资更胜一筹？"
 description: "许多马来西亚业主在扩展业务时会寻找马来西亚个人贷款。兴恒信贷通过 0% 头期、无年龄限制的设备融资，帮助您比普通个人贷款更有效地获取商业机械。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 马来西亚贷款
   - 商业扩张

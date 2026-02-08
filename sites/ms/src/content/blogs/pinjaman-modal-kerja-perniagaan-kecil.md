@@ -1,9 +1,9 @@
----
+﻿---
 title: "Pinjaman Modal Kerja untuk Perniagaan Kecil: Panduan Lengkap SME"
 description: "Dapatkan working capital for small business loan terbaik di Malaysia. 0% deposit, proses mudah, dan tanpa had umur hanya di Ing Heng Credit."
 author: "Pasukan Kredit Ing Heng"
 publishDate: 2026-02-07
-category: Pembiayaan Perniagaan
+category: Business Tips
 tags:
   - modal kerja
   - SME loan

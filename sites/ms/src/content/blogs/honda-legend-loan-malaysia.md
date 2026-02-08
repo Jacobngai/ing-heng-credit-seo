@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Honda Legend Malaysia - 0% Deposit Impian Flagship Mewah"
 description: "Biayai Honda Legend anda dengan 0% deposit. Rasai kemewahan flagship dengan kecemerlangan V6. Kelulusan pantas untuk peminat sedan premium yang mencari kehalusan eksekutif Jepun."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-23

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Daihatsu Charade GTti Malaysia - 0% Deposit Beast Turbo"
 description: "Dapatkan pembiayaan Daihatsu Charade GTti dengan 0% deposit di Malaysia. Pinjaman khas untuk pocket rocket turbo berlegenda ini dengan potensi kenaikan nilai dan terma fleksibel."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Teknologi Kitar Semula Automatik Malaysia - Pinjaman Peralatan Tanpa Deposit"
 description: "Biayai teknologi kitar semula automatik di Malaysia dengan 0% deposit. Dapatkan sistem pengasingan robotik, automasi penghantar, dan peralatan pemprosesan pintar. Tiada bayaran pendahuluan diperlukan."
-category: 'Specialized Vehicle Financing'
+category: Equipment Financing
 tags: ['kitar semula automatik', 'teknologi kitar semula', 'pengasingan robotik', 'sistem penghantar', 'kitar semula pintar', 'automasi pemprosesan', 'teknologi alam sekitar', 'pembiayaan malaysia']
 keywords: ['pembiayaan teknologi kitar semula automatik', 'pembiayaan sistem kitar semula robotik malaysia', 'pinjaman peralatan automasi penghantar', 'pembiayaan teknologi kitar semula pintar', 'pembiayaan peralatan pemprosesan automatik', 'pembiayaan automasi loji kitar semula', 'pinjaman peralatan automasi alam sekitar', 'pembiayaan teknologi kitar semula malaysia']
 author: "ING HENG Credit"

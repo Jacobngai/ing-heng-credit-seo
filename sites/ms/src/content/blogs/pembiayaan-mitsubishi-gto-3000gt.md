@@ -1,9 +1,9 @@
----
+﻿---
 title: "Pembiayaan Mitsubishi GTO 3000GT Malaysia - 0% Deposit Kereta Sukan"
 description: "Dapatkan pembiayaan Mitsubishi GTO 3000GT di Malaysia. Bank tolak kereta sukan JDM? Kami pakar dalam pinjaman kenderaan prestasi dengan 0% deposit."
 publishDate: 2024-12-24
 tags: ["pembiayaan mitsubishi gto", "pinjaman 3000gt malaysia", "pembiayaan kereta sukan jdm", "pinjaman kenderaan prestasi"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

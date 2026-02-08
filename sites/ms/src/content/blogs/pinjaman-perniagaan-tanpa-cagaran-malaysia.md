@@ -1,10 +1,10 @@
----
+﻿---
 title: Pinjaman Perniagaan Tanpa Cagaran Malaysia - Pembiayaan 0% Deposit
 description: Dapatkan pinjaman perniagaan tanpa cagaran di Malaysia. 0% deposit diperlukan,
   100% pembiayaan tersedia. Kelulusan cepat untuk PKS bila bank perlukan jaminan hartanah.
 author: "ING HENG Credit"
 publishDate: 2025-12-20
-category: Business Financing
+category: Business Tips
 tags:
 - pinjaman perniagaan tanpa cagaran
 - pinjaman perniagaan tidak bercagar

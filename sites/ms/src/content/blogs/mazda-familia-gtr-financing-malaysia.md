@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mazda Familia GTR Malaysia - 0% Deposit Legenda Turbo AWD"
 description: "Dapatkan pembiayaan 0% deposit untuk Mazda Familia GTR yang ikonik. Nikmati prestasi AWD turbo dengan terma pinjaman khusus untuk khas homologasi rally JDM yang jarang ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

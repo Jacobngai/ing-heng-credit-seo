@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pakar Pembiayaan Trials Bike - Pinjaman Motosikal Kompetisi 0% Deposit"
 description: "Dapatkan pembiayaan trials bike Malaysia dengan 0% deposit. Pembiayaan pakar untuk motosikal trials Beta, Montesa, Sherco dan Gas Gas. Bank tak faham motosikal kompetisi - kami faham."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

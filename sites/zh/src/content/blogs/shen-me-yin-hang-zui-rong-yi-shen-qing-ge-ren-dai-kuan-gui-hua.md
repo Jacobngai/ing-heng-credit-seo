@@ -1,9 +1,9 @@
----
+﻿---
 title: "个人贷款申请流程：为什么寻找最容易申请的银行不是唯一出路？"
 description: "搜索什么银行最容易申请个人贷款？了解银行要求的重重限制。兴恒信贷提供 0% 头期、旧机械融资方案，是中小企业购买设备的更佳选择。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 贷款申请
   - 中小企业

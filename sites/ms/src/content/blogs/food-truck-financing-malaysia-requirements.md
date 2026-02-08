@@ -1,9 +1,9 @@
----
+﻿---
 title: "Keperluan Pembiayaan Food Truck Malaysia | Mulakan Perniagaan Mudah Alih"
 description: "Dapatkan pembiayaan food truck deposit 0% di Malaysia. Kami luluskan perniagaan makanan bergerak yang ditolak bank. Panduan lengkap keperluan dan kelulusan pantas."
 author: "ING HENG Credit"
 publishDate: 2024-12-24
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 tags: ["pembiayaan food truck", "perniagaan mudah alih", "kenderaan komersial", "pembiayaan f&b", "pinjaman startup"]
 keywords:
   - "keperluan pembiayaan food truck malaysia"

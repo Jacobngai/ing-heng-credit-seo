@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Volkswagen Beetle Klasik Malaysia - Pembiayaan VW Bug 0% Deposit"
 description: "Dapatkan pembiayaan Volkswagen Beetle klasik di Malaysia dengan 0% deposit. Bank tolak VW lama? Kami luluskan pinjaman Beetle vintage untuk kolektor dan peminat."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Suzuki Cappuccino Malaysia - 0% Deposit Turbo Kei Convertible"
 description: "Pembiayaan Suzuki Cappuccino langka dengan 0% deposit. Bank tolak convertible kei 30 tahun? Kami luluskan. Dapatkan roadster turbo ini sebelum nilai kolektor meletup."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25

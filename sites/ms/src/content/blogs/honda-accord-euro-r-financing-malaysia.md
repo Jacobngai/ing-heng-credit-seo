@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Honda Accord Euro R Malaysia - 0% Deposit Pelaburan Sleeper VTEC"
 description: "Dapatkan pembiayaan Honda Accord Euro R dengan 0% deposit di Malaysia. Kenaikan nilai sedan sleeper berkuasa VTEC ini membuatkan bayaran bulanan terasa seperti wang poket."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

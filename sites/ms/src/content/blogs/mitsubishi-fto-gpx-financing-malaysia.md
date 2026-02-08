@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mitsubishi FTO GPX Malaysia - 0% Deposit Legend Twin Cam"
 description: "Pembiayaan Mitsubishi FTO GPX langka dengan 0% deposit. Bank tolak klasik 25 tahun? Kami luluskan. Dapatkan legenda JDM yang meningkat nilai ini sebelum harga melambung."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

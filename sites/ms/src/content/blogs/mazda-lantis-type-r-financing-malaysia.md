@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mazda Lantis Type R Malaysia - Pinjaman Enjin V6 0% Deposit"
 description: "Dapatkan pembiayaan Mazda Lantis Type R di Malaysia dengan pilihan 0% deposit. Lulus untuk sedan sukan V6 naturally aspirated jarang ini yang menjadi klasik tersembunyi."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-24

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Mitsubishi Legnum VR-4 Malaysia - Pembiayaan Wagon Rali 0% Deposit"
 description: "Dapatkan pembiayaan Mitsubishi Legnum VR-4 di Malaysia dengan pilihan 0% deposit. Lulus untuk wagon twin-turbo AWD jarang ini yang menjadi klasik moden. Pembiayaan warisan rali pakar."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-22

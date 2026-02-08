@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Toyota KE70 Malaysia - 0% Deposit Pelaburan Legenda Drift"
 description: "Dapatkan pembiayaan 0% deposit untuk Toyota KE70 Corolla drift builds. Bank tolak Toyota lama, kami luluskan platform belakang roda legenda. Pembiayaan kereta drift pakar tersedia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-23

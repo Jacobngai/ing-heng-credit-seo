@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mazda MX-3 V6 Malaysia - 0% Deposit untuk V6 Pengeluaran Terkecil Dunia"
 description: "Biayai Mazda MX-3 V6 nadir anda dengan 0% deposit. Coupe kompak ini menempatkan enjin V6 pengeluaran terkecil dunia - dapatkan pembiayaan untuk keajaiban kejuruteraan yang meningkat nilai dengan pantas ini hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

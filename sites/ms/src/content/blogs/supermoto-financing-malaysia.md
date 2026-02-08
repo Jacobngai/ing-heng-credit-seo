@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Supermoto Malaysia - Pinjaman Motosikal Dual Sport 0% Deposit"
 description: "Dapatkan pembiayaan supermoto Malaysia dengan 0% deposit. Bank tolak dual-sport? Kami luluskan pinjaman supermoto untuk KTM, Husqvarna dan custom build."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-20

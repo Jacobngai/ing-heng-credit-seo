@@ -1,9 +1,9 @@
----
+﻿---
 title: "Public Bank 个人贷款条件 vs 兴恒信贷：哪个更适合中小企业？"
 description: "还在研究 Public Bank 个人贷款条件吗？对于需要购买设备的老板，兴恒信贷提供更灵活的 0% 头期融资方案。不限设备年份，无年龄限制，助您轻松度过资金难关。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 贷款对比
   - Public Bank

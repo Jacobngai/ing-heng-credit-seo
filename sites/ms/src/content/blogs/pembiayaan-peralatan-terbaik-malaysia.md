@@ -1,9 +1,9 @@
----
+﻿---
 title: "Pembiayaan Peralatan Terbaik di Malaysia: Pilihan SME Bijak"
 description: "Cari best equipment financing malaysia untuk perniagaan anda. 0% down payment, 40 tahun pengalaman, dan pembiayaan mesin tanpa had umur."
 author: "Pasukan Kredit Ing Heng"
 publishDate: 2026-02-07
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - pembiayaan peralatan
   - SME Malaysia

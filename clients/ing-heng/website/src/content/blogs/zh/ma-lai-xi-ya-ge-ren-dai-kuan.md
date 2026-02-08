@@ -1,9 +1,9 @@
----
+﻿---
 title: "马来西亚个人贷款与设备融资：中小企业主的融资指南"
 description: "在马来西亚申请个人贷款或商业融资时，中小企业面临诸多挑战。兴恒信贷提供灵活的设备融资，0%头期、支持旧设备贷款，助您解决资金难题。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 马来西亚个人贷款
   - 设备融资

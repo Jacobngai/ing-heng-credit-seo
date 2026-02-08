@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Mazda 323 GTX Malaysia - 0% Deposit Pelaburan Legenda Rally"
 description: "Biayai Mazda 323 GTX anda dengan 0% deposit. Dapatkan pembiayaan untuk khas homologasi rally AWD jarang ini manakala bank menolak Mazda turbo vintage. Pembiayaan pakar tersedia."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

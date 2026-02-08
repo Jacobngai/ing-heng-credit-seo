@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Lancia Delta Integrale Malaysia - 0% Deposit Legenda Rali Pelaburan"
 description: "Dapatkan ikon rali Lancia Delta Integrale anda dengan pembiayaan 0% deposit di Malaysia. Jadikan impian homologasi khas Group B anda realiti yang menghargai nilai hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-27

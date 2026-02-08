@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Citroen 2CV Malaysia - 0% Deposit Ikon Automotif Perancis"
 description: "Biayai Citroen 2CV anda dengan 0% deposit di Malaysia. Kelulusan pakar untuk ikon automotif Perancis yang meningkat secara berterusan. Dapatkan pembiayaan 2CV anda hari ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-21

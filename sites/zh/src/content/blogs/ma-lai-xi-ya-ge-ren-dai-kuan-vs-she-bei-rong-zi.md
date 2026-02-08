@@ -1,9 +1,9 @@
----
+﻿---
 title: "在马来西亚，申请个人贷款还是设备融资更能帮您省钱？"
 description: "搜索馬來西亞個人貸款？对于想要购买机械的老板，设备融资可能是更省钱的选择。兴恒信贷提供 0% 头期、无年龄限制、旧设备融资，助您轻松扩展业务。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 理财建议
   - 商业融资

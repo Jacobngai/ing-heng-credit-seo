@@ -1,7 +1,7 @@
----
+﻿---
 title: Pembiayaan Mitsubishi Eclipse GSX Malaysia - 0% Deposit Impian Turbo AWD
 description: Biayai Mitsubishi Eclipse GSX dengan 0% deposit di Malaysia. Bank tolak turbo AWD tapi kami lulus. Kredit buruk diterima. Kelulusan pantas untuk legenda DSM.
-category: Specialized Vehicle Financing
+category: Equipment Financing
 persona: General
 locale: ms
 publishDate: 2025-12-20

@@ -1,9 +1,9 @@
----
+﻿---
 title: "什么银行最容易申请个人贷款？解析银行为何对 SME 设限"
 description: "很多老板在找什么银行最容易申请个人贷款来周转。事实上，银行的审批往往不如信贷公司灵活。兴恒信贷提供 0% 头期、无年龄限制的设备融资，是银行之外的最佳选择。"
 author: "兴恒信贷团队"
 publishDate: 2026-02-07
-category: 设备融资
+category: Equipment Financing
 tags:
   - 贷款审批
   - 银行贷款

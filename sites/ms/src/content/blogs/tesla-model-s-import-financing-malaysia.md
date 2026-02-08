@@ -1,4 +1,4 @@
----
+﻿---
 title: Pembiayaan Import Tesla Model S Malaysia - Pinjaman Kenderaan Elektrik Mewah
 description: Panduan lengkap pembiayaan import Tesla Model S di Malaysia. Pelajari pilihan 0% deposit, prosedur import, kelulusan LTA, dan pembiayaan khusus untuk kenderaan elektrik mewah.
 author: "ING HENG Credit"
@@ -15,7 +15,7 @@ keywords:
 - pembiayaan import kereta mewah
 - pembiayaan kelulusan LTA
 - pinjaman Tesla Model S
-category: Specialized Vehicle Financing
+category: Equipment Financing
 tags:
 - Tesla
 - kenderaan elektrik

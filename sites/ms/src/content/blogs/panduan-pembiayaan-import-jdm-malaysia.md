@@ -1,7 +1,7 @@
----
+﻿---
 title: "Panduan Pembiayaan Import Kereta JDM Malaysia - 0% Deposit Tersedia"
 description: "Biayai kereta impian JDM anda dengan 0% deposit. Skyline GT-R, Supra, NSX pembiayaan import untuk kolektor. Bank tolak, kami luluskan."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2024-12-24

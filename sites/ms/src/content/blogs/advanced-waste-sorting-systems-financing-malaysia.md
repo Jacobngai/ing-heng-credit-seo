@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Sistem Pengasingan Sisa Lanjutan Malaysia - Pinjaman Peralatan Tanpa Deposit"
 description: "Biayai sistem pengasingan sisa lanjutan di Malaysia dengan 0% deposit. Dapatkan pengasin optik, pengasingan sisa AI, dan peralatan kitar semula automatik. Tiada bayaran pendahuluan diperlukan."
-category: 'Specialized Vehicle Financing'
+category: Equipment Financing
 tags: ['pengasingan sisa', 'peralatan kitar semula', 'teknologi alam sekitar', 'sistem pengasingan', 'pengasin optik', 'pengasingan AI', 'pengurusan sisa automatik', 'pembiayaan malaysia']
 keywords: ['pembiayaan sistem pengasingan sisa lanjutan', 'pembiayaan pengasin optik malaysia', 'pinjaman peralatan pengasingan sisa AI', 'pembiayaan peralatan kitar semula automatik', 'pembiayaan teknologi pengasingan sisa', 'pembiayaan peralatan loji kitar semula', 'pinjaman peralatan pengurusan sisa', 'pembiayaan peralatan alam sekitar malaysia']
 author: "ING HENG Credit"

@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pinjaman Mitsubishi Galant VR-4 Malaysia - Pembiayaan AWD Turbo 0% Deposit"
 description: "Dapatkan pembiayaan 0% deposit untuk Mitsubishi Galant VR-4 yang berlegenda. Nikmati kuasa AWD turbo terbukti rally dengan terma pinjaman khusus untuk sedan prestasi ikonik ini."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-26

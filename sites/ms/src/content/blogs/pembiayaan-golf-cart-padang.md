@@ -1,9 +1,9 @@
----
+﻿---
 title: "Pembiayaan Golf Cart Padang Malaysia - 0% Deposit Pinjaman Kenderaan Golf"
 description: "Dapatkan kelulusan pembiayaan golf cart untuk padang di Malaysia. Bank tolak pinjaman kenderaan rekreasi? Kami pakar dalam pembiayaan golf cart dengan 0% deposit."
 publishDate: 2024-12-24
 tags: ["pembiayaan golf cart", "pinjaman peralatan padang golf", "pembiayaan kenderaan rekreasi", "sewa golf cart malaysia"]
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 lang: "ms"
 locale: "ms"
 author: "ING HENG Credit"

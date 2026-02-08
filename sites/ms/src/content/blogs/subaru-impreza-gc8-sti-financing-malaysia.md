@@ -1,7 +1,7 @@
----
+﻿---
 title: "Pembiayaan Subaru Impreza GC8 STI Malaysia - 0% Deposit Pelaburan Legenda Rally"
 description: "Dapatkan pembiayaan Subaru Impreza GC8 STI dengan 0% deposit di Malaysia. Warisan perlumbaan legenda kelahiran rally ini dan status ikonik membuatkan bayaran terasa seperti wang poket."
-category: "Specialized Vehicle Financing"
+category: Equipment Financing
 persona: "General"
 locale: "ms"
 publishDate: 2025-12-25
