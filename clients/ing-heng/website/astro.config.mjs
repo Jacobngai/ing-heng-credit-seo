@@ -13,9 +13,39 @@ const SITE_URL = process.env.SITE_URL || process.env.PUBLIC_SITE_URL || 'https:/
 const ALL_LOCALES = ['en', 'zh', 'ms'];
 const LOCALES = [DEFAULT_LOCALE, ...ALL_LOCALES.filter(loc => loc !== DEFAULT_LOCALE)];
 
+// Build redirects based on deployment domain
+const getRedirects = () => {
+  const redirects = {};
+  
+  // For .com domain: redirect MS and ZH to their respective domains
+  if (SITE_URL.includes('inghengcredit.com')) {
+    redirects['/ms/[...slug]'] = 'https://www.kreditloan.my/ms/[...slug]';
+    redirects['/ms'] = 'https://www.kreditloan.my/ms/';
+    redirects['/zh/[...slug]'] = 'https://www.inghengcredit.my/zh/[...slug]';
+    redirects['/zh'] = 'https://www.inghengcredit.my/zh/';
+  }
+  // For kreditloan.my: redirect EN and ZH
+  else if (SITE_URL.includes('kreditloan.my')) {
+    redirects['/en/[...slug]'] = 'https://www.inghengcredit.com/en/[...slug]';
+    redirects['/en'] = 'https://www.inghengcredit.com/en/';
+    redirects['/zh/[...slug]'] = 'https://www.inghengcredit.my/zh/[...slug]';
+    redirects['/zh'] = 'https://www.inghengcredit.my/zh/';
+  }
+  // For inghengcredit.my: redirect EN and MS
+  else if (SITE_URL.includes('inghengcredit.my')) {
+    redirects['/en/[...slug]'] = 'https://www.inghengcredit.com/en/[...slug]';
+    redirects['/en'] = 'https://www.inghengcredit.com/en/';
+    redirects['/ms/[...slug]'] = 'https://www.kreditloan.my/ms/[...slug]';
+    redirects['/ms'] = 'https://www.kreditloan.my/ms/';
+  }
+  
+  return redirects;
+};
+
 export default defineConfig({
   site: SITE_URL,
   output: 'static', // Explicitly set static output
+  redirects: getRedirects(),
   adapter: vercel({
     webAnalytics: {
       enabled: true
