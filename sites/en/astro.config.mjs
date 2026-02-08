@@ -14,6 +14,9 @@ export default defineConfig({
         if (page.includes('/410-gone')) return false;
         // Exclude API routes
         if (page.includes('/api/')) return false;
+        // Exclude Chinese and Malay pages (should only be on .my domains)
+        if (page.includes('/ms/')) return false;
+        if (page.includes('/zh/')) return false;
         // Include everything else
         return true;
       },
