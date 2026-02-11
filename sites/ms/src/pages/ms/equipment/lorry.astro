@@ -1,0 +1,560 @@
+---
+/**
+ * Halaman Pembiayaan Lori - Bahasa Malaysia
+ * Sasaran: Pengusaha logistik, pengendali armada
+ * Kata Kunci: pembiayaan lori Malaysia, pinjaman lori Pelabuhan Klang
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Pembiayaan Lori Komersial Malaysia | Penyelesaian Armada Pelabuhan Klang';
+const pageDescription = 'Pembiayaan lori komersial pantas untuk pengusaha logistik. Kelulusan pantas, 90% pembiayaan, terma fleksibel. Lori peti, flatbed, tanker, trailer. Mohon sekarang!';
+const keywords = ['pembiayaan lori Malaysia', 'pinjaman lori komersial', 'pembiayaan lori Pelabuhan Klang', 'pembiayaan armada', 'pinjaman PKS logistik', 'pembiayaan kenderaan logistik'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Lori', url: '/ms/equipment/lorry' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Kelulusan Pantas', description: 'Keputusan cepat untuk kontrak sensitif masa. Dapatkan kelulusan dan penuhi kontrak penghantaran Pelabuhan Klang.' },
+  { icon: 'percentage', title: 'Pembiayaan Dari 0% Pendahuluan*', description: 'Dari 0%* bayaran pendahuluan untuk pemohon layak. Pinjaman sehingga 100%*. Simpan modal kerja untuk minyak dan operasi. *Tertakluk pada terma dan syarat' },
+  { icon: 'calendar', title: 'Terma Fleksibel 12-84 Bulan', description: 'Pelan bayaran yang sesuai dengan operasi armada anda. Skala pembayaran mengikut kitaran pendapatan.' },
+  { icon: 'shield', title: 'Lori Baru & Terpakai', description: 'Pembiayaan lori sehingga 15 tahun. Semua jenama utama termasuk Isuzu, Hino, Mitsubishi, UD Trucks.' },
+  { icon: 'users', title: 'Pembiayaan Armada', description: 'Kadar istimewa untuk unit berganda. Kembangkan armada dan tingkatkan kapasiti penghantaran dengan cekap.' },
+  { icon: 'clock', title: 'Tukar Tambah & Pembiayaan Semula', description: 'Naik taraf lori lama kepada model baharu yang jimat bahan api. Pembiayaan semula pinjaman sedia ada pada kadar lebih baik.' },
+  { icon: 'shield', title: 'Harga Telus', description: 'Tiada caj tersembunyi atau bayaran mengejut. Kadar faedah dan jadual bayaran jelas dari hari pertama.' },
+];
+
+// Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Pertanyaan WhatsApp', description: 'Mesej keperluan lori anda. Respons pantas dari pakar pembiayaan logistik.' },
+  { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen', description: 'Hantar IC, penyata bank, SSM (jika syarikat). Proses penyerahan digital yang mudah.' },
+  { stepNumber: 3, icon: 'check', title: 'Keputusan Kredit Pantas', description: 'Keputusan kredit pantas. Pemberitahuan kelulusan melalui WhatsApp atau panggilan telefon.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Tandatangan Perjanjian', description: 'Semak terma dan lengkapkan dokumen. Kami boleh berjumpa di Pelabuhan Klang atau Lembah Klang.' },
+  { stepNumber: 5, icon: 'truck', title: 'Ambil Lori Anda', description: 'Dana dikeluarkan, ambil lori anda. Mula penghantaran dan jana pendapatan segera.' },
+];
+
+// Lorry Types
+const lorryTypes = [
+  { name: 'Lori Peti (Van Body)', description: 'Perlindungan kargo tertutup untuk barang umum, penghantaran e-dagang, barang berharga. Popular untuk penghantaran bandar.' },
+  { name: 'Lori Flatbed', description: 'Pengangkutan serbaguna untuk bahan binaan, pengangkutan mesin, kargo bersaiz besar. Penting untuk operasi Pelabuhan Klang.' },
+  { name: 'Lori Tipper (Trak Damper)', description: 'Pemunggahan sendiri untuk pasir, batu, sisa pembinaan. Permintaan tinggi dalam projek infrastruktur dan pembangunan tanah.' },
+  { name: 'Lori Peti Sejuk (Reefer)', description: 'Pengangkutan terkawal suhu untuk logistik rantaian sejuk. Permintaan berkembang dengan Ninja Cold dan ekspansi e-groser.' },
+  { name: 'Lori Tangki', description: 'Pengangkutan cecair termasuk diesel, minyak sawit, kimia. Operasi khusus dengan kontrak pendapatan stabil.' },
+  { name: 'Trailer Kontena (Prime Mover)', description: 'Pengangkutan kontena Pelabuhan Klang khusus. Kapasiti pendapatan tinggi dengan pergerakan kontena 20 kaki dan 40 kaki.' },
+  { name: 'Lori Kren (Hiab)', description: 'Keupayaan muat sendiri untuk mesin, keluli, bahan binaan. Kadar premium untuk pengangkutan khusus.' },
+  { name: 'Lori Curtainsider', description: 'Pemuatan sisi mudah untuk barang palet. Cekap untuk pengangkutan gudang ke gudang.' },
+];
+
+// Accepted Brands
+const acceptedBrands = ['Isuzu', 'Hino', 'Mitsubishi Fuso', 'UD Trucks', 'Nissan Diesel', 'Daihatsu', 'Mercedes-Benz', 'MAN', 'Scania', 'Dongfeng', 'Foton', 'FAW'];
+
+// Testimonials
+const testimonials = [
+  {
+    name: 'Lee Chong Wei',
+    company: 'LCW Logistics Sdn Bhd',
+    location: 'Pelabuhan Klang, Selangor',
+    testimonial: 'Perlukan 3 lori segera untuk kontrak Shopee. Ing Heng Credit meluluskan semua 3 unit dalam 20 jam dengan 90% pembiayaan. Kini mengendalikan 8 lori dengan sokongan mereka. Rakan kongsi terbaik untuk pengembangan armada.',
+    rating: 5,
+  },
+  {
+    name: 'Wong Kim Fatt',
+    company: 'Fatt Kee Transport',
+    location: 'Klang, Selangor',
+    testimonial: 'Perniagaan logistik keluarga selama 25 tahun. Menaik taraf keseluruhan armada daripada lori lama kepada model Isuzu baharu melalui pembiayaan semula. Penjimatan bahan api sahaja membayar kos naik taraf. Perkhidmatan profesional dan boleh dipercayai.',
+    rating: 5,
+  },
+  {
+    name: 'Rajendran a/l Muthu',
+    company: 'Raja Freight Services',
+    location: 'Shah Alam, Selangor',
+    testimonial: 'Bermula dengan 1 lori flatbed terpakai. Kini mengendalikan 5 lori untuk pengangkutan kontena Pelabuhan Klang. Pelan bayaran fleksibel semasa tempoh perlahan CNY sangat membantu. Amat disyorkan untuk pengusaha logistik PKS.',
+    rating: 5,
+  },
+];
+
+// FAQs
+const faqs = [
+  { question: 'Bolehkah saya membiayai lori terpakai?', answer: 'Ya! Kami membiayai lori terpakai sehingga 15 tahun. Kenderaan lebih lama mungkin memerlukan bayaran pendahuluan lebih tinggi (20-30%) atau tempoh pinjaman lebih pendek (36-48 bulan). Lori mesti dalam keadaan operasi dan lulus pemeriksaan asas.' },
+  { question: 'Apakah usia maksimum lori yang anda terima untuk pembiayaan?', answer: 'Kami menerima lori komersial sehingga 15 tahun. Walau bagaimanapun, lori berusia 10-15 tahun biasanya menerima 70-80% pembiayaan (20-30% bayaran pendahuluan) dan tempoh pinjaman lebih pendek (36-48 bulan).' },
+  { question: 'Adakah anda membiayai lori khusus seperti lori peti sejuk dan tangki?', answer: 'Ya! Kami membiayai semua jenis lori termasuk lori peti sejuk, tangki, tipper, kren lori, dan trailer kontena. Kenderaan khusus mungkin menerima kadar keutamaan kerana potensi pendapatan lebih tinggi.' },
+  { question: 'Bolehkah saya mendapatkan pembiayaan armada untuk beberapa lori?', answer: 'Sudah tentu! Pembiayaan armada untuk 2+ lori menerima kadar faedah diskaun. Kami menawarkan pakej pembiayaan pukal untuk syarikat logistik yang mengembangkan operasi. Diskaun volum berkisar 0.5% hingga 2% daripada kadar standard.' },
+  { question: 'Bagaimana jika saya tiada pendaftaran syarikat (SSM)? Bolehkah individu memohon?', answer: 'Boleh! Pemohon individu boleh menggunakan IC, penyata bank, bukti pendapatan logistik (kontrak penghantaran, perjanjian perkhidmatan). Namun, pendaftaran syarikat (SSM) meningkatkan peluang kelulusan dan mungkin mendapat kadar lebih baik.' },
+  { question: 'Bolehkah syarikat logistik baharu mendapat pembiayaan?', answer: 'Ya! Kami menyokong perniagaan logistik baharu. Keperluan termasuk: pendaftaran SSM, IC pengarah, 3-6 bulan penyata bank, kontrak penghantaran atau surat niat dari pelanggan. Kami menilai daya maju perniagaan, bukan hanya sejarah kredit.' },
+  { question: 'Jenama lori apa yang anda terima?', answer: 'Kami menerima semua jenama utama: Jepun (Isuzu, Hino, Mitsubishi Fuso, UD Trucks, Nissan Diesel), Eropah (Mercedes-Benz, MAN, Scania), dan China (Dongfeng, Foton, FAW). Lori dipasang tempatan dan import diterima.' },
+  { question: 'Bolehkah saya membiayai semula pinjaman lori sedia ada untuk kadar lebih baik?', answer: 'Ya! Jika anda membayar kadar faedah tinggi (melebihi 10%), kami boleh membiayai semula pinjaman sedia ada anda. Proses melibatkan: penyelesaian pinjaman asal, pemindahan pemilikan kenderaan, perjanjian pinjaman baharu. Ramai pelanggan menjimatkan 2-4% faedah setiap tahun.' },
+  { question: 'Berapakah kadar faedah untuk pembiayaan lori?', answer: 'Kadar faedah berkisar 6.5% hingga 11% setahun bergantung kepada: profil kredit, jumlah bayaran pendahuluan (10-30%), tempoh pinjaman (12-84 bulan), usia dan keadaan lori, saiz armada. Kadar kompetitif untuk pengusaha logistik PKS.' },
+  { question: 'Berapa banyak bayaran pendahuluan diperlukan?', answer: 'Bayaran pendahuluan standard: 10-20% untuk lori baharu, 20-30% untuk lori terpakai (10-15 tahun). Pembiayaan armada mungkin layak untuk bayaran pendahuluan lebih rendah (10%) walaupun untuk unit terpakai. Bayaran pendahuluan kadangkala boleh dirundingkan berdasarkan kepercayaan kredit.' },
+  { question: 'Dokumen apa yang saya perlukan untuk memohon?', answer: 'Untuk individu: IC, 6 bulan penyata bank, bukti pendapatan. Untuk syarikat: pendaftaran SSM, penyata bank syarikat (6 bulan), IC pengarah, penyata kewangan (jika ada), kontrak penghantaran (pilihan tetapi membantu).' },
+  { question: 'Bolehkah saya memohon jika saya mempunyai rekod CCRIS atau CTOS?', answer: 'Ya! Kami menerima pemohon dengan masalah kredit. Rekod CCRIS/CTOS tidak bermakna penolakan automatik. Kami mengkaji pendapatan semasa, kontrak sedia ada, dan keupayaan pembayaran balik. Ramai pelanggan dengan rekod ingkar lepas telah diluluskan.' },
+  { question: 'Adakah anda membiayai trailer kontena dan prime mover untuk Pelabuhan Klang?', answer: 'Ya! Kami pakar dalam pembiayaan trailer kontena dan prime mover untuk operasi Pelabuhan Klang. Mengingat rekod Pelabuhan Klang 14.64 juta TEU (2024), permintaan untuk pengangkutan kontena kukuh. Pembiayaan kompetitif untuk operasi 20 kaki dan 40 kaki.' },
+  { question: 'Bolehkah warga asing memohon pembiayaan lori?', answer: 'Ya, warga asing dengan permit kerja Malaysia yang sah, pendaftaran syarikat (SSM), dan operasi tempatan boleh memohon. Keperluan tambahan: pasport, permit kerja, alamat perniagaan Malaysia, pengarah/penjamin tempatan mungkin diperlukan.' },
+  { question: 'Apa yang berlaku jika lori rosak semasa tempoh pinjaman?', answer: 'Anda tetap bertanggungjawab untuk pembayaran pinjaman tanpa mengira keadaan lori. Kami amat mengesyorkan insurans komprehensif meliputi kerosakan, kemalangan, dan kecurian. Kami boleh membantu menghubungkan anda dengan penyedia insurans kenderaan komersial.' },
+  { question: 'Adakah penalti untuk bayaran awal?', answer: 'Tiada penalti bayaran awal! Anda boleh menyelesaikan pinjaman bila-bila masa tanpa caj tambahan. Ramai pelanggan membayar pinjaman awal apabila perniagaan berkembang atau semasa pembiayaan semula untuk pengembangan armada.' },
+  { question: 'Bolehkah saya tukar lori lama dengan model baharu?', answer: 'Boleh! Program tukar tambah tersedia. Kami menilai nilai lori lama anda, menyelesaikan baki pinjaman (jika ada), dan membiayai lori baharu. Popular di kalangan pengusaha yang menaik taraf dari model lama (10-15 tahun) kepada lori baharu yang jimat bahan api.' },
+  { question: 'Berapakah jumlah pinjaman maksimum?', answer: 'Pinjaman minimum: RM 40,000. Pinjaman maksimum: RM 2,000,000 untuk pembiayaan armada. Pembiayaan lori tunggal biasanya berkisar RM 80,000 (3 tan terpakai) hingga RM 800,000 (prime mover/trailer kontena baharu).' },
+  { question: 'Berapa lama keseluruhan proses dari permohonan hingga pengeluaran?', answer: 'Garis masa standard: Kelulusan pantas, 3-5 hari untuk dokumentasi dan pengeluaran. Kes mendesak (cth. keperluan kontrak segera) boleh dipercepatkan kepada 1-2 hari dengan dokumentasi lengkap.' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Pembiayaan Lori Komersial Malaysia',
+  description: 'Pembiayaan lori komersial pantas untuk pengusaha logistik. Penyelesaian armada untuk perniagaan Pelabuhan Klang dan Lembah Klang.',
+  imageUrl: `${SITE_CONFIG.url}/images/lorry-financing.jpg`,
+  category: 'Perkhidmatan Kewangan - Pembiayaan Kenderaan Komersial',
+  offers: {
+    price: '40000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Pembiayaan Lori Komersial untuk Pengusaha Logistik Pelabuhan Klang"
+    subtitle="Kelulusan Pantas | Pembiayaan 90% | Penyelesaian Armada | Lori Baru & Terpakai Diterima"
+    ctaText="Dapatkan Sebut Harga Percuma via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20mendapatkan%20sebut%20harga%20untuk%20pembiayaan%20lori."
+    ctaSecondaryText="Hubungi: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Tahun Pengalaman', 'Pakar Pelabuhan Klang', 'Pakar Pembiayaan Armada', 'Kelulusan Hari Sama']}
+  />
+
+  <!-- Problem/Solution Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          Pengusaha Logistik Hadapi Cabaran Pembiayaan Armada
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          Pelabuhan Klang mencatat 14.64 juta TEU pada 2024. Penghantaran e-dagang melonjak. Anda ada kontrak tetapi tiada lori. Bank memerlukan bayaran pendahuluan 30-50%. Tidak dapat mengembangkan armada untuk memenuhi permintaan. Pesaing merebut peluang sementara anda menunggu.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-red-600 font-bold text-lg mb-3">Masalah Biasa</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Bayaran pendahuluan tinggi menghalang pengembangan armada (30-50%)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Bank menolak syarikat logistik PKS</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Kelulusan perlahan kehilangan kontrak sensitif masa</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-500 mt-1">✗</span>
+              <span>Isu aliran tunai CNY menjejaskan operasi</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="text-green-600 font-bold text-lg mb-3">Penyelesaian Kami</div>
+          <ul class="space-y-2 text-[#4F3E29]">
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Hanya 10-20% bayaran pendahuluan diperlukan</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Menyokong perniagaan logistik baharu</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+              <span>Kelulusan pantas untuk kontrak mendesak</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-green-500 mt-1">✓</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white border-4 border-[#D4A574] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+          <div class="font-bold text-lg mb-3 text-yellow-600">Contoh Sebenar</div>
+          <div class="text-sm leading-relaxed text-gray-800">
+            <p class="mb-3"><strong class="text-primary">Lee dari Pelabuhan Klang</strong> memerlukan 3 lori peti untuk kontrak Shopee/Lazada bernilai RM 45,000/bulan.</p>
+            <p class="mb-3"><strong class="text-red-600">Bank menolak permohonannya.</strong> Kami meluluskan RM 420,000 (3 lori) dalam 20 jam dengan bayaran pendahuluan 10%.</p>
+            <p class="font-semibold text-green-700">Beliau memperoleh RM 540,000 dalam 12 bulan dan mengembangkan armada kepada 8 lori. Kini rakan kongsi utama Ninja Van.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Mengapa Pengusaha Logistik Memilih Ing Heng Credit?
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Pembiayaan lori khusus direka untuk perniagaan logistik Pelabuhan Klang dan Lembah Klang
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Calculator -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <Calculator lang={lang} equipmentType="Lori" defaultPrice={200000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Dapatkan Lori Anda dalam 5 Langkah Mudah
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Dari permohonan hingga memandu lori anda secepat 3-5 hari
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20memohon%20pembiayaan%20lori."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Mula Permohonan Anda Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lorry Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Jenis Lori Komersial yang Kami Biayai
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Semua kategori lori dari van 1 tan hingga prime mover 30 tan
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {lorryTypes.map((lorry) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{lorry.name}</h3>
+            <p class="text-[#4F3E29] text-sm">{lorry.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">Jenama Lori yang Diterima</h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-[#4F3E29] mt-4">...dan banyak lagi! Hubungi kami untuk jenama lain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Keperluan Permohonan
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Dokumentasi mudah - Kebanyakan pengusaha logistik sudah mempunyai dokumen ini
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Individual Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">Untuk Individu</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Salinan IC / Pasport</div>
+                <div class="text-sm text-[#4F3E29]">IC Malaysia atau pasport sah dengan permit kerja</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">6 Bulan Penyata Bank</div>
+                <div class="text-sm text-[#4F3E29]">Akaun peribadi menunjukkan konsistensi pendapatan</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Bukti Pendapatan Logistik</div>
+                <div class="text-sm text-[#4F3E29]">Kontrak penghantaran, perjanjian perkhidmatan atau invois</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Company Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">Untuk Syarikat</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Pendaftaran SSM</div>
+                <div class="text-sm text-[#4F3E29]">Sijil pendaftaran syarikat (Form 9/24/49)</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Penyata Bank Syarikat</div>
+                <div class="text-sm text-[#4F3E29]">6 bulan penyata akaun syarikat</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Salinan IC Pengarah</div>
+                <div class="text-sm text-[#4F3E29]">Semua pengarah dan pemegang saham syarikat</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Kontrak Penghantaran (Pilihan)</div>
+                <div class="text-sm text-[#4F3E29]">Perjanjian pelanggan mengukuhkan permohonan</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">Penting untuk Diketahui:</h4>
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
+          <li>• Usia lori: Sehingga 15 tahun diterima</li>
+          <li>• Skor kredit: Kami menerima rekod CCRIS/CTOS</li>
+          <li>• Masa pemprosesan: Pantas dari penyerahan lengkap</li>
+          <li>• Pembiayaan armada: Kadar istimewa untuk 2+ lori</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Kisah Kejayaan dari Pengusaha Logistik
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Perniagaan sebenar yang berkembang dengan penyelesaian pembiayaan lori kami
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Soalan Lazim
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Segala yang anda perlu tahu tentang pembiayaan lori
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Bersedia untuk Mengembangkan Armada Anda?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Mohon hari ini, lulus esok. Sertai 4,000+ pengusaha logistik yang mempercayai Ing Heng Credit untuk pembiayaan armada mereka.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hai!%20Saya%20ingin%20memohon%20pembiayaan%20lori."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Mohon via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Hubungi: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Sebut Harga Percuma</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Kelulusan Pantas</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Pakar Pelabuhan Klang</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="lorry" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Atau Isi Borang Dalam Talian
+          </h2>
+          <p class="text-[#4F3E29]">
+            Kami akan menghubungi anda dalam cepat semasa waktu perniagaan
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

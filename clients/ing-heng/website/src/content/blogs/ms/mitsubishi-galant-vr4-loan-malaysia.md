@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Mitsubishi Galant VR-4 yang b
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["mitsubishi-galant-vr4", "pembiayaan-awd-turbo", "pinjaman-sedan-rally", "0-deposit-mitsubishi", "sedan-prestasi"]
 keywords: ["pinjaman mitsubishi galant vr4 malaysia", "pembiayaan galant vr4", "pembiayaan awd turbo", "pinjaman kereta rally", "sedan prestasi 0 deposit", "pinjaman prestasi mitsubishi", "pembiayaan sedan turbo", "pinjaman pacuan semua roda"]

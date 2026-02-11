@@ -4,7 +4,7 @@ description: "Dapatkan Fiat 500 klasik dengan pembiayaan 0% deposit di Malaysia.
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Fiat 500", "pinjaman kereta klasik", "pembiayaan kenderaan vintage", "pelaburan kereta kolektor", "pembiayaan klasik Itali"]
 keywords: ["pembiayaan Fiat 500 klasik", "pinjaman Fiat 500 Malaysia", "pembiayaan Fiat vintage", "pembiayaan kereta klasik Malaysia", "pinjaman kereta kolektor", "pembiayaan klasik Itali", "pinjaman kenderaan vintage", "pembiayaan pelaburan automotif"]

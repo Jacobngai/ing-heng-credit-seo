@@ -2,7 +2,7 @@
 title: "Used Lorry Financing Malaysia: Aged Vehicle Loan Interest Rates"
 description: "Used lorries cost 40-60% less but carry higher financing interest rates. Learn how to calculate whether used lorry financing makes financial sense despite higher rates."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -681,3 +681,4 @@ We finance lorries up to 10 years old with 0% down payment. Get approved in 24 h
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

@@ -4,7 +4,7 @@ description: "Biayai Citroen 2CV anda dengan 0% deposit di Malaysia. Kelulusan p
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Citroen 2CV", "pinjaman kereta klasik Perancis", "pembiayaan kenderaan vintage", "pelaburan ikon automotif", "pembiayaan klasik pelik"]
 keywords: ["pinjaman Citroen 2CV", "pembiayaan 2CV Malaysia", "pembiayaan kereta klasik Perancis", "pinjaman Citroen vintage", "pembiayaan ikon automotif", "pelaburan kereta klasik", "pembiayaan vintage Perancis", "pinjaman kereta kolektor"]

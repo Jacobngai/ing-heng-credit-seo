@@ -2,7 +2,7 @@
 title: "0% Down Payment Forklift Financing Malaysia | Complete Warehouse Owner Guide"
 description: "Finance forklifts with 0% down payment in Malaysia. Preserve working capital, get 24-hour approval, rates from 2.88% p.a. Perfect for Shah Alam, Klang Valley warehouse operators."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -371,3 +371,4 @@ Budget with fixed installments over up to 7 years. No surprise maintenance costs
                     
                   
                   Match capacity to your typical loads
+

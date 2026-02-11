@@ -2,7 +2,7 @@
 title: "Pinjaman Excavator Selangor 2025 - Tanpa Deposit, Syarat Mudah"
 description: "Pinjaman excavator di Selangor dengan kelulusan mudah dan tanpa deposit. Pembiayaan excavator untuk kontraktor di Shah Alam, Petaling Jaya, Klang dan seluruh Selangor."
 category: "Equipment Financing"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["pinjaman excavator", "excavator selangor", "tanpa deposit", "shah alam"]
 image: "/images/excavator-loan-selangor.jpg"

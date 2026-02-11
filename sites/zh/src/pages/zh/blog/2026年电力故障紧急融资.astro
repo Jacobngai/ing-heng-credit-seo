@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '2026年电力故障紧急融资 - 快速快速方案',
+  slug: '2026年电力故障紧急融资',
+  excerpt: '2026年电力故障紧急发电机融资。快速快速批准，0%首付，紧急电力设备融资。',
+  date: '2026-01-14',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '电力设备',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["电力故障","紧急发电机","停电应急","紧急电力"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 2026年电力故障紧急融资 - 快速快速方案
+
+## 电力故障紧急
+
+突然停电应对:
+
+- **生产中断**: 需要恢复
+- **数据丢失**: 需要保护
+- **设备损坏**: 需要避免
+- **业务损失**: 需要减少
+
+## 盈恒紧急方案
+
+- 快速审批
+- 0%首付
+- 快速到位
+- 紧急支持
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">电力设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

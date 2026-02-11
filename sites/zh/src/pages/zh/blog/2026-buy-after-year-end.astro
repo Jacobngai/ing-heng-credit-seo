@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '2026年后购买',
+  slug: '2026-buy-after-year-end',
+  excerpt: '2026年后购买设备指南。了解新年购买设备的策略。0%首付，100%全款融资。',
+  date: '2026-01-22',
+  author: 'Ing Heng Credit Team',
+  readTime: 5,
+  category: '税务规划',
+  image: '/images/blog/2026-buy-after-year-end.jpg'
+};
+
+const keywords = ['机械融资', 'equipment financing malaysia', '0% down payment', 'heavy equipment loan'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/zh' },
+  { label: 'Blog', href: '/zh/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">税务规划</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+      <h2>2026年后购买</h2>
+      <p>新年购买设备有独特的优势和策略。</p>
+
+      <h3>新年购买好处</h3>
+      <ul>
+        <li>获得完整初始+年度津贴</li>
+        <li>整年使用设备</li>
+        <li>更好的预算规划</li>
+        <li>新年开始新项目</li>
+      </ul>
+
+      <h3>1月购买vs 12月购买</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>购买月份</th>
+            <th>初始津贴</th>
+            <th>年度津贴(第1年)</th>
+            <th>总津贴</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1月</td>
+            <td>RM 20,000</td>
+            <td>RM 11,200</td>
+            <td>RM 31,200</td>
+          </tr>
+          <tr>
+            <td>6月</td>
+            <td>RM 20,000</td>
+            <td>RM 11,200</td>
+            <td>RM 31,200</td>
+          </tr>
+          <tr>
+            <td>12月</td>
+            <td>RM 20,000</td>
+            <td>RM 0</td>
+            <td>RM 20,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>新年融资优势</h3>
+      <ul>
+        <li>新的年度预算可用</li>
+        <li>0%首付保留现金</li>
+        <li>快速快速批准</li>
+        <li>立即开始赚钱</li>
+      </ul>
+
+      <h3>适合新年购买的行业</h3>
+      <ul>
+        <li>建筑业 - 新项目开始</li>
+        <li>制造业 - 新订单</li>
+        <li>物流业 - 春节需求</li>
+        <li>农业 - 种植季节</li>
+      </ul>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">2026年后购买?</h3>
+        <p style="margin-bottom: 1rem;">0%首付。100%全款。无年龄限制。快速快速审批。立即获得批准。</p>
+        <p style="margin-bottom: 0;"><strong>联系方式:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (电话)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="立即获取融资" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #D4A574;
+  }
+
+  th {
+    background: #F5F0E8;
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  br {
+    display: none;
+  }
+</style>

@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan jentera pengorek walaupun dengan kredit buruk, 
   CCRIS, atau isu CTOS. Ketahui bagaimana syarikat kredit menilai permohonan anda
   berbeza daripada bank.
 author: "ING HENG Credit"
-publishDate: 2025-12-05
+publishDate: 2025-12-05T00:00:00.000Z
 category: Equipment Financing
 tags:
 - kredit buruk

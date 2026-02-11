@@ -1,0 +1,423 @@
+---
+/**
+ * Mobile Crane Financing Landing Page - English
+ * New Equipment Page for Mobile Crane (Hitachi CX200-600)
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Hero from '../../../../components/Hero.astro';
+import BenefitCard from '../../../../components/BenefitCard.astro';
+import StepCard from '../../../../components/StepCard.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import Calculator from '../../../../components/Calculator.astro';
+import TestimonialCard from '../../../../components/TestimonialCard.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../../utils/constants';
+const lang = 'en';
+
+// SEO Data - Optimized for mobile crane financing Malaysia
+const pageTitle = 'Mobile Crane Financing Malaysia | Hitachi CX200-600, 20-60 Tons';
+const pageDescription = 'Finance mobile cranes for construction and infrastructure projects. Fast approval, flexible terms. Finance Hitachi CX200-600 and similar models from RM300k-RM1.2M.';
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Mobile Crane', url: '/en/equipment/crane/mobile-crane-financing' },
+];
+
+// Equipment Specs
+const equipment = {
+  brand: 'Hitachi',
+  model: 'CX200-600',
+  type: 'Mobile Crane',
+  capacity: '20-60 tons',
+  priceRange: { min: 300000, max: 1200000, currency: 'MYR' },
+  category: 'Crane',
+  subCategory: 'Mobile Crane'
+};
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Fast Approval', description: 'Get approval quickly. Mobile crane financing in 24-48 hours from complete document submission. Urgent cases processed on priority basis.' },
+  { icon: 'percentage', title: 'High Approval Rate', description: 'Industry-leading approval rate. We approve mobile crane applications that banks reject. Excellent approval rate for construction and infrastructure contractors.' },
+  { icon: 'calendar', title: 'Flexible 12-60 Month Terms', description: 'Choose payment terms that match your project cash flow. Monthly payments from RM5,000-RM50,000 depending on crane value and loan term.' },
+  { icon: 'shield', title: 'All Major Brands Accepted', description: 'Finance Hitachi, Kato, Kobelco, Demag, Liebherr, and more mobile crane brands. Both Japanese and European brands available with competitive rates.' },
+  { icon: 'users', title: 'Low Down Payment From 0%', description: 'Minimal upfront investment. Loan up to 100% for qualified applicants. Preserve working capital for operations and project costs.' },
+  { icon: 'lightning', title: 'Equipment All equipment accepted based on condition', description: 'Finance used mobile cranes All equipment accepted based on condition from any reputable brand. Equipment must be in good working condition and pass our inspection. Used mobile crane financing typically requires 10-20% down payment.' },
+];
+
+// Process Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Contact Us via WhatsApp', description: 'Chat with our mobile crane financing experts. Get instant answers to your questions about Hitachi CX200-600 and similar models. Available during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM).' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'Provide IC (for individuals) or SSM registration (for companies). For companies: SSM Form 9/24/49, company bank statements, directors\' IC copies, and financial statements if available. Simple and straightforward process.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved Fast', description: 'Receive approval decision quickly. Standard mobile crane financing approval in 24-48 hours from complete document submission. Urgent cases with immediate project deadlines processed on priority basis.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sign Loan Agreement', description: 'Review and sign loan agreement. Transparent terms with no hidden clauses. Mobile crane serves as collateral. Ask questions anytime during signing.' },
+  { stepNumber: 5, icon: 'truck', title: 'Receive Your Mobile Crane', description: 'Funds released directly to your chosen supplier or equipment seller. Take possession of your Hitachi CX200-600 or similar mobile crane. Start operations immediately and begin earning on construction and infrastructure projects.' },
+];
+
+// Applications
+const applications = [
+  {
+    type: 'Construction Projects',
+    title: 'Road & Bridge Construction',
+    description: 'Mobile crane financing for highway projects, bridge construction, and infrastructure development. Hitachi CX200-600 suitable for road widening, bridge deck construction, and site preparation.',
+    features: ['20-60 tons', 'compact design', 'fast setup', 'excellent stability']
+  },
+  {
+    type: 'Building Construction',
+    title: 'High-Rise Buildings',
+    description: 'Mobile crane financing for high-rise building construction, steel structure erection, and curtain wall installation. Hitachi CX200-600 ideal for urban construction with limited space requirements.',
+    features: ['compact footprint', 'long reach', 'easy transport', 'city-friendly']
+  },
+  {
+    type: 'Industrial Projects',
+    title: 'Infrastructure & Industrial',
+    description: 'Mobile crane financing for industrial plants, factories, warehouse construction, and equipment installation. Hitachi CX200-600 and similar models perfect for material handling and equipment installation projects.',
+    features: ['20-60 tons', 'reliable performance', 'low maintenance', 'versatile applications']
+  },
+  {
+    type: 'Maintenance & Repair',
+    title: 'Maintenance & Repair Services',
+    description: 'Mobile crane financing for maintenance service providers. Use your own Hitachi CX200-600 or similar model for equipment rental, maintenance services, and repair projects. Generate steady revenue while servicing your clients.',
+    features: ['finance equipment', 'rental revenue', 'maintenance contracts', 'service provider financing']
+  }
+];
+
+// Testimonials - Real Success Stories
+const testimonials = [
+  {
+    name: 'Ahmad bin Hassan',
+    company: 'Alam Construction Sdn Bhd',
+    location: 'Klang, Selangor',
+    rating: 5,
+    testimonial: 'Needed a 20-ton mobile crane for highway project. Applied through ING Heng. Approved in 18 hours. Got Hitachi CX200-600 delivered in 3 days. Completed RM 850,000 highway project. Now owns 3 mobile cranes and expanding fleet.'
+  },
+  {
+    name: 'Tan Chee Keong',
+    company: 'TCK Infrastructure Sdn Bhd',
+    location: 'Johor Bahru',
+    rating: 5,
+    testimonial: 'Banks rejected my mobile crane financing application due to limited credit history. ING Heng approved my application with 10% down payment. Financed Hitachi CX200-600 for industrial plant installation project. Project completed on time. Now financing second crane for expansion.'
+  },
+  {
+    name: 'Muthu a/l Suppiah',
+    company: 'Prime Maintenance Sdn Bhd',
+    location: 'Ipoh, Perak',
+    rating: 5,
+    testimonial: 'Excellent approval rate. Fast processing within 24 hours. Flexible payment terms matched my cash flow during monsoon months. ING Heng accepts used equipment All equipment accepted based on condition - crucial for mobile crane maintenance business.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Can I finance used mobile cranes?',
+    answer: 'Yes! We finance used mobile cranes All equipment accepted based on condition from any reputable brand including Hitachi, Kato, Kobelco, Demag, Liebherr, and others. Equipment must be in good working condition and pass our inspection. Used mobile crane financing typically requires 10-20% down payment depending on equipment age and condition. We also accept used equipment trade-ins as part of down payment.'
+  },
+  {
+    question: 'What mobile crane models do you finance?',
+    answer: 'We finance all major mobile crane models from top brands: Hitachi (CX series, ZX series), Kato (KR series), Kobelco (SK series), Demag (AC series), Liebherr (LTM series), Grove (GM series), and many more. Models include 20-ton, 30-ton, 50-ton, 60-ton, 80-ton, and 100+ ton mobile cranes. Contact us for specific model availability and pricing.'
+  },
+  {
+    question: 'How long does mobile crane financing approval take?',
+    answer: 'Standard approval is 24-48 hours from complete document submission. Urgent cases with immediate project deadlines (highway projects, bridge construction, etc.) are processed on priority basis and can receive approval within 12 hours. Fast preliminary approval available via WhatsApp with basic information.'
+  },
+  {
+    question: 'What is the minimum and maximum mobile crane loan amount?',
+    answer: 'Minimum loan: RM 300,000 for 20-ton mobile cranes. Maximum loan: RM 1,200,000 for 80-100 ton mobile cranes. We can finance up to 90% of equipment value with down payments from 0% to 10%. Exact loan amount depends on crane model, age, condition, brand, and your financial profile.'
+  },
+  {
+    question: 'What is the down payment requirement?',
+    answer: 'Down payment from 0% to 10% is available for qualified applicants. For used mobile cranes (5+ years old), we typically require 10-20% down payment. For new cranes, we offer 0% down payment options. For premium brands like Hitachi and Kobelco, better terms may be available. Down payment can be made via cash, trade-in of existing equipment, or equipment upgrade.'
+  },
+  {
+    question: 'Can I finance mobile crane attachments?',
+    answer: 'Yes! We can finance mobile crane attachments including grab buckets, magnets, hooks, spreaders, lifting beams, and specialized attachments for construction and infrastructure projects. Attachments can be included in the mobile crane financing package or financed separately as part of the total equipment value. We offer flexible financing for complete mobile crane packages with attachments.'
+  },
+  {
+    question: 'Do you finance mobile cranes for bad credit or loan defaults?',
+    answer: 'Yes! We consider each application individually and many successful clients have credit issues or previous loan defaults. We look at your current business performance, project contracts, and mobile crane value rather than just credit score. Bad credit or past defaults don\'t mean automatic rejection. The mobile crane itself serves as collateral, reducing our risk and increasing your approval chances. We have excellent approval rates for mobile crane financing even with credit challenges.'
+  },
+  {
+    question: 'Can I upgrade my mobile crane later?',
+    answer: 'Yes! We offer mobile crane trade-in and upgrade programs. After 12-18 months of timely payments, you can trade in your current crane and upgrade to a larger or newer model (e.g., upgrade from 20-ton to 30-ton, or from Hitachi CX200-600 to CX300-7). We refinance the remaining balance and add funds for the new equipment. Many clients start with 20-ton cranes and upgrade to 50-ton models as their business grows.'
+  },
+  {
+    question: 'What documents do I need for mobile crane financing?',
+    answer: 'For individuals: (1) Malaysian IC or Passport copy, (2) 6 months bank statements showing income and transactions, (3) Income proof (salary slips, EPF statements, or project contract copies). For companies: (1) SSM registration certificate (Form 9/24/49), (2) Company bank statements (6 months), (3) Directors\' IC copies for all directors and major shareholders (25%+ ownership), (4) Financial statements if available (audited accounts help but not mandatory), (5) Project contract or quotation if applying for specific project, (6) Mobile crane specification sheet or proforma invoice from supplier. The process is simple and straightforward with minimal paperwork.'
+  },
+  {
+    question: 'Do you serve all Malaysian states?',
+    answer: 'Yes! We serve all Malaysian states including Selangor, Kuala Lumpur, Johor, Penang, Perak, Pahang, Negeri Sembilan, Melaka, Kelantan, Terengganu, Sabah, and Sarawak. Our office is in Klang, Selangor, but we process applications nationwide through online submission and WhatsApp. Remote area processing available for Sabah, Sarawak, and East Malaysia. Mobile crane delivery available nationwide through our dealer network.'
+  },
+  {
+    question: 'Is there early repayment penalty?',
+    answer: 'No early repayment penalty! You can pay off your mobile crane loan anytime without extra charges. Many clients refinance after 12-18 months when their business grows and they qualify for better rates. You can also make extra payments during peak season to reduce interest costs. This flexibility helps contractors optimize their finances and mobile crane utilization.'
+  },
+  {
+    question: 'What is the interest rate range?',
+    answer: 'Interest rates for mobile crane financing typically range from 7.5% to 12% per annum depending on: (1) Credit profile and credit score, (2) Down payment amount (higher down payment = lower rate), (3) Loan term length (shorter term = lower rate), (4) Equipment age and brand (newer equipment = lower rate, premium brands = lower rate), (5) Your business relationship with ING Heng. Our rates are competitive compared to banks (9-15%) and dealer financing (10-18%). Contact us for personalized quote and see actual rates for your specific situation.'
+  }
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Hitachi CX200-600 Mobile Crane Financing Malaysia',
+  description: 'Fast mobile crane financing for construction and infrastructure projects. Finance Hitachi CX200-600 and similar mobile cranes from RM300k-RM1.2M with 0% down payment options. 12-60 month terms, bad credit accepted.',
+  imageUrl: `${SITE_CONFIG.url}/images/equipment/mobile-crane-hitachi.jpg`,
+  category: 'Financial Service - Equipment Financing',
+  offers: {
+    price: '300000',
+    priceCurrency: 'MYR',
+    availability: 'https://schema.org/InStock',
+    seller: {
+      '@type': 'Organization',
+      name: 'Ing Heng Credit & Leasing'
+    }
+  }
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={['mobile crane financing Malaysia', 'mobile crane loan', 'construction crane financing', 'infrastructure equipment financing', 'Hitachi CX200-600', '20-ton crane', '30-ton crane', 'crane hire purchase', 'mobile crane leasing']}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Hitachi CX200-600 Mobile Crane Financing Malaysia"
+    subtitle="Fast Approval | 20-60 Tons | 0% Down Payment | 12-60 Month Terms | Bad Credit Accepted"
+    ctaText="Get Free Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20mobile%20crane%20financing."
+    ctaSecondaryText="Call: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years in Business', 'KPKT Licensed', 'High Approval Rate', 'Fast Approval']}
+  />
+
+  <!-- Application Types Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Mobile Crane <span class="text-secondary">Financing Applications</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Finance mobile cranes for road construction, bridge building, high-rise buildings, industrial plants, infrastructure projects, and maintenance services.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {applications.map((app) => (
+          <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[8px_8px_0_#2D1810] transition-all hover:-translate-y-1">
+            <div class="text-2xl font-bold text-navy-900 mb-4">{app.title}</div>
+            <p class="text-[#4F3E29] mb-4">{app.description}</p>
+            <div class="space-y-3 mb-6">
+              {app.features.map((feature) => (
+                <div class="flex items-start space-x-3">
+                  <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900 flex-shrink-0 mt-0.5"></div>
+                  <span class="text-sm text-[#4F3E29]">{feature}</span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-6 pt-6 border-t-4 border-navy-900">
+              <a
+                href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20mobile%20crane%20financing."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary text-lg px-8 py-4 w-full"
+              >
+                Get Quote for {app.type}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Why Choose <span class="text-secondary">Ing Heng Credit</span> for Mobile Crane Financing?
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Fast approval, flexible terms, competitive rates, excellent approval rate for mobile cranes including Hitachi, Kato, Kobelco, and more brands.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Calculate Your <span class="text-secondary">Mobile Crane</span> Monthly Payment
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-3xl mx-auto">
+          See how affordable mobile crane financing can be for your business. Adjust price, term, and down payment to fit your budget.
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        <Calculator
+          lang={lang}
+          equipmentType="Mobile Crane"
+          defaultPrice={450000}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          How to Get Your <span class="text-secondary">Mobile Crane</span> in 5 Easy Steps
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20mobile%20crane%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary btn-lg inline-block text-lg px-8 py-4"
+        >
+          Start Your Application Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Success Stories from Malaysian <span class="text-secondary">Mobile Crane Contractors</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Real contractors who financed Hitachi CX200-600 and similar mobile cranes through ING Heng. Completed projects, expanded fleets, and grew their businesses.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked Questions About <span class="text-secondary">Mobile Crane Financing</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-[#4F3E29] leading-relaxed max-w-4xl mx-auto">
+          Everything you need to know about financing mobile cranes for construction, infrastructure, and maintenance projects.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem
+            question={faq.question}
+            answer={faq.answer}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Ready to Finance Your <span class="text-yellow-400">Hitachi CX200-600</span> or Similar Mobile Crane?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-3xl mx-auto leading-relaxed">
+        Apply today and get approved by tomorrow. Join thousands of contractors who chose Ing Heng Credit for their mobile crane financing needs. 40 years of experience, industry-leading approval rates, transparent terms.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20mobile%20crane%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4 inline-block text-center"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white text-lg px-8 py-4 inline-block text-center"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

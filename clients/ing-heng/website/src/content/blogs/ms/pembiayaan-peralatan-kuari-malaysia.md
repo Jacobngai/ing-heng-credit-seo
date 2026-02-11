@@ -2,7 +2,7 @@
 title: 'Pembiayaan Peralatan Kuari Malaysia: Panduan Lengkap 0% Deposit 2025'
 description: Dapatkan pembiayaan peralatan kuari di Malaysia dengan 0% deposit. Pembiayaan mesin penghancur, ayak, konveyor tanpa bayaran pendahuluan. Kelulusan pantas untuk operasi kuari.
 author: "ING HENG Credit"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan peralatan kuari

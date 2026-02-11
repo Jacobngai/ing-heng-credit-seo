@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'ms';
+const post = {
+  title: 'Fuel Tanker 2026 - Panduan Lengkap Pembiayaan',
+  slug: 'fuel-tanker-2026-panduan-lengkap',
+  excerpt: 'Dapatkan pembiayaan fuel tanker 2026 - panduan lengkap pembiayaan dengan 0% down payment dari Ing Heng Credit. Kelulusan pantas, tiada had umur peralatan.',
+  date: 'undefined',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Pembiayaan Peralatan',
+  image: 'undefined'
+};
+
+const keywords = [],
+  breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/ms/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Fuel Tanker 2026 - Panduan Lengkap Pembiayaan
+
+Fuel tanker adalah high-value equipment untuk bisnes petroleum & logistics. Pembiayaan biasanya susah.
+
+## Fuel Tanker - High Risk, High Return
+
+### Cabaran Pembiayaan Fuel Tanker
+- Harga sangat tinggi (RM 300,000-600,000)
+- Considered high-risk oleh bank
+- Perlukan permit khas (Petronas, etc.)
+- Down payment biasanya 20-30%
+- Umur equipment limit lebih ketat
+
+### Had Bank
+- Down payment 20-30% (RM 60,000-180,000!)
+- Hanya 70-80% pembiayaan
+- Umur maksimum 3-5 tahun
+- Permit mesti lengkap
+- Proses 3-4 minggu
+
+## Ing Heng: Fuel Tanker 0% Down Payment, 100% Full Loan
+
+## Jadual Perbandingan
+
+| Ciri-ciri | Bank | Ing Heng |
+|-----------|------|----------|
+| Down Payment | 10-20% | **0%** |
+| Jumlah Pinjaman | 90% | **100%** |
+| Umur Peralatan | 5 tahun maks | **Tiada had** |
+| Kadar Faedah | 4.6% - 6.0% setahun | Berdaya saing |
+
+### Kiraan Fuel Tanker
+
+#### Fuel Tanker 20,000 Liter (ISUZU Giga)
+- Harga: RM 450,000
+- **Bank:** Down payment RM 90,000-135,000 (20-30%)
+- **Ing Heng:** 0% down payment!
+- **Bank Loan:** RM 315,000-360,000 (70-80%)
+- **Ing Heng Loan:** RM 450,000 (100%!)
+
+#### Fuel Tanker 30,000 Liter (FUSO)
+- Harga: RM 580,000
+- **Bank:** Down payment RM 116,000-174,000
+- **Ing Heng:** 0% down payment!
+
+#### Fuel Tanker Terpakai (5 Tahun)
+- Harga: RM 280,000
+- **Bank:** REJECT (umur 5 tahun + high risk)
+- **Ing Heng:** LAYAK! 0% down payment!
+
+## Seruan Bertindak
+
+Jangan biarkan had bank memperlahankan perniagaan anda. Dengan Ing Heng Credit:
+
+- **0% Down Payment** - Bawa peralatan keluar tanpa bayaran muka
+- **100% Pinjaman Penuh** - Perlindungan insurans & cukai jalan included
+- **Tiada Had Umur** - Peralatan 10 tahun pun boleh dibiayai
+
+Hubungi kami sekarang:
+- WhatsApp: +60175700889
+- Laman web: inghengcredit.com
+- Masa proses: pantas
+
+**S: Adakah permit diperlukan untuk kelulusan?**
+J: Ya, permit diperlukan untuk operasi, tapi untuk pembiayaan, kami lebih fleksibel.
+
+**S: Berapa lama tempoh pembiayaan fuel tanker?**
+J: Hingga 84 bulan (7 tahun) untuk unit baharu. Untuk used, hingga 60 bulan.
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Pembiayaan Peralatan</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min baca</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/ms/contact">Mohon Pembiayaan Peralatan</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

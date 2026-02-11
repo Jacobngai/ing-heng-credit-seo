@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Alfa Romeo Spider impian anda
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["Alfa Romeo Spider", "Pembiayaan Kereta Klasik", "0% Deposit", "Kereta Sukan Itali", "Kenderaan Pelaburan"]
 keywords: ["pembiayaan Alfa Romeo Spider", "pinjaman kereta klasik Malaysia", "pembiayaan kenderaan 0% deposit", "pembiayaan kereta sukan Itali", "pinjaman kereta koleksi", "pembiayaan kereta vintaj", "pinjaman kenderaan khas", "pembiayaan kereta klasik"]

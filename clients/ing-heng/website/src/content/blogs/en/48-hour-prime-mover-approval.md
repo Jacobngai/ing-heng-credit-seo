@@ -2,7 +2,7 @@
 title: "48-Hour Prime Mover Financing: Fast Approval Guide for Hauliers"
 description: "Get prime mover financing approved in 24 hours. Required documents, 0% down payment options, rates from 2.88% p.a., up to 7 years tenure."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -376,3 +376,4 @@ Include specific prime mover details (make, model, year, price) in your quotatio
             
           
           Respond quickly to follow-ups
+

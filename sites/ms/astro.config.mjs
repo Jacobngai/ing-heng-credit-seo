@@ -1,0 +1,26 @@
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
+
+export default defineConfig({
+  site: 'https://www.kreditloan.my',
+  integrations: [
+    tailwind(),
+    sitemap({
+      filter: (page) => {
+        // Exclude redirect pages (root without language)
+        if (page === 'https://www.kreditloan.my/') return false;
+        // Exclude error pages
+        if (page.includes('/410-gone')) return false;
+        // Exclude API routes
+        if (page.includes('/api/')) return false;
+        // Include everything else
+        return true;
+      },
+    }),
+  ],
+  output: 'static',
+  server: {
+    allowedHosts: ['.ngrok-free.app'],
+  },
+});

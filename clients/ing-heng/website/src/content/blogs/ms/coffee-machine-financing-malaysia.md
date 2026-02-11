@@ -4,7 +4,7 @@ title: 'Pembiayaan Mesin Kopi Malaysia: Pinjaman Mesin Espresso Komersial Deposi
 description: Biayai mesin kopi komersial dengan deposit 0% di Malaysia. Panduan lengkap
   pinjaman mesin espresso, pembiayaan peralatan kafe, dan dana permulaan kedai kopi.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - mesin kopi

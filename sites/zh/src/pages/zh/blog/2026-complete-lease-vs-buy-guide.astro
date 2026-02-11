@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '2026年完整租赁vs购买指南',
+  slug: '2026-complete-lease-vs-buy-guide',
+  excerpt: '2026年完整租赁vs购买指南。了解设备租赁和购买的优缺点。0%首付，100%全款。',
+  date: '2026-01-25',
+  author: 'Ing Heng Credit Team',
+  readTime: 5,
+  category: '租赁vs购买',
+  image: '/images/blog/2026-complete-lease-vs-buy-guide.jpg'
+};
+
+const keywords = ['机械融资', 'equipment financing malaysia', '0% down payment', 'heavy equipment loan'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/zh' },
+  { label: 'Blog', href: '/zh/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">租赁vs购买</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+      <h2>2026年完整租赁vs购买指南</h2>
+      <p>选择设备租赁还是购买?了解两者的详细对比。</p>
+
+      <h3>主要对比</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>项目</th>
+            <th>分期付款购买</th>
+            <th>经营租赁</th>
+            <th>融资租赁</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>首付</td>
+            <td>0%</td>
+            <td>通常0%</td>
+            <td>通常0%</td>
+          </tr>
+          <tr>
+            <td>所有权</td>
+            <td>您拥有</td>
+            <td>租赁公司</td>
+            <td>期末转移</td>
+          </tr>
+          <tr>
+            <td>税务</td>
+            <td>利息可扣除</td>
+            <td>租金可扣除</td>
+            <td>利息可扣除</td>
+          </tr>
+          <tr>
+            <td>期限</td>
+            <td>5-7年</td>
+            <td>1-5年</td>
+            <td>3-7年</td>
+          </tr>
+          <tr>
+            <td>维护</td>
+            <td>您负责</td>
+            <td>视协议</td>
+            <td>您负责</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>何时选择分期付款?</h3>
+      <ul>
+        <li>想要拥有设备</li>
+        <li>长期使用</li>
+        <li>需要资本津贴</li>
+        <li>预算有限但需设备</li>
+      </ul>
+
+      <h3>何时选择租赁?</h3>
+      <ul>
+        <li>短期项目</li>
+                <li>想要定期升级</li>
+                <li>不想承担维护责任</li>
+                <li>保护现金流</li>
+      </ul>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">2026年完整租赁vs购买指南?</h3>
+        <p style="margin-bottom: 1rem;">0%首付。100%全款。无年龄限制。快速快速审批。立即获得批准。</p>
+        <p style="margin-bottom: 0;"><strong>联系方式:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (电话)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="立即获取融资" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #D4A574;
+  }
+
+  th {
+    background: #F5F0E8;
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  br {
+    display: none;
+  }
+</style>

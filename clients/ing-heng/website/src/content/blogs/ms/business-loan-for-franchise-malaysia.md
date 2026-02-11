@@ -4,7 +4,7 @@ title: 'Pinjaman Perniagaan untuk Francais Malaysia: Panduan Pembiayaan 0% Depos
 description: Dapatkan 100% pembiayaan untuk perniagaan francais anda di Malaysia.
   Kelulusan pantas, kadar kejayaan tinggi. Sesuai untuk F&B, runcit, francais perkhidmatan.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pembiayaan francais

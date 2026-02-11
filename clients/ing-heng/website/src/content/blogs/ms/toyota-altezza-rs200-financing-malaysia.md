@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Toyota Altezza RS200 di Malaysia dengan piliha
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan toyota altezza rs200", "pembiayaan enjin beams", "pinjaman naturally aspirated", "pembiayaan toyota jarang", "pembiayaan altezza 0 deposit"]
 keywords: ["pembiayaan toyota altezza rs200 malaysia", "pinjaman enjin beams", "pembiayaan naturally aspirated", "pinjaman toyota jarang", "pembiayaan sedan sukan", "pembiayaan toyota 0 deposit", "pinjaman altezza meningkat nilai", "kelulusan pembiayaan rs200"]

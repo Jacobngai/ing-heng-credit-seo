@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan kren di Malaysia dengan 0% deposit dan 100% pem
   Kelulusan pantas untuk kren mudah alih, kren menara, dan kren crawler hingga 15
   tahun. Kerja angkat berat dibuat mampu.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - kren

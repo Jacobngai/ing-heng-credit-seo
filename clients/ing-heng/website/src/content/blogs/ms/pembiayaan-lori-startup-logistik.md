@@ -4,7 +4,7 @@ description: Mulakan perniagaan logistik tanpa modal. Pembiayaan lori 100% denga
   0% deposit untuk startup Malaysia. Kelulusan pantas, mesra bekerja sendiri, kalkulator
   ROI disertakan.
 author: "ING HENG Credit"
-publishDate: 2026-01-27
+publishDate: 2026-01-27T00:00:00.000Z
 category: Financing Guides
 tags:
 - pembiayaan startup
@@ -907,3 +907,4 @@ Dari usahawan kali pertama ke pemilik perniagaan logistik dalam satu minggu.
 - [Perbandingan Sewa Beli vs. Pembiayaan Pinjaman](/ms/services/hire-purchase)
 - [Panduan Pembiayaan Bekerja Sendiri](/ms/services/self-employed)
 - [Insurans Peralatan Startup](/ms/services/insurance)
+

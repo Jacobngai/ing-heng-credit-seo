@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Volvo 240 Turbo anda. Penyele
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["Volvo 240 Turbo", "Pembiayaan Kereta Klasik", "0% Deposit", "Kejuruteraan Sweden", "Kenderaan Pelaburan"]
 keywords: ["pembiayaan Volvo 240 turbo", "pembiayaan Volvo klasik", "pembiayaan kenderaan 0% deposit", "pinjaman kereta Sweden", "pinjaman 240 turbo", "pembiayaan Volvo vintaj", "pembiayaan kenderaan khas", "pelaburan kereta klasik"]

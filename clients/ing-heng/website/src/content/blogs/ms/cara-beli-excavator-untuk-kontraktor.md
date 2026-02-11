@@ -2,7 +2,7 @@
 title: "Cara Beli Excavator Untuk Kontraktor Malaysia - Panduan Lengkap 2025"
 description: "Panduan step-by-step cara beli excavator untuk kontraktor. Dapatkan tips pemilihan, pembiayaan, dan strategi pembelian excavator yang betul untuk perniagaan kontraktor."
 category: "Equipment Financing"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["cara beli excavator", "kontraktor", "panduan pembelian", "excavator guide"]
 image: "/images/excavator-buying-guide-contractors.jpg"

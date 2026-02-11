@@ -2,7 +2,7 @@
 title: "Pembiayaan Excavator Untuk Kontraktor Malaysia - 100% Tanpa Deposit"
 description: "Panduan lengkap pembiayaan excavator khusus untuk kontraktor. Dapatkan 100% pembiayaan tanpa deposit, syarat mudah dan kelulusan pantas untuk semua jenis kontraktor."
 category: "Equipment Financing"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["excavator", "kontraktor", "pembiayaan", "tanpa deposit"]
 image: "/images/excavator-contractor-financing.jpg"

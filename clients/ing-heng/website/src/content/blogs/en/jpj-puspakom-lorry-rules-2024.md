@@ -2,7 +2,7 @@
 title: "JPJ PUSPAKOM Rules 2024: Financing Compliant Lorry Trucks"
 description: "JPJ PUSPAKOM Rules 2024: Financing Compliant Lorry Trucks"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -479,3 +479,4 @@ Minimize downtime and get your compliant lorry on the road quickly.
 4. JPJ license renewal schedule
 5. APAD permit (for goods transportation)
 6. Insurance quotation
+

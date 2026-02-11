@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Datsun 240Z Klasik Malaysia - 0% Deposit Tersedia"
 description: "Dapatkan kelulusan pembiayaan kereta klasik Datsun 240Z di Malaysia. Bank tolak kereta vintaj? Kami pakar dalam pinjaman kenderaan vintaj dengan 0% deposit."
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 tags: ["pembiayaan datsun 240z", "pinjaman kereta klasik malaysia", "pembiayaan kenderaan vintaj", "pembiayaan datsun"]
 category: Equipment Financing
 lang: "ms"

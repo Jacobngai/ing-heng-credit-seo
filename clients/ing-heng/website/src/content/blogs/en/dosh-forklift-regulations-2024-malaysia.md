@@ -2,7 +2,7 @@
 title: "DOSH Forklift Regulations 2024: Financing Compliant Equipment"
 description: "DOSH compliance is mandatory for Malaysian forklift operations. Learn how to finance certified equipment that meets 2024 safety standards while avoiding costly penalties and shutdowns."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -758,3 +758,4 @@ We finance only certified equipment with 0% down payment. Get approved in 24 hou
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

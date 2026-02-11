@@ -5,7 +5,7 @@ description: Dapatkan pinjaman kecemasan baik pulih kereta segera di Malaysia. 1
   pembiayaan, 0% deposit, kelulusan pantas untuk masalah enjin, kerosakan kemalangan,
   kegagalan transmisi. Mobiliti anda tidak boleh menunggu.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pembiayaan kecemasan

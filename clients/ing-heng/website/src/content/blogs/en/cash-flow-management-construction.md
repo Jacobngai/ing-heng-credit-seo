@@ -2,7 +2,7 @@
 title: "Cash Flow Management for Construction Companies: 5 Essential Strategies"
 description: "Master cash flow management while financing expensive construction equipment. Proven strategies from 40+ years of industry experience."
 author: "Ing Heng Credit Team"
-publishDate: 2025-10-06
+publishDate: 2025-10-06T00:00:00.000Z
 category: Financing Guides
 tags:
   - Equipment Financing
@@ -902,3 +902,4 @@ We structure equipment payments around construction cash flow reality. Get appro
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

@@ -1,0 +1,549 @@
+---
+/**
+ * Hobby Financing Hub Page - English
+ * Main hub page showcasing all hobby financing categories
+ * SEO: Hobby financing Malaysia, classic car financing, motorcycle financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HobbyCard from '../../../components/HobbyCard.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import { encodeJSONLD } from '../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Hobby Financing Malaysia | Classic Cars, Motorcycles, Boats & More';
+const pageDescription = 'Finance your passion. Classic cars, motorcycles, boats, and recreational vehicles. Up to RM1 million, no age limit, fast approval. Banks say no, we say yes.';
+const keywords = [
+  'hobby financing Malaysia',
+  'classic car financing',
+  'vintage car loan',
+  'motorcycle financing',
+  'boat financing',
+  'yacht financing',
+  'RV financing',
+  'collector car financing',
+  'JDM car financing',
+  'old car loan Malaysia'
+];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Hobby Financing', url: '/en/hobby' },
+];
+
+// Category Cards for Hub Page
+const categoryCards = [
+  {
+    title: 'Classic Cars',
+    description: 'Finance your dream collector car. We finance vintage JDM legends, European classics, and American muscle.',
+    image: '/images/hobby/classic-cars-card.jpg',
+    href: '/en/hobby/classic-cars',
+    items: ['JDM Legends', 'European Classics', 'American Muscle'],
+    badge: 'popular'
+  },
+  {
+    title: 'Motorcycles',
+    description: 'Classic and vintage motorcycle financing. Harley-Davidson, Japanese vintage, and European superbikes.',
+    image: '/images/hobby/motorcycles-card.jpg',
+    href: '/en/hobby/motorcycles',
+    items: ['Harley-Davidson', 'Japanese Vintage', 'European Bikes']
+  },
+  {
+    title: 'Boats & Yachts',
+    description: 'Own your dream boat. Yachts, speedboats, fishing boats, and jet skis - all types of marine financing.',
+    image: '/images/hobby/marine-card.jpg',
+    href: '/en/hobby/marine',
+    items: ['Yachts', 'Speedboats', 'Jet Ski']
+  },
+  {
+    title: 'Recreational Vehicles',
+    description: 'Adventure awaits. Motorhomes, ATVs, UTVs, and golf carts for your outdoor lifestyle.',
+    image: '/images/hobby/recreational-card.jpg',
+    href: '/en/hobby/recreational',
+    items: ['Motorhomes', 'ATV/UTV', 'Golf Carts']
+  },
+  {
+    title: 'Aircraft',
+    description: 'Helicopter and small aircraft financing for aviation enthusiasts. Take flight today.',
+    image: '/images/hobby/aircraft-card.jpg',
+    href: '/en/hobby/aircraft',
+    items: ['Helicopters', 'Small Planes', 'Gyrocopters']
+  },
+  {
+    title: "Can't Find What You're Looking For?",
+    description: 'Contact us for custom financing solutions. We finance unique and specialized collectibles.',
+    image: '/images/hobby/custom-card.jpg',
+    href: 'https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20custom%20hobby%20financing.',
+    badge: 'custom'
+  }
+];
+
+// Why Choose Us Benefits
+const whyChooseUsBenefits = [
+  {
+    icon: 'clock',
+    title: 'Fast Approval',
+    description: 'Quick processing with fast approval. Get your dream hobby financed without the long wait.'
+  },
+  {
+    icon: 'infinity',
+    title: 'No Age Limit',
+    description: 'We finance vintage and collectible vehicles regardless of age. 30+ year old cars welcome.'
+  },
+  {
+    icon: 'chart-line',
+    title: 'Up to RM1 Million',
+    description: 'Finance your dream with loans up to RM1,000,000 for high-value collectibles.'
+  },
+  {
+    icon: 'search',
+    title: 'Specialist Assessment',
+    description: 'Our experts assess real value, not just book value. We understand collector markets.'
+  },
+  {
+    icon: 'percentage',
+    title: 'Flexible Terms',
+    description: 'Customized repayment plans from 1-7 years to match your financial situation.'
+  },
+  {
+    icon: 'thumbs-up',
+    title: 'Banks Say No, We Say Yes',
+    description: 'We finance what traditional banks reject. Turn your dream into reality.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Can I finance a 30 year old classic car?',
+    answer: 'Yes! Unlike banks that typically refuse vehicles older than 10-15 years, we have no age limit. We finance vintage cars, classic JDM legends, European classics, and American muscle cars from any era. Our specialist team understands the collector market and assesses the real value of your dream vehicle.'
+  },
+  {
+    question: 'What is the maximum loan amount for hobby financing?',
+    answer: 'We offer financing up to RM1,000,000 for hobby and collector vehicles. This applies to classic cars, motorcycles, boats, yachts, and recreational vehicles. For high-value collectibles or special cases, we can provide custom quotes based on your specific needs.'
+  },
+  {
+    question: 'What documents do I need for hobby financing?',
+    answer: 'Documentation requirements are straightforward. For individuals: IC (NRIC), 6 months bank statements, proof of income or business ownership. For companies: SSM registration, company bank statements, directors\' IC, and financial statements if available. We focus on your ability to repay and the value of the collectible.'
+  },
+  {
+    question: 'How is the value of a classic car or collector vehicle determined?',
+    answer: 'Unlike banks that use book value (which is often zero for old vehicles), we use specialist assessment. Our experts evaluate the real market value based on condition, rarity, provenance, and current collector market prices. We understand that a pristine 1990s GTR is worth far more than its book value.'
+  },
+  {
+    question: 'Can I finance a vehicle I already own for other purposes?',
+    answer: 'Yes! We offer refinancing options for hobby and collector vehicles you already own. This can help free up cash for restoration, upgrades, or other investments. Contact us to discuss your specific situation and explore refinancing options.'
+  },
+  {
+    question: 'Do you finance imported vehicles?',
+    answer: 'Yes, we finance imported vehicles including JDM cars from Japan, European imports, and American muscle cars. Our team is experienced with the import market and understands the documentation and valuation requirements for these vehicles.'
+  },
+  {
+    question: 'What is the typical loan tenure for hobby financing?',
+    answer: 'We offer flexible tenure from 1-7 years depending on your preference and financial situation. Shorter terms mean less interest paid overall, while longer terms provide more affordable monthly payments. We work with you to find the right balance.'
+  },
+  {
+    question: 'Can I get financing if I have bad credit?',
+    answer: 'We consider each application individually. While credit history is a factor, we focus on the value of the collectible and your current financial situation. Many clients with credit challenges have been approved because we look at the full picture, not just a credit score.'
+  }
+];
+
+// ItemList Schema for Hobby Categories
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Hobby Financing Categories',
+  description: 'Comprehensive hobby financing options for classic cars, motorcycles, boats, and recreational vehicles in Malaysia',
+  itemListElement: categoryCards.filter(c => !c.comingSoon).map((card, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Product',
+      name: card.title,
+      description: card.description,
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: 'Hobby Financing Malaysia',
+  description: 'Specialized financing for classic cars, motorcycles, boats, yachts, and recreational vehicles with no age limit and fast approval',
+  provider: {
+    '@type': 'Organization',
+    name: 'Ing Heng Credit & Leasing'
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Malaysia'
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Hobby Financing Options',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Classic Car Financing',
+          description: 'JDM legends, European classics, and American muscle car financing'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Motorcycle Financing',
+          description: 'Harley-Davidson, Japanese vintage, and European bike financing'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Boat & Yacht Financing',
+          description: 'Yachts, speedboats, fishing boats, and jet ski financing'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Recreational Vehicle Financing',
+          description: 'Motorhomes, ATVs, UTVs, and golf cart financing'
+        }
+      }
+    ]
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(itemListSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero Section - Matching Home Page Design -->
+  <section class="hero-section relative overflow-hidden bg-gradient-to-br from-accent to-primary-dark min-h-[80vh] flex items-center">
+    <!-- Strong dark overlay for maximum text contrast -->
+    <div class="absolute inset-0 bg-black/60 z-0"></div>
+    <!-- Additional gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-5"></div>
+
+    <div class="container-custom relative z-10">
+      <div class="max-w-5xl mx-auto text-center">
+        <!-- Breadcrumbs -->
+        <div class="mb-8">
+          <Breadcrumbs items={breadcrumbs} lang={lang} />
+        </div>
+
+        <h1 class="text-6xl md:text-7xl lg:text-8xl font-display uppercase leading-none mb-6 text-white font-black" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">
+          Finance Your <span class="text-yellow-400" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">Passion</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white mb-8 font-medium leading-relaxed max-w-3xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 1px 1px 2px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.6);">
+          Banks Say No to Old Cars. We Say Yes. Classic cars, motorcycles, boats & more.
+        </p>
+
+        <!-- Trust Signals -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">RM1M</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Maximum Loan</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">No</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Age Limit</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">⚡</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Fast Approval</div>
+          </div>
+          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">40+</div>
+            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Years Experience</div>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20hobby%20financing." class="bg-white text-[#8B6F47] font-black uppercase tracking-tight text-xl px-12 py-5 border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810] hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all inline-block text-center">
+            Get Free Quote Now
+          </a>
+          <a href={COMPANY_INFO.whatsapp.link} class="btn btn-outline-white text-xl px-12 py-5">
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+  </section>
+
+  <!-- Category Cards Grid -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Choose Your <span class="text-secondary">Passion</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          We finance what banks reject. Turn your dream into reality.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categoryCards.map((card) => (
+          <HobbyCard
+            lang={lang}
+            title={card.title}
+            description={card.description}
+            image={card.image}
+            href={card.href}
+            items={card.items}
+            badge={card.badge}
+            comingSoon={card.comingSoon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Why Choose <span class="text-secondary">Ing Heng Credit</span>?
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          We understand collectors. We understand value.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {whyChooseUsBenefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          How Hobby <span class="text-secondary">Financing Works</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">
+            1
+          </div>
+          <h3 class="text-lg font-display uppercase text-navy-900 mb-2">Find Your Dream</h3>
+          <p class="text-sm text-gray-600">Browse your passion category or bring your own find.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">
+            2
+          </div>
+          <h3 class="text-lg font-display uppercase text-navy-900 mb-2">Get a Quote</h3>
+          <p class="text-sm text-gray-600">WhatsApp or call us. We'll assess your dream's value quickly.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">
+            3
+          </div>
+          <h3 class="text-lg font-display uppercase text-navy-900 mb-2">Fast Approval</h3>
+          <p class="text-sm text-gray-600">Quick processing with specialist assessment.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl font-black">
+            4
+          </div>
+          <h3 class="text-lg font-display uppercase text-navy-900 mb-2">Own Your Passion</h3>
+          <p class="text-sm text-gray-600">Drive, ride, or sail your dream. It's yours.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20hobby%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary btn-lg inline-block"
+        >
+          Start Your Application Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals & Stats -->
+  <section class="section bg-black text-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-4 text-white">
+          Trusted by 4,000+ <span class="text-yellow-400">Malaysian Businesses</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-white">
+          40 years of financing excellence - now serving hobby enthusiasts
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div class="bg-white/10 border-2 border-white/30 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">High</div>
+          <div class="text-lg text-white">Approval Rate</div>
+        </div>
+        <div class="bg-white/10 border-2 border-white/30 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">RM1M</div>
+          <div class="text-lg text-white">Maximum Loan</div>
+        </div>
+        <div class="bg-white/10 border-2 border-white/30 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">No</div>
+          <div class="text-lg text-white">Age Limit</div>
+        </div>
+        <div class="bg-white/10 border-2 border-white/30 p-8">
+          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">40</div>
+          <div class="text-lg text-white">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+          Frequently Asked <span class="text-secondary">Questions</span>
+        </h2>
+        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
+        <p class="text-xl text-gray-700">
+          Everything you need to know about hobby financing
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section - Matching Home Page Format -->
+  <section class="section bg-gray-50">
+    <div class="container-custom text-center">
+      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
+        Ready to Finance Your <span class="text-secondary">Dream</span>?
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Stop letting banks crush your passion. Get fast approval for your classic car, motorcycle, boat, or recreational vehicle. Join collectors who chose Ing Heng Credit.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20hobby%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary text-lg px-8 py-4"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn btn-outline text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-700 mt-8">
+        <div class="flex items-center space-x-2">
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">No Obligation Quote</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">Fast Approval</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
+          <span class="font-semibold">KPKT Licensed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .text-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .text-accent {
+    color: #0F172A;
+  }
+
+  .text-primary-dark {
+    color: #1E3A8A;
+  }
+
+  .text-secondary {
+    color: #8B6F47;
+  }
+
+  .text-navy-900 {
+    color: #2D1810;
+  }
+</style>

@@ -4,7 +4,7 @@ description: "Biayai Toyota Soarer JZZ30 anda dengan 0% deposit. Rasai raungan g
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Toyota Soarer JZZ30", "pinjaman 1JZ-GTE twin turbo", "pembiayaan mewah era bubble", "pembiayaan grand tourer JDM", "0% deposit Soarer"]
 keywords: ["pembiayaan Toyota Soarer JZZ30 Malaysia", "pembiayaan 1JZ-GTE twin turbo", "pinjaman coupe era bubble", "0% deposit Soarer", "pembiayaan JDM mewah", "pinjaman grand tourer twin turbo", "pembiayaan Soarer menghargai", "pinjaman JZZ30 Malaysia"]

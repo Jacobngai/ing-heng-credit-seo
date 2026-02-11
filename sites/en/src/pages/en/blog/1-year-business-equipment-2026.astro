@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'en';
+const post = {
+  title: '1-Year Business Equipment 2026',
+  slug: '1-year-business-equipment-2026',
+  excerpt: '1-year business equipment financing 2026. Equipment loans for businesses operating 1 year.',
+  date: '2026-01-07',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Equipment Financing',
+  image: '/images/blog/1-year-business.jpg'
+};
+
+const keywords = ["machinery-financing","1-year","young-business"],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 1-Year Business Equipment 2026
+
+Business operating 1 year? Equipment financing available with 12-month track record in 2026.
+
+## 1-Year Business Position
+
+**Better Than Startup:**
+- 12 months operation proven
+- Full year financial data
+- Seasonal patterns visible
+- Client base established
+- **Higher approval than 6-month**
+
+## 2026 1-Year Approval
+
+**Improved Terms:**
+- 60-80% approval rate
+- 5-15% down payment
+- 4.8-5.8% interest
+- 4-6 year terms
+- **Better than startup rates**
+
+## Real 1-Year Approvals
+
+**Case:** Construction - 12 months
+**Need:** Excavator
+**Financing:** RM 180,000, 5% down
+**Approved:** fasts
+
+## 1-Year Documentation
+
+**Required:**
+- 12 months bank statements
+- Year-end revenue summary
+- Client list
+- **Proves viability**
+
+## Get 1-Year Equipment
+
+Business 1 year old? Apply for improved equipment financing terms.
+
+---
+
+**Less than 1 year?** See [New Company Equipment](/blog/new-company-equipment-2026-startup).
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

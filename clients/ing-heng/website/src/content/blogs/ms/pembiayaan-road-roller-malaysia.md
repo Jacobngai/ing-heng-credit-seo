@@ -4,7 +4,7 @@ title: 'Pembiayaan Road Roller Malaysia: Pinjaman Jentera 0% Deposit untuk Kontr
 description: Dapatkan pembiayaan road roller di Malaysia dengan 0% deposit dan 100%
   pembiayaan. Kelulusan pantas untuk road roller baru dan terpakai sehingga 15 tahun.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - road roller

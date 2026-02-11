@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'ms';
+const post = {
+  title: 'Pakej Gudang 2026 Lengkap - One-Stop Solution',
+  slug: 'pakej-gudang-2026-lengkap',
+  excerpt: 'Dapatkan pembiayaan pakej gudang 2026 lengkap - one-stop solution dengan 0% down payment dari Ing Heng Credit. Kelulusan pantas, tiada had umur peralatan.',
+  date: 'undefined',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Peralatan Gudang',
+  image: 'undefined'
+};
+
+const keywords = [],
+  breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/ms/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Pakej Gudang 2026 Lengkap - One-Stop Solution
+
+Pakej lengkap untuk warehouse baru. Dari forklift ke racking, semua ada!
+
+## Complete Warehouse Package
+
+### Apa Termasuk dalam Pakej?
+
+#### Basic Equipment
+- Forklist (1-3 unit)
+- Pallet stacker
+- Hand pallet trucks
+
+#### Storage Solutions
+- Pallet racking system
+- Shelving units
+- Mezzanine (optional)
+
+#### Loading Bay
+- Dock leveller
+- Dock shelter
+- Industrial door
+
+#### Safety Equipment
+- Safety barriers
+- Mirror systems
+- Traffic signs
+
+### Had Bank
+- Setiap item perlukan 10-30% down payment
+- Total down payment boleh RM 50,000-150,000!
+- Proses sangat lama untuk multiple items
+- Documentation kompleks
+
+## Ing Heng: Complete Package 0% Down Payment
+
+## Jadual Perbandingan
+
+| Ciri-ciri | Bank | Ing Heng |
+|-----------|------|----------|
+| Down Payment | 10-20% | **0%** |
+| Jumlah Pinjaman | 90% | **100%** |
+| Umur Peralatan | 5 tahun maks | **Tiada had** |
+| Kadar Faedah | 4.6-6.0% setahun | Berdaya saing |
+
+### Warehouse Packages
+
+#### Package Small Warehouse
+- 2x Forklift 2.5 ton
+- 1x Pallet stacker
+- Racking untuk 100 pallets
+- **Total:** RM 130,000
+- **Bank DP:** RM 19,500-32,500
+- **Ing Heng:** 0% down payment!
+
+#### Package Medium Warehouse
+- 3x Forklift (mixed)
+- 1x Reach truck
+- Racking untuk 300 pallets
+- 1x Dock leveller
+- **Total:** RM 300,000
+- **Bank DP:** RM 45,000-75,000
+- **Ing Heng:** 0% down payment!
+
+#### Package Large Warehouse
+- 5x Forklift fleet
+- 2x Reach truck
+- Racking untuk 500+ pallets
+- 2x Dock leveller
+- Conveyor system
+- **Total:** RM 600,000
+- **Bank DP:** RM 90,000-150,000
+- **Ing Heng:** 0% down payment!
+
+## Seruan Bertindak
+
+Jangan biarkan had bank memperlahankan perniagaan anda. Dengan Ing Heng Credit:
+
+- **0% Down Payment** - Bawa peralatan keluar tanpa bayaran muka
+- **100% Pinjaman Penuh** - Perlindungan insurans & cukai jalan included
+- **Tiada Had Umur** - Peralatan 10 tahun pun boleh dibiayai
+
+Hubungi kami sekarang:
+- WhatsApp: +60175700889
+- Laman web: inghengcredit.com
+- Masa proses: pantas
+
+**S: Adakah warehouse package berbaloi berbanding beli satu-satu?**
+J: Ya! Package dapat better rates & coordinated installation.
+
+**S: Berapa lama untuk setup complete warehouse?**
+J: 4-8 minggu dari order to full operation.
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Peralatan Gudang</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min baca</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/ms/contact">Mohon Pembiayaan Peralatan</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

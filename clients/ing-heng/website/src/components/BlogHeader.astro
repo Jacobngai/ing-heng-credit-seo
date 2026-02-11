@@ -1,0 +1,108 @@
+---
+// Simple, reusable blog header for pages that define their own frontmatter.
+// Props:
+// - title: string
+// - publishDate: string | Date
+// - tags: string[]
+// - lang: 'en' | 'ms' | 'zh' | string
+
+const {
+  title,
+  publishDate,
+  tags = [],
+  lang = 'en',
+} = Astro.props;
+
+const locale = lang === 'ms' ? 'ms-MY' : lang === 'zh' ? 'zh-CN' : 'en-MY';
+
+const dateObj = publishDate ? new Date(publishDate) : null;
+const dateLabel =
+  lang === 'ms' ? 'Tarikh' :
+  lang === 'zh' ? '日期' :
+  'Date';
+
+const formattedDate = (dateObj && !Number.isNaN(dateObj.getTime()))
+  ? dateObj.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+---
+
+<header class="blog-header">
+  <h1 class="blog-title">{title}</h1>
+
+  {(formattedDate || (tags && tags.length)) && (
+    <div class="blog-meta">
+      {formattedDate && (
+        <p class="blog-date">
+          <span class="label">{dateLabel}:</span> {formattedDate}
+        </p>
+      )}
+
+      {tags && tags.length > 0 && (
+        <ul class="blog-tags" aria-label="Tags">
+          {tags.map((t) => (
+            <li class="tag">{t}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )}
+</header>
+
+<style>
+  .blog-header {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem 1.25rem;
+    border-bottom: 2px solid #cd7f32;
+  }
+
+  .blog-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+    color: #1a1a1a;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    color: #666;
+  }
+
+  .blog-date {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .blog-date .label {
+    font-weight: 600;
+    color: #444;
+  }
+
+  .blog-tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.85rem;
+    background: #fef3e7;
+    color: #a8652a;
+    border: 1px solid rgba(205, 127, 50, 0.35);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 1.6rem;
+    }
+  }
+</style>

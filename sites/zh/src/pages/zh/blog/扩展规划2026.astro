@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '扩展规划 2026 - 业务扩展',
+  slug: '扩展规划2026',
+  excerpt: '2026年业务扩展规划。设备扩展计划，从2台到10台策略。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["扩展规划","业务扩展","设备扩展","扩展策略"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 扩展规划 2026
+
+## 业务扩展规划
+
+2026年扩展业务:
+
+\`\`\`
+现有规模 → 扩展目标 → 设备规划 → 0%首付购买
+\`\`\`
+
+## 扩展路径
+
+### 路径1: 稳定扩展
+
+- 2025: 2台
+- 2026: 3台
+- 2027: 5台
+
+### 路径2: 快速扩展
+
+- 2025: 3台
+- 2026: 7台
+- 2027: 15台
+
+### 路径3: 激进扩展
+
+- 2025: 5台
+- 2026: 15台
+- 2027: 30台
+
+## 扩展预算
+
+| 目标 | 需要设备 | 预算 | Ing Heng首付 |
+|------|---------|------|-------------|
+| 3台 | +1台 | RM 30,000-60,000 | RM 0 |
+| 5台 | +2台 | RM 60,000-120,000 | RM 0 |
+| 10台 | +5台 | RM 150,000-300,000 | RM 0 |
+| 20台 | +10台 | RM 300,000-600,000 | RM 0 |
+
+**立即申请: WhatsApp +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

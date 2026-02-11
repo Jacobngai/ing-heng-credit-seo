@@ -4,7 +4,7 @@ description: "Pembiayaan Honda Beat langka dengan 0% deposit. Bank tolak kei car
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Honda Beat", "pinjaman kei car", "VTEC micro sports", "pembiayaan kolektor JDM", "Honda meningkat nilai"]
 keywords: ["pembiayaan Honda Beat", "pinjaman Beat Malaysia", "pembiayaan kei car", "VTEC kei sports", "pinjaman Honda Beat", "pembiayaan kereta sukan micro", "pembiayaan kei JDM", "Beat meningkat nilai"]

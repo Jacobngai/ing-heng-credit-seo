@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'en';
+const post = {
+  title: 'Part-Time Equipment Business 2026',
+  slug: 'part-time-equipment-business-2026',
+  excerpt: 'Part-time equipment business financing 2026. Side business equipment loans for part-time operators.',
+  date: '2026-01-07',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Equipment Financing',
+  image: '/images/blog/part-time.jpg'
+};
+
+const keywords = ["machinery-financing","part-time","side-business"],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Part-Time Equipment Business 2026
+
+Part-time equipment business? Financing available for side-business operators in 2026.
+
+## Part-Time Equipment Reality
+
+**Common Situations:**
+- Main job + part-time contracting
+- Weekend equipment rental
+- Seasonal equipment use
+- Building business part-time
+
+## 2026 Part-Time Solutions
+
+**Approval Based On:**
+- Combined income (job + business)
+- Equipment rental income potential
+- Business viability
+- **40-50% approval rate**
+
+## Real Part-Time Approvals
+
+**Case:** Full-time driver + weekend excavator rental
+**Income:** RM 5k (job) + RM 3k (rental)
+**Equipment:** Komatsu PC200 (rental business)
+**Financing:** RM 180,000, 20% down, 6 years
+
+## Part-Time Interest
+
+| Income Stability | Rate | Down Payment |
+|----------------|------|--------------|
+| **Stable dual income** | 5.5-6.5% | 10-20% |
+| **Seasonal** | 6.5-7.5% | 20-30% |
+| **Variable** | 7.5-8.5% | 30-50% |
+
+## Get Part-Time Equipment
+
+Part-time equipment business? Apply for combined income equipment financing.
+
+---
+
+**Full-time business?** See [1-Year Business Equipment](/blog/1-year-business-equipment-2026).
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

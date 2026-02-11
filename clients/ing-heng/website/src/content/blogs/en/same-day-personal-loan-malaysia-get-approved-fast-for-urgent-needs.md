@@ -2,7 +2,7 @@
 title: "Same Day Personal Loan Malaysia - Get Approved Fast for Urgent Needs"
 description: "Apply for personal loans with urgent processing in Malaysia. 0% deposit, 100% financing available with fast approval for genuine urgent financial needs."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

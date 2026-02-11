@@ -1,0 +1,242 @@
+---
+/**
+ * Grab (Clamshell Bucket) Financing Landing Page - Mandarin Chinese
+ * Target: Construction companies, waste management, material handling
+ * Keywords: 抓斗融资, 抓钢机贷款, 物料处理设备融资
+ * Cultural Focus: Industrial efficiency, waste management, material handling
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '抓斗设备融资马来西亚 | 0%押金 | 永兴信贷 | 物料处理专家';
+const pageDescription = '专业抓斗设备融资服务。0%押金，100%融资，支持物料处理业务。永兴信贷40年信誉，工业设备专业融资。';
+const keywords = ['抓斗融资', '抓钢机贷款', '物料处理设备', '废料处理融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '抓斗设备融资', url: '/zh/equipment/grab' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'cog', title: '工业设备专家', description: '深入了解物料处理行业，专门为抓斗设备提供融资支持。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。快速提升物料处理能力。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '专业团队快速处理，了解工业设备急需性。快速决定。' },
+  { icon: 'calendar', title: '灵活期限', description: '12-84个月还款期，根据设备使用频率和项目周期安排。' },
+  { icon: 'recycle', title: '环保支持', description: '支持废料回收和环保项目，符合可持续发展需求。' },
+  { icon: 'shield', title: '设备保值', description: '高品质抓斗设备保值性好，降低融资风险。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '抓斗设备融资马来西亚',
+  description: '专业抓斗设备融资，0%押金，支持物料处理业务。永兴信贷工业设备专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/grab-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '100000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚抓斗设备融资"
+    subtitle="0%押金 | 100%融资 | 物料处理 | 永兴信贷工业专业"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解抓斗设备融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '工业专家']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          抓斗设备融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为工业公司提供抓斗设备融资服务。支持物料处理、废料回收和工业生产效率提升。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Grab Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的抓斗设备类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">废钢抓斗机</h4>
+            <p class="text-[#4F3E29] mb-4">专门处理废钢铁，强力抓取能力，适合回收站。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">木材抓斗机</h4>
+            <p class="text-[#4F3E29] mb-4">原木搬运专用，适合锯木厂和港口作业。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">垃圾抓斗机</h4>
+            <p class="text-[#4F3E29] mb-4">垃圾处理专用，环保作业，城市清洁。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">石料抓斗机</h4>
+            <p class="text-[#4F3E29] mb-4">采石场专用，处理各种规格石料。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">集装箱抓斗机</h4>
+            <p class="text-[#4F3E29] mb-4">港口货柜搬运，高效物流作业。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">多功能抓斗机</h4>
+            <p class="text-[#4F3E29]">可换装不同抓斗，适应多种作业需求。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-green-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">应用行业</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-green-600 mb-3">废料回收行业</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 废钢铁回收站</li>
+              <li>• 有色金属回收</li>
+              <li>• 电子废料处理</li>
+              <li>• 汽车拆解场</li>
+              <li>• 建筑废料回收</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-green-600 mb-3">工业生产</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 钢铁厂原料处理</li>
+              <li>• 造纸厂原料搬运</li>
+              <li>• 港口货物装卸</li>
+              <li>• 采石场作业</li>
+              <li>• 木材加工厂</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Specifications -->
+      <div class="bg-gradient-to-r from-gray-600 to-blue-600 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">技术规格</h3>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">0.5-10</div>
+            <div class="font-semibold mb-2">抓取量（立方米）</div>
+            <div class="text-sm opacity-90">根据型号不同</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">360°</div>
+            <div class="font-semibold mb-2">旋转角度</div>
+            <div class="text-sm opacity-90">全方位作业</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">20-50T</div>
+            <div class="font-semibold mb-2">载重能力</div>
+            <div class="text-sm opacity-90">根据设备型号</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">1000+</div>
+            <div class="font-semibold mb-2">作业小时/月</div>
+            <div class="text-sm opacity-90">高耐用性</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        提升物料处理效率
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷助您获得高效抓斗设备，提升作业效率，扩大业务规模。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请抓斗设备融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="grab" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取抓斗设备融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的工业设备融资专家将为您服务
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

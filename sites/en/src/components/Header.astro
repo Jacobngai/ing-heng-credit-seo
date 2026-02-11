@@ -1,0 +1,429 @@
+---
+/**
+ * Header Component
+ * Responsive navigation with mobile menu and WhatsApp CTA (English only)
+ */
+
+import type { Locale } from '../utils/i18n';
+import { t } from '../utils/i18n';
+import { NAV_LINKS, COMPANY_INFO, EQUIPMENT_NAV_ITEMS, HOBBY_NAV_ITEMS } from '../utils/constants';
+import EquipmentDropdown from './EquipmentDropdown.astro';
+import HobbyDropdown from './HobbyDropdown.astro';
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+// Hardcode to English
+const lang: Locale = 'en';
+
+// Remove language prefix from path for comparison
+const pathWithoutLang = currentPath.replace(`/${lang}`, '').replace(/^\/+|\/+$/g, '') || '/';
+
+// Check if link is active
+function isActive(href: string): boolean {
+  if (href === '/') {
+    return pathWithoutLang === '/' || pathWithoutLang === '';
+  }
+  return pathWithoutLang.startsWith(href.replace('/', ''));
+}
+---
+
+<header class="sticky top-0 z-40 bg-white border-b-3 border-[#2D1810] shadow-brutal">
+  <nav class="container-custom" aria-label="Main navigation">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo (Beige/Bronze) -->
+      <div class="flex items-center">
+        <a href={`/${lang}/`} class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+          <img
+            src="/logos/no background full.png"
+            alt={COMPANY_INFO.name}
+            class="h-12 w-auto"
+            width="150"
+            height="48"
+          />
+          <span class="sr-only">{COMPANY_INFO.name}</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex lg:items-center lg:space-x-8">
+        {NAV_LINKS.map((link) => {
+          const href = link.href === '/' ? `/${lang}/` : `/${lang}${link.href}`;
+          const active = isActive(link.href);
+
+          // Use dropdown for equipment
+          if (link.hasDropdown && link.href === '/equipment') {
+            return <EquipmentDropdown lang={lang} currentPath={currentPath} />;
+          }
+
+          // Use dropdown for hobby
+          if (link.hasDropdown && link.href === '/hobby') {
+            return <HobbyDropdown lang={lang} currentPath={currentPath} />;
+          }
+
+          return (
+            <a
+              href={href}
+              class={active
+                ? 'text-[#8B6F47] font-black uppercase tracking-tight text-sm border-b-3 border-[#8B6F47] pb-1'
+                : 'text-[#6B5437] font-bold uppercase tracking-tight text-sm hover:text-[#8B6F47] hover:border-b-3 hover:border-[#D4A574] pb-1 transition-all'}
+              aria-current={active ? 'page' : undefined}
+            >
+              {t(link.label, lang)}
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Desktop Actions -->
+      <div class="hidden lg:flex lg:items-center lg:space-x-4">
+        <!-- WhatsApp CTA -->
+        <a
+          href={COMPANY_INFO.whatsapp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-[#8B6F47] font-black uppercase tracking-tight px-4 py-2 border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] hover:shadow-[2px_2px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all flex items-center space-x-2"
+          aria-label={t('cta.whatsapp', lang)}
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span>{t('cta.whatsapp', lang)}</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center lg:hidden">
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="inline-flex items-center justify-center p-3 border-3 border-[#2D1810] text-[#8B6F47] hover:bg-[#8B6F47] hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8B6F47] shadow-[2px_2px_0_#2D1810]"
+          style="min-width: 48px; min-height: 48px;"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <!-- Hamburger Icon (visible when menu closed) -->
+          <svg class="h-6 w-6 menu-icon-hamburger" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" stroke-width="3">
+            <path stroke-linecap="square" stroke-linejoin="miter" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- X Icon (visible when menu open) -->
+          <svg class="h-6 w-6 menu-icon-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" stroke-width="3">
+            <path stroke-linecap="square" stroke-linejoin="miter" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t-3 border-[#2D1810] bg-white">
+      <div class="px-2 pt-2 pb-3 space-y-1 mobile-menu-scrollable">
+        {NAV_LINKS.map((link) => {
+          const href = link.href === '/' ? `/${lang}/` : `/${lang}${link.href}`;
+          const active = isActive(link.href);
+
+          // Equipment menu with submenu
+          if (link.hasDropdown && link.href === '/equipment') {
+            return (
+              <div class="mobile-submenu-wrapper">
+                <button
+                  type="button"
+                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-4 py-3 rounded-md text-base font-bold transition-colors ${
+                    active
+                      ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                      : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47] hover:border-2 hover:border-[#D4A574]'
+                  }`}
+                  style="min-height: 48px;"
+                  aria-expanded="false"
+                  aria-controls="mobile-equipment-submenu"
+                  data-menu="equipment"
+                >
+                  <span>{t(link.label, lang)}</span>
+                  <svg
+                    class="w-5 h-5 transition-transform duration-200 submenu-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="mobile-equipment-submenu" class="hidden pl-4 mt-1 space-y-1">
+                  {EQUIPMENT_NAV_ITEMS.map((item) => {
+                    // Link all equipment items to their dedicated pages
+                    const equipHref = `/${lang}${item.href}`;
+                    const equipActive = currentPath.includes(item.href) && item.href !== '/equipment';
+
+                    return (
+                      <a
+                        href={equipHref}
+                        class={`block px-4 py-3 rounded-md text-sm font-bold transition-colors ${
+                          equipActive
+                            ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                            : 'text-[#6B5437] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
+                        }`}
+                        style="min-height: 48px; display: flex; align-items: center;"
+                      >
+                        <span class="mr-2">{item.icon}</span>
+                        {t(item.label, lang)}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
+          // Hobby menu with submenu
+          if (link.hasDropdown && link.href === '/hobby') {
+            return (
+              <div class="mobile-submenu-wrapper">
+                <button
+                  type="button"
+                  class={`mobile-submenu-trigger w-full flex items-center justify-between px-4 py-3 rounded-md text-base font-bold transition-colors ${
+                    active
+                      ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                      : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47] hover:border-2 hover:border-[#D4A574]'
+                  }`}
+                  style="min-height: 48px;"
+                  aria-expanded="false"
+                  aria-controls="mobile-hobby-submenu"
+                  data-menu="hobby"
+                >
+                  <span>{t(link.label, lang)}</span>
+                  <svg
+                    class="w-5 h-5 transition-transform duration-200 submenu-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="mobile-hobby-submenu" class="hidden pl-4 mt-1 space-y-1">
+                  {HOBBY_NAV_ITEMS.map((item) => {
+                    const hobbyHref = `/${lang}${item.href}`;
+                    const hobbyActive = currentPath.includes(item.href) && item.href !== '/hobby';
+
+                    return (
+                      <a
+                        href={hobbyHref}
+                        class={`block px-4 py-3 rounded-md text-sm font-bold transition-colors ${
+                          hobbyActive
+                            ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                            : 'text-[#6B5437] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
+                        } ${item.comingSoon ? 'opacity-60' : ''}`}
+                        style="min-height: 48px; display: flex; align-items: center;"
+                        {...item.comingSoon && { 'aria-disabled': 'true', 'tabindex': '-1' }}
+                      >
+                        <span class="mr-2">{item.icon}</span>
+                        {t(item.label, lang)}
+                        {item.comingSoon && (
+                          <span class="ml-auto text-xs bg-gray-400 text-white px-2 py-0.5 rounded">Soon</span>
+                        )}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
+
+          return (
+            <a
+              href={href}
+              class={`block px-4 py-3 rounded-md text-base font-bold transition-colors ${
+                active
+                  ? 'bg-[#8B6F47] text-white border-2 border-[#2D1810]'
+                  : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47]'
+              }`}
+              style="min-height: 48px;"
+              aria-current={active ? 'page' : undefined}
+            >
+              {t(link.label, lang)}
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Mobile CTA -->
+      <div class="px-2 pt-4 pb-3 border-t-3 border-[#2D1810] space-y-3">
+        <a
+          href={COMPANY_INFO.whatsapp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-[#8B6F47] font-black uppercase tracking-tight px-4 py-3 border-3 border-[#2D1810] shadow-brutal-sm hover:shadow-[2px_2px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all w-full flex items-center justify-center space-x-2"
+          aria-label={t('cta.whatsapp', lang)}
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span>{t('cta.whatsapp', lang)}</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  (function() {
+    // Mobile Menu Toggle - Initialize immediately
+    function initMobileMenu() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuButton && mobileMenu) {
+        // Toggle menu on button click
+        mobileMenuButton.addEventListener('click', function(e) {
+          e.stopPropagation(); // Prevent immediate close from document click
+          const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+          mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+          mobileMenu.classList.toggle('hidden');
+
+          // Toggle between hamburger and X icons
+          const hamburgerIcon = mobileMenuButton.querySelector('.menu-icon-hamburger');
+          const closeIcon = mobileMenuButton.querySelector('.menu-icon-close');
+          if (hamburgerIcon && closeIcon) {
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+          }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+            if (!mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+              mobileMenuButton.setAttribute('aria-expanded', 'false');
+
+              // Reset to hamburger icon
+              const hamburgerIcon = mobileMenuButton.querySelector('.menu-icon-hamburger');
+              const closeIcon = mobileMenuButton.querySelector('.menu-icon-close');
+              if (hamburgerIcon && closeIcon) {
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+              }
+            }
+          }
+        });
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+
+            // Reset to hamburger icon
+            const hamburgerIcon = mobileMenuButton.querySelector('.menu-icon-hamburger');
+            const closeIcon = mobileMenuButton.querySelector('.menu-icon-close');
+            if (hamburgerIcon && closeIcon) {
+              hamburgerIcon.classList.remove('hidden');
+              closeIcon.classList.add('hidden');
+            }
+          }
+        });
+      }
+
+      // Mobile Submenu Toggles (Equipment)
+      const submenuTriggers = document.querySelectorAll('.mobile-submenu-trigger');
+
+      submenuTriggers.forEach(function(trigger) {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          const menuType = trigger.getAttribute('data-menu');
+          const submenu = document.getElementById('mobile-' + menuType + '-submenu');
+          const arrow = trigger.querySelector('.submenu-arrow');
+
+          if (submenu && arrow) {
+            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+            trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+            submenu.classList.toggle('hidden');
+            arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+          }
+        });
+      });
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+      initMobileMenu();
+    }
+  })();
+</script>
+
+<style>
+  /* Mobile Menu Animations */
+  .submenu-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .menu-icon-hamburger,
+  .menu-icon-close {
+    transition: opacity 0.2s ease;
+  }
+
+  #mobile-menu {
+    position: relative;
+    z-index: 50;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: white;
+  }
+
+  #mobile-menu:not(.hidden) {
+    display: block;
+    max-height: calc(100vh - 80px); /* Full viewport height minus header */
+    opacity: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  /* Scrollable container for mobile menu items */
+  .mobile-menu-scrollable {
+    max-height: calc(100vh - 160px); /* Account for header and padding */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain; /* Prevent scroll chaining */
+  }
+
+  /* Custom scrollbar styling for mobile menu */
+  .mobile-menu-scrollable::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .mobile-menu-scrollable::-webkit-scrollbar-track {
+    background: #F5F1EB;
+  }
+
+  .mobile-menu-scrollable::-webkit-scrollbar-thumb {
+    background: #8B6F47;
+    border-radius: 3px;
+  }
+
+  .mobile-menu-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #6B5437;
+  }
+
+  /* Smooth slide animations for submenus */
+  #mobile-equipment-submenu {
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  #mobile-equipment-submenu:not(.hidden) {
+    display: block;
+    max-height: 1000px;
+    opacity: 1;
+  }
+</style>

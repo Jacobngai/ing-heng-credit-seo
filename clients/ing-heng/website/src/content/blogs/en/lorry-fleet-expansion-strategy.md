@@ -2,7 +2,7 @@
 title: "Lorry Fleet Expansion: From 1 Truck to 20 Vehicles Strategy"
 description: "Growing from 1 lorry to a 20-vehicle fleet requires strategic financing. Learn how Malaysian logistics companies use 0% down payment to scale operations progressively while managing cash flow."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -739,3 +739,4 @@ Finance multiple vehicles with 0% down payment. Get approved in 24 hours and gro
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

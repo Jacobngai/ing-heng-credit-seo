@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Daihatsu Charade GTti dengan 0% deposit di Mal
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["Daihatsu Charade GTti", "Pembiayaan Turbo JDM", "Pinjaman Pocket Rocket", "Pembiayaan Kereta Klasik", "Kereta Kecil Kuasa Besar"]
 keywords: ["pinjaman Daihatsu Charade GTti", "pembiayaan pocket rocket", "pinjaman kereta turbo JDM", "pembiayaan kereta kecil klasik", "0% deposit GTti", "pinjaman kereta langka Malaysia", "pembiayaan kenderaan kenaikan nilai", "pembiayaan turbo vintage"]

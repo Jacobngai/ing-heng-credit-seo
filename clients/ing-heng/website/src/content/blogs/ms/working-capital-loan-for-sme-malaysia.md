@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan modal kerja 100% untuk PKS anda di Malaysia. Ti
   deposit diperlukan. Kelulusan pantas. Kekalkan perniagaan berjalan walaupun pelanggan
   bayar lambat.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - modal kerja

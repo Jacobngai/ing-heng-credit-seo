@@ -2,7 +2,7 @@
 title: Pembiayaan Trak Kafe Bergerak Malaysia - Pinjaman Food Truck 0% Deposit 2025
 description: Dapatkan pembiayaan trak kafe bergerak di Malaysia dengan 0% deposit. Panduan lengkap untuk pinjaman perniagaan food truck, keperluan, proses kelulusan dan kisah kejayaan dari kafe bergerak yang menguntungkan.
 author: "ING HENG Credit"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 updatedDate: 2025-12-24
 metaTitle: Pembiayaan Trak Kafe Bergerak Malaysia | Pinjaman Food Truck 0% Deposit
 metaDescription: Pembiayaan trak kafe bergerak Malaysia dengan 0% deposit. Pinjaman perniagaan food truck, kelulusan pantas, kredit teruk diterima. Mulakan perniagaan kafe bergerak anda hari ini.

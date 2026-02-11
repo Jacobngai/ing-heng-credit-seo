@@ -4,7 +4,7 @@ description: Naik taraf ke CIDB Kelas A dengan pembiayaan peralatan. Kami membia
   pakej peralatan RM 2J+ untuk naik taraf kontraktor. 0% deposit, 100% pembiayaan
   untuk buldoser, excavator, kren.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - CIDB Kelas A

@@ -4,7 +4,7 @@ description: "Biayai Peugeot 205 GTI anda dengan 0% deposit di Malaysia. Kelulus
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Peugeot 205 GTI", "pinjaman hot hatch", "pembiayaan Peugeot klasik", "pelaburan kereta prestasi", "pembiayaan hot hatch Perancis"]
 keywords: ["pembiayaan Peugeot 205 GTI", "pinjaman 205 GTI Malaysia", "pembiayaan hot hatch", "pinjaman Peugeot klasik", "pembiayaan kereta prestasi", "pelaburan hot hatch Perancis", "pembiayaan kereta kolektor", "pinjaman GTI"]

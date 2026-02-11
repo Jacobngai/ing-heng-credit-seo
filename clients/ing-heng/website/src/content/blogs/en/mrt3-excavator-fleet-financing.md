@@ -2,7 +2,7 @@
 title: "MRT3 Project Equipment Financing: Ready Your Excavator Fleet for Klang Valley's Biggest Infrastructure Opportunity"
 description: "MRT3 Project Equipment Financing: Ready Your Excavator Fleet for Klang Valley's Biggest Infrastructure Opportunity"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -223,3 +223,4 @@ MRT3 Circle Line: Malaysia's Next Infrastructure Mega-Project
                   
 - 
                     Budget 2025 Opportunities
+

@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan compactor di Malaysia dengan pilihan 0% deposit
   Biayai road roller, plate compactor & vibrating compactor. Kelulusan pantas dari
   7.5% s.a.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - compactor

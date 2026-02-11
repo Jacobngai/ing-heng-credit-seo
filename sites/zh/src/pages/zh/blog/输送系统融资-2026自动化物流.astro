@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '输送系统融资 - 2026自动化物流',
+  slug: '输送系统融资-2026自动化物流',
+  excerpt: '输送系统融资 - 2026自动化物流。输送带系统融资，0%首付，100%融资，仓库自动化解决方案。',
+  date: '2026-01-11',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '物料搬运',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["输送系统","输送带","传送带","物流自动化","输送系统融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 输送系统融资 - 2026自动化物流
+
+## 输送系统优势
+
+自动化输送提高效率:
+
+\`\`\`
+效率: 大幅提高效率
+成本: 降低人工成本
+连续: 连续作业
+自动: 自动化物流
+\`\`\`
+
+## 融资方案
+
+### 输送带系统
+\`\`\`
+50米系统: RM 50,000-80,000
+100米系统: RM 80,000-150,000
+融资: 100%
+年限: 最长5年
+\`\`\`
+
+## ROI
+
+### 效率提升
+\`\`\`
+人工节省: 3-5人
+效率提升: 200-300%
+回本: 2-3年
+\`\`\`
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">物料搬运</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

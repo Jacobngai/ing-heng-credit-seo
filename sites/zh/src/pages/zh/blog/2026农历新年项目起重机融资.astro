@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '2026农历新年项目起重机融资 - 建筑春节前准备',
+  slug: '2026农历新年项目起重机融资',
+  excerpt: '2026年农历新年项目起重机融资。春节前快速快速批准，0%首付，建筑起重机设备融资。',
+  date: '2026-01-12',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '起重机',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["农历新年起重机","春节建筑设备","起重机融资","建筑准备"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 2026农历新年项目起重机融资 - 建筑春节前准备
+
+## 春节起重机需求
+
+建筑项目春节前:
+
+- **项目截止**: 需要完成
+- **设备需求**: 起重机短缺
+- **时间紧迫**: 快速到位
+
+## 价格和融资
+
+### 移动起重机
+
+| 吨位 | 二手价格 | 银行首付 | 盈恒首付 |
+|------|---------|----------|----------|
+| 20吨 | RM 180,000 | RM 18,000-36,000 | RM 0 |
+| 50吨 | RM 350,000 | RM 35,000-70,000 | RM 0 |
+| 100吨 | RM 600,000 | RM 60,000-120,000 | RM 0 |
+
+## 盈恒春节优势
+
+- 0%首付
+- 快速审批
+- 春节前到位
+- 起重机专业
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">起重机</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

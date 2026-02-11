@@ -4,7 +4,7 @@ description: Pembiayaan pemampat udara di Malaysia dengan 0% deposit dan 100% pe
   Kelulusan pantas untuk kilang pembuatan, bengkel, dan operasi industri. Kadar kelulusan
   tinggi untuk semua skor kredit.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pemampat udara

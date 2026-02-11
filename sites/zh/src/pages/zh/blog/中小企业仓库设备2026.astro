@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '中小企业仓库设备 2026 - 仓储SME',
+  slug: '中小企业仓库设备2026',
+  excerpt: '2026年中小企业仓库设备融资。0%首付，100%融资，叉车、堆高机、货架。仓储SME。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '仓库设备',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["中小企业仓库设备","仓储SME","叉车融资","仓库设备"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 中小企业仓库设备 2026
+
+## 仓储SME
+
+您的仓储SME需要叉车:
+
+\`\`\`
+仓储需求增加 → 需要叉车 → 0%首付 → 提高效率
+\`\`\`
+
+## 仓库设备价格
+
+| 设备 | 新设备 | 二手 | 效率提升 | Ing Heng首付 |
+|------|-------|------|---------|-------------|
+| 1吨叉车 | RM 18,000-25,000 | RM 8,000-15,000 | 50% | RM 0 |
+| 2.5吨叉车 | RM 25,000-35,000 | RM 12,000-20,000 | 80% | RM 0 |
+| 3吨叉车 | RM 35,000-50,000 | RM 15,000-25,000 | 100% | RM 0 |
+| 堆高机 | RM 15,000-30,000 | RM 8,000-18,000 | 60% | RM 0 |
+| 电动叉车 | RM 40,000-70,000 | RM 15,000-30,000 | 100% | RM 0 |
+
+## 仓储SME设备组合
+
+### 组合1: 小型仓库
+
+- 2.5吨叉车×1: RM 12,000-20,000
+- 1吨叉车×1: RM 8,000-15,000
+- 堆高机×1: RM 8,000-18,000
+- 总计: RM 28,000-53,000
+- 效率提升: 80-150%
+- Ing Heng首付: RM 0
+
+### 组合2: 中型仓库
+
+- 3吨叉车×2: RM 30,000-50,000
+- 2.5吨叉车×2: RM 24,000-40,000
+- 电动叉车×1: RM 15,000-30,000
+- 总计: RM 69,000-120,000
+- 效率提升: 200-300%
+- Ing Heng首付: RM 0
+
+### 组合3: 大型仓库
+
+- 3吨叉车×3: RM 45,000-75,000
+- 电动叉车×2: RM 30,000-60,000
+- 堆高机×2: RM 16,000-36,000
+- 总计: RM 91,000-171,000
+- 效率提升: 300-500%
+- Ing Heng首付: RM 0
+
+## 0%首付好处
+
+### 保留现金
+
+RM 2,800-17,000用于:
+- 购买货架
+- 雇佣操作员
+- 仓库租金
+- 运营资金
+
+### 提高效率
+
+- 立即购买叉车
+- 人工减半
+- 速度加倍
+- 成本降低
+
+## 仓储业务类型
+
+### 类型1: 小型仓储
+
+- 500-1000平方尺
+- 小量货物
+- 1-2台叉车
+- 月收入: RM 8,000-15,000
+
+### 类型2: 中型仓储
+
+- 2000-5000平方尺
+- 中量货物
+- 3-5台叉车
+- 月收入: RM 20,000-40,000
+
+### 类型3: 大型仓储
+
+- 10000平方尺+
+- 大量货物
+- 5-10台叉车
+- 月收入: RM 50,000-100,000+
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**仓储SME，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">仓库设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

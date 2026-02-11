@@ -4,7 +4,7 @@ description: Biayai Subaru Legacy RS Turbo dengan 0% deposit di Malaysia. Bank t
 category: Equipment Financing
 persona: General
 locale: ms
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags:
 - Subaru Legacy RS Turbo

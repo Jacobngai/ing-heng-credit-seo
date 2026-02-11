@@ -4,7 +4,7 @@ description: Dapatkan pakej pembiayaan armada 5 unit bulldozer di Malaysia. 0% d
   tersedia untuk armada D5, D6, D7, D8 bulldozer. Pembiayaan khusus untuk kontraktor
   kerja tanah dan projek berskala besar.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan armada bulldozer

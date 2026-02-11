@@ -5,7 +5,7 @@ description: Biayai peralatan restoran dengan deposit 0% di Malaysia. Panduan le
   pinjaman peralatan dapur komersial, proses kelulusan, dan penyelesaian pembiayaan
   khusus industri.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - peralatan restoran

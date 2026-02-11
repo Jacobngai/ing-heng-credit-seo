@@ -2,7 +2,7 @@
 title: "Pembiayaan Forklift Malaysia 2025 - Tanpa Deposit, Syarat Mudah"
 description: "Pembiayaan forklift di Malaysia dengan 100% financing tanpa deposit. Syarat mudah, kelulusan pantas untuk semua jenis forklift - diesel, gas, elektrik."
 category: "Equipment Financing"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["pembiayaan forklift", "forklift malaysia", "tanpa deposit", "warehouse equipment"]
 image: "/images/forklift-financing-malaysia.jpg"

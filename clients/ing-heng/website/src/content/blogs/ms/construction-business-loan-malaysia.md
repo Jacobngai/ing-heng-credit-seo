@@ -3,7 +3,7 @@ title: 'Pinjaman Perniagaan Pembinaan Malaysia: Pembiayaan Jentera untuk Kontrak
 description: Dapatkan pinjaman perniagaan pembinaan Malaysia dengan 0% deposit. Biayai
   excavator, bulldozer, kren untuk syarikat pembinaan. Kelulusan pantas, terma fleksibel.
 author: "ING HENG Credit"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - pinjaman pembinaan

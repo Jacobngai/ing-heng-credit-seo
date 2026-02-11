@@ -2,7 +2,7 @@
 title: "OSH Act 2024 Equipment Compliance: Financing Certified Excavators in Malaysia"
 description: "OSH Act 2024 amendments require excavator safety certification. Learn compliance requirements, avoid RM100,000 fines, and finance certified excavators with 0% down payment."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -360,3 +360,4 @@ Valid medical certificate confirming physical fitness for heavy equipment operat
                   
 - 
                     Used Excavator Financing Malaysia: Risk Mitigation for Smart Contractors
+

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan untuk Isuzu Piazza Turbo nadir dengan 0% depos
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman Isuzu Piazza Turbo", "pembiayaan coupe turbo JDM", "pembiayaan reka bentuk Giugiaro", "pinjaman Isuzu nadir", "pembiayaan kereta sport 80an"]
 keywords: ["pinjaman Isuzu Piazza Turbo Malaysia", "pembiayaan Piazza Turbo", "pinjaman kereta sport Isuzu", "pembiayaan coupe turbo JDM", "pinjaman reka bentuk Giugiaro", "pinjaman kereta sport 80an Malaysia", "pembiayaan Piazza 0% deposit", "pinjaman Impulse Turbo"]

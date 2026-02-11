@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '丰田vs小松叉车 - 2026比较',
+  slug: '丰田vs小松叉车-2026比较',
+  excerpt: '丰田vs小松叉车 - 2026比较。两大叉车品牌详细比较，帮助您选择最适合的叉车。',
+  date: '2026-01-10',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '叉车和仓库',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["丰田叉车","小松叉车","Toyota vs Komatsu","叉车比较","叉车选择"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 丰田vs小松叉车 - 2026比较
+
+## 两大品牌
+
+丰田和小松是顶级叉车品牌:
+
+\`\`\`
+丰田: 可靠、耐用、全球
+小松: 强劲、重型、耐用
+\`\`\`
+
+## 价格对比
+
+### 丰田叉车
+\`\`\`
+1.5吨电动: RM 18,000-28,000
+2.5吨柴油: RM 28,000-42,000
+\`\`\`
+
+### 小松叉车
+\`\`\`
+1.5吨电动: RM 17,000-26,000
+2.5吨柴油: RM 27,000-40,000
+\`\`\`
+
+## 选择建议
+
+### 选择丰田
+\`\`\`
+✅ 注重品牌
+✅ 全球服务
+✅ 长期投资
+\`\`\`
+
+### 选择小松
+\`\`\`
+✅ 注重性能
+✅ 重型作业
+✅ 耐用性
+\`\`\`
+
+## 融资
+
+两种品牌都100%融资。
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车和仓库</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

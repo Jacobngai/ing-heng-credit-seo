@@ -4,7 +4,7 @@ description: "Biayai Honda CRX anda dengan 0% deposit. Dapatkan pembiayaan untuk
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["honda crx", "pembiayaan sport compact", "pembiayaan vtec", "pinjaman kereta tuner", "pembiayaan honda klasik"]
 keywords: ["pembiayaan honda crx", "pinjaman crx malaysia", "pinjaman sport compact", "pembiayaan honda vtec", "pembiayaan kereta tuner", "0 deposit crx", "pinjaman honda klasik", "pelaburan sport compact"]

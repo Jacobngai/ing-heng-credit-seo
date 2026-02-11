@@ -4,7 +4,7 @@ description: "Biayai kereta import AP anda dengan 0% deposit. Panduan lengkap pr
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 featured: false
 readingTime: 8
 tags: ["pembiayaan kereta ap", "import permit pembiayaan", "pinjaman kereta ap", "kereta import pembiayaan", "0% deposit", "malaysia"]

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan classic Mini Cooper di Malaysia dengan 0% depo
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["classic mini cooper", "pinjaman mini vintage", "kereta klasik british", "pembiayaan mini cooper", "pinjaman kereta klasik"]
 keywords: ["pembiayaan classic mini cooper", "pinjaman mini vintage malaysia", "pembiayaan mini klasik", "pinjaman kereta klasik british", "pembiayaan mini cooper s"]

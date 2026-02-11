@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+const post = {
+  title: '2026年年度津贴申请',
+  slug: '2026-annual-allowance-application',
+  excerpt: '2026年年度津贴申请指南。了解每年如何申请14%年度津贴。0%首付，100%全款融资。',
+  date: '2026-01-22',
+  author: 'Ing Heng Credit Team',
+  readTime: 5,
+  category: '税务规划',
+  image: '/images/blog/2026-annual-allowance-application.jpg'
+};
+
+const keywords = ['机械融资', 'equipment financing malaysia', '0% down payment', 'heavy equipment loan'],
+  breadcrumbItems = [
+  { label: 'Home', href: '/zh' },
+  { label: 'Blog', href: '/zh/blog' },
+  { label: post.title, href: `/${lang}/blog/${post.slug}` }
+];
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">税务规划</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+
+      <h2>2026年年度津贴申请</h2>
+      <p>年度津贴是除初始津贴外，每年可申报的持续税务优惠。</p>
+
+      <h3>年度津贴计算</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>年份</th>
+            <th>余额</th>
+            <th>年度津贴(14%)</th>
+            <th>新余额</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>第1年</td>
+            <td>RM 100,000</td>
+            <td>RM 20,000 (初始)</td>
+            <td>RM 80,000</td>
+          </tr>
+          <tr>
+            <td>第2年</td>
+            <td>RM 80,000</td>
+            <td>RM 11,200</td>
+            <td>RM 68,800</td>
+          </tr>
+          <tr>
+            <td>第3年</td>
+            <td>RM 68,800</td>
+            <td>RM 9,632</td>
+            <td>RM 59,168</td>
+          </tr>
+          <tr>
+            <td>第4年</td>
+            <td>RM 59,168</td>
+            <td>RM 8,284</td>
+            <td>RM 50,884</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>申请要点</h3>
+      <ul>
+        <li>每年在税务申报表申报</li>
+        <li>基于上一年年底余额</li>
+        <li>即使设备已折旧完毕仍可申报</li>
+        <li>保留所有维护记录</li>
+      </ul>
+
+      <h3>什么时候申请?</h3>
+      <ul>
+        <li>每年税务申报期间</li>
+        <li>通常在4月30日前</li>
+        <li>与公司税申报一起提交</li>
+        <li>可延后申报但不可提前</li>
+      </ul>
+
+      <div style="background: #F5F0E8; border-left: 4px solid #D4A574; padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="color: #2D1810; margin-top: 0;">2026年年度津贴申请?</h3>
+        <p style="margin-bottom: 1rem;">0%首付。100%全款。无年龄限制。快速快速审批。立即获得批准。</p>
+        <p style="margin-bottom: 0;"><strong>联系方式:</strong> +60175700889 (WhatsApp) | 03-3324 8899 (电话)</p>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t">
+      <CTAButton text="立即获取融资" link={COMPANY_INFO.whatsapp.link} variant="accent" size="large" />
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  h2 {
+    color: #2D1810;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #D4A574;
+    padding-bottom: 0.5rem;
+  }
+
+  h3 {
+    color: #8B6F47;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #D4A574;
+  }
+
+  th {
+    background: #F5F0E8;
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  p {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  strong {
+    color: #2D1810;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #D4A574;
+    font-weight: bold;
+  }
+
+  br {
+    display: none;
+  }
+</style>

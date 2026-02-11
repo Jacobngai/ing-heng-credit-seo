@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Nissan Bluebird SSS yang berl
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["nissan-bluebird-sss", "pembiayaan-jdm", "pinjaman-kereta-prestasi", "0-deposit-kenderaan", "pembiayaan-kereta-klasik"]
 keywords: ["pembiayaan nissan bluebird sss malaysia", "pinjaman bluebird sss", "pembiayaan kereta jdm", "pinjaman sedan prestasi", "pembiayaan kereta 0 deposit", "pembiayaan nissan klasik", "pembiayaan sr20 turbo", "pinjaman sedan sukan jepun"]

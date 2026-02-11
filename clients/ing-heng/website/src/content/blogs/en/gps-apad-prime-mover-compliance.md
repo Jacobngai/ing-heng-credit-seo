@@ -2,7 +2,7 @@
 title: "GPS Fleet Tracking Requirements for Prime Movers: APAD Compliance Guide 2025"
 description: "Complete guide to GPS tracking requirements for prime movers in Malaysia. APAD compliance, certified GPS providers, costs, and port authority integration."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -423,3 +423,4 @@ Performance analytics, maintenance scheduling based on mileage, customer deliver
             
           
           Maintain active GPS subscriptions
+

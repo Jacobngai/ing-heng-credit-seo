@@ -4,7 +4,7 @@ description: "Biayai Mercedes klasik anda dengan 0% deposit. Pembiayaan W123, W1
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 featured: false
 readingTime: 8
 tags: ["pembiayaan mercedes klasik", "pinjaman mercedes vintage", "w126 pembiayaan", "w140 pembiayaan", "kereta klasik pembiayaan", "0% deposit"]

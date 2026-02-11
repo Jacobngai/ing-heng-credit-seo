@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '2026年建筑套餐融资 - 完整建筑设备方案',
+  slug: '2026年建筑套餐融资',
+  excerpt: '2026年建筑套餐融资方案。0%首付，100%全额贷款，完整建筑设备套餐融资。',
+  date: '2026-01-13',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '建筑设备',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["建筑套餐","建筑设备包","工程机械套餐","建筑融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 2026年建筑套餐融资 - 完整建筑设备方案
+
+## 建筑设备套餐
+
+完整项目设备:
+
+- **挖掘机**: 土方开挖
+- **装载机**: 材料装载
+- **自卸车**: 土方运输
+- **推土机**: 场地平整
+
+## 套餐价格
+
+### 小型套餐
+
+- 1台挖掘机 + 1台装载机 + 2台自卸车
+- 价格: RM 300,000-400,000
+- 首付: RM 0
+
+### 中型套餐
+
+- 2台挖掘机 + 2台装载机 + 5台自卸车
+- 价格: RM 800,000-1,200,000
+- 首付: RM 0
+
+## 盈恒套餐优势
+
+- 0%首付
+- 批量利率优惠
+- 快速审批
+- 完整方案
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

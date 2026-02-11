@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan reach truck di Malaysia dengan 0% deposit dan 1
   pembiayaan. Kelulusan pantas untuk operasi gudang lorong sempit hingga 15 tahun.
   Optimakan penyimpanan menegak hari ini.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - reach truck

@@ -2,7 +2,7 @@
 title: "5% Down Payment Excavator Deals: What Banks Won't Tell You - Full Loan Guide"
 description: "5% Down Payment Excavator Deals: What Banks Won't Tell You - Full Loan Guide"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -269,3 +269,4 @@ The 5% Down Payment Marketing Trap
                   2-4 weeks vs 24 hours
 - First-Time OK?
                   Rare vs Yes
+

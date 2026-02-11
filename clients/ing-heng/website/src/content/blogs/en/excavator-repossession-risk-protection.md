@@ -2,7 +2,7 @@
 title: "Excavator Repossession Risks: How Payment Structure Protects Your Business"
 description: "Missed payments can lead to excavator repossession, destroying your contractor business. Learn how to structure payment installments that match construction cash flow and protect your equipment from seizure."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -725,3 +725,4 @@ We structure payments around construction cash flow, not rigid bank schedules. G
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

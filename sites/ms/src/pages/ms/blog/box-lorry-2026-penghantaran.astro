@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'ms';
+const post = {
+  title: 'Box Lorry 2026 - Perniagaan Penghantaran & E-dagang',
+  slug: 'box-lorry-2026-penghantaran',
+  excerpt: 'Dapatkan pembiayaan box lorry 2026 - perniagaan penghantaran & e-dagang dengan 0% down payment dari Ing Heng Credit. Kelulusan pantas, tiada had umur peralatan.',
+  date: 'undefined',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Pembiayaan Lori',
+  image: 'undefined'
+};
+
+const keywords = [],
+  breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/ms/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Box Lorry 2026 - Perniagaan Penghantaran & E-dagang
+
+Box lorry adalah essential untuk delivery business. E-dagang boom, demand meningkat!
+
+## Box Lorry - E-dagang Enabler
+
+### Applications
+- E-dagang deliveries (Shopee, Lazada)
+- FMCG distribution
+- Furniture delivery
+- Moving services
+- Parcel delivery
+- Catering delivery
+
+### CNY Demand
+- CNY gift deliveries
+- Food & hamper delivery
+- Furniture untuk CNY renovation
+- Parcel volume naik 50-100%
+
+### Had Bank
+- Down payment 10-20%
+- Hanya biayai bawah 5 tahun
+- Box body considered add-on
+- Proses 2-3 minggu
+
+## Ing Heng: Box Lorry 0% Down Payment
+
+## Jadual Perbandingan
+
+| Ciri-ciri | Bank | Ing Heng |
+|-----------|------|----------|
+| Down Payment | 10-20% | **0%** |
+| Jumlah Pinjaman | 90% | **100%** |
+| Umur Peralatan | 5 tahun maks | **Tiada had** |
+| Kadar Faedah | 4.6% - 6.0% setahun | Berdaya saing |
+
+### Box Lorry Options
+
+#### Box Lorry 1-Ton (Van)
+- Harga: RM 80,000
+- **Bank:** Down payment RM 8,000-16,000
+- **Ing Heng:** 0% down payment!
+
+#### Box Lorry 3-Ton (ISUZU NPR)
+- Harga: RM 150,000
+- **Bank:** Down payment RM 15,000-30,000
+- **Ing Heng:** 0% down payment!
+
+#### Box Lorry 5-Ton (FUSO)
+- Harga: RM 200,000
+- **Bank:** Down payment RM 20,000-40,000
+- **Ing Heng:** 0% down payment!
+
+#### Box Lorry Terpakai (5-7 Tahun)
+- Harga: RM 80,000-120,000
+- **Bank:** REJECT (umur 5+ tahun)
+- **Ing Heng:** LAYAK! 0% down payment!
+
+## Seruan Bertindak
+
+Jangan biarkan had bank memperlahankan perniagaan anda. Dengan Ing Heng Credit:
+
+- **0% Down Payment** - Bawa peralatan keluar tanpa bayaran muka
+- **100% Pinjaman Penuh** - Perlindungan insurans & cukai jalan included
+- **Tiada Had Umur** - Peralatan 10 tahun pun boleh dibiayai
+
+Hubungi kami sekarang:
+- WhatsApp: +60175700889
+- Laman web: inghengcredit.com
+- Masa proses: pantas
+
+**S: Adakah box lorry sesuai untuk startup e-dagang?**
+J: Sangat sesuai! Upah delivery tinggi, demand stabil. Cuma perlu marketing untuk dapat customers.
+
+**S: Boleh customize box size?**
+J: Ya! Kami boleh arrange customization ikut keperluan (shelving, temperature, etc.)
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Pembiayaan Lori</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min baca</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/ms/contact">Mohon Pembiayaan Peralatan</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

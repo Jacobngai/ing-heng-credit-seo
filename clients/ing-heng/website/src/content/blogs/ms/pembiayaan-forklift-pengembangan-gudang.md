@@ -4,7 +4,7 @@ title: 'Pembiayaan Forklift untuk Pengembangan Gudang: Berkembang Pantas Tanpa K
 description: Biayai berbilang forklift untuk pengembangan gudang dengan 0% deposit.
   Kelulusan pantas kekalkan jadual pengembangan. Ketahui pembiayaan berbilang unit.
 author: "ING HENG Credit"
-publishDate: 2026-01-30
+publishDate: 2026-01-30T00:00:00.000Z
 category: Equipment Financing
 tags:
 - forklift
@@ -613,3 +613,4 @@ Bersedia untuk kembangkan gudang anda tanpa kehabisan rizab tunai?
 **Khalayak Sasaran:** Pengurus gudang, syarikat logistik, pusat pengedaran, pengendali 3PL
 **Kata Kunci Utama:** pembiayaan forklift pengembangan gudang
 **Masa Bacaan:** 8 minit
+

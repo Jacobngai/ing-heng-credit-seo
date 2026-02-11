@@ -4,7 +4,7 @@ description: "Biayai Subaru SVX istimewa anda dengan 0% deposit. Grand tourer re
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Subaru SVX", "pinjaman sports coupe JDM", "pembiayaan kereta nadir", "pinjaman kenderaan 0% deposit", "pembiayaan kereta koleksi"]
 keywords: ["pembiayaan Subaru SVX Malaysia", "kelulusan pinjaman SVX", "pembiayaan Subaru nadir", "pinjaman coupe JDM", "pembiayaan kereta tanpa tingkap", "pinjaman kenderaan koleksi", "pembiayaan SVX 0% deposit", "Alcyone SVX Malaysia"]

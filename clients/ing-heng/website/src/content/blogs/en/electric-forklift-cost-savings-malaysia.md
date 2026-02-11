@@ -2,7 +2,7 @@
 title: "Electric Forklift Cost Savings in Malaysia: 72% Market Shift Explained"
 description: "Electric forklifts are 72% of Malaysia's market. Save RM 80K-149K over 5 years with 40-88% efficiency gains vs diesel. 0% down payment, 24-hour approval."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -420,3 +420,4 @@ Smart warehouse managers look beyond purchase price. The 5-year TCO analysis pro
                     
                   
                   Lower energy costs
+

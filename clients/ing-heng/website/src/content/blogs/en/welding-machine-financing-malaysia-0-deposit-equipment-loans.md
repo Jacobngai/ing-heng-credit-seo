@@ -2,7 +2,7 @@
 title: "Welding Machine Financing Malaysia | 0% Deposit Equipment Loans"
 description: "Finance welding machines with 0% deposit in Malaysia. Fast approval for new & used welding equipment. 100% financing available for fabrication shops & contractors."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

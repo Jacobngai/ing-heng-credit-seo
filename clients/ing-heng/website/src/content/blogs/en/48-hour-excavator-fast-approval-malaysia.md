@@ -2,7 +2,7 @@
 title: "Excavator Fast Approval: 48-Hour Financing for Urgent Project Needs"
 description: "You won the tender. Project starts Monday. It"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -719,3 +719,4 @@ Get approved in 24-48 hours with 0% down payment financing. WhatsApp us anytimeâ
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

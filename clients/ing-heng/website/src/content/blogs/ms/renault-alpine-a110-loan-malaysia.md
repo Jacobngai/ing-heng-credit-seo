@@ -4,7 +4,7 @@ description: "Dapatkan Renault Alpine A110 dengan pembiayaan 0% deposit di Malay
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Alpine A110", "pinjaman Renault Alpine", "pembiayaan kereta sport Perancis", "pelaburan kereta rally", "pinjaman kereta sport klasik"]
 keywords: ["pinjaman Renault Alpine A110", "pembiayaan Alpine A110 Malaysia", "pembiayaan kereta sport Perancis", "pinjaman kereta rally", "pembiayaan Alpine klasik", "pinjaman pelaburan kereta sport", "pembiayaan kereta prestasi", "pinjaman kereta boleh dikumpul"]

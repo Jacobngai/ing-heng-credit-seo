@@ -1,0 +1,341 @@
+---
+/**
+ * Used Komatsu PC350 Excavator Financing Landing Page - English
+ * Direct copywriting approach - 1,500 words maximum
+ * Target: Quarry operators subcontracting excavation work
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Used Komatsu PC350 Excavator Financing Malaysia | Keep Excavation Revenue';
+const pageDescription = 'Stop losing RM 166k monthly to excavation subcontractors. Finance used Komatsu PC350 with 0% deposit. All equipment accepted based on condition. Keep your quarry margins in-house.';
+const keywords = ['Komatsu PC350 financing', 'quarry excavator financing', 'used excavator financing Malaysia', 'PC350 hire purchase', 'heavy excavator financing'];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Finance Equipment 10+ Years Old', description: 'We approve PC350 excavators 10+ years old. Even older if maintained. Banks reject old equipment. We assess working condition and business potential.' },
+  { icon: 'percentage', title: '0% Deposit Available', description: 'Finance up to 100% of equipment value. Zero deposit option available. Keep excavation revenue in-house without draining working capital.' },
+  { icon: 'shield', title: 'Quarry Operators Welcome', description: 'We understand quarry economics. High operating hours are normal. We finance quarry-proven machines that contractors rely on daily.' },
+  { icon: 'users', title: 'Bad Credit Accepted', description: 'Banks reject applications. We approve quarry operators with CCRIS issues. Equipment serves as collateral. Focus is on your business viability.' },
+  { icon: 'document', title: 'Subcontracting Cost Analysis', description: 'Paying RM 800/hour for excavation services? That is RM 166k monthly going to subcontractors. Own your equipment and keep those margins.' },
+  { icon: 'shield', title: 'Used Equipment Specialists', description: 'PC350 rated for 15,000-20,000 hours. An 8-year machine with 11,000 hours has 4,000+ productive hours remaining. We understand equipment longevity.' },
+];
+
+// FAQs - PC350 quarry business scenario
+const faqs = [
+  {
+    question: 'I subcontract excavation work. Should I buy my own PC350?',
+    answer: 'When you subcontract excavation, you lose RM 50k-80k monthly to outside contractors. Owning your PC350 means keeping that revenue in-house. You control scheduling, quality, and margins. Used PC350 financing with 0% deposit makes this possible without draining working capital. This is vertical integration for quarry operators.'
+  },
+  {
+    question: 'Do you finance used Komatsu PC350 for quarry operations?',
+    answer: 'Yes! Quarry-proven PC350 excavators are our specialty. We finance equipment 10+ years old. High operating hours are normal for quarries. We assess machine condition and your business contracts. Even 8-year PC350 with 11,000 hours can be financed if well-maintained and you have solid quarry operations.'
+  },
+  {
+    question: 'What if my PC350 is 8 years old with high operating hours?',
+    answer: 'We finance PC350 excavators 10+ years old and 15,000+ hours if working properly. PC350 is rated for 15,000-20,000 hours. An 8-year machine with 11,000 hours has 4,000+ productive hours remaining. We assess: Recent maintenance records, hydraulic system health, undercarriage condition, and your quarry contracts. High hours are normal for production machines.'
+  },
+  {
+    question: 'Why do banks reject old excavators but you approve them?',
+    answer: 'Banks use depreciation schedules. They reject equipment over 5 years old regardless of condition. We assess actual working condition and business viability. A well-maintained 10-year PC350 that digs 400 cubic meters daily is more valuable than a poorly maintained 3-year machine. We understand equipment economics, not just accounting rules.'
+  },
+  {
+    question: 'How much revenue am I losing to subcontractors?',
+    answer: 'Calculate your current subcontracting costs. Most quarry operators pay RM 50k-80k monthly to excavation contractors. Over one year, that is RM 600k-960k. Owning your PC350 means keeping that margin in-house. Your quarry, your equipment, your profits.'
+  },
+  {
+    question: 'Can I get 0% deposit financing for a used PC350?',
+    answer: 'Yes! 0% deposit financing is available for qualified applicants. Finance up to 100% of equipment value. This means you can stop subcontracting excavation work immediately without draining working capital. Requirements: Solid quarry operations, equipment in working condition, business viability assessment. Bad credit considered.'
+  },
+  {
+    question: 'What equipment do you finance besides PC350?',
+    answer: 'We finance all heavy excavators for quarry operations: Komatsu PC300/PC350/PC400, CAT 336/349/374, Hitachi ZX350/ZX450, Kobelco SK350/SK480. All brands welcome. Equipment All equipment accepted based on condition. Focus is on working condition and your business potential, not arbitrary age limits like banks use.'
+  },
+  {
+    question: 'How does owning equipment help my quarry business grow?',
+    answer: 'Vertical integration. When you subcontract excavation, you lose margins to other contractors. When you own equipment, you keep those margins. You control scheduling, quality, and costs. You can take on larger contracts that require equipment ownership. You build business equity, not just paying for services.'
+  },
+  {
+    question: 'What documents do I need for PC350 financing?',
+    answer: 'Required documents: IC/passport and company registration (SSM), 6 months bank statements, quarry license (if applicable), equipment details (seller quotation, photos, serial number, hour meter), current owner grant (if buying from individual). For Japan imports: customs K1 form, import permit, auction sheet. Processing is fast once documents are complete.'
+  },
+  {
+    question: 'Is there early repayment penalty if I want to settle the loan?',
+    answer: 'Early repayment terms vary by financing agreement. Some packages include early settlement fees, others do not. This is negotiable based on your financing package. Discuss early repayment options during application if this matters to your business planning. Many quarry operators refinance or settle early when business grows.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Used Komatsu PC350 Excavator Financing Malaysia',
+  description: 'Finance used Komatsu PC350 excavators (10+ years old) with 0% deposit. Stop losing margins to subcontractors. Keep excavation revenue in-house. Quarry operators welcome.',
+  imageUrl: `${SITE_CONFIG.url}/images/komatsu-pc350-excavator.jpg`,
+  category: 'Financial Service - Heavy Equipment Financing',
+  offers: {
+    price: '400000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Keep Excavation Revenue In-House. Control Full Operations. Build Quarry Equity."
+    subtitle="Finance Used Komatsu PC350 | 0% Deposit | All equipment accepted based on condition"
+    ctaText="Get Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20Used%20Komatsu%20PC350%20excavator%20financing."
+    ctaSecondaryText="Call: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['0% Deposit Option', 'All equipment accepted based on condition', 'Quarry Operators Welcome', 'Bad Credit Considered']}
+  />
+
+  <!-- Direct Copywriting Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <div class="prose prose-lg max-w-none text-[#4F3E29]">
+            <p class="text-xl font-semibold mb-4">You own a quarry.</p>
+
+            <p class="mb-4">
+              You don't have a heavy excavator. So you subcontract excavation work.
+            </p>
+
+            <p class="mb-4">
+              Every month, an excavation contractor sends you an invoice. RM 52,000. RM 68,000. Sometimes RM 80,000.
+            </p>
+
+            <p class="mb-4">
+              When you see those invoices, does your stomach drop? That's YOUR granite. YOUR quarry. But someone else is taking RM 50k-80k monthly because they own the excavator and you don't.
+            </p>
+
+            <p class="mb-4">
+              You've calculated it: Over one year, you've paid RM 650,000 to excavation contractors.
+            </p>
+
+            <p class="mb-4 font-bold">
+              That money could've bought you TWO used PC350 excavators.
+            </p>
+
+            <p class="mb-4">
+              But you're still paying. Month after month. Building someone else's business with your money.
+            </p>
+
+            <p class="mb-4">
+              When you watch their PC350 loading trucks with YOUR granite - do you feel that weight in your chest knowing every bucket-load is profit leaving your quarry?
+            </p>
+
+            <p class="mb-4 font-bold">
+              You found a used Komatsu PC350. 8 years old. 11,000 hours. Quarry-proven.
+            </p>
+
+            <p class="mb-4">
+              Banks reject it. "Too old. High hours."
+            </p>
+
+            <p class="mb-4">
+              But you know: PC350s run 15,000-20,000 hours. This one has 5,000+ productive hours left.
+            </p>
+
+            <p class="mb-4">
+              More importantly: Every hour it works is revenue YOU keep instead of writing checks to subcontractors.
+            </p>
+
+            <p class="mb-4 font-bold">
+              We approve equipment 10+ years old.
+            </p>
+
+            <p class="mb-4">
+              Your quarry. Your excavator. Your margins.
+            </p>
+
+            <p class="mb-4">
+              Every cubic meter you excavate yourself is profit that stays in YOUR business.
+            </p>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-6 my-6">
+              <p class="font-bold text-green-800 text-xl mb-3">0% deposit available. Equipment All equipment accepted based on condition. Quarry operators welcome.</p>
+              <p class="text-gray-800 mb-2">Keep excavation revenue in-house.</p>
+              <p class="text-gray-800 mb-2">Build your quarry's capability.</p>
+              <p class="text-gray-800 font-semibold mt-4">Control every stage of production.</p>
+            </div>
+
+            <p class="text-xl font-bold text-[#8B6F47]">
+              That's vertical integration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Finance Used PC350 with Ing Heng Credit?
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary mb-8 text-center">
+          Heavy Excavators We Finance
+        </h2>
+
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-4">Komatsu Models</h3>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• Komatsu PC350</li>
+                <li>• Komatsu PC300</li>
+                <li>• Komatsu PC400</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-4">Caterpillar Models</h3>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• CAT 336</li>
+                <li>• CAT 349</li>
+                <li>• CAT 374</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-4">Hitachi Models</h3>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• Hitachi ZX350</li>
+                <li>• Hitachi ZX450</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-4">Kobelco Models</h3>
+              <ul class="space-y-2 text-[#4F3E29]">
+                <li>• Kobelco SK350</li>
+                <li>• Kobelco SK480</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 bg-[#F5F5DC] rounded-lg">
+            <p class="text-sm text-[#4F3E29]">
+              <strong>All brands welcome:</strong> We finance Komatsu, CAT, Hitachi, Kobelco, Hyundai, Doosan, Volvo, and other major excavator brands.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Apply for PC350 Financing
+          </h2>
+          <p class="text-[#4F3E29]">
+            Get fast response to your application. We will contact you during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Keep Excavation Revenue In-House. Control Full Operations. Build Quarry Equity.
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Every month you subcontract excavation is money leaving your quarry. Finance your used PC350 with 0% deposit. Keep margins in-house. Equipment All equipment accepted based on condition.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20Used%20Komatsu%20PC350%20excavator%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Apply via WhatsApp
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="komatsu-pc350" />
+</BaseLayout>

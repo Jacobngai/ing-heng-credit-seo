@@ -1,0 +1,327 @@
+---
+/**
+ * Excavator Financing Kuala Lumpur - Location Page
+ * Target: Contractors and businesses in KL looking for excavator financing
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+
+const lang = 'en';
+const locationId = 'kuala-lumpur';
+
+// Location-specific data
+const location = {
+  name: 'Kuala Lumpur',
+  capital: 'Kuala Lumpur',
+  majorCities: ['KLCC', 'Cheras', 'Kepong', 'Setapak', 'Bangsar', 'Mont Kiara', 'Bukit Bintang', 'Sentul'],
+  industries: ['Commercial Construction', 'High-Rise Development', 'Infrastructure', 'MRT Projects', 'Urban Redevelopment'],
+  smeCount: '180,000+',
+  constructionProjects: '3,500+',
+  industrialParks: 15,
+};
+
+const equipment = {
+  name: 'Excavator',
+  priceRange: 'RM 30,000 - RM 3,000,000',
+};
+
+// SEO Data
+const pageTitle = `Excavator Financing Kuala Lumpur | fast approval | Serving KL & Surrounding Areas`;
+const pageDescription = `Fast excavator financing in Kuala Lumpur. Serving KLCC, Cheras, Kepong, Setapak, Bangsar and all KL areas. fast approval, 95% approval rate. Finance new & used excavators from ${equipment.priceRange}.`;
+const keywords = [
+  'excavator financing Kuala Lumpur',
+  'excavator loan KL',
+  'construction equipment financing Kuala Lumpur',
+  'heavy machinery loan KL',
+  'excavator financing Cheras',
+  'excavator financing Kepong',
+];
+
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Excavator Financing', url: '/en/equipment/excavator' },
+  { label: 'Kuala Lumpur', url: `/en/equipment/excavator/financing-kuala-lumpur` },
+];
+
+const benefits = [
+  { icon: 'clock', title: 'fast approval', description: `Fast approval for KL contractors. Get approved quickly and start your project immediately.` },
+  { icon: 'percentage', title: '95% Approval Rate', description: 'Industry-leading approval rate. We approve applications that banks reject. Bad credit accepted.' },
+  { icon: 'map-pin', title: 'Serving All Kuala Lumpur', description: `We serve ${location.majorCities.slice(0, 6).join(', ')}, and all areas across KL.` },
+  { icon: 'users', title: '0% Down Payment Available', description: 'Qualified applicants can get 0% down payment. Preserve your working capital for operations.' },
+  { icon: 'calendar', title: 'Flexible 12-60 Month Terms', description: 'Choose payment terms that match your project timeline and cash flow needs.' },
+  { icon: 'shield', title: 'New & Used Accepted', description: 'Finance new or used excavators All equipment accepted based on condition. All major brands accepted.' },
+];
+
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Contact Us via WhatsApp', description: 'Chat with our KL financing team. Get instant answers to your questions.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'Provide IC, 6 months bank statements, and company registration. Simple paperwork.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved in fasts', description: 'Fast approval for KL contractors. Urgent cases processed in 8-12 hours.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sign Loan Agreement', description: 'Review and sign loan agreement. Transparent terms with no hidden clauses.' },
+  { stepNumber: 5, icon: 'truck', title: 'Get Your Excavator', description: 'Delivery available throughout Kuala Lumpur. Start working and earning immediately.' },
+];
+
+const faqs = [
+  {
+    question: 'Do you serve all areas in Kuala Lumpur?',
+    answer: `Yes! We serve all areas across Kuala Lumpur including ${location.majorCities.join(', ')}, and surrounding areas. Being located in nearby Klang, Selangor, we have excellent access to all parts of KL. We can arrange meetings at your site for convenience.`
+  },
+  {
+    question: 'How fast can I get my excavator delivered in KL?',
+    answer: 'For KL contractors, we typically complete the entire process within 2-3 business days: fast approval + 1-2 days for documentation and delivery. Given KL\'s central location, logistics are straightforward. Urgent deliveries can often be arranged quickly of approval.'
+  },
+  {
+    question: 'What types of KL projects do you finance excavators for?',
+    answer: `Kuala Lumpur has ${location.constructionProjects} active construction projects. We finance excavators for: ${location.industries.join(', ')}. Whether you're working on residential condos, commercial buildings, or infrastructure projects like MRT expansions, we have financing solutions for you.`
+  },
+  {
+    question: 'Can I finance equipment for government projects in KL?',
+    answer: 'Absolutely! We have extensive experience financing equipment for contractors working on government infrastructure projects in KL, including MRT construction, highway expansion, and public building projects. Our fast approval helps you meet tight tender deadlines.'
+  },
+  {
+    question: 'What documents do I need to apply?',
+    answer: 'For individuals: IC, 6 months bank statements, income proof. For companies: SSM registration, company bank statements (6 months), directors\' IC copies. The process is simple and straightforward.'
+  },
+  {
+    question: 'What is your interest rate?',
+    answer: 'Interest rates range from 7.5% to 12% per annum depending on credit profile, down payment, loan term, and equipment age. Our rates are competitive compared to banks (9-15%).'
+  },
+];
+
+const nearbyLocations = [
+  { name: 'Selangor', url: '/en/equipment/excavator/financing-selangor' },
+  { name: 'Negeri Sembilan', url: '/en/equipment/excavator/financing-negeri-sembilan' },
+  { name: 'Pahang', url: '/en/equipment/excavator/financing-pahang' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": `Excavator Financing Kuala Lumpur`,
+  "description": pageDescription,
+  "brand": { "@type": "Brand", "name": "Ing Heng Credit" },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "30000",
+    "highPrice": "3000000",
+    "priceCurrency": "MYR",
+    "availability": "https://schema.org/InStock",
+    "areaServed": { "@type": "City", "name": "Kuala Lumpur", "containedInPlace": { "@type": "Country", "name": "Malaysia" } }
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-gradient-to-br from-amber-800 to-amber-950 text-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block bg-amber-600/30 text-amber-200 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          Serving All Kuala Lumpur | {location.majorCities.slice(0, 4).join(' • ')}
+        </span>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6">Excavator Financing in Kuala Lumpur</h1>
+        <p class="text-xl text-amber-100 mb-8 max-w-3xl mx-auto">
+          Fast, flexible excavator financing for contractors across Kuala Lumpur.
+          fast approval, 95% approval rate, serving {location.majorCities.slice(0, 5).join(', ')} and all surrounding areas.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60123456789?text=Hi%2C%20I%27m%20interested%20in%20excavator%20financing%20in%20Kuala%20Lumpur"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Now
+          </a>
+          <a href="/en/equipment/excavator" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            View All Excavator Options
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Stats -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-8 text-stone-800">Why KL Contractors Choose Us</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">{location.smeCount}</div>
+            <div class="text-stone-600">SMEs in KL</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">{location.constructionProjects}</div>
+            <div class="text-stone-600">Active Projects</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">95%</div>
+            <div class="text-stone-600">Approval Rate</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">24hrs</div>
+            <div class="text-stone-600">Approval Time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Served -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">Areas We Serve in Kuala Lumpur</h2>
+        <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+          We provide excavator financing services throughout Kuala Lumpur, including:
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {location.majorCities.map(city => (
+            <span class="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">{city}</span>
+          ))}
+          <span class="bg-stone-100 text-stone-600 px-4 py-2 rounded-full text-sm font-medium">+ All KL areas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Benefits of Excavator Financing in KL</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          As the leading equipment financing provider serving Kuala Lumpur, we offer advantages that help your business grow.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map(benefit => (
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:border-amber-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{benefit.title}</h3>
+              <p class="text-stone-600">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">Key Industries Using Excavators in KL</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {location.industries.map(industry => (
+            <div class="flex items-center gap-3 bg-stone-50 p-4 rounded-lg">
+              <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="font-medium text-stone-700">{industry}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">How to Get Excavator Financing in KL</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Simple 5-step process designed for busy KL contractors.
+        </p>
+        <div class="space-y-6">
+          {steps.map(step => (
+            <div class="flex gap-6 items-start bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-amber-700 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">{step.stepNumber}</div>
+              <div>
+                <h3 class="text-lg font-semibold text-stone-800 mb-1">{step.title}</h3>
+                <p class="text-stone-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Frequently Asked Questions</h2>
+        <p class="text-center text-stone-600 mb-12">Common questions about excavator financing in Kuala Lumpur</p>
+        <div class="space-y-4">
+          {faqs.map(faq => (
+            <details class="bg-stone-50 rounded-xl p-6 group">
+              <summary class="font-semibold text-stone-800 cursor-pointer list-none flex justify-between items-center">
+                {faq.question}
+                <svg class="w-5 h-5 text-stone-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <p class="mt-4 text-stone-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Locations -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-6 text-stone-800">Excavator Financing in Nearby States</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {nearbyLocations.map(loc => (
+            <a href={loc.url} class="bg-white hover:bg-amber-50 border border-stone-200 hover:border-amber-300 px-6 py-3 rounded-lg font-medium text-stone-700 hover:text-amber-700 transition-colors">
+              {loc.name} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-amber-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Get Your Excavator in Kuala Lumpur?</h2>
+        <p class="text-xl text-amber-100 mb-8">
+          Join thousands of KL contractors who have grown their businesses with our financing.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60123456789?text=Hi%2C%20I%27m%20interested%20in%20excavator%20financing%20in%20Kuala%20Lumpur"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Apply Now via WhatsApp
+          </a>
+          <a href="tel:+60123456789" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Call Us Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

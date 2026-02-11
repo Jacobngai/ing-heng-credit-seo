@@ -2,7 +2,7 @@
 title: "Electric vs Diesel Excavators: Malaysia's 2030 Green Transition Guide for Contractors"
 description: "Electric vs Diesel Excavators: Malaysia's 2030 Green Transition Guide for Contractors"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -256,3 +256,4 @@ Malaysia Green Construction: The 2030 Timeline
                   Volvo Electric
 - 
                   Hitachi Electric
+

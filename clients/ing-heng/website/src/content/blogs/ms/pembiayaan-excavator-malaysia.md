@@ -4,7 +4,7 @@ description: Pelajari cara dapatkan pembiayaan excavator di Malaysia. Proses per
   dokumen diperlukan, kadar kelulusan high approval rate, dan tips untuk kelulusan
   pantas.
 author: "ING HENG Credit"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 category: Construction Equipment
 tags:
 - excavator
@@ -731,3 +731,4 @@ Ahad & Cuti Umum: Tutup
 ---
 
 *Artikel ini ditulis oleh pasukan Ing Heng Credit & Leasing untuk membantu kontraktor Malaysia memahami proses pembiayaan excavator. Untuk konsultasi percuma dan terma terkini, sila hubungi kami.*
+

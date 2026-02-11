@@ -2,7 +2,7 @@
 title: "Mohon Pinjaman Excavator Klang 2025 - Tanpa Deposit, Kelulusan Pantas"
 description: "Cara mohon pinjaman excavator di Klang dengan syarat mudah dan tanpa deposit. Panduan lengkap permohonan excavator financing untuk contractors di Klang Valley."
 category: "Equipment Financing"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["mohon pinjaman excavator", "pinjaman klang", "excavator klang", "permohonan loan"]
 image: "/images/apply-excavator-loan-klang.jpg"

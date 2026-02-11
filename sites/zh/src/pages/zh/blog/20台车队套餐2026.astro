@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '20台车队套餐 2026 - 超大型车队',
+  slug: '20台车队套餐2026',
+  excerpt: '2026年20台车队套餐融资。0%首付，100%融资，超大型车队。行业领导者扩展。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["20台车队套餐","超大型车队","行业领导者","最大车队"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 20台车队套餐 2026
+
+## 超大型车队
+
+行业领导者需要20台车队:
+
+\`\`\`
+10台 → 20台车队 → 行业领先 → 最大收入
+\`\`\`
+
+## 20台车队选项
+
+### 选项1: 全国运输车队
+
+| 车辆 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 拖车头 | 8台 | RM 100,000 | RM 800,000 |
+| 10吨货车 | 8台 | RM 80,000 | RM 640,000 |
+| 5吨货车 | 4台 | RM 60,000 | RM 240,000 |
+| **总计** | **20台** | | **RM 1,680,000** |
+
+- 银行首付: RM 168,000
+- Ing Heng首付: RM 0
+- 月收入: RM 300,000-400,000
+
+### 选项2: 区域物流车队
+
+| 车辆 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 10吨货车 | 10台 | RM 80,000 | RM 800,000 |
+| 5吨货车 | 10台 | RM 60,000 | RM 600,000 |
+| **总计** | **20台** | | **RM 1,400,000** |
+
+- 银行首付: RM 140,000
+- Ing Heng首付: RM 0
+- 月收入: RM 250,000-350,000
+
+## 20台车队优势
+
+### 0%首付
+
+- 保留RM 140,000-168,000
+- 超大运营资金
+
+### 行业领导
+
+- 最大车队之一
+- 服务全国客户
+- 稳定收入流
+
+### 规模优势
+
+- 最低单位成本
+- 最大议价权
+- 最强竞争力
+
+## 收入规模
+
+\`\`\`
+10台车队: 月收入RM 120,000-200,000
+20台车队: 月收入RM 250,000-400,000
+增长: 100%+
+\`\`\`
+
+## 超大型车队资格
+
+### 公司要求
+
+- 营业3年以上
+- 月收入RM 100,000+
+- 全国客户基础
+- 优秀信用记录
+
+### 管理能力
+
+- 专业管理团队
+- 车队管理系统
+- 维护设施
+- 司机团队
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**20台车队，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

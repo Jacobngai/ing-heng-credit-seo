@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '无抵押设备 2026 - 可用',
+  slug: '无抵押设备2026-可用',
+  excerpt: '无抵押设备2026融资 - 不需要额外抵押。设备本身作为担保，无需房产或其他资产抵押。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["无抵押","设备融资","基于收入","无担保"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 无抵押设备 2026 - 可用
+
+## 需要额外抵押?
+
+传统银行要求额外抵押:
+
+\`\`\`
+银行: 设备+房产抵押 ❌
+Ing Heng: 设备本身即可 ✅
+\`\`\`
+
+## 无抵押融资
+
+### Ing Heng提供
+- 设备本身作为担保
+- 不需要房产
+- 不需要其他资产
+- **基于收入**
+
+## 真实例子
+
+### 例子1: 无房产
+
+您没有房产需要设备。
+
+**设备需求:**
+- 20吨挖掘机: RM 180,000
+
+**银行:**
+- 需要房产抵押
+- **拒绝申请**
+
+**Ing Heng:**
+- 设备作为担保 ✓
+- 月收入RM 25,000 ✓
+- **批准融资**
+
+## 无抵押方案
+
+### 方案1: 完全无抵押
+\`\`\`
+担保: 设备本身
+融资: 100%
+首付: 0%
+\`\`\`
+
+### 方案2: 收入基础
+\`\`\`
+担保: 设备+收入
+融资: 100%
+首付: 0%
+\`\`\`
+
+### 方案3: 混合担保
+\`\`\`
+担保: 设备+合同
+融资: 100%
+首付: 0%
+\`\`\`
+
+## 可融资设备
+
+所有设备都可以无抵押:
+- 挖掘机 ✅
+- 罗里 ✅
+- 叉车 ✅
+- 拖车头 ✅
+
+## 申请流程
+
+### 第1步: 提供收入证明
+- 银行月结单
+- 项目合同
+- 财务报表
+
+### 第2步: 快速评估
+基于收入和设备
+
+### 第3步: 批准融资
+无需额外抵押
+
+## 常见问题
+
+**Q: 真的不需要抵押吗?**
+A: 是的，设备本身作为担保。
+
+**Q: 需要什么收入证明?**
+A: 银行月结单等。
+
+**Q: 新公司可以吗?**
+A: 可以，有收入即可。
+
+## 立即申请
+
+无抵押需要设备? 立即申请。
+
+**联系方式:**
+- WhatsApp: +60175700889
+- 网站: inghengcredit.com
+
+**立即申请，无抵押设备融资**
+
+没有额外抵押?Ing Heng基于收入评估，设备本身作为担保。
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,203 @@
+---
+/**
+ * Dynamic Brand Tag Page - Malay
+ * URL: /ms/blog/brand/caterpillar
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../../utils/constants';
+import {
+  getBrandTags,
+  getEquipmentTags,
+  getTagName,
+  buildBrandEquipmentPostUrl,
+  type Locale
+} from '../../../../utils/blog-tags';
+
+const lang: Locale = 'ms';
+
+export function getStaticPaths() {
+  const brands = getBrandTags();
+  return brands.map((brand) => ({
+    params: { brand: brand.slug.ms },
+    props: { brandId: brand.id }
+  }));
+}
+
+const { brand } = Astro.params;
+const { brandId } = Astro.props;
+
+const brandTag = getBrandTags().find(b => b.id === brandId);
+if (!brandTag) {
+  return Astro.redirect('/ms/blog');
+}
+
+const brandName = getTagName(brandTag, lang);
+const equipment = getEquipmentTags();
+
+const breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: 'Mengikut Jenama', href: '/ms/blog' },
+  { label: brandName, href: `/ms/blog/brand/${brand}` }
+];
+
+const brandData: Record<string, { country: string; founded: string; specialty: string; description: string }> = {
+  'caterpillar': { country: 'USA', founded: '1925', specialty: 'Peralatan Pembinaan & Perlombongan', description: 'Pengeluar terkemuka dunia untuk peralatan pembinaan dan perlombongan.' },
+  'komatsu': { country: 'Jepun', founded: '1921', specialty: 'Peralatan Pembinaan & Perlombongan', description: 'Pemimpin global dalam peralatan penggerak bumi dan jentera perlombongan.' },
+  'hitachi': { country: 'Jepun', founded: '1910', specialty: 'Jengkaut & Jentera Pembinaan', description: 'Terkenal dengan jengkaut berkualiti tinggi dan peralatan pembinaan.' },
+  'kobelco': { country: 'Jepun', founded: '1930', specialty: 'Jengkaut', description: 'Pakar dalam jengkaut hidraulik dengan teknologi canggih.' },
+  'volvo': { country: 'Sweden', founded: '1832', specialty: 'Peralatan Pembinaan & Lori', description: 'Peralatan pembinaan premium yang terkenal dengan keselamatan dan kecekapan.' },
+  'hyundai': { country: 'Korea Selatan', founded: '1972', specialty: 'Peralatan Berat', description: 'Rangkaian komprehensif peralatan pembinaan dan pengendalian bahan.' },
+  'sany': { country: 'China', founded: '1989', specialty: 'Jentera Berat', description: 'Salah satu pengeluar peralatan berat terbesar di dunia.' },
+  'xcmg': { country: 'China', founded: '1943', specialty: 'Jentera Pembinaan', description: 'Pengeluar jentera pembinaan terkemuka dari China.' },
+  'doosan': { country: 'Korea Selatan', founded: '1896', specialty: 'Peralatan Berat', description: 'Pengeluar peralatan pembinaan dan padat premium.' },
+  'jcb': { country: 'UK', founded: '1945', specialty: 'Backhoe & Peralatan Pembinaan', description: 'Pengeluar British yang terkenal dengan backhoe loader dan telehandler.' }
+};
+
+const brandInfo = brandData[brandId] || { country: 'Antarabangsa', founded: 'N/A', specialty: 'Peralatan Berat', description: 'Pengeluar peralatan berkualiti.' };
+---
+
+<BaseLayout
+  title={`Pembiayaan Peralatan ${brandName} Malaysia | Kadar dari 2.88% | Ing Heng Credit`}
+  description={`Biayai peralatan ${brandName} di Malaysia. Jengkaut, forklif, lori & lain-lain. Kadar kompetitif dari 2.88% setahun, 0% bayaran pendahuluan tersedia.`}
+  lang={lang}
+  keywords={[
+    `pembiayaan ${brandName} Malaysia`,
+    `pinjaman peralatan ${brandName}`,
+    `sewa beli ${brandName}`
+  ]}
+>
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-brutalist mb-6 inline-block">Pembiayaan Jenama</span>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Pembiayaan Peralatan <span class="text-yellow-400">{brandName}</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          Biayai peralatan {brandName} anda dengan kadar kompetitif bermula dari 2.88% setahun.
+          Pilih dari jengkaut, forklif, lori, dan banyak lagi.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-2xl mx-auto">
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">{brandInfo.country}</div>
+            <div class="text-sm text-gray-400">Asal</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">Sejak {brandInfo.founded}</div>
+            <div class="text-sm text-gray-400">Ditubuhkan</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">2.88%</div>
+            <div class="text-sm text-gray-400">Kadar Dari</div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <div class="text-2xl font-black text-yellow-400">0%</div>
+            <div class="text-sm text-gray-400">Bayaran Muka</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-3xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          Tentang {brandName}
+        </h2>
+        <p class="text-lg text-gray-600">
+          {brandInfo.description} Di Ing Heng Credit, kami pakar dalam membiayai peralatan {brandName}
+          untuk perniagaan di seluruh Malaysia. Dengan 40+ tahun pengalaman, kami menawarkan kadar kompetitif dan
+          terma fleksibel untuk membantu anda memperoleh peralatan yang diperlukan.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-black text-navy-900 mb-8 text-center" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Biayai Peralatan {brandName}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {equipment.map((equip) => (
+          <a href={buildBrandEquipmentPostUrl(lang, brandId, equip.id)} class="card-brutalist group">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-yellow-400 border-3 border-navy-900 flex items-center justify-center" style="box-shadow: 3px 3px 0 #1E3A8A;">
+                  <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-black text-navy-900 group-hover:text-yellow-600 transition-colors" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                    {brandName} {getTagName(equip, lang)}
+                  </h3>
+                </div>
+              </div>
+
+              <p class="text-gray-600 mb-4">
+                Biayai {brandName} {getTagName(equip, lang).toLowerCase()} anda dengan kadar kompetitif dan terma fleksibel.
+              </p>
+
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-bold text-yellow-600">Dari 2.88% setahun</span>
+                <span class="inline-flex items-center text-yellow-600 font-bold text-sm group-hover:translate-x-2 transition-transform">
+                  Ketahui Lebih →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Bersedia untuk Membiayai Peralatan {brandName} Anda?
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Hubungi kami hari ini untuk sebut harga percuma. Pasukan kami bersedia membantu anda.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Dapatkan Sebut Harga"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="Lihat Semua Jenama"
+          link="/ms/blog"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist { @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900; box-shadow: 2px 2px 0 #1E3A8A; }
+  .card-brutalist { @apply bg-white overflow-hidden border-4 border-navy-900; box-shadow: 6px 6px 0 #1E3A8A; transition: all 0.3s ease; }
+  .card-brutalist:hover { box-shadow: 3px 3px 0 #1E3A8A; transform: translate(3px, 3px); }
+</style>

@@ -3,7 +3,7 @@ title: 'Pembiayaan Jentera Hingga 10 Tahun: Panduan Polisi Lengkap Malaysia'
 description: Biayai mana-mana jentera hingga 10 tahun tanpa deposit. Panduan lengkap
   had umur, penilaian, proses kelulusan untuk jengkaut, lori, forklift, dan lain-lain.
 author: "ING HENG Credit"
-publishDate: 2026-01-20
+publishDate: 2026-01-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - jentera terpakai
@@ -831,3 +831,4 @@ Pakar pembiayaan jentera dipercayai Malaysia sejak 1985. Kami telah membantu leb
 **Khalayak Sasaran:** Pembeli jentera terpakai merentas semua industri
 **Kata Kunci Utama:** pembiayaan jentera hingga 10 tahun
 **Masa Bacaan:** 9 minit
+

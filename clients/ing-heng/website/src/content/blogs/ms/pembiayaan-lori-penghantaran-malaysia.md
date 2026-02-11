@@ -5,7 +5,7 @@ description: Biayai lori penghantaran dan kenderaan komersial di Malaysia dengan
   0% deposit. Panduan lengkap pembiayaan kenderaan penghantaran termasuk pinjaman
   lori, pembiayaan van, dan pinjaman pikap untuk perniagaan logistik.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - lori penghantaran

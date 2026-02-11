@@ -3,7 +3,7 @@ title: 'Pembiayaan Excavator 10 Tahun: Panduan Lengkap Kelayakan'
 description: Dapatkan pembiayaan untuk excavator sehingga 10 tahun di Malaysia. Ketahui
   syarat kelulusan, terma pinjaman, dan dokumen diperlukan untuk jentera lama.
 author: "ING HENG Credit"
-publishDate: 2026-01-16
+publishDate: 2026-01-16T00:00:00.000Z
 category: Equipment Financing
 tags:
 - excavator
@@ -777,3 +777,4 @@ Melayan kontraktor Malaysia sejak 1985
 ---
 
 *Penafian: Pembiayaan tertakluk kepada pemeriksaan jentera dan kelulusan kredit. Kadar faedah dan terma adalah julat indikatif dan berbeza berdasarkan keadaan jentera dan profil pemohon. Semua permohonan dinilai secara individu.*
+

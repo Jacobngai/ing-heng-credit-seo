@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'en';
+const post = {
+  title: 'CNY Warehouse Equipment - Stock Before Festive',
+  slug: 'cny-warehouse-equipment-stock-before-festive',
+  excerpt: 'CNY warehouse equipment stocking 2026. Forklifts, stackers before Chinese New Year.',
+  date: '2026-01-05',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'CNY Special',
+  image: '/images/blog/cny-warehouse.jpg'
+};
+
+const keywords = ["machinery-financing","cny-warehouse","warehouse-stock"],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# CNY Warehouse Equipment - Stock Before Festive
+
+CNY warehouse equipment for pre-festive stocking in 2026. Forklifts, stackers before Chinese New Year.
+
+## CNY Warehouse Stocking
+
+**Pre-CNY Period (January):**
+- Stocking volume +300%
+- Extended hours needed
+- Additional shifts
+- **Forklift shortage bottleneck**
+
+## 2026 CNY Warehouse Equipment
+
+**Equipment Needs:**
+- 3-ton forklifts (general)
+- 5-ton forklifts (heavy)
+- Stackers (racking)
+- Reach trucks (warehouse)
+
+## Real CNY Warehouse Cases
+
+**Case:** Warehouse needs 4 forklifts
+**Current:** 3 forklifts insufficient
+**Demand:** Pre-CNY stocking 3x normal
+**Financing:** 4 Toyota forklifts (RM 180,000)
+**Result:** CNY stocking completed
+
+## CNY Warehouse Utilization
+
+| Period | Demand | Forklifts Needed |
+|--------|--------|------------------|
+| **Normal** | 100% | 5 units |
+| **Pre-CNY** | 300% | 12 units |
+| **CNY Week** | 50% | 3 units |
+| **Post-CNY** | 200% | 8 units |
+
+## Get CNY Warehouse Equipment
+
+Warehouse stocking for CNY? Apply for forklift financing before January.
+
+---
+
+**Urgent need?** See [Urgent Forklift Before CNY](/blog/urgent-forklift-before-cny-warehouse-stock-2026).
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">CNY Special</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

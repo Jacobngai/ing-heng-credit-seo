@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '叉车队融资 - 2026仓库扩建',
+  slug: '叉车队融资-2026仓库扩建',
+  excerpt: '叉车队融资 - 2026仓库扩建。多辆叉车批量融资，0%首付，批量利率优惠，适合仓库扩建。',
+  date: '2026-01-10',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '叉车和仓库',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["叉车队","批量叉车","叉车套餐","叉车队融资","仓库扩建"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 叉车队融资 - 2026仓库扩建
+
+## 叉车队优势
+
+批量购买叉车节省成本:
+
+\`\`\`
+批量: 批量购买优惠
+运营: 车队运营高效
+维护: 统一维护
+备份: 互相备份
+\`\`\`
+
+## 融资方案
+
+### 3-5辆叉车队
+\`\`\`
+总价: RM 60,000-150,000
+融资: 100%
+利率: 优惠0.2-0.3%
+\`\`\`
+
+### 6-10辆叉车队
+\`\`\`
+总价: RM 120,000-300,000
+融资: 100%
+利率: 优惠0.4-0.5%
+\`\`\`
+
+## 收入
+
+### 车队运营
+\`\`\`
+3辆车队: RM 8,000-14,000/月
+5辆车队: RM 13,000-22,000/月
+\`\`\`
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车和仓库</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

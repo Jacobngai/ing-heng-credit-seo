@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '中小企业建筑设备 2026 - 建筑业SME',
+  slug: '中小企业建筑设备2026',
+  excerpt: '2026年中小企业建筑设备融资。0%首付，100%融资，挖掘机、起重机、装载机。建筑业SME。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '建筑设备',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["中小企业建筑设备","建筑SME","挖掘机融资","起重机融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 中小企业建筑设备 2026
+
+## 建筑业SME
+
+您的建筑SME需要设备:
+
+\`\`\`
+建筑项目 → 需要设备 → 0%首付 → 立即开工
+\`\`\`
+
+## 建筑设备价格
+
+| 设备 | 新设备 | 二手设备 | 月收入 | Ing Heng首付 |
+|------|-------|---------|--------|-------------|
+| 小型挖掘机 | RM 100,000-150,000 | RM 34,000-60,000 | RM 15,000-25,000 | RM 0 |
+| 中型挖掘机 | RM 150,000-250,000 | RM 60,000-120,000 | RM 20,000-35,000 | RM 0 |
+| 汽车起重机 | RM 150,000-300,000 | RM 50,000-150,000 | RM 18,000-40,000 | RM 0 |
+| 装载机 | RM 120,000-200,000 | RM 50,000-100,000 | RM 15,000-30,000 | RM 0 |
+| 推土机 | RM 150,000-350,000 | RM 60,000-150,000 | RM 18,000-35,000 | RM 0 |
+
+## 建筑SME设备组合
+
+### 组合1: 小型建筑
+
+- 小型挖掘机: RM 34,000-60,000
+- 小型起重机: RM 50,000-80,000
+- 总计: RM 84,000-140,000
+- 银行首付: RM 8,400-14,000
+- Ing Heng首付: RM 0
+
+### 组合2: 中型建筑
+
+- 中型挖掘机: RM 80,000-120,000
+- 中型起重机: RM 80,000-150,000
+- 装载机: RM 50,000-100,000
+- 总计: RM 210,000-370,000
+- 银行首付: RM 21,000-37,000
+- Ing Heng首付: RM 0
+
+## 0%首付好处
+
+### 保留现金
+
+RM 8,000-37,000用于:
+- 购买建筑材料
+- 支付工人工资
+- 购买燃料
+- 项目运营
+
+### 立即开工
+
+- 无需等待储蓄
+- 快速响应项目
+- 准时完成
+- 获得付款
+
+## 建筑项目匹配
+
+### 小型项目
+
+- 别墅建设
+- 小型装修
+- 园艺工程
+- 设备: 小型挖掘机
+
+### 中型项目
+
+- 工厂建设
+- 商店装修
+- 道路建设
+- 设备: 中型挖掘机+起重机
+
+### 大型项目
+
+- 高层建筑
+- 大型开发
+- 基础设施
+- 设备: 大型挖掘机+多台设备
+
+## 申请资格
+
+### 建筑SME要求
+
+- 注册建筑公司
+- 营业6个月+
+- 有项目合同优先
+- CIDB认证
+
+### 文件要求
+
+- SSM文件
+- CIDB证书
+- 项目合同
+- 月结单
+- 设备报价单
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**建筑SME，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

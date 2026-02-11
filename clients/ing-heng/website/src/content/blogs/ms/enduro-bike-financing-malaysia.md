@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan enduro bike Malaysia dengan 0% deposit. Bank t
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan enduro bike", "pinjaman motosikal off road", "kewangan KTM enduro", "pinjaman husqvarna enduro", "pembiayaan trail bike"]
 keywords: ["pembiayaan enduro bike malaysia", "pinjaman motosikal off road", "kewangan KTM enduro", "pinjaman husqvarna enduro", "pinjaman trail bike malaysia", "pembiayaan motosikal enduro"]

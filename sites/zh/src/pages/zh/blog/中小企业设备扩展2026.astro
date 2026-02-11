@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '中小企业设备扩展 2026 - SME增长',
+  slug: '中小企业设备扩展2026',
+  excerpt: '2026年中小企业设备扩展融资。0%首付，100%融资，支持SME扩展。多设备融资，比银行更友好。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["中小企业设备扩展","SME增长","设备融资","扩展贷款"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 中小企业设备扩展 2026
+
+## SME需要扩展
+
+您的中小企业正在成长:
+
+\`\`\`
+业务增长 → 需要更多设备 → 扩展收入 → Ing Heng帮助
+\`\`\`
+
+## 银行vs Ing Heng
+
+### 银行条件
+
+\`\`\`
+扩展要求: 严格
+首付: 10-20%
+融资: 最多90%
+多设备: 复杂流程
+审批: 2-4周
+\`\`\`
+
+### Ing Heng优势
+
+\`\`\`
+扩展要求: 灵活
+首付: 0%
+融资: 100%
+多设备: 简化流程
+审批: 快速
+\`\`\`
+
+## 真实例子
+
+您的SME需要2-3台新设备。
+
+**设备扩展:**
+- 第二台叉车: RM 20,000
+- 第三台叉车: RM 25,000
+- 小货车: RM 50,000
+- **总计: RM 95,000**
+
+**银行方案:**
+- 首付: RM 9,500 (10%)
+- 多笔贷款
+
+**Ing Heng方案:**
+- 首付: RM 0
+- 统一融资
+- 简化流程
+
+## 扩展设备价格
+
+| 设备组合 | 总价值 | 银行首付 | Ing Heng首付 |
+|---------|-------|---------|-------------|
+| 2台叉车 | RM 40,000-60,000 | RM 4,000-6,000 | RM 0 |
+| 3台叉车 | RM 60,000-90,000 | RM 6,000-9,000 | RM 0 |
+| 2台货车 | RM 100,000-160,000 | RM 10,000-16,000 | RM 0 |
+| 混合5台 | RM 150,000-250,000 | RM 15,000-25,000 | RM 0 |
+
+## 扩展阶段
+
+### 阶段1: 2-3台设备
+
+- 稳定扩展
+- 收入增加50-100%
+- 1年内
+
+### 阶段2: 5台设备
+
+- SME套餐
+- 收入增加200%
+- 2年内
+
+### 阶段3: 10+台设备
+
+- 车队扩展
+- 收入增加500%+
+- 3年内
+
+## 0%首付好处
+
+### 保留现金
+
+RM 10,000-30,000用于:
+- 营销推广
+- 购买材料
+- 雇佣员工
+- 扩展运营
+
+### 100%融资
+
+- 全额贷款
+- 包含所有费用
+- 无额外负担
+- 易于管理
+
+## 申请流程
+
+### 第1步: 评估扩展需求
+
+- 需要什么设备?
+- 能增加多少收入?
+- 回本时间?
+
+### 第2步: 准备文件
+
+- SSM文件
+- 月结单
+- 设备报价单
+
+### 第3步: 提交申请
+
+- WhatsApp: +60175700889
+- 快速批准
+
+## 常见问题
+
+**Q: 可以融资几台设备?**
+A: 可以融资2台、3台、5台或更多
+
+**Q: 需要多少首付?**
+A: 0%首付
+
+**Q: 审批需要多久?**
+A: 快速内
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**SME扩展，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

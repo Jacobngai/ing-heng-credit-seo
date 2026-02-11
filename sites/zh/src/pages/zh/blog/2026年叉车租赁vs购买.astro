@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '2026年叉车租赁vs购买 - 成本比较分析',
+  slug: '2026年叉车租赁vs购买',
+  excerpt: '2026年叉车租赁vs购买融资分析。0%首付购买叉车，对比租赁成本优势。',
+  date: '2026-01-10',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '叉车',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["叉车租赁","叉车购买","叉车成本","叉车比较"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 2026年叉车租赁vs购买 - 成本比较分析
+
+## 租赁 vs 购买
+
+### 3年成本比较
+
+**租赁方案:**
+- 月租: RM 2,000
+- 3年总成本: RM 72,000
+- 所有权: 无
+
+**购买方案(盈恒):**
+- 叉车价格: RM 20,000
+- 0%首付
+- 月供: RM 800
+- 3年总成本: RM 28,800
+- 所有权: 有
+
+**节省: RM 43,200(60%)**
+
+## 购买优势
+
+- **所有权**: 资产属于您
+- **总成本更低**: 节省60%
+- **月供更低**: RM 800 vs RM 2,000
+- **长期使用**: 无限时间
+
+## 盈恒购买方案
+
+- 0%首付
+- 100%融资
+- 最长7年还款
+- 月供可负担
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan prime mover di Port Klang. 0% deposit, 100% pin
   untuk kontraktor pelabuhan dan syarikat logistik. Kelulusan pantas untuk kontrak
   penghantaran.
 author: "ING HENG Credit"
-publishDate: 2026-01-06
+publishDate: 2026-01-06T00:00:00.000Z
 category: Logistics Equipment
 tags:
 - prime mover
@@ -828,3 +828,4 @@ Jangan biarkan kekangan modal menghalang pertumbuhan perniagaan logistik anda. D
 ---
 
 *Ing Heng Credit & Leasing Sdn Bhd - Syarikat pembiayaan peralatan berlesen yang berpusat di Klang, Selangor. Pakar dalam pembiayaan prime mover, pinjaman peralatan logistik, dan penyelesaian pengangkutan kontena untuk pengendali pelabuhan dan kontraktor perkapalan Malaysia.*
+

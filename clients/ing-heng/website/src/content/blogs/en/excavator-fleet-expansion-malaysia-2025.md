@@ -2,7 +2,7 @@
 title: "Malaysia Construction Boom 2025: Why Your Excavator Fleet Needs to Expand Now"
 description: "Malaysia construction industry grew 15% in 2024 with RM150.2 billion in approved projects. Discover why expanding your excavator fleet with 0% down payment financing is the smartest move for contractors in 2025."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -474,3 +474,4 @@ Get 0% down payment financing approved in 24 hours. WhatsApp us for free consult
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

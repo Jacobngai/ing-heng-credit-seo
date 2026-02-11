@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Mazda Lantis Type R di Malaysia dengan pilihan
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan mazda lantis type r", "pembiayaan sedan sukan v6", "pembiayaan mazda jarang", "pinjaman naturally aspirated", "pembiayaan lantis 0 deposit"]
 keywords: ["pembiayaan mazda lantis type r malaysia", "pinjaman sedan sukan v6", "pembiayaan mazda jarang", "pembiayaan naturally aspirated", "pinjaman lantis type r", "pembiayaan mazda 0 deposit", "pinjaman lantis meningkat nilai", "kelulusan pembiayaan type r"]

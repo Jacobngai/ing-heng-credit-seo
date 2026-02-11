@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Mitsubishi Legnum VR-4 di Malaysia dengan pili
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman mitsubishi legnum vr4", "pembiayaan wagon rali", "pembiayaan twin turbo awd", "pinjaman mitsubishi jarang", "pembiayaan wagon 0 deposit"]
 keywords: ["pinjaman mitsubishi legnum vr4 malaysia", "pembiayaan wagon rali", "pembiayaan twin turbo", "pinjaman wagon awd", "pembiayaan mitsubishi jarang", "pembiayaan legnum 0 deposit", "pinjaman wagon meningkat nilai", "pembiayaan estate prestasi"]

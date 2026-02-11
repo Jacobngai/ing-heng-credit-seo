@@ -3,7 +3,7 @@ title: 'Pembiayaan Bulldozer GPS Malaysia: Analisis ROI 2025'
 description: Analisis ROI lengkap pembiayaan bulldozer GPS di Malaysia. Teknologi
   ketepatan meningkat produktiviti 30-40% dengan pilihan pembiayaan 0% deposit.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - bulldozer

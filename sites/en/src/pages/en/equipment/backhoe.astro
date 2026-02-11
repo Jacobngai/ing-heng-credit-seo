@@ -1,0 +1,364 @@
+---
+/**
+ * Backhoe Loader Financing Landing Page - English
+ * Target: Utility contractors, small road builders, worker-to-owner transitions
+ * Keywords: backhoe financing Malaysia, utility tender equipment, CASE JCB financing
+ * Cultural Focus: Direct copywriting, contractor journey, tender opportunities
+ * Word Count: 1,500 words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data - Optimized for backhoe financing Malaysia
+const pageTitle = 'Stop Renting Backhoes - Own with 0% Deposit | CASE, JCB, CAT Financing';
+const pageDescription = 'Stop paying RM 8k monthly rental. Finance used backhoes with 0% deposit. No more rental limits or availability issues. CASE 580, JCB 3CX accepted. Equipment 10+ years old approved.';
+const keywords = ['backhoe financing Malaysia', 'stop renting backhoe', 'CASE 580 financing', 'used backhoe financing', 'JCB backhoe loan', 'own vs rent backhoe'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Backhoe Financing', url: '/en/equipment/backhoe' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Fast Approval', description: 'Get approved quickly so you can bid on upcoming tenders. We understand contractors need equipment to qualify for government and telecoms contracts.' },
+  { icon: 'percentage', title: 'Excellent Approval Rate', description: 'We approve experienced workers starting their own business. Banks reject first-time contractors - we see the opportunity.' },
+  { icon: 'shield', title: 'All equipment accepted based on condition', description: 'Old backhoes still work. A 2015 CASE 580 digs trenches as well as a 2024 model. We finance proven equipment at affordable prices.' },
+  { icon: 'users', title: '0% Deposit, 100% Financing', description: 'Zero deposit required. Finance up to 100% of equipment value. Preserve your working capital for tender bonds and operational costs.' },
+  { icon: 'document', title: 'Simple Documentation', description: 'IC, bank statements, company docs. If you have utility experience and tender opportunities, we can help.' },
+  { icon: 'shield', title: 'No Hidden Fees', description: 'Transparent pricing. Rates from 7.5-12% per annum. No early repayment penalty. What you see is what you pay.' },
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'How much does it really cost to rent vs own a backhoe?',
+    answer: 'RENTAL COSTS (Forever): RM 8,000 per month average rental. Limited to 200 hours/month. Extra hours = penalties. Equipment availability not guaranteed. After 3 years of renting = RM 288,000 spent. You own nothing. OWNERSHIP COSTS (Short-term): Used CASE 580 backhoe purchase + financing costs. After 3-5 years of payments, you own the machine. Unlimited hours. Available whenever you need it. Works for another 10-15 years after paid off. THE REAL QUESTION: Do you want to pay RM 8,000 monthly forever and own nothing? Or own equipment that makes you money for 15-20 years?'
+  },
+  {
+    question: 'Will banks finance a used backhoe for my small contracting business?',
+    answer: 'NO - banks typically reject used equipment financing for small contractors. Why banks say no: (1) Equipment over 5-7 years old = "No book value." (2) Small contractor = "Too risky." (3) Limited financial history = "Cannot prove repayment ability." Banks follow rigid rules. We evaluate the FULL picture: (1) Can the backhoe work? Hydraulics functional? Engine runs? (2) Do you have construction experience? (3) Do you have contracts or tender opportunities? (4) Is your current financial situation stable? We approve equipment 10+ years old. We finance small contractors. We understand construction reality - a well-maintained backhoe works for decades, regardless of what accounting books say.'
+  },
+  {
+    question: 'What happens if I cannot rent equipment when I need it for a job?',
+    answer: 'THIS IS THE RENTAL TRAP: Scenario 1 - EQUIPMENT UNAVAILABLE: You won a foundation contract. Need backhoe next Monday. Rental company says "All booked for 2 weeks." You either: (1) Delay project and pay penalties, or (2) Rent from expensive backup company. Scenario 2 - HOUR LIMITS: Your contract needs 280 hours this month. Rental allows 200 hours max. You pay massive penalty fees. Or rush the job and risk poor quality. Scenario 3 - TENDER SCORING: You bid on government tender. Scoring: Equipment Owned = 20 points. Equipment Rented = 5 points. You lose to competitors who own equipment. OWNERSHIP SOLUTION: Your backhoe. Your schedule. Available 24/7. Unlimited hours. Higher tender scores. Complete control.'
+  },
+  {
+    question: 'How do I know if a used CASE 580 or JCB 3CX backhoe is still reliable?',
+    answer: 'PRACTICAL INSPECTION CHECKLIST: (1) HYDRAULICS TEST: Operate boom, dipper, bucket, loader. Movement should be smooth, no jerking, no leaks. (2) ENGINE CHECK: Starts easily? Runs smoothly? No excessive black smoke or strange noises? (3) FRAME INSPECTION: Look for cracks at stress points. Minor cracks are weldable. Major frame damage = walk away. (4) TIRES CONDITION: Good tires = RM 8k-15k for full set. Budget this if worn. (5) MAINTENANCE RECORDS: Owner who kept service records likely maintained machine properly. BEST ADVICE: Bring an experienced backhoe operator. A skilled operator can test the machine for 30 minutes and tell you exactly what works and what needs repair. Pay RM 200-500 for expert inspection. This saves you from buying a problem machine.'
+  },
+  {
+    question: 'Can I finance a backhoe if I have bad credit or business debt?',
+    answer: 'YES - bad credit does NOT mean automatic rejection. We evaluate the complete picture, not just credit score. WHAT WE LOOK AT: (1) CURRENT FINANCIAL STABILITY: Show us 6 months bank statements. Are you working now? Income stable? (2) CONSTRUCTION EXPERIENCE: Have you operated backhoes before? Understanding the work reduces risk. (3) BUSINESS PLAN: Do you have contracts lined up? Tender opportunities? Clear path to revenue? (4) EQUIPMENT VALUE: Is the backhoe in good working condition? Good collateral helps approval. BE HONEST: Explain your credit situation. What happened? What changed? We work with many contractors who had past business failures but rebuilt successfully. Banks only see credit scores. We see potential.'
+  },
+  {
+    question: 'What if the backhoe breaks down and I still have loan payments?',
+    answer: 'REALITY: Equipment breaks down. This is normal. Smart contractors plan for it. PROTECTION STRATEGIES: (1) COMPREHENSIVE INSURANCE: Get equipment insurance (RM 2,500-6,000/year). Some policies include loss-of-income coverage during repairs. (2) EMERGENCY FUND: Save 3-6 months of loan payments. This protects you during breakdown or slow contract periods. (3) REGULAR MAINTENANCE: Prevent breakdowns through proper servicing. Cheaper than emergency repairs. (4) COMMUNICATE WITH US: If breakdown happens and you cannot pay, CALL US IMMEDIATELY. We can work out temporary payment plans. We would rather keep you working than repossess equipment. LOAN PAYMENT RESPONSIBILITY: You are responsible for payments even during breakdown. This is why insurance and emergency fund are critical. But we understand contractor reality and will work with you on solutions.'
+  },
+  {
+    question: 'Should I buy a backhoe or separate excavator and wheel loader?',
+    answer: 'FOR SMALL CONTRACTORS - BACKHOE WINS: Separate equipment: Used 5-ton excavator (RM 250k) + Wheel loader (RM 200k) = RM 450k total investment. Two machines = double maintenance, double insurance, possibly two operators needed. Backhoe option: Used CASE 580 = RM 180k. ONE machine does both jobs. ONE operator. ONE maintenance schedule. ONE insurance policy. YOU SAVE: RM 270k on purchase + thousands annually on maintenance/insurance/operators. THE TRADE-OFF: Excavator digs deeper (6-8m vs 4-5m backhoe). But most small contractor work - foundation trenches, utility installations, site preparation - only needs 1.5-3m depth. A backhoe handles 90% of your jobs perfectly. BOTTOM LINE: Backhoe = smart choice for small contractors. Lower cost, simpler operation, handles most work you will get.'
+  },
+  {
+    question: 'How much should I budget monthly for backhoe maintenance and operating costs?',
+    answer: 'REALISTIC MONTHLY OPERATING BUDGET: (1) REGULAR SERVICING: RM 2,000-3,500 per service (every 250-500 hours). Average 3-4 services/year = RM 500-1,200/month. (2) DIESEL FUEL: Depends on usage. Heavy use = RM 2,000-4,000/month. (3) INSURANCE: RM 2,500-6,000/year = RM 210-500/month. (4) ROAD TAX: Minimal for construction equipment. (5) TIRES/WEAR PARTS: Budget RM 500-1,000/month for eventual replacement. (6) EMERGENCY REPAIR FUND: Set aside RM 1,000-2,000/month. TOTAL MONTHLY: RM 4,000-8,000 depending on usage intensity. PLUS LOAN PAYMENT: Your financing payment on top of operating costs. REALITY CHECK: Even with these costs, ownership is still cheaper than RM 8,000/month rental forever. And after loan is paid, you only have operating costs while backhoe keeps working.'
+  },
+  {
+    question: 'Will owning a backhoe really help me win more tenders?',
+    answer: 'YES - equipment ownership significantly improves tender competitiveness. GOVERNMENT TENDER SCORING: Most tender evaluations include equipment ownership criteria. Example scoring: Equipment Owned = 15-20 points. Equipment Rented = 5-10 points. Equipment Subcontracted = 0-5 points. This difference can win or lose tenders. TENDER REQUIREMENTS: Some government and utility tenders REQUIRE equipment ownership. If you rent or subcontract, you cannot even bid. PRACTICAL ADVANTAGES: (1) You can commit to tight schedules (no rental availability issues). (2) You can start immediately (no waiting for rental). (3) You appear more established (equipment = serious contractor). (4) Lower bid prices (no rental markup in your costs). REAL EXAMPLE: Small contractor bought used JCB 3CX. Previously lost tenders to competitors with owned equipment. After purchase, won first government drainage tender within 2 months. Equipment ownership opened doors.'
+  },
+  {
+    question: 'Can I claim tax deductions for backhoe financing and maintenance?',
+    answer: 'YES - significant tax benefits available (consult your accountant for specific advice): (1) CAPITAL ALLOWANCE: Construction equipment qualifies for capital allowance under Malaysian tax law. Initial Allowance (20% first year) + Annual Allowance (14% per year). (2) LOAN INTEREST: Deductible as business expense every year. (3) OPERATING EXPENSES (Fully Deductible): Diesel fuel, maintenance and repairs, insurance, operator salary, parts and components. (4) FINANCING VS CASH PURCHASE: Financing often provides BETTER tax position because: You preserve working capital, you deduct loan interest annually, and you still claim same capital allowances. ACCOUNTING ADVICE: Set up proper bookkeeping from day 1. Keep ALL receipts. Track every expense. File taxes correctly. Hire accountant who understands construction business. Good tax planning can save RM 15,000-40,000 annually for typical backhoe contractor.'
+  },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Backhoe Financing Malaysia - Stop Renting, Start Owning',
+  description: 'Stop paying RM 8k monthly rental. Finance used backhoes with 0% deposit. No rental limits or availability issues. CASE 580, JCB 3CX, CAT backhoes. Equipment All equipment accepted based on condition.',
+  imageUrl: `${SITE_CONFIG.url}/images/backhoe-financing.jpg`,
+  category: 'Financial Service - Equipment Financing',
+  offers: {
+    price: '120000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Stop Renting Backhoes - Own Your Equipment with 0% Deposit"
+    subtitle="Tired of RM 8,000 monthly rental fees? Limited hours? Equipment availability issues? Finance a used backhoe and control your business."
+    ctaText="Get Free Quote via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20backhoe%20financing."
+    ctaSecondaryText="Call Now: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40 Years in Business', 'KPKT Licensed', '4,000+ Companies Financed', 'Equipment All equipment accepted based on condition']}
+  />
+
+  <!-- Direct Copywriting Story Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-8 text-center">
+          Stop Paying RM 8,000 Monthly Rental Forever
+        </h2>
+
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] mb-8">
+          <div class="prose max-w-none text-[#4F3E29] space-y-4">
+            <p>You're a small contractor. Foundation work. Site preparation. Utility jobs.</p>
+
+            <p>You rent a backhoe when you need it. RM 8,000 per month.</p>
+
+            <p>But rental comes with limits: 200 hours maximum.</p>
+
+            <p>Your projects need 250-300 hours. You either:</p>
+            <ul>
+              <li>Rush the work (quality suffers)</li>
+              <li>Pay RM 50 per extra hour (penalties add up fast)</li>
+              <li>Turn down bigger jobs (can't commit without guaranteed equipment)</li>
+            </ul>
+
+            <p>Last month, you got a Saturday emergency call. Burst pipe, need trenching NOW. Weekend premium work: Worth RM 12,000.</p>
+
+            <p>You call the rental company. Closed.</p>
+
+            <p>You turn down RM 12,000. You sit at home. The job goes to a contractor who OWNS his backhoe.</p>
+
+            <p>Does that missed revenue eat at you all weekend?</p>
+
+            <p>When Monday comes and you see that contractor's Facebook post: "Weekend emergency job, saved the day" - and you know YOU could've done it if you owned equipment - does it sting?</p>
+
+            <p>You've rented for 3 years. RM 8,000 monthly. That's RM 288,000.</p>
+
+            <p>You could've OWNED a used backhoe after 18 months of those payments.</p>
+
+            <p>But instead, you're still renting. Still limited. Still missing opportunities.</p>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-4">
+              <p class="font-semibold">Found a used CASE 580. 8 years old. 2-in-1 machine: excavate AND load.</p>
+              <p class="mt-2">Banks reject. "Too old."</p>
+            </div>
+
+            <p>But you know backhoes. Simple hydraulics. CASE machines from 1995 still working on Malaysian sites.</p>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4">
+              <p class="font-semibold">We approve equipment 10+ years old.</p>
+            </div>
+
+            <p>Your backhoe. Your schedule. Your weekend emergency revenue.</p>
+
+            <p class="text-xl font-semibold text-primary">Own it. Control it. Never miss another opportunity.</p>
+
+            <p class="text-lg font-semibold">Unlimited working hours. Always available for emergency jobs. Weekend revenue, all yours.</p>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a
+            href="https://wa.me/60175700889?text=Hi!%20I%27m%20tired%20of%20renting%20equipment.%20I%27d%20like%20to%20discuss%20backhoe%20financing."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary btn-lg inline-block"
+          >
+            Stop Renting, Start Owning
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Why Choose Ing Heng Credit for Backhoe Financing?
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          We understand small contractor challenges and worker-to-owner transitions
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types - Simple Bullet List -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Backhoe Models We Finance
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          All major brands. All equipment accepted based on condition.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+        <ul class="space-y-3 text-[#4F3E29]">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>CASE 580 Super M, 580L, 590</strong> - Industry workhorse. Simple hydraulics, parts everywhere.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>JCB 3CX, 4CX</strong> - British engineering Malaysian contractors trust. Strong loader, deep dig.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>CAT 416, 420, 428</strong> - Caterpillar durability. Last 20+ years in Malaysian conditions.</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span><strong>Terex, Komatsu Backhoes</strong> - Budget-friendly alternatives. Good for contractors starting out.</span>
+          </li>
+        </ul>
+        <p class="text-center text-[#4F3E29] mt-6 font-semibold">...and more! Contact us for other brands.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Everything You Need to Know About Backhoe Financing
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Questions from contractors who became business owners
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Or Fill Out Our Online Application Form
+          </h2>
+          <p class="text-[#4F3E29]">
+            We'll contact you promptly during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Stop Renting and Start Owning?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Stop paying RM 8,000 monthly rental forever. Finance a used backhoe with 0% deposit. No more hour limits. No more availability issues. Control your business.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20I%27m%20tired%20of%20renting%20equipment.%20I%27d%20like%20to%20discuss%20backhoe%20financing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Get Free Quote
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          Call: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>0% Deposit Available</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Equipment All equipment accepted based on condition</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40 Years Experience | KPKT Licensed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="backhoe" />
+</BaseLayout>

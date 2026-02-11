@@ -1,7 +1,7 @@
 ---
 title: "Pinjaman Side by Side UTV Malaysia - 0% Deposit Pembiayaan Kenderaan Utiliti"
 description: "Dapatkan kelulusan pembiayaan side-by-side UTV di Malaysia. Bank tolak pinjaman kenderaan utiliti? Kami pakar dalam pembiayaan UTV dengan 0% deposit."
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 tags: ["pinjaman side by side utv", "pembiayaan kenderaan utiliti", "pinjaman utv malaysia", "pembiayaan side by side"]
 category: Equipment Financing
 lang: "ms"

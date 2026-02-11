@@ -2,7 +2,7 @@
 title: "Prime Mover Hire Purchase vs Contract Hire: Which Saves More for Port Operators?"
 description: "Comparing hire purchase vs contract hire for prime movers. Learn which financing option maximizes profitability for Port Klang haulage operators with cash flow analysis and total cost comparison."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -698,3 +698,4 @@ We offer both options with 0% down payment. Get approved in 48 hours and choose 
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

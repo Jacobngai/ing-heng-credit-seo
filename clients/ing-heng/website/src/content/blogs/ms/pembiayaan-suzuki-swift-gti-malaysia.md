@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Suzuki Swift GTI dengan 0% deposit di Malaysia
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["Suzuki Swift GTI", "Pembiayaan Hot Hatch", "Pinjaman Kereta Klasik", "Performance JDM", "Enjin Twin Cam"]
 keywords: ["pembiayaan Suzuki Swift GTI", "pinjaman hot hatch Malaysia", "pembiayaan Swift klasik", "pinjaman kereta twin cam", "0% deposit Swift GTI", "pembiayaan kenderaan kenaikan nilai", "pinjaman hatchback JDM", "pembiayaan performance vintage"]

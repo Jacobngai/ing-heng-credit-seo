@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk sedan mewah Mazda Millenia an
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Mazda Millenia", "pinjaman Mazda mewah", "pembiayaan Miller Cycle", "pinjaman sedan premium", "pembiayaan mewah JDM"]
 keywords: ["pembiayaan Mazda Millenia Malaysia", "pinjaman mewah Millenia", "pembiayaan enjin Miller Cycle", "pinjaman Mazda premium Malaysia", "pembiayaan import Millenia", "pembiayaan Mazda mewah", "beli ansuran Millenia", "pinjaman Mazda eksekutif Malaysia"]

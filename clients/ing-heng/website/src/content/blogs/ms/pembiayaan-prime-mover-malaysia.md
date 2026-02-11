@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan prime mover tanpa deposit di Malaysia. Kelulusa
   pantas, terma fleksibel, dan pembiayaan sehingga 100% nilai peralatan untuk perniagaan
   logistik.
 author: "ING HENG Credit"
-publishDate: 2026-01-02
+publishDate: 2026-01-02T00:00:00.000Z
 category: Equipment Financing
 tags:
 - prime mover
@@ -768,3 +768,4 @@ Bersedia untuk kembangkan armada logistik anda tanpa kos awal yang besar?
 **Khalayak Sasaran:** Syarikat logistik, pengendali pelabuhan, perniagaan trak, penghantar barang
 **Kata Kunci Utama:** pembiayaan prime mover Malaysia
 **Masa Membaca:** 12 minit
+

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'en';
+const post = {
+  title: 'Kuantan Equipment Financing 2026',
+  slug: 'kuantan-equipment-financing-2026',
+  excerpt: 'Equipment financing in Kuantan 2026. Pahang state development, port equipment loans.',
+  date: '2026-01-06',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Equipment Financing',
+  image: '/images/blog/kuantan.jpg'
+};
+
+const keywords = ["machinery-financing","kuantan","pahang"],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Kuantan Equipment Financing 2026
+
+Equipment financing in Kuantan and Pahang for development and port operations in 2026.
+
+## Kuantan Development 2026
+
+**Growth Areas:**
+- Kuantan Port expansion
+- ECRL project impact
+- Tourism development
+- **Equipment demand growing**
+
+## 2026 Kuantan Equipment
+
+**Financing Available:**
+- Port equipment
+- Construction machinery
+- Logistics vehicles
+- **East coast delivery**
+
+## Kuantan Interest Rates
+
+| Equipment | Rate | Term |
+|-----------|------|------|
+| **Construction** | 5.0-5.5% | 4-5 years |
+| **Port** | 4.8-5.3% | 5 years |
+
+## Get Kuantan Equipment
+
+Pahang business? Apply for Kuantan equipment financing.
+
+---
+
+**East Malaysia?** See [Kota Kinabalu Equipment](/blog/kota-kinabalu-equipment-2026).
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

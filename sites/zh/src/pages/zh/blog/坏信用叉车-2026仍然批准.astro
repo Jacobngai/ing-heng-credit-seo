@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '坏信用叉车 - 2026仍然批准',
+  slug: '坏信用叉车-2026仍然批准',
+  excerpt: '坏信用叉车 - 2026仍然批准。CCRIS问题也能获得叉车融资，基于收入评估。',
+  date: '2026-01-10',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '叉车和仓库',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["坏信用叉车","CCRIS叉车","信用问题叉车","叉车第二次机会","坏信用融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 坏信用叉车 - 2026仍然批准
+
+## 坏信用也能批准
+
+Ing Heng提供坏信用叉车融资:
+
+\`\`\`
+CCRIS: 可以有问题
+银行拒绝: 我们可以批准
+收入: 基于收入评估
+\`\`\`
+
+## 融资方案
+
+### 坏信用套餐
+\`\`\`
+融资: 最高100%
+首付: 0%
+条件: 基于收入
+利率: 根据风险
+\`\`\`
+
+## 条件
+
+### 收入要求
+\`\`\`
+个人: 月收入RM 3,000+
+商业: 月收入RM 5,000+
+证明: 银行对账单
+\`\`\`
+
+## 成功案例
+
+### CCRIS问题批准
+\`\`\`
+情况: CCRIS有记录
+收入: RM 6,000/月
+结果: 100%融资批准
+\`\`\`
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">叉车和仓库</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

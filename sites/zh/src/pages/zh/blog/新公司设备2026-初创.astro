@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '新公司设备 2026 - 初创',
+  slug: '新公司设备2026-初创',
+  excerpt: '新公司设备2026融资 - 初创企业支持。即使新成立公司，仍可获得0%首付设备融资。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '初创融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["新公司","初创","首次融资","设备融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 新公司设备 2026 - 初创
+
+## 新公司可以融资?
+
+即使新成立公司，仍可融资:
+
+\`\`\`
+银行: 新公司通常拒绝
+Ing Heng: 新公司我们支持
+\`\`\`
+
+## 新公司评估
+
+### Ing Heng关注
+- **创始人经验**: 行业经验
+- **项目合同**: 有合同
+- **当前收入**: 即使刚开始
+- **未来前景**: 可行性
+
+## 真实例子
+
+### 例子1: 6个月新公司
+
+您的公司营业6个月。
+
+**设备需求:**
+- 1台挖掘机: RM 150,000
+
+**银行:**
+- 新公司
+- **拒绝申请**
+
+**Ing Heng:**
+- 创始人有10年行业经验 ✓
+- 有项目合同 ✓
+- 月收入RM 15,000 ✓
+- **批准融资**
+
+## 新公司方案
+
+### 方案1: 有经验创始人
+\`\`\`
+创始人: 5年+行业经验
+营业: 6个月+
+融资: 100%
+首付: 0%
+\`\`\`
+
+### 方案2: 有项目合同
+\`\`\`
+合同: 长期项目
+营业: 6个月+
+融资: 100%
+首付: 0%
+\`\`\`
+
+### 方案3: 有收入证明
+\`\`\`
+收入: 稳定月收入
+营业: 6个月+
+融资: 100%
+首付: 0%
+\`\`\`
+
+## 可融资设备
+
+所有设备都可以:
+- 叉车 ✅
+- 罗里 ✅
+- 挖掘机 ✅
+- 生产设备 ✅
+
+## 申请流程
+
+### 第1步: 证明能力
+- 创始人简历
+- 项目合同
+- 收入证明
+
+### 第2步: 快速评估
+新公司支持
+
+### 第3步: 批准融资
+初创企业支持
+
+## 常见问题
+
+**Q: 6个月可以吗?**
+A: 可以，营业6个月即可。
+
+**Q: 没有经验可以吗?**
+A: 可以，如果有收入证明。
+
+**Q: 需要什么额外文件?**
+A: 创始人简历、项目合同。
+
+## 立即申请
+
+新公司需要设备? 立即申请。
+
+**联系方式:**
+- WhatsApp: +60175700889
+- 网站: inghengcredit.com
+
+**立即申请，新公司设备融资**
+
+新公司需要设备?Ing Heng支持初创企业，帮助您开始业务。
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">初创融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

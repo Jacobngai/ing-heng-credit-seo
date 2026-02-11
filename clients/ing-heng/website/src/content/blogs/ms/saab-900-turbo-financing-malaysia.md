@@ -4,7 +4,7 @@ description: "Biayai Saab 900 Turbo anda dengan 0% deposit di Malaysia. Kelulusa
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Saab 900 Turbo", "pinjaman Saab klasik", "pembiayaan prestasi turbo", "pelaburan Saab klasik", "pembiayaan turbo vintage"]
 keywords: ["pembiayaan Saab 900 Turbo", "pinjaman 900 Turbo Malaysia", "pembiayaan Saab klasik", "pinjaman prestasi Sweden", "pembiayaan klasik turbo", "pelaburan Saab vintage", "pembiayaan kereta kolektor", "pinjaman kereta prestasi"]

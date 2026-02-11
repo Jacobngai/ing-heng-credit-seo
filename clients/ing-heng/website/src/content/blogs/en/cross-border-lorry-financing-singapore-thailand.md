@@ -2,7 +2,7 @@
 title: "Cross-Border Lorry Financing: Singapore-Thailand Route Requirements"
 description: "Cross-Border Lorry Financing: Singapore-Thailand Route Requirements"
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -376,3 +376,4 @@ Structure installments around cross-border payment cycles (30-60-90 days).
 4. Insurance quotations covering Malaysia-Singapore-Thailand
 5. Financial statements (bank statements, tax returns)
 6. Route projections and contracts (if available)
+

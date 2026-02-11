@@ -2,7 +2,7 @@
 title: "5-Ton vs 10-Ton Lorry: Financing Decision for Malaysian SMEs"
 description: "Decide between 5-ton and 10-ton lorry financing for your SME. Compare costs, capacity, fuel consumption, and monthly installments. Expert advice for Malaysian logistics businesses."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -481,3 +481,4 @@ Malaysia-Singapore-Thailand corridor commercial cargo
                   
 - 
                     Diesel Price Impact
+

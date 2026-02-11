@@ -4,7 +4,7 @@ description: "Dapatkan Ford Sierra Cosworth anda dengan pembiayaan 0% deposit di
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 readingTime: 10
 tags: ["Ford Sierra Cosworth", "Pembiayaan Rali Group A", "Kereta Touring British", "Homologasi Turbo", "0% Deposit Pinjaman Prestasi"]
 keywords: ["pembiayaan Ford Sierra Cosworth Malaysia", "pembiayaan turbo Cosworth", "pinjaman kereta rali Group A", "pembiayaan Ford Sierra RS Cosworth", "pembiayaan homologasi turbo", "0% deposit pembiayaan Ford", "pinjaman kereta prestasi British", "pelaburan Cosworth Malaysia"]

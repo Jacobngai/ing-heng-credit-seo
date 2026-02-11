@@ -1,0 +1,423 @@
+---
+/**
+ * Excavator Financing for Construction Projects - Use-Case Page
+ * Target: Contractors and developers looking for construction excavator financing
+ * Keywords: excavator financing construction, construction equipment loan, contractor excavator financing
+ * Content Strategy: 60% template + 40% unique use-case content
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+
+const lang = 'en';
+const useCaseId = 'construction';
+
+// Use-case specific data
+const useCase = {
+  name: 'Construction Projects',
+  icon: 'building',
+  targetAudience: ['General contractors', 'Property developers', 'Construction companies', 'Civil engineering firms'],
+  description: 'Specialized financing solutions for construction projects of all sizes. From residential developments to large infrastructure projects.',
+  industryStat: { value: 'RM180 billion', description: 'Malaysian construction industry value (2024)' },
+};
+
+const equipment = {
+  name: 'Excavator',
+  type: 'excavator',
+  priceRange: 'RM 30,000 - RM 3,000,000',
+};
+
+// SEO Data
+const pageTitle = `Excavator Financing for Construction Projects | Contractor Loans | Fast Approval Malaysia`;
+const pageDescription = `Construction excavator financing for contractors and developers. Fast fast approval, flexible terms aligned with project timelines. Finance new & used excavators from ${equipment.priceRange}. 95% approval rate for construction businesses.`;
+const keywords = [
+  'excavator financing construction',
+  'construction equipment loan Malaysia',
+  'contractor excavator financing',
+  'construction machinery loan',
+  'developer equipment financing',
+  'project-based equipment loan',
+];
+
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Excavator Financing', url: '/en/equipment/excavator' },
+  { label: 'Construction Projects', url: `/en/equipment/excavator/construction-projects` },
+];
+
+// Construction-specific challenges and benefits
+const challenges = [
+  { icon: 'clock', problem: 'Tight Project Deadlines', solution: 'fast approval to meet tender and project timelines' },
+  { icon: 'cash', problem: 'Cash Flow Management', solution: 'Preserve working capital with 0% down payment options' },
+  { icon: 'layers', problem: 'Multiple Equipment Needs', solution: 'Fleet financing for multiple units with volume discounts' },
+  { icon: 'calendar', problem: 'Seasonal Cash Flow', solution: 'Seasonal payment plans aligned with construction cycles' },
+];
+
+// Industry-specific benefits
+const benefits = [
+  { icon: 'clock', title: 'Fast Approval for Tenders', description: 'Get approved quickly to meet tight tender deadlines. Don\'t lose contracts waiting for bank approval.' },
+  { icon: 'trending-up', title: 'Project-Aligned Payments', description: 'Structure payments around project milestones and cash flow. Pay more during peak phases, less during slow periods.' },
+  { icon: 'layers', title: 'Fleet Financing Available', description: 'Finance multiple excavators for large projects. Volume discounts available for 3+ units.' },
+  { icon: 'shield', title: 'New & Used Options', description: 'Finance new excavators for long-term projects or used units for shorter engagements.' },
+  { icon: 'users', title: '0% Down Payment', description: 'Preserve your working capital for labor, materials, and operations. Qualified contractors can start with zero down.' },
+  { icon: 'percentage', title: 'Competitive Contractor Rates', description: 'Special rates for established construction companies. Your project contracts strengthen your application.' },
+];
+
+// Construction project types
+const projectTypes = [
+  { name: 'Residential Development', description: 'Housing projects, condominiums, apartments', excavatorSize: 'Mini to Medium (5-20 tons)' },
+  { name: 'Commercial Construction', description: 'Office buildings, shopping malls, hotels', excavatorSize: 'Medium (15-30 tons)' },
+  { name: 'Infrastructure Projects', description: 'Roads, bridges, highways, MRT', excavatorSize: 'Medium to Large (20-50 tons)' },
+  { name: 'Industrial Construction', description: 'Factories, warehouses, industrial parks', excavatorSize: 'Medium (15-25 tons)' },
+  { name: 'Land Development', description: 'Site clearing, earthworks, grading', excavatorSize: 'Medium to Large (20-40 tons)' },
+  { name: 'Utility Installation', description: 'Drainage, sewage, underground utilities', excavatorSize: 'Mini to Small (3-15 tons)' },
+];
+
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Discuss Your Project', description: 'Tell us about your construction project. We\'ll recommend the right excavator size and financing structure.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents & Contracts', description: 'Provide company docs plus project contracts/LOA. Active contracts strengthen your application.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved in fasts', description: 'Fast approval for contractors with active projects. Urgent cases for tender deadlines processed in 8-12 hours.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Customize Payment Structure', description: 'Work with us to align payments with your project timeline and expected cash flow.' },
+  { stepNumber: 5, icon: 'truck', title: 'Get Your Excavator on Site', description: 'Coordinate delivery to your project site. Start excavation work immediately.' },
+];
+
+// Case study (unique content)
+const caseStudy = {
+  company: 'BCM Construction Sdn Bhd',
+  location: 'Selangor',
+  project: 'Mixed development project in Shah Alam',
+  challenge: 'Needed 3 excavators quickly after winning a large tender. Banks required 3 weeks for approval which would delay project start.',
+  solution: 'Ing Heng Credit approved fleet financing for 3 CAT 320 excavators within 36 hours with seasonal payment structure.',
+  result: 'Started project on schedule, completed 2 months ahead of deadline. Company has since financed 5 more excavators for other projects.',
+  equipment: '3x CAT 320 Excavators',
+  financing: 'RM 1.8 million total with 15% down payment',
+};
+
+// Construction-specific FAQs
+const faqs = [
+  {
+    question: 'Can I use my project contract to strengthen my loan application?',
+    answer: 'Absolutely! Active project contracts, Letters of Award (LOA), and confirmed tenders significantly strengthen your application. We evaluate: (1) Contract value and duration, (2) Client reputation (government projects are strong), (3) Payment milestones, (4) Your track record with similar projects. Contractors with confirmed projects often get better rates and higher approval amounts even with limited credit history.'
+  },
+  {
+    question: 'Can I align loan payments with my project cash flow?',
+    answer: 'Yes! We specialize in project-aligned payment structures for construction. Options include: (1) Seasonal payments - lower during slow months, higher during peak construction, (2) Milestone-based payments - aligned with project payment schedules, (3) Balloon payments - smaller monthly payments with larger end payment when project completes, (4) Graduated payments - start lower, increase as project revenue comes in. We\'ll work with you to structure payments that match your expected cash flow.'
+  },
+  {
+    question: 'Do you finance excavators for government projects?',
+    answer: 'Yes! Government construction projects are excellent for financing approval because: (1) Payment is reliable from government agencies, (2) Contracts are usually well-defined with clear milestones, (3) Projects often have longer timelines allowing comfortable repayment. We\'ve financed equipment for contractors working on MRT construction, highway projects, public housing, and infrastructure development. Government contract holders often qualify for premium rates.'
+  },
+  {
+    question: 'Can I finance multiple excavators for a large project?',
+    answer: 'Yes! Fleet financing is ideal for large construction projects requiring multiple excavators. Benefits include: (1) Single application and approval for all units, (2) Volume discount - typically 0.5-1% lower interest for 3+ units, (3) Coordinated delivery to project site, (4) Consolidated monthly payment. We\'ve financed fleets of up to 8 excavators for major construction projects.'
+  },
+  {
+    question: 'What if my project gets delayed?',
+    answer: 'We understand construction projects face delays due to weather, permits, or client issues. Options include: (1) Payment restructuring - extend tenure to reduce monthly payments, (2) Temporary payment reduction - lower payments during delay period, (3) Grace periods for documented delays. We work with contractors to find solutions rather than defaulting to penalties. Communicate early if you foresee delays.'
+  },
+  {
+    question: 'What excavator sizes are best for construction projects?',
+    answer: 'The right size depends on your project type: (1) Mini excavators (1-6 tons) - landscaping, utility trenches, tight spaces, (2) Small excavators (6-15 tons) - residential construction, small commercial, (3) Medium excavators (15-30 tons) - most construction projects, foundation work, site prep, (4) Large excavators (30-50 tons) - major earthworks, infrastructure, large commercial. We can help you choose the right size and finance accordingly.'
+  },
+  {
+    question: 'What documents do construction companies need to apply?',
+    answer: 'For construction companies: (1) SSM registration (Form 9/24/49), (2) Company bank statements (6 months), (3) Directors\' IC copies, (4) CIDB registration if available, (5) Active project contracts/LOA (strengthens application), (6) Company financial statements if available (not mandatory for newer companies). The process is straightforward for established contractors.'
+  },
+];
+
+// Other use cases for internal linking
+const otherUseCases = [
+  { name: 'Mining Operations', url: '/en/equipment/excavator/mining-operations' },
+  { name: 'SME Financing', url: '/en/equipment/excavator/sme-financing' },
+  { name: 'Used Equipment', url: '/en/equipment/excavator/used-equipment' },
+  { name: 'Fleet Expansion', url: '/en/equipment/excavator/fleet-expansion' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `Excavator Financing for Construction Projects`,
+  "description": pageDescription,
+  "provider": { "@type": "FinancialService", "name": "Ing Heng Credit" },
+  "areaServed": { "@type": "Country", "name": "Malaysia" },
+  "audience": { "@type": "Audience", "audienceType": "Construction contractors and developers" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-gradient-to-br from-blue-800 to-blue-950 text-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block bg-blue-600/30 text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          Construction Industry | {useCase.industryStat.value} Market
+        </span>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+          Excavator Financing for Construction Projects
+        </h1>
+        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+          Fast, flexible excavator financing designed for construction contractors and developers.
+          fast approval, project-aligned payments, fleet financing available.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60123456789?text=Hi%2C%20I%27m%20a%20contractor%20interested%20in%20excavator%20financing%20for%20my%20construction%20project"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Now
+          </a>
+          <a href="/en/equipment/excavator" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            View All Excavator Options
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Stats (Unique Content) -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-8 text-stone-800">Construction Industry in Malaysia</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">{useCase.industryStat.value}</div>
+            <div class="text-stone-600">Industry Value (2024)</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">50,000+</div>
+            <div class="text-stone-600">Active Contractors</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">15,000+</div>
+            <div class="text-stone-600">Active Projects</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">5.2%</div>
+            <div class="text-stone-600">Annual Growth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges & Solutions (Unique Content) -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">We Understand Construction Challenges</h2>
+        <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+          Construction projects have unique financing needs. Here's how we help:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          {challenges.map(item => (
+            <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                  <span class="text-red-600 text-lg">!</span>
+                </div>
+                <span class="font-semibold text-stone-800">{item.problem}</span>
+              </div>
+              <div class="flex items-start gap-3 ml-13">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-stone-600">{item.solution}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Types (Unique Content) -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Excavators for Every Construction Project</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Different projects need different excavator sizes. We finance them all.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectTypes.map(project => (
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:border-blue-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{project.name}</h3>
+              <p class="text-stone-600 text-sm mb-3">{project.description}</p>
+              <div class="bg-blue-50 px-3 py-2 rounded-lg">
+                <span class="text-sm text-blue-700 font-medium">Recommended: {project.excavatorSize}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Benefits for Construction Contractors</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Financing designed specifically for the construction industry's unique needs.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map(benefit => (
+            <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 hover:border-blue-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{benefit.title}</h3>
+              <p class="text-stone-600">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study (Unique Content) -->
+  <section class="py-16 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8 text-stone-800">Case Study: {caseStudy.company}</h2>
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-blue-700 mb-2">The Challenge</h3>
+              <p class="text-stone-600 mb-4">{caseStudy.challenge}</p>
+
+              <h3 class="font-semibold text-blue-700 mb-2">Our Solution</h3>
+              <p class="text-stone-600 mb-4">{caseStudy.solution}</p>
+
+              <h3 class="font-semibold text-blue-700 mb-2">The Result</h3>
+              <p class="text-stone-600">{caseStudy.result}</p>
+            </div>
+            <div class="bg-stone-50 rounded-xl p-6">
+              <h3 class="font-semibold text-stone-800 mb-4">Project Details</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                  <span class="text-stone-500">Company:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.company}</span>
+                </div>
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                  <span class="text-stone-500">Location:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.location}</span>
+                </div>
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                  <span class="text-stone-500">Equipment:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.equipment}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-stone-500">Financing:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.financing}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">How Construction Financing Works</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Simple process designed for busy contractors. Get your excavator fast.
+        </p>
+        <div class="space-y-6">
+          {steps.map(step => (
+            <div class="flex gap-6 items-start bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">{step.stepNumber}</div>
+              <div>
+                <h3 class="text-lg font-semibold text-stone-800 mb-1">{step.title}</h3>
+                <p class="text-stone-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Frequently Asked Questions</h2>
+        <p class="text-center text-stone-600 mb-12">Common questions about construction excavator financing</p>
+        <div class="space-y-4">
+          {faqs.map(faq => (
+            <details class="bg-stone-50 rounded-xl p-6 group">
+              <summary class="font-semibold text-stone-800 cursor-pointer list-none flex justify-between items-center">
+                {faq.question}
+                <svg class="w-5 h-5 text-stone-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <p class="mt-4 text-stone-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Use Cases -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-6 text-stone-800">Other Financing Options</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {otherUseCases.map(uc => (
+            <a href={uc.url} class="bg-white hover:bg-blue-50 border border-stone-200 hover:border-blue-300 px-6 py-3 rounded-lg font-medium text-stone-700 hover:text-blue-700 transition-colors">
+              {uc.name} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-blue-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Get Your Construction Excavator?</h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Join thousands of contractors who have grown their businesses with our financing.
+          Fast approval, flexible terms, construction expertise.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60123456789?text=Hi%2C%20I%27m%20a%20contractor%20interested%20in%20excavator%20financing%20for%20my%20construction%20project"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Apply Now via WhatsApp
+          </a>
+          <a href="tel:+60123456789" class="bg-blue-600 hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Call Us Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

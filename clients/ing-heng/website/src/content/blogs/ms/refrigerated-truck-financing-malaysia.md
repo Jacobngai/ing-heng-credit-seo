@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan lori peti sejuk di Malaysia dengan pilihan dep
 keywords: ["pembiayaan lori peti sejuk Malaysia", "pembiayaan lori reefer", "pinjaman kenderaan rantai sejuk", "pembiayaan lori penghantaran makanan beku", "pembiayaan van peti sejuk", "pembiayaan lori penyimpanan sejuk", "pinjaman kenderaan pengangkutan makanan", "pembiayaan kenderaan kawalan suhu"]
 category: "Equipment Financing"
 readingTime: 12
-publishDate: 2024-12-22
+publishDate: 2024-12-22T00:00:00.000Z
 image: "/images/equipment/reefer-truck.jpg"
 imageAlt: "Lori peti sejuk untuk pembiayaan logistik rantai sejuk di Malaysia"
 locale: "ms"

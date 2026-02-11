@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Honda CRZ di Malaysia dengan pilihan 0% deposi
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan honda crz", "pinjaman kereta hibrid sukan", "pembiayaan kenderaan jarang", "pinjaman kereta klasik malaysia", "pembiayaan kereta 0 deposit"]
 keywords: ["pembiayaan honda crz malaysia", "pinjaman kereta hibrid sukan", "pembiayaan kenderaan jarang", "pembiayaan honda klasik", "kelulusan pinjaman kereta sukan", "pembiayaan honda 0 deposit", "pinjaman kenderaan meningkat nilai", "pembiayaan hibrid prestasi"]

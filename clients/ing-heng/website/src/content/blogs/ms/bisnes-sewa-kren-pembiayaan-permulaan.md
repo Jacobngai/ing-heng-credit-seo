@@ -4,7 +4,7 @@ description: Panduan lengkap memulakan bisnes sewa kren di Malaysia. Pembiayaan 
   deposit untuk kren tower, mobile & rough terrain. Pelan perniagaan, projek pertama,
   dan strategi pertumbuhan.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - bisnes sewa kren

@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk sedan mewah Mitsubishi Emerau
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman Mitsubishi Emeraude", "pembiayaan sedan eksekutif", "pembiayaan mewah JDM", "pinjaman Mitsubishi premium", "pembiayaan sedan jarang"]
 keywords: ["pinjaman Mitsubishi Emeraude Malaysia", "pembiayaan Emeraude", "pinjaman sedan eksekutif Malaysia", "pinjaman mewah JDM", "pembiayaan Mitsubishi premium", "pembiayaan import Emeraude", "beli ansuran sedan mewah", "pinjaman kenderaan eksekutif Malaysia"]

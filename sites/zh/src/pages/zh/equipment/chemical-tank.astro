@@ -1,0 +1,231 @@
+---
+/**
+ * Chemical Tank Financing Landing Page - Mandarin Chinese
+ * Target: Chemical transport companies, industrial businesses
+ * Keywords: 化学品罐车融资, 危险品运输融资, 罐车贷款
+ * Cultural Focus: Safety standards, compliance, business growth
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '化学品罐车融资马来西亚 | 0%押金 | 永兴信贷 | 专业服务';
+const pageDescription = '专业化学品罐车融资服务。0%押金，100%融资，符合安全标准。永兴信贷40年信誉，专业团队服务。';
+const keywords = ['化学品罐车融资', '危险品运输融资', '罐车贷款', '工业车辆融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '化学品罐车融资', url: '/zh/equipment/chemical-tank' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'shield', title: '安全标准认证', description: '融资符合马来西亚化学品运输安全标准的罐车。确保合规经营。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。减少初始投资，加快业务扩展。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '专业团队快速处理，了解化工行业需求。快速内获得回复。' },
+  { icon: 'calendar', title: '长期还款', description: '最长60个月还款期。根据您的运输合同安排还款计划。' },
+  { icon: 'users', title: '行业专业知识', description: '深入了解化工运输行业，提供专业建议和支持。' },
+  { icon: 'clipboard', title: '全程协助', description: '从申请到提车全程协助。包括保险和许可证申请指导。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '化学品罐车融资马来西亚',
+  description: '专业化学品罐车融资，0%押金，符合安全标准。永兴信贷专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/chemical-tank-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '200000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚化学品罐车融资"
+    subtitle="0%押金 | 100%融资 | 安全标准 | 永兴信贷专业服务"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解化学品罐车融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '安全认证']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          化学品罐车融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为化工运输公司提供专业融资服务。我们了解行业要求，确保您获得符合标准的罐车设备。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Tank Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的化学品罐车类型</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">酸性化学品罐车</h4>
+            <p class="text-[#4F3E29] mb-4">专用于运输酸性化学品，符合腐蚀性材料运输标准。</p>
+            
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">碱性化学品罐车</h4>
+            <p class="text-[#4F3E29] mb-4">适用于碱性化学品运输，特殊内衬保护。</p>
+            
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">易燃液体罐车</h4>
+            <p class="text-[#4F3E29] mb-4">符合易燃物品运输安全标准。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">食品级化学品罐车</h4>
+            <p class="text-[#4F3E29] mb-4">食品工业用化学品专用，符合食品安全标准。</p>
+            
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">工业溶剂罐车</h4>
+            <p class="text-[#4F3E29] mb-4">工业溶剂专用运输，防渗漏设计。</p>
+            
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">多隔间罐车</h4>
+            <p class="text-[#4F3E29]">可同时运输多种不同化学品。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Safety & Compliance -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-red-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">安全与合规要求</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-red-600 mb-3">安全标准</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• DOT认证罐车</li>
+              <li>• 防爆电气系统</li>
+              <li>• 紧急泄压系统</li>
+              <li>• 防静电接地</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-red-600 mb-3">合规文件</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 危险品运输许可</li>
+              <li>• 司机ADR认证</li>
+              <li>• 环境合规证书</li>
+              <li>• 保险覆盖证明</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financing Benefits -->
+      <div class="bg-gradient-to-r from-[#8B6F47] to-[#D4A574] text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">融资优势</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">RM 100K+</div>
+            <div class="font-semibold mb-2">融资额度</div>
+            <div class="text-sm opacity-90">适合各种规模罐车</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">7-12%</div>
+            <div class="font-semibold mb-2">年利率</div>
+            <div class="text-sm opacity-90">竞争性利率</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">快速</div>
+            <div class="font-semibold mb-2">批准时间</div>
+            <div class="text-sm opacity-90">快速决定</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        开始您的化学品罐车融资申请
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷专业团队为您提供最适合的融资方案和全程支持。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请化学品罐车融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="chemical-tank" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取专业融资建议
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的化工运输融资专家将与您联系
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

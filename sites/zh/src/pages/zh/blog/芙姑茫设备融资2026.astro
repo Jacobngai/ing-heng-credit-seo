@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '芙姑茫设备融资 2026',
+  slug: '芙姑茫设备融资2026',
+  excerpt: '芙姑茫设备融资2026 - 首相办公厅所在地。服务业、零售业、建筑业。0%首付，快速批准。行政中心专精。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["芙姑茫","首相办公厅","行政中心","设备融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 芙姑茫设备融资 2026
+
+## 芙姑茫行政中心
+
+芙姑茫是马来西亚行政中心:
+
+\`\`\`
+首相办公厅: 联邦政府中心
+布城: 行政特区
+周边: 发达城区
+\`\`\`
+
+## 芙姑茫设备需求
+
+### 政府相关
+- **办公设备**: 政府供应商
+- **服务设备**: 承包商
+- **设备需求: RM 50,000-500,000**
+
+### 商业服务
+- **零售设备**: 购物中心
+- **办公家具**: 企业办公
+- **餐饮设备**: 餐厅咖啡厅
+- **设备需求: RM 30,000-500,000**
+
+### 建筑业
+- **商业建筑**: 办公楼
+- **住宅建筑**: 高级住宅
+- **设备需求: RM 200,000-1,000,000**
+
+## 真实例子
+
+### 例子1: 政府供应商
+
+向政府部门供应办公设备。
+
+**设备需求:**
+- 办公家具: RM 200,000
+- 电脑设备: RM 150,000
+- **总计: RM 350,000**
+
+**Ing Heng融资:**
+- 0%首付
+- 100%融资
+- 政府合同支持
+- **快速批准**
+
+## 芙姑茫设备类型
+
+### 办公设备
+\`\`\`
+办公家具: RM 50,000-300,000
+电脑设备: RM 30,000-200,000
+通讯设备: RM 20,000-100,000
+会议系统: RM 30,000-150,000
+\`\`\`
+
+### 零售设备
+\`\`\`
+货架系统: RM 50,000-200,000
+POS系统: RM 10,000-50,000
+展示设备: RM 20,000-100,000
+\`\`\`
+
+### 餐饮设备
+\`\`\`
+厨房设备: RM 50,000-200,000
+餐厅家具: RM 30,000-100,000
+咖啡设备: RM 20,000-80,000
+\`\`\`
+
+## 常见问题
+
+**Q: 芙姑茫政府项目可以融资吗?**
+A: 可以，政府合同有支持。
+
+**Q: 零售设备可以吗?**
+A: 可以，零售是我们的专长。
+
+**Q: 餐饮设备可以融资吗?**
+A: 可以，餐厅设备都支持。
+
+## 成功案例
+
+### 案例1: 政府办公
+**设备:** 办公家具+电脑RM 250,000
+**融资:** 100%
+**结果:** 项目完成
+
+## 立即申请
+
+芙姑茫设备融资? 行政中心专家。
+
+**联系方式:**
+- WhatsApp: +60175700889
+- 网站: inghengcredit.com
+
+**立即申请，芙姑茫设备**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan lori 3-tan di Malaysia dengan 0% deposit dan 10
   jumlah pinjaman. Kelulusan pantas untuk perniagaan penghantaran, pengedar tempatan,
   dan permulaan logistik.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - lori 3-tan

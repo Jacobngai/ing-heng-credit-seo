@@ -2,7 +2,7 @@
 title: "Emergency Cash Loan Malaysia - Fast Money When You Need It Most"
 description: "Get emergency cash loans in Malaysia with 0% deposit and 100% financing. Fast approval for urgent financial needs during crisis situations."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

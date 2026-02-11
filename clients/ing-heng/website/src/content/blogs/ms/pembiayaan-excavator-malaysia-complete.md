@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Excavator Malaysia: Panduan Lengkap Pinjaman Jentera Pembinaan"
 description: "Panduan komprehensif pembiayaan excavator di Malaysia. Ketahui kadar terbaik, syarat kelayakan, dan pilihan deposit 0% untuk perniagaan pembinaan anda."
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 category: "Equipment Financing"
 author: "ING HENG Credit"
 locale: "ms"

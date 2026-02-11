@@ -2,7 +2,7 @@
 title: "Pembiayaan Nissan Skyline GT-R R34 Malaysia | Pinjaman Ikon JDM"
 description: "Biayai R34 GT-R impian anda dengan deposit 0%. Kami luluskan legenda JDM yang ditolak bank. Pembiayaan kereta koleksi khusus untuk aset yang meningkat nilai."
 author: "ING HENG Credit"
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 category: Equipment Financing
 tags: ["pembiayaan jdm", "skyline gtr", "pinjaman kereta koleksi", "pembiayaan r34", "kenderaan khusus"]
 keywords:

@@ -1,19 +1,24 @@
 name: Sitemap Link Checker
 
-# Run after deployment or manually triggered
+# Run after Vercel deployment (non-blocking) or manually.
 on:
   deployment_status:
   workflow_dispatch:
     inputs:
       url:
-        description: 'Site URL to check (default from env)'
+        description: 'Site URL to check (defaults to deployment target_url)'
         required: false
         type: string
 
 jobs:
   check-sitemap:
+    # Only run on successful deployments (or manual dispatch)
+    if: github.event_name != 'deployment_status' || github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
 
     steps:
       - name: Checkout repository
@@ -24,55 +29,70 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        working-directory: ./clients/ihousing/website
-        run: npm ci
-
-      - name: Run sitemap link checker
-        working-directory: ./clients/ihousing/website
+      - name: Run sitemap checker (non-blocking)
         env:
-          SITE_URL: ${{ inputs.url || 'https://en.ihousing-temp.vercel.app' }}
-        run: npm run check-sitemap
+          # Prefer manual input; otherwise use the actual deployed URL from Vercel.
+          SITE_URL: ${{ inputs.url || github.event.deployment_status.target_url || 'https://www.inghengcredit.com' }}
+          RESULT_PATH: sitemap-check-results.json
+        run: node scripts/sitemap-check.mjs
 
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sitemap-check-results
-          path: clients/ihousing/website/sitemap-check-results.json
+          path: sitemap-check-results.json
           retention-days: 30
 
-      - name: Create GitHub Issue if errors found
-        if: failure()
+      - name: Create GitHub Issue if errors found (without failing the check)
+        if: always()
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            const results = JSON.parse(fs.readFileSync('clients/ihousing/website/sitemap-check-results.json', 'utf8'));
+            const path = 'sitemap-check-results.json';
 
-            if (results.errors && results.errors.length > 0) {
-              const issueBody = `## 🔍 Sitemap Link Check Failed
-
-              **Checked at:** ${results.timestamp}
-              **Total URLs checked:** ${results.totalUrls}
-              **Errors found:** ${results.errors.length}
-
-              ### ❌ Broken Links (404s)
-              ${results.errors.map(e => `- [${e.url}](${e.url}) - ${e.statusCode}: ${e.error}`).join('\n')}
-
-              ### 📋 Summary
-              - Success rate: ${results.successRate}%
-              - Please fix these broken links and redeploy.
-
-              ---
-
-              *This issue was automatically created by the Sitemap Link Checker workflow.*`;
-
-              github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: `🚨 Sitemap Check Failed - ${results.errors.length} Broken Links Found`,
-                body: issueBody,
-                labels: ['bug', '404', 'sitemap']
-              });
+            if (!fs.existsSync(path)) {
+              core.warning('No sitemap-check-results.json found');
+              return;
             }
+
+            const results = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const errors = results.errors || [];
+
+            if (!errors.length) {
+              core.info('No errors found in sitemap check.');
+              return;
+            }
+
+            const title = `⚠️ Sitemap Check: ${errors.length} issue(s) detected`;
+            const issueBody = `## 🗺️ Sitemap Check Report\n\n` +
+              `**Checked at:** ${results.timestamp}\n` +
+              `**Site:** ${results.siteUrl}\n` +
+              `**Checks performed:** ${results.totalUrls}\n` +
+              `**Success rate:** ${results.successRate}%\n\n` +
+              `### Issues\n` +
+              errors.map(e => `- ${e.url} — ${e.statusCode}: ${e.error}`).join('\n') +
+              `\n\n---\n*This issue was automatically created by the Sitemap Link Checker workflow. (Non-blocking)*`;
+
+            // Avoid spamming duplicates: only create if an open issue with same title doesn't exist.
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            const already = issues.find(i => i.title === title);
+            if (already) {
+              core.info(`Issue already exists: #${already.number}`);
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body: issueBody,
+              labels: ['sitemap']
+            });

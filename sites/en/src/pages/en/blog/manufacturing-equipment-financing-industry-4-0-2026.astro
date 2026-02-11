@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'en';
+const post = {
+  title: 'Manufacturing Equipment Financing Industry 4.0 2026',
+  slug: 'manufacturing-equipment-financing-industry-4-0-2026',
+  excerpt: 'Manufacturing equipment financing with 0% down payment for Industry 4.0 in Malaysia. 100% full loan, automation equipment.',
+  date: 'undefined',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Equipment Financing',
+  image: 'undefined'
+};
+
+const keywords = [],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Manufacturing Equipment Financing - Industry 4.0 2026
+
+## Banks Hinder Industry 4.0 Adoption
+
+When manufacturers want to upgrade to Industry 4.0, banks require 10-20% down payment. They finance only 90% of equipment value.
+
+For automation equipment costing RM 500,000, banks want RM 50,000 to RM 100,000 down. This delays modernization.
+
+Banks also reject equipment older than 5 years, which hurts manufacturers wanting to upgrade gradually.
+
+## Ing Heng Supports Industry 4.0
+
+We provide manufacturing equipment financing with 0% down payment. You get 100% full loan. No age limit on equipment.
+
+Our rates compete with bank rates of 4.6% to 6.0% per year.
+
+## Comparison: Banks vs Ing Heng
+
+| Feature | Banks | Ing Heng Credit |
+|---------|-------|-----------------|
+| Down Payment | 10-20% | 0% |
+| Loan Amount | 90% | 100% |
+| Equipment Age | Under 5 years | No limit |
+| Interest Rate | 4.6% - 6.0% | Competitive |
+
+## Real Example: Industry 4.0 Upgrade
+
+Automation Equipment: RM 500,000
+
+**Bank Financing:**
+- Down payment: RM 50,000 - RM 100,000
+- Loan: RM 450,000 maximum
+- Strict age requirements
+
+**Ing Heng Financing:**
+- Down payment: RM 0
+- Loan: RM 500,000 (100%)
+- Any age equipment accepted
+
+Save RM 50,000 to RM 100,000 cash with Ing Heng.
+
+## Manufacturing Equipment We Finance
+
+- CNC machines
+- Automation systems
+- Robotics
+- Packaging machines
+- Used equipment: From RM 50,000
+- New equipment: RM 200,000 - 500,000+
+
+## 2026 Industry 4.0 Support
+
+The 2026 budget promotes manufacturing modernization:
+- Automation adoption incentives
+- Industry 4.0 tax deductions
+- Technology upgrade grants
+- Digital transformation support
+
+## Why Industry 4.0 Matters
+
+With 0% down payment manufacturing financing:
+- Upgrade to automation immediately
+- Improve production efficiency
+- Reduce labor costs
+- Increase product quality
+- Compete globally
+
+## Equipment Upgrade Packages
+
+We support gradual modernization:
+- Single machine: Full financing
+- Partial upgrade: Flexible terms
+- Complete automation: Package deal
+- Mixed equipment: New + used
+
+## Fast Approval for Modernization
+
+Apply for manufacturing equipment financing today. Upgrade to Industry 4.0 in 2026.
+
+**Contact Us:**
+**WhatsApp:** +60175700889
+**Website:** inghengcredit.com
+**Email:** info@inghengcredit.com
+
+Get manufacturing equipment financing with 0% down payment for your Industry 4.0 transformation.
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Equipment Financing</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

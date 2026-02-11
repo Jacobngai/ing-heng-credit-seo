@@ -5,7 +5,7 @@ description: Biayai lori sejuk dan kenderaan peti sejuk di Malaysia dengan pilih
   0% deposit. Panduan lengkap pembiayaan logistik rantai sejuk termasuk kadar faedah,
   pilihan jenama, dan proses kelulusan.
 author: "ING HENG Credit"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - lori sejuk

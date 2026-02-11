@@ -4,7 +4,7 @@ description: Dapatkan kelulusan pembiayaan peralatan tender kerajaan dengan pant
   Kami membiayai buldoser, excavator, kren untuk JKR, kontraktor CIDB Kelas A. 0%
   deposit, 100% pembiayaan.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - tender kerajaan

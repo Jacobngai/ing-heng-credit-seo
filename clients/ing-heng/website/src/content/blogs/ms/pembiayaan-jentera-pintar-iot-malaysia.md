@@ -3,7 +3,7 @@ title: Pembiayaan Jentera Pintar & IoT Malaysia
 description: Pembiayaan jentera pembinaan IoT di Malaysia. Jentera bersambung tingkatkan
   kecekapan 35% dan kurangkan masa henti. Pembiayaan 0% deposit tersedia.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - jentera pintar

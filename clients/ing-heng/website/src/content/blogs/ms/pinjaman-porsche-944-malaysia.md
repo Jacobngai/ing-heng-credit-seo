@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Porsche 944 anda. Penyelesaia
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["Porsche 944", "Pembiayaan Kereta Klasik", "0% Deposit", "Kereta Sukan Jerman", "Kenderaan Pelaburan"]
 keywords: ["pinjaman Porsche 944", "pembiayaan Porsche klasik", "pembiayaan kenderaan 0% deposit", "pinjaman kereta sukan Jerman", "pembiayaan 944 turbo", "pinjaman Porsche vintaj", "pembiayaan kenderaan khas", "pelaburan kereta klasik"]

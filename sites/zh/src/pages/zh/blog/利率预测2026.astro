@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '利率预测 2026 - 利率趋势',
+  slug: '利率预测2026',
+  excerpt: '2026年利率预测。设备贷款利率趋势，何时购买最佳。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["利率预测","利率趋势","贷款利率","2026利率"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 利率预测 2026
+
+## 2026年利率预测
+
+设备贷款利率趋势:
+
+\`\`\`
+利率趋势 → 何时购买 → 最佳时机 → 0%首付
+\`\`\`
+
+## 利率预测
+
+### 银行利率预测
+
+- 2026上半年: 4.6-5.0%
+- 2026下半年: 4.5-4.8%
+- 趋势: 稳定
+
+### Ing Heng利率
+
+- 有竞争力
+- 根据客户定制
+- 比0%首付更重要
+
+## 购买时机
+
+| 时机 | 银行利率 | Ing Heng | 建议 |
+|------|---------|----------|------|
+| 现在 | 4.6-6% | 有竞争力 | 0%首付优势 |
+| Q1 | 预测稳定 | 有竞争力 | 好时机 |
+| Q2 | 预测稳定 | 有竞争力 | 好时机 |
+
+## 购买策略
+
+- 不要等待利率
+- 关注0%首付
+- 关注业务需求
+- 快速获得设备
+
+**立即申请: WhatsApp +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

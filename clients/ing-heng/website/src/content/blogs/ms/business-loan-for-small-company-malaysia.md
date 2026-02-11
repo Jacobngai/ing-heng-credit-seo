@@ -4,7 +4,7 @@ description: Dapatkan pinjaman perniagaan untuk syarikat kecil di Malaysia denga
   0% deposit. Kelulusan pantas untuk pembiayaan jentera, tiada penolakan bank. Sesuai
   untuk syarikat 3-10 pekerja yang perlu modal pertumbuhan.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - perniagaan kecil

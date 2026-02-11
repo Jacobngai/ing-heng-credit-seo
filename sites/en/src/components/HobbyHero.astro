@@ -1,0 +1,163 @@
+---
+/**
+ * Hobby Hero Component
+ * Dark hero section with background image for hobby financing pages
+ */
+
+import type { Locale } from '../utils/i18n';
+import { t } from '../utils/i18n';
+import { COMPANY_INFO } from '../utils/constants';
+
+interface Props {
+  lang: Locale;
+  title?: string;
+  titleKey?: string;
+  highlightedWord?: string;
+  subtitle?: string;
+  subtitleKey?: string;
+  description?: string;
+  descriptionKey?: string;
+  features?: string[];
+  backgroundImage?: string;
+  showContactCta?: boolean;
+  showWhatsAppCta?: boolean;
+  showApplyCta?: boolean;
+  customCtaText?: string;
+}
+
+const {
+  lang,
+  title,
+  titleKey = 'hobby.heroTitle',
+  highlightedWord,
+  subtitle,
+  subtitleKey,
+  description,
+  descriptionKey = 'hobby.heroDescription',
+  features = [],
+  backgroundImage,
+  showContactCta = true,
+  showWhatsAppCta = true,
+  showApplyCta = false,
+  customCtaText,
+} = Astro.props;
+
+const heroTitle = title || t(titleKey, lang);
+const heroSubtitle = subtitle || (subtitleKey ? t(subtitleKey, lang) : '');
+const heroDescription = description || t(descriptionKey, lang);
+---
+
+<section class="hero-section relative overflow-hidden min-h-[80vh] flex items-center">
+  <!-- Background Image -->
+  {backgroundImage && (
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={backgroundImage} 
+        alt="" 
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+    </div>
+  )}
+  <!-- Dark overlays for text contrast -->
+  <div class="absolute inset-0 bg-black/60 z-5"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-5"></div>
+
+  <div class="container-custom relative z-10">
+    <div class="max-w-5xl mx-auto text-center">
+      {heroSubtitle && (
+        <p class="text-lg md:text-xl text-yellow-400 font-bold uppercase tracking-wider mb-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+          {heroSubtitle}
+        </p>
+      )}
+
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-display uppercase leading-none mb-6 text-white font-black" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">
+        {highlightedWord ? (
+          <>
+            {heroTitle.replace(highlightedWord, '')}
+            <span class="text-yellow-400" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">{highlightedWord}</span>
+          </>
+        ) : (
+          heroTitle
+        )}
+      </h1>
+
+      {heroDescription && (
+        <p class="text-xl md:text-2xl text-white mb-8 font-medium leading-relaxed max-w-3xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 1px 1px 2px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.6);">
+          {heroDescription}
+        </p>
+      )}
+
+      <!-- Trust Signal Features -->
+      {features && features.length > 0 && (
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
+          {features.map((feature) => (
+            <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
+              <div class="text-sm md:text-base text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">{feature}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        {showWhatsAppCta && (
+          <a 
+            href={COMPANY_INFO.whatsapp.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white text-[#8B6F47] font-black uppercase tracking-tight text-xl px-12 py-5 border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810] hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all inline-block text-center"
+          >
+            Get Free Quote Now
+          </a>
+        )}
+        {showContactCta && (
+          <a 
+            href={COMPANY_INFO.whatsapp.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline-white text-xl px-12 py-5"
+          >
+            {customCtaText || 'WhatsApp Us'}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- Yellow bottom bar -->
+  <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
+</section>
+
+<style>
+  .hero-section {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .container-custom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .btn-outline-white {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    border: 3px solid white;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-outline-white:hover {
+    background: white;
+    color: #2D1810;
+  }
+</style>

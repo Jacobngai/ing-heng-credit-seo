@@ -2,7 +2,7 @@
 title: "Refinancing Existing Excavator Loans: When and How in Malaysia"
 description: "Should you refinance your excavator loan? Learn when refinancing makes sense, calculate potential savings, and access your equipment equity for business expansion."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing
@@ -428,3 +428,4 @@ RM 12,500
                   
 - 
                     Excavator Hire Purchase vs Loan: Which Saves You More RM?
+

@@ -2,7 +2,7 @@
 title: "Data Center Construction Boom: Specialized Excavator Financing Opportunities"
 description: "Google, Amazon, and Oracle are investing billions in Malaysia data centers. Discover how Selangor contractors can capitalize on specialized excavation opportunities with 0% down payment financing."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -667,3 +667,4 @@ Get 0% down payment financing for data center excavation equipment. We'll help y
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

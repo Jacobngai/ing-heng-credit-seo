@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk sedan mewah Honda Vigor anda.
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags: ["pinjaman Honda Vigor", "pembiayaan sedan eksekutif", "pembiayaan mewah JDM", "pinjaman Honda premium", "kereta eksekutif Jepun"]
 keywords: ["pinjaman Honda Vigor Malaysia", "pembiayaan Honda Vigor", "pinjaman sedan eksekutif JDM", "pembiayaan Honda mewah Malaysia", "pembiayaan import Vigor", "pinjaman kereta mewah Jepun", "beli ansuran Honda Vigor", "pembiayaan kenderaan eksekutif Malaysia"]

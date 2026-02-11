@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'ms';
+const post = {
+  title: 'Gudang Pembuatan 2026 - Factory Warehouse',
+  slug: 'gudang-pembuatan-2026',
+  excerpt: 'Dapatkan pembiayaan gudang pembuatan 2026 - factory warehouse dengan 0% down payment dari Ing Heng Credit. Kelulusan pantas, tiada had umur peralatan.',
+  date: 'undefined',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Peralatan Gudang',
+  image: 'undefined'
+};
+
+const keywords = [],
+  breadcrumbItems = [
+  { label: 'Laman Utama', href: '/ms' },
+  { label: 'Blog', href: '/ms/blog' },
+  { label: post.title, href: `/ms/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# Gudang Pembuatan 2026 - Factory Warehouse
+
+Manufacturing perlukan efficient warehouse untuk raw materials & finished goods.
+
+## Manufacturing Warehouse Needs
+
+### Dual Purpose
+- Raw material storage
+- Work-in-progress storage
+- Finished goods storage
+- Production support
+- Inventory management
+
+### Equipment Requirements
+- Heavy duty forklift (3-5 ton)
+- Pallet racking untuk heavy loads
+- Material handling systems
+- Near production line storage
+- Loading docks untuk trucks
+
+### Applications
+- Food manufacturing
+- Plastic injection
+- Metal fabrication
+- Electronics assembly
+- Chemical processing
+- Automotive parts
+
+### Had Bank
+- Manufacturing warehouse considered stable
+- Down payment 10-15%
+- 85-90% pembiayaan
+- Proses 2-3 minggu
+
+## Ing Heng: Manufacturing Warehouse Financing
+
+## Jadual Perbandingan
+
+| Ciri-ciri | Bank | Ing Heng |
+|-----------|------|----------|
+| Down Payment | 10-20% | **0%** |
+| Jumlah Pinjaman | 90% | **100%** |
+| Umur Peralatan | 5 tahun maks | **Tiada had** |
+| Kadar Faedah | 4.6-6.0% setahun | Berdaya saing |
+
+### Manufacturing Packages
+
+#### Package Small Factory
+- 2x Heavy duty forklift 3 ton
+- Pallet racking 150 pallets
+- 1x Dock leveller
+- **Total:** RM 150,000
+- **Bank DP:** RM 15,000-22,500
+- **Ing Heng:** 0% down payment!
+
+#### Package Medium Factory
+- 3x Forklift fleet (mixed)
+- Pallet racking 300 pallets
+- 2x Dock leveller
+- Material handling system
+- **Total:** RM 300,000
+- **Bank DP:** RM 30,000-45,000
+- **Ing Heng:** 0% down payment!
+
+#### Package Large Factory
+- 5x Forklift fleet
+- Pallet racking 500+ pallets
+- 3x Dock leveller
+- Conveyor systems
+- **Total:** RM 600,000
+- **Bank DP:** RM 60,000-90,000
+- **Ing Heng:** 0% down payment!
+
+## Seruan Bertindak
+
+Jangan biarkan had bank memperlahankan perniagaan anda. Dengan Ing Heng Credit:
+
+- **0% Down Payment** - Bawa peralatan keluar tanpa bayaran muka
+- **100% Pinjaman Penuh** - Perlindungan insurans & cukai jalan included
+- **Tiada Had Umur** - Peralatan 10 tahun pun boleh dibiayai
+
+Hubungi kami sekarang:
+- WhatsApp: +60175700889
+- Laman web: inghengcredit.com
+- Masa proses: pantas
+
+**S: Adakah forklift diesel sesuai untuk manufacturing?**
+J: Ya! Diesel forklift adalah ideal untuk manufacturing - power tinggi & continuous operation.
+
+**S: Berapa racking capacity untuk manufacturing?**
+J: Racking untuk manufacturing perlukan heavy duty capacity (1-2 tan per level).
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Peralatan Gudang</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('ms-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min baca</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/ms/contact">Mohon Pembiayaan Peralatan</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -4,7 +4,7 @@ description: "Dapatkan Nissan Pulsar GTI-R anda dengan pinjaman 0% deposit di Ma
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["Nissan Pulsar GTI-R", "Pembiayaan AWD JDM", "Legenda Rali Group A", "SR20DET Turbo", "0% Deposit Prestasi Jepun"]
 keywords: ["pinjaman Nissan Pulsar GTI-R Malaysia", "pembiayaan hot hatch JDM", "pembiayaan Nissan Group A", "pinjaman turbo SR20DET", "pembiayaan Pulsar GTI-R", "0% deposit pinjaman JDM", "pembiayaan kereta prestasi Jepun", "pelaburan hot hatch AWD"]

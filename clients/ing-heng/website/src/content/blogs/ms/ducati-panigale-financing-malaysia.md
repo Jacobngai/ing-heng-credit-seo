@@ -2,7 +2,7 @@
 title: Pembiayaan Ducati Panigale Malaysia - Pinjaman Superbike Itali 0% Deposit 2025
 description: Dapatkan pembiayaan Ducati Panigale di Malaysia dengan 0% deposit. Panduan lengkap untuk pinjaman superbike Itali, sebab bank tolak motosikal eksotik, dan kisah kejayaan pemilik Panigale.
 author: "ING HENG Credit"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 updatedDate: 2025-12-24
 metaTitle: Pembiayaan Ducati Panigale Malaysia | Pinjaman Superbike Itali 0% Deposit
 metaDescription: Pembiayaan Ducati Panigale Malaysia dengan 0% deposit. Pinjaman superbike Itali, kelulusan pantas, kredit teruk diterima. Biayai Panigale impian anda hari ini.

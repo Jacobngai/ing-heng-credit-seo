@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '2026年10吨自卸车采矿融资 - 采石场矿山运输',
+  slug: '2026年10吨自卸车采矿融资',
+  excerpt: '2026年10吨自卸车采矿融资方案。0%首付，100%全额贷款，采石场矿山自卸车融资。',
+  date: '2026-01-09',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '专用设备',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["10吨自卸车","采矿融资","采石场","矿山运输"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 2026年10吨自卸车采矿融资 - 采石场矿山运输
+
+## 10吨自卸车采矿用途
+
+采石场和矿山:
+
+- **矿石运输**: 采石到加工
+- **废料运输**: 矿山清理
+- **材料运输**: 道路建设
+- **土方运输**: 大量土方
+
+## 价格和融资
+
+### 10吨自卸车
+
+| 品牌 | 二手价格 | 银行首付 | 盈恒首付 |
+|------|---------|----------|----------|
+| 五十铃 | RM 140,000 | RM 14,000-28,000 | RM 0 |
+| 日野 | RM 150,000 | RM 15,000-30,000 | RM 0 |
+| 康明斯 | RM 145,000 | RM 14,500-29,000 | RM 0 |
+
+## 采矿收入
+
+**月收入**: RM 35,000-65,000
+**回本**: 8-14个月
+
+## 盈恒采矿优势
+
+- 0%首付
+- 100%融资
+- 采矿友好
+- 恶劣环境设备可融资
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">专用设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

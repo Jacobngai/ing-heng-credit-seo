@@ -1,0 +1,423 @@
+---
+/**
+ * Excavator Financing for Construction Projects - Use-Case Page - Bahasa Malaysia
+ * Target: Kontraktor dan pemaju yang mencari pembiayaan jengkaut pembinaan
+ * Keywords: pembiayaan jengkaut pembinaan, pinjaman peralatan pembinaan, pembiayaan jengkaut kontraktor
+ * Content Strategy: 60% template + 40% unique use-case content
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+
+const lang = 'ms';
+const useCaseId = 'construction';
+
+// Use-case specific data
+const useCase = {
+  name: 'Projek Pembinaan',
+  icon: 'building',
+  targetAudience: ['Kontraktor am', 'Pemaju hartanah', 'Syarikat pembinaan', 'Firma kejuruteraan awam'],
+  description: 'Penyelesaian pembiayaan khusus untuk projek pembinaan pelbagai saiz. Dari pembangunan kediaman hingga projek infrastruktur besar.',
+  industryStat: { value: 'RM180 bilion', description: 'Nilai industri pembinaan Malaysia (2024)' },
+};
+
+const equipment = {
+  name: 'Jengkaut',
+  type: 'excavator',
+  priceRange: 'RM 30,000 - RM 3,000,000',
+};
+
+// SEO Data
+const pageTitle = `Pembiayaan Jengkaut untuk Projek Pembinaan | Pinjaman Kontraktor | Kelulusan Pantas Malaysia`;
+const pageDescription = `Pembiayaan jengkaut pembinaan untuk kontraktor dan pemaju. Kelulusan pantas, terma fleksibel selaras dengan garis masa projek. Biayai jengkaut baru & terpakai dari ${equipment.priceRange}. Kadar kelulusan 95% untuk perniagaan pembinaan.`;
+const keywords = [
+  'pembiayaan jengkaut pembinaan',
+  'pinjaman peralatan pembinaan Malaysia',
+  'pembiayaan jengkaut kontraktor',
+  'pinjaman jentera pembinaan',
+  'pembiayaan peralatan pemaju',
+  'pinjaman peralatan berdasarkan projek',
+];
+
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Jengkaut', url: '/ms/equipment/excavator' },
+  { label: 'Projek Pembinaan', url: `/ms/equipment/excavator/construction-projects` },
+];
+
+// Construction-specific challenges and benefits
+const challenges = [
+  { icon: 'clock', problem: 'Tarikh Akhir Projek Ketat', solution: 'Kelulusan pantas untuk memenuhi tender dan garis masa projek' },
+  { icon: 'cash', problem: 'Pengurusan Aliran Tunai', solution: 'Simpan modal kerja dengan pilihan bayaran muka 0%' },
+  { icon: 'layers', problem: 'Keperluan Berbilang Peralatan', solution: 'Pembiayaan armada untuk berbilang unit dengan diskaun volume' },
+  { icon: 'calendar', problem: 'Aliran Tunai Bermusim', solution: 'Pelan bayaran bermusim selaras dengan kitaran pembinaan' },
+];
+
+// Industry-specific benefits
+const benefits = [
+  { icon: 'clock', title: 'Kelulusan Pantas untuk Tender', description: 'Dapatkan kelulusan dengan pantas untuk memenuhi tarikh akhir tender yang ketat. Jangan kehilangan kontrak menunggu kelulusan bank.' },
+  { icon: 'trending-up', title: 'Bayaran Selaras Projek', description: 'Struktur bayaran mengikut pencapaian projek dan aliran tunai. Bayar lebih semasa fasa puncak, kurang semasa tempoh perlahan.' },
+  { icon: 'layers', title: 'Pembiayaan Armada Tersedia', description: 'Biayai berbilang jengkaut untuk projek besar. Diskaun volume tersedia untuk 3+ unit.' },
+  { icon: 'shield', title: 'Pilihan Baru & Terpakai', description: 'Biayai jengkaut baru untuk projek jangka panjang atau unit terpakai untuk penglibatan lebih pendek.' },
+  { icon: 'users', title: '0% Bayaran Muka', description: 'Simpan modal kerja anda untuk buruh, bahan, dan operasi. Kontraktor yang layak boleh bermula dengan sifar bayaran muka.' },
+  { icon: 'percentage', title: 'Kadar Kompetitif Kontraktor', description: 'Kadar khas untuk syarikat pembinaan yang mantap. Kontrak projek anda menguatkan permohonan anda.' },
+];
+
+// Construction project types
+const projectTypes = [
+  { name: 'Pembangunan Kediaman', description: 'Projek perumahan, kondominium, pangsapuri', excavatorSize: 'Mini ke Sederhana (5-20 tan)' },
+  { name: 'Pembinaan Komersial', description: 'Bangunan pejabat, pusat membeli-belah, hotel', excavatorSize: 'Sederhana (15-30 tan)' },
+  { name: 'Projek Infrastruktur', description: 'Jalan, jambatan, lebuh raya, MRT', excavatorSize: 'Sederhana ke Besar (20-50 tan)' },
+  { name: 'Pembinaan Perindustrian', description: 'Kilang, gudang, taman perindustrian', excavatorSize: 'Sederhana (15-25 tan)' },
+  { name: 'Pembangunan Tanah', description: 'Pembersihan tapak, kerja tanah, pemerataan', excavatorSize: 'Sederhana ke Besar (20-40 tan)' },
+  { name: 'Pemasangan Utiliti', description: 'Saliran, kumbahan, utiliti bawah tanah', excavatorSize: 'Mini ke Kecil (3-15 tan)' },
+];
+
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Bincang Projek Anda', description: 'Beritahu kami tentang projek pembinaan anda. Kami akan cadangkan saiz jengkaut dan struktur pembiayaan yang tepat.' },
+  { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen & Kontrak', description: 'Sediakan dokumen syarikat serta kontrak projek/LOA. Kontrak aktif menguatkan permohonan anda.' },
+  { stepNumber: 3, icon: 'check', title: 'Dapat Kelulusan Pantas', description: 'Kelulusan pantas untuk kontraktor dengan projek aktif. Kes segera untuk tarikh akhir tender diproses dalam 8-12 jam.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sesuaikan Struktur Bayaran', description: 'Bekerja dengan kami untuk menyelaraskan bayaran dengan garis masa projek dan aliran tunai yang dijangkakan.' },
+  { stepNumber: 5, icon: 'truck', title: 'Dapatkan Jengkaut Anda di Tapak', description: 'Koordinasi penghantaran ke tapak projek anda. Mula kerja penggalian dengan segera.' },
+];
+
+// Case study (unique content)
+const caseStudy = {
+  company: 'BCM Construction Sdn Bhd',
+  location: 'Selangor',
+  project: 'Projek pembangunan bercampur di Shah Alam',
+  challenge: 'Memerlukan 3 jengkaut dengan segera selepas memenangi tender besar. Bank memerlukan 3 minggu untuk kelulusan yang akan melambatkan permulaan projek.',
+  solution: 'Ing Heng Credit meluluskan pembiayaan armada untuk 3 jengkaut CAT 320 dalam masa 36 jam dengan struktur bayaran bermusim.',
+  result: 'Memulakan projek tepat pada jadual, selesai 2 bulan lebih awal daripada tarikh akhir. Syarikat telah membiayai 5 lagi jengkaut untuk projek lain.',
+  equipment: '3x Jengkaut CAT 320',
+  financing: 'RM 1.8 juta jumlah dengan bayaran muka 15%',
+};
+
+// Construction-specific FAQs
+const faqs = [
+  {
+    question: 'Bolehkah saya gunakan kontrak projek saya untuk menguatkan permohonan pinjaman?',
+    answer: 'Sudah tentu! Kontrak projek aktif, Surat Tawaran (LOA), dan tender yang disahkan menguatkan permohonan anda dengan ketara. Kami menilai: (1) Nilai dan tempoh kontrak, (2) Reputasi pelanggan (projek kerajaan sangat kuat), (3) Pencapaian bayaran, (4) Rekod prestasi anda dengan projek serupa. Kontraktor dengan projek yang disahkan sering mendapat kadar lebih baik dan jumlah kelulusan lebih tinggi walaupun dengan sejarah kredit terhad.'
+  },
+  {
+    question: 'Bolehkah saya selaraskan bayaran pinjaman dengan aliran tunai projek saya?',
+    answer: 'Ya! Kami pakar dalam struktur bayaran selaras projek untuk pembinaan. Pilihan termasuk: (1) Bayaran bermusim - lebih rendah semasa bulan perlahan, lebih tinggi semasa pembinaan puncak, (2) Bayaran berdasarkan pencapaian - selaras dengan jadual bayaran projek, (3) Bayaran belon - bayaran bulanan lebih kecil dengan bayaran akhir lebih besar apabila projek selesai, (4) Bayaran bergraduat - bermula lebih rendah, meningkat apabila hasil projek masuk. Kami akan bekerja dengan anda untuk menstruktur bayaran yang sepadan dengan aliran tunai yang dijangkakan.'
+  },
+  {
+    question: 'Adakah anda membiayai jengkaut untuk projek kerajaan?',
+    answer: 'Ya! Projek pembinaan kerajaan sangat baik untuk kelulusan pembiayaan kerana: (1) Bayaran dipercayai daripada agensi kerajaan, (2) Kontrak biasanya ditakrifkan dengan baik dengan pencapaian yang jelas, (3) Projek sering mempunyai garis masa lebih panjang membolehkan bayaran balik yang selesa. Kami telah membiayai peralatan untuk kontraktor yang bekerja pada pembinaan MRT, projek lebuh raya, perumahan awam, dan pembangunan infrastruktur. Pemegang kontrak kerajaan sering layak untuk kadar premium.'
+  },
+  {
+    question: 'Bolehkah saya membiayai berbilang jengkaut untuk projek besar?',
+    answer: 'Ya! Pembiayaan armada sesuai untuk projek pembinaan besar yang memerlukan berbilang jengkaut. Manfaat termasuk: (1) Permohonan tunggal dan kelulusan untuk semua unit, (2) Diskaun volume - biasanya 0.5-1% faedah lebih rendah untuk 3+ unit, (3) Penghantaran diselaraskan ke tapak projek, (4) Bayaran bulanan disatukan. Kami telah membiayai armada sehingga 8 jengkaut untuk projek pembinaan utama.'
+  },
+  {
+    question: 'Bagaimana jika projek saya tertangguh?',
+    answer: 'Kami faham projek pembinaan menghadapi kelewatan disebabkan cuaca, permit, atau isu pelanggan. Pilihan termasuk: (1) Penstrukturan semula bayaran - lanjutkan tempoh untuk mengurangkan bayaran bulanan, (2) Pengurangan bayaran sementara - bayaran lebih rendah semasa tempoh kelewatan, (3) Tempoh tangguh untuk kelewatan yang didokumenkan. Kami bekerja dengan kontraktor untuk mencari penyelesaian berbanding gagal bayar kepada penalti. Berkomunikasi awal jika anda meramalkan kelewatan.'
+  },
+  {
+    question: 'Saiz jengkaut apa yang terbaik untuk projek pembinaan?',
+    answer: 'Saiz yang tepat bergantung kepada jenis projek anda: (1) Jengkaut mini (1-6 tan) - landskap, parit utiliti, ruang sempit, (2) Jengkaut kecil (6-15 tan) - pembinaan kediaman, komersial kecil, (3) Jengkaut sederhana (15-30 tan) - kebanyakan projek pembinaan, kerja asas, persediaan tapak, (4) Jengkaut besar (30-50 tan) - kerja tanah utama, infrastruktur, komersial besar. Kami boleh membantu anda memilih saiz yang tepat dan membiayai dengan sewajarnya.'
+  },
+  {
+    question: 'Apakah dokumen yang syarikat pembinaan perlukan untuk memohon?',
+    answer: 'Untuk syarikat pembinaan: (1) Pendaftaran SSM (Borang 9/24/49), (2) Penyata bank syarikat (6 bulan), (3) Salinan IC pengarah, (4) Pendaftaran CIDB jika ada, (5) Kontrak projek aktif/LOA (menguatkan permohonan), (6) Penyata kewangan syarikat jika ada (tidak wajib untuk syarikat baru). Prosesnya mudah untuk kontraktor yang mantap.'
+  },
+];
+
+// Other use cases for internal linking
+const otherUseCases = [
+  { name: 'Operasi Perlombongan', url: '/ms/equipment/excavator/mining-operations' },
+  { name: 'Pembiayaan PKS', url: '/ms/equipment/excavator/sme-financing' },
+  { name: 'Peralatan Terpakai', url: '/ms/equipment/excavator/used-equipment' },
+  { name: 'Pengembangan Armada', url: '/ms/equipment/excavator/fleet-expansion' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `Pembiayaan Jengkaut untuk Projek Pembinaan`,
+  "description": pageDescription,
+  "provider": { "@type": "FinancialService", "name": "Ing Heng Credit" },
+  "areaServed": { "@type": "Country", "name": "Malaysia" },
+  "audience": { "@type": "Audience", "audienceType": "Kontraktor dan pemaju pembinaan" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-gradient-to-br from-blue-800 to-blue-950 text-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block bg-blue-600/30 text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          Industri Pembinaan | Pasaran {useCase.industryStat.value}
+        </span>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+          Pembiayaan Jengkaut untuk Projek Pembinaan
+        </h1>
+        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+          Pembiayaan jengkaut yang pantas dan fleksibel direka untuk kontraktor dan pemaju pembinaan.
+          Kelulusan pantas, bayaran selaras projek, pembiayaan armada tersedia.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi%2C%20saya%20seorang%20kontraktor%20berminat%20dengan%20pembiayaan%20jengkaut%20untuk%20projek%20pembinaan%20saya"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Sekarang
+          </a>
+          <a href="/ms/equipment/excavator" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Lihat Semua Pilihan Jengkaut
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Stats (Unique Content) -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-8 text-stone-800">Industri Pembinaan di Malaysia</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">{useCase.industryStat.value}</div>
+            <div class="text-stone-600">Nilai Industri (2024)</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">50,000+</div>
+            <div class="text-stone-600">Kontraktor Aktif</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">15,000+</div>
+            <div class="text-stone-600">Projek Aktif</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-blue-700 mb-2">5.2%</div>
+            <div class="text-stone-600">Pertumbuhan Tahunan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges & Solutions (Unique Content) -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">Kami Faham Cabaran Pembinaan</h2>
+        <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+          Projek pembinaan mempunyai keperluan pembiayaan yang unik. Berikut cara kami membantu:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          {challenges.map(item => (
+            <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                  <span class="text-red-600 text-lg">!</span>
+                </div>
+                <span class="font-semibold text-stone-800">{item.problem}</span>
+              </div>
+              <div class="flex items-start gap-3 ml-13">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <span class="text-stone-600">{item.solution}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Types (Unique Content) -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Jengkaut untuk Setiap Projek Pembinaan</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Projek berbeza memerlukan saiz jengkaut berbeza. Kami membiayai semuanya.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectTypes.map(project => (
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:border-blue-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{project.name}</h3>
+              <p class="text-stone-600 text-sm mb-3">{project.description}</p>
+              <div class="bg-blue-50 px-3 py-2 rounded-lg">
+                <span class="text-sm text-blue-700 font-medium">Disyorkan: {project.excavatorSize}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Kelebihan untuk Kontraktor Pembinaan</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Pembiayaan yang direka khusus untuk keperluan unik industri pembinaan.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map(benefit => (
+            <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 hover:border-blue-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{benefit.title}</h3>
+              <p class="text-stone-600">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study (Unique Content) -->
+  <section class="py-16 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8 text-stone-800">Kajian Kes: {caseStudy.company}</h2>
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-semibold text-blue-700 mb-2">Cabaran</h3>
+              <p class="text-stone-600 mb-4">{caseStudy.challenge}</p>
+
+              <h3 class="font-semibold text-blue-700 mb-2">Penyelesaian Kami</h3>
+              <p class="text-stone-600 mb-4">{caseStudy.solution}</p>
+
+              <h3 class="font-semibold text-blue-700 mb-2">Hasil</h3>
+              <p class="text-stone-600">{caseStudy.result}</p>
+            </div>
+            <div class="bg-stone-50 rounded-xl p-6">
+              <h3 class="font-semibold text-stone-800 mb-4">Butiran Projek</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                  <span class="text-stone-500">Syarikat:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.company}</span>
+                </div>
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                  <span class="text-stone-500">Lokasi:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.location}</span>
+                </div>
+                <div class="flex justify-between border-b border-stone-200 pb-2">
+                  <span class="text-stone-500">Peralatan:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.equipment}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-stone-500">Pembiayaan:</span>
+                  <span class="font-medium text-stone-700">{caseStudy.financing}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Cara Pembiayaan Pembinaan Berfungsi</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Proses mudah yang direka untuk kontraktor sibuk. Dapatkan jengkaut anda dengan pantas.
+        </p>
+        <div class="space-y-6">
+          {steps.map(step => (
+            <div class="flex gap-6 items-start bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">{step.stepNumber}</div>
+              <div>
+                <h3 class="text-lg font-semibold text-stone-800 mb-1">{step.title}</h3>
+                <p class="text-stone-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Soalan Lazim</h2>
+        <p class="text-center text-stone-600 mb-12">Soalan biasa tentang pembiayaan jengkaut pembinaan</p>
+        <div class="space-y-4">
+          {faqs.map(faq => (
+            <details class="bg-stone-50 rounded-xl p-6 group">
+              <summary class="font-semibold text-stone-800 cursor-pointer list-none flex justify-between items-center">
+                {faq.question}
+                <svg class="w-5 h-5 text-stone-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <p class="mt-4 text-stone-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Use Cases -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-6 text-stone-800">Pilihan Pembiayaan Lain</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {otherUseCases.map(uc => (
+            <a href={uc.url} class="bg-white hover:bg-blue-50 border border-stone-200 hover:border-blue-300 px-6 py-3 rounded-lg font-medium text-stone-700 hover:text-blue-700 transition-colors">
+              {uc.name} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-blue-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Sedia untuk Mendapatkan Jengkaut Pembinaan Anda?</h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Sertai ribuan kontraktor yang telah mengembangkan perniagaan mereka dengan pembiayaan kami.
+          Kelulusan pantas, terma fleksibel, kepakaran pembinaan.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi%2C%20saya%20seorang%20kontraktor%20berminat%20dengan%20pembiayaan%20jengkaut%20untuk%20projek%20pembinaan%20saya"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Mohon Sekarang Melalui WhatsApp
+          </a>
+          <a href="tel:+60175700889" class="bg-blue-600 hover:bg-blue-900 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Hubungi Kami Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

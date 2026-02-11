@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan motor grader tanpa deposit di Malaysia. Biayai 
   100% nilai grader. Kelulusan pantas untuk grader baru dan terpakai dari perniagaan
   1 tahun.
 author: "ING HENG Credit"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - motor grader

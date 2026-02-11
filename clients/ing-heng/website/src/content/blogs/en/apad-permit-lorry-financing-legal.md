@@ -2,7 +2,7 @@
 title: "APAD Permit Renewal: Ensuring Your Financed Lorry Stays Legal"
 description: "APAD permits are mandatory for Malaysian lorry operations. Learn how to maintain compliance, include permit costs in financing, and avoid legal penalties that can shut down your logistics business."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -671,3 +671,4 @@ We bundle APAD permits in your lorry financing with 0% down payment. Keep your o
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '准备清单 2026 - 采购清单',
+  slug: '准备清单2026',
+  excerpt: '2026年设备购买准备清单。采购前准备，文件清单。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["准备清单","采购清单","购买准备","文件清单"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 准备清单 2026
+
+## 设备购买准备
+
+购买设备前准备:
+
+\`\`\`
+准备清单 → 快速审批 → 快速批准 → 获得设备
+\`\`\`
+
+## 准备清单
+
+### 第1步: 公司文件
+
+- SSM注册文件 ✓
+- 业务描述 ✓
+- 董事身份证 ✓
+
+### 第2步: 财务文件
+
+- 6个月月结单 ✓
+- 银行流水 ✓
+- 财务报表(如有) ✓
+
+### 第3步: 设备文件
+
+- 设备报价单 ✓
+- 设备规格 ✓
+- 供应商信息 ✓
+
+### 第4步: 其他文件
+
+- 项目合同(如有) ✓
+- 现有设备清单 ✓
+- 商业计划 ✓
+
+## 快速准备
+
+| 文件 | 时间 | 重要性 |
+|------|------|-------|
+| SSM | 现有 | 必须 |
+| 月结单 | 1天 | 必须 |
+| 设备报价 | 1天 | 必须 |
+| 项目合同 | 2天 | 可选 |
+
+## 申请前检查
+
+- 营业6个月以上 ✓
+- 月收入RM 10,000+ ✓
+- 文件完整 ✓
+- 设备已选定 ✓
+
+**立即申请: WhatsApp +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

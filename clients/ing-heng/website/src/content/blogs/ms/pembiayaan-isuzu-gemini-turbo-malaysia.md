@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Isuzu Gemini Turbo dengan 0% deposit di Malays
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["Isuzu Gemini Turbo", "Pembiayaan JDM", "Pinjaman Kereta Klasik", "Pembiayaan Kereta Performance", "Hatchback Turbo"]
 keywords: ["pembiayaan Isuzu Gemini Turbo", "pinjaman kereta JDM Malaysia", "pembiayaan turbo klasik", "pinjaman hatchback performance", "pembiayaan kereta langka", "pinjaman kereta 0% deposit", "pembiayaan kenderaan kenaikan nilai", "pinjaman JDM vintage"]

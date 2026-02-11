@@ -3,7 +3,7 @@ title: Pinjaman Perniagaan Ditolak Bank Malaysia - Pembiayaan Jentera Peluang Ke
 description: Bank tolak pinjaman perniagaan anda? Dapatkan pembiayaan jentera 0% deposit
   untuk excavator, lori, dan kren. Kelulusan pantas untuk jentera lama.
 author: "ING HENG Credit"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - pinjaman perniagaan ditolak

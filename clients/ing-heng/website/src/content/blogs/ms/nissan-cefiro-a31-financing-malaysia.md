@@ -4,7 +4,7 @@ description: Biayai Nissan Cefiro A31 dengan 0% deposit di Malaysia. Bank tolak 
 category: Equipment Financing
 persona: General
 locale: ms
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags:
 - Nissan Cefiro A31

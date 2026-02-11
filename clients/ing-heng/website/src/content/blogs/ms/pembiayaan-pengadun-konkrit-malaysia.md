@@ -4,7 +4,7 @@ description: Dapatkan pembiayaan pengadun konkrit tanpa deposit di Malaysia. Bia
   sehingga 100% nilai lori pengadun. Kelulusan pantas untuk pengadun simen baru dan
   terpakai dari perniagaan 1 tahun.
 author: "ING HENG Credit"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pengadun konkrit

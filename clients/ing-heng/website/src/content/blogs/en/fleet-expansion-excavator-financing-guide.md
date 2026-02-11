@@ -2,7 +2,7 @@
 title: "Fleet Expansion Financing: Adding Your 3rd, 5th, or 10th Excavator"
 description: "From 1 to 10 excavators: Learn how successful Malaysian contractors use 0% down payment financing to scale their fleets, upgrade CIDB grades, and win bigger construction projects."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Construction Equipment
 tags:
   - Equipment Financing
@@ -728,3 +728,4 @@ We finance from your 2nd to your 20th excavator with 0% down payment. Get approv
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

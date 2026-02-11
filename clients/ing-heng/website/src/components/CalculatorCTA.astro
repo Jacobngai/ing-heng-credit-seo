@@ -1,0 +1,97 @@
+---
+// Lightweight CTA block pointing users to the installment calculator & contact.
+// Props:
+// - lang: 'en' | 'ms' | 'zh' | string
+
+const { lang = 'en' } = Astro.props;
+
+const base = lang === 'ms' ? '/ms' : lang === 'zh' ? '/zh' : '/en';
+
+const heading =
+  lang === 'ms' ? 'Kira Ansuran & Mohon Sekarang' :
+  lang === 'zh' ? '先算分期，再申请' :
+  'Calculate Your Instalment & Apply';
+
+const body =
+  lang === 'ms' ? 'Gunakan kalkulator ansuran kami untuk anggaran bayaran bulanan. Kemudian hubungi kami untuk kelulusan pantas (24–48 jam).' :
+  lang === 'zh' ? '使用分期计算器快速估算月供，然后联系我们获取 24–48 小时快速审批。' :
+  'Use our instalment calculator for a quick monthly estimate, then contact us for fast approval (24–48 hours).';
+
+const primaryText =
+  lang === 'ms' ? 'Kalkulator Ansuran' :
+  lang === 'zh' ? '分期计算器' :
+  'Instalment Calculator';
+
+const secondaryText =
+  lang === 'ms' ? 'Hubungi Kami' :
+  lang === 'zh' ? '联系我们' :
+  'Contact Us';
+---
+
+<section class="calculator-cta" aria-label="Calculator CTA">
+  <div class="inner">
+    <h2>{heading}</h2>
+    <p>{body}</p>
+
+    <div class="buttons">
+      <a class="btn primary" href={`${base}/calculator/`}>{primaryText}</a>
+      <a class="btn secondary" href={`${base}/contact/`}>{secondaryText}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calculator-cta {
+    margin: 3rem 0;
+    padding: 0 1rem;
+  }
+
+  .inner {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fef3e7;
+    border: 1px solid rgba(205, 127, 50, 0.35);
+    border-radius: 10px;
+    padding: 1.75rem;
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .buttons {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .btn.primary {
+    background: #cd7f32;
+    color: #fff;
+  }
+
+  .btn.secondary {
+    background: transparent;
+    color: #a8652a;
+    border: 2px solid #cd7f32;
+  }
+</style>

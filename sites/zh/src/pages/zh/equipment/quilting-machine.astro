@@ -1,0 +1,242 @@
+---
+/**
+ * Quilting Machine Financing Landing Page - Mandarin Chinese
+ * Target: Textile manufacturers, garment businesses, home textile producers
+ * Keywords: 绗缝机融资, 纺织设备贷款, 制衣设备融资
+ * Cultural Focus: Textile industry, manufacturing efficiency, business growth
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '绗缝机融资马来西亚 | 0%押金 | 永兴信贷 | 纺织设备专家';
+const pageDescription = '专业绗缝机融资服务。0%押金，100%融资，支持纺织制造业务。永兴信贷40年信誉，纺织设备专业融资。';
+const keywords = ['绗缝机融资', '纺织设备贷款', '制衣设备融资', '纺织机械融资'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: '首页', url: '/zh' },
+  { label: '设备', url: '/zh/equipment' },
+  { label: '绗缝机融资', url: '/zh/equipment/quilting-machine' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'scissors', title: '纺织业专家', description: '深入了解纺织制造业，专门为绗缝设备提供融资支持。' },
+  { icon: 'percentage', title: '0%押金融资*', description: '符合条件者可获100%融资。快速提升生产能力和产品质量。*受条款及条件约束' },
+  { icon: 'clock', title: '快速批准', description: '了解纺织业季节性需求，快速处理融资申请。快速内决定。' },
+  { icon: 'calendar', title: '灵活期限', description: '12-60个月还款期，配合纺织业现金流特点。' },
+  { icon: 'trending-up', title: '产能提升', description: '现代绗缝设备显著提升生产效率和产品一致性。' },
+  { icon: 'award', title: '质量保证', description: '融资知名品牌设备，确保产品质量和设备稳定性。' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: '绗缝机融资马来西亚',
+  description: '专业绗缝机融资，0%押金，支持纺织制造业务。永兴信贷纺织设备专业服务。',
+  imageUrl: `${SITE_CONFIG.url}/images/quilting-machine-financing.jpg`,
+  category: '金融服务 - 设备融资',
+  offers: {
+    price: '80000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="马来西亚绗缝机融资"
+    subtitle="0%押金 | 100%融资 | 纺织专业 | 永兴信贷制造业支持"
+    ctaText="WhatsApp免费咨询"
+    ctaLink="https://wa.me/60175700889?text=你好！我想了解绗缝机融资。"
+    ctaSecondaryText="立即致电: 017-570 0889"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    trustSignals={['40年经验', 'KPKT执照', '服务4000+公司', '纺织专家']}
+  />
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+          绗缝机融资专家
+        </h2>
+        <p class="text-xl text-[#4F3E29] leading-relaxed">
+          永兴信贷专门为纺织制造商提供绗缝机融资服务。支持马来西亚纺织业发展，提升产品质量和生产效率。
+        </p>
+      </div>
+
+      <!-- Benefits Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+
+      <!-- Machine Types -->
+      <div class="bg-[#F5F5DC] p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12">
+        <h3 class="text-2xl font-bold text-primary mb-6 text-center">我们融资的绗缝机类型</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">单针绗缝机</h4>
+            <p class="text-[#4F3E29] mb-4">基础型绗缝设备，适合小规模生产。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">多针绗缝机</h4>
+            <p class="text-[#4F3E29] mb-4">高效批量生产，适合大型纺织厂。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">电脑绗缝机</h4>
+            <p class="text-[#4F3E29] mb-4">数控技术，复杂图案精确绗缝。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">超声波绗缝机</h4>
+            <p class="text-[#4F3E29] mb-4">无线绗缝，适合化纤材料。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">梳理绗缝机</h4>
+            <p class="text-[#4F3E29] mb-4">专业床上用品生产设备。</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-[#4F3E29] mb-3">工业绗缝机</h4>
+            <p class="text-[#4F3E29]">重型设备，连续作业能力。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <div class="bg-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810] mb-12 border-l-4 border-purple-500">
+        <h3 class="text-2xl font-bold text-primary mb-6">产品应用领域</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-bold text-purple-600 mb-3">家纺产品</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 床上用品制造</li>
+              <li>• 被褥棉被生产</li>
+              <li>• 枕头靠垫制作</li>
+              <li>• 床垫面料绗缝</li>
+              <li>• 窗帘装饰用品</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-purple-600 mb-3">服装产业</h4>
+            <ul class="space-y-2 text-[#4F3E29]">
+              <li>• 羽绒服制造</li>
+              <li>• 棉衣加工</li>
+              <li>• 汽车座套生产</li>
+              <li>• 手袋箱包制作</li>
+              <li>• 工艺品绗缝</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Advantages -->
+      <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-8 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h3 class="text-2xl font-bold mb-6 text-center">技术优势</h3>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">5-50</div>
+            <div class="font-semibold mb-2">针数范围</div>
+            <div class="text-sm opacity-90">根据型号不同</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">2000rpm</div>
+            <div class="font-semibold mb-2">最高速度</div>
+            <div class="text-sm opacity-90">高效生产</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">±0.1mm</div>
+            <div class="font-semibold mb-2">精度控制</div>
+            <div class="text-sm opacity-90">高质量绗缝</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold mb-2">24/7</div>
+            <div class="font-semibold mb-2">连续作业</div>
+            <div class="text-sm opacity-90">提高产量</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        投资绗缝机，提升纺织竞争力
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        永兴信贷助您获得先进绗缝设备，提升产品质量，扩大市场份额。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="https://wa.me/60175700889?text=你好！我想申请绗缝机融资。"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          通过WhatsApp申请
+        </a>
+        <a
+          href="tel:+60175700889"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          致电: 017-570 0889
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="quilting-machine" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            获取绗缝机融资方案
+          </h2>
+          <p class="text-[#4F3E29]">
+            填写表格，我们的纺织设备融资专家将为您服务
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

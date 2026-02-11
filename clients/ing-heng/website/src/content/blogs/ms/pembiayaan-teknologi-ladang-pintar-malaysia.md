@@ -2,7 +2,7 @@
 title: Pembiayaan Teknologi Ladang Pintar Malaysia | Pinjaman Automasi Pertanian
 description: Dapatkan pembiayaan teknologi ladang pintar di Malaysia dengan deposit 0%. Sensor IoT, sistem automatik, pemantauan dron dan robotik pertanian. Kelulusan pantas untuk peralatan ladang moden.
 author: "ING HENG Credit"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 updatedDate: 2025-01-14
 metaTitle: Pembiayaan Teknologi Ladang Pintar Malaysia | Pinjaman Automasi Pertanian
 metaDescription: Biayai teknologi ladang pintar dengan deposit 0% di Malaysia. Sensor IoT, sistem automatik, pemantauan dron, robotik pertanian. Kelulusan pantas untuk pinjaman peralatan ladang moden.

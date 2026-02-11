@@ -2,7 +2,7 @@
 title: "Used Prime Mover Financing: Aged Truck Loan Interest Rates Malaysia"
 description: "Used prime movers cost 40-50% less but carry higher financing interest rates. Learn how to calculate total cost and determine if aged truck financing makes sense for your haulage business."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -674,3 +674,4 @@ We finance prime movers up to 12 years old with 0% down payment. Get approved in
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

@@ -2,7 +2,7 @@
 title: "Volvo vs Scania vs Mercedes-Benz Prime Mover: Which Offers Best Financing?"
 description: "Comparing Volvo, Scania, and Mercedes-Benz prime movers for Malaysian haulage. Understand resale value, maintenance costs, and financing approval rates to choose the best brand for your business."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -805,3 +805,4 @@ We finance Volvo, Scania, and Mercedes-Benz prime movers with 0% down payment. G
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

@@ -1,0 +1,362 @@
+---
+/**
+ * Hobby Dropdown Component
+ * Dropdown menu for hobby financing navigation
+ * Shows all hobby categories with icons, descriptions, and badges
+ */
+
+import type { Locale } from '../utils/i18n';
+import { t } from '../utils/i18n';
+import { HOBBY_NAV_ITEMS, COMPANY_INFO } from '../utils/constants';
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+// Check if hobby section is active
+const isHobbyActive = currentPath.includes('/hobby');
+---
+
+<div class="hobby-dropdown-wrapper">
+  <!-- Desktop Dropdown Trigger -->
+  <a
+    href={`/${lang}/hobby`}
+    class={`hobby-dropdown-trigger ${isHobbyActive ? 'text-[#8B6F47] font-black uppercase tracking-tight text-sm border-b-3 border-[#8B6F47] pb-1' : 'text-[#6B5437] font-bold uppercase tracking-tight text-sm hover:text-[#8B6F47] hover:border-b-3 hover:border-[#D4A574] pb-1 transition-all'}`}
+    aria-label="Hobby financing navigation menu"
+  >
+    {t('nav.hobby', lang)}
+    <svg
+      class="w-4 h-4 ml-1 transition-transform duration-200 dropdown-arrow"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </a>
+
+  <!-- Dropdown Menu -->
+  <div class="hobby-dropdown-menu">
+    <div class="hobby-dropdown-content">
+      <div class="hobby-list">
+        {HOBBY_NAV_ITEMS.map((item) => {
+          const href = `/${lang}${item.href}`;
+          const isActive = currentPath.includes(item.href) && item.href !== '/hobby';
+
+          return (
+            <a
+              href={href}
+              class={`hobby-dropdown-item ${isActive ? 'active' : ''} ${item.comingSoon ? 'coming-soon' : ''}`}
+              {...item.comingSoon && { 'aria-disabled': 'true', 'tabindex': '-1' }}
+            >
+              <div class="hobby-item-content">
+                <div class="hobby-item-header">
+                  <span class="hobby-icon">{item.icon}</span>
+                  <span class="hobby-name">{t(item.label, lang)}</span>
+                  {item.badge && (
+                    <span class={`hobby-badge badge-${item.badge}`}>
+                      {t(`hobby.${item.badge}`, lang)}
+                    </span>
+                  )}
+                  {item.comingSoon && (
+                    <span class="hobby-badge badge-coming-soon">
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
+                <p class="hobby-description">
+                  {t(item.description, lang)}
+                </p>
+              </div>
+              <svg
+                class="hobby-arrow"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Call-to-Action Footer -->
+      <div class="hobby-dropdown-footer">
+        <p class="footer-text">{t('hobby.ctaFooter', lang)}</p>
+        <a
+          href={COMPANY_INFO.whatsapp.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-cta"
+        >
+          {t('cta.whatsapp', lang)} →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hobby-dropdown-wrapper {
+    position: relative;
+  }
+
+  .hobby-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .hobby-dropdown-trigger:hover .dropdown-arrow {
+    transform: translateY(2px);
+  }
+
+  .hobby-dropdown-trigger[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .hobby-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0.75rem;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 50;
+    width: max-content;
+    min-width: 350px;
+    max-width: 450px;
+  }
+
+  .hobby-dropdown-wrapper:hover .hobby-dropdown-menu,
+  .hobby-dropdown-trigger[aria-expanded="true"] + .hobby-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Keep dropdown open when hovering over the gap */
+  .hobby-dropdown-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 0.75rem;
+    background: transparent;
+    pointer-events: auto;
+  }
+
+  .hobby-dropdown-content {
+    background: white;
+    border-radius: 0;
+    box-shadow: 8px 8px 0 #6B5437;
+    border: 3px solid #6B5437;
+    overflow: hidden;
+  }
+
+  /* Hobby List */
+  .hobby-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .hobby-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    min-height: 48px;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .hobby-dropdown-item:not(.coming-soon):hover {
+    background: #F5F1EB;
+    border-color: #8B6F47;
+    transform: translateX(4px);
+  }
+
+  .hobby-dropdown-item.active {
+    background: #F5F1EB;
+    border-color: #8B6F47;
+    border-left-width: 4px;
+  }
+
+  .hobby-dropdown-item.coming-soon {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .hobby-item-content {
+    flex: 1;
+  }
+
+  .hobby-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .hobby-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .hobby-name {
+    font-weight: 800;
+    color: #4A3A28;
+    font-size: 0.9375rem;
+  }
+
+  .hobby-badge {
+    font-size: 0.6875rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .badge-popular {
+    background: #D4A574;
+    color: white;
+    border: 2px solid #6B5437;
+    box-shadow: 2px 2px 0 #6B5437;
+  }
+
+  .badge-coming-soon {
+    background: #94a3b8;
+    color: white;
+    border: 2px solid #64748b;
+    box-shadow: 2px 2px 0 #64748b;
+  }
+
+  .hobby-description {
+    font-size: 0.8125rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .hobby-arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #94a3b8;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .hobby-dropdown-item:not(.coming-soon):hover .hobby-arrow {
+    color: #8B6F47;
+    transform: translateX(4px);
+  }
+
+  .hobby-dropdown-item.coming-soon .hobby-arrow {
+    display: none;
+  }
+
+  /* Footer */
+  .hobby-dropdown-footer {
+    background: #F5F1EB;
+    padding: 1rem 1.5rem;
+    border-top: 3px solid #6B5437;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: #6B5437;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .footer-cta {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: #8B6F47;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-cta:hover {
+    color: #6B5437;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hobby-dropdown-menu {
+      min-width: 300px;
+      max-width: 90vw;
+    }
+  }
+</style>
+
+<script>
+  // Handle dropdown toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.querySelector('.hobby-dropdown-trigger');
+    const menu = document.querySelector('.hobby-dropdown-menu');
+    const wrapper = document.querySelector('.hobby-dropdown-wrapper');
+
+    if (trigger && menu && wrapper) {
+      // Toggle on click
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if (!wrapper.contains(e.target as Node)) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          trigger.setAttribute('aria-expanded', 'false');
+          trigger.focus();
+        }
+      });
+
+      // Keep open on hover (desktop)
+      wrapper.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 1024) {
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 1024) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  });
+</script>

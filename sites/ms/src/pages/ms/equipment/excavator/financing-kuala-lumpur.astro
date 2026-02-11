@@ -1,0 +1,327 @@
+---
+/**
+ * Excavator Financing Kuala Lumpur - Location Page - Bahasa Malaysia
+ * Target: Kontraktor dan perniagaan di KL yang mencari pembiayaan jengkaut
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+
+const lang = 'ms';
+const locationId = 'kuala-lumpur';
+
+// Location-specific data
+const location = {
+  name: 'Kuala Lumpur',
+  capital: 'Kuala Lumpur',
+  majorCities: ['KLCC', 'Cheras', 'Kepong', 'Setapak', 'Bangsar', 'Mont Kiara', 'Bukit Bintang', 'Sentul'],
+  industries: ['Pembinaan Komersial', 'Pembangunan Tinggi', 'Infrastruktur', 'Projek MRT', 'Pembangunan Semula Bandar'],
+  smeCount: '180,000+',
+  constructionProjects: '3,500+',
+  industrialParks: 15,
+};
+
+const equipment = {
+  name: 'Jengkaut',
+  priceRange: 'RM 30,000 - RM 3,000,000',
+};
+
+// SEO Data
+const pageTitle = `Pembiayaan Jengkaut Kuala Lumpur | Kelulusan Pantas | Melayani KL & Kawasan Sekitar`;
+const pageDescription = `Pembiayaan jengkaut pantas di Kuala Lumpur. Melayani KLCC, Cheras, Kepong, Setapak, Bangsar dan semua kawasan KL. Kelulusan pantas, kadar kelulusan 95%. Biayai jengkaut baru & terpakai dari ${equipment.priceRange}.`;
+const keywords = [
+  'pembiayaan jengkaut Kuala Lumpur',
+  'pinjaman jengkaut KL',
+  'pembiayaan peralatan pembinaan Kuala Lumpur',
+  'pinjaman jentera berat KL',
+  'pembiayaan jengkaut Cheras',
+  'pembiayaan jengkaut Kepong',
+];
+
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Jengkaut', url: '/ms/equipment/excavator' },
+  { label: 'Kuala Lumpur', url: `/ms/equipment/excavator/financing-kuala-lumpur` },
+];
+
+const benefits = [
+  { icon: 'clock', title: 'Kelulusan Pantas', description: `Kelulusan pantas untuk kontraktor KL. Dapatkan kelulusan dengan cepat dan mulakan projek anda dengan segera.` },
+  { icon: 'percentage', title: 'Kadar Kelulusan 95%', description: 'Kadar kelulusan terkemuka dalam industri. Kami meluluskan permohonan yang ditolak oleh bank. Kredit buruk diterima.' },
+  { icon: 'map-pin', title: 'Melayani Semua Kuala Lumpur', description: `Kami melayani ${location.majorCities.slice(0, 6).join(', ')}, dan semua kawasan di seluruh KL.` },
+  { icon: 'users', title: '0% Bayaran Muka Tersedia', description: 'Pemohon yang layak boleh mendapat 0% bayaran muka. Simpan modal kerja anda untuk operasi.' },
+  { icon: 'calendar', title: 'Terma Fleksibel 12-60 Bulan', description: 'Pilih tempoh bayaran yang sepadan dengan garis masa projek dan keperluan aliran tunai anda.' },
+  { icon: 'shield', title: 'Baru & Terpakai Diterima', description: 'Biayai jengkaut baru atau terpakai. Semua peralatan diterima berdasarkan keadaan. Semua jenama utama diterima.' },
+];
+
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Hubungi Kami Melalui WhatsApp', description: 'Sembang dengan pasukan pembiayaan KL kami. Dapatkan jawapan segera untuk soalan anda.' },
+  { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen', description: 'Sediakan IC, 6 bulan penyata bank, dan pendaftaran syarikat. Kertas kerja mudah.' },
+  { stepNumber: 3, icon: 'check', title: 'Dapat Kelulusan Pantas', description: 'Kelulusan pantas untuk kontraktor KL. Kes segera diproses dalam 8-12 jam.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Tandatangani Perjanjian Pinjaman', description: 'Semak dan tandatangani perjanjian pinjaman. Terma telus tanpa klausa tersembunyi.' },
+  { stepNumber: 5, icon: 'truck', title: 'Dapatkan Jengkaut Anda', description: 'Penghantaran tersedia di seluruh Kuala Lumpur. Mula bekerja dan memperoleh pendapatan dengan segera.' },
+];
+
+const faqs = [
+  {
+    question: `Adakah anda melayani semua kawasan di Kuala Lumpur?`,
+    answer: `Ya! Kami melayani semua kawasan di seluruh Kuala Lumpur termasuk ${location.majorCities.join(', ')}, dan kawasan sekitar. Terletak di Klang, Selangor yang berdekatan, kami mempunyai akses cemerlang ke semua bahagian KL. Kami boleh mengatur mesyuarat di tapak anda untuk kemudahan.`
+  },
+  {
+    question: 'Berapa cepat saya boleh mendapat penghantaran jengkaut saya di KL?',
+    answer: 'Untuk kontraktor KL, kami biasanya menyelesaikan keseluruhan proses dalam 2-3 hari perniagaan: kelulusan pantas + 1-2 hari untuk dokumentasi dan penghantaran. Memandangkan lokasi pusat KL, logistik adalah mudah. Penghantaran segera sering boleh diatur dengan cepat selepas kelulusan.'
+  },
+  {
+    question: 'Jenis projek KL apa yang anda biayai jengkaut?',
+    answer: `Kuala Lumpur mempunyai ${location.constructionProjects} projek pembinaan aktif. Kami membiayai jengkaut untuk: ${location.industries.join(', ')}. Sama ada anda bekerja pada kondo kediaman, bangunan komersial, atau projek infrastruktur seperti pengembangan MRT, kami mempunyai penyelesaian pembiayaan untuk anda.`
+  },
+  {
+    question: 'Bolehkah saya membiayai peralatan untuk projek kerajaan di KL?',
+    answer: 'Sudah tentu! Kami mempunyai pengalaman luas membiayai peralatan untuk kontraktor yang bekerja pada projek infrastruktur kerajaan di KL, termasuk pembinaan MRT, pengembangan lebuh raya, dan projek bangunan awam. Kelulusan pantas kami membantu anda memenuhi tarikh akhir tender yang ketat.'
+  },
+  {
+    question: 'Apakah dokumen yang saya perlukan untuk memohon?',
+    answer: 'Untuk individu: IC, 6 bulan penyata bank, bukti pendapatan. Untuk syarikat: Pendaftaran SSM, penyata bank syarikat (6 bulan), salinan IC pengarah. Prosesnya mudah dan jelas.'
+  },
+  {
+    question: 'Apakah kadar faedah anda?',
+    answer: 'Kadar faedah julat dari 7.5% hingga 12% setahun bergantung kepada profil kredit, bayaran muka, tempoh pinjaman, dan umur peralatan. Kadar kami kompetitif berbanding bank (9-15%).'
+  },
+];
+
+const nearbyLocations = [
+  { name: 'Selangor', url: '/ms/equipment/excavator/financing-selangor' },
+  { name: 'Negeri Sembilan', url: '/ms/equipment/excavator/financing-negeri-sembilan' },
+  { name: 'Pahang', url: '/ms/equipment/excavator/financing-pahang' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": `Pembiayaan Jengkaut Kuala Lumpur`,
+  "description": pageDescription,
+  "brand": { "@type": "Brand", "name": "Ing Heng Credit" },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "30000",
+    "highPrice": "3000000",
+    "priceCurrency": "MYR",
+    "availability": "https://schema.org/InStock",
+    "areaServed": { "@type": "City", "name": "Kuala Lumpur", "containedInPlace": { "@type": "Country", "name": "Malaysia" } }
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-gradient-to-br from-amber-800 to-amber-950 text-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block bg-amber-600/30 text-amber-200 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          Melayani Semua Kuala Lumpur | {location.majorCities.slice(0, 4).join(' • ')}
+        </span>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6">Pembiayaan Jengkaut di Kuala Lumpur</h1>
+        <p class="text-xl text-amber-100 mb-8 max-w-3xl mx-auto">
+          Pembiayaan jengkaut yang pantas dan fleksibel untuk kontraktor di seluruh Kuala Lumpur.
+          Kelulusan pantas, kadar kelulusan 95%, melayani {location.majorCities.slice(0, 5).join(', ')} dan semua kawasan sekitar.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi%2C%20saya%20berminat%20dengan%20pembiayaan%20jengkaut%20di%20Kuala%20Lumpur"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Sekarang
+          </a>
+          <a href="/ms/equipment/excavator" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Lihat Semua Pilihan Jengkaut
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Stats -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-8 text-stone-800">Mengapa Kontraktor KL Memilih Kami</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">{location.smeCount}</div>
+            <div class="text-stone-600">PKS di KL</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">{location.constructionProjects}</div>
+            <div class="text-stone-600">Projek Aktif</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">95%</div>
+            <div class="text-stone-600">Kadar Kelulusan</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-amber-700 mb-2">24jam</div>
+            <div class="text-stone-600">Masa Kelulusan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Served -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">Kawasan Yang Kami Layani di Kuala Lumpur</h2>
+        <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+          Kami menyediakan perkhidmatan pembiayaan jengkaut di seluruh Kuala Lumpur, termasuk:
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {location.majorCities.map(city => (
+            <span class="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">{city}</span>
+          ))}
+          <span class="bg-stone-100 text-stone-600 px-4 py-2 rounded-full text-sm font-medium">+ Semua kawasan KL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Kelebihan Pembiayaan Jengkaut di KL</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Sebagai penyedia pembiayaan peralatan terkemuka yang melayani Kuala Lumpur, kami menawarkan kelebihan yang membantu perniagaan anda berkembang.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map(benefit => (
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:border-amber-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{benefit.title}</h3>
+              <p class="text-stone-600">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">Industri Utama Menggunakan Jengkaut di KL</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {location.industries.map(industry => (
+            <div class="flex items-center gap-3 bg-stone-50 p-4 rounded-lg">
+              <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="font-medium text-stone-700">{industry}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Cara Mendapatkan Pembiayaan Jengkaut di KL</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Proses 5 langkah mudah yang direka untuk kontraktor KL yang sibuk.
+        </p>
+        <div class="space-y-6">
+          {steps.map(step => (
+            <div class="flex gap-6 items-start bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-amber-700 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">{step.stepNumber}</div>
+              <div>
+                <h3 class="text-lg font-semibold text-stone-800 mb-1">{step.title}</h3>
+                <p class="text-stone-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Soalan Lazim</h2>
+        <p class="text-center text-stone-600 mb-12">Soalan biasa tentang pembiayaan jengkaut di Kuala Lumpur</p>
+        <div class="space-y-4">
+          {faqs.map(faq => (
+            <details class="bg-stone-50 rounded-xl p-6 group">
+              <summary class="font-semibold text-stone-800 cursor-pointer list-none flex justify-between items-center">
+                {faq.question}
+                <svg class="w-5 h-5 text-stone-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <p class="mt-4 text-stone-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Locations -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-6 text-stone-800">Pembiayaan Jengkaut di Negeri Berdekatan</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {nearbyLocations.map(loc => (
+            <a href={loc.url} class="bg-white hover:bg-amber-50 border border-stone-200 hover:border-amber-300 px-6 py-3 rounded-lg font-medium text-stone-700 hover:text-amber-700 transition-colors">
+              {loc.name} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-amber-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Sedia untuk Mendapatkan Jengkaut Anda di Kuala Lumpur?</h2>
+        <p class="text-xl text-amber-100 mb-8">
+          Sertai ribuan kontraktor KL yang telah mengembangkan perniagaan mereka dengan pembiayaan kami.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi%2C%20saya%20berminat%20dengan%20pembiayaan%20jengkaut%20di%20Kuala%20Lumpur"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Mohon Sekarang Melalui WhatsApp
+          </a>
+          <a href="tel:+60175700889" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Hubungi Kami Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

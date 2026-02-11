@@ -4,7 +4,7 @@ description: "Pembiayaan Autozam AZ-1 langka dengan 0% deposit. Bank tolak gullw
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Autozam AZ-1", "gullwing kei car", "pembiayaan mid-engine", "pinjaman trio ABC", "AZ-1 meningkat nilai"]
 keywords: ["pembiayaan Autozam AZ-1", "pinjaman AZ-1 Malaysia", "pembiayaan gullwing kei", "pinjaman kei mid-engine", "pembiayaan trio ABC", "pembiayaan supercar kei", "pembiayaan Autozam", "pinjaman AZ-1 langka"]

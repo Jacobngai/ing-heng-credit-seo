@@ -1,0 +1,375 @@
+---
+/**
+ * Caterpillar Excavator Financing - Brand Page - Bahasa Malaysia
+ * Target: Kontraktor yang ingin membiayai jengkaut Caterpillar (CAT)
+ * Keywords: pembiayaan jengkaut Caterpillar, pinjaman jengkaut CAT, biayai jengkaut CAT Malaysia
+ * Content Strategy: 60% template + 40% unique brand content
+ */
+
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+
+const lang = 'ms';
+const brandId = 'caterpillar';
+
+// Brand-specific data
+const brand = {
+  name: 'Caterpillar',
+  shortName: 'CAT',
+  origin: 'USA',
+  founded: 1925,
+  headquarters: 'Deerfield, Illinois, USA',
+  website: 'https://www.caterpillar.com',
+  tagline: 'Built For It',
+  marketPosition: 'Premium',
+  strengths: ['Kualiti premium', 'Ketahanan luar biasa', 'Rangkaian perkhidmatan global', 'Nilai jualan semula tinggi'],
+  malaysiaPresence: 'Kukuh - Berbilang pembekal dan pusat perkhidmatan di seluruh negara melalui Tractors Malaysia',
+};
+
+const equipment = {
+  name: 'Jengkaut',
+  type: 'excavator',
+  priceRange: 'RM 150,000 - RM 3,500,000',
+};
+
+// Brand-specific models
+const models = [
+  { name: 'CAT 320', category: 'Sederhana', weight: '20-22 tan', price: 'RM 450,000 - RM 650,000', popular: true },
+  { name: 'CAT 330', category: 'Sederhana-Besar', weight: '28-32 tan', price: 'RM 700,000 - RM 950,000', popular: true },
+  { name: 'CAT 336', category: 'Besar', weight: '35-40 tan', price: 'RM 900,000 - RM 1,200,000', popular: false },
+  { name: 'CAT 349', category: 'Besar', weight: '45-50 tan', price: 'RM 1,100,000 - RM 1,500,000', popular: false },
+  { name: 'CAT 306', category: 'Mini', weight: '6 tan', price: 'RM 180,000 - RM 280,000', popular: true },
+  { name: 'CAT 308', category: 'Kecil', weight: '8 tan', price: 'RM 250,000 - RM 380,000', popular: false },
+];
+
+// SEO Data
+const pageTitle = `Pembiayaan Jengkaut Caterpillar Malaysia | Biayai CAT ${models.filter(m => m.popular).map(m => m.name).join(', ')} | Kelulusan Pantas`;
+const pageDescription = `Biayai jengkaut Caterpillar (CAT) di Malaysia. Kelulusan pantas untuk CAT 320, 330, 306 dan semua model. Jenama premium, kadar kompetitif. Kadar kelulusan 95%. Biayai jengkaut CAT baru & terpakai dari ${equipment.priceRange}.`;
+const keywords = [
+  'pembiayaan jengkaut Caterpillar Malaysia',
+  'pinjaman jengkaut CAT',
+  'biayai jengkaut CAT',
+  'pembiayaan Caterpillar 320',
+  'pinjaman CAT 330 Malaysia',
+  'pembiayaan jengkaut CAT terpakai',
+];
+
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Jengkaut', url: '/ms/equipment/excavator' },
+  { label: 'Caterpillar', url: `/ms/equipment/excavator/brand/caterpillar-financing` },
+];
+
+// Benefits specific to brand
+const benefits = [
+  { icon: 'star', title: 'Pengiktirafan Jenama Premium', description: 'Caterpillar adalah pengeluar peralatan pembinaan terkemuka dunia. Biayai standard industri dalam jengkaut.' },
+  { icon: 'trending-up', title: 'Nilai Jualan Semula Tinggi', description: 'Jengkaut CAT mengekalkan nilai jualan semula yang cemerlang. Pelaburan anda kekal kukuh walaupun selepas bertahun-tahun penggunaan.' },
+  { icon: 'tool', title: 'Rangkaian Perkhidmatan Luas', description: 'Tractors Malaysia menyediakan sokongan perkhidmatan di seluruh negara. Ketersediaan alat ganti dan juruteknik pakar di seluruh negara.' },
+  { icon: 'shield', title: 'Ketahanan Terbukti', description: 'Terkenal kerana bertahan 10,000+ jam. Jumlah kos pemilikan lebih rendah walaupun harga pembelian premium.' },
+  { icon: 'clock', title: 'Kelulusan Pantas', description: 'Kelulusan pantas untuk jengkaut CAT. Jenama premium, proses pembiayaan yang dipermudahkan.' },
+  { icon: 'percentage', title: 'Kadar Kompetitif untuk CAT', description: 'Terma pembiayaan lebih baik untuk jenama premium. Profil risiko lebih rendah bermakna kadar lebih baik untuk anda.' },
+];
+
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Hubungi Kami Melalui WhatsApp', description: 'Beritahu kami model CAT yang anda minati. Kami akan membimbing anda melalui pilihan.' },
+  { stepNumber: 2, icon: 'document', title: 'Hantar Dokumen', description: 'Sediakan IC, 6 bulan penyata bank, dan pendaftaran syarikat. Kertas kerja mudah.' },
+  { stepNumber: 3, icon: 'check', title: 'Dapat Kelulusan Pantas', description: 'Kelulusan pantas untuk peralatan Caterpillar. Jenama premium bermakna proses yang dipermudahkan.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Tandatangani Perjanjian', description: 'Semak dan tandatangani perjanjian pinjaman. Terma telus dengan kadar kompetitif.' },
+  { stepNumber: 5, icon: 'truck', title: 'Dapatkan Jengkaut CAT Anda', description: 'Koordinasi dengan pembekal untuk penghantaran. Mula bekerja dengan CAT baru anda dengan segera.' },
+];
+
+// Brand-specific FAQs (40% unique content)
+const faqs = [
+  {
+    question: 'Mengapa saya harus memilih jengkaut Caterpillar?',
+    answer: `Caterpillar adalah pemimpin global dalam peralatan pembinaan dengan pengalaman lebih 95 tahun sejak ${brand.founded}. Jengkaut CAT terkenal untuk: (1) Kualiti binaan dan ketahanan yang unggul - sering bertahan 10,000+ jam, (2) Teknologi canggih termasuk integrasi GPS dan sistem kecekapan bahan api, (3) Nilai jualan semula tertinggi dalam industri - biasanya 40-50% selepas 5 tahun, (4) Rangkaian perkhidmatan luas melalui Tractors Malaysia dengan ketersediaan alat ganti di seluruh negara. Walaupun berharga premium, jumlah kos pemilikan sering lebih rendah kerana kebolehpercayaan dan nilai jualan semula.`
+  },
+  {
+    question: 'Bolehkah saya membiayai jengkaut Caterpillar terpakai?',
+    answer: 'Ya! Kami membiayai jengkaut CAT terpakai. Semua peralatan diterima berdasarkan keadaan. Ketahanan Caterpillar bermakna mesin yang lebih lama pun kekal dipercayai. Untuk jengkaut CAT terpakai, kami biasanya menawarkan: (1) Sehingga 85% pembiayaan untuk mesin di bawah 5 tahun, (2) Sehingga 80% pembiayaan untuk mesin 5-7 tahun, (3) Sehingga 75% pembiayaan untuk mesin 8-10 tahun. Nilai jualan semula cemerlang CAT menjadikannya cagaran yang menarik, sering menghasilkan terma pembiayaan yang lebih baik berbanding jenama lain.'
+  },
+  {
+    question: 'Model jengkaut Caterpillar mana yang anda biayai?',
+    answer: `Kami membiayai semua model jengkaut Caterpillar yang tersedia di Malaysia termasuk: Jengkaut mini (CAT 301.5, 303, 306, 308), Jengkaut sederhana (CAT 312, 315, 320, 323, 330), Jengkaut besar (CAT 336, 349, 352, 374), dan Jengkaut perlombongan (CAT 390F, 6015B). Model paling popular yang kami biayai adalah ${models.filter(m => m.popular).map(m => m.name).join(', ')}.`
+  },
+  {
+    question: 'Adakah anda mempunyai hubungan dengan pembekal CAT di Malaysia?',
+    answer: 'Ya! Kami bekerja rapat dengan Tractors Malaysia, pembekal sah Caterpillar di Malaysia. Manfaat termasuk: (1) Penilaian pra-lulus untuk pembiayaan lebih pantas, (2) Penghantaran dan dokumentasi yang diselaraskan, (3) Akses kepada peralatan Terpakai Bertauliah CAT dengan waranti, (4) Tawaran pakej termasuk lampiran dan waranti lanjutan. Kami juga boleh membiayai peralatan CAT daripada penjual persendirian dan pembekal peralatan terpakai.'
+  },
+  {
+    question: 'Apakah tempoh pinjaman biasa untuk jengkaut CAT?',
+    answer: 'Untuk jengkaut Caterpillar, kami menawarkan tempoh fleksibel dari 12 hingga 84 bulan (1-7 tahun). Tempoh khusus bergantung kepada keperluan perniagaan anda, keadaan peralatan, dan keadaan kewangan keseluruhan. Ketahanan CAT membolehkan kami menawarkan terma kompetitif untuk mesin dari sebarang umur.'
+  },
+  {
+    question: 'Apakah kadar pembiayaan untuk jengkaut Caterpillar?',
+    answer: 'Kadar faedah untuk jengkaut CAT julat dari 7.5% hingga 11% setahun - sering 0.5-1% lebih rendah berbanding purata kerana profil risiko lebih rendah jenama premium. Faktor yang mempengaruhi kadar anda: (1) Bayaran muka - bayaran muka lebih tinggi = kadar lebih rendah, (2) Umur peralatan - lebih baru = kadar lebih rendah, (3) Profil kredit - kredit lebih baik = kadar lebih rendah, (4) Tempoh pinjaman - tempoh lebih pendek = kadar lebih rendah. Hubungi kami untuk sebut harga diperibadikan pada model CAT khusus anda.'
+  },
+  {
+    question: 'Apakah dokumen yang saya perlukan untuk membiayai jengkaut CAT?',
+    answer: 'Untuk individu: IC, 6 bulan penyata bank, bukti pendapatan. Untuk syarikat: Pendaftaran SSM, penyata bank syarikat (6 bulan), salinan IC pengarah. Jika membeli dari pembekal sah, dokumentasi lebih mudah.'
+  },
+];
+
+// Other brands for internal linking
+const otherBrands = [
+  { name: 'Komatsu', url: '/ms/equipment/excavator/brand/komatsu-financing' },
+  { name: 'Hitachi', url: '/ms/equipment/excavator/brand/hitachi-financing' },
+  { name: 'Kobelco', url: '/ms/equipment/excavator/brand/kobelco-financing' },
+  { name: 'SANY', url: '/ms/equipment/excavator/brand/sany-financing' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": `Pembiayaan Jengkaut Caterpillar Malaysia`,
+  "description": pageDescription,
+  "brand": { "@type": "Brand", "name": "Caterpillar" },
+  "manufacturer": { "@type": "Organization", "name": "Caterpillar Inc.", "url": brand.website },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "150000",
+    "highPrice": "3500000",
+    "priceCurrency": "MYR",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <Breadcrumbs items={breadcrumbs} />
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-gradient-to-br from-yellow-600 to-yellow-900 text-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block bg-yellow-500/30 text-yellow-100 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          Jenama Premium | {brand.origin} | Sejak {brand.founded}
+        </span>
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+          Pembiayaan Jengkaut {brand.name}
+        </h1>
+        <p class="text-xl text-yellow-100 mb-8 max-w-3xl mx-auto">
+          Biayai jenama jengkaut terkemuka dunia. Jengkaut Caterpillar - dibina untuk ketahanan, kecekapan, dan prestasi.
+          Kelulusan pantas, kadar kompetitif untuk peralatan premium.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi%2C%20saya%20berminat%20dengan%20pembiayaan%20jengkaut%20Caterpillar"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Sekarang
+          </a>
+          <a href="/ms/equipment/excavator" class="bg-yellow-700 hover:bg-yellow-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Lihat Semua Jenama Jengkaut
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Overview (Unique Content) -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-8 text-stone-800">Mengapa Pilih {brand.name}?</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-yellow-600 mb-2"># 1</div>
+            <div class="text-stone-600">Jenama Terkemuka Dunia</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-yellow-600 mb-2">{new Date().getFullYear() - brand.founded}+</div>
+            <div class="text-stone-600">Tahun Kecemerlangan</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-yellow-600 mb-2">10,000+</div>
+            <div class="text-stone-600">Jam Operasi</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+            <div class="text-3xl font-bold text-yellow-600 mb-2">40-50%</div>
+            <div class="text-stone-600">Nilai Jualan Semula (5 thn)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Strengths (Unique Content) -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-4 text-stone-800">Kelebihan {brand.name}</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {brand.strengths.map(strength => (
+            <div class="flex items-center gap-3 bg-stone-50 p-4 rounded-lg">
+              <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <span class="font-medium text-stone-700">{strength}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Models Section (Brand-Specific Content) -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Model Jengkaut {brand.shortName} Popular Yang Kami Biayai</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Kami membiayai semua model jengkaut Caterpillar. Berikut adalah pilihan paling popular:
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {models.map(model => (
+            <div class={`bg-white p-6 rounded-xl shadow-sm border-2 ${model.popular ? 'border-yellow-400' : 'border-stone-200'} hover:border-yellow-400 transition-colors`}>
+              {model.popular && (
+                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-1 rounded mb-3">Popular</span>
+              )}
+              <h3 class="text-xl font-bold text-stone-800 mb-2">{model.name}</h3>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-stone-500">Kategori:</span>
+                  <span class="font-medium text-stone-700">{model.category}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-stone-500">Berat:</span>
+                  <span class="font-medium text-stone-700">{model.weight}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-stone-500">Julat Harga:</span>
+                  <span class="font-medium text-stone-700">{model.price}</span>
+                </div>
+              </div>
+              <a href={`https://wa.me/60175700889?text=Hi%2C%20saya%20berminat%20untuk%20membiayai%20${encodeURIComponent(model.name)}`}
+                 class="mt-4 block text-center bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                Dapatkan Sebut Harga untuk {model.name}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Kelebihan Membiayai Jengkaut {brand.name}</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Jenama premium, kelebihan pembiayaan premium. Berikut sebab kontraktor memilih untuk membiayai CAT dengan kami.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map(benefit => (
+            <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 hover:border-yellow-300 transition-colors">
+              <h3 class="text-lg font-semibold text-stone-800 mb-2">{benefit.title}</h3>
+              <p class="text-stone-600">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-stone-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Cara Membiayai Jengkaut {brand.shortName} Anda</h2>
+        <p class="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
+          Proses 5 langkah mudah. Dapatkan jengkaut Caterpillar anda dengan pantas.
+        </p>
+        <div class="space-y-6">
+          {steps.map(step => (
+            <div class="flex gap-6 items-start bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">{step.stepNumber}</div>
+              <div>
+                <h3 class="text-lg font-semibold text-stone-800 mb-1">{step.title}</h3>
+                <p class="text-stone-600">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4 text-stone-800">Soalan Lazim</h2>
+        <p class="text-center text-stone-600 mb-12">Soalan biasa tentang pembiayaan jengkaut {brand.name}</p>
+        <div class="space-y-4">
+          {faqs.map(faq => (
+            <details class="bg-stone-50 rounded-xl p-6 group">
+              <summary class="font-semibold text-stone-800 cursor-pointer list-none flex justify-between items-center">
+                {faq.question}
+                <svg class="w-5 h-5 text-stone-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <p class="mt-4 text-stone-600">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Brands -->
+  <section class="py-12 bg-stone-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-center mb-6 text-stone-800">Biayai Jenama Jengkaut Lain</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {otherBrands.map(b => (
+            <a href={b.url} class="bg-white hover:bg-yellow-50 border border-stone-200 hover:border-yellow-300 px-6 py-3 rounded-lg font-medium text-stone-700 hover:text-yellow-700 transition-colors">
+              {b.name} →
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-yellow-700 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Sedia untuk Membiayai Jengkaut {brand.name} Anda?</h2>
+        <p class="text-xl text-yellow-100 mb-8">
+          Jenama premium, kadar kompetitif, kelulusan pantas. Mulakan hari ini.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/60175700889?text=Hi%2C%20saya%20berminat%20dengan%20pembiayaan%20jengkaut%20Caterpillar"
+             class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Mohon Sekarang Melalui WhatsApp
+          </a>
+          <a href="tel:+60175700889" class="bg-yellow-600 hover:bg-yellow-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+            Hubungi Kami Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

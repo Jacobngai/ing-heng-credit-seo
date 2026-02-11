@@ -2,7 +2,7 @@
 title: "Solar Panel Financing Malaysia: 0% Deposit Renewable Energy Equipment Loans"
 description: "Finance solar panels, inverters, battery systems with 0% deposit. Expert renewable energy equipment financing for Malaysian businesses. Get sustainable energy quote today."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-22
+publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

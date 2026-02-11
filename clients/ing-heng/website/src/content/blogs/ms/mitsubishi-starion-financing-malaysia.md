@@ -4,7 +4,7 @@ description: "Dapatkan Mitsubishi Starion anda dengan pembiayaan 0% deposit di M
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["Mitsubishi Starion", "Kereta Sport Turbo 1980an", "Pembiayaan Prestasi Jepun", "Reka Bentuk Wedge", "0% Deposit Pinjaman Klasik"]
 keywords: ["pembiayaan Mitsubishi Starion Malaysia", "pinjaman kereta sport 1980an", "pembiayaan Mitsubishi turbo", "pembiayaan Starion ESI-R", "pinjaman kereta sport Jepun", "0% deposit pembiayaan Mitsubishi", "pelaburan kereta turbo klasik", "pembiayaan Starion wide-body"]

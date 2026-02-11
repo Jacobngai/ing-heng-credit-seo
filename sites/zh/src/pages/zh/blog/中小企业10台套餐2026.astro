@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '中小企业10台套餐 2026 - 大型SME融资',
+  slug: '中小企业10台套餐2026',
+  excerpt: '2026年中小企业10台设备套餐。0%首付，100%融资，大型SME批量优惠。车队扩展。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["中小企业10台套餐","大型SME融资","车队套餐","批量设备"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 中小企业10台套餐 2026
+
+## 大型SME车队
+
+您的SME扩展到10台设备:
+
+\`\`\`
+成功SME → 需要10台设备 → 大型批量融资 → 最佳条款
+\`\`\`
+
+## 10台套餐选项
+
+### 选项1: 建筑车队
+
+| 设备 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 挖掘机 | 4台 | RM 80,000 | RM 320,000 |
+| 起重机 | 2台 | RM 100,000 | RM 200,000 |
+| 装载机 | 3台 | RM 60,000 | RM 180,000 |
+| 推土机 | 1台 | RM 80,000 | RM 80,000 |
+| **总计** | **10台** | | **RM 780,000** |
+
+- 银行首付: RM 78,000
+- Ing Heng首付: RM 0
+
+### 选项2: 运输车队
+
+| 设备 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 5吨货车 | 5台 | RM 60,000 | RM 300,000 |
+| 拖车头 | 2台 | RM 100,000 | RM 200,000 |
+| 3吨货车 | 3台 | RM 50,000 | RM 150,000 |
+| **总计** | **10台** | | **RM 650,000** |
+
+- 银行首付: RM 65,000
+- Ing Heng首付: RM 0
+
+### 选项3: 混合车队
+
+| 设备 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 货车 | 4台 | RM 60,000 | RM 240,000 |
+| 叉车 | 3台 | RM 20,000 | RM 60,000 |
+| 小型挖掘机 | 2台 | RM 50,000 | RM 100,000 |
+| 装载机 | 1台 | RM 60,000 | RM 60,000 |
+| **总计** | **10台** | | **RM 460,000** |
+
+- 银行首付: RM 46,000
+- Ing Heng首付: RM 0
+
+## 10台套餐优势
+
+### 0%首付
+
+- 保留RM 46,000-78,000
+- 大量运营资金
+
+### 100%融资
+
+- 全额车队贷款
+- 统一管理
+
+### 特殊条款
+
+- 最佳利率
+- 最长期限
+- 灵活还款
+
+## 收入增长
+
+### 10台设备收入
+
+\`\`\`
+建筑车队: 月收入RM 150,000-250,000
+运输车队: 月收入RM 120,000-200,000
+混合车队: 月收入RM 100,000-150,000
+\`\`\`
+
+## 大型SME资格
+
+### 公司要求
+
+- 营业2年以上
+- 月收入RM 50,000+
+- 良好信用记录
+- 稳定客户
+
+### 文件要求
+
+- 24个月月结单
+- 财务报表
+- 设备清单
+- 业务计划
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**10台套餐，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -4,7 +4,7 @@ description: Mulakan perniagaan sewa kren dengan pembiayaan deposit 0%. Pelajari
   permulaan, pinjaman peralatan, perancangan aliran tunai, dan persediaan perniagaan
   untuk syarikat sewa kren di Malaysia.
 author: "ING HENG Credit"
-publishDate: 2024-03-15
+publishDate: 2024-03-15T00:00:00.000Z
 category: Equipment Financing
 tags:
 - pembiayaan kren

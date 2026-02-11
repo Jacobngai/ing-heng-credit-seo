@@ -2,7 +2,7 @@
 title: "Pembiayaan Jentera Binaan Malaysia 2025 - Equipment Financing Terbaik"
 description: "Pembiayaan jentera binaan di Malaysia untuk excavator, bulldozer, crane, forklift, dan equipment construction lain. Tanpa deposit, syarat mudah, kelulusan pantas."
 category: "Equipment Financing"
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["jentera binaan", "construction equipment", "pembiayaan", "malaysia"]
 image: "/images/construction-equipment-financing-malaysia.jpg"

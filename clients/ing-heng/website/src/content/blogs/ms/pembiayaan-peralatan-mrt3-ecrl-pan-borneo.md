@@ -4,7 +4,7 @@ description: Pembiayaan peralatan untuk projek mega MRT3, ECRL, Pan Borneo. Kami
   jentera khusus terowong, kren tower, crusher plant. 0% deposit untuk kontraktor
   berkelayakan.
 author: "ING HENG Credit"
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
 tags:
 - MRT3 peralatan

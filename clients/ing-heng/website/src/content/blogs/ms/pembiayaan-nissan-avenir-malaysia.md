@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk wagon premium Nissan Avenir a
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["pembiayaan Nissan Avenir", "pinjaman wagon premium", "pembiayaan estate JDM", "wagon mewah Malaysia", "pinjaman import Avenir"]
 keywords: ["pembiayaan Nissan Avenir Malaysia", "pinjaman wagon Avenir", "pembiayaan estate premium", "pinjaman wagon JDM Malaysia", "pembiayaan wagon mewah Nissan", "pembiayaan import Avenir", "pinjaman kereta estate Malaysia", "beli ansuran wagon premium"]

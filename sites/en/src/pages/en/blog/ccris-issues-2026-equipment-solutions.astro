@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'en';
+const post = {
+  title: 'CCRIS Issues 2026 - Equipment Solutions',
+  slug: 'ccris-issues-2026-equipment-solutions',
+  excerpt: 'CCRIS issues equipment financing 2026. Solutions for late payments, high debt ratio equipment loans.',
+  date: '2026-01-07',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: 'Bad Credit Solutions',
+  image: '/images/blog/ccris-issues.jpg'
+};
+
+const keywords = ["machinery-financing","ccris-issues","credit-solutions"],
+  breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: post.title, href: `/en/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# CCRIS Issues 2026 - Equipment Solutions
+
+CCRIS issues affecting equipment financing? Solutions available for excavators, lorries, forklifts in 2026.
+
+## Understanding CCRIS Issues
+
+**Common CCRIS Problems:**
+- Late payments (1-3 months overdue)
+- High credit utilization (>80%)
+- Too many credit facilities
+- Recent settlement of default
+- High debt service ratio
+
+## 2026 CCRIS Solutions
+
+**Equipment-Focused Approval:**
+
+**Solution 1: Equipment Value Primary**
+- Komatsu, CAT, ISUZU, Toyota
+- Strong resale value
+- Lower lender risk
+- **Higher approval rate**
+
+**Solution 2: Business Viability**
+- Current operations strong
+- Regular income visible
+- Future contracts secured
+- **Repayment assured**
+
+**Solution 3: Income-Based**
+- Business cash flow focus
+- Project contracts considered
+- Revenue projections accepted
+- **Capacity demonstrated**
+
+## Real CCRIS Approval Cases
+
+**Case 1: Late Payments - Approved**
+
+**CCRIS:** 3 late payments in 2024
+**Score:** 585
+**Banks:** All rejected
+**Equipment:** Komatsu PC200
+**Our Approval:** fasts, 0% down
+**Result:** Repaying on time, score improving
+
+**Case 2: High Debt Ratio - Approved**
+
+**CCRIS:** Debt ratio 55%
+**Score:** 560
+**Banks:** Rejected (over 40% limit)
+**Equipment:** 2 ISUZU lorries
+**Our Approval:** 72 hours, 10% down
+**Result:** Business income sufficient, repaying well
+
+## CCRIS Score Impact
+
+| Score Range | Bank Response | Our Approval Rate |
+|-------------|---------------|-------------------|
+| **700+** | Approved | Approved (95%) |
+| **650-699** | Mostly approved | Approved (90%) |
+| **600-649** | Maybe | Approved (80%) |
+| **550-599** | Unlikely | Approved (60%) |
+| **500-549** | Rejected | Approved (40%) |
+| **Below 500** | Rejected | Case-by-case (20%) |
+
+## Improving CCRIS Approval
+
+**What Helps:**
+
+1. **Popular Equipment Brands**
+   - Komatsu PC200, CAT 320
+   - ISUZU NPR, Toyota forklifts
+   - Easy to resell
+   - **Lower lender risk**
+
+2. **Strong Business Income**
+   - 6 months bank statements
+   - Regular deposits visible
+   - Growing trend
+   - **Repayment capacity proven**
+
+3. **Project Contracts**
+   - Government projects preferred
+   - Private development good
+   - Long-term contracts
+   - **Future payment assured**
+
+4. **Some Down Payment**
+   - Even 5-10% helps
+   - Shows commitment
+   - Reduces lender risk
+   - **Better terms possible**
+
+## CCRIS Recovery Documentation
+
+**Show Improvement:**
+
+**Required:**
+- Current on-time payments
+- Settled overdue amounts
+- Reduced credit utilization
+- Accounts closed
+- **Recovery evident**
+
+## Get CCRIS Equipment Financing
+
+CCRIS issues but need equipment? Apply for equipment-focused financing with fast assessment.
+
+---
+
+**Specific equipment needs?** See [Bad Credit Excavator](/blog/bad-credit-excavator-2026-financing-options) or [Bad Credit Lorry](/blog/bad-credit-lorry-2026-loan-available-malaysia).
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">Bad Credit Solutions</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} min read</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

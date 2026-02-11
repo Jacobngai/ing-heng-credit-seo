@@ -2,7 +2,7 @@
 title: "SKDS 2.0 Diesel Subsidy for Prime Movers: Save RM1.20 Per Litre"
 description: "Complete guide to SKDS 2.0 diesel subsidy for container hauliers. Apply for fleet cards, save RM1.20 per litre on diesel, and reduce operating costs."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -361,3 +361,4 @@ Once approved, you'll receive fleet cards for each eligible vehicle. Use these c
 
 
                 *Estimates only. Actual savings vary based on fuel efficiency and routes.
+

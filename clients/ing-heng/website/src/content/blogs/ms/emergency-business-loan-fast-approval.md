@@ -5,7 +5,7 @@ description: Perlukan pembiayaan perniagaan segera? Kami memberikan respons pant
   untuk kecemasan tulen apabila bank mengambil masa terlalu lama. Penyelesaian pembiayaan
   krisis untuk perniagaan Malaysia.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - pinjaman kecemasan

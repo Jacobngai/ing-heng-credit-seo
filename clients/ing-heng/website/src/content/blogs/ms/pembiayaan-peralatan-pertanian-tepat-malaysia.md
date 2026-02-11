@@ -2,7 +2,7 @@
 title: Pembiayaan Peralatan Pertanian Tepat Malaysia | Pinjaman Teknologi Ladang Pintar
 description: Dapatkan pembiayaan peralatan pertanian tepat di Malaysia dengan deposit 0%. Panduan GPS, aplikator kadar berubah, teknologi dron dan sistem ladang automatik. Kelulusan pantas untuk teknologi ladang pintar.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 updatedDate: 2025-01-14
 metaTitle: Pembiayaan Peralatan Pertanian Tepat Malaysia | Pinjaman Ladang Pintar
 metaDescription: Biayai peralatan pertanian tepat dengan deposit 0% di Malaysia. Panduan GPS, aplikator kadar berubah, sistem ladang automatik. Kelulusan pantas untuk pinjaman teknologi ladang pintar.

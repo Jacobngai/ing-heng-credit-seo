@@ -4,7 +4,7 @@ description: "Dapatkan ikon rali Lancia Delta Integrale anda dengan pembiayaan 0
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 readingTime: 10
 tags: ["Lancia Delta Integrale", "Pembiayaan Kereta Rali", "Homologasi Group B", "Prestasi Itali", "0% Deposit Pinjaman Kenderaan"]
 keywords: ["pembiayaan Lancia Delta Integrale Malaysia", "pinjaman kereta rali", "pembiayaan homologasi khas", "pembiayaan kereta Group B", "pinjaman kereta prestasi Itali", "0% deposit pembiayaan Lancia", "pelaburan legenda rali", "pembiayaan kereta prestasi Malaysia"]

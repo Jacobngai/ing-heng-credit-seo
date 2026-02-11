@@ -1,7 +1,7 @@
 ---
 title: "Pembiayaan Lamborghini Gallardo Malaysia - 0% Deposit Pinjaman Supercar"
 description: "Dapatkan kelulusan pembiayaan Lamborghini Gallardo di Malaysia. Bank tolak pinjaman kereta eksotik? Kami pakar dalam pembiayaan supercar dengan 0% deposit."
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 tags: ["pembiayaan lamborghini gallardo", "pinjaman supercar malaysia", "pembiayaan kereta eksotik", "pinjaman lamborghini"]
 category: Equipment Financing
 lang: "ms"

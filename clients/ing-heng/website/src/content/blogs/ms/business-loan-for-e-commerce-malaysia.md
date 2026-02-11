@@ -5,7 +5,7 @@ description: Pinjaman perniagaan e-dagang di Malaysia. Pembiayaan peralatan untu
   peralatan gudang, sistem pembungkusan, dan operasi perniagaan dalam talian. Kelulusan
   pantas dengan kadar kompetitif.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - pinjaman e-dagang

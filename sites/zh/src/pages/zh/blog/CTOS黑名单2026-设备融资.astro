@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: 'CTOS黑名单 2026 - 设备融资',
+  slug: 'CTOS黑名单2026-设备融资',
+  excerpt: 'CTOS黑名单2026设备融资 - 即使CTOS黑名单仍可融资。设备融资解决方案，第二次机会。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '不良信用解决方案',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["CTOS黑名单","信用问题","设备融资","第二次机会"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# CTOS黑名单 2026 - 设备融资
+
+## CTOS黑名单影响融资?
+
+即使CTOS黑名单，仍可获得设备融资:
+
+\`\`\`
+银行: CTOS黑名单 = 自动拒绝
+Ing Heng: CTOS黑名单 = 仍然考虑
+\`\`\`
+
+## 什么是CTOS黑名单?
+
+CTOS是马来西亚信用报告系统:
+- 记录不良信用
+- 黑名单记录
+- 银行查看CTOS
+
+## 真实例子
+
+### 例子1: CTOS黑名单
+
+您被列入CTOS黑名单。
+
+**设备需求:**
+- 20吨挖掘机: RM 180,000
+
+**银行反应:**
+- CTOS黑名单
+- 自动拒绝
+- **无法获得设备**
+
+**Ing Heng反应:**
+- 了解具体情况
+- 查看当前业务
+- 评估还款能力
+- **批准融资**
+- **0%首付**
+
+## 黑名单解决方案
+
+### 方案1: 已解决
+\`\`\`
+情况: 问题已解决
+融资: 100%
+首付: 0%
+利率: 标准
+\`\`\`
+
+### 方案2: 部分解决
+\`\`\`
+情况: 还在还款中
+融资: 80-100%
+首付: 0-10%
+利率: 可能略高
+\`\`\`
+
+### 方案3: 严重记录
+\`\`\`
+情况: 严重黑名单
+融资: 70-90%
+首付: 10-20%
+利率: 较高
+\`\`\`
+
+## 可融资设备
+
+所有设备都可以考虑:
+- 挖掘机 ✅
+- 罗里 ✅
+- 叉车 ✅
+- 拖车头 ✅
+
+## 申请流程
+
+### 第1步: 咨询
+诚实说明CTOS情况
+
+### 第2步: 提供文件
+- CTOS报告
+- 当前收入证明
+- 解释信
+
+### 第3步: 快速评估
+快速评估
+
+### 第4步: 批准融资
+给第二次机会
+
+## 常见问题
+
+**Q: CTOS黑名单一定被拒绝吗?**
+A: 不一定，我们灵活评估。
+
+**Q: 需要什么额外文件?**
+A: CTOS报告、解释信、当前收入证明。
+
+## 立即申请
+
+CTOS黑名单需要设备? 立即申请。
+
+**联系方式:**
+- WhatsApp: +60175700889
+- 网站: inghengcredit.com
+
+**立即申请，CTOS黑名单设备**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">不良信用解决方案</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

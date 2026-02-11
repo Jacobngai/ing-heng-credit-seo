@@ -4,7 +4,7 @@ description: Dapatkan pinjaman perniagaan logistik Malaysia dengan 0% deposit. B
   lori, trailer, forklift untuk syarikat logistik. Kelulusan pantas, terma bayaran
   fleksibel.
 author: "ING HENG Credit"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Business Tips
 tags:
 - pinjaman logistik

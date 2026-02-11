@@ -4,7 +4,7 @@ description: Biayai Toyota Chaser JZX100 dengan 0% deposit di Malaysia. Bank tol
 category: Equipment Financing
 persona: General
 locale: ms
-publishDate: 2025-12-23
+publishDate: 2025-12-23T00:00:00.000Z
 readingTime: 10
 tags:
 - Toyota Chaser JZX100

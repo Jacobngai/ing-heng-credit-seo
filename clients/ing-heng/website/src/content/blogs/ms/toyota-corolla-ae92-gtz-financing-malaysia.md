@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Toyota Corolla AE92 GTZ yang 
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["toyota-corolla-ae92-gtz", "pembiayaan-kereta-rally", "enjin-twin-cam", "0-deposit-toyota", "prestasi-jepun"]
 keywords: ["pembiayaan toyota corolla ae92 gtz", "pinjaman ae92 gtz malaysia", "pembiayaan corolla gtz", "pinjaman kereta rally", "kereta prestasi 0 deposit", "pembiayaan twin cam", "pinjaman prestasi toyota", "pembiayaan corolla klasik"]

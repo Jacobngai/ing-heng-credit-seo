@@ -2,7 +2,7 @@
 title: Pembiayaan Kawasaki Ninja ZX10R Malaysia - Pinjaman Superbike Deposit 0% 2025
 description: Dapatkan pembiayaan Kawasaki Ninja ZX10R di Malaysia dengan deposit 0%. Panduan lengkap untuk pinjaman superbike, rekod kredit teruk diterima, dan kenapa bank menolak pembiayaan motosikal prestasi tinggi.
 author: "ING HENG Credit"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 updatedDate: 2025-12-24
 metaTitle: Pembiayaan Kawasaki Ninja ZX10R Malaysia | Pinjaman Superbike Deposit 0%
 metaDescription: Pembiayaan Kawasaki Ninja ZX10R Malaysia dengan deposit 0%. Pinjaman superbike, kelulusan cepat, rekod kredit teruk diterima. Biayai Ninja ZX10R impian anda hari ini.

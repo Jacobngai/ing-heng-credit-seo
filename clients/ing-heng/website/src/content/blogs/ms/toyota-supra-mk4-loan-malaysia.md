@@ -2,7 +2,7 @@
 title: "Pinjaman Toyota Supra MK4 Malaysia | Biayai Legenda 2JZ"
 description: "Dapatkan pembiayaan deposit 0% untuk Supra MK4 impian anda. Kami luluskan ikon JDM yang ditolak bank kerana umur. Biayai pelaburan berkuasa 2JZ legenda."
 author: "ING HENG Credit"
-publishDate: 2024-12-24
+publishDate: 2024-12-24T00:00:00.000Z
 category: Equipment Financing
 tags: ["supra mk4", "pembiayaan jdm", "enjin 2jz", "pinjaman toyota supra", "kereta koleksi"]
 keywords:

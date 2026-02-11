@@ -1,0 +1,415 @@
+---
+/**
+ * MRT3 Project Equipment Financing: Ready Your Excavator Fleet - English
+ * URL: /en/blog/mrt3-excavator-fleet-financing
+ * Target: Contractor Ahmad (Excavator) - English secondary language
+ * Keywords: MRT3, excavator fleet, Klang Valley infrastructure, project financing
+ * Cultural Focus: Professional, opportunity-focused, ROI-driven B2B messaging
+ * Word Count: 2,500+ words
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import { generateFAQSchema } from '../../../utils/schema';
+
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'MRT3 Excavator Fleet Financing | Klang Valley Infrastructure Opportunities';
+const pageDescription = 'MRT3 Circle Line project creating excavator fleet opportunities in Klang Valley. Prepare your business with 0% down payment financing. fast approval, flexible payment terms.';
+const keywords = [
+  'MRT3 excavator financing',
+  'Klang Valley infrastructure projects',
+  'MRT3 subcontractor opportunities',
+  'excavator fleet financing Malaysia',
+  'Circle Line construction financing',
+  'government tender equipment financing'
+];
+
+// Breadcrumbs
+const breadcrumbItems = [
+  { label: 'Home', href: '/en' },
+  { label: 'Blog', href: '/en/blog' },
+  { label: 'Industry News', href: '/en/blog' },
+  { label: 'MRT3 Excavator Fleet Financing', href: '/en/blog/mrt3-excavator-fleet-financing' }
+];
+
+// Key Stats for MRT3
+const mrt3Stats = [
+  { label: 'Project Timeline', value: '2025-2030+' },
+  { label: 'Investment Value', value: 'RM30-40 Billion' },
+  { label: 'Route Length', value: '50+ km Circle Line' },
+  { label: 'Stations Planned', value: '20+ Stations' }
+];
+
+// Excavator Requirements for MRT3
+const excavatorRequirements = [
+  { type: 'Mini Excavators (1-5 tons)', use: 'Station construction, utility relocation, tight urban sites', quantity: 'High Demand' },
+  { type: 'Midi Excavators (5-10 tons)', use: 'Foundation work, access road construction, drainage', quantity: 'Very High Demand' },
+  { type: 'Large Excavators (10-20 tons)', use: 'Deep excavation, station box construction, earthworks', quantity: 'High Demand' },
+  { type: 'Long Reach Excavators', use: 'Slope stabilization, drainage channels, site preparation', quantity: 'Medium Demand' }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'What is MRT3 and when does construction start?',
+    answer: 'MRT3 Circle Line is a 50km elevated and underground rail loop circling Klang Valley. The project was approved by cabinet in March 2022 with planning and land acquisition ongoing in 2024-2025. Construction timeline targets 2025-2030+, with major earthworks, station construction, and supporting infrastructure creating sustained excavator demand through 2028. Contractors should prepare equipment and CIDB registration now to capitalize on subcontracting opportunities.'
+  },
+  {
+    question: 'How do I qualify for MRT3 subcontracting work?',
+    answer: 'MRT3 subcontracting requires: (1) Valid CIDB registration - minimum G4 grade for earthworks, G5-G7 for station construction, (2) Relevant track record in infrastructure projects, (3) Adequate equipment fleet (2+ excavators recommended), (4) Sufficient working capital for mobilization, (5) Technical staff with valid Construction Personnel Cards. Equipment financing helps you meet paid-up capital requirements for grade upgrades and acquire necessary machinery without depleting working capital.'
+  },
+  {
+    question: 'What excavator types are needed for MRT3 projects?',
+    answer: 'MRT3 requires diverse excavator fleet: Mini excavators (1-5 tons) for station construction sites with limited space; Midi excavators (5-10 tons) for foundation work and access roads; Large excavators (10-20 tons) for deep excavation and station box construction; Long reach excavators for drainage and slope work. Financing multiple units positions you for diverse project scopes and main contractor requirements.'
+  },
+  {
+    question: 'How much excavator financing do I need for MRT3 projects?',
+    answer: 'For MRT3 subcontracting, recommended minimum investment: RM200,000-400,000 for 2 mini/midi excavators (entry-level earthworks), RM500,000-800,000 for 3-4 mixed excavator fleet (comprehensive capabilities), RM1,000,000+ for large-scale fleet (major station construction contracts). 0% down payment available - preserve working capital for mobilization, labor, and materials. We finance new and used equipment All equipment accepted based on condition.'
+  },
+  {
+    question: 'Can I get financing with limited construction experience?',
+    answer: 'Yes! We support contractors expanding into infrastructure projects. We evaluate: current CIDB grade and potential for upgrade, existing project contracts (even non-MRT3), equipment assets and business plan, management team experience. Many successful MRT3 subcontractors started with smaller equipment and grew through project delivery. 95% approval rate includes contractors with limited infrastructure track record.'
+  },
+  {
+    question: 'What are the payment terms for excavator financing?',
+    answer: 'Flexible terms match MRT3 project cycles: 12-60 month tenures available, seasonal payment plans (lower during monsoon months), balloon payments for contractors with milestone-based income, no early repayment penalty. Structure payments to align with progress billing from main contractors - we understand construction cash flow.'
+  },
+  {
+    question: 'How fast can I get my excavator approved and delivered?',
+    answer: 'Standard approval: fasts from complete documents. Urgent MRT3 tender cases: 8-12 hours approval possible. Equipment delivery typically 3-5 days after loan agreement signing. Total timeline: 1 week from application to equipment on-site. Fast processing ensures you meet mobilization deadlines for time-sensitive MRT3 tender awards.'
+  },
+  {
+    question: 'Do you finance used excavators for MRT3 projects?',
+    answer: 'Yes! We finance used excavators All equipment accepted based on condition. Used equipment ideal for: cost-conscious fleet expansion, backup machines during peak periods, specialized applications (amphibious for flood-prone sites). Full loan (0% down payment) often easier for used equipment due to lower market value. All major brands accepted - Caterpillar, Komatsu, Hitachi, Kobelco, Hyundai, Doosan.'
+  },
+  {
+    question: 'What happens if I delay MRT3 equipment purchase?',
+    answer: 'Risks of waiting: (1) Early-phase contractors win ongoing work and build reputation with main contractors, (2) Equipment prices rising 15% in 2024 - may increase further, (3) Financing terms may tighten as projects progress and demand peaks, (4) Missed opportunity to establish track record before major earthworks begin. Acting now positions you for 5+ years of MRT3 work.'
+  },
+  {
+    question: 'Can I upgrade my excavator fleet as my MRT3 business grows?',
+    answer: 'Absolutely! Many contractors start with 1-2 mini excavators for site preparation, then upgrade to larger machines as they qualify for bigger contracts. After 12-18 months of timely payments, you can: trade in equipment and refinance for upgrades, add units to expand fleet capacity, access better rates (2-4% lower) with established payment history. We support your growth through MRT3 construction phases.'
+  }
+];
+
+// Schema
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "MRT3 Project Equipment Financing: Ready Your Excavator Fleet for Klang Valley's Biggest Infrastructure Opportunity",
+  "description": "MRT3 Circle Line creating excavator fleet opportunities. Finance your equipment with 0% down payment, fast approval for MRT3 subcontracting.",
+  "author": { "@type": "Organization", "name": "Ing Heng Credit & Leasing Sdn Bhd" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ing Heng Credit & Leasing Sdn Bhd",
+    "logo": { "@type": "ImageObject", "url": "https://www.inghengcredit.com/logo.png" }
+  },
+  "datePublished": "2025-01-23",
+  "dateModified": "2025-01-23"
+};
+
+const faqSchema = generateFAQSchema(faqs);
+const articleDate = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="bg-gray-50 border-b border-gray-200">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+  </section>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="badge-brutalist text-xs">Industry News</span>
+          <span class="badge-brutalist bg-white text-xs">Infrastructure</span>
+          <span class="badge-brutalist bg-green-400 text-xs">Growth Opportunity</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+          MRT3 Project Equipment Financing: <span class="text-yellow-400">Ready Your Excavator Fleet</span>
+        </h1>
+
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+          Malaysia's RM30-40 billion MRT3 Circle Line is creating massive opportunities for excavator contractors in Klang Valley. Learn how to position your business for 5+ years of sustained infrastructure work through strategic equipment financing.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400 text-sm border-t border-white/20 pt-6">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            <span>Updated {new Date(articleDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+            <span>10 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-yellow-400 border-y-4 border-navy-900">
+    <div class="container-custom py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        {mrt3Stats.map((stat) => (
+          <div>
+            <div class="text-2xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif;">{stat.value}</div>
+            <div class="text-sm font-bold text-navy-900/70">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <article class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 prose prose-lg max-w-none">
+
+          <h2 class="text-3xl font-black text-navy-900" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            MRT3 Circle Line: Malaysia's Next Infrastructure Mega-Project
+          </h2>
+
+          <p>
+            The MRT3 Circle Line represents one of Malaysia's largest infrastructure investments, complementing the existing MRT1 (Kajang Line) and MRT2 (Putrajaya Line) with a 50+ km circular route connecting Klang Valley's major hubs. Cabinet approved the project in March 2022, and as of 2024-2025, planning and land acquisition are actively underway.
+          </p>
+
+          <div class="bg-blue-50 border-4 border-navy-900 p-6 my-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+            <h3 class="text-xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+              Why This Matters for Excavator Contractors
+            </h3>
+            <p class="text-gray-700">
+              <strong>Construction timeline:</strong> 2025-2030+ with major earthworks starting 2025-2026<br/>
+              <strong>Project value:</strong> RM30-40 billion investment across 5+ years<br/>
+              <strong>20+ stations</strong> requiring excavation, foundation work, and site preparation<br/>
+              <strong>Sustained demand</strong> for excavator fleet contractors through 2028
+            </p>
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Excavator Requirements for MRT3 Projects
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-6 my-8">
+            {excavatorRequirements.map((req) => (
+              <div class="bg-gray-50 border-4 border-navy-900 p-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <h3 class="text-lg font-black text-navy-900 mb-2">{req.type}</h3>
+                <p class="text-sm text-gray-600 mb-3"><strong>Use:</strong> {req.use}</p>
+                <p class="text-sm font-bold text-green-600">{req.quantity}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            CIDB Grade Requirements for MRT3 Subcontracting
+          </h2>
+
+          <p>
+            MRT3 main contractors (MMC-Gamuda, other consortiums) require subcontractors with valid CIDB registration. Equipment financing directly supports grade upgrades:
+          </p>
+
+          <ul>
+            <li><strong>G4 Grade (Paid-up capital: RM150,000):</strong> Eligible for earthworks, site preparation, drainage contracts. Requires 2-3 excavators for competitive bidding.</li>
+            <li><strong>G5 Grade (Paid-up capital: RM300,000):</strong> Eligible for station construction, foundation work. Requires 3-5 excavators including larger machines (10+ tons).</li>
+            <li><strong>G6-G7 Grade (RM500,000+ paid-up capital):</strong> Major earthworks packages, multiple station sites. Requires fleet of 5+ excavators with diverse capabilities.</li>
+          </ul>
+
+          <p>
+            <strong>Equipment financing strategy:</strong> Each financed excavator counts toward your asset base and paid-up capital, enabling CIDB grade upgrades. We approve contractors specifically for fleet expansion to meet MRT3 tender requirements.
+          </p>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Financing Your MRT3 Excavator Fleet
+          </h2>
+
+          <div class="bg-yellow-50 border-4 border-yellow-400 p-6 my-6" style="box-shadow: 4px 4px 0 rgba(250, 204, 21, 0.4);">
+            <h3 class="text-xl font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif;">
+              MRT3 Fleet Financing Packages
+            </h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center border-b border-yellow-400 pb-2">
+                <span class="font-bold text-navy-900">Starter Fleet (2 units)</span>
+                <span class="text-green-600 font-black">RM 200,000 - RM 400,000</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-yellow-400 pb-2">
+                <span class="font-bold text-navy-900">Growth Fleet (3-4 units)</span>
+                <span class="text-green-600 font-black">RM 500,000 - RM 800,000</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-navy-900">Major Fleet (5+ units)</span>
+                <span class="text-green-600 font-black">RM 1,000,000+</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-700 mt-4"><strong>0% down payment available.</strong> Preserve working capital for mobilization, CIDB upgrades, and operations.</p>
+          </div>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            The Time to Act is NOW
+          </h2>
+
+          <p>
+            MRT3 is moving from planning to construction. Contractors who position early gain advantages:
+          </p>
+
+          <ul>
+            <li><strong>Build relationships with main contractors</strong> during early phases - preferred for subsequent work</li>
+            <li><strong>Establish track record</strong> on smaller contracts before major earthworks peak (2025-2026)</li>
+            <li><strong>Secure equipment at current prices</strong> before demand pushes rates higher (15% cost increase in 2024)</li>
+            <li><strong>Upgrade CIDB grade</strong> through equipment acquisition, qualifying for larger tender packages</li>
+          </ul>
+
+          <h2 class="text-3xl font-black text-navy-900 mt-12" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+            Frequently Asked Questions
+          </h2>
+
+          <div class="space-y-6 my-8">
+            {faqs.map((faq) => (
+              <div class="bg-gray-50 border-3 border-navy-900 p-6" style="box-shadow: 4px 4px 0 #1E3A8A;">
+                <h3 class="font-bold text-lg text-navy-900 mb-2">{faq.question}</h3>
+                <p class="text-gray-700">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <aside class="lg:col-span-1">
+          <div class="sticky top-24 space-y-6">
+
+            <div class="bg-navy-900 border-4 border-yellow-400 p-6" style="box-shadow: 8px 8px 0 rgba(250, 204, 21, 0.4);">
+              <h3 class="text-xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Finance Your MRT3 Fleet
+              </h3>
+              <ul class="space-y-2 text-white text-sm mb-6">
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>fast approval</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>0% down payment (Full Loan)</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Fleet expansion support</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Seasonal payment options</span>
+                </li>
+              </ul>
+              <CTAButton
+                text="WhatsApp for MRT3 Financing"
+                link={COMPANY_INFO.whatsapp.link}
+                variant="accent"
+                size="large"
+                icon="whatsapp"
+                fullWidth={true}
+              />
+            </div>
+
+            <div class="bg-white border-4 border-navy-900 p-6" style="box-shadow: 6px 6px 0 #1E3A8A;">
+              <h3 class="text-lg font-black text-navy-900 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+                Related: Other Infrastructure Projects
+              </h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href="/en/blog" class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors border-b border-gray-200">
+                    <span class="font-medium">ECRL Financing Opportunities</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="/en/blog" class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors border-b border-gray-200">
+                    <span class="font-medium">Pan Borneo Highway Projects</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="/en/blog" class="flex items-center justify-between py-2 text-gray-700 hover:text-yellow-600 transition-colors">
+                    <span class="font-medium">Budget 2025 Opportunities</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="section bg-navy-900">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-black text-yellow-400 mb-4" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">
+        Ready Your Excavator Fleet for MRT3
+      </h2>
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Don't miss Klang Valley's biggest infrastructure opportunity in a decade. Get approved in fasts with 0% down payment.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton
+          text="Get Free Quote"
+          link={COMPANY_INFO.whatsapp.link}
+          variant="accent"
+          size="large"
+          icon="whatsapp"
+        />
+        <CTAButton
+          text="View All Blog Posts"
+          link="/en/blog"
+          variant="outline-white"
+          size="large"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-16 md:py-20; }
+  .bg-navy-900 { background-color: #0F172A; }
+  .text-navy-900 { color: #0F172A; }
+  .border-navy-900 { border-color: #0F172A; }
+  .badge-brutalist { @apply inline-block px-3 py-1 font-black uppercase bg-yellow-400 text-navy-900 border-2 border-navy-900; box-shadow: 2px 2px 0 #1E3A8A; }
+  .prose h2 { @apply mt-12 mb-4; }
+  .prose p { @apply mb-4 text-gray-700 leading-relaxed; }
+  .prose ul { @apply my-4 space-y-2; }
+  .prose li { @apply text-gray-700; }
+  .prose strong { @apply text-navy-900; }
+</style>

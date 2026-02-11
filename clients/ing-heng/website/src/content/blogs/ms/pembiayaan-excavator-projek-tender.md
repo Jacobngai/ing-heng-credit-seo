@@ -2,7 +2,7 @@
 title: "Pembiayaan Excavator Projek Tender Malaysia 2025 - Kelulusan Pantas"
 description: "Pembiayaan excavator khusus untuk projek tender kerajaan dan swasta. Tanpa deposit, syarat mudah, proses pantas untuk menang tender dengan excavator sendiri."
 category: "Equipment Financing"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["excavator tender", "projek tender", "pembiayaan", "kerajaan"]
 image: "/images/excavator-tender-project-financing.jpg"

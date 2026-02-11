@@ -4,7 +4,7 @@ description: Biayai Mitsubishi Eclipse GSX dengan 0% deposit di Malaysia. Bank t
 category: Equipment Financing
 persona: General
 locale: ms
-publishDate: 2025-12-20
+publishDate: 2025-12-20T00:00:00.000Z
 readingTime: 10
 tags:
 - Mitsubishi Eclipse GSX

@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '马六甲设备融资 2026',
+  slug: '马六甲设备融资2026',
+  excerpt: '马六甲设备融资2026 - 旅游州制造物流。旅游业、制造业、建筑业。0%首付，快速批准。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["马六甲","旅游州","制造设备","设备融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 马六甲设备融资 2026
+
+## 马六甲经济特色
+
+马六甲是历史旅游州:
+
+\`\`\`
+旅游业: 文化遗产
+制造业: 电子、木材
+建筑业: 持续发展
+服务业: 稳定增长
+\`\`\`
+
+## 马六甲设备需求
+
+### 旅游业
+- **酒店设备**: 客房设施
+- **餐厅设备**: 厨房设备
+- **设备需求: RM 50,000-500,000**
+
+### 制造业
+- **木材加工**: 家具制造
+- **电子组装**: 生产设备
+- **设备需求: RM 100,000-1,000,000**
+
+## 真实例子
+
+### 例子1: 马六甲酒店
+
+古城区酒店翻新。
+
+**设备需求:**
+- 客房家具: RM 200,000
+- 厨房设备: RM 100,000
+- **总计: RM 300,000**
+
+**Ing Heng融资:**
+- 0%首付
+- 100%融资
+- 旅游业专精
+- **快速批准**
+
+## 马六甲设备类型
+
+### 酒店设备
+\`\`\`
+客房家具: RM 50,000-200,000
+厨房设备: RM 50,000-200,000
+洗衣设备: RM 30,000-100,000
+\`\`\`
+
+### 制造设备
+\`\`\`
+木工机械: RM 50,000-300,000
+生产线: RM 100,000-500,000
+\`\`\`
+
+## 常见问题
+
+**Q: 马六甲旅游业可以融资吗?**
+A: 可以，旅游设备是我们的专长。
+
+**Q: 制造业可以融资吗?**
+A: 可以，制造业是我们的专长。
+
+## 成功案例
+
+### 案例1: 古城酒店
+**设备:** 客房+厨房RM 200,000
+**融资:** 100%
+**结果:** 翻新完成
+
+## 立即申请
+
+马六甲设备融资? 旅游州专家。
+
+**联系方式:**
+- WhatsApp: +60175700889
+- 网站: inghengcredit.com
+
+**立即申请，马六甲设备**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

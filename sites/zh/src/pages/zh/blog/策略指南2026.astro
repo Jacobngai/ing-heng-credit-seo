@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '策略指南 2026 - 完整策略',
+  slug: '策略指南2026',
+  excerpt: '2026年设备购买完整策略指南。综合策略规划，最佳实践。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["策略指南","购买策略","设备策略","最佳实践"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 策略指南 2026
+
+## 2026年设备策略
+
+完整设备购买策略:
+
+\`\`\`
+评估需求 → 制定预算 → 选择时机 → 0%首付购买
+\`\`\`
+
+## 策略要素
+
+### 要素1: 需求评估
+
+- 必要设备
+- 可选设备
+- 未来需求
+
+### 要素2: 预算规划
+
+- ROI优先
+- 回本时间
+- 现金流
+
+### 要素3: 时机选择
+
+- 春节后
+- 项目前
+- 税务年末
+
+### 要素4: 0%首付
+
+- 保留现金
+- 立即购买
+- 改善现金流
+
+## 最佳策略
+
+### 策略1: 从小开始
+
+- 先买1台
+- 建立信用
+- 逐步扩展
+
+### 策略2: 优先ROI
+
+- 回本最快的设备
+- 收入增加最高的
+- 成本降低最多的
+
+### 策略3: 0%首付
+
+- 无需大量现金
+- 立即开始
+- 保留资金
+
+### 策略4: 适时购买
+
+- 春节后: Q1需求
+- 项目前: 准备设备
+- 年末前: 税务优惠
+
+## 策略示例
+
+### 新公司策略
+
+1. 购买1台核心设备(0%首付)
+2. 运营6-12个月
+3. 扩展到2-3台
+4. 继续扩展
+
+### 扩展公司策略
+
+1. 评估现有设备
+2. 更换故障/旧设备
+3. 增加高ROI设备
+4. 车队扩展到5-10台
+
+### 大公司策略
+
+1. 车队扩展到10-20台
+2. 技术升级
+3. 多地点扩展
+4. 行业领导
+
+**立即申请: WhatsApp +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

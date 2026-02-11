@@ -2,7 +2,7 @@
 title: "Pembiayaan Forklift Terpakai Malaysia 2025 - Tanpa Deposit, Value Terbaik"
 description: "Pembiayaan forklift terpakai di Malaysia dengan 100% financing. Harga lebih murah, performance proven, financing mudah untuk forklift second hand berkualiti."
 category: "Equipment Financing"
-publishDate: 2025-12-27
+publishDate: 2025-12-27T00:00:00.000Z
 author: "ING HENG Credit"
 tags: ["forklift terpakai", "pembiayaan", "second hand", "warehouse"]
 image: "/images/used-forklift-financing-malaysia.jpg"

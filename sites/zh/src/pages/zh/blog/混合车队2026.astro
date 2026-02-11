@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '混合车队 2026 - 多类型设备车队',
+  slug: '混合车队2026',
+  excerpt: '2026年混合车队融资。0%首付，100%融资，挖掘机、货车、叉车混合。多类型车队。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["混合车队","多类型车队","混合设备","综合车队"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 混合车队 2026
+
+## 多类型设备车队
+
+您的公司需要多种设备:
+
+\`\`\`
+多种业务 → 需要多种设备 → 混合车队 → 全面服务
+\`\`\`
+
+## 混合车队示例
+
+### 5台混合车队
+
+| 设备 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 挖掘机 | 2台 | RM 50,000 | RM 100,000 |
+| 货车 | 2台 | RM 60,000 | RM 120,000 |
+| 叉车 | 1台 | RM 20,000 | RM 20,000 |
+| **总计** | **5台** | | **RM 240,000** |
+
+- 银行首付: RM 24,000
+- Ing Heng首付: RM 0
+
+### 10台混合车队
+
+| 设备 | 数量 | 单价 | 总价 |
+|------|------|------|------|
+| 挖掘机 | 3台 | RM 80,000 | RM 240,000 |
+| 货车 | 5台 | RM 60,000 | RM 300,000 |
+| 叉车 | 2台 | RM 20,000 | RM 40,000 |
+| **总计** | **10台** | | **RM 580,000** |
+
+- 银行首付: RM 58,000
+- Ing Heng首付: RM 0
+
+## 混合车队优势
+
+### 业务多样性
+
+- 不同收入来源
+- 降低风险
+- 全年业务
+
+### 0%首付
+
+- 保留现金
+- 灵活运营
+
+**立即申请: WhatsApp +60175700889**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

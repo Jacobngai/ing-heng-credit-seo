@@ -1,0 +1,263 @@
+---
+/**
+ * SimpleBlogLayout - Simplified Layout for Blog Posts (English only)
+ * Works with individual props instead of frontmatter object
+ */
+
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  author: string;
+  category: string;
+  readTime: string;
+  keywords: string;
+  schema?: any;
+  lang?: 'zh';
+  alternates?: { lang: string; url: string }[];
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  author,
+  category,
+  readTime,
+  keywords,
+  schema,
+  lang: _lang = 'zh',
+  alternates = []
+} = Astro.props;
+
+// Hardcode to English
+const lang: 'zh' = 'zh';
+
+// Format date
+const date = new Date(publishDate);
+const formattedDate = date.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Chinese translations
+const t = {
+  publishedOn: '发布于',
+  readingTime: '分钟阅读',
+  writtenBy: '作者',
+  category: '分类',
+  home: '首页',
+  blog: '博客'
+};
+---
+
+<BaseLayout
+  title={`${title} | Ing Heng Credit`}
+  description={description}
+  lang={lang}
+  keywords={keywords}
+>
+  <!-- Schema Markup -->
+  {schema && (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+  )}
+
+  <!-- Alternate Language Links -->
+  {alternates.map((alt) => (
+    <link rel="alternate" hreflang={alt.lang} href={alt.url} slot="head" />
+  ))}
+
+  <!-- Breadcrumbs -->
+  <div class="bg-gray-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href={`/${lang}`} class="text-gray-700 hover:text-primary">
+              {t.home}
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <span class="mx-2 text-gray-400">/</span>
+              <a href={`/${lang}/blog`} class="text-gray-700 hover:text-primary">
+                {t.blog}
+              </a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <span class="mx-2 text-gray-400">/</span>
+              <span class="text-gray-500 truncate max-w-xs">{title}</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Article Header -->
+  <header class="bg-white py-8 lg:py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Category Badge -->
+      {category && (
+        <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
+          {category}
+        </span>
+      )}
+
+      <!-- Title -->
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+        {title}
+      </h1>
+
+      <!-- Description -->
+      <p class="text-xl text-gray-600 mb-6">
+        {description}
+      </p>
+
+      <!-- Meta Info -->
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 pb-6 border-b border-gray-200">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <time datetime={publishDate}>
+            {t.publishedOn} {formattedDate}
+          </time>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>{readTime}</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          <span>{t.writtenBy} {author}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Content -->
+  <div class="bg-white pb-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="prose-custom">
+        <slot />
+      </article>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-r from-primary to-secondary py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-2xl font-bold text-white mb-4">
+        Ready to Finance Your Equipment?
+      </h3>
+      <p class="text-white/90 mb-6">
+        Get approved quickly. No hidden fees. 40 years of trusted service.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={`https://wa.me/60175700889?text=${encodeURIComponent('I read your blog about ' + title)}`}
+          class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+        >
+          WhatsApp Us Now
+        </a>
+        <a
+          href={`/${lang}/contact`}
+          class="text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  /* Custom Prose Styles */
+  .prose-custom {
+    @apply text-gray-800 leading-relaxed;
+  }
+
+  .prose-custom h1 {
+    @apply text-3xl font-bold text-gray-900 mt-8 mb-4;
+  }
+
+  .prose-custom h2 {
+    @apply text-2xl font-bold text-gray-900 mt-8 mb-4;
+  }
+
+  .prose-custom h3 {
+    @apply text-xl font-bold text-gray-900 mt-6 mb-3;
+  }
+
+  .prose-custom h4 {
+    @apply text-lg font-semibold text-gray-900 mt-4 mb-2;
+  }
+
+  .prose-custom p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose-custom a {
+    @apply text-primary hover:text-secondary underline underline-offset-2 transition-colors;
+  }
+
+  .prose-custom ul, .prose-custom ol {
+    @apply mb-4 pl-6;
+  }
+
+  .prose-custom li {
+    @apply mb-2;
+  }
+
+  .prose-custom strong {
+    @apply font-bold text-gray-900;
+  }
+
+  .prose-custom blockquote {
+    @apply border-l-4 border-primary pl-4 py-2 italic text-gray-700 my-6 bg-gray-50 rounded-r;
+  }
+
+  .prose-custom code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800;
+  }
+
+  .prose-custom pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6;
+  }
+
+  .prose-custom pre code {
+    @apply bg-transparent p-0 text-gray-100;
+  }
+
+  .prose-custom table {
+    @apply w-full border-collapse my-6;
+  }
+
+  .prose-custom th {
+    @apply bg-gray-100 border border-gray-300 px-4 py-2 text-left font-semibold;
+  }
+
+  .prose-custom td {
+    @apply border border-gray-300 px-4 py-2;
+  }
+
+  .prose-custom img {
+    @apply rounded-lg my-8;
+  }
+
+  .prose-custom hr {
+    @apply my-8 border-gray-300;
+  }
+</style>

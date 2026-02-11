@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '中小企业运输设备 2026 - 物流SME',
+  slug: '中小企业运输设备2026',
+  excerpt: '2026年中小企业运输设备融资。0%首付，100%融资，货车、拖车头。物流SME扩展。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["中小企业运输设备","物流SME","货车融资","运输设备"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 中小企业运输设备 2026
+
+## 物流SME设备
+
+您的物流SME需要货车:
+
+\`\`\`
+订单增加 → 需要货车 → 0%首付 → 立即运营
+\`\`\`
+
+## 运输设备价格
+
+| 设备 | 新车 | 二手 | 月收入 | Ing Heng首付 |
+|------|------|------|--------|-------------|
+| 1吨货车 | RM 60,000-80,000 | RM 25,000-40,000 | RM 8,000-12,000 | RM 0 |
+| 3吨货车 | RM 80,000-100,000 | RM 40,000-60,000 | RM 10,000-15,000 | RM 0 |
+| 5吨货车 | RM 100,000-120,000 | RM 50,000-70,000 | RM 12,000-18,000 | RM 0 |
+| 10吨货车 | RM 150,000-180,000 | RM 70,000-100,000 | RM 15,000-25,000 | RM 0 |
+| 拖车头 | RM 180,000-300,000 | RM 80,000-150,000 | RM 18,000-30,000 | RM 0 |
+
+## 物流SME车队
+
+### 车队1: 市内配送
+
+- 1吨货车×2: RM 50,000-80,000
+- 3吨货车×1: RM 40,000-60,000
+- 总计: RM 90,000-140,000
+- 月收入: RM 26,000-39,000
+- Ing Heng首付: RM 0
+
+### 车队2: 州际运输
+
+- 5吨货车×3: RM 150,000-210,000
+- 10吨货车×2: RM 140,000-200,000
+- 总计: RM 290,000-410,000
+- 月收入: RM 66,000-104,000
+- Ing Heng首付: RM 0
+
+### 车队3: 长途货运
+
+- 拖车头×3: RM 240,000-450,000
+- 10吨货车×2: RM 140,000-200,000
+- 总计: RM 380,000-650,000
+- 月收入: RM 84,000-140,000
+- Ing Heng首付: RM 0
+
+## 0%首付好处
+
+### 保留现金
+
+RM 9,000-65,000用于:
+- 购买柴油
+- 支付司机
+- 购买保险
+- 运营资金
+
+### 立即运营
+
+- 无需等待储蓄
+- 立即响应订单
+- 快速增长
+- 满足客户
+
+## 运输业务匹配
+
+### 短途配送
+
+- 市内配送
+- 电商配送
+- 小货车
+- 日收入: RM 500-1,000/台
+
+### 中途运输
+
+- 州际运输
+- 区域配送
+- 中型货车
+- 日收入: RM 800-1,500/台
+
+### 长途货运
+
+- 跨州运输
+- 国际货运
+- 拖车头
+- 日收入: RM 1,500-3,000/台
+
+## 立即申请
+
+**WhatsApp: +60175700889**
+
+**物流SME，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,684 @@
+---
+/**
+ * Forklift Financing Landing Page - Bahasa Malaysia
+ * Target: Warehouse William (secondary), local warehouse operators
+ * Keywords: pembiayaan forklift Malaysia, pinjaman peralatan gudang
+ * Focus: Service-focused, professional, government/authority references
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import RelatedEquipment from '../../../components/RelatedEquipment.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'ms';
+
+// SEO Data
+const pageTitle = 'Pembiayaan Forklift Malaysia | Pinjaman Peralatan Gudang | Kelulusan Pantas';
+const pageDescription = 'Perkhidmatan pembiayaan forklift profesional untuk operasi gudang. Miliki forklift dengan kos lebih rendah daripada sewa. Kelulusan pantas, 90% LTV, tempoh fleksibel. Kira ROI anda sekarang!';
+const keywords = ['pembiayaan forklift Malaysia', 'pinjaman peralatan gudang', 'sewa forklift Malaysia', 'pembiayaan forklift elektrik', 'pinjaman peralatan pengendalian bahan', 'kalkulator ROI forklift', 'pembiayaan mesin gudang', 'pembiayaan forklift Shah Alam'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Laman Utama', url: '/ms' },
+  { label: 'Peralatan', url: '/ms/equipment' },
+  { label: 'Pembiayaan Forklift', url: '/ms/equipment/forklift' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Pulang Modal dalam 18 Bulan', description: 'Hentikan bayaran sewa selamanya. Bina aset peralatan. Kalkulator ROI tunjukkan penjimatan sebenar.' },
+  { icon: 'percentage', title: 'Biayai Dari 0% Pendahuluan*', description: 'Dari 0%* bayaran pendahuluan untuk pemohon layak. Pinjaman sehingga 100%*. Simpan modal kerja untuk operasi dan pertumbuhan. *Tertakluk pada terma dan syarat' },
+  { icon: 'calendar', title: 'Tempoh Fleksibel 12-60 Bulan', description: 'Pilih tempoh bayaran yang sesuai dengan aliran tunai anda. Bayaran awal tanpa penalti.' },
+  { icon: 'shield', title: 'Peralatan Baru & Terpakai Diterima', description: 'Biayai forklift elektrik, diesel atau gas sehingga 8 tahun. Semua jenama utama diterima.' },
+  { icon: 'lightning', title: 'Pembiayaan Forklift Elektrik', description: 'Jimat 40-88% berbanding diesel. Jumlah kos pemilikan lebih rendah. Insentif teknologi hijau kerajaan tersedia.' },
+  { icon: 'users', title: 'Pembiayaan Armada Tersedia', description: 'Biayai beberapa forklift sekaligus. Diskaun untuk 2 unit atau lebih. Kembangkan operasi gudang anda.' },
+  { icon: 'clock', title: 'Keputusan Kredit Pantas', description: 'Proses kelulusan pantas untuk pengurus gudang yang sibuk. Dokumen minimum, kecekapan maksimum.' },
+  { icon: 'shield', title: 'Faedah Cukai & Susut Nilai', description: 'Pembiayaan peralatan menawarkan kelebihan cukai. Rujuk akauntan anda tentang faedah susut nilai.' },
+];
+
+// Steps
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Kira ROI Anda', description: 'Gunakan kalkulator kami untuk bandingkan kos sewa vs pemilikan. Lihat titik pulang modal dengan serta-merta.' },
+  { stepNumber: 2, icon: 'document', title: 'Serahkan Permohonan', description: 'Permohonan mudah secara dalam talian atau WhatsApp. Dokumen asas: IC, penyata bank, pendaftaran syarikat.' },
+  { stepNumber: 3, icon: 'check', title: 'Keputusan Kredit Pantas', description: 'Keputusan kredit pantas dalam satu hari bekerja. Terma jelas, tiada bayaran tersembunyi.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Semak Terma Pembiayaan', description: 'Kami tawarkan pelbagai pilihan pembiayaan. Pilih struktur pembayaran yang sesuai dengan bajet anda.' },
+  { stepNumber: 5, icon: 'truck', title: 'Terima Penyerahan & Mula Jimat', description: 'Dana dibayar kepada pembekal. Terima forklift anda. Mula membina aset dengan segera.' },
+];
+
+// Equipment Types
+const equipmentTypes = [
+  { name: 'Forklift Counterbalance (1.5-5 tan)', description: 'Forklift gudang paling biasa. Elektrik atau diesel. Kegunaan dalam/luar. Sesuai untuk pengendalian bahan am dan pergerakan palet.' },
+  { name: 'Reach Truck (1.4-2.5 tan)', description: 'Operasi lorong sempit. Maksimumkan penggunaan ruang gudang. Keupayaan angkat tinggi sehingga 12 meter. Sempurna untuk simpanan berkepadatan tinggi.' },
+  { name: 'Pallet Jack (Elektrik/Manual)', description: 'Penyelesaian permulaan kos rendah. Pallet jack elektrik untuk kecekapan. Sesuai untuk operasi gudang ringan dan pemilihan pesanan.' },
+  { name: 'Order Picker', description: 'Platform pengangkatan pengendali. Keperluan gudang e-dagang. Tingkatkan kecekapan pemilihan 200%. Akses pelbagai peringkat.' },
+  { name: 'Forklift Elektrik (Bateri Litium-Ion)', description: 'Sifar pelepasan, 72% bahagian pasaran. Jimat 40% berbanding bateri asid plumbum. Jimat 88% berbanding diesel. Pengecasan pantas, jangka hayat panjang.' },
+  { name: 'Forklift Rupa Bumi Kasar', description: 'Tapak pembinaan luar. Keupayaan semua rupa bumi. Aplikasi tugas berat. Tersedia untuk laman gudang khusus.' },
+];
+
+// Brands
+const acceptedBrands = ['Toyota', 'Linde', 'Nissan', 'Mitsubishi', 'Crown', 'Hyster', 'Yale', 'BT', 'Jungheinrich', 'Hangcha', 'Heli', 'EP Equipment'];
+
+// Testimonials
+const testimonials = [
+  {
+    name: 'William Tan',
+    company: 'WT Logistics Sdn Bhd',
+    location: 'Shah Alam, Selangor',
+    testimonial: 'Kami menyewa 3 forklift dengan bayaran RM 9,000 sebulan. Selepas pembiayaan dengan Ing Heng Credit, bayaran bulanan kami RM 7,200 dan kami MILIKI peralatan. Pulang modal dalam 20 bulan. Keputusan perniagaan terbaik yang kami buat.',
+    rating: 5,
+  },
+  {
+    name: 'Jessica Lee',
+    company: 'Cold Chain Solutions',
+    location: 'Subang Jaya, Selangor',
+    testimonial: 'Kemudahan rantai sejuk kami memerlukan forklift yang boleh mengendalikan suhu -20°C. Ing Heng Credit membiayai 2 forklift elektrik khusus dengan 90% LTV. Faedah susut nilai cukai mengurangkan kadar faedah efektif kami kepada bawah 5%.',
+    rating: 5,
+  },
+  {
+    name: 'Kumar Subramaniam',
+    company: 'KS Warehouse Management',
+    location: 'Klang, Selangor',
+    testimonial: 'Ledakan e-dagang bermakna kami perlu berkembang dengan pantas. Biayai 5 reach truck dan 3 order picker melalui Ing Heng Credit. Diskaun pembiayaan armada menjimatkan 1.5% faedah. Produktiviti gudang kami meningkat 180%.',
+    rating: 5,
+  },
+];
+
+// FAQs
+const faqs = [
+  { question: 'Lebih baik sewa atau beli forklift?', answer: 'Untuk operasi gudang sepanjang tahun, membeli dengan pembiayaan lebih menjimatkan berbanding sewa jangka panjang. Analisis ROI kami menunjukkan pulang modal biasanya berlaku dalam 18-24 bulan. Selepas itu, anda membina aset manakala penyewa terus membayar selamanya. Pembiayaan mengekalkan modal kerja sambil memberi faedah pemilikan.' },
+  { question: 'Bolehkah saya biayai forklift terpakai?', answer: 'Ya! Kami membiayai forklift terpakai sehingga 8 tahun dari jenama bereputasi. Peralatan mesti dalam keadaan berfungsi baik dan lulus pemeriksaan. Forklift elektrik terpakai dengan bateri litium-ion adalah pelaburan cemerlang - kos pendahuluan lebih rendah, kebolehpercayaan terbukti, dan masih ada 70-80% jangka hayat operasi.' },
+  { question: 'Apakah faedah cukai pembiayaan forklift?', answer: 'Pembiayaan peralatan menawarkan beberapa kelebihan cukai: (1) Potongan susut nilai sepanjang jangka hayat peralatan, (2) Bayaran faedah boleh ditolak sebagai perbelanjaan perniagaan, (3) Insentif teknologi hijau berpotensi untuk forklift elektrik. Rujuk akauntan anda untuk rawatan cukai khusus berdasarkan struktur perniagaan anda. Ramai pelanggan menjimat 20-30% dalam kos efektif melalui faedah cukai.' },
+  { question: 'Berapakah kos pembiayaan forklift di Malaysia?', answer: 'Kadar faedah tahunan berkisar dari 6.5% hingga 11% bergantung kepada profil kredit, umur peralatan, jumlah bayaran pendahuluan dan tempoh pinjaman. Jumlah bayaran bulanan termasuk prinsipal + faedah. Contoh: Forklift RM 100,000 pada kadar 8% selama 48 bulan = RM 2,441 sebulan. Bandingkan dengan sewa pada RM 3,000-3,500 sebulan untuk peralatan yang sama.' },
+  { question: 'Bolehkah saya biayai forklift elektrik dengan bateri litium-ion?', answer: 'Sudah tentu! Forklift elektrik mewakili 72% bahagian pasaran dan terus berkembang. Bateri litium-ion berharga lebih tinggi di hadapan tetapi memberikan kecekapan 40% lebih baik daripada asid plumbum dan 88% lebih baik daripada diesel. Kami membiayai pakej lengkap: forklift + bateri litium + pengecas. Analisis jumlah kos pemilikan 5 tahun menunjukkan penjimatan RM 80,000+ berbanding setara diesel.' },
+  { question: 'Apakah perbezaan antara pajakan forklift dan pembiayaan?', answer: 'Pembiayaan (sewa beli) bermakna anda memiliki peralatan pada akhirnya. Pajakan bermakna anda memulangkannya atau membeli. Pembiayaan membina aset, menawarkan faedah susut nilai cukai, dan memberi kawalan ke atas penyelenggaraan peralatan. Pajakan menawarkan bayaran bulanan lebih rendah tetapi tiada pemilikan. Untuk gudang yang mantap dengan keperluan jangka panjang, pembiayaan biasanya lebih ekonomik.' },
+  { question: 'Berapa lama tempoh pembiayaan forklift?', answer: 'Tempoh standard: 12-60 bulan. Kebanyakan pengendali gudang memilih 36-48 bulan untuk keseimbangan optimum antara bayaran bulanan dan jumlah kos faedah. Tempoh lebih pendek untuk peralatan terpakai. Tempoh lebih panjang untuk forklift elektrik baru dengan jangka hayat 10+ tahun. Padankan tempoh bayaran anda dengan jangka hayat berguna peralatan yang dijangka.' },
+  { question: 'Adakah anda membiayai armada forklift untuk gudang yang berkembang?', answer: 'Ya! Pembiayaan armada adalah salah satu kepakaran kami. Faedah: (1) Diskaun kadar faedah untuk 2 unit atau lebih, (2) Bayaran bulanan tunggal untuk semua peralatan, (3) Jadual penghantaran berperingkat untuk sepadan dengan pengembangan gudang, (4) Campurkan jenis forklift berbeza dalam satu pakej pembiayaan. Sempurna untuk gudang e-dagang yang mengembangkan operasi.' },
+  { question: 'Apakah dokumen yang diperlukan untuk pembiayaan forklift?', answer: 'Untuk individu: IC/Pasport, penyata bank 6 bulan, bukti pendapatan. Untuk syarikat (paling biasa): Pendaftaran SSM, penyata bank syarikat (6 bulan), IC pengarah, penyata kewangan (jika ada). Sebut harga/invois peralatan daripada pembekal. Proses lebih mudah daripada pinjaman perniagaan bank - kami fokus pada nilai peralatan dan aliran tunai operasi anda, bukan analisis kewangan yang kompleks.' },
+  { question: 'Bolehkah saya biayai aksesori forklift dan alat ganti?', answer: 'Ya! Kami boleh memasukkan aksesori (pengalih sisi, pengapit, pemutar, garpu lanjutan) dalam pakej pembiayaan. Alat ganti boleh dibiayai secara berasingan jika dibeli dengan forklift. Naik taraf bateri (asid plumbum kepada litium-ion) juga boleh dibiayai secara berasingan. Pendekatan penyelesaian menyeluruh untuk keperluan peralatan gudang lengkap.' },
+];
+
+// Product Schema
+const productSchema = generateProductSchema({
+  name: 'Pembiayaan Forklift Malaysia',
+  description: 'Perkhidmatan pembiayaan forklift profesional untuk operasi gudang. Miliki peralatan dengan kos lebih rendah daripada sewa. Kelulusan pantas, terma fleksibel.',
+  imageUrl: `${SITE_CONFIG.url}/images/forklift-financing.jpg`,
+  category: 'Financial Service - Equipment Financing',
+  offers: {
+    price: '50000',
+    currency: 'MYR',
+    availability: 'https://schema.org/InStock',
+  },
+});
+
+// FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+  keywords={keywords}
+  ogType="website"
+>
+  <!-- Structured Data -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <div class="container-custom py-4">
+    <Breadcrumbs items={breadcrumbs} lang={lang} />
+  </div>
+
+  <!-- Hero Section -->
+  <Hero
+    title="Hentikan Sewa. Mula Miliki Forklift Anda."
+    subtitle="Miliki Peralatan Dengan Kos Lebih Rendah Daripada Sewa | Kelulusan Pantas | 90% LTV | Kira ROI Anda Sekarang"
+    ctaText="Kira Penjimatan Anda"
+    ctaLink="#calculator"
+    ctaSecondaryText="WhatsApp: 017-570 0889"
+    ctaSecondaryLink="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20maklumat%20tentang%20pembiayaan%20forklift."
+    lang={lang}
+    trustSignals={['40 Tahun Pengalaman', 'Berlesen KPKT', '4,000+ Syarikat Dipercayai', '90% LTV Tersedia']}
+  />
+
+  <!-- ROI Comparison Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+            Kiraan Mudah: Pemilikan Mengatasi Sewa
+          </h2>
+          <p class="text-xl text-[#4F3E29] leading-relaxed">
+            Anda sudah membelanjakan RM 3,000-4,000 sebulan untuk menyewa forklift. Bagaimana jika anda boleh memilikinya dengan kos LEBIH RENDAH dan berhenti membayar sewa selamanya?
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <!-- Rental Column -->
+          <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810] border-2 border-red-200">
+            <div class="text-center mb-6">
+              <div class="text-red-600 font-bold text-2xl mb-2">Sewa Jangka Panjang</div>
+              <div class="text-[#4F3E29]">Apa Yang Anda Lakukan Sekarang</div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center pb-3 border-b">
+                <span class="text-[#4F3E29]">Bayaran Sewa Bulanan</span>
+                <span class="text-xl font-bold text-red-600">RM 3,500</span>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b">
+                <span class="text-[#4F3E29]">Kos Tahunan</span>
+                <span class="text-xl font-bold text-red-600">RM 42,000</span>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b">
+                <span class="text-[#4F3E29]">Jumlah Kos 3 Tahun</span>
+                <span class="text-xl font-bold text-red-600">RM 126,000</span>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b">
+                <span class="text-[#4F3E29]">Ekuiti Dibina</span>
+                <span class="text-xl font-bold text-red-600">RM 0</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[#4F3E29] font-semibold">Apa Yang Anda Miliki</span>
+                <span class="text-2xl font-bold text-red-600">TIADA APA</span>
+              </div>
+            </div>
+            <div class="mt-6 p-4 bg-red-50 rounded-lg">
+              <p class="text-sm text-red-800 font-medium">Selepas 3 tahun, anda telah membayar RM 126,000 dan tiada aset untuk ditunjukkan. Anda masih menyewa.</p>
+            </div>
+          </div>
+
+          <!-- Financing Column -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg shadow-[6px_6px_0_#2D1810] border-2 border-green-400">
+            <div class="text-center mb-6">
+              <div class="text-green-700 font-bold text-2xl mb-2">Pembiayaan Peralatan</div>
+              <div class="text-[#4F3E29]">Strategi Pemilikan Bijak</div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                <span class="text-[#4F3E29]">Bayaran Bulanan (48 bulan)</span>
+                <span class="text-xl font-bold text-green-700">RM 2,650</span>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                <span class="text-[#4F3E29]">Kos Tahunan</span>
+                <span class="text-xl font-bold text-green-700">RM 31,800</span>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                <span class="text-[#4F3E29]">Jumlah Dibayar 3 Tahun</span>
+                <span class="text-xl font-bold text-green-700">RM 95,400</span>
+              </div>
+              <div class="flex justify-between items-center pb-3 border-b border-green-200">
+                <span class="text-[#4F3E29]">Nilai Peralatan</span>
+                <span class="text-xl font-bold text-green-700">RM 100,000</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[#4F3E29] font-semibold">Apa Yang Anda Miliki</span>
+                <span class="text-2xl font-bold text-green-700">FORKLIFT</span>
+              </div>
+            </div>
+            <div class="mt-6 p-4 bg-green-600 text-white rounded-lg">
+              <p class="text-sm font-bold mb-1">ANDA JIMAT RM 30,600 DALAM 3 TAHUN</p>
+              <p class="text-sm">Ditambah anda MILIKI aset bernilai RM 100,000. Tiada lagi sewa bulanan. Selamanya.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center bg-accent p-6 rounded-lg">
+          <p class="text-xl font-bold text-primary mb-2">Titik Pulang Modal: Bulan Ke-20</p>
+          <p class="text-[#4F3E29]">Selepas hanya 20 bulan, anda telah membayar kurang daripada sewa DAN anda memiliki peralatan. Setiap bulan selepas itu adalah penjimatan tulen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Mengapa Pengurus Gudang Bijak Pilih Pembiayaan Peralatan
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Dibina untuk operasi gudang. Direka untuk aliran tunai anda. ROI terbukti.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {benefits.map((benefit) => (
+          <BenefitCard
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator -->
+  <section id="calculator" class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Kira ROI Pemilikan Forklift Anda
+          </h2>
+          <p class="text-xl text-[#4F3E29]">
+            Lihat dengan tepat berapa banyak anda akan jimat dengan memiliki berbanding menyewa
+          </p>
+        </div>
+        <Calculator lang={lang} equipmentType="Forklift" defaultPrice={100000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          5 Langkah Daripada Permohonan Kepada Pemilikan Peralatan
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Direka untuk pengurus gudang yang sibuk. Pantas, mudah, telus.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-8">
+        {steps.map((step) => (
+          <StepCard
+            stepNumber={step.stepNumber}
+            icon={step.icon}
+            title={step.title}
+            description={step.description}
+          />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20memohon%20pembiayaan%20forklift."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg inline-block"
+        >
+          Mulakan Permohonan Anda di WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Types -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Semua Jenis Peralatan Pengendalian Bahan Dibiayai
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Daripada pallet jack padat hingga reach truck tugas berat dan semua yang diantaranya
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {equipmentTypes.map((equipment) => (
+          <div class="bg-white p-6 rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-3">{equipment.name}</h3>
+            <p class="text-[#4F3E29]">{equipment.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Accepted Brands -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-primary mb-6">Kami Biayai Semua Jenama Utama</h3>
+        <div class="flex flex-wrap justify-center gap-4 mb-4">
+          {acceptedBrands.map((brand) => (
+            <span class="px-4 py-2 bg-white rounded-full shadow-[2px_2px_0_#2D1810] text-[#4F3E29] font-medium">
+              {brand}
+            </span>
+          ))}
+        </div>
+        <p class="text-[#4F3E29]">Jenama Jepun, Eropah, Amerika dan China semua diterima. Hubungi kami untuk model khusus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Electric vs Diesel Cost Analysis -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Pembiayaan Forklift Elektrik: Jumlah Kos Pemilikan
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Forklift elektrik berharga lebih tinggi di hadapan tetapi memberikan penjimatan jangka panjang yang besar
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="overflow-x-auto">
+          <table class="w-full bg-white rounded-lg shadow-[6px_6px_0_#2D1810] overflow-hidden">
+            <thead class="bg-[#8B6F47] text-white">
+              <tr>
+                <th class="px-6 py-4 text-left">Faktor Kos (Jumlah 5 Tahun)</th>
+                <th class="px-6 py-4 text-center bg-green-100 text-green-800 font-bold">Elektrik (Litium-Ion)</th>
+                <th class="px-6 py-4 text-center">Elektrik (Asid Plumbum)</th>
+                <th class="px-6 py-4 text-center">Diesel</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 font-medium">Harga Belian</td>
+                <td class="px-6 py-4 text-center font-bold">RM 120,000</td>
+                <td class="px-6 py-4 text-center">RM 90,000</td>
+                <td class="px-6 py-4 text-center">RM 85,000</td>
+              </tr>
+              <tr class="bg-[#F5F5DC]">
+                <td class="px-6 py-4 font-medium">Kos Tenaga (5 tahun)</td>
+                <td class="px-6 py-4 text-center font-bold text-green-600">RM 18,000</td>
+                <td class="px-6 py-4 text-center">RM 30,000</td>
+                <td class="px-6 py-4 text-center text-red-600">RM 160,000</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Kos Penyelenggaraan (5 tahun)</td>
+                <td class="px-6 py-4 text-center font-bold text-green-600">RM 8,000</td>
+                <td class="px-6 py-4 text-center">RM 15,000</td>
+                <td class="px-6 py-4 text-center text-red-600">RM 35,000</td>
+              </tr>
+              <tr class="bg-[#F5F5DC]">
+                <td class="px-6 py-4 font-medium">Penggantian Bateri</td>
+                <td class="px-6 py-4 text-center font-bold text-green-600">RM 0</td>
+                <td class="px-6 py-4 text-center text-red-600">RM 25,000</td>
+                <td class="px-6 py-4 text-center">T/A</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 font-medium">Kos Masa Henti</td>
+                <td class="px-6 py-4 text-center font-bold text-green-600">RM 5,000</td>
+                <td class="px-6 py-4 text-center">RM 12,000</td>
+                <td class="px-6 py-4 text-center text-red-600">RM 20,000</td>
+              </tr>
+              <tr class="bg-[#F5F5DC] font-bold text-lg">
+                <td class="px-6 py-4">JUMLAH KOS 5 TAHUN</td>
+                <td class="px-6 py-4 text-center text-green-700">RM 151,000</td>
+                <td class="px-6 py-4 text-center">RM 172,000</td>
+                <td class="px-6 py-4 text-center text-red-700">RM 300,000</td>
+              </tr>
+              <tr class="bg-green-100">
+                <td class="px-6 py-4 font-bold">PENJIMATAN VS DIESEL</td>
+                <td class="px-6 py-4 text-center text-green-700 font-bold text-xl">RM 149,000</td>
+                <td class="px-6 py-4 text-center text-green-700 font-bold">RM 128,000</td>
+                <td class="px-6 py-4 text-center text-gray-500">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="bg-green-50 p-6 rounded-lg border-2 border-green-300">
+            <div class="text-green-700 font-bold text-lg mb-2">Elektrik Litium-Ion</div>
+            <ul class="text-sm text-[#4F3E29] space-y-2">
+              <li>✓ Jimat 88% berbanding diesel</li>
+              <li>✓ Tiada penggantian bateri selama 10 tahun</li>
+              <li>✓ Pengecasan pantas (1-cepat)</li>
+              <li>✓ Sifar pelepasan (selamat dalaman)</li>
+              <li>✓ Jumlah kos pemilikan terendah</li>
+            </ul>
+          </div>
+          <div class="bg-[#F5F5DC] p-6 rounded-lg border-2 border-blue-300">
+            <div class="text-blue-700 font-bold text-lg mb-2">Elektrik Asid Plumbum</div>
+            <ul class="text-sm text-[#4F3E29] space-y-2">
+              <li>✓ Kos pendahuluan lebih rendah</li>
+              <li>✓ Teknologi terbukti</li>
+              <li>✓ Sifar pelepasan</li>
+              <li>✗ Penggantian bateri setiap 3-5 tahun</li>
+              <li>✗ Masa pengecasan 8 jam</li>
+            </ul>
+          </div>
+          <div class="bg-red-50 p-6 rounded-lg border-2 border-red-300">
+            <div class="text-red-700 font-bold text-lg mb-2">Diesel</div>
+            <ul class="text-sm text-[#4F3E29] space-y-2">
+              <li>✓ Kegunaan luar/tugas berat</li>
+              <li>✓ Pengisian bahan api pantas</li>
+              <li>✗ Kos bahan api tertinggi</li>
+              <li>✗ Pelepasan (tidak selamat dalaman)</li>
+              <li>✗ Jumlah kos pemilikan tertinggi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Pengurus Gudang Yang Membuat Peralihan
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Hasil ROI sebenar daripada operasi gudang sebenar di Malaysia
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.name}
+            company={testimonial.company}
+            location={testimonial.location}
+            testimonial={testimonial.testimonial}
+            rating={testimonial.rating}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Keperluan Permohonan Mudah
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Lebih pantas daripada pinjaman perniagaan bank. Fokus pada nilai peralatan dan aliran tunai, bukan kewangan yang kompleks.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Individual Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">Untuk Individu</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Salinan IC / Pasport</div>
+                <div class="text-sm text-[#4F3E29]">IC Malaysia atau pasport sah untuk warganegara asing dengan permit kerja</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Penyata Bank 6 Bulan</div>
+                <div class="text-sm text-[#4F3E29]">Akaun peribadi atau perniagaan menunjukkan aliran tunai tetap</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Bukti Pendapatan</div>
+                <div class="text-sm text-[#4F3E29]">Slip gaji, penyata EPF, atau dokumentasi pendapatan perniagaan</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Company Requirements -->
+        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
+          <h3 class="text-2xl font-bold text-primary mb-6">Untuk Syarikat (Paling Biasa)</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Pendaftaran SSM</div>
+                <div class="text-sm text-[#4F3E29]">Sijil pendaftaran syarikat (Sdn Bhd, Enterprise, LLP)</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Penyata Bank Syarikat</div>
+                <div class="text-sm text-[#4F3E29]">6 bulan akaun syarikat - kami fokus pada aliran tunai operasi</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Salinan IC Pengarah</div>
+                <div class="text-sm text-[#4F3E29]">Semua pengarah dan pemegang saham utama</div>
+              </div>
+            </li>
+            <li class="flex items-start space-x-3">
+              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <div class="font-semibold text-gray-900">Sebut Harga Peralatan</div>
+                <div class="text-sm text-[#4F3E29]">Sebut harga daripada pembekal forklift menunjukkan model, harga, spesifikasi</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-8 p-6 bg-[#F5F5DC] border-l-4 border-primary rounded-lg">
+        <h4 class="font-bold text-primary mb-2">Pembiayaan Peralatan vs Pinjaman Perniagaan Bank:</h4>
+        <ul class="space-y-1 text-[#4F3E29] text-sm">
+          <li>• Dokumentasi lebih mudah - tiada penyata kewangan kompleks diperlukan</li>
+          <li>• Kelulusan lebih pantas - Pantas vs 2-4 minggu</li>
+          <li>• Peralatan berfungsi sebagai cagaran - tiada gadai janji harta tambahan diperlukan</li>
+          <li>• Fokus pada nilai peralatan dan aliran tunai, bukan skor kredit sempurna</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-[#F5F5DC]">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Soalan Lazim Tentang Pembiayaan Forklift
+        </h2>
+        <p class="text-xl text-[#4F3E29]">
+          Segala yang pengurus gudang perlu tahu tentang pemilikan peralatan
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqs.map((faq) => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="section bg-[#8B6F47] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Bersedia Untuk Berhenti Menyewa Dan Mula Memiliki?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Sertai beratus pengurus gudang yang membuat peralihan daripada sewa kepada pemilikan. Kira ROI anda, hantar permohonan, dan dapatkan kelulusan dengan pantas.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <a
+          href="#calculator"
+          class="btn btn-accent text-lg px-8 py-4"
+        >
+          Kira Penjimatan Anda
+        </a>
+        <a
+          href="https://wa.me/60175700889?text=Hi!%20Saya%20ingin%20berbincang%20pilihan%20pembiayaan%20forklift."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
+        >
+          WhatsApp: 017-570 0889
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Sebut Harga Tanpa Obligasi</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Kelulusan Pantas</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>40 Tahun Pengalaman</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment Section -->
+  <RelatedEquipment lang={lang} currentEquipment="forklift" />
+
+  <!-- Contact Form Section -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold text-primary mb-4">
+            Dapatkan Sebut Harga Pembiayaan Percuma Anda
+          </h2>
+          <p class="text-[#4F3E29]">
+            Kami akan menghubungi anda dalam cepat semasa waktu perniagaan dengan cadangan pembiayaan tersuai
+          </p>
+        </div>
+        <ContactForm lang={lang} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

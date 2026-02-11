@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan Ford Escort MK1 di Malaysia dengan 0% deposit.
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-25
+publishDate: 2025-12-25T00:00:00.000Z
 readingTime: 10
 tags: ["ford escort mk1", "pembiayaan kereta rali", "pinjaman ford klasik", "pembiayaan escort mexico", "pinjaman rs1600"]
 keywords: ["pembiayaan ford escort mk1", "pinjaman escort mexico malaysia", "pembiayaan rs1600", "pinjaman twin cam escort", "pembiayaan kereta rali klasik"]

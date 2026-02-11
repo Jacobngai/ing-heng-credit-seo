@@ -5,7 +5,7 @@ description: Dapatkan kelulusan pinjaman peribadi walaupun dengan sejarah kredit
   di Malaysia. Pelajari tentang pembiayaan peluang kedua, strategi pembaikan kredit,
   dan pilihan deposit 0%.
 author: "ING HENG Credit"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Financing Guides
 tags:
 - kredit teruk

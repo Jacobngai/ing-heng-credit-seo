@@ -2,7 +2,7 @@
 title: "Immediate Personal Loan Malaysia - Get Money Fast for Urgent Needs"
 description: "Apply for immediate personal loans in Malaysia with 0% deposit. Fast approval process for urgent financial needs with 100% financing available."
 author: "Ing Heng Credit Team"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

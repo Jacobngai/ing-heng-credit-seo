@@ -5,7 +5,7 @@ description: Dapatkan pembiayaan barisan pengeluaran 0% deposit di Malaysia. Ban
   kadar, ketahui syarat kelayakan, dan dapatkan dana untuk jentera pembuatan dengan
   panduan pakar.
 author: "ING HENG Credit"
-publishDate: 2024-12-22
+publishDate: 2024-12-22T00:00:00.000Z
 category: Equipment Financing
 tags:
 - equipment financing

@@ -2,7 +2,7 @@
 title: "Personal Loan Application Online Malaysia: 0% Deposit Equipment Financing Made Simple"
 description: "Apply for personal loan online in Malaysia with 0% deposit required. Fast approval for equipment financing up to 100% value. No paperwork hassles, digital application process."
 author: "Ing Heng Credit Team"
-publishDate: 2024-12-21
+publishDate: 2024-12-21T00:00:00.000Z
 category: Equipment Financing
 tags:
   - Equipment Financing

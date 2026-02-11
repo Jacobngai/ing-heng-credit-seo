@@ -4,7 +4,7 @@ description: "Dapatkan pembiayaan 0% deposit untuk Mazda Familia GTR yang ikonik
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-26
+publishDate: 2025-12-26T00:00:00.000Z
 readingTime: 10
 tags: ["mazda-familia-gtr", "pembiayaan-turbo-awd", "homologasi-jdm", "0-deposit-mazda", "khas-rally"]
 keywords: ["pembiayaan mazda familia gtr malaysia", "pinjaman familia gtr", "pembiayaan mazda gtr", "pinjaman turbo awd", "kereta rally 0 deposit", "pembiayaan jdm malaysia", "pembiayaan familia turbo", "pinjaman prestasi mazda"]

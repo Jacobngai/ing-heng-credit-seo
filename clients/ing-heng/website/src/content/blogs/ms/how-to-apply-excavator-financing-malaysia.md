@@ -4,7 +4,7 @@ description: Panduan langkah demi langkah untuk permohonan pembiayaan excavator.
   syarat, dokumen diperlukan, proses kelulusan, dan tips pakar untuk kelulusan pantas
   dengan kadar kejayaan high approval rate.
 author: "ING HENG Credit"
-publishDate: 2025-12-02
+publishDate: 2025-12-02T00:00:00.000Z
 category: Equipment Financing
 tags:
 - excavator

@@ -2,7 +2,7 @@
 title: "Prime Mover Repossession: How Installment Structure Protects Your Haulage Business"
 description: "Prime mover repossession destroys haulage businesses. Learn how to structure installment payments to match cash flow reality and protect your assets from default."
 author: "Ing Heng Credit Team"
-publishDate: 2025-01-23
+publishDate: 2025-01-23T00:00:00.000Z
 category: Logistics Equipment
 tags:
   - Equipment Financing
@@ -688,3 +688,4 @@ We structure prime mover payments around haulage cash flow reality. Get approved
         
 
 **Contact:** +60175700889 (WhatsApp) | 03-3324 8899 (Phone)
+

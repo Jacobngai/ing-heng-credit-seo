@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '规划成功故事 2026 - 规划案例',
+  slug: '规划成功故事2026',
+  excerpt: '2026年设备规划成功故事。良好规划带来成功。真实案例。',
+  date: '2026-01-01',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '设备融资',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["规划成功故事","规划案例","成功规划","策略成功"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 规划成功故事 2026
+
+## 规划成功案例
+
+良好规划带来成功:
+
+### 案例1: 建筑公司规划
+
+**2025规划:**
+- Q1: 更换旧挖掘机
+- Q2: 增加起重机
+- Q3: 扩展到3台
+- Q4: 准备2027
+
+**2026结果:**
+- 所有目标达成
+- 收入增长100%
+- 车队扩展到5台
+
+### 案例2: 运输公司规划
+
+**2025规划:**
+- 购买第一台货车
+- 建立客户
+- 6个月后扩展
+- 年底3台货车
+
+**2026结果:**
+- 按时扩展
+- 稳定客户
+- 5台货车
+
+### 案例3: 仓储公司规划
+
+**2025规划:**
+- 购买3台叉车
+- 提高效率
+- 降低成本
+- 扩大仓库
+
+**2026结果:**
+- 效率提升80%
+- 成本降低40%
+- 5台叉车
+
+## 规划成功要素
+
+### 要素1: 清晰目标
+
+- 明确设备需求
+- 设定时间表
+- 分配预算
+
+### 要素2: 灵活调整
+
+- 根据市场调整
+- 根据需求调整
+- 保持灵活性
+
+### 要素3: 0%首付
+
+- 保留现金
+- 按需购买
+- 快速响应
+
+### 要素4: 持续评估
+
+- 定期检查
+- 评估ROI
+- 调整计划
+
+## 您的成功规划
+
+**立即开始规划: WhatsApp +60175700889**
+
+**规划成功，选择Ing Heng**
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">设备融资</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

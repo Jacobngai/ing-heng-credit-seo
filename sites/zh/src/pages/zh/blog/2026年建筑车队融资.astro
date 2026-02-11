@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+import MarkdownContent from '../../../components/MarkdownContent.astro';
+
+const lang = 'zh';
+const post = {
+  title: '2026年建筑车队融资 - 建筑设备车队扩展',
+  slug: '2026年建筑车队融资',
+  excerpt: '2026年建筑车队融资方案。5台以上建筑设备0%首付，批量利率优惠，车队扩展融资。',
+  date: '2026-01-13',
+  author: 'Ing Heng Credit Team',
+  readTime: 3,
+  category: '建筑设备',
+  image: '/images/blog/default.jpg'
+};
+
+const keywords = ["建筑车队","建筑设备车队","工程机械车队","车队融资"],
+  breadcrumbItems = [
+  { label: '首页', href: '/zh' },
+  { label: '博客', href: '/zh/blog' },
+  { label: post.title, href: `/zh/blog/${post.slug}` }
+];
+
+const markdownContent = `
+# 2026年建筑车队融资 - 建筑设备车队扩展
+
+## 建筑车队扩展
+
+承包商车队需求:
+
+- **5台车队**: 小型项目
+- **10台车队**: 中型项目
+- **20台车队**: 大型项目
+
+## 车队融资对比
+
+### 5台建筑设备
+
+**银行:**
+- 总价: RM 600,000
+- 首付: RM 60,000-120,000
+
+**盈恒:**
+- 总价: RM 600,000
+- 首付: RM 0
+- 节省: RM 60,000-120,000
+
+### 10台建筑设备
+
+**银行:**
+- 总价: RM 1,200,000
+- 首付: RM 120,000-240,000
+
+**盈恒:**
+- 总价: RM 1,200,000
+- 首付: RM 0
+- 节省: RM 120,000-240,000
+
+## 盈恒车队优势
+
+- 0%首付
+- 批量利率优惠
+- 快速审批
+- 车队管理支持
+
+## 立即申请
+
+WhatsApp: +60175700889
+网站: inghengcredit.com
+`;
+---
+
+<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "author": { "@type": "Organization", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ing Heng Credit & Leasing Sdn Bhd",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://inghengcredit.com/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <Breadcrumbs items={breadcrumbItems} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-8">
+      <span class="text-sm font-semibold" style="color: #D4A574;">建筑设备</span>
+      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
+      <p class="text-gray-600 mt-4">{post.excerpt}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
+        <span>{post.author}</span>
+        <span>•</span>
+        <time>{new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span>•</span>
+        <span>{post.readTime} 分钟阅读</span>
+      </div>
+    </header>
+
+    <MarkdownContent content={markdownContent} />
+
+    <div class="mt-12 text-center">
+      <CTAButton href="/zh/contact">申请设备融资</CTAButton>
+    </div>
+  </article>
+</BaseLayout>

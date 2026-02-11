@@ -4,7 +4,7 @@ description: "Biayai Mazda 323 GTX anda dengan 0% deposit. Dapatkan pembiayaan u
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-21
+publishDate: 2025-12-21T00:00:00.000Z
 readingTime: 10
 tags: ["mazda 323 gtx", "pembiayaan kereta rally", "awd mazda", "pembiayaan turbo", "homologasi khas"]
 keywords: ["pembiayaan mazda 323 gtx", "pinjaman 323 gtx malaysia", "pinjaman kereta rally", "pembiayaan mazda awd", "pinjaman mazda turbo", "0 deposit kereta rally", "pembiayaan homologasi khas", "pembiayaan rally mazda"]

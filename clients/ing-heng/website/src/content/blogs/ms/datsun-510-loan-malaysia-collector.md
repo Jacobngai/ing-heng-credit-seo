@@ -4,7 +4,7 @@ description: "Biayai Datsun 510 impian anda dengan 0% deposit. Elakkan penolakan
 category: Equipment Financing
 persona: "General"
 locale: "ms"
-publishDate: 2025-12-24
+publishDate: 2025-12-24T00:00:00.000Z
 readingTime: 10
 tags: ["datsun 510", "pembiayaan kereta klasik", "pinjaman jdm", "kereta kolektor", "pembiayaan vintage"]
 keywords: ["pinjaman datsun 510", "pembiayaan datsun 510 malaysia", "pinjaman kereta klasik", "pembiayaan jdm vintage", "pembiayaan kereta kolektor", "0 deposit kereta klasik", "pembiayaan datsun bluebird", "pinjaman kereta pelaburan"]
