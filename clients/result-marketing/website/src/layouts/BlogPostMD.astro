@@ -1,0 +1,42 @@
+---
+/**
+ * BlogPostMD Layout - For Content Collection markdown posts
+ * Wraps the existing BlogLayout for consistency
+ */
+import type { CollectionEntry } from 'astro:content';
+import BlogLayout from './BlogLayout.astro';
+
+interface Props {
+  post: CollectionEntry<'blogs'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const { 
+  title, 
+  description, 
+  publishDate, 
+  category, 
+  locale, 
+  tags,
+  ogImage,
+  readingTime 
+} = post.data;
+
+const date = typeof publishDate === 'string' ? publishDate : publishDate.toISOString().split('T')[0];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  locale={locale}
+  author="jacob"
+  publishDate={date}
+  category={category}
+  tags={tags}
+  image={ogImage}
+  readingTime={readingTime}
+>
+  <Content />
+</BlogLayout>
