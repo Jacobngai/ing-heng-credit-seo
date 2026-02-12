@@ -1,6 +1,6 @@
 ---
-title: "Hotel vs Airbnb di Melaka: Perbandingan Kos & Pengalaman 2025"
-description: "Hotel vs Airbnb di Melaka - mana lebih untung untuk pelancong dan pelabur? Ketahui perbezaan kos, ruang, privasi, dan pengalaman. Panduan lengkap untuk pemilik hartanah."
+title: "Hotel vs Airbnb Melaka: Mana Lebih Berbaloi di Tahun 2026?"
+description: "Hotel vs Airbnb Melaka: Mana lebih jimat untuk anda? Bandingkan kos, saiz bilik, dan pengalaman sebenar pelancong di Melaka tahun 2026. Panduan untuk pelabur hartanah."
 slug: "hotel-vs-airbnb-melaka-perbandingan"
 date: 2025-01-24
 category: "decision-pricing"
