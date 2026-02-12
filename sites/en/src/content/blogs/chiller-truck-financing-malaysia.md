@@ -3,7 +3,7 @@ title: "Chiller Truck Financing Malaysia: Complete Guide 2026 (0 Deposit)"
 description: "Looking for chiller truck financing in Malaysia? Get up to 100% margin of finance, fast approval, and competitive rates for refrigerated trucks. Apply now!"
 author: "Ing Heng Credit"
 publishDate: "2026-02-12"
-category: "Commercial Vehicle Financing"
+category: "Specialized Vehicle Financing"
 tags: ["chiller truck financing", "refrigerated truck loan", "cold chain logistics", "commercial vehicle loan"]
 keywords: ["chiller truck financing malaysia", "refrigerated truck loan", "cold truck financing", "lorry financing malaysia"]
 locale: "en"

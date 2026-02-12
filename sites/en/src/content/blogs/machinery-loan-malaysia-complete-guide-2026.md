@@ -3,7 +3,7 @@ title: "How to Get Machinery Loan in Malaysia: The Complete 2026 Guide"
 description: "Looking for a machinery loan in Malaysia? Learn about interest rates, requirements, and how to get fast approval for your equipment financing needs."
 author: "Ing Heng Credit"
 publishDate: "2026-02-12"
-category: "Financing"
+category: "Financing Guides"
 tags: ["machinery loan", "equipment financing", "business loan malaysia"]
 keywords: ["machinery loan malaysia", "equipment financing malaysia", "machinery equipment loan"]
 locale: "en"
