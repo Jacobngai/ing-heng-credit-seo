@@ -1,98 +1,200 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import CTAButton from '../../../components/CTAButton.astro';
+/**
+ * Manufacturing Equipment Financing - Blog Post
+ * Target Keyword: manufacturing equipment financing
+ * Client: Ing Heng Credit
+ * Generated: 2026-02-12
+ */
+
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import BlogPost from '../../../../components/BlogPost.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import CTAButton from '../../../../components/CTAButton.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { generateArticleSchema, generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+import StructuredData from '../../../../components/StructuredData.astro';
 
 const lang = 'en';
-const post = {
-  title: 'Manufacturing equipment financing | Ing Heng Credit',
-  slug: '2026-01-manufacturing-equipment-financing',
-  excerpt: 'Manufacturing equipment financing financing in Malaysia with 0% down payment. Fast approval within 24-72 hours. Trusted by 4,000+ businesses.',
-  date: '2026-01-29',
-  author: 'Ing Heng Credit Team',
-  readTime: 5,
-  category: 'Equipment Financing'
-};
 
-const keywords = ["manufacturing equipment financing","equipment financing","malaysia","0 down payment"];
+// SEO Configuration
+const title = 'Manufacturing Equipment Financing: The Complete Guide for 2026';
+const description = 'Scale your production with flexible manufacturing equipment financing. Learn about leasing, hire purchase, and equipment loans for Malaysian manufacturers. RM50K-5M available.';
+const keywords = ['manufacturing equipment financing', 'machinery loan malaysia', 'industrial equipment leasing', 'factory machinery financing', 'equipment hire purchase', 'production line financing'];
+const publishDate = '2026-02-12';
+const category = 'equipment-financing';
+const author = 'Ing Heng Credit';
+const readingTime = 10;
+
+// Breadcrumbs
 const breadcrumbItems = [
   { label: 'Home', href: '/en' },
   { label: 'Blog', href: '/en/blog' },
-  { label: post.title, href: `/en/blog/${post.slug}` }
+  { label: 'Manufacturing Equipment Financing', href: '/en/blog/manufacturing-equipment-financing' }
 ];
+
+// FAQ Data for Schema
+const faqs = [
+  {
+    question: 'What is manufacturing equipment financing?',
+    answer: 'Manufacturing equipment financing is a specialized financial solution that allows businesses to acquire machinery, production lines, and industrial tools without paying the full cost upfront. Common structures include equipment loans, hire purchase agreements, and leasing options, allowing manufacturers to preserve cash flow while upgrading their technology.'
+  },
+  {
+    question: 'What types of machinery can be financed?',
+    answer: 'Almost any asset used in production can be financed, including CNC machines, injection molding machines, automated assembly lines, packaging equipment, industrial boilers, power generators, and material handling equipment like forklifts. Both new and refurbished/used machinery are typically eligible for financing.'
+  },
+  {
+    question: 'How long does it take to get approved for equipment financing?',
+    answer: 'At Ing Heng Credit, we pride ourselves on speed. While traditional banks may take weeks, our specialized focus on the manufacturing sector allows us to provide preliminary approvals within 3-5 working days, provided all necessary documentation is submitted.'
+  }
+];
+
+// Article Schema
+const articleSchema = generateArticleSchema({
+  title,
+  description,
+  author,
+  publishDate,
+  keywords
+});
+
+const faqSchema = generateFAQSchema(faqs);
 ---
 
-<BaseLayout title={post.title} description={post.excerpt} lang={lang} keywords={keywords}>
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
-    "datePublished": post.date,
-    "author": { "@type": "Organization", "name": post.author },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ING Heng Credit & Leasing Sdn Bhd",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://inghengcredit.com/logo.png"
-      }
-    }
-  })} />
-
-  <Breadcrumbs items={breadcrumbItems} />
-
-  <article class="max-w-4xl mx-auto px-4 py-12">
+<BaseLayout title={title} description={description} keywords={keywords} lang={lang}>
+  <StructuredData schema={articleSchema} />
+  <StructuredData schema={faqSchema} />
+  
+  <article class="max-w-4xl mx-auto px-4 py-8">
+    <Breadcrumbs items={breadcrumbItems} />
+    
     <header class="mb-8">
-      <span class="text-sm font-semibold" style="color: #D4A574;">{post.category}</span>
-      <h1 class="text-4xl font-bold mt-2" style="color: #2D1810; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">{post.title}</h1>
-      <p class="text-gray-600 mt-4">{post.excerpt}</p>
-      <div class="flex items-center gap-4 text-sm text-gray-500 mt-4">
-        <span>{post.author}</span>
-        <span>•</span>
-        <time>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-        <span>•</span>
-        <span>{post.readTime} min read</span>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        Manufacturing Equipment Financing: Scaling Your Production in 2026
+      </h1>
+      <div class="flex items-center text-gray-600 text-sm mb-4">
+        <span>By {author}</span>
+        <span class="mx-2">•</span>
+        <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('en-MY', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span class="mx-2">•</span>
+        <span>{readingTime} min read</span>
       </div>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        Is your production facility held back by outdated machinery? Manufacturing equipment financing provides the capital you need to modernize your operations, increase efficiency, and stay competitive in the global market—all while keeping your working capital intact.
+      </p>
     </header>
 
-    <div class="prose prose-lg max-w-none">
-      <h2>Why Choose ING Heng for Manufacturing equipment financing?</h2>
-      <p>ING Heng Credit offers competitive manufacturing equipment financing solutions with <strong>0% down payment</strong> and <strong>fast approval within 24-72 hours</strong>. With over 40 years of experience serving 4,000+ businesses across Malaysia, we understand your equipment financing needs.</p>
+    <section class="prose prose-lg max-w-none">
+      <p>
+        In the fast-paced world of manufacturing, technology is the ultimate differentiator. Whether you are producing precision automotive parts, packaging consumer goods, or processing raw materials, the quality and speed of your machinery directly dictate your profit margins. However, the high cost of modern industrial equipment can be a significant barrier to growth.
+      </p>
+      <p>
+        This is where <strong>manufacturing equipment financing</strong> comes in. By leveraging specialized financial products, Malaysian manufacturers can acquire state-of-the-art technology today and pay for it using the revenue that the new equipment generates.
+      </p>
+
+      <h2>The Strategic Importance of Modern Machinery</h2>
+      <p>
+        Relying on aging equipment is a hidden cost for many businesses. Frequent breakdowns, high energy consumption, and slower cycle times eat away at your competitiveness. Modern manufacturing equipment offers:
+      </p>
+      <ul>
+        <li><strong>Higher Precision:</strong> Reduce waste and rejects with tighter tolerances.</li>
+        <li><strong>Increased Throughput:</strong> Produce more units per hour with faster, automated systems.</li>
+        <li><strong>Energy Efficiency:</strong> New machines often consume 20-40% less electricity than decade-old models.</li>
+        <li><strong>Safety Compliance:</strong> Ensure your facility meets the latest safety standards for worker protection.</li>
+      </ul>
+
+      <h2>Types of Manufacturing Equipment Financing</h2>
+      <p>
+        Not every business needs the same financial structure. Here are the three most common ways to finance industrial machinery in Malaysia:
+      </p>
       
-      <h3>Key Benefits</h3>
+      <h3>1. Equipment Hire Purchase</h3>
+      <p>
+        This is the most popular choice for businesses that want to eventually own the asset. You pay an initial deposit (typically 10-20%), and the balance is paid off in monthly installments over 3 to 7 years. Once the final payment is made, ownership transfers fully to your company.
+      </p>
+
+      <h3>2. Equipment Leasing</h3>
+      <p>
+        Leasing is ideal for technology that evolves rapidly. You pay a monthly fee to use the equipment for a set period. At the end of the term, you may have the option to upgrade to a newer model, return the equipment, or purchase it at its fair market value.
+      </p>
+
+      <h3>3. Machinery Term Loans</h3>
+      <p>
+        A traditional loan where the bank or financier provides the capital to buy the equipment, and the equipment itself serves as collateral. This is often used for very large, custom-built production lines where long-term financing (up to 10 years) is required.
+      </p>
+
+      <h2>Benefits of Choosing Equipment Financing Over Cash</h2>
+      <p>
+        Even if your company has significant cash reserves, financing is often the smarter strategic choice:
+      </p>
       <ul>
-        <li><strong>Up to 100% Financing</strong> - No down payment required for qualified applicants</li>
-        <li><strong>40+ Years Experience</strong> - Trusted by 4,000+ Malaysian businesses</li>
-        <li><strong>No Age Limit</strong> - Equipment assessed on condition, not age</li>
-        <li><strong>Flexible Terms</strong> - 1-5 year financing terms available</li>
-        <li><strong>Fast Approval</strong> - Get approved within 24-72 hours</li>
+        <li><strong>Preserve Working Capital:</strong> Keep your cash for day-to-day operations, marketing, and emergency reserves.</li>
+        <li><strong>Predictable Budgeting:</strong> Fixed monthly payments make it easier to manage your cash flow and forecast future expenses.</li>
+        <li><strong>Tax Advantages:</strong> In Malaysia, interest payments and depreciation on financed equipment can often be used to reduce your taxable income. (Consult with your tax advisor for specific details).</li>
+        <li><strong>Fast ROI:</strong> Use the increased production capacity of the new machine to pay for the monthly financing cost, making the investment self-sustaining.</li>
       </ul>
 
-      <h3>Eligibility Requirements</h3>
-      <p>To qualify for manufacturing equipment financing, you need:</p>
+      <h2>What Can You Finance?</h2>
+      <p>
+        At Ing Heng Credit, we cover a wide spectrum of manufacturing assets, including but not limited to:
+      </p>
       <ul>
-        <li>Company SSM registration (minimum 1 year)</li>
-        <li>Recent 6 months bank statements</li>
-        <li>Equipment quotation or invoice</li>
-        <li>Valid IC of business owner</li>
+        <li><strong>Metalworking:</strong> CNC Milling, Lathes, Laser Cutting, and Welding Robots.</li>
+        <li><strong>Plastics:</strong> Injection Molding Machines, Blow Molding, and Extruders.</li>
+        <li><strong>Food & Beverage:</strong> Industrial Ovens, Bottling Lines, and Cold Storage Systems.</li>
+        <li><strong>Printing & Packaging:</strong> Offset Presses, Flexographic Printers, and Automated Labeling.</li>
+        <li><strong>General Industrial:</strong> Air Compressors, Power Generators, and HVAC Systems for Cleanrooms.</li>
       </ul>
 
-      <h3>Application Process</h3>
+      <h2>Qualification and Eligibility</h2>
+      <p>
+        To qualify for manufacturing equipment financing in Malaysia, lenders typically look for:
+      </p>
+      <ul>
+        <li><strong>Business Tenure:</strong> At least 2 years of active operation (exceptions made for established directors starting new ventures).</li>
+        <li><strong>Financial Records:</strong> Audited accounts or management accounts showing stable revenue.</li>
+        <li><strong>Equipment Quote:</strong> A formal quotation from a reputable machinery supplier.</li>
+        <li><strong>Credit History:</strong> A clean CCRIS and CTOS report for the company and its directors.</li>
+      </ul>
+
+      <h2>Why Partner with Ing Heng Credit?</h2>
+      <p>
+        Ing Heng Credit isn't just a financier; we are partners in your growth. We understand the Malaysian manufacturing landscape and the specific challenges faced by SMEs.
+      </p>
+      <ul>
+        <li><strong>Industry Knowledge:</strong> We know the difference between a standard lathe and a 5-axis CNC center. We understand the value of your assets.</li>
+        <li><strong>Flexible Terms:</strong> We offer customized repayment schedules that align with your production cycles.</li>
+        <li><strong>Minimal Red Tape:</strong> Our application process is streamlined to get your machines onto the factory floor as fast as possible.</li>
+        <li><strong>High Margin of Finance:</strong> We offer up to 90% financing for qualifying equipment and companies.</li>
+      </ul>
+
+      <h2>Maximizing Your ROI on New Machinery</h2>
+      <p>
+        Simply getting the financing is step one. To truly succeed, ensure you have a plan for the new asset:
+      </p>
       <ol>
-        <li><strong>Submit Documents</strong> - Provide SSM, bank statements, and equipment details</li>
-        <li><strong>Quick Assessment</strong> - Our team reviews within 24 hours</li>
-        <li><strong>Approval</strong> - Receive financing offer within 48-72 hours</li>
-        <li><strong>Equipment Delivery</strong> - Complete transaction and receive equipment</li>
+        <li><strong>Operator Training:</strong> Ensure your team is fully trained to use the new features of the machinery.</li>
+        <li><strong>Preventative Maintenance:</strong> Factor in the cost of regular servicing to protect your investment and prevent downtime.</li>
+        <li><strong>Integration:</strong> Plan how the new machine will interface with your existing production line to avoid bottlenecks.</li>
       </ol>
 
-      <h3>Case Study: Construction Company Success</h3>
-      <p>A Klang Valley construction company needed RM 500,000 for excavator financing. Traditional banks required 30% down payment. ING Heng provided 100% financing with fast approval, enabling the company to complete their project on time.</p>
+      <h2>Frequently Asked Questions</h2>
+      {faqs.map((faq) => (
+        <FAQItem question={faq.question} answer={faq.answer} />
+      ))}
 
-    </div>
-
-    <div class="mt-12 text-center">
-      <CTAButton href="/en/contact">Apply for Equipment Financing</CTAButton>
-    </div>
+      <h2>Contact Ing Heng Credit Today</h2>
+      <p>
+        Don't let capital constraints limit your company's potential. Whether you are adding a single machine or setting up an entirely new production line, Ing Heng Credit has the expertise and the capital to help you succeed.
+      </p>
+      
+      <div class="bg-primary-50 p-6 rounded-lg mt-8">
+        <h3 class="text-xl font-bold mb-4">Get a Quote for Your Next Machine</h3>
+        <p class="mb-4">
+          Ready to take the next step? Speak with our equipment financing specialists today. We provide fast assessments and competitive rates tailored to the manufacturing sector.
+        </p>
+        <p class="mb-6 font-semibold">Call or WhatsApp: 017-570 0889</p>
+        <CTAButton href="/en/contact" text="Apply for Financing" variant="primary" />
+      </div>
+    </section>
   </article>
 </BaseLayout>
