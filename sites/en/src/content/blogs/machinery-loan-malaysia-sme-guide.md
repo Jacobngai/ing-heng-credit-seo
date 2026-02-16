@@ -1,8 +1,10 @@
 ---
 title: "Machinery Loan Malaysia: SME Guide to Equipment Financing (2026)"
 description: "Get machinery loans in Malaysia with 0% down payment. Compare options for manufacturing equipment, construction machinery, and logistics vehicles. Fast approval for Malaysian SMEs."
-pubDate: 2026-02-15
+publishDate: 2026-02-15
 author: "Ing Heng Credit"
+category: "Equipment Financing"
+locale: "en"
 tags: ["machinery loan", "equipment financing", "SME financing"]
 ---
 

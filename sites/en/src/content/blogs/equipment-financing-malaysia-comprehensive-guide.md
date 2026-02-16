@@ -1,8 +1,10 @@
 ---
 title: "Equipment Financing Malaysia: Complete Guide for SME Owners (2026)"
 description: "Understand equipment financing in Malaysia. Compare bank vs private lenders, 0% down payment options, and how to get approved for machinery loans - even with less-than-perfect credit."
-pubDate: 2026-02-15
+publishDate: 2026-02-15
 author: "Ing Heng Credit"
+category: "Equipment Financing"
+locale: "en"
 tags: ["equipment financing", "machinery loan", "business financing"]
 ---
 
