@@ -112,6 +112,7 @@ function getHreflangCode(locale: 'en' | 'zh' | 'ms'): string {
 
 /**
  * Generate breadcrumb structured data
+ * Uses Google's recommended format with item as object containing @type, @id, and name
  */
 export function generateBreadcrumbs(items: Array<{ name: string; url: string }>) {
   return {
@@ -120,8 +121,11 @@ export function generateBreadcrumbs(items: Array<{ name: string; url: string }>)
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      name: item.name,
-      item: item.url,
+      item: {
+        '@type': 'WebPage',
+        '@id': item.url,
+        name: item.name,
+      },
     })),
   };
 }
