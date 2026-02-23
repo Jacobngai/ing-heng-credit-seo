@@ -1,6 +1,6 @@
 ---
-title: "Debt Consolidation Loan Malaysia - Simplify Multiple Debts 2025"
-description: "Consolidate multiple debts into one loan in Malaysia. Lower monthly payments, single payment, escape debt cycle. Combine credit cards, personal loans, overdrafts."
+title: "Debt Consolidation Malaysia: Combine 3+ Debts Into One Payment (Save Up to 40%)"
+description: "Stop juggling multiple debts. Consolidate credit cards, personal loans, and overdrafts into ONE payment. Save up to 40% on monthly payments. Fast 24-hour approval."
 author: "Ing Heng Credit Team"
 publishDate: 2025-12-20T00:00:00.000Z
 category: Equipment Financing
