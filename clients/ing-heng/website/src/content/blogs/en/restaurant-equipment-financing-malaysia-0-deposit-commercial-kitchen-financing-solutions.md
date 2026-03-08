@@ -1,6 +1,6 @@
 ---
-title: "Restaurant Equipment Financing Malaysia: 0% Deposit Commercial Kitchen Financing Solutions"
-description: "Finance restaurant equipment with 0% deposit in Malaysia. Complete guide to commercial kitchen equipment loans, approval process, and industry-specific financing solutions."
+title: "Food Equipment Financing Malaysia | Restaurant & Kitchen Loans | 0% Down"
+description: "Food equipment financing Malaysia with 0% deposit. Finance restaurant kitchens, F&B machinery, commercial cooking equipment. Fast approval since 1985. 4,000+ businesses funded."
 author: "Ing Heng Credit Team"
 publishDate: 2025-12-22T00:00:00.000Z
 category: Equipment Financing
