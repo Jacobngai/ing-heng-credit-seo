@@ -3,12 +3,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import CTAButton from '../../../components/CTAButton.astro';
 import { COMPANY_INFO } from '../../../utils/constants';
+import { generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
 const lang = 'en';
 const post = {
-  title: 'Construction Equipment Financing 2026 - Budget Breakdown Malaysia',
+  title: 'Construction Equipment Financing Malaysia 2026 | 0% Down | Budget Guide',
   slug: 'construction-equipment-financing-2026-budget-breakdown-malaysia',
-  excerpt: '2026 construction equipment financing budget breakdown. Excavator, lorry, bulldozer financing with 0% down payment.',
+  excerpt: 'Complete construction equipment financing guide for Malaysia 2026. Excavators, lorries, bulldozers from RM120K-550K. 0% down payment, finance used equipment of ANY age. 4,000+ contractors funded since 1985.',
   date: '2026-01-02',
   author: 'Ing Heng Credit Team',
   readTime: 5,
@@ -16,7 +17,33 @@ const post = {
   image: '/images/blog/excavator-financing.jpg'
 };
 
-const keywords = ['construction equipment financing', 'machinery financing malaysia', '0% down payment', 'excavator financing'],
+// FAQ data for schema
+const faqs = [
+  {
+    question: 'How much does construction equipment financing cost in Malaysia?',
+    answer: 'Construction equipment costs range from RM120,000 (mini excavator) to RM550,000 (mobile crane). With 0% down payment financing from Ing Heng, you can deploy equipment immediately while preserving cash for operations. Monthly payments start from RM2,500 depending on equipment value and tenure.'
+  },
+  {
+    question: 'Can I finance used construction equipment in Malaysia?',
+    answer: 'Yes! Unlike banks that reject equipment over 5 years old, Ing Heng finances used construction equipment of ANY age based on condition. Used excavators, lorries, and bulldozers cost 40-60% less while providing the same functionality. We finance Komatsu, CAT, Hitachi, and all major brands.'
+  },
+  {
+    question: 'What is the down payment for construction equipment financing?',
+    answer: 'Banks typically require 10-20% down payment for construction equipment. Ing Heng offers 0% down payment for qualified applicants, meaning you can get a RM350,000 excavator deployed without any upfront cash. This preserves working capital for fuel, wages, and materials.'
+  },
+  {
+    question: 'How fast can construction equipment financing be approved?',
+    answer: 'Bank processing takes 3-4 weeks for construction equipment. Ing Heng approves applications within 24-48 hours with our streamlined process. Once approved, equipment can be deployed within days, not weeks—critical when you have project deadlines.'
+  },
+  {
+    question: 'What construction equipment does Ing Heng finance?',
+    answer: 'We finance all construction equipment types: excavators (mini to 40-ton), bulldozers, backhoes, wheel loaders, road rollers, mobile cranes, tower cranes, prime movers, tipper trucks, forklifts, and generators. Both new and used equipment accepted with 100% financing available.'
+  }
+];
+
+const faqSchema = generateFAQSchema(faqs);
+
+const keywords = ['construction equipment financing', 'machinery financing malaysia', '0% down payment', 'excavator financing', 'construction equipment loan malaysia'],
   breadcrumbItems = [
   { label: 'Home', href: '/en' },
   { label: 'Blog', href: '/en/blog' },
@@ -29,10 +56,10 @@ const keywords = ['construction equipment financing', 'machinery financing malay
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.excerpt,
-      "datePublished": post.date,
-      "author": { "@type": "Organization", "name": post.author },
+      "headline": "Construction Equipment Financing Malaysia 2026 | 0% Down | Budget Guide",
+      "description": "Complete construction equipment financing guide for Malaysia 2026. Excavators, lorries, bulldozers from RM120K-550K. 0% down payment, finance used equipment of ANY age.",
+      "datePublished": "2026-01-02",
+      "author": { "@type": "Organization", "name": "Ing Heng Credit Team" },
       "publisher": {
         "@type": "Organization",
         "name": "Ing Heng Credit & Leasing Sdn Bhd",
@@ -43,6 +70,8 @@ const keywords = ['construction equipment financing', 'machinery financing malay
       }
     }
   </script>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
 
   <Breadcrumbs items={breadcrumbItems} />
 
@@ -61,7 +90,7 @@ const keywords = ['construction equipment financing', 'machinery financing malay
     </header>
 
     <div class="prose prose-lg max-w-none">
-      <h2>2026 Construction Equipment Budget</h2>
+      <h2>2026 Construction Equipment Budget Breakdown</h2>
 
       <p>Construction companies need equipment. Excavators, lorries, rollers, cranes. Major investment. Smart financing preserves cash. Budget planning essential.</p>
 
