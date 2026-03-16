@@ -1,10 +1,39 @@
 ---
 import BlogLayout from '../../../../layouts/BlogLayout.astro';
+import FAQItem from '../../../../components/FAQItem.astro';
+import { generateFAQSchema, encodeJSONLD } from '../../../../utils/schema';
+
+// FAQ Data for comparison queries
+const faqs = [
+  {
+    question: "What is the difference between a machinery loan and a business loan in Malaysia?",
+    answer: "A machinery loan is asset-backed (the equipment is collateral) while a business loan is typically unsecured. This means machinery loans often have lower interest rates, faster approval (24-48 hours vs 2-8 weeks for business loans), and accept used equipment. Business loans are more flexible but harder to get approved for equipment purchases."
+  },
+  {
+    question: "Which has lower interest rates: machinery loan or business loan?",
+    answer: "Machinery loans typically have lower effective interest rates because they're secured by the equipment. While business loans advertise 8-12% reducing rates, machinery loans at 4-5% flat rate often work out cheaper over the loan term. Plus, machinery loans offer 0% down payment options that reduce total financing cost."
+  },
+  {
+    question: "Can I get a machinery loan with bad credit in Malaysia?",
+    answer: "Yes! Machinery loans are easier to get approved than business loans because the equipment acts as collateral. At Ing Heng Credit, we focus on your business potential and equipment value rather than just credit score. We've approved clients rejected by banks, including those with CCRIS issues."
+  },
+  {
+    question: "What are the tax benefits of a machinery loan vs business loan?",
+    answer: "Machinery loans structured as hire purchase give better tax benefits. You can claim Capital Allowance (depreciation) on the equipment immediately, plus deduct the interest portion as business expense. With a general business loan, you only deduct interest—no capital allowance on the asset purchase."
+  },
+  {
+    question: "Should I use a business loan to buy equipment in Malaysia?",
+    answer: "Generally no—a dedicated machinery loan is better for equipment purchases. Reasons: (1) Faster approval (24-48 hours), (2) Lower interest rates, (3) 0% down payment available, (4) Used equipment accepted (banks reject >10 years old), (5) Better tax treatment via Capital Allowance. Save business loans for working capital needs."
+  }
+];
+
+// Generate FAQ Schema
+const faqSchema = generateFAQSchema(faqs);
 ---
 
 <BlogLayout 
-  title="Machinery Loan vs. Business Loan: Which is Best for Malaysian SMEs?" 
-  description="Choosing between a machinery loan and a general business loan in Malaysia? Learn which option offers lower interest, better tax benefits, and faster approval for your equipment purchase." 
+  title="Machinery Loan vs Business Loan Malaysia 2026 | Which is Better for SME Equipment?" 
+  description="Machinery loan or business loan for your equipment? Compare interest rates, approval speed, tax benefits & down payment. Since 1985, we've helped 4,000+ SMEs choose right." 
   locale="en" 
   author="jacob" 
   publishDate="2026-02-18" 
@@ -12,14 +41,18 @@ import BlogLayout from '../../../../layouts/BlogLayout.astro';
   tags={['machinery loan', 'business loan', 'equipment financing', 'sme malaysia', 'finance tips']} 
   readingTime={10}
 >
+  <!-- FAQ Schema -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+  </Fragment>
 
 # Machinery Loan vs. Business Loan: Which is Best for Malaysian SMEs?
 
-When it’s time to upgrade your production line, buy a new excavator, or add forklifts to your warehouse, you face a major financial fork in the road. Should you take a general **business loan** (unsecured) or a dedicated **machinery loan** (asset-backed)?
+When it's time to upgrade your production line, buy a new excavator, or add forklifts to your warehouse, you face a major financial fork in the road. Should you take a general **business loan** (unsecured) or a dedicated **machinery loan** (asset-backed)?
 
-For many Malaysian SMEs, the choice isn’t always clear. Your bank might push a term loan, while your equipment dealer suggests hire purchase. If you pick the wrong one, you could end up paying higher interest, losing out on tax benefits, or—worst of all—facing a "no" from the bank just when you need the equipment most.
+For many Malaysian SMEs, the choice isn't always clear. Your bank might push a term loan, while your equipment dealer suggests hire purchase. If you pick the wrong one, you could end up paying higher interest, losing out on tax benefits, or—worst of all—facing a "no" from the bank just when you need the equipment most.
 
-As your "Trusted Uncle in Finance," I’ve seen thousands of business owners navigate this. Let’s break down the real differences so you can make the smartest move for your cash flow.
+As your "Trusted Uncle in Finance," I've seen thousands of business owners navigate this. Let's break down the real differences so you can make the smartest move for your cash flow.
 
 ## 1. What Exactly is the Difference?
 
@@ -81,7 +114,15 @@ With a general business loan, you only get to deduct the interest. You don't get
 
 Most Malaysian SMEs are better off with a dedicated machinery loan for their equipment needs. It keeps your general credit lines open for emergencies and gives you the best tax "shield" for your investment.
 
-At Ing Heng Credit, we specialize in the "hard" cases. If the bank said your machine is too old, or your business is too new, come talk to us. We’ve been helping Malaysian SMEs grow since 1985. We don't just look at your credit score; we look at the potential of your business and the value of your tools.
+At Ing Heng Credit, we specialize in the "hard" cases. If the bank said your machine is too old, or your business is too new, come talk to us. We've been helping Malaysian SMEs grow since 1985. We don't just look at your credit score; we look at the potential of your business and the value of your tools.
+
+## Frequently Asked Questions
+
+<div class="faq-section space-y-4 my-8">
+  {faqs.map((faq) => (
+    <FAQItem question={faq.question} answer={faq.answer} />
+  ))}
+</div>
 
 **[Ready to see your options? Get a machinery loan quote in 24 hours — no strings attached.](https://inghengcredit.com/en/contact/)**
 
