@@ -3,15 +3,15 @@
  * Simplified version for single-language site
  */
 
-import zh from '../i18n/zh.json';
+import en from '../i18n/zh.json';  // Using zh.json but it contains English content
 
-export type Locale = 'zh';
+export type Locale = 'en';
 
-export const locales = ['zh'] as const;
-export const defaultLocale: Locale = 'zh';
+export const locales = ['en'] as const;
+export const defaultLocale: Locale = 'en';
 
 export const translations = {
-  zh,
+  en,
 } as const;
 
 /**
@@ -25,7 +25,7 @@ export function getTranslations(locale: Locale) {
  * Get nested translation value using dot notation
  * Example: t('nav.home') returns the value at translations[locale].nav.home
  */
-export function t(key: string, locale: Locale = 'zh'): string {
+export function t(key: string, locale: Locale = 'en'): string {
   const keys = key.split('.');
   let value: any = translations[locale];
 
@@ -46,7 +46,7 @@ export function t(key: string, locale: Locale = 'zh'): string {
  */
 export function getLocaleName(locale: Locale): string {
   const localeNames = {
-    zh: '中文',
+    en: 'English',
   };
   return localeNames[locale];
 }
@@ -56,10 +56,10 @@ export function getLocaleName(locale: Locale): string {
  */
 export function getLocaleInfo(locale: Locale) {
   const localeInfo = {
-    zh: {
-      code: 'zh',
-      name: '中文',
-      flag: '🇨🇳',
+    en: {
+      code: 'en',
+      name: 'English',
+      flag: '🇲🇾',
       dir: 'ltr',
     },
   };
@@ -98,10 +98,10 @@ export function isValidLocale(locale: string): locale is Locale {
 /**
  * Format date according to locale
  */
-export function formatDate(date: Date | string, locale: Locale = 'zh'): string {
+export function formatDate(date: Date | string, locale: Locale = 'en'): string {
   const dateObj = typeof date === 'string' ? new Date(date) : date;
 
-  return dateObj.toLocaleDateString('zh-CN', {
+  return dateObj.toLocaleDateString('en-MY', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -111,15 +111,15 @@ export function formatDate(date: Date | string, locale: Locale = 'zh'): string {
 /**
  * Format number according to locale
  */
-export function formatNumber(num: number, locale: Locale = 'zh'): string {
-  return num.toLocaleString('zh-CN');
+export function formatNumber(num: number, locale: Locale = 'en'): string {
+  return num.toLocaleString('en-MY');
 }
 
 /**
  * Format currency according to locale
  */
-export function formatCurrency(amount: number, locale: Locale = 'zh', currency: string = 'MYR'): string {
-  return new Intl.NumberFormat('zh-CN', {
+export function formatCurrency(amount: number, locale: Locale = 'en', currency: string = 'MYR'): string {
+  return new Intl.NumberFormat('en-MY', {
     style: 'currency',
     currency: currency,
   }).format(amount);
