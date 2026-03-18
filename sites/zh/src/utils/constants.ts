@@ -8,7 +8,7 @@
 export const COMPANY_INFO = {
   name: 'Ing Heng Credit & Leasing Sdn Bhd',
   shortName: 'Ing Heng Credit',
-  tagline: 'Your Trusted Equipment Financing Partner',
+  tagline: 'Your Trusted Hobby & Lifestyle Financing Partner',
 
   // Contact Details
   phone: {
@@ -277,58 +277,39 @@ export const PERSONAS = {
 };
 
 /**
- * Equipment Navigation Menu
+ * Equipment Navigation Menu - Hobby Financing
  */
 export const EQUIPMENT_NAV_ITEMS = [
   {
-    label: 'equipment.allEquipment',
+    label: 'hobby.allHobby',
     href: '/equipment',
-    description: 'equipment.allEquipmentDesc',
-    icon: '🏗️',
+    description: 'hobby.allHobbyDesc',
+    icon: '🎯',
   },
   {
-    label: 'equipment.excavator',
-    href: '/equipment/excavator',
-    description: 'equipment.excavatorDesc',
-    icon: '🚜',
+    label: 'hobby.motorcycle',
+    href: '/equipment/motorcycle',
+    description: 'hobby.motorcycleDesc',
+    icon: '🏍️',
     badge: 'popular',
   },
   {
-    label: 'equipment.lorry',
-    href: '/equipment/lorry',
-    description: 'equipment.lorryDesc',
-    icon: '🚛',
-    badge: 'fastApproval',
+    label: 'hobby.superbike',
+    href: '/equipment/superbike',
+    description: 'hobby.superbikeDesc',
+    icon: '🏎️',
   },
   {
-    label: 'equipment.forklift',
-    href: '/equipment/forklift',
-    description: 'equipment.forkliftDesc',
-    icon: '🏭',
+    label: 'hobby.boat',
+    href: '/equipment/boat',
+    description: 'hobby.boatDesc',
+    icon: '🚤',
   },
   {
-    label: 'equipment.crane',
-    href: '/equipment/crane',
-    description: 'equipment.craneDesc',
-    icon: '🏗️',
-  },
-  {
-    label: 'equipment.primeMover',
-    href: '/equipment/prime-mover',
-    description: 'equipment.primeMoverDesc',
-    icon: '🚚',
-  },
-  {
-    label: 'equipment.bulldozer',
-    href: '/equipment/bulldozer',
-    description: 'equipment.bulldozerDesc',
-    icon: '🚜',
-  },
-  {
-    label: 'equipment.refrigeratedTruck',
-    href: '/equipment/refrigerated-truck',
-    description: 'equipment.refrigeratedTruckDesc',
-    icon: '🧊',
+    label: 'hobby.sportsCar',
+    href: '/equipment/sports-car',
+    description: 'hobby.sportsCarDesc',
+    icon: '🏎️',
   },
 ];
 
