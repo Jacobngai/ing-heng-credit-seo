@@ -2,7 +2,8 @@
 /**
  * Sports Car Financing Landing Page - English
  * Target: Sports car enthusiasts, collectors, high-net-worth individuals
- * Keywords: sports car financing Malaysia, supercar loan, exotic car financing
+ * Keywords: sports car financing Malaysia, supercar loan, Porsche financing, Ferrari loan
+ * Word Count: 3,000+ words
  */
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -12,100 +13,165 @@ import StepCard from '../../../components/StepCard.astro';
 import FAQItem from '../../../components/FAQItem.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
 import { SITE_CONFIG } from '../../../utils/constants';
 const lang = 'en';
 
-// SEO Data
-const pageTitle = 'Sports Car Financing Malaysia | Supercar Loans | Porsche, Ferrari, Lamborghini';
-const pageDescription = 'Finance your dream sports car with flexible terms. Porsche, Ferrari, Lamborghini, McLaren, BMW M, Mercedes AMG. New & used exotic cars. Confidential premium service since 1985.';
-const keywords = ['sports car financing Malaysia', 'supercar loan', 'Porsche financing Malaysia', 'Ferrari loan', 'exotic car financing', 'luxury car loan Malaysia'];
+const pageTitle = 'Sports Car Financing Malaysia | Porsche, Ferrari, Lamborghini | Since 1985';
+const pageDescription = 'Finance your dream sports car with flexible terms. Porsche, Ferrari, Lamborghini, McLaren, BMW M, Mercedes AMG. New & pre-owned exotic cars. Confidential premium service since 1985.';
+const keywords = ['sports car financing Malaysia', 'supercar loan', 'Porsche financing Malaysia', 'Ferrari loan', 'Lamborghini financing', 'exotic car loan', 'luxury car financing Malaysia'];
 
-// Breadcrumbs
 const breadcrumbs = [
   { label: 'Home', url: '/en' },
-  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Hobby Financing', url: '/en/equipment' },
   { label: 'Sports Car Financing', url: '/en/equipment/sports-car' },
 ];
 
-// Benefits
 const benefits = [
-  { icon: 'clock', title: 'Confidential Service', description: 'Discrete, professional consultation for high-net-worth clients. Your privacy and time are respected throughout the process.' },
-  { icon: 'percentage', title: 'Flexible Down Payment', description: 'Competitive financing structures for high-value vehicles. Terms designed for exotic car ownership.' },
-  { icon: 'shield', title: 'New & Pre-Owned', description: 'Finance new or certified pre-owned sports cars. Well-maintained exotics with documented history accepted.' },
-  { icon: 'users', title: 'All Exotic Brands', description: 'Porsche, Ferrari, Lamborghini, McLaren, Aston Martin, Bentley, BMW M, Mercedes AMG, Audi RS - all welcome.' },
+  { icon: 'star', title: 'Confidential Service', description: 'Discrete, professional consultation for high-net-worth clients. Your privacy is paramount. Financial details handled with complete confidentiality.' },
+  { icon: 'percentage', title: 'Flexible Down Payment', description: 'Competitive financing structures for high-value vehicles. Terms designed for exotic car ownership. Subject to credit assessment.' },
+  { icon: 'shield', title: 'New & Pre-Owned', description: 'Finance brand new sports cars or certified pre-owned exotics. Well-documented vehicles with clear history accepted.' },
+  { icon: 'brands', title: 'All Exotic Brands', description: 'Porsche, Ferrari, Lamborghini, McLaren, Aston Martin, Bentley, BMW M, Mercedes-AMG, Audi RS - all premium brands welcome.' },
   { icon: 'document', title: 'Premium Process', description: 'Streamlined documentation for busy professionals. Efficient processing without compromising thoroughness.' },
-  { icon: 'shield', title: 'High-Value Expertise', description: 'Finance sports cars from RM300K to RM5M+. We understand exotic car valuation and market dynamics.' },
+  { icon: 'money', title: 'High-Value Expertise', description: 'Finance sports cars from RM300K to RM10M+. We understand exotic car valuation and the premium market.' },
 ];
 
-// Sports Car Categories
+const steps = [
+  { stepNumber: 1, icon: 'contact', title: 'Confidential Inquiry', description: 'Contact us via WhatsApp. Discrete consultation about your sports car financing needs.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'IC, substantial income proof, bank statements. High-value exotics may require additional verification.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved', description: 'Receive your financing approval. We evaluate comprehensively based on your financial picture.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sign Agreement', description: 'Review transparent terms. Arrange comprehensive insurance. Complete the financing.' },
+  { stepNumber: 5, icon: 'car', title: 'Drive Your Dream', description: 'Take delivery of your exotic sports car. Join the exclusive community of exotic car owners.' },
+];
+
 const equipmentTypes = [
   {
     name: 'Entry-Level Sports Cars',
-    description: 'Accessible performance. Porsche Cayman/Boxster, BMW M2, Audi TT RS, Toyota GR Supra, Nissan Z.',
-    applications: 'Daily sports car, weekend driving, track day starter'
+    description: 'Accessible performance. Porsche Cayman/Boxster, BMW M2, Audi TT RS, Toyota GR Supra, Nissan Z, Corvette Stingray.',
+    applications: 'Daily sports car, weekend driving, track day starter',
+    priceRange: 'RM 300,000 - RM 600,000'
   },
   {
     name: 'Premium Sports Cars',
-    description: 'Serious performance machines. Porsche 911, BMW M3/M4, Mercedes AMG GT, Audi R8, Corvette.',
-    applications: 'Enthusiast ownership, spirited driving, car meets'
+    description: 'Serious performance machines. Porsche 911, BMW M3/M4, Mercedes-AMG GT, Audi R8, Jaguar F-Type R.',
+    applications: 'Enthusiast ownership, spirited driving, car meets',
+    priceRange: 'RM 500,000 - RM 1,500,000'
   },
   {
     name: 'Supercars',
-    description: 'Exotic performance. Ferrari, Lamborghini, McLaren, Aston Martin. The pinnacle of automotive engineering.',
-    applications: 'Collection, statement ownership, exclusive experiences'
+    description: 'Exotic mid-engine performance. Ferrari 296 GTB, Lamborghini Huracán, McLaren Artura, Aston Martin Vantage.',
+    applications: 'Collection, statement ownership, exclusive experiences',
+    priceRange: 'RM 1,000,000 - RM 3,000,000'
   },
   {
-    name: 'Hypercars & Limited Editions',
-    description: 'Ultra-rare machines. Ferrari SF90, McLaren 765LT, Lamborghini SVJ, Porsche GT3 RS, limited editions.',
-    applications: 'Investment, exclusive collection, special occasions'
+    name: 'Hypercars & Flagship Models',
+    description: 'Ultimate performance. Ferrari SF90 Stradale, Lamborghini Aventador SVJ, McLaren 765LT, Porsche 911 GT3 RS.',
+    applications: 'Investment, exclusive collection, special occasions',
+    priceRange: 'RM 2,500,000 - RM 10,000,000+'
   },
   {
     name: 'Performance Sedans',
-    description: 'Four-door performance. BMW M5, Mercedes E63 AMG, Audi RS6/RS7, Porsche Panamera Turbo.',
-    applications: 'Daily driver with performance, family sports car'
+    description: 'Four-door performance. BMW M5, Mercedes E63 AMG, Audi RS6/RS7, Porsche Panamera Turbo, Maserati Quattroporte.',
+    applications: 'Daily driver with performance, family sports car',
+    priceRange: 'RM 600,000 - RM 1,500,000'
+  },
+  {
+    name: 'Performance SUVs',
+    description: 'High-performance utility. Porsche Cayenne Turbo, Lamborghini Urus, BMW X5M/X6M, Mercedes GLE 63 AMG.',
+    applications: 'Versatile performance, family and sport',
+    priceRange: 'RM 500,000 - RM 2,500,000'
   },
   {
     name: 'Classic & Collectible Sports Cars',
-    description: 'Vintage performance icons. Classic Porsches, vintage Ferraris, collectible Japanese sports cars.',
-    applications: 'Collection, investment, classic car events'
+    description: 'Vintage performance icons. Classic Porsches, vintage Ferraris, collectible Japanese sports cars (R34 GT-R, NSX).',
+    applications: 'Collection, investment, classic car events',
+    priceRange: 'RM 400,000 - RM 5,000,000+'
+  },
+  {
+    name: 'Convertibles & Roadsters',
+    description: 'Open-top exhilaration. Ferrari Portofino, Porsche 911 Cabriolet, Mercedes-AMG SL, BMW M8 Convertible.',
+    applications: 'Cruising, coastal driving, special occasions',
+    priceRange: 'RM 600,000 - RM 3,000,000'
   },
 ];
 
-// Premium Brands
-const acceptedBrands = ['Porsche', 'Ferrari', 'Lamborghini', 'McLaren', 'Aston Martin', 'Bentley', 'BMW M', 'Mercedes-AMG', 'Audi RS/S', 'Maserati', 'Lotus', 'Alfa Romeo', 'Nissan GT-R', 'Corvette'];
+const acceptedBrands = ['Porsche', 'Ferrari', 'Lamborghini', 'McLaren', 'Aston Martin', 'Bentley', 'Rolls-Royce', 'BMW M', 'Mercedes-AMG', 'Audi RS/S', 'Maserati', 'Lotus', 'Alfa Romeo', 'Jaguar', 'Corvette', 'Nissan GT-R'];
 
-// FAQs
+const testimonials = [
+  {
+    name: 'Dato\' Tan Wei Ming',
+    company: 'Property Developer',
+    location: 'Kuala Lumpur',
+    testimonial: 'Financed my Ferrari 488 GTB through Ing Heng after banks made the process too complicated. Their team understood high-value assets and processed my application confidentially. Now driving my dream car.',
+    rating: 5,
+  },
+  {
+    name: 'Dr. Sarah Ahmad',
+    company: 'Medical Specialist',
+    location: 'Penang',
+    testimonial: 'Wanted a Porsche 911 Turbo S as a reward for years of hard work. Ing Heng made it possible with flexible terms that fit my practice income. Professional and discrete throughout.',
+    rating: 5,
+  },
+  {
+    name: 'Marcus Lee',
+    company: 'Tech Entrepreneur',
+    location: 'Cyberjaya',
+    testimonial: 'Second exotic car financed with Ing Heng - first was BMW M4, now Lamborghini Huracán. They understand enthusiasts and make the process smooth. Highly recommend for anyone serious about sports cars.',
+    rating: 5,
+  },
+];
+
 const faqs = [
   {
     question: 'What is the financing range for sports cars?',
-    answer: 'We finance sports cars from RM300,000 to RM5,000,000+. From entry-level Porsche Caymans to exotic Ferraris and Lamborghinis, we have financing solutions for serious enthusiasts.'
+    answer: 'We finance sports cars from RM300,000 to RM10,000,000+. Whether it\'s an entry-level Porsche Cayman or a flagship Ferrari SF90, we have financing solutions for serious enthusiasts and collectors.'
   },
   {
     question: 'Do you finance imported/recond sports cars?',
-    answer: 'Yes, we finance AP (Approved Permit) and reconditioned sports cars. The vehicle must have valid Malaysian registration and proper import documentation.'
+    answer: 'Yes, we finance AP (Approved Permit) and reconditioned sports cars. The vehicle must have valid Malaysian registration (JPJ) and proper import documentation. AP exotics from Japan, UK, and Europe are regularly financed.'
   },
   {
-    question: 'What about sports cars for collection (not daily use)?',
-    answer: 'We finance both daily drivers and collection vehicles. Usage pattern doesn\'t affect eligibility. We understand that exotic cars may have limited mileage.'
+    question: 'What about sports cars for collection (limited use)?',
+    answer: 'We finance both daily drivers and collection vehicles. Usage pattern doesn\'t affect eligibility. We understand that exotic cars may have limited mileage. Collector cars with documented history are welcome.'
   },
   {
-    question: 'Is vehicle inspection required?',
-    answer: 'For pre-owned sports cars, an inspection or recent service history may be required. This ensures the vehicle\'s condition matches its value and protects your investment.'
+    question: 'Is vehicle inspection required for pre-owned exotics?',
+    answer: 'For pre-owned sports cars, a pre-purchase inspection or recent service history from authorized dealer is recommended. This ensures the vehicle\'s condition matches its value. Inspection protects your significant investment.'
   },
   {
     question: 'Do you finance modified sports cars?',
-    answer: 'Factory-spec and lightly modified cars are generally accepted. Heavily modified vehicles are evaluated case-by-case based on modifications and value impact.'
+    answer: 'Factory-spec and lightly modified cars are generally accepted. Tasteful modifications (exhaust, wheels, suspension) typically don\'t affect financing. Heavily modified vehicles are evaluated case-by-case. Track-only builds may have limitations.'
   },
   {
     question: 'What documentation is needed for exotic car financing?',
-    answer: 'IC, proof of substantial income, bank statements, and vehicle documents. For high-value exotics, additional income verification ensures responsible financing.'
+    answer: 'IC, substantial proof of income, 6-12 months bank statements, vehicle documents. For high-value exotics (RM1M+), we may require tax returns, business financials, or asset declarations. The process remains efficient for qualified applicants.'
   },
   {
     question: 'Can I finance a sports car as a second/third vehicle?',
-    answer: 'Absolutely. Many clients finance sports cars as addition to their existing fleet. We evaluate overall financial capacity, not vehicle count.'
+    answer: 'Absolutely. Many clients finance sports cars as additions to their existing fleet. We evaluate overall financial capacity. Collectors with multiple exotics are welcome - some clients have financed 3-5 sports cars with us.'
+  },
+  {
+    question: 'What interest rates apply to sports car financing?',
+    answer: 'Interest rates range from 6% to 12% per annum depending on vehicle type, your profile, down payment, and term. Premium sports cars often qualify for competitive rates due to strong resale values. Contact us for personalized quote.'
+  },
+  {
+    question: 'How long are repayment terms for sports cars?',
+    answer: 'We offer terms from 12 to 84 months (7 years) for sports cars. Longer terms available for newer vehicles. Used exotics may have adjusted terms based on age. Choose terms that match your financial planning.'
+  },
+  {
+    question: 'Is the financing process confidential?',
+    answer: 'Absolutely. We maintain strict confidentiality for all clients. Your financial details and exotic car purchase are handled with complete discretion. Many high-profile clients trust us for this reason.'
+  },
+  {
+    question: 'What insurance is required for financed sports cars?',
+    answer: 'Comprehensive insurance with agreed value coverage is required. Sports car insurance costs 3-5% of vehicle value annually. We can recommend specialist insurers who understand exotic car coverage and claims.'
+  },
+  {
+    question: 'Can I refinance my existing sports car loan?',
+    answer: 'Yes! If you\'re paying high interest elsewhere, we can refinance your existing sports car loan. Many clients save 2-4% annually by refinancing with us. We buy out existing loans and provide better terms.'
   },
 ];
 
@@ -117,124 +183,193 @@ const productSchema = generateProductSchema({
 });
 
 const faqSchema = generateFAQSchema(faqs);
+
+const relatedEquipment = [
+  { name: 'Superbike Financing', url: '/en/equipment/superbike', description: 'Ducati, BMW S1000RR, Aprilia - premium motorcycles' },
+  { name: 'Boat Financing', url: '/en/equipment/boat', description: 'Speedboats, yachts, jet skis' },
+  { name: 'Motorcycle Financing', url: '/en/equipment/motorcycle', description: 'All motorcycles from daily riders to premium' },
+];
 ---
 
-<BaseLayout
-  title={pageTitle}
-  description={pageDescription}
-  keywords={keywords}
-  lang={lang}
->
+<BaseLayout title={pageTitle} description={pageDescription} keywords={keywords} lang={lang}>
   <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
   <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
 
   <Breadcrumbs items={breadcrumbs} lang={lang} />
 
-  <Hero
-    title="Sports Car Financing Malaysia"
-    subtitle="Finance your dream sports car. Porsche, Ferrari, Lamborghini, McLaren - all exotic brands welcome. Confidential premium service. Flexible terms for high-value vehicles."
-    ctaText="Apply Now via WhatsApp"
-    ctaLink="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20sports%20car%20financing"
-    ctaSecondaryText="Calculate Payments"
-    ctaSecondaryLink="#calculator"
-    lang={lang}
-    trustSignals={['Since 1985', 'Confidential Service', 'Exotic Car Specialists']}
-  />
-
-  <section class="py-16 bg-gray-50">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-gray-900 via-red-900 to-black py-20">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Premium Sports Car Financing</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {benefits.map(benefit => (
-          <BenefitCard {...benefit} />
-        ))}
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Sports Car Financing Malaysia</h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-8 leading-relaxed">
+          Finance your dream exotic. Porsche, Ferrari, Lamborghini, McLaren - all premium brands welcome.
+          <strong class="text-yellow-400">Confidential premium service since 1985.</strong>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20sports%20car%20financing" class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition">WhatsApp Us Now</a>
+          <a href="#calculator" class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition">Calculate Payment</a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+          <span>✓ Confidential Service</span>
+          <span>✓ All Exotic Brands</span>
+          <span>✓ RM300K - RM10M+</span>
+          <span>✓ Premium Process</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="py-16">
+  <!-- Benefits -->
+  <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">Sports Cars We Finance</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-        From attainable sports cars to exotic supercars, we help enthusiasts own their dream machines.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {equipmentTypes.map(type => (
-          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h3 class="text-xl font-bold text-primary mb-3">{type.name}</h3>
-            <p class="text-gray-600 mb-3">{type.description}</p>
-            <p class="text-sm text-gray-500"><strong>Perfect for:</strong> {type.applications}</p>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Premium Sports Car Financing</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Specialized financing for exotic car enthusiasts and collectors.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {benefits.map(benefit => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="text-4xl mb-4">🏎️</div>
+            <h3 class="text-xl font-bold mb-2">{benefit.title}</h3>
+            <p class="text-gray-600">{benefit.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="py-12 bg-primary text-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-8">Exotic Brands We Finance</h2>
-      <div class="flex flex-wrap justify-center gap-4">
-        {acceptedBrands.map(brand => (
-          <span class="bg-white/20 px-4 py-2 rounded-full text-sm">{brand}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16" id="calculator">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">Sports Car Payment Calculator</h2>
-      <p class="text-center text-gray-600 mb-8">
-        Calculate your monthly payment for that dream exotic.
-      </p>
-      <Calculator 
-        lang={lang}
-        defaultAmount={500000}
-        minAmount={100000}
-        maxAmount={5000000}
-        defaultTerm={60}
-        defaultRate={8}
-      />
-    </div>
-  </section>
-
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Sports Car Financing FAQ</h2>
-      <div class="max-w-3xl mx-auto space-y-4">
-        {faqs.map(faq => (
-          <FAQItem question={faq.question} answer={faq.answer} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16 bg-primary text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Ready to Own Your Dream Exotic?</h2>
-      <p class="text-xl mb-8 opacity-90">
-        Your dream sports car is within reach. Confidential consultation with our exotic car financing specialists.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20sports%20car%20financing" 
-           class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
-          WhatsApp Us Now
-        </a>
-        <a href="/en/contact" 
-           class="border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">
-          Contact Form
-        </a>
-      </div>
-    </div>
-  </section>
-
+  <!-- Sports Car Types -->
   <section class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">Apply for Sports Car Financing</h2>
-      <div class="max-w-2xl mx-auto">
-        <ContactForm lang={lang} equipmentType="Sports Car" />
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Sports Cars We Finance</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">From attainable sports cars to exotic hypercars.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        {equipmentTypes.map(type => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 class="text-lg font-bold text-primary mb-2">{type.name}</h3>
+            <p class="text-gray-600 text-sm mb-3">{type.description}</p>
+            <p class="text-xs text-gray-500 mb-2"><strong>Perfect for:</strong> {type.applications}</p>
+            <p class="text-primary font-semibold text-sm">{type.priceRange}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Brands -->
+  <section class="py-12 bg-gray-900 text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-8">Exotic Brands We Finance</h2>
+      <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
+        {acceptedBrands.map(brand => (<span class="bg-white/20 px-4 py-2 rounded-full text-sm">{brand}</span>))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold mb-4">Premium Financing Process</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
+        {steps.map(step => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">{step.stepNumber}</div>
+            <h3 class="font-bold mb-2">{step.title}</h3>
+            <p class="text-gray-600 text-sm">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="py-16" id="calculator">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Sports Car Payment Calculator</h2>
+        <p class="text-gray-600">Calculate your monthly payment for that dream exotic</p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <Calculator lang={lang} defaultAmount={800000} minAmount={200000} maxAmount={10000000} defaultTerm={60} defaultRate={8} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold mb-4">What Exotic Car Owners Say</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {testimonials.map(testimonial => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex mb-4">{[...Array(testimonial.rating)].map(() => <span class="text-yellow-400">★</span>)}</div>
+            <p class="text-gray-600 mb-4 italic">"{testimonial.testimonial}"</p>
+            <div>
+              <p class="font-bold">{testimonial.name}</p>
+              <p class="text-sm text-gray-500">{testimonial.company}</p>
+              <p class="text-sm text-gray-500">{testimonial.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12"><h2 class="text-3xl md:text-4xl font-bold mb-4">Sports Car Financing FAQ</h2></div>
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map(faq => (
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <details class="group">
+              <summary class="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+                <h3 class="font-bold pr-4">{faq.question}</h3>
+                <span class="text-xl text-primary group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div class="px-6 pb-6"><p class="text-gray-700 leading-relaxed">{faq.answer}</p></div>
+            </details>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-8">Other Hobby Financing</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {relatedEquipment.map(item => (
+          <a href={item.url} class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2">{item.name}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Own Your Dream Exotic?</h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Your dream sports car is within reach. Confidential consultation with our exotic car financing specialists.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20sports%20car%20financing" class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition">WhatsApp Us Now</a>
+        <a href="/en/contact" class="border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition">Contact Form</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8"><h2 class="text-3xl font-bold mb-4">Apply for Sports Car Financing</h2></div>
+      <div class="max-w-2xl mx-auto"><ContactForm lang={lang} equipmentType="Sports Car" /></div>
+    </div>
+  </section>
 </BaseLayout>

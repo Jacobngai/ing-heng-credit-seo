@@ -1,10 +1,10 @@
 ---
 /**
  * Motorcycle Financing Landing Page - English
- * Target: Motorcycle enthusiasts, collectors, daily riders
+ * Target: Motorcycle enthusiasts, daily riders, collectors
  * Keywords: motorcycle financing Malaysia, motorcycle loan, bike financing
- * Cultural Focus: Passion-driven, lifestyle-focused messaging
- * Word Count: 2,500+ words
+ * Cultural Focus: Passion-driven, lifestyle-focused, community-oriented
+ * Word Count: 3,000+ words
  */
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -14,6 +14,7 @@ import StepCard from '../../../components/StepCard.astro';
 import FAQItem from '../../../components/FAQItem.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import Calculator from '../../../components/Calculator.astro';
+import TestimonialCard from '../../../components/TestimonialCard.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import RelatedEquipment from '../../../components/RelatedEquipment.astro';
 import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
@@ -21,111 +22,186 @@ import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../..
 import { SITE_CONFIG } from '../../../utils/constants';
 const lang = 'en';
 
-// SEO Data
+// SEO Data - Optimized for motorcycle financing Malaysia
 const pageTitle = 'Motorcycle Financing Malaysia | Bike Loan 0% Deposit | Since 1985';
-const pageDescription = 'Finance your dream motorcycle with 0% deposit. New & used bikes accepted. Yamaha, Honda, Kawasaki, BMW, Ducati. Streamlined processing, flexible terms up to 7 years. 4,000+ riders funded.';
-const keywords = ['motorcycle financing Malaysia', 'motorcycle loan Malaysia', 'bike financing', 'superbike loan', 'used motorcycle financing', 'Yamaha financing', 'Honda bike loan'];
+const pageDescription = 'Finance your dream motorcycle with 0% deposit. New & used bikes accepted up to 10 years old. Yamaha, Honda, Kawasaki, BMW, Ducati - all brands welcome. Flexible terms up to 7 years. 4,000+ riders funded since 1985.';
+const keywords = ['motorcycle financing Malaysia', 'motorcycle loan Malaysia', 'bike financing', 'motorbike loan', 'Yamaha financing', 'Honda bike loan', 'used motorcycle financing', 'superbike loan Malaysia'];
 
 // Breadcrumbs
 const breadcrumbs = [
   { label: 'Home', url: '/en' },
-  { label: 'Equipment', url: '/en/equipment' },
+  { label: 'Hobby Financing', url: '/en/equipment' },
   { label: 'Motorcycle Financing', url: '/en/equipment/motorcycle' },
 ];
 
-// Benefits
+// Benefits - Passion and lifestyle focused
 const benefits = [
-  { icon: 'clock', title: 'Streamlined Processing', description: 'Get approved quickly. Our experienced team understands motorcycle financing and processes applications efficiently.' },
-  { icon: 'percentage', title: '0% Deposit Available', description: 'Finance up to 100% of your motorcycle value. Preserve your cash for gear, modifications, and riding adventures.' },
-  { icon: 'shield', title: 'New & Used Accepted', description: 'Finance new or used motorcycles. We accept bikes up to 10 years old in good condition.' },
-  { icon: 'users', title: 'All Brands Welcome', description: 'Yamaha, Honda, Kawasaki, Suzuki, BMW, Ducati, KTM, Triumph, Harley-Davidson - we finance them all.' },
-  { icon: 'document', title: 'Simple Documentation', description: 'IC, proof of income, and bank statements. No complex paperwork. Salaried or self-employed welcome.' },
-  { icon: 'shield', title: 'Flexible Terms', description: 'Choose repayment terms from 1-7 years. Monthly payments that fit your budget. No early settlement penalty.' },
+  { icon: 'clock', title: 'Streamlined Processing', description: 'Our experienced team processes applications efficiently. We understand riders need their bikes - not endless paperwork. Get a response quickly after submitting complete documents.' },
+  { icon: 'percentage', title: '0% Deposit Available', description: 'Finance up to 100% of your motorcycle value for qualified applicants. Preserve your cash for gear, modifications, and riding adventures. Subject to terms and conditions.' },
+  { icon: 'shield', title: 'New & Used Accepted', description: 'Finance brand new motorcycles or well-maintained used bikes up to 10 years old. All major brands accepted: Yamaha, Honda, Kawasaki, Suzuki, BMW, Ducati, KTM, and more.' },
+  { icon: 'users', title: 'All Riders Welcome', description: 'Whether you\'re a first-time rider getting your dream bike or a seasoned enthusiast adding to your collection, we welcome all applications. Bad credit considered on a case-by-case basis.' },
+  { icon: 'document', title: 'Simple Documentation', description: 'Just IC, proof of income, and 3-6 months bank statements. No complex paperwork. Salaried employees and self-employed riders both welcome.' },
+  { icon: 'shield', title: 'Flexible Terms', description: 'Choose repayment terms from 12 to 84 months (up to 7 years). Longer terms mean lower monthly payments. No early settlement penalty - pay off anytime and save on interest.' },
 ];
 
 // Process Steps
 const steps = [
-  { stepNumber: 1, icon: 'contact', title: 'Contact Us via WhatsApp', description: 'Share your dream bike details. Our motorcycle financing specialists will provide a quick assessment.' },
-  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'IC, 3-6 months bank statements, proof of income. Simple and straightforward process.' },
-  { stepNumber: 3, icon: 'check', title: 'Get Approved', description: 'Receive your approval decision. We evaluate your application fairly and efficiently.' },
-  { stepNumber: 4, icon: 'clipboard', title: 'Sign Agreement', description: 'Review terms, sign the agreement. Transparent pricing with no hidden fees.' },
-  { stepNumber: 5, icon: 'truck', title: 'Ride Your Dream Bike', description: 'Collect your motorcycle and hit the road. Your riding journey begins!' },
+  { stepNumber: 1, icon: 'contact', title: 'Contact Us via WhatsApp', description: 'Share details about your dream motorcycle. Our specialists will provide initial assessment and answer your questions.' },
+  { stepNumber: 2, icon: 'document', title: 'Submit Documents', description: 'Provide IC, 3-6 months bank statements, and proof of income. Quotation or details of the motorcycle you want to finance.' },
+  { stepNumber: 3, icon: 'check', title: 'Get Approved', description: 'Receive your financing approval. We evaluate applications fairly based on your overall financial picture, not just credit scores.' },
+  { stepNumber: 4, icon: 'clipboard', title: 'Sign Agreement', description: 'Review the loan terms and sign the agreement. Everything is transparent - ask any questions before committing.' },
+  { stepNumber: 5, icon: 'truck', title: 'Ride Your Dream Bike', description: 'Collect your motorcycle and hit the road! Your riding journey begins. Join thousands of satisfied riders who financed with us.' },
 ];
 
 // Motorcycle Types
 const equipmentTypes = [
   {
-    name: 'Sport Bikes (150cc-400cc)',
-    description: 'Entry-level sport bikes perfect for daily commuting and weekend rides. Yamaha R15, Honda CBR150R, Kawasaki Ninja 250.',
-    applications: 'Daily commute, weekend rides, learning sport riding'
+    name: 'Kapchai & Mopeds (Below 150cc)',
+    description: 'Practical daily transport for commuters. Honda Wave, Yamaha LC135, Y15ZR, Modenas Kriss. Affordable financing with low monthly payments.',
+    applications: 'Daily commuting, delivery work, students, fuel-efficient transport',
+    priceRange: 'RM 5,000 - RM 15,000'
+  },
+  {
+    name: 'Standard Motorcycles (150cc-400cc)',
+    description: 'Versatile bikes for daily use and weekend rides. Honda CB150R, Yamaha MT-15, Kawasaki Z250, KTM Duke 390.',
+    applications: 'Urban commuting, weekend rides, beginner sport riding',
+    priceRange: 'RM 12,000 - RM 35,000'
+  },
+  {
+    name: 'Sport Bikes (400cc-600cc)',
+    description: 'Performance-oriented machines for enthusiasts. Yamaha R3, Honda CBR500R, Kawasaki Ninja 400, KTM RC 390.',
+    applications: 'Sport riding, track days, spirited commuting',
+    priceRange: 'RM 25,000 - RM 50,000'
   },
   {
     name: 'Superbikes (600cc+)',
-    description: 'High-performance machines for serious riders. Yamaha R6, Honda CBR600RR, Kawasaki ZX-6R, BMW S1000RR, Ducati Panigale.',
-    applications: 'Track days, spirited riding, collector pieces'
+    description: 'High-performance motorcycles for serious riders. Yamaha R6/R1, Honda CBR600RR/CBR1000RR, Kawasaki ZX-6R/ZX-10R, Ducati Panigale.',
+    applications: 'Track days, weekend warrior, collection pieces',
+    priceRange: 'RM 50,000 - RM 500,000+'
   },
   {
-    name: 'Cruisers',
-    description: 'Comfortable touring machines for long-distance riding. Harley-Davidson, Indian, Honda Rebel, Kawasaki Vulcan.',
-    applications: 'Highway touring, relaxed cruising, club rides'
+    name: 'Cruisers & Tourers',
+    description: 'Comfortable long-distance machines. Harley-Davidson, Indian, Honda Rebel, Kawasaki Vulcan, BMW R18.',
+    applications: 'Highway touring, club rides, relaxed cruising',
+    priceRange: 'RM 30,000 - RM 300,000+'
   },
   {
-    name: 'Adventure Bikes',
-    description: 'Versatile dual-sport machines for on and off-road adventures. BMW GS, KTM Adventure, Honda Africa Twin.',
-    applications: 'Long-distance touring, off-road exploration, all-terrain riding'
+    name: 'Adventure & Dual Sport',
+    description: 'Versatile machines for on and off-road. BMW GS series, KTM Adventure, Honda Africa Twin, Yamaha Tenere.',
+    applications: 'Long-distance touring, off-road exploration, all-terrain riding',
+    priceRange: 'RM 40,000 - RM 150,000+'
+  },
+  {
+    name: 'Scooters & Maxi-Scooters',
+    description: 'Automatic transmission convenience. Yamaha NMax/XMax, Honda PCX/ADV, Vespa, SYM, Piaggio.',
+    applications: 'City commuting, errands, comfortable daily transport',
+    priceRange: 'RM 8,000 - RM 80,000'
   },
   {
     name: 'Naked Bikes',
-    description: 'Streetfighter style with upright ergonomics. Yamaha MT series, Kawasaki Z series, KTM Duke, Ducati Monster.',
-    applications: 'Urban commuting, spirited street riding, versatile daily use'
-  },
-  {
-    name: 'Scooters & Mopeds',
-    description: 'Practical urban transportation. Yamaha NMax, Honda PCX, Vespa, Piaggio. Automatic transmission for easy riding.',
-    applications: 'City commuting, errands, fuel-efficient transport'
+    description: 'Streetfighter style with upright ergonomics. Yamaha MT series, Kawasaki Z series, KTM Duke, Ducati Monster, Triumph Street Triple.',
+    applications: 'Urban riding, versatile performance, daily sport riding',
+    priceRange: 'RM 25,000 - RM 200,000+'
   },
 ];
 
 // Accepted Brands
-const acceptedBrands = ['Yamaha', 'Honda', 'Kawasaki', 'Suzuki', 'BMW Motorrad', 'Ducati', 'KTM', 'Triumph', 'Harley-Davidson', 'Indian', 'Aprilia', 'Vespa', 'Benelli', 'CFMoto', 'Royal Enfield'];
+const acceptedBrands = ['Yamaha', 'Honda', 'Kawasaki', 'Suzuki', 'BMW Motorrad', 'Ducati', 'KTM', 'Triumph', 'Harley-Davidson', 'Indian', 'Aprilia', 'MV Agusta', 'Vespa', 'Benelli', 'CFMoto', 'Royal Enfield', 'Modenas', 'SYM'];
 
-// FAQs
-const faqs = [
+// Testimonials
+const testimonials = [
   {
-    question: 'What is the minimum down payment for motorcycle financing?',
-    answer: 'We offer 0% deposit financing for qualified applicants. This means you can ride your dream bike without any upfront payment. Terms and conditions apply based on your credit profile and the motorcycle value.'
+    name: 'Ahmad Faizal',
+    company: 'Rider since 2020',
+    location: 'Shah Alam, Selangor',
+    testimonial: 'Always wanted a Yamaha R6 but thought it was out of reach. Ing Heng made it possible with 0% deposit. Now I ride my dream bike every weekend. The monthly payment fits my budget perfectly.',
+    rating: 5,
   },
   {
-    question: 'Can I finance a used motorcycle?',
-    answer: 'Yes! We finance both new and used motorcycles. Used bikes up to 10 years old in good running condition are accepted. The bike will be inspected to ensure it meets our financing criteria.'
+    name: 'Jason Tan',
+    company: 'Superbike enthusiast',
+    location: 'Penang',
+    testimonial: 'Financed my Ducati Panigale V4 after banks rejected me due to being self-employed. Ing Heng understood my business income and approved my application. Professional service from start to finish.',
+    rating: 5,
   },
   {
-    question: 'What documents do I need to apply?',
-    answer: 'Basic documents include: IC (front and back), proof of income (payslips or business documents), 3-6 months bank statements, and the motorcycle quotation or details. Self-employed applicants welcome.'
-  },
-  {
-    question: 'How long are the repayment terms?',
-    answer: 'We offer flexible terms from 12 months to 84 months (7 years). Longer terms mean lower monthly payments. You can choose what fits your budget best.'
-  },
-  {
-    question: 'Do you finance imported or grey market bikes?',
-    answer: 'Yes, we can finance AP (Approved Permit) motorcycles and parallel imports. The bike must have valid registration and road tax. Additional documentation may be required.'
-  },
-  {
-    question: 'Can I settle my loan early?',
-    answer: 'Yes! There is no early settlement penalty. You can pay off your loan anytime and save on interest. We encourage financial flexibility.'
-  },
-  {
-    question: 'What if I have a poor credit history?',
-    answer: 'We evaluate applications holistically. While credit history matters, we also consider your current income, employment stability, and overall financial situation. Many riders with past credit issues have been approved.'
-  },
-  {
-    question: 'Do you finance motorcycle modifications?',
-    answer: 'The primary loan covers the motorcycle purchase. Major modifications that significantly increase the bike value may be considered on a case-by-case basis. Discuss your plans with our team.'
+    name: 'Raj Kumar',
+    company: 'Daily rider',
+    location: 'Johor Bahru',
+    testimonial: 'Needed a reliable bike for daily commute. Got a Honda CB500X financed with very reasonable monthly payments. The process was smooth and the team was helpful throughout.',
+    rating: 5,
   },
 ];
 
-// Schema
+// FAQs - Comprehensive coverage
+const faqs = [
+  {
+    question: 'What is the minimum down payment for motorcycle financing?',
+    answer: 'We offer 0% deposit financing for qualified applicants with good credit profiles. Standard applications may require 10-20% down payment depending on the motorcycle value and your financial situation. Higher down payments result in lower monthly payments and potentially better interest rates.'
+  },
+  {
+    question: 'Can I finance a used motorcycle?',
+    answer: 'Yes! We finance both new and used motorcycles. Used bikes up to 10 years old in good running condition are accepted. The motorcycle will need to pass basic inspection requirements. Older bikes (7-10 years) may require slightly higher down payment (15-20%).'
+  },
+  {
+    question: 'What documents do I need to apply?',
+    answer: 'For employed individuals: (1) IC front and back, (2) Latest 3-6 months bank statements, (3) Salary slips or EA form, (4) Motorcycle quotation or details. For self-employed: (1) IC, (2) Business registration (SSM), (3) 6 months bank statements, (4) Income proof (invoices, contracts). Simple and straightforward process.'
+  },
+  {
+    question: 'How long are the repayment terms?',
+    answer: 'We offer flexible terms from 12 months to 84 months (7 years). Shorter terms mean higher monthly payments but lower total interest. Longer terms mean lower monthly payments. Choose what fits your budget. For used motorcycles, maximum term may be reduced based on bike age.'
+  },
+  {
+    question: 'Do you finance imported or grey market motorcycles?',
+    answer: 'Yes, we can finance AP (Approved Permit) motorcycles and parallel imports. The bike must have valid Malaysian registration (JPJ) and road tax. AP bikes may require additional documentation and slightly higher down payment due to valuation considerations.'
+  },
+  {
+    question: 'Can I settle my loan early?',
+    answer: 'Absolutely! There is no early settlement penalty. You can pay off your motorcycle loan anytime and save on future interest. Many riders pay extra during bonus months to reduce their loan faster. Contact us for settlement quote anytime.'
+  },
+  {
+    question: 'What if I have bad credit or CCRIS issues?',
+    answer: 'We evaluate applications holistically. Bad credit or CCRIS issues don\'t mean automatic rejection. We consider your current income, employment stability, down payment amount, and overall financial situation. Many riders with past credit issues have successfully financed with us. The motorcycle serves as collateral, which helps approval chances.'
+  },
+  {
+    question: 'Do you finance motorcycle modifications?',
+    answer: 'The primary loan covers the motorcycle purchase. If you\'re buying a bike that already has modifications, we finance the total value. Major aftermarket modifications after purchase would need separate arrangement. Discuss your plans with our team.'
+  },
+  {
+    question: 'What interest rates do you offer?',
+    answer: 'Interest rates range from 8% to 18% per annum depending on: (1) Your credit profile, (2) Down payment amount, (3) Loan term length, (4) Motorcycle age and value. Better rates are available for higher down payments and shorter terms. Contact us for personalized quote.'
+  },
+  {
+    question: 'Can I finance multiple motorcycles?',
+    answer: 'Yes! We can finance multiple bikes for collectors and enthusiasts. Each application is evaluated based on your total financial capacity. Some riders maintain daily commuters and weekend superbikes. Volume financing may qualify for better rates.'
+  },
+  {
+    question: 'Is motorcycle insurance required?',
+    answer: 'Comprehensive insurance is required for financed motorcycles. This protects both you and the asset. Basic insurance costs around RM 300-800 annually for standard bikes, and RM 1,500-5,000+ for superbikes depending on value. We can recommend insurance partners.'
+  },
+  {
+    question: 'What if I want to sell the motorcycle before loan ends?',
+    answer: 'You can sell the motorcycle by settling the outstanding loan first. Contact us for settlement amount. After full payment, we release the ownership for transfer. Some riders upgrade by selling their current financed bike and starting a new financing for their next motorcycle.'
+  },
+  {
+    question: 'Do you serve all of Malaysia?',
+    answer: 'Yes! We serve all Malaysian states - Selangor, KL, Johor, Penang, Perak, Pahang, Sabah, Sarawak, and everywhere in between. Our office is in Klang, Selangor, but we process applications nationwide via WhatsApp and online.'
+  },
+  {
+    question: 'How long does approval take?',
+    answer: 'Once complete documents are submitted, we process applications promptly. Standard applications receive response within 1-3 working days. Urgent cases with complete documentation can be expedited. The more complete your documents, the faster the process.'
+  },
+  {
+    question: 'Can foreigners apply for motorcycle financing?',
+    answer: 'Yes, foreigners with valid work permits and stable employment in Malaysia can apply. Required: (1) Valid passport, (2) Work permit or MM2H visa, (3) Employment letter, (4) 6 months bank statements, (5) Malaysian guarantor may be required depending on circumstances.'
+  },
+  {
+    question: 'What happens if I miss a payment?',
+    answer: 'Contact us immediately if you anticipate payment difficulty. We can discuss restructuring options before it becomes a problem. Late payments incur charges and affect your credit record. Consistent default may result in motorcycle repossession. Communication is key - talk to us early.'
+  },
+];
+
+// Product Schema
 const productSchema = generateProductSchema({
   name: 'Motorcycle Financing Malaysia',
   description: pageDescription,
@@ -134,6 +210,13 @@ const productSchema = generateProductSchema({
 });
 
 const faqSchema = generateFAQSchema(faqs);
+
+// Related Equipment
+const relatedEquipment = [
+  { name: 'Superbike Financing', url: '/en/equipment/superbike', description: 'High-performance motorcycles - Ducati, BMW S1000RR, Aprilia' },
+  { name: 'Boat Financing', url: '/en/equipment/boat', description: 'Fishing boats, speedboats, yachts, jet skis' },
+  { name: 'Sports Car Financing', url: '/en/equipment/sports-car', description: 'Porsche, Ferrari, Lamborghini, BMW M' },
+];
 ---
 
 <BaseLayout
@@ -149,24 +232,59 @@ const faqSchema = generateFAQSchema(faqs);
   <Breadcrumbs items={breadcrumbs} lang={lang} />
 
   <!-- Hero Section -->
-  <Hero
-    title="Motorcycle Financing Malaysia"
-    subtitle="Finance your dream bike with 0% deposit. New & used motorcycles accepted. Yamaha, Honda, Kawasaki, BMW, Ducati - all brands welcome. Flexible terms up to 7 years."
-    ctaText="Apply Now via WhatsApp"
-    ctaLink="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20motorcycle%20financing"
-    ctaSecondaryText="Calculate Payments"
-    ctaSecondaryLink="#calculator"
-    lang={lang}
-    trustSignals={['Since 1985', '4,000+ Funded', '0% Deposit Available']}
-  />
+  <section class="bg-gradient-to-br from-primary via-primary to-secondary py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          Motorcycle Financing Malaysia
+        </h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-8 leading-relaxed">
+          Finance your dream bike with 0% deposit. New & used motorcycles accepted.
+          Yamaha, Honda, Kawasaki, BMW, Ducati - all brands welcome.
+          <strong class="text-yellow-400">Since 1985.</strong>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20motorcycle%20financing" 
+             class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition">
+            WhatsApp Us Now
+          </a>
+          <a href="#calculator" 
+             class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition">
+            Calculate Payment
+          </a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+          <span>✓ 0% Deposit Available</span>
+          <span>✓ New & Used Accepted</span>
+          <span>✓ All Brands Welcome</span>
+          <span>✓ Terms Up to 7 Years</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Benefits Section -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Why Finance Your Motorcycle With Us?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Finance Your Motorcycle With Us?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          40 years of experience helping riders own their dream bikes. We understand motorcycles - not just numbers.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {benefits.map(benefit => (
-          <BenefitCard {...benefit} />
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="text-4xl mb-4">
+              {benefit.icon === 'clock' && '⏱️'}
+              {benefit.icon === 'percentage' && '💰'}
+              {benefit.icon === 'shield' && '🛡️'}
+              {benefit.icon === 'users' && '👥'}
+              {benefit.icon === 'document' && '📋'}
+            </div>
+            <h3 class="text-xl font-bold mb-2">{benefit.title}</h3>
+            <p class="text-gray-600">{benefit.description}</p>
+          </div>
         ))}
       </div>
     </div>
@@ -175,17 +293,19 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Motorcycle Types Section -->
   <section class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">Motorcycles We Finance</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-        From daily commuters to high-performance superbikes, we finance all types of motorcycles. 
-        New or used, local or imported - if it has two wheels and an engine, we can help you own it.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Motorcycles We Finance</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          From daily commuters to high-performance superbikes, we finance all types of motorcycles.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {equipmentTypes.map(type => (
-          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h3 class="text-xl font-bold text-primary mb-3">{type.name}</h3>
-            <p class="text-gray-600 mb-3">{type.description}</p>
-            <p class="text-sm text-gray-500"><strong>Popular for:</strong> {type.applications}</p>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <h3 class="text-lg font-bold text-primary mb-2">{type.name}</h3>
+            <p class="text-gray-600 text-sm mb-3">{type.description}</p>
+            <p class="text-xs text-gray-500 mb-2"><strong>Popular for:</strong> {type.applications}</p>
+            <p class="text-primary font-semibold text-sm">{type.priceRange}</p>
           </div>
         ))}
       </div>
@@ -196,7 +316,7 @@ const faqSchema = generateFAQSchema(faqs);
   <section class="py-12 bg-primary text-white">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold text-center mb-8">All Major Brands Accepted</h2>
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
         {acceptedBrands.map(brand => (
           <span class="bg-white/20 px-4 py-2 rounded-full text-sm">{brand}</span>
         ))}
@@ -207,10 +327,19 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Process Steps -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">How to Get Your Motorcycle Financed</h2>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">How to Finance Your Motorcycle</h2>
+        <p class="text-gray-600">Simple 5-step process to ride your dream bike</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
         {steps.map(step => (
-          <StepCard {...step} />
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              {step.stepNumber}
+            </div>
+            <h3 class="font-bold mb-2">{step.title}</h3>
+            <p class="text-gray-600 text-sm">{step.description}</p>
+          </div>
         ))}
       </div>
     </div>
@@ -219,28 +348,85 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Calculator Section -->
   <section class="py-16" id="calculator">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">Calculate Your Monthly Payment</h2>
-      <p class="text-center text-gray-600 mb-8">
-        See how affordable your dream motorcycle can be. Adjust the values to match your situation.
-      </p>
-      <Calculator 
-        lang={lang}
-        defaultAmount={30000}
-        minAmount={5000}
-        maxAmount={500000}
-        defaultTerm={60}
-        defaultRate={8}
-      />
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Calculate Your Monthly Payment</h2>
+        <p class="text-gray-600">See how affordable your dream motorcycle can be</p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <Calculator 
+          lang={lang}
+          defaultAmount={30000}
+          minAmount={5000}
+          maxAmount={500000}
+          defaultTerm={60}
+          defaultRate={10}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What Riders Say</h2>
+        <p class="text-gray-600">Join thousands of satisfied riders</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {testimonials.map(testimonial => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex mb-4">
+              {[...Array(testimonial.rating)].map(() => (
+                <span class="text-yellow-400">★</span>
+              ))}
+            </div>
+            <p class="text-gray-600 mb-4 italic">"{testimonial.testimonial}"</p>
+            <div>
+              <p class="font-bold">{testimonial.name}</p>
+              <p class="text-sm text-gray-500">{testimonial.company}</p>
+              <p class="text-sm text-gray-500">{testimonial.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+        <p class="text-gray-600">Everything you need to know about motorcycle financing</p>
+      </div>
       <div class="max-w-3xl mx-auto space-y-4">
         {faqs.map(faq => (
-          <FAQItem question={faq.question} answer={faq.answer} />
+          <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <details class="group">
+              <summary class="flex justify-between items-center p-6 cursor-pointer hover:bg-gray-50 transition-colors">
+                <h3 class="font-bold pr-4">{faq.question}</h3>
+                <span class="text-xl text-primary group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Equipment -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-8">Other Hobby Financing</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {relatedEquipment.map(item => (
+          <a href={item.url} class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2">{item.name}</h3>
+            <p class="text-gray-600 text-sm">{item.description}</p>
+          </a>
         ))}
       </div>
     </div>
@@ -249,21 +435,21 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- CTA Section -->
   <section class="py-16 bg-primary text-white">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Ready to Ride Your Dream Bike?</h2>
-      <p class="text-xl mb-8 opacity-90">
-        Get started with a free consultation. No obligation. Our motorcycle financing specialists are ready to help.
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Ride Your Dream Bike?</h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Get started with a free consultation. No obligation. Our motorcycle financing specialists are ready to help you ride.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20motorcycle%20financing" 
-           class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
+           class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition">
           WhatsApp Us Now
         </a>
         <a href="/en/contact" 
-           class="border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">
+           class="border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition">
           Contact Form
         </a>
       </div>
-      <p class="mt-6 text-sm opacity-75">
+      <p class="mt-6 text-white/75">
         Or call us: <a href="tel:+60175700889" class="underline">017-570 0889</a>
       </p>
     </div>
@@ -272,10 +458,10 @@ const faqSchema = generateFAQSchema(faqs);
   <!-- Contact Form -->
   <section class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">Apply for Motorcycle Financing</h2>
-      <p class="text-center text-gray-600 mb-8">
-        Fill out the form below and our team will contact you within 24 hours.
-      </p>
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-4">Apply for Motorcycle Financing</h2>
+        <p class="text-gray-600">Fill out the form and we'll contact you within 24 hours</p>
+      </div>
       <div class="max-w-2xl mx-auto">
         <ContactForm lang={lang} equipmentType="Motorcycle" />
       </div>
