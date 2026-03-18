@@ -309,7 +309,13 @@ export const EQUIPMENT_NAV_ITEMS = [
     label: 'hobby.sportsCar',
     href: '/equipment/sports-car',
     description: 'hobby.sportsCarDesc',
-    icon: '🏎️',
+    icon: '🚗',
+  },
+  {
+    label: 'hobby.helicopter',
+    href: '/equipment/helicopter',
+    description: 'hobby.helicopterDesc',
+    icon: '🚁',
   },
 ];
 
