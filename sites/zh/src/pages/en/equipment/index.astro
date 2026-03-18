@@ -1,0 +1,149 @@
+---
+/**
+ * Equipment Index Page - Hobby Financing
+ * Lists all hobby/lifestyle financing categories
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const lang = 'en';
+
+const pageTitle = 'Hobby & Lifestyle Financing Malaysia | Motorcycles, Boats, Sports Cars';
+const pageDescription = 'Finance your passion. Motorcycles, superbikes, boats, marine equipment, and sports cars. 0% deposit available. Flexible terms. Since 1985.';
+
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Equipment', url: '/en/equipment' },
+];
+
+const categories = [
+  {
+    title: 'Motorcycle Financing',
+    description: 'Finance your dream bike. Yamaha, Honda, Kawasaki, BMW, and all major brands. New & used accepted.',
+    image: '/images/equipment/motorcycle.jpg',
+    url: '/en/equipment/motorcycle',
+    priceRange: 'RM5,000 - RM500,000',
+    features: ['0% Deposit', 'Terms up to 7 years', 'All brands accepted']
+  },
+  {
+    title: 'Superbike Financing',
+    description: 'High-performance motorcycles. Ducati, BMW S1000RR, Kawasaki ZX-10R, Yamaha R1, and more.',
+    image: '/images/equipment/superbike.jpg',
+    url: '/en/equipment/superbike',
+    priceRange: 'RM50,000 - RM800,000',
+    features: ['Premium service', 'Exotic brands', 'Track bikes considered']
+  },
+  {
+    title: 'Boat & Marine Financing',
+    description: 'Fishing boats, speedboats, yachts, jet skis. All vessel types and marine equipment.',
+    image: '/images/equipment/boat.jpg',
+    url: '/en/equipment/boat',
+    priceRange: 'RM30,000 - RM2,000,000+',
+    features: ['Terms up to 10 years', 'Marine specialists', 'Equipment included']
+  },
+  {
+    title: 'Sports Car Financing',
+    description: 'Porsche, Ferrari, Lamborghini, McLaren. Premium and exotic sports car financing.',
+    image: '/images/equipment/sports-car.jpg',
+    url: '/en/equipment/sports-car',
+    priceRange: 'RM300,000 - RM5,000,000+',
+    features: ['Confidential service', 'Exotic brands', 'Collection vehicles']
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  <Breadcrumbs items={breadcrumbs} lang={lang} />
+
+  <Hero
+    title="Hobby & Lifestyle Financing"
+    subtitle="Finance your passion. From motorcycles to supercars, we help you own what you love. 0% deposit available. Flexible terms. Since 1985."
+    ctaText="WhatsApp Us"
+    ctaLink="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20hobby%20financing"
+    ctaSecondaryText="View Options"
+    ctaSecondaryLink="#categories"
+    lang={lang}
+    trustSignals={['Since 1985', '4,000+ Funded', '0% Deposit Available']}
+  />
+
+  <section class="py-16" id="categories">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">What Would You Like to Finance?</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+        Choose your passion. We offer flexible financing for motorcycles, boats, and exotic cars.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {categories.map(category => (
+          <a href={category.url} class="group">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow">
+              <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <h3 class="text-2xl font-bold text-white">{category.title}</h3>
+              </div>
+              <div class="p-6">
+                <p class="text-gray-600 mb-4">{category.description}</p>
+                <p class="text-sm text-primary font-bold mb-4">{category.priceRange}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {category.features.map(feature => (
+                    <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">{feature}</span>
+                  ))}
+                </div>
+                <span class="text-primary font-semibold group-hover:underline">
+                  Learn More →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Why Finance With Us?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">🏆</div>
+          <h3 class="font-bold mb-2">Since 1985</h3>
+          <p class="text-gray-600 text-sm">40 years of trusted financing in Malaysia</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">💰</div>
+          <h3 class="font-bold mb-2">0% Deposit</h3>
+          <p class="text-gray-600 text-sm">Finance up to 100% for qualified applicants</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">📋</div>
+          <h3 class="font-bold mb-2">Simple Process</h3>
+          <p class="text-gray-600 text-sm">Streamlined documentation, efficient approval</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="font-bold mb-2">4,000+ Funded</h3>
+          <p class="text-gray-600 text-sm">Thousands of happy customers since 1985</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Finance Your Passion?</h2>
+      <p class="text-xl mb-8 opacity-90">
+        Get started with a free consultation. No obligation. Our specialists are ready to help.
+      </p>
+      <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20hobby%20financing" 
+         class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition inline-block">
+        WhatsApp Us Now
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

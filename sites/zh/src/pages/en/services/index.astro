@@ -1,0 +1,136 @@
+---
+/**
+ * Services Index Page - Hobby Financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const lang = 'en';
+
+const pageTitle = 'Hobby Financing Services Malaysia | Motorcycles, Boats, Sports Cars';
+const pageDescription = 'Flexible financing for your lifestyle. Motorcycles, superbikes, boats, marine equipment, and sports cars. 0% deposit available. Since 1985.';
+
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'Services', url: '/en/services' },
+];
+
+const services = [
+  {
+    title: 'Motorcycle & Superbike Financing',
+    description: 'Finance motorcycles from daily commuters to high-performance superbikes. All brands welcome.',
+    features: ['0% deposit available', 'Terms up to 7 years', 'New & used accepted', 'Bad credit considered'],
+    cta: 'Learn More',
+    url: '/en/equipment/motorcycle'
+  },
+  {
+    title: 'Boat & Marine Financing',
+    description: 'Fishing boats, speedboats, yachts, jet skis, and marine equipment financing.',
+    features: ['Terms up to 10 years', 'Commercial & recreational', 'Marine equipment included', 'Survey assistance'],
+    cta: 'Learn More',
+    url: '/en/equipment/boat'
+  },
+  {
+    title: 'Sports Car Financing',
+    description: 'Porsche, Ferrari, Lamborghini, McLaren - premium and exotic car financing.',
+    features: ['Confidential service', 'New & pre-owned', 'Collection vehicles', 'High-value expertise'],
+    cta: 'Learn More',
+    url: '/en/equipment/sports-car'
+  },
+  {
+    title: 'Hire Purchase',
+    description: 'Traditional hire purchase financing for all hobby and lifestyle assets.',
+    features: ['Flexible terms 1-7 years', 'Build ownership equity', 'Fixed monthly payments', 'Early settlement option'],
+    cta: 'Contact Us',
+    url: '/en/contact'
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  <Breadcrumbs items={breadcrumbs} lang={lang} />
+
+  <Hero
+    title="Our Financing Services"
+    subtitle="Flexible financing for your lifestyle and passion. Motorcycles, boats, and exotic cars. 0% deposit available. Trusted since 1985."
+    ctaText="WhatsApp Us"
+    ctaLink="https://wa.me/60175700889"
+    lang={lang}
+    trustSignals={['Since 1985', 'KPKT Licensed', '4,000+ Funded']}
+  />
+
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Financing Services</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {services.map(service => (
+          <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+            <h3 class="text-2xl font-bold text-primary mb-4">{service.title}</h3>
+            <p class="text-gray-600 mb-6">{service.description}</p>
+            <ul class="space-y-2 mb-6">
+              {service.features.map(feature => (
+                <li class="flex items-center text-gray-700">
+                  <span class="text-green-500 mr-2">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href={service.url} class="text-primary font-semibold hover:underline">
+              {service.cta} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Why Choose Us?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-5xl mb-4">🏆</div>
+          <h3 class="text-xl font-bold mb-2">40 Years Experience</h3>
+          <p class="text-gray-600">Trusted financing since 1985</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">📜</div>
+          <h3 class="text-xl font-bold mb-2">KPKT Licensed</h3>
+          <p class="text-gray-600">Regulated and compliant</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">💯</div>
+          <h3 class="text-xl font-bold mb-2">4,000+ Customers</h3>
+          <p class="text-gray-600">Thousands of happy owners</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+      <p class="text-xl mb-8 opacity-90">
+        Contact us for a free consultation. No obligation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/60175700889" 
+           class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
+          WhatsApp Us
+        </a>
+        <a href="/en/contact" 
+           class="border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
