@@ -1,592 +1,94 @@
 ---
 /**
- * Mandarin Blog Index Page - HYBRID ARCHITECTURE (中文博客首页)
- * Equipment Financing Blog - Expert Tips & Industry Guides
- * SEO: Informational, Community-focused, Relationship-building
- * Cultural Tone: Relationship-focused, trust-building, practical wisdom sharing
- *
- * ARCHITECTURE: Auto-discovers blog posts from BOTH:
- * 1. Existing .astro files (src/pages/zh/blog/*.astro)
- * 2. New markdown files (src/content/blogs/zh/*.md)
+ * Blog Index Page - Hobby Financing
  */
 
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
-import BlogCard from '../../../components/BlogCard.astro';
-import CTAButton from '../../../components/CTAButton.astro';
-import { COMPANY_INFO } from '../../../utils/constants';
-import { SITE_CONFIG } from '../../../utils/constants';
 
-const lang = 'zh';
+const lang = 'en';
 
-// 🔥 AUTO-DISCOVER .md blog posts (Content Collections)
-const allMdPosts = await getCollection('blogs');
-const allPosts = allMdPosts
-  .filter(post => post.data.locale === lang)
-  .map(post => ({
-    title: post.data.title,
-    excerpt: post.data.description,
-    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,  // Remove locale folder prefix
-    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
-    author: post.data.author,
-    category: post.data.category,
-    readTime: post.data.readingTime || 5,
-    featured: post.data.featured,
-    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
-  }));
+const pageTitle = 'Hobby Financing Blog | Tips & Guides';
+const pageDescription = 'Expert guides on motorcycle financing, boat loans, and sports car financing in Malaysia. Tips, comparisons, and industry insights.';
 
-// 🔥 SORT by date (newest first)
-const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.date).valueOf() - new Date(a.date).valueOf()
-);
-
-// 🔥 FEATURED posts (auto-selected from featured flag, limit 3)
-const featuredPosts = sortedPosts.filter(p => p.featured).slice(0, 3);
-
-// If no featured posts, use the 3 most recent
-const displayFeaturedPosts = featuredPosts.length > 0 ? featuredPosts : sortedPosts.slice(0, 3);
-
-// 🔥 PAGINATION SETUP
-const POSTS_PER_PAGE = 12;
-const currentPage = 1; // This would come from URL params in a real pagination system
-const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-const paginatedPosts = sortedPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
-
-// 🔥 POPULAR posts (for sidebar - use first 8)
-const popularPosts = sortedPosts.slice(0, 8).map(p => ({ title: p.title, slug: p.slug }));
-
-// 🔥 DYNAMIC category counts (updated for new blog structure)
-const categories = [
-  {
-    name: '设备融资',
-    slug: 'equipment-financing',
-    count: allPosts.filter(p => p.category === 'Equipment Financing').length,
-    icon: '🏗️'
-  },
-  {
-    name: '政府招标',
-    slug: 'government-tenders', 
-    count: allPosts.filter(p => p.title.includes('政府') || p.title.includes('CIDB') || p.title.includes('捷运') || p.title.includes('东铁') || p.title.includes('婆罗洲')).length,
-    icon: '🏛️'
-  },
-  {
-    name: '起重机融资',
-    slug: 'crane-financing',
-    count: allPosts.filter(p => p.title.includes('起重机') || p.title.includes('塔式') || p.title.includes('移动式')).length,
-    icon: '🏗️'
-  },
-  {
-    name: '车队融资', 
-    slug: 'fleet-financing',
-    count: allPosts.filter(p => p.title.includes('车队') || p.title.includes('批量') || p.title.includes('台') || p.title.includes('多')).length,
-    icon: '🚛'
-  },
-  {
-    name: '技术设备',
-    slug: 'technology-equipment',
-    count: allPosts.filter(p => p.title.includes('GPS') || p.title.includes('智能') || p.title.includes('3D') || p.title.includes('IoT')).length,
-    icon: '🔧'
-  },
-  {
-    name: '税务优惠',
-    slug: 'tax-benefits',
-    count: allPosts.filter(p => p.title.includes('税') || p.title.includes('资本') || p.title.includes('津贴')).length,
-    icon: '📋'
-  },
+const breadcrumbs = [
+  { label: 'Home', url: '/zh' },
+  { label: 'Blog', url: '/zh/blog' },
 ];
 
-// Calculate pagination pages for index (page 1)
-const paginationPages = [];
-const maxPagesToShow = 5;
-if (totalPages <= maxPagesToShow) {
-  for (let i = 1; i <= totalPages; i++) paginationPages.push(i);
-} else {
-  for (let i = 1; i <= maxPagesToShow; i++) paginationPages.push(i);
-  if (totalPages > maxPagesToShow) {
-    paginationPages.push('...');
-    paginationPages.push(totalPages);
-  }
-}
-
-// Breadcrumb navigation
-const breadcrumbItems = [
-  { label: '首页', href: '/zh' },
-  { label: '博客', href: '/zh/blog' },
-];
-
-// Schema markup for Blog CollectionPage
-const blogCollectionSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "设备融资博客 - 专家技巧与行业指南",
-  "description": "来自马来西亚值得信赖的融资合作伙伴（成立于1985年）的设备融资、建筑业务管理和行业趋势专业见解。",
-  "url": `${SITE_CONFIG.url}/zh/blog`,
-  "publisher": {
-    "@type": "Organization",
-    "name": "永兴信贷有限公司",
-    "logo": {
-      "@type": "ImageObject",
-      "url": `${SITE_CONFIG.url}/logo.png`
-    }
+// Placeholder - will be populated with actual blog posts
+const featuredPosts = [
+  {
+    title: 'How to Finance Your First Superbike in Malaysia',
+    excerpt: 'A complete guide to financing high-performance motorcycles, from documentation to approval.',
+    url: '/zh/equipment/superbike',
+    category: 'Motorcycles'
   },
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": displayFeaturedPosts.map((post, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "BlogPosting",
-        "headline": post.title,
-        "description": post.excerpt,
-        "datePublished": post.date,
-        "author": {
-          "@type": "Organization",
-          "name": post.author
-        }
-      }
-    }))
-  }
-};
+  {
+    title: 'Boat Financing: What You Need to Know',
+    excerpt: 'Understanding marine loans, insurance requirements, and financing terms for boats in Malaysia.',
+    url: '/zh/equipment/boat',
+    category: 'Marine'
+  },
+  {
+    title: 'Sports Car Financing Options Compared',
+    excerpt: 'Bank loans vs alternative financing for exotic and premium sports cars.',
+    url: '/zh/equipment/sports-car',
+    category: 'Sports Cars'
+  },
+];
 ---
 
 <BaseLayout
-  title="马来西亚设备融资博客 | 专家技巧 | 永兴信贷"
-  description="设备融资、建筑业务管理、税收优惠和行业趋势的专业见解。40多年的融资专业知识助力您的企业成长。"
+  title={pageTitle}
+  description={pageDescription}
   lang={lang}
-  keywords={[
-    '设备融资博客',
-    '建筑设备贴士',
-    '马来西亚融资指南',
-    '挖掘机融资技巧',
-    '货车融资指南',
-    '商业贷款建议',
-    '马来西亚设备租赁',
-    '承包商财务技巧'
-  ]}
 >
-  <!-- Schema Markup -->
-  <script type="application/ld+json" set:html={JSON.stringify(blogCollectionSchema)} />
+  <Breadcrumbs items={breadcrumbs} lang={lang} />
 
-  <!-- Breadcrumbs -->
-  <section class="bg-gray-50 border-b border-gray-200">
-    <div class="container-custom">
-      <Breadcrumbs items={breadcrumbItems} />
-    </div>
-  </section>
-
-  <!-- Hero Section -->
-  <section class="section bg-gradient-to-br from-primary/5 via-white to-secondary/5">
-    <div class="container-custom text-center max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
-        设备融资见解与专家指南
-      </h1>
-      <p class="text-xl text-gray-600 leading-relaxed mb-8">
-        从40多年的设备融资专业经验中学习。实用技巧、行业见解和成功策略，助力您的建筑、物流或制造业务蓬勃发展。
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-4">Hobby Financing Blog</h1>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        Expert guides and tips on financing motorcycles, boats, and sports cars in Malaysia.
       </p>
 
-      <!-- Search Bar (Placeholder) -->
-      <div class="max-w-2xl mx-auto">
-        <div class="relative">
-          <input
-            type="search"
-            placeholder="搜索有关融资、设备、业务技巧的文章..."
-            class="w-full px-6 py-4 pr-12 border-2 border-gray-300 rounded-full focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-            aria-label="搜索博客文章"
-          />
-          <button
-            type="button"
-            class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary text-white p-3 rounded-full hover:bg-primary-dark transition-colors"
-            aria-label="搜索"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Trust Signals -->
-      <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-gray-600">
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>40多年经验</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>服务超过4000家企业</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>KPKT 持牌公司</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Category Navigation -->
-  <section class="section bg-white border-b border-gray-200">
-    <div class="container-custom">
-      <div class="flex flex-wrap justify-center gap-4">
-        {categories.map((category) => (
-          <a
-            href={`/zh/blog/category/${category.slug}`}
-            class="flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-primary hover:text-white rounded-full transition-all duration-200 group"
-          >
-            <span class="text-xl">{category.icon}</span>
-            <span class="font-semibold">{category.name}</span>
-            <span class="text-sm opacity-75">({category.count})</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {featuredPosts.map(post => (
+          <a href={post.url} class="group">
+            <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="h-40 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <span class="text-white text-sm font-semibold bg-white/20 px-3 py-1 rounded-full">{post.category}</span>
+              </div>
+              <div class="p-6">
+                <h2 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{post.title}</h2>
+                <p class="text-gray-600 text-sm">{post.excerpt}</p>
+              </div>
+            </div>
           </a>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- Featured Posts Section -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">精选文章</h2>
-        <p class="text-gray-600 text-lg">
-          我们最受欢迎和最具影响力的指南，助您做出更明智的融资决策
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {displayFeaturedPosts.map((post) => (
-          <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300 relative">
-            {/* Featured Badge */}
-            <div class="absolute top-4 right-4 z-10">
-              <span class="bg-accent text-white px-3 py-1 rounded-full text-xs font-bold shadow-[6px_6px_0_#2D1810]">
-                精选
-              </span>
-            </div>
-
-            {/* Featured Image Placeholder */}
-            <a href={`/zh/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative">
-              <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
-                {categories.find(c => c.name === post.category)?.icon || '📝'}
-              </div>
-            </a>
-
-            <div class="card-body flex flex-col flex-grow">
-              {/* Meta Info */}
-              <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                <span class="badge badge-primary">{post.category}</span>
-                <span class="flex items-center gap-1">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {post.readTime} 分钟阅读
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3 class="text-2xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">
-                <a href={`/zh/blog/${post.slug}`}>
-                  {post.title}
-                </a>
-              </h3>
-
-              {/* Excerpt */}
-              <p class="text-gray-600 mb-4 flex-grow leading-relaxed">
-                {post.excerpt}
-              </p>
-
-              {/* Author & Read More */}
-              <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                <div class="flex items-center space-x-2 text-sm text-gray-600">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <time datetime={post.date}>
-                    {new Date(post.date).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </time>
-                </div>
-                <a
-                  href={`/zh/blog/${post.slug}`}
-                  class="inline-flex items-center text-secondary font-semibold hover:text-accent transition-colors group-hover:translate-x-2 transform duration-300"
-                >
-                  阅读更多
-                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div class="text-center">
+        <p class="text-gray-500">More articles coming soon...</p>
+        <a href="/zh/contact" class="text-primary font-semibold hover:underline mt-4 inline-block">
+          Have a question? Contact us →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Main Blog Grid with Sidebar -->
-  <section class="section">
-    <div class="container-custom">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
-        <!-- Main Content Area (Blog Posts) -->
-        <div class="lg:col-span-2">
-          <div class="mb-8 flex items-center justify-between">
-            <h2 class="text-2xl font-black text-navy-900 tracking-tight" style="font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">所有文章</h2>
-            <div class="flex items-center gap-2 text-sm font-bold" style="color: #2D1810;">
-              <span>显示第 {startIndex + 1}-{Math.min(startIndex + POSTS_PER_PAGE, allPosts.length)} 篇，共 {allPosts.length} 篇文章</span>
-            </div>
-          </div>
-
-          <!-- Blog Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {paginatedPosts.map((post) => (
-              <div class="card h-full flex flex-col group hover:shadow-[8px_8px_0_#2D1810] transition-shadow duration-300">
-                {/* Image Placeholder */}
-                <a href={`/zh/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-5xl opacity-20">
-                    {categories.find(c => c.name === post.category)?.icon || '📝'}
-                  </div>
-                </a>
-
-                <div class="card-body flex flex-col flex-grow">
-                  {/* Category Badge */}
-                  <div class="mb-3">
-                    <span class="badge badge-primary text-xs">{post.category}</span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 class="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
-                    <a href={`/zh/blog/${post.slug}`}>
-                      {post.title}
-                    </a>
-                  </h3>
-
-                  {/* Excerpt */}
-                  <p class="text-gray-600 mb-4 flex-grow line-clamp-3 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-
-                  {/* Footer */}
-                  <div class="flex items-center justify-between pt-4 border-t border-gray-200 text-sm">
-                    <time datetime={post.date} class="text-gray-500">
-                      {new Date(post.date).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' })}
-                    </time>
-                    <a
-                      href={`/zh/blog/${post.slug}`}
-                      class="text-secondary font-semibold hover:text-accent transition-colors"
-                    >
-                      阅读更多 →
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <!-- Pagination Controls -->
-          {totalPages > 1 && (
-          <nav aria-label="分页" class="flex justify-center items-center gap-2">
-            {/* Previous button */}
-            <a href="/zh/blog/page/2"
-              class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
-              style="box-shadow: 4px 4px 0 #1E3A8A;"
-            >
-              ← 上一页
-            </a>
-
-            {/* Page numbers with sliding window - show 5 pages centered around current (page 1) */}
-            {paginationPages.map((page, index) => {
-              if (page === '...') {
-                return <span key={`ellipsis-${index}`} class="px-2 text-gray-500">...</span>;
-              }
-
-              const isCurrentPage = page === 1;
-              const pageUrl = page === 1 ? '/zh/blog' : `/zh/blog/page/${page}`;
-
-              return isCurrentPage ? (
-                <button key={page} class="px-4 py-2 bg-[#D4A574] text-navy-900 border-3 border-navy-900 font-black" style="box-shadow: 4px 4px 0 #1E3A8A;">
-                  {page}
-                </button>
-              ) : (
-                <a
-                  key={page}
-                  href={pageUrl}
-                  class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
-                  style="box-shadow: 4px 4px 0 #1E3A8A;"
-                >
-                  {page}
-                </a>
-              );
-            })}
-
-            {/* Next button */}
-            <a href="/zh/blog/page/2"
-              class="px-4 py-2 border-3 border-navy-900 text-navy-900 hover:bg-[#D4A574] hover:text-navy-900 transition-all font-black bg-white"
-              style="box-shadow: 4px 4px 0 #1E3A8A;"
-            >
-              下一页 →
-            </a>
-          </nav>
-          )}
-
-          <div class="text-center mt-6 text-sm text-gray-600 font-medium">
-            第 {currentPage} 页，共 {totalPages} 页 • 总共 {allPosts.length} 篇文章
-          </div>
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="lg:col-span-1 space-y-8">
-
-          <!-- Categories List -->
-          <div class="sidebar-card-contrast">
-            <div class="p-8">
-              <h3 class="text-2xl font-black text-gray-900 mb-6 uppercase tracking-wider border-b-4 border-gray-900 pb-4">按类别浏览</h3>
-              <ul class="space-y-3">
-                {categories.map((category) => (
-                  <li>
-                    <a
-                      href={`/zh/blog/category/${category.slug}`}
-                      class="flex items-center justify-between group hover:bg-gray-900 hover:text-white p-4 -mx-4 transition-all duration-300 border-2 border-transparent hover:border-gray-900"
-                    >
-                      <span class="flex items-center gap-4">
-                        <span class="text-3xl">{category.icon}</span>
-                        <span class="font-black text-lg group-hover:text-white">{category.name}</span>
-                      </span>
-                      <span class="text-sm font-black text-white bg-gray-900 group-hover:bg-white group-hover:text-gray-900 px-4 py-2 rounded-full border-2 border-gray-900">
-                        {category.count}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Popular Posts -->
-          <div class="sidebar-card-contrast">
-            <div class="p-8">
-              <h3 class="text-2xl font-black text-gray-900 mb-6 uppercase tracking-wider border-b-4 border-gray-900 pb-4">最受欢迎</h3>
-              <ul class="space-y-5">
-                {popularPosts.map((post, index) => (
-                  <li class="flex gap-5">
-                    <span class="text-xl font-black text-white bg-gray-900 flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full border-2 border-gray-900">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <a
-                      href={`/zh/blog/${post.slug}`}
-                      class="text-gray-900 hover:text-black font-black leading-tight hover:underline transition-all duration-200 text-lg"
-                    >
-                      {post.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <!-- Contact CTA -->
-          <div class="sidebar-card-dark">
-            <div class="p-8 text-center">
-              <h3 class="text-2xl font-black text-white mb-6 uppercase tracking-wider border-b-4 border-white pb-4">需要融资建议？</h3>
-              <p class="mb-8 text-white font-bold text-lg leading-relaxed">
-                我们的专家随时准备帮助您找到最适合您业务的融资解决方案。
-              </p>
-              <CTAButton
-                text="立即WhatsApp联系我们"
-                link={COMPANY_INFO.whatsapp.link}
-                variant="accent"
-                size="large"
-                icon="whatsapp"
-              />
-              <p class="mt-6 text-lg text-white font-black">
-                或致电：<a href={`tel:${COMPANY_INFO.phone.international}`} class="underline hover:text-yellow-300 font-black">{COMPANY_INFO.phone.display}</a>
-              </p>
-            </div>
-          </div>
-
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="section bg-gradient-to-r from-primary to-secondary text-white">
-    <div class="container-custom text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        准备好为您的设备融资了吗？
-      </h2>
-      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-        加入4000多家信赖永兴信贷的企业。快速内获得批准，利率低至6.5%起。
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Finance Your Passion?</h2>
+      <p class="text-xl mb-8 opacity-90">
+        Get a free consultation today.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <CTAButton
-          text="立即获取免费报价"
-          link="/zh/contact"
-          variant="accent"
-          size="large"
-        />
-        <CTAButton
-          text="计算每月还款"
-          link="/zh/calculator"
-          variant="outline-white"
-          size="large"
-        />
-      </div>
+      <a href="https://wa.me/60175700889" 
+         class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition inline-block">
+        WhatsApp Us Now
+      </a>
     </div>
   </section>
+
 </BaseLayout>
-
-<style>
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .badge {
-    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
-  }
-
-  .badge-primary {
-    @apply bg-primary/10 text-primary;
-  }
-
-  .card {
-    @apply bg-white rounded-lg shadow-[4px_4px_0_#2D1810] overflow-hidden;
-  }
-
-  .card-body {
-    @apply p-6;
-  }
-
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .section {
-    @apply py-16 md:py-20;
-  }
-
-  /* High Contrast Sidebar Cards */
-  .sidebar-card-contrast {
-    @apply bg-white border-4 border-gray-900;
-    box-shadow: 8px 8px 0 #000000;
-  }
-
-  .sidebar-card-dark {
-    @apply bg-gray-900 border-4 border-gray-900;
-    box-shadow: 8px 8px 0 #000000;
-  }
-</style>

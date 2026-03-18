@@ -1,0 +1,240 @@
+---
+/**
+ * Boat & Marine Financing Landing Page - English
+ * Target: Boat owners, fishing enthusiasts, marine hobbyists
+ * Keywords: boat financing Malaysia, marine equipment loan, yacht financing
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import BenefitCard from '../../../components/BenefitCard.astro';
+import StepCard from '../../../components/StepCard.astro';
+import FAQItem from '../../../components/FAQItem.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
+
+import { SITE_CONFIG } from '../../../utils/constants';
+const lang = 'en';
+
+// SEO Data
+const pageTitle = 'Boat Financing Malaysia | Marine Equipment Loans | Yacht & Fishing Boats';
+const pageDescription = 'Finance your dream boat with 0% deposit. Fishing boats, speedboats, yachts, jet skis, and marine equipment. New & used vessels accepted. Flexible terms up to 10 years. Since 1985.';
+const keywords = ['boat financing Malaysia', 'marine loan Malaysia', 'yacht financing', 'fishing boat loan', 'jet ski financing', 'speedboat financing Malaysia'];
+
+// Breadcrumbs
+const breadcrumbs = [
+  { label: 'Home', url: '/zh' },
+  { label: 'Equipment', url: '/zh/equipment' },
+  { label: 'Boat Financing', url: '/zh/equipment/boat' },
+];
+
+// Benefits
+const benefits = [
+  { icon: 'clock', title: 'Marine Specialists', description: 'We understand boat valuation, marine survey requirements, and the unique aspects of marine asset financing.' },
+  { icon: 'percentage', title: '0% Deposit Available', description: 'Finance up to 100% of your boat value. Preserve capital for equipment, maintenance, and marina fees.' },
+  { icon: 'shield', title: 'New & Used Accepted', description: 'Finance new or pre-owned boats. Well-maintained vessels up to 15 years old may qualify.' },
+  { icon: 'users', title: 'All Vessel Types', description: 'Fishing boats, speedboats, cabin cruisers, yachts, jet skis, pontoon boats - we finance them all.' },
+  { icon: 'document', title: 'Flexible Terms', description: 'Extended terms up to 10 years for larger vessels. Lower monthly payments for big purchases.' },
+  { icon: 'shield', title: 'Competitive Rates', description: 'Rates from 8% per annum. We work to find the best financing structure for your marine purchase.' },
+];
+
+// Boat Types
+const equipmentTypes = [
+  {
+    name: 'Fishing Boats',
+    description: 'From small pangas to sportfishing boats. Perfect for recreational anglers and charter operators. Outboard and inboard engines.',
+    applications: 'Recreational fishing, offshore fishing, charter operations'
+  },
+  {
+    name: 'Speedboats & Bowriders',
+    description: 'High-performance boats for watersports and day cruising. Brands like Sea Ray, Bayliner, Mastercraft, Malibu.',
+    applications: 'Wakeboarding, water skiing, family day trips, island hopping'
+  },
+  {
+    name: 'Cabin Cruisers & Yachts',
+    description: 'Larger vessels with overnight accommodations. Comfortable cruising for extended trips and coastal exploration.',
+    applications: 'Weekend getaways, coastal cruising, entertaining guests'
+  },
+  {
+    name: 'Jet Skis & Personal Watercraft',
+    description: 'Yamaha WaveRunner, Sea-Doo, Kawasaki Jet Ski. Fun and accessible water recreation for all skill levels.',
+    applications: 'Water recreation, beach fun, resort activities'
+  },
+  {
+    name: 'Pontoon & Deck Boats',
+    description: 'Stable platforms perfect for families, parties, and relaxed cruising. Maximum deck space and comfort.',
+    applications: 'Family outings, parties on the water, lake cruising'
+  },
+  {
+    name: 'Marine Equipment',
+    description: 'Outboard engines, marine electronics, trailers, and accessories. Complete your marine setup.',
+    applications: 'Upgrades, replacements, new installations'
+  },
+];
+
+// Accepted Brands
+const acceptedBrands = ['Yamaha Marine', 'Mercury', 'Honda Marine', 'Suzuki Marine', 'Sea Ray', 'Bayliner', 'Boston Whaler', 'Grady-White', 'Sea-Doo', 'Kawasaki Jet Ski', 'Mastercraft', 'Local Builders'];
+
+// FAQs
+const faqs = [
+  {
+    question: 'What is the financing range for boats?',
+    answer: 'We finance boats from RM30,000 to RM2,000,000+. From jet skis and fishing boats to luxury yachts, we have solutions for various budgets and vessel types.'
+  },
+  {
+    question: 'Do you require a marine survey?',
+    answer: 'For used boats over a certain value or age, a marine survey may be required. This protects both you and us by ensuring the vessel is seaworthy and fairly valued.'
+  },
+  {
+    question: 'Can I finance a boat without a trailer?',
+    answer: 'Yes, we can finance the boat only. Alternatively, we can include the trailer in your financing package for a complete solution.'
+  },
+  {
+    question: 'What about boats registered in other countries?',
+    answer: 'We primarily finance Malaysian-registered vessels. Foreign-flagged boats may be considered case-by-case with proper documentation and re-registration plans.'
+  },
+  {
+    question: 'Do you finance commercial fishing boats?',
+    answer: 'Yes! We finance both recreational and commercial fishing vessels. Commercial boats may have different terms based on the business use case.'
+  },
+  {
+    question: 'What insurance is required for boat financing?',
+    answer: 'Comprehensive marine insurance is required for financed vessels. Coverage should include hull, machinery, and third-party liability. We can recommend marine insurers.'
+  },
+  {
+    question: 'Can I finance outboard engines separately?',
+    answer: 'Yes, we can finance marine engines, electronics, and major equipment upgrades as standalone purchases or bundled with vessel financing.'
+  },
+];
+
+const productSchema = generateProductSchema({
+  name: 'Boat & Marine Financing Malaysia',
+  description: pageDescription,
+  brand: 'Ing Heng Credit',
+  category: 'Financial Services > Marine Financing > Boat Loans'
+});
+
+const faqSchema = generateFAQSchema(faqs);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={keywords}
+  lang={lang}
+>
+  <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
+  <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
+
+  <Breadcrumbs items={breadcrumbs} lang={lang} />
+
+  <Hero
+    title="Boat & Marine Financing Malaysia"
+    subtitle="Finance your dream boat with 0% deposit. Fishing boats, speedboats, yachts, jet skis - all vessel types welcome. Flexible terms up to 10 years."
+    ctaText="Apply Now via WhatsApp"
+    ctaLink="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20boat%20financing"
+    ctaSecondaryText="Calculate Payments"
+    ctaSecondaryLink="#calculator"
+    lang={lang}
+    trustSignals={['Since 1985', 'Marine Specialists', '0% Deposit Available']}
+  />
+
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Finance Your Boat With Us?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {benefits.map(benefit => (
+          <BenefitCard {...benefit} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Boats & Marine Equipment We Finance</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+        From personal watercraft to offshore fishing boats, we make marine dreams accessible with flexible financing.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {equipmentTypes.map(type => (
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+            <h3 class="text-xl font-bold text-primary mb-3">{type.name}</h3>
+            <p class="text-gray-600 mb-3">{type.description}</p>
+            <p class="text-sm text-gray-500"><strong>Ideal for:</strong> {type.applications}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-primary text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-center mb-8">Marine Brands We Finance</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        {acceptedBrands.map(brand => (
+          <span class="bg-white/20 px-4 py-2 rounded-full text-sm">{brand}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16" id="calculator">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Boat Payment Calculator</h2>
+      <p class="text-center text-gray-600 mb-8">
+        Calculate your monthly payment for your marine purchase.
+      </p>
+      <Calculator 
+        lang={lang}
+        defaultAmount={100000}
+        minAmount={20000}
+        maxAmount={2000000}
+        defaultTerm={84}
+        defaultRate={8}
+      />
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Boat Financing FAQ</h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map(faq => (
+          <FAQItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Set Sail?</h2>
+      <p class="text-xl mb-8 opacity-90">
+        Your dream boat is waiting. Get a free consultation with our marine financing specialists.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/60175700889?text=Hi%20I%27m%20interested%20in%20boat%20financing" 
+           class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
+          WhatsApp Us Now
+        </a>
+        <a href="/zh/contact" 
+           class="border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Apply for Boat Financing</h2>
+      <div class="max-w-2xl mx-auto">
+        <ContactForm lang={lang} equipmentType="Boat / Marine" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

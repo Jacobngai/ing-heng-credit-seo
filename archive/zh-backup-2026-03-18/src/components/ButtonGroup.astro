@@ -1,0 +1,76 @@
+---
+/**
+ * ButtonGroup Component - Bold Industrial Blue/Yellow Brand
+ * Container for grouping multiple buttons horizontally or vertically
+ *
+ * Usage:
+ * <ButtonGroup>
+ *   <Button text="Primary" href="#" variant="primary" />
+ *   <Button text="Secondary" href="#" variant="secondary" />
+ * </ButtonGroup>
+ */
+
+interface Props {
+  orientation?: 'horizontal' | 'vertical';
+  align?: 'left' | 'center' | 'right';
+  spacing?: 'sm' | 'md' | 'lg';
+}
+
+const {
+  orientation = 'horizontal',
+  align = 'left',
+  spacing = 'md',
+} = Astro.props;
+
+// Build classes
+const orientationClass = orientation === 'vertical' ? 'btn-group-vertical' : 'btn-group';
+const alignClass = align === 'center' ? 'justify-center' : align === 'right' ? 'justify-end' : 'justify-start';
+const spacingClass = spacing === 'sm' ? 'gap-2' : spacing === 'lg' ? 'gap-6' : 'gap-4';
+
+const classes = [orientationClass, alignClass, spacingClass].join(' ');
+---
+
+<div class={classes}>
+  <slot />
+</div>
+
+<style>
+  /* Button Group - Bold Industrial Brand */
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-group-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Spacing utilities */
+  .gap-2 {
+    gap: 0.5rem;
+  }
+
+  .gap-4 {
+    gap: 1rem;
+  }
+
+  .gap-6 {
+    gap: 1.5rem;
+  }
+
+  /* Alignment utilities */
+  .justify-start {
+    justify-content: flex-start;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .justify-end {
+    justify-content: flex-end;
+  }
+</style>

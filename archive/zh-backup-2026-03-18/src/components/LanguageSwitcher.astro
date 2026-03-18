@@ -1,0 +1,258 @@
+---
+/**
+ * LanguageSwitcher Component
+ * Flag-only dropdown language selector with bronze brutal design
+ */
+
+import type { Locale } from '../utils/i18n';
+import { getLocaleInfo, getAlternateUrl, locales } from '../utils/i18n';
+
+interface Props {
+  lang: Locale;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+const currentLocale = getLocaleInfo(lang);
+const availableLocales = locales.map((locale) => ({
+  ...getLocaleInfo(locale),
+  url: getAlternateUrl(currentPath, locale),
+  isCurrent: locale === lang,
+}));
+---
+
+<div class="relative inline-block text-left" data-language-switcher>
+  <!-- Selected Language Button - FLAG ONLY -->
+  <button
+    type="button"
+    class="lang-switcher inline-flex items-center justify-center gap-2 px-3 py-2 text-[#8B6F47] bg-white border-3 border-[#2D1810] hover:bg-[#F5F1EB] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8B6F47] transition-all duration-200 shadow-[2px_2px_0_#2D1810] hover:shadow-[3px_3px_0_#2D1810] cursor-pointer active:shadow-[1px_1px_0_#2D1810] active:translate-x-[1px] active:translate-y-[1px]"
+    style="min-height: 48px; min-width: 56px;"
+    id="language-menu-button"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Change language"
+    title="Change language"
+  >
+    <!-- Flag Only - NO TEXT CODE -->
+    <span class="text-2xl leading-none" aria-hidden="true">{currentLocale.flag}</span>
+    <!-- Down Arrow -->
+    <svg
+      class="w-4 h-4 lang-switcher-arrow transition-transform duration-200"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      stroke-width="3"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="square" stroke-linejoin="miter" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    class="hidden absolute right-0 z-[100] mt-2 w-56 origin-top-right bg-white border-3 border-[#2D1810] shadow-[4px_4px_0_#2D1810] focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="language-menu-button"
+    id="language-menu"
+    tabindex="-1"
+  >
+    <div class="py-1" role="none">
+      {availableLocales.map((locale) => (
+        <a
+          href={locale.url}
+          class={`flex items-center gap-3 px-4 py-3 text-base transition-all duration-150 cursor-pointer ${
+            locale.isCurrent
+              ? 'bg-[#8B6F47] text-white font-bold pointer-events-none'
+              : 'text-[#2D1810] hover:bg-[#F5F1EB] hover:text-[#8B6F47] font-semibold'
+          }`}
+          style="min-height: 48px;"
+          role="menuitem"
+          tabindex={locale.isCurrent ? -1 : 0}
+          aria-current={locale.isCurrent ? 'true' : undefined}
+        >
+          <!-- Flag + Full Language Name -->
+          <span class="text-2xl leading-none" aria-hidden="true">{locale.flag}</span>
+          <span class="flex-1">{locale.name}</span>
+          {locale.isCurrent && (
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Language switcher dropdown functionality - Enhanced version
+  (function() {
+    'use strict';
+
+    function initLanguageSwitcher() {
+      // Find ALL language switchers on the page (desktop + mobile)
+      const switchers = document.querySelectorAll('[data-language-switcher]');
+
+      switchers.forEach(function(switcher) {
+        const button = switcher.querySelector('#language-menu-button');
+        const menu = switcher.querySelector('#language-menu');
+        const arrow = switcher.querySelector('.lang-switcher-arrow');
+
+        if (!button || !menu) {
+          console.warn('Language switcher: Missing button or menu element');
+          return;
+        }
+
+        // Remove any existing listeners (prevent duplicates)
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+
+        // Toggle dropdown on button click
+        newButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isExpanded = newButton.getAttribute('aria-expanded') === 'true';
+          const newState = !isExpanded;
+
+          // Close all other language switchers first
+          document.querySelectorAll('[data-language-switcher]').forEach(function(otherSwitcher) {
+            if (otherSwitcher !== switcher) {
+              const otherButton = otherSwitcher.querySelector('#language-menu-button');
+              const otherMenu = otherSwitcher.querySelector('#language-menu');
+              const otherArrow = otherSwitcher.querySelector('.lang-switcher-arrow');
+
+              if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
+              if (otherMenu) otherMenu.classList.add('hidden');
+              if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
+            }
+          });
+
+          // Toggle current switcher
+          newButton.setAttribute('aria-expanded', newState.toString());
+          menu.classList.toggle('hidden', !newState);
+
+          // Rotate arrow
+          if (arrow) {
+            arrow.style.transform = newState ? 'rotate(180deg)' : 'rotate(0deg)';
+          }
+
+          console.log('Language switcher toggled:', newState ? 'open' : 'closed');
+        });
+      });
+
+      // Close all dropdowns when clicking outside
+      document.addEventListener('click', function(e) {
+        const clickedInsideSwitcher = e.target.closest('[data-language-switcher]');
+
+        if (!clickedInsideSwitcher) {
+          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {
+            const button = switcher.querySelector('#language-menu-button');
+            const menu = switcher.querySelector('#language-menu');
+            const arrow = switcher.querySelector('.lang-switcher-arrow');
+
+            if (button) button.setAttribute('aria-expanded', 'false');
+            if (menu) menu.classList.add('hidden');
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+          });
+        }
+      });
+
+      // Close dropdowns on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('[data-language-switcher]').forEach(function(switcher) {
+            const button = switcher.querySelector('#language-menu-button');
+            const menu = switcher.querySelector('#language-menu');
+            const arrow = switcher.querySelector('.lang-switcher-arrow');
+
+            if (menu && !menu.classList.contains('hidden')) {
+              if (button) {
+                button.setAttribute('aria-expanded', 'false');
+                button.focus();
+              }
+              menu.classList.add('hidden');
+              if (arrow) arrow.style.transform = 'rotate(0deg)';
+            }
+          });
+        }
+      });
+
+      console.log('Language switcher initialized:', switchers.length, 'instance(s)');
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    } else {
+      initLanguageSwitcher();
+    }
+
+    // Re-initialize after view transitions (for Astro)
+    document.addEventListener('astro:page-load', initLanguageSwitcher);
+  })();
+</script>
+
+<style>
+  /* Enhanced language switcher styles */
+  .lang-switcher {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .lang-switcher:hover {
+    cursor: pointer;
+  }
+
+  .lang-switcher-arrow {
+    flex-shrink: 0;
+  }
+
+  /* Ensure dropdown appears above other elements */
+  [data-language-switcher] {
+    position: relative;
+    z-index: 50;
+  }
+
+  #language-menu {
+    animation: slideDown 0.15s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 1024px) {
+    .lang-switcher {
+      min-width: 56px;
+      padding: 0.625rem 0.75rem;
+    }
+
+    #language-menu {
+      min-width: 14rem;
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Prevent text selection on button */
+  .lang-switcher * {
+    pointer-events: none;
+  }
+
+  .lang-switcher {
+    pointer-events: auto;
+  }
+</style>

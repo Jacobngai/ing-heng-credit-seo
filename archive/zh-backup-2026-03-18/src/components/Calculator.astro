@@ -1,0 +1,276 @@
+---
+/**
+ * Calculator Component
+ * Interactive payment calculator for equipment financing
+ */
+
+import type { Locale } from '../utils/i18n';
+import { formatCurrency } from '../utils/i18n';
+
+interface Props {
+  lang: Locale;
+  equipmentType?: string;
+  defaultPrice?: number;
+  minDownPayment?: number;
+}
+
+const {
+  lang,
+  equipmentType = 'Equipment',
+  defaultPrice = 100000,
+  minDownPayment = 10,
+} = Astro.props;
+
+// Translation helper
+const translations = {
+  en: {
+    title: 'Payment Calculator',
+    subtitle: 'Estimate your monthly payments',
+    equipmentPrice: 'Equipment Price',
+    downPayment: 'Down Payment',
+    loanTerm: 'Loan Term',
+    months: 'months',
+    interestRate: 'Interest Rate',
+    perYear: 'per year',
+    monthlyPayment: 'Estimated Monthly Payment',
+    totalAmount: 'Total Amount Payable',
+    applyNow: 'Apply Now',
+    disclaimer: 'This is an estimate. Actual rates may vary based on credit assessment.',
+  },
+  zh: {
+    title: '付款计算器',
+    subtitle: '估算您的每月付款',
+    equipmentPrice: '设备价格',
+    downPayment: '首付款',
+    loanTerm: '贷款期限',
+    months: '个月',
+    interestRate: '利率',
+    perYear: '每年',
+    monthlyPayment: '估计月供',
+    totalAmount: '总支付金额',
+    applyNow: '立即申请',
+    disclaimer: '这是一个估算值。实际利率可能根据信用评估而有所不同。',
+  },
+  ms: {
+    title: 'Kalkulator Pembayaran',
+    subtitle: 'Anggarkan bayaran bulanan anda',
+    equipmentPrice: 'Harga Peralatan',
+    downPayment: 'Bayaran Pendahuluan',
+    loanTerm: 'Tempoh Pinjaman',
+    months: 'bulan',
+    interestRate: 'Kadar Faedah',
+    perYear: 'setahun',
+    monthlyPayment: 'Anggaran Bayaran Bulanan',
+    totalAmount: 'Jumlah Keseluruhan Bayaran',
+    applyNow: 'Mohon Sekarang',
+    disclaimer: 'Ini adalah anggaran. Kadar sebenar mungkin berbeza berdasarkan penilaian kredit.',
+  },
+};
+
+const t = translations[lang] || translations['en']; // Fallback to English if lang is undefined
+---
+
+<div class="bg-gradient-to-br from-primary to-secondary p-8 rounded-2xl shadow-[8px_8px_0_#2D1810] text-white">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold mb-2 text-white">{t.title}</h2>
+    <p class="text-white">{t.subtitle}</p>
+  </div>
+
+  <div class="space-y-6" data-calculator>
+    <!-- Equipment Price -->
+    <div>
+      <label class="block text-sm font-semibold mb-2" for="equipment-price">
+        {t.equipmentPrice}
+      </label>
+      <div class="relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700 font-medium">RM</span>
+        <input
+          type="number"
+          id="equipment-price"
+          class="w-full pl-14 pr-4 py-3 rounded-lg text-gray-900 font-semibold focus:ring-2 focus:ring-accent"
+          value={defaultPrice}
+          min="10000"
+          max="10000000"
+          step="1000"
+          data-calculator-price
+        />
+      </div>
+    </div>
+
+    <!-- Down Payment Slider -->
+    <div>
+      <label class="block text-sm font-semibold mb-2">
+        {t.downPayment}: <span data-down-payment-percent>{minDownPayment}</span>%
+        (<span class="font-bold" data-down-payment-amount>RM {formatCurrency(defaultPrice * (minDownPayment / 100), lang).replace('MYR', '').trim()}</span>)
+      </label>
+      <input
+        type="range"
+        id="down-payment"
+        class="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer accent-accent"
+        min={minDownPayment}
+        max="50"
+        step="5"
+        value={minDownPayment}
+        data-calculator-down-payment
+        data-min-down-payment={minDownPayment}
+      />
+      <div class="flex justify-between text-xs mt-1">
+        <span>{minDownPayment}%</span>
+        <span>50%</span>
+      </div>
+    </div>
+
+    <!-- Loan Term Slider -->
+    <div>
+      <label class="block text-sm font-semibold mb-2">
+        {t.loanTerm}: <span data-loan-term>36</span> {t.months}
+      </label>
+      <input
+        type="range"
+        id="loan-term"
+        class="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer accent-accent"
+        min="12"
+        max="60"
+        step="12"
+        value="36"
+        data-calculator-term
+      />
+      <div class="flex justify-between text-xs mt-1">
+        <span>12</span>
+        <span>24</span>
+        <span>36</span>
+        <span>48</span>
+        <span>60</span>
+      </div>
+    </div>
+
+    <!-- Interest Rate (Fixed for display) -->
+    <div>
+      <label class="block text-sm font-semibold mb-2">
+        {t.interestRate}: <span data-interest-rate>8.5</span>% {t.perYear}
+      </label>
+      <div class="text-xs text-gray-200 mt-1">
+        {t.disclaimer}
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 mt-8 space-y-4">
+      <div class="flex justify-between items-center border-b border-white/20 pb-3">
+        <span class="text-sm">{t.monthlyPayment}</span>
+        <span class="text-3xl font-bold text-accent" data-monthly-payment>
+          RM 2,854
+        </span>
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-sm">{t.totalAmount}</span>
+        <span class="text-xl font-semibold" data-total-amount>
+          RM 102,744
+        </span>
+      </div>
+    </div>
+
+    <!-- Apply Now CTA -->
+    <a
+      href={`https://wa.me/60175700889?text=${encodeURIComponent(`Hi! I'd like to apply for ${equipmentType} financing. Equipment price: RM ${defaultPrice.toLocaleString()}`)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-accent w-full text-center block text-lg font-bold py-4"
+      data-apply-button
+      data-equipment-type={equipmentType}
+    >
+      {t.applyNow}
+    </a>
+  </div>
+</div>
+
+<script>
+  // Calculator logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const calculator = document.querySelector('[data-calculator]');
+    if (!calculator) return;
+
+    const priceInput = calculator.querySelector('[data-calculator-price]') as HTMLInputElement;
+    const downPaymentSlider = calculator.querySelector('[data-calculator-down-payment]') as HTMLInputElement;
+    const termSlider = calculator.querySelector('[data-calculator-term]') as HTMLInputElement;
+    const applyButton = calculator.querySelector('[data-apply-button]') as HTMLAnchorElement;
+
+    const downPaymentPercentDisplay = calculator.querySelector('[data-down-payment-percent]');
+    const downPaymentAmountDisplay = calculator.querySelector('[data-down-payment-amount]');
+    const loanTermDisplay = calculator.querySelector('[data-loan-term]');
+    const interestRateDisplay = calculator.querySelector('[data-interest-rate]');
+    const monthlyPaymentDisplay = calculator.querySelector('[data-monthly-payment]');
+    const totalAmountDisplay = calculator.querySelector('[data-total-amount]');
+
+    // Get minimum down payment from data attribute
+    const minDownPayment = parseInt(downPaymentSlider?.getAttribute('data-min-down-payment') || '10');
+    const equipmentType = applyButton?.getAttribute('data-equipment-type') || 'Equipment';
+
+    // Fixed interest rate (can be made dynamic)
+    const annualInterestRate = 8.5;
+
+    function updateApplyButton(price: number) {
+      if (!applyButton) return;
+      const message = `Hi! I'd like to apply for ${equipmentType} financing. Equipment price: RM ${price.toLocaleString()}`;
+      applyButton.href = `https://wa.me/60175700889?text=${encodeURIComponent(message)}`;
+    }
+
+    function calculatePayment() {
+      const price = parseFloat(priceInput.value) || 0;
+      const downPaymentPct = Math.max(minDownPayment, parseFloat(downPaymentSlider.value) || minDownPayment);
+      const months = parseInt(termSlider.value) || 36;
+
+      const downPayment = price * (downPaymentPct / 100);
+      const loanAmount = price - downPayment;
+      const monthlyInterestRate = annualInterestRate / 100 / 12;
+
+      // Calculate monthly payment using amortization formula
+      const monthlyPayment = loanAmount *
+        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, months)) /
+        (Math.pow(1 + monthlyInterestRate, months) - 1);
+
+      const totalAmount = (monthlyPayment * months) + downPayment;
+
+      // Update displays
+      if (downPaymentPercentDisplay) downPaymentPercentDisplay.textContent = downPaymentPct.toFixed(0);
+      if (downPaymentAmountDisplay) downPaymentAmountDisplay.textContent = `RM ${downPayment.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+      if (loanTermDisplay) loanTermDisplay.textContent = months.toString();
+      if (monthlyPaymentDisplay) monthlyPaymentDisplay.textContent = `RM ${monthlyPayment.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+      if (totalAmountDisplay) totalAmountDisplay.textContent = `RM ${totalAmount.toLocaleString('en-MY', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+
+      // Update Apply Now button with current price
+      updateApplyButton(price);
+    }
+
+    // Event listeners
+    priceInput?.addEventListener('input', calculatePayment);
+    downPaymentSlider?.addEventListener('input', calculatePayment);
+    termSlider?.addEventListener('input', calculatePayment);
+
+    // Initial calculation
+    calculatePayment();
+  });
+</script>
+
+<style>
+  /* Custom slider styling */
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FDB913;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FDB913;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: none;
+  }
+</style>

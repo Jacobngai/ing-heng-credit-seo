@@ -1,0 +1,505 @@
+---
+/**
+ * Mandarin Chinese FAQ Page
+ * 设备融资常见问题 - 针对精选摘要和语音搜索优化
+ * Target: Chinese logistics operators and business owners
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQItem from '../../components/FAQItem.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { generateFAQSchema } from '../../utils/schema';
+import { COMPANY_INFO } from '../../utils/constants';
+
+const lang = 'zh';
+
+// FAQ Data for Schema
+const faqData = [
+  // 一般融资问题
+  {
+    question: "什么是设备融资?",
+    answer: "设备融资是一种商业贷款,让您通过可管理的每月付款来购买设备,而不是一次性支付全款。在永恒信贷,我们专注于租购融资,您在12-60个月的还款期内拥有设备,保留营运资金用于业务运营。"
+  },
+  {
+    question: "设备融资审批需要多长时间?",
+    answer: "我们的审批流程大多数申请进展迅速。一旦您提交完整文件,我们的团队会立即审查您的申请。简单案例可在同一工作日内获得批准,较复杂的申请最多需要2个工作日。"
+  },
+  {
+    question: "你们的批准率是多少?",
+    answer: "自1985年以来拥有超过40年的经验,我们已帮助超过4,000家公司获得融资,通过了解独特的业务情况并提供灵活的解决方案,即使银行拒绝也能帮助您。"
+  },
+  {
+    question: "设备融资的利率是多少?",
+    answer: "我们的竞争利率从每年6.5%起,根据设备类型、贷款金额、还款期限和您的业务概况等因素而有所不同。请联系我们获取针对您具体融资需求的个性化报价."
+  },
+  {
+    question: "设备融资的付款期限是多久?",
+    answer: "我们提供12至60个月的灵活付款期限,取决于设备价值和您的业务现金流。大多数客户选择36或48个月的期限,以平衡可负担的月付款和总利息成本。允许提前结算且无罚款。"
+  },
+  {
+    question: "设备融资需要支付预付费用吗?",
+    answer: "我们相信透明定价。申请处理没有隐藏的预付费用。当贷款获批时,您只需支付少量文件费(通常为RM 300-500)和商定的首付(通常为设备价值的10-20%)。"
+  },
+  {
+    question: "设备融资与银行贷款有什么不同?",
+    answer: "与需要大量文件并需要数周才能批准的银行不同,我们专注于设备融资,具有更快的批准速度、更高的批准率和更灵活的要求。我们更了解业务需求,可以批准银行通常拒绝的申请,特别是针对自雇人士和新成立的企业。"
+  },
+
+  // 申请流程问题
+  {
+    question: "设备融资需要什么文件?",
+    answer: "您需要:(1)身份证/护照副本,(2)营业执照(公司需SSM,独资经营者需营业执照),(3)最近3-6个月银行对账单,(4)最新EPF/公积金报表,(5)供应商设备报价单,(6)水电费单作为地址证明。公司还需提供表格9、24、49和董事身份证副本。"
+  },
+  {
+    question: "我可以在线申请设备融资吗?",
+    answer: "可以!您可以通过我们的网站联系表格或直接通过WhatsApp +60175700889开始申请。只需向我们发送您的基本信息和设备详情,我们的团队将指导您完成整个流程,包括通过电子邮件或WhatsApp提交文件。"
+  },
+  {
+    question: "设备融资批准需要多长时间?",
+    answer: "从提交完整文件开始,批准流程迅速进行。简单申请可在工作时间内数小时获得批准。批准后,设备购买和资金支付通常在2-3个工作日内完成,这意味着您可以在一周内让设备投入运营。"
+  },
+  {
+    question: "信用记录不良可以获批吗?",
+    answer: "可以,我们考虑信用记录欠佳的个人申请。虽然我们会检查CCRIS和CTOS,但我们不仅看信用评分,还会了解您当前的业务状况、现金流和设备投资回报率。超过40%的获批客户曾有信用问题。请联系我们讨论您的具体情况。"
+  },
+  {
+    question: "设备融资需要首付吗?",
+    answer: "通常,我们要求设备总价值的10-20%作为首付。但是,首付要求可以根据您的业务概况、信用记录和设备类型灵活调整。对于强有力的申请,我们有时可以提供高达设备价值90%的融资。"
+  },
+  {
+    question: "如果我的业务成立不到3年怎么办?",
+    answer: "欢迎新成立的企业!虽然许多贷款机构要求3年以上的经营历史,但我们经常批准成立不到3年的企业,甚至是刚开始的独资经营者。我们评估您的行业经验、业务计划、设备投资回报潜力和个人财务稳定性,而不仅仅是业务年龄。"
+  },
+
+  // 设备类型问题
+  {
+    question: "你们可以融资哪些类型的设备?",
+    answer: "我们融资所有类型的商业设备,包括:建筑设备(挖掘机、推土机、压路机、混凝土搅拌机),物流设备(货车、卡车、集装箱车、货运面包车、叉车),工业设备(发电机、压缩机、焊接机、仓储设备)和商用车辆(送货车、公司轿车、巴士)。只要能产生业务收入,我们很可能可以融资。"
+  },
+  {
+    question: "你们融资二手设备吗?",
+    answer: "可以!我们融资新设备和二手设备。二手设备融资很受欢迎,因为总成本较低,同时仍能获得生产性资产。我们已为数千台二手挖掘机、货车和叉车提供融资,为企业提供了出色的投资回报率。"
+  },
+  {
+    question: "二手设备可以使用多少年才能融资?",
+    answer: "一般来说,我们融资使用年限在10年以内的二手设备,具体取决于设备类型和状况。对于货车和挖掘机等车辆,我们更倾向于7-8年以下的设备。设备必须处于良好工作状态,具有合理的剩余使用寿命。我们的团队会检查或要求较旧设备的检查报告。"
+  },
+  {
+    question: "我可以同时融资多台车辆或设备吗?",
+    answer: "当然可以!我们经常帮助企业同时融资多台设备,无论是货车车队、多台挖掘机,还是混合设备类型。批量融资通常会有更好的条款。许多物流公司一次融资3-5辆货车,建筑公司通过我们融资多台挖掘机。"
+  },
+  {
+    question: "我可以从任何经销商或供应商处融资设备吗?",
+    answer: "可以,您可以自由选择任何设备供应商或经销商。我们不会限制您使用特定供应商。一旦您选择了设备并收到报价,我们将与您和供应商合作完成融资和购买。我们与马来西亚各地数百家设备经销商合作过。"
+  },
+
+  // 资格和要求问题
+  {
+    question: "谁可以申请设备融资?",
+    answer: "21-65岁的马来西亚公民或永久居民可以申请。包括:独资经营者、合伙企业、有限公司、自雇人士、企业主和承包商。为商业用途购买设备的个人和成熟公司都符合资格。"
+  },
+  {
+    question: "我需要注册企业才能申请吗?",
+    answer: "虽然企业注册会增强您的申请,但并非总是强制性的。拥有独资经营执照或将设备用于商业目的(如承包工作)的个人可以申请。但是,拥有SSM注册、营业执照或公司注册会显著提高批准机会和条款。"
+  },
+  {
+    question: "独资经营者可以申请设备融资吗?",
+    answer: "可以!独资经营者是我们客户群的重要组成部分。我们理解许多承包商、小型物流运营商和独立企业主以独资经营者身份运营。我们已成功为数千名独资经营者提供挖掘机、货车和其他设备的融资。只需提供您的独资经营注册和业务证明。"
+  },
+  {
+    question: "如果我有其他贷款机构的现有贷款怎么办?",
+    answer: "拥有现有贷款不会自动取消您的资格。我们评估您的总债务偿还比率、当前收入和偿还额外融资的能力。我们的许多客户都有现有的商业贷款、车辆融资或抵押贷款。重要的是您的总债务相对于收入和现金流是可管理的。"
+  },
+
+  // 批准后问题
+  {
+    question: "批准后如何购买设备?",
+    answer: "一旦获批,我们会发出融资批准信。然后您与选定的供应商确定设备详情。我们将进行设备检查(如果需要),准备融资文件,并在您签署租购协议后直接向供应商支付款项。设备以您的名义注册,您可以立即开始使用。"
+  },
+  {
+    question: "融资期间谁拥有设备?",
+    answer: "在租购融资下,您从第一天起就拥有设备,可以立即用于业务。但是,融资方对设备持有抵押权/留置权,直到全额还款。一旦您完成所有付款,抵押权将被移除,您将拥有完全、无负担的所有权,无需承担进一步义务。"
+  },
+  {
+    question: "我可以在还清贷款前出售设备吗?",
+    answer: "可以,但您必须首先结清未偿还的融资余额。许多客户在升级设备时这样做。流程包括:找到买家,从我们这里确定结算金额,买家付款,结算清除抵押权,所有权转移。我们会顺利促进这一过程,因为这在建筑和物流行业经常发生。"
+  },
+  {
+    question: "如果我想提前还清贷款怎么办?",
+    answer: "允许并鼓励提前结算!我们不收取提前结算罚款。您可以随时通过联系我们获取结算报表来偿还融资。您将节省剩余的利息费用。许多客户在现金流充裕或业务盈利期间提前还款。"
+  },
+  {
+    question: "如果设备在融资期间出现故障怎么办?",
+    answer: "设备故障是您作为所有者的责任,这就是为什么我们强烈建议购买综合保险。保险通常涵盖重大故障、事故和盗窃。无论设备状况如何,您的月付款都会继续。适当的维护和保险对于保护您的投资和业务运营至关重要。"
+  },
+  {
+    question: "融资设备需要什么保险?",
+    answer: "所有融资设备都必须购买涵盖盗窃、火灾和事故损坏的综合保险。保险单必须将永恒信贷列为损失受益人。我们可以推荐具有竞争力保费的可信保险合作伙伴。保险可保护您和我们免受全损情况的影响,并确保业务连续性。"
+  }
+];
+
+const faqSchema = generateFAQSchema(faqData);
+---
+
+<BaseLayout
+  title="常见问题 - 马来西亚设备融资 | 永恒信贷"
+  description="获取有关设备融资批准、利率、要求和流程的答案。了解批准需要多长时间、需要什么文件以及谁可以申请马来西亚设备贷款。"
+  lang={lang}
+  keywords={[
+    '设备融资常见问题',
+    '设备融资批准时间',
+    '设备贷款所需文件',
+    '马来西亚设备融资要求',
+    '二手设备融资',
+    '设备融资批准率',
+    '货车融资申请',
+    '挖掘机融资首付',
+    '谁可以申请设备融资'
+  ]}
+>
+  <StructuredData schema={faqSchema} />
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-secondary text-white py-16 md:py-24">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-6 text-[#8B6F47]">
+          设备融资常见问题
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 opacity-90">
+          立即获得有关设备融资、批准流程、要求和条款的常见问题答案
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <CTAButton
+            text="WhatsApp咨询"
+            link={COMPANY_INFO.whatsapp.link}
+            variant="accent"
+            size="large"
+            icon="whatsapp"
+          />
+          <CTAButton
+            text="申请融资"
+            link="/zh/contact"
+            variant="outline-white"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Quick Navigation -->
+  <section class="section bg-[#F5F1EC]">
+    <div class="container-custom max-w-4xl">
+      <div class="bg-[#F5F5DC] p-6 rounded-lg shadow-[4px_4px_0_#2D1810]">
+        <h2 class="text-2xl font-black uppercase tracking-tight mb-4 text-[#8B6F47] text-center">快速导航</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="#general" class="flex items-center p-3 bg-[#F5F1EC] rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+            </svg>
+            一般融资问题
+          </a>
+          <a href="#application" class="flex items-center p-3 bg-[#F5F1EC] rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+            </svg>
+            申请流程问题
+          </a>
+          <a href="#equipment" class="flex items-center p-3 bg-[#F5F1EC] rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+            </svg>
+            设备类型问题
+          </a>
+          <a href="#eligibility" class="flex items-center p-3 bg-[#F5F1EC] rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+            </svg>
+            资格问题
+          </a>
+          <a href="#after-approval" class="flex items-center p-3 bg-[#F5F1EC] rounded-lg hover:bg-primary hover:text-white transition-colors group">
+            <svg class="w-5 h-5 mr-2 text-primary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            批准后问题
+          </a>
+          <a href="#contact-us" class="flex items-center p-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            还有其他问题?
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: General Financing -->
+  <section id="general" class="section">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">一般融资问题</h2>
+        <p class="text-[#4F3E29] text-lg">
+          了解设备融资基础知识、批准率、利率和付款条款
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="什么是设备融资?"
+          answer="设备融资是一种商业贷款,让您通过可管理的每月付款来购买设备,而不是一次性支付全款。在永恒信贷,我们专注于租购融资,您在<strong>12-60个月</strong>的还款期内拥有设备,保留营运资金用于业务运营。"
+        />
+
+        <FAQItem
+          question="设备融资审批需要多长时间?"
+          answer="我们的审批流程大多数申请进展迅速。一旦您提交完整文件,我们的团队会立即审查您的申请。简单案例可在同一工作日内获得批准,较复杂的申请最多需要2个工作日。"
+        />
+
+        <FAQItem
+          question="你们的批准率是多少?"
+          answer="自1985年以来拥有超过40年的经验,我们已帮助超过4,000家公司获得融资,通过了解独特的业务情况并提供灵活的解决方案,即使银行拒绝也能帮助您。"
+        />
+
+        <FAQItem
+          question="设备融资的利率是多少?"
+          answer="我们的竞争利率从<strong>每年6.5%</strong>起,根据设备类型、贷款金额、还款期限和您的业务概况等因素而有所不同。请联系我们获取针对您具体融资需求的个性化报价。"
+        />
+
+        <FAQItem
+          question="设备融资的付款期限是多久?"
+          answer="我们提供<strong>12至60个月</strong>的灵活付款期限,取决于设备价值和您的业务现金流。大多数客户选择36或48个月的期限,以平衡可负担的月付款和总利息成本。允许提前结算且无罚款。"
+        />
+
+        <FAQItem
+          question="设备融资需要支付预付费用吗?"
+          answer="我们相信透明定价。申请处理<strong>没有隐藏的预付费用</strong>。当贷款获批时,您只需支付少量文件费(通常为RM 300-500)和商定的首付(通常为设备价值的10-20%)。"
+        />
+
+        <FAQItem
+          question="设备融资与银行贷款有什么不同?"
+          answer="与需要大量文件并需要数周才能批准的银行不同,我们专注于设备融资,具有<strong>更快的批准速度、更高的批准率和更灵活的要求</strong>。我们更了解业务需求,可以批准银行通常拒绝的申请,特别是针对自雇人士和新成立的企业。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Application Process -->
+  <section id="application" class="section bg-[#F5F1EC]">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">申请流程问题</h2>
+        <p class="text-[#4F3E29] text-lg">
+          关于申请设备融资和文件要求的所有信息
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="设备融资需要什么文件?"
+          answer="您需要:<strong>(1)</strong> 身份证/护照副本,<strong>(2)</strong> 营业执照(公司需SSM,独资经营者需营业执照),<strong>(3)</strong> 最近3-6个月银行对账单,<strong>(4)</strong> 最新EPF/公积金报表,<strong>(5)</strong> 供应商设备报价单,<strong>(6)</strong> 水电费单作为地址证明。公司还需提供表格9、24、49和董事身份证副本。"
+        />
+
+        <FAQItem
+          question="我可以在线申请设备融资吗?"
+          answer="可以!您可以通过我们的网站联系表格或直接通过<strong>WhatsApp +60175700889</strong>开始申请。只需向我们发送您的基本信息和设备详情,我们的团队将指导您完成整个流程,包括通过电子邮件或WhatsApp提交文件。"
+        />
+
+        <FAQItem
+          question="设备融资批准需要多长时间?"
+          answer="从提交完整文件开始,批准流程迅速进行。简单申请可在工作时间内数小时获得批准。批准后,设备购买和资金支付通常在2-3个工作日内完成,这意味着您可以在一周内让设备投入运营。"
+        />
+
+        <FAQItem
+          question="信用记录不良可以获批吗?"
+          answer="可以,我们考虑信用记录欠佳的个人申请。虽然我们会检查CCRIS和CTOS,但我们不仅看信用评分,还会了解您当前的业务状况、现金流和设备投资回报率。超过<strong>40%的获批客户</strong>曾有信用问题。请联系我们讨论您的具体情况。"
+        />
+
+        <FAQItem
+          question="设备融资需要首付吗?"
+          answer="通常,我们要求设备总价值的<strong>10-20%</strong>作为首付。但是,首付要求可以根据您的业务概况、信用记录和设备类型灵活调整。对于强有力的申请,我们有时可以提供高达设备价值90%的融资。"
+        />
+
+        <FAQItem
+          question="如果我的业务成立不到3年怎么办?"
+          answer="欢迎新成立的企业!虽然许多贷款机构要求3年以上的经营历史,但我们经常批准成立不到3年的企业,甚至是刚开始的独资经营者。我们评估您的<strong>行业经验、业务计划、设备投资回报潜力</strong>和个人财务稳定性,而不仅仅是业务年龄。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Equipment Types -->
+  <section id="equipment" class="section">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">设备类型问题</h2>
+        <p class="text-[#4F3E29] text-lg">
+          了解我们融资的设备类型,包括二手设备、多台设备和供应商灵活性
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="你们可以融资哪些类型的设备?"
+          answer="我们融资所有类型的商业设备,包括:<strong>建筑设备</strong>(挖掘机、推土机、压路机、混凝土搅拌机),<strong>物流设备</strong>(货车、卡车、集装箱车、货运面包车、叉车),<strong>工业设备</strong>(发电机、压缩机、焊接机、仓储设备)和<strong>商用车辆</strong>(送货车、公司轿车、巴士)。只要能产生业务收入,我们很可能可以融资。"
+        />
+
+        <FAQItem
+          question="你们融资二手设备吗?"
+          answer="可以!我们融资<strong>新设备和二手设备</strong>。二手设备融资很受欢迎,因为总成本较低,同时仍能获得生产性资产。我们已为数千台二手挖掘机、货车和叉车提供融资,为企业提供了出色的投资回报率。"
+        />
+
+        <FAQItem
+          question="二手设备可以使用多少年才能融资?"
+          answer="一般来说,我们融资使用年限在<strong>10年以内</strong>的二手设备,具体取决于设备类型和状况。对于货车和挖掘机等车辆,我们更倾向于7-8年以下的设备。设备必须处于良好工作状态,具有合理的剩余使用寿命。我们的团队会检查或要求较旧设备的检查报告。"
+        />
+
+        <FAQItem
+          question="我可以同时融资多台车辆或设备吗?"
+          answer="当然可以!我们经常帮助企业同时融资多台设备,无论是货车车队、多台挖掘机,还是混合设备类型。<strong>批量融资通常会有更好的条款</strong>。许多物流公司一次融资3-5辆货车,建筑公司通过我们融资多台挖掘机。"
+        />
+
+        <FAQItem
+          question="我可以从任何经销商或供应商处融资设备吗?"
+          answer="可以,您可以<strong>自由选择任何设备供应商或经销商</strong>。我们不会限制您使用特定供应商。一旦您选择了设备并收到报价,我们将与您和供应商合作完成融资和购买。我们与马来西亚各地数百家设备经销商合作过。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: Eligibility & Requirements -->
+  <section id="eligibility" class="section bg-[#F5F1EC]">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">资格和要求问题</h2>
+        <p class="text-[#4F3E29] text-lg">
+          了解谁可以申请、业务注册要求以及现有贷款考虑因素
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="谁可以申请设备融资?"
+          answer="<strong>21-65岁的马来西亚公民或永久居民</strong>可以申请。包括:独资经营者、合伙企业、有限公司、自雇人士、企业主和承包商。为商业用途购买设备的个人和成熟公司都符合资格。"
+        />
+
+        <FAQItem
+          question="我需要注册企业才能申请吗?"
+          answer="虽然企业注册会增强您的申请,但并非总是强制性的。拥有独资经营执照或将设备用于商业目的(如承包工作)的个人可以申请。但是,拥有<strong>SSM注册、营业执照或公司注册</strong>会显著提高批准机会和条款。"
+        />
+
+        <FAQItem
+          question="独资经营者可以申请设备融资吗?"
+          answer="可以!独资经营者是我们客户群的重要组成部分。我们理解许多承包商、小型物流运营商和独立企业主以独资经营者身份运营。我们已成功为<strong>数千名独资经营者</strong>提供挖掘机、货车和其他设备的融资。只需提供您的独资经营注册和业务证明。"
+        />
+
+        <FAQItem
+          question="如果我有其他贷款机构的现有贷款怎么办?"
+          answer="拥有现有贷款不会自动取消您的资格。我们评估您的<strong>总债务偿还比率、当前收入和偿还额外融资的能力</strong>。我们的许多客户都有现有的商业贷款、车辆融资或抵押贷款。重要的是您的总债务相对于收入和现金流是可管理的。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: After Approval -->
+  <section id="after-approval" class="section">
+    <div class="container-custom max-w-4xl">
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">批准后问题</h2>
+        <p class="text-[#4F3E29] text-lg">
+          了解设备购买流程、所有权、提前结算和保险要求
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <FAQItem
+          question="批准后如何购买设备?"
+          answer="一旦获批,我们会发出融资批准信。然后您与选定的供应商确定设备详情。我们将进行设备检查(如果需要),准备融资文件,并在您签署租购协议后<strong>直接向供应商支付款项</strong>。设备以您的名义注册,您可以立即开始使用。"
+        />
+
+        <FAQItem
+          question="融资期间谁拥有设备?"
+          answer="在租购融资下,<strong>您从第一天起就拥有设备</strong>,可以立即用于业务。但是,融资方对设备持有抵押权/留置权,直到全额还款。一旦您完成所有付款,抵押权将被移除,您将拥有完全、无负担的所有权,无需承担进一步义务。"
+        />
+
+        <FAQItem
+          question="我可以在还清贷款前出售设备吗?"
+          answer="可以,但您必须首先<strong>结清未偿还的融资余额</strong>。许多客户在升级设备时这样做。流程包括:找到买家,从我们这里确定结算金额,买家付款,结算清除抵押权,所有权转移。我们会顺利促进这一过程,因为这在建筑和物流行业经常发生。"
+        />
+
+        <FAQItem
+          question="如果我想提前还清贷款怎么办?"
+          answer="允许并鼓励提前结算!我们不收取<strong>提前结算罚款</strong>。您可以随时通过联系我们获取结算报表来偿还融资。您将节省剩余的利息费用。许多客户在现金流充裕或业务盈利期间提前还款。"
+        />
+
+        <FAQItem
+          question="如果设备在融资期间出现故障怎么办?"
+          answer="设备故障是您作为所有者的责任,这就是为什么我们强烈建议购买<strong>综合保险</strong>。保险通常涵盖重大故障、事故和盗窃。无论设备状况如何,您的月付款都会继续。适当的维护和保险对于保护您的投资和业务运营至关重要。"
+        />
+
+        <FAQItem
+          question="融资设备需要什么保险?"
+          answer="所有融资设备都必须购买涵盖盗窃、火灾和事故损坏的<strong>综合保险</strong>。保险单必须将永恒信贷列为损失受益人。我们可以推荐具有竞争力保费的可信保险合作伙伴。保险可保护您和我们免受全损情况的影响,并确保业务连续性。"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Section -->
+  <section id="contact-us" class="section bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container-custom text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">还有其他问题?</h2>
+        <p class="text-xl mb-8 opacity-90">
+          我们经验丰富的团队随时为您提供帮助,让您更好地了解设备融资,并为您的业务需求找到完美的解决方案。
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <CTAButton
+            text="WhatsApp联系我们"
+            link={COMPANY_INFO.whatsapp.link}
+            variant="accent"
+            size="large"
+            icon="whatsapp"
+          />
+          <CTAButton
+            text="立即致电"
+            link={`tel:${COMPANY_INFO.phone.international}`}
+            variant="outline-white"
+            size="large"
+            icon="phone"
+          />
+        </div>
+
+        <div class="bg-[#F5F5DC]/10 backdrop-blur-sm p-6 rounded-lg">
+          <h3 class="text-xl font-black uppercase tracking-tight mb-4 text-[#8B6F47]">联系方式</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div>
+              <p class="font-semibold mb-2">WhatsApp (最快回复)</p>
+              <p class="opacity-90">+60175700889</p>
+            </div>
+            <div>
+              <p class="font-semibold mb-2">电话</p>
+              <p class="opacity-90">0175700889 / 03-3324 8899</p>
+            </div>
+            <div>
+              <p class="font-semibold mb-2">电子邮件</p>
+              <p class="opacity-90">enquiry@inghengcredit.com</p>
+            </div>
+            <div>
+              <p class="font-semibold mb-2">营业时间</p>
+              <p class="opacity-90">周一至周五: 9AM-5PM<br>周六: 9AM-1PM</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="font-semibold mb-2">办公地址</p>
+            <p class="opacity-90">16, Lintang Menalu, Taman Chi Liung, 41200 Klang, Selangor</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
