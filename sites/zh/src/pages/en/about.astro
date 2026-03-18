@@ -1,161 +1,138 @@
 ---
 /**
- * About Page - Chinese
- * 公司信息和历史
+ * About Page - Hobby Financing
  */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import CTAButton from '../../components/CTAButton.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import { COMPANY_INFO } from '../../utils/constants';
-import { t } from '../../utils/i18n';
 
-const lang = 'zh';
-const pageTitle = '关于我们 - 40+年设备融资经验 | 永兴信贷';
-const pageDescription = '马来西亚领先的设备融资公司，成立于1985年。0%押金，100%融资建筑、物流和工业设备。';
-const keywords = ['马来西亚设备融资', '永兴信贷历史', '建筑设备贷款', '关于永兴', '设备租赁公司'];
+const lang = 'en';
+
+const pageTitle = 'About Us | Hobby Financing Malaysia | Since 1985';
+const pageDescription = 'Learn about Malaysia\'s trusted hobby financing company. Financing motorcycles, superbikes, boats, and sports cars since 1985. 4,000+ happy customers.';
+
+const breadcrumbs = [
+  { label: 'Home', url: '/en' },
+  { label: 'About Us', url: '/en/about' },
+];
+
+const milestones = [
+  { year: '1985', title: 'Founded', description: 'Started as a small financing company in Klang, Selangor.' },
+  { year: '1995', title: '1,000 Customers', description: 'Reached our first thousand happy customers milestone.' },
+  { year: '2005', title: 'Expanded Services', description: 'Expanded into motorcycle and recreational vehicle financing.' },
+  { year: '2015', title: '3,000+ Customers', description: 'Continued growth with marine and sports car financing.' },
+  { year: '2025', title: '4,000+ Customers', description: '40 years of trusted financing, now specializing in hobby and lifestyle assets.' },
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} lang={lang} keywords={keywords}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  <Breadcrumbs items={breadcrumbs} lang={lang} />
+
   <!-- Hero Section -->
-  <Hero
-    title="40+年设备融资卓越服务"
-    subtitle="自1985年以来，为马来西亚企业提供智能设备融资解决方案"
-    backgroundImage="/images/hero/about.jpg"
-    lang={lang}
-  />
+  <section class="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">About Us</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Malaysia's trusted hobby financing company since 1985. We help enthusiasts own their dream motorcycles, superbikes, boats, and sports cars.
+      </p>
+    </div>
+  </section>
 
-  <!-- Breadcrumbs -->
-  <Breadcrumbs 
-    items={[
-      { label: '首页', href: `/${lang}/` },
-      { label: '关于我们', href: `/${lang}/about` }
-    ]}
-  />
-
-  <!-- Company Story Section -->
-  <section class="section py-16 bg-white">
-    <div class="container-custom">
+  <!-- Our Story -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-black mb-8 text-[#2D1810] text-center">我们的故事</h2>
+        <h2 class="text-3xl font-bold text-center mb-8">Our Story</h2>
         
-        <div class="prose prose-lg max-w-none text-gray-700 space-y-6">
+        <div class="prose prose-lg max-w-none">
           <p>
-            <strong>永兴信贷与租赁有限公司</strong>自1985年成立以来，一直是设备融资领域值得信赖的品牌。四十多年来，我们已帮助数千家马来西亚承包商、物流公司和制造商获得他们需要的设备，助力企业发展。
+            For 40 years, we've been helping Malaysians finance their passions. What started as a small financing company in Klang has grown into a trusted name for hobby and lifestyle asset financing.
           </p>
           
           <p>
-            基于<strong>每家企业都应该获得优质设备融资</strong>的原则，我们彻底改变了马来西亚中小企业获取建筑机械、商用车辆和工业设备的方式。
+            We understand that motorcycles, boats, and sports cars aren't just vehicles — they're dreams, passions, and a way of life. That's why we've dedicated ourselves to making these dreams accessible with flexible financing solutions.
           </p>
-
-          <div class="bg-[#F5F1EB] p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal my-8">
-            <h3 class="text-2xl font-bold mb-4 text-[#8B6F47]">我们的竞争优势</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <span class="text-[#8B6F47] mr-3">✓</span>
-                <span><strong>0%押金可用</strong> - 融资高达设备价值的100%</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-[#8B6F47] mr-3">✓</span>
-                <span><strong>接受10年以上旧设备</strong> - 我们评估状况，而不仅仅是年龄</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-[#8B6F47] mr-3">✓</span>
-                <span><strong>快速批准</strong> - 比传统银行快得多</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-[#8B6F47] mr-3">✓</span>
-                <span><strong>灵活条款</strong> - 根据您的现金流定制付款计划</span>
-              </li>
-            </ul>
-          </div>
-
+          
           <p>
-            与只关注完美信用评分和新设备的银行不同，我们了解马来西亚企业的实际情况。我们知道，一台维护良好的10年旧挖掘机可以像新的一样高效。我们明白保留周转资金对企业发展至关重要。
+            Today, we specialize in financing:
+          </p>
+          
+          <ul>
+            <li><strong>Motorcycles & Superbikes</strong> — From daily riders to high-performance machines</li>
+            <li><strong>Boats & Marine Equipment</strong> — Fishing boats, speedboats, yachts, jet skis</li>
+            <li><strong>Sports Cars</strong> — Porsche, Ferrari, Lamborghini, and premium brands</li>
+          </ul>
+          
+          <p>
+            With over 4,000 happy customers and counting, we're proud to be Malaysia's choice for hobby financing.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Mission & Vision -->
-  <section class="section py-16 bg-[#F5F1EB]">
-    <div class="container-custom">
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Mission -->
-        <div class="bg-white p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal">
-          <h3 class="text-2xl font-black mb-4 text-[#8B6F47]">我们的使命</h3>
-          <p class="text-gray-700 leading-relaxed">
-            为马来西亚中小企业提供便捷、灵活的设备融资解决方案，使企业在不影响现金流的情况下实现增长。我们相信每个合格的企业都应该获得成功所需的设备。
-          </p>
-        </div>
-
-        <!-- Vision -->
-        <div class="bg-white p-8 rounded-lg border-3 border-[#2D1810] shadow-brutal">
-          <h3 class="text-2xl font-black mb-4 text-[#8B6F47]">我们的愿景</h3>
-          <p class="text-gray-700 leading-relaxed">
-            成为马来西亚最值得信赖的设备融资合作伙伴，以理解真实的业务需求、批准他人拒绝的设备、支持企业家建立成功企业而闻名。
-          </p>
+  <!-- Milestones -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">40 Years of Trust</h2>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-8">
+          {milestones.map(milestone => (
+            <div class="flex items-start gap-6">
+              <div class="bg-primary text-white font-bold px-4 py-2 rounded-lg min-w-[80px] text-center">
+                {milestone.year}
+              </div>
+              <div>
+                <h3 class="font-bold text-lg">{milestone.title}</h3>
+                <p class="text-gray-600">{milestone.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
   <!-- Why Choose Us -->
-  <section class="section py-16 bg-white">
-    <div class="container-custom">
-      <h2 class="text-4xl font-black mb-12 text-[#2D1810] text-center">为什么马来西亚企业选择我们</h2>
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Experience -->
-        <div class="text-center">
-          <div class="text-5xl font-black text-[#8B6F47] mb-4">40+</div>
-          <h3 class="text-xl font-bold mb-2 text-[#2D1810]">年经验</h3>
-          <p class="text-gray-700">自1985年起融资设备，我们了解每个行业的独特需求</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">🏆</div>
+          <h3 class="text-xl font-bold mb-2">40 Years Experience</h3>
+          <p class="text-gray-600">Trusted since 1985. KPKT licensed and regulated.</p>
         </div>
-
-        <!-- Businesses Helped -->
-        <div class="text-center">
-          <div class="text-5xl font-black text-[#8B6F47] mb-4">4000+</div>
-          <h3 class="text-xl font-bold mb-2 text-[#2D1810]">企业融资</h3>
-          <p class="text-gray-700">从单台挖掘机到整个车队，我们已帮助各种规模的企业</p>
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">❤️</div>
+          <h3 class="text-xl font-bold mb-2">Passion Specialists</h3>
+          <p class="text-gray-600">We understand motorcycles, boats, and cars — not just numbers.</p>
         </div>
-
-        <!-- Equipment Value -->
-        <div class="text-center">
-          <div class="text-5xl font-black text-[#8B6F47] mb-4">5亿+</div>
-          <h3 class="text-xl font-bold mb-2 text-[#2D1810]">设备融资</h3>
-          <p class="text-gray-700">5亿令吉的设备帮助马来西亚企业成长</p>
+        <div class="text-center p-6">
+          <div class="text-5xl mb-4">🤝</div>
+          <h3 class="text-xl font-bold mb-2">4,000+ Customers</h3>
+          <p class="text-gray-600">Thousands of happy enthusiasts have trusted us with their dreams.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact CTA -->
-  <section class="section py-16 bg-[#8B6F47] text-white">
-    <div class="container-custom text-center">
-      <h2 class="text-4xl font-black mb-4">准备为您的设备融资吗？</h2>
-      <p class="text-xl mb-8 opacity-90">加入数千家信任永兴信贷的马来西亚企业</p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <CTAButton
-          href={COMPANY_INFO.whatsapp.link}
-          text="立即WhatsApp我们"
-          variant="whatsapp"
-          lang={lang}
-        />
-        <CTAButton
-          href={`/${lang}/contact`}
-          text="联系我们"
-          variant="secondary"
-          lang={lang}
-        />
-      </div>
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Finance Your Passion?</h2>
+      <p class="text-xl mb-8 opacity-90">Get a free consultation today.</p>
+      <a href="https://wa.me/60175700889" 
+         class="bg-yellow-400 text-navy-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition inline-block">
+        WhatsApp Us Now
+      </a>
     </div>
   </section>
 
-  <!-- Contact Form -->
-  <ContactForm lang={lang} />
 </BaseLayout>
