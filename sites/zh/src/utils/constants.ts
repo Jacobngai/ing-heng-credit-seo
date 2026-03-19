@@ -312,6 +312,18 @@ export const EQUIPMENT_NAV_ITEMS = [
     icon: '🚗',
   },
   {
+    label: 'hobby.golfCart',
+    href: '/equipment/golf-cart',
+    description: 'hobby.golfCartDesc',
+    icon: '⛳',
+  },
+  {
+    label: 'hobby.privateJet',
+    href: '/equipment/private-jet',
+    description: 'hobby.privateJetDesc',
+    icon: '✈️',
+  },
+  {
     label: 'hobby.helicopter',
     href: '/equipment/helicopter',
     description: 'hobby.helicopterDesc',
