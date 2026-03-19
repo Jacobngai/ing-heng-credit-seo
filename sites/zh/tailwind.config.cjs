@@ -9,121 +9,133 @@ module.exports = {
     extend: {
       colors: {
         // ====================================
-        // HOBBY FINANCING - MODERN BLUE THEME
-        // Clean, Professional, Trustworthy
+        // INDUSTRIAL TRUST BRAND IDENTITY
+        // Premium Bronze & Gold Color System
         // ====================================
 
-        // PRIMARY BLUE - Main brand color
+        // PRIMARY BRONZE - Main brand color (complete 50-900 scale)
         primary: {
-          DEFAULT: '#1E40AF', // Professional Blue
-          50: '#EFF6FF',      // Lightest blue
-          100: '#DBEAFE',     // Very light blue
-          200: '#BFDBFE',     // Light blue
-          300: '#93C5FD',     // Primary Light
-          400: '#60A5FA',     // Medium blue
-          500: '#3B82F6',     // Bright blue
-          600: '#2563EB',     // Main blue
-          700: '#1D4ED8',     // Darker blue
-          800: '#1E40AF',     // Primary (DEFAULT)
-          900: '#1E3A8A',     // Darkest blue
-          light: '#93C5FD',   // Primary Light (named)
-          dark: '#1E3A8A',    // Primary Dark (named)
+          DEFAULT: '#8B6F47', // Primary Bronze
+          50: '#FAF8F5',      // Lightest bronze tint
+          100: '#F5F1EB',     // Very light bronze
+          200: '#E8DFD4',     // Light bronze
+          300: '#D4BFA8',     // Primary Light
+          400: '#BFA88E',     // Medium bronze
+          500: '#8B6F47',     // Main bronze (DEFAULT)
+          600: '#7A5F3D',     // Darker bronze
+          700: '#6B5437',     // Primary Dark
+          800: '#5C4830',     // Deep bronze
+          900: '#4D3D28',     // Darkest bronze
+          light: '#D4BFA8',   // Primary Light (named)
+          dark: '#6B5437',    // Primary Dark (named)
         },
 
-        // SECONDARY - Accent Gold/Amber for CTAs
+        // SECONDARY GOLD - Accent & highlights
         secondary: {
-          DEFAULT: '#F59E0B', // Amber
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F59E0B',     // Main amber
-          600: '#D97706',
-          700: '#B45309',
-          800: '#92400E',
-          900: '#78350F',
-          light: '#FDE68A',
-          dark: '#B45309',
+          DEFAULT: '#D4A574', // Secondary Gold
+          50: '#FBF9F6',      // Lightest gold tint
+          100: '#F5F0E8',     // Very light gold
+          200: '#E8DFD4',     // Neutral Light
+          300: '#E0C9AC',     // Light gold
+          400: '#D4A574',     // Secondary Gold (DEFAULT)
+          500: '#BF9463',     // Secondary Dark
+          600: '#AB8252',     // Deeper gold
+          700: '#977042',     // Rich gold
+          800: '#835F36',     // Deep gold
+          900: '#6F4E2B',     // Darkest gold
+          light: '#E8DFD4',   // Secondary Light
+          dark: '#BF9463',    // Secondary Dark (named)
         },
 
-        // ACCENT - Dark Navy for contrast
+        // ACCENT COLORS - Dark Browns
         accent: {
-          DEFAULT: '#0F172A', // Slate 900
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',     // Dark navy
-          light: '#64748B',
-          dark: '#020617',
+          DEFAULT: '#2D1810', // Accent Dark Brown
+          50: '#F7F3F0',      // Lightest accent
+          100: '#EDE5DF',     // Very light accent
+          200: '#D9C8BC',     // Light accent
+          300: '#C5AB99',     // Medium light accent
+          400: '#B18E76',     // Medium accent
+          500: '#4C3729',     // Accent Light
+          600: '#3D2E21',     // Medium dark
+          700: '#2D1810',     // Accent Dark Brown (DEFAULT)
+          800: '#241410',     // Very dark
+          900: '#1A0F0B',     // Darkest accent
+          light: '#4C3729',   // Accent Light (named)
+          dark: '#1A0F0B',    // Deeper dark (named)
         },
 
-        // NEUTRAL - Clean grays
+        // NEUTRAL BEIGE - Backgrounds & surfaces
         neutral: {
-          DEFAULT: '#F8FAFC', // Slate 50
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',
-          dark: '#E2E8F0',
+          DEFAULT: '#F5F5DC', // Neutral Beige
+          50: '#FCFCF9',      // Lightest neutral
+          100: '#F9F9F3',     // Very light neutral
+          200: '#F5F5DC',     // Neutral Beige (DEFAULT)
+          300: '#F0F0C8',     // Light beige
+          400: '#EAEAB8',     // Medium beige
+          500: '#E8E8C8',     // Neutral Dark
+          600: '#D4D4AE',     // Deeper beige
+          700: '#C0C094',     // Rich beige
+          800: '#ACAC7A',     // Deep beige
+          900: '#989860',     // Darkest beige
+          dark: '#E8E8C8',    // Neutral Dark (named)
         },
 
-        // TEXT COLORS
+        // TEXT COLORS - Typography hierarchy
         text: {
-          primary: '#0F172A',   // Dark slate
-          secondary: '#475569', // Medium slate
-          muted: '#64748B',     // Light slate
-          light: '#94A3B8',     // Lighter
-          inverse: '#FFFFFF',   // White
+          primary: '#1A140D',   // Text Primary (darkest)
+          secondary: '#4F3E29', // Text Secondary
+          muted: '#6B5437',     // Text Muted
+          light: '#8B7355',     // Light text
+          inverse: '#F5F5DC',   // For dark backgrounds
         },
 
-        // BACKGROUND COLORS
+        // BACKGROUND COLORS - Surface hierarchy
         bg: {
-          primary: '#FFFFFF',
-          secondary: '#F8FAFC',
-          tertiary: '#F1F5F9',
-          dark: '#0F172A',
+          primary: '#FFFFFF',   // Background Primary
+          secondary: '#F5F5DC', // Background Secondary
+          tertiary: '#F5F1EC',  // Background Tertiary
+          dark: '#1A140D',      // Dark mode background
         },
 
-        // LEGACY - Keep for backward compatibility
+        // DARK MODE SPECIFIC COLORS
+        dark: {
+          primary: '#C09F7D',   // Dark Mode Primary (lighter bronze)
+          secondary: '#D4A574', // Dark Mode Secondary
+          accent: '#E8DFD4',    // Dark Mode Accent
+          bg: '#1A140D',        // Dark Mode Background
+          surface: '#2D1810',   // Dark Mode Surface
+          text: '#F5F5DC',      // Dark Mode Text
+          muted: '#B8A890',     // Dark Mode Muted Text
+        },
+
+        // LEGACY COLORS - Maintaining backward compatibility
+        // These now map to Industrial Trust bronze tones
         navy: {
-          900: '#0F172A',
-          800: '#1E293B',
-          700: '#334155',
+          900: '#2D1810', // Maps to accent dark
+          800: '#4C3729', // Maps to accent light
+          700: '#6B5437', // Maps to primary dark
         },
         blue: {
-          50: '#EFF6FF',
-          100: '#DBEAFE',
-          200: '#BFDBFE',
-          300: '#93C5FD',
-          400: '#60A5FA',
-          500: '#3B82F6',
-          600: '#2563EB',
-          700: '#1D4ED8',
+          50: '#FAF8F5',
+          100: '#F5F1EB',
+          200: '#E8DFD4',
+          300: '#D4BFA8',
+          400: '#BFA88E',
+          500: '#8B6F47',
+          600: '#7A5F3D',
+          700: '#6B5437',
         },
         yellow: {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F59E0B',
-          600: '#D97706',
-          700: '#B45309',
-          800: '#92400E',
-          900: '#78350F',
+          50: '#FBF9F6',
+          100: '#F5F0E8',
+          200: '#E8DFD4',
+          300: '#E0C9AC',
+          400: '#D4A574',
+          500: '#BF9463',
+          600: '#AB8252',
+          700: '#977042',
+          800: '#835F36',
+          900: '#6F4E2B',
         },
       },
 
@@ -134,16 +146,17 @@ module.exports = {
       },
 
       boxShadow: {
-        // Modern shadows
-        'brutal-sm': '4px 4px 0 #1E3A8A',
-        'brutal': '6px 6px 0 #1E3A8A',
-        'brutal-md': '6px 6px 0 #1E3A8A',
-        'brutal-lg': '8px 8px 0 #1E3A8A',
-        'brutal-xl': '10px 10px 0 #1E3A8A',
-        'brutal-2xl': '12px 12px 0 #1E3A8A',
-        'brutal-dark-sm': '4px 4px 0 #0F172A',
-        'brutal-dark-md': '6px 6px 0 #0F172A',
-        'brutal-dark-lg': '8px 8px 0 #0F172A',
+        // Light mode shadows (using primary dark)
+        'brutal-sm': '4px 4px 0 #6B5437',
+        'brutal': '6px 6px 0 #6B5437',
+        'brutal-md': '6px 6px 0 #6B5437',
+        'brutal-lg': '8px 8px 0 #6B5437',
+        'brutal-xl': '10px 10px 0 #6B5437',
+        'brutal-2xl': '12px 12px 0 #6B5437',
+        // Dark mode shadows (using accent dark)
+        'brutal-dark-sm': '4px 4px 0 #2D1810',
+        'brutal-dark-md': '6px 6px 0 #2D1810',
+        'brutal-dark-lg': '8px 8px 0 #2D1810',
       },
 
       borderWidth: {
@@ -151,6 +164,7 @@ module.exports = {
         '4': '4px',
       },
 
+      // Smooth transitions for dark mode
       transitionProperty: {
         'colors': 'color, background-color, border-color, text-decoration-color, fill, stroke',
       },
