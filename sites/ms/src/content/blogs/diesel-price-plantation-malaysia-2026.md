@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menjejaskan Pengendali Perladangan di Ma
 description: 'Pengendali ladang kelapa sawit dan getah menghadapi kenaikan kos diesel pada RM3.35/liter bersubsidi. Dari pengangkutan TBS hingga peralatan estet, ketahui bagaimana pembiayaan membantu perniagaan perladangan menguruskan aliran tunai pada 2026.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Perladangan

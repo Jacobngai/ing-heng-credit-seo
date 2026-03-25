@@ -3,7 +3,7 @@ title: 'Perancangan Kesinambungan Perniagaan Semasa Inflasi Diesel di Malaysia 2
 description: 'Bagaimana perniagaan Malaysia boleh mengekalkan operasi semasa inflasi diesel pada 2026. Pengurusan risiko, perancangan kos, dan peranan pembiayaan dalam kesinambungan perniagaan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Perniagaan
+category: Business Financing
 tags:
   - Kesinambungan Perniagaan
   - Inflasi Diesel

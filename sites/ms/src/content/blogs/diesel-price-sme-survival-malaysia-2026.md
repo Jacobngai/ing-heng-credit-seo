@@ -3,7 +3,7 @@ title: 'Bagaimana PKS Malaysia Boleh Bertahan daripada Kenaikan Harga Diesel pad
 description: 'Strategi praktikal untuk PKS Malaysia mengurus kos diesel yang meningkat pada 2026. Pelajari tips pengurusan kos, bila untuk melabur vs memotong kos, dan bagaimana pembiayaan peralatan menyokong kesinambungan perniagaan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Perniagaan
+category: Business Financing
 tags:
   - Harga Diesel
   - PKS

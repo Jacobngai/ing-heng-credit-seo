@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Memberi Kesan kepada Pengendali Pemuat R
 description: 'Harga diesel Malaysia mencecah RM3.35/liter bersubsidi dan RM5.52+ tanpa subsidi. Lihat bagaimana ini memberi kesan kepada kos bahan api pemuat roda dalam operasi kuari, pembinaan, dan ladang - serta apa yang boleh anda lakukan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Pemuat Roda

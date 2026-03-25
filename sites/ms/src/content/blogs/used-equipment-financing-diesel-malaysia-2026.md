@@ -3,7 +3,7 @@ title: 'Pembiayaan Peralatan Terpakai: Strategi Bijak Semasa Kenaikan Harga Dies
 description: 'Mengapa membiayai peralatan terpakai masuk akal apabila harga diesel tinggi di Malaysia 2026. Penjimatan kos, ketersediaan pembiayaan, dan apa yang perlu dicari dalam jentera terpakai.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Peralatan Terpakai
   - Terpakai

@@ -3,7 +3,7 @@ title: 'Mengurus Aliran Tunai Armada Semasa Kenaikan Harga Diesel di Malaysia 20
 description: 'Panduan praktikal untuk pemilik armada mengenai pengurusan aliran tunai semasa kenaikan harga diesel Malaysia 2026. Merangkumi belanjawan armada, penjejakan bahan api, dan bila untuk mengganti vs membaiki peralatan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Panduan Pembiayaan
+category: Financing Guides
 tags:
   - Harga Diesel
   - Pengurusan Armada

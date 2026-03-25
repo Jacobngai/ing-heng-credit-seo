@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menjejaskan Pengendali Lori 3-Tan di Mal
 description: 'Harga diesel di Malaysia semakin membebankan pengendali lori 3-tan. Lihat angka sebenar kos bahan api harian, kesan bulanan, dan cara praktikal mengurus perbelanjaan armada anda pada 2026.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Lori 3-Tan

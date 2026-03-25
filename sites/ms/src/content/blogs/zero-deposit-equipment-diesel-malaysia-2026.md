@@ -3,7 +3,7 @@ title: 'Pembiayaan Peralatan Deposit Sifar Apabila Harga Diesel Meningkat di Mal
 description: 'Bagaimana pembiayaan peralatan deposit 0% membantu perniagaan Malaysia memelihara wang tunai untuk kos bahan api semasa kenaikan harga diesel. Siapa yang layak dan peralatan apa yang diliputi.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Panduan Pembiayaan
+category: Financing Guides
 tags:
   - Deposit Sifar
   - Deposit 0%

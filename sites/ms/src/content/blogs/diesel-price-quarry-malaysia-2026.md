@@ -3,7 +3,7 @@ title: 'Kenaikan Harga Diesel Memukul Pengendali Kuari Malaysia Teruk pada 2026'
 description: 'Pengendali kuari di Malaysia menghadapi kos diesel yang melonjak pada RM3.35/liter untuk penghancur, jengkaut, pemuat roda dan trak lambak. Ketahui bagaimana pembiayaan peralatan membantu mengurus aliran tunai apabila kos bahan api meningkat.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Kuari

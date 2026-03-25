@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Mempengaruhi Pengendali Bas Pelancongan 
 description: 'Pengendali bas pelancongan Malaysia menghadapi kos diesel yang meningkat pada 2026. Ketahui bagaimana kenaikan harga bahan api mempengaruhi pengangkutan pelancongan, bas sekolah, dan perkhidmatan sewa - dan bagaimana mengurus aliran tunai.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Bas Pelancongan

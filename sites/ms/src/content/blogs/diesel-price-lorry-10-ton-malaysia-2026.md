@@ -3,7 +3,7 @@ title: 'Kesan Harga Diesel Terhadap Operasi Lori 10-Tan di Malaysia (2026)'
 description: 'Kenaikan harga diesel memukul perniagaan pengangkutan lori 10-tan dengan teruk pada 2026. Lihat pecahan kos bahan api sebenar, pengiraan kesan bulanan, dan bagaimana pengendali mengurus perbelanjaan armada mereka.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Lori 10-Tan

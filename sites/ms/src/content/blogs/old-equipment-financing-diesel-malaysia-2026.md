@@ -3,7 +3,7 @@ title: 'Pembiayaan Peralatan Lama dan Terpakai Semasa Kenaikan Harga Diesel di M
 description: 'Ketahui cara membiayai peralatan lama dan terpakai di Malaysia semasa kenaikan harga diesel 2026. Umur peralatan tidak menghalang kelayakan. Deposit 0% tersedia untuk jentera terpakai.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Peralatan Terpakai
   - Peralatan Lama

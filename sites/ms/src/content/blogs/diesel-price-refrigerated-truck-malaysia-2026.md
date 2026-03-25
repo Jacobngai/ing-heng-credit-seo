@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Memberi Kesan kepada Pengendali Trak Sej
 description: 'Trak sejuk menggunakan 40-60 liter diesel sehari disebabkan keperluan enjin dan unit penyejukan. Dengan diesel pada RM3.35/liter, pengendali rantai sejuk menghadapi tekanan kos yang serius. Inilah gambaran angkanya.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Trak Sejuk

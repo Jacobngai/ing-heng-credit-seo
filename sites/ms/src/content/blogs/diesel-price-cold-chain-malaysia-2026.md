@@ -3,7 +3,7 @@ title: 'Kos Diesel Meningkat dan Industri Rantai Sejuk Malaysia: Realiti 2026'
 description: 'Diesel pada RM3.35/liter bersubsidi dan RM5.52+ tanpa subsidi meningkatkan kos rantai sejuk di seluruh Malaysia. Bagaimana pengendali pengangkutan berpendingin dan penyimpanan sejuk boleh menguruskan aliran tunai dengan pembiayaan peralatan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Rantai Sejuk

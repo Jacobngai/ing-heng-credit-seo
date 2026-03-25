@@ -3,7 +3,7 @@ title: 'Kos Diesel untuk Pengendali Penggerak Utama di Malaysia: Semakan Realiti
 description: 'Penggerak utama membakar 80-120 liter diesel setiap hari. Dengan harga bahan api yang meningkat di Malaysia, inilah yang sebenarnya dihadapi oleh pengendali pengangkutan pelabuhan dan kontena pada 2026, dan cara mengurusnya.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Penggerak Utama

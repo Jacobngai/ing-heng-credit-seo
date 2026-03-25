@@ -3,7 +3,7 @@ title: 'Bagaimana Pembiayaan Peralatan Membantu Semasa Krisis Harga Diesel di Ma
 description: 'Ketahui bagaimana pembiayaan peralatan mengekalkan aliran tunai semasa krisis harga diesel Malaysia 2026. Sebarkan kos peralatan, kekalkan operasi, dan lindungi modal kerja.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Panduan Pembiayaan
+category: Financing Guides
 tags:
   - Pembiayaan Peralatan
   - Krisis Diesel

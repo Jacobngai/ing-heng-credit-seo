@@ -3,7 +3,7 @@ title: 'Kesan Harga Diesel Terhadap Pengendali Pengangkutan Pelabuhan di Malaysi
 description: 'Pengendali pengangkutan pelabuhan di Pelabuhan Klang, Pelabuhan Pulau Pinang dan Pelabuhan Johor menghadapi kos diesel yang meningkat pada RM3.35/liter. Fahami kesan sebenar terhadap pengangkutan kontena dan bagaimana pembiayaan peralatan boleh membantu mengurus aliran tunai.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Pengangkutan Pelabuhan

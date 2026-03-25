@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menjejaskan Pengendali Jengkaut di Malay
 description: 'Jengkaut membakar 40-80 liter diesel sehari. Dengan diesel pada RM5.52+, perniagaan pembinaan Malaysia menghadapi tekanan kos yang serius. Pecahan praktikal kos bahan api dan cara mengurusnya.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Jengkaut

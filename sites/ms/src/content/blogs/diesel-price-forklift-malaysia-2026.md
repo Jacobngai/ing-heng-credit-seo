@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Memberi Kesan kepada Pengendali Forklif 
 description: 'Forklif diesel menggunakan 15-25 liter sehari. Dengan diesel Malaysia pada RM3.35/liter bersubsidi dan RM5.52+ tanpa subsidi, pengendali gudang dan pelabuhan menghadapi kos yang meningkat. Nasihat praktikal untuk mengurus kesannya.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Forklif

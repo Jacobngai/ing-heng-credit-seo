@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menjejaskan Pengendali Kren di Malaysia 
 description: 'Kren mudah alih menggunakan 40-80 liter diesel sehari. Dengan diesel Malaysia pada RM3.35/liter bersubsidi, pengendali kren dan firma pembinaan menghadapi kenaikan kos yang ketara. Pecahan angka sebenar dan pilihan praktikal.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Kren

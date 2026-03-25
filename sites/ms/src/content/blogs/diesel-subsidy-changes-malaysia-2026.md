@@ -3,7 +3,7 @@ title: 'Memahami Perubahan Subsidi Diesel Malaysia pada 2026: Apa yang Perniagaa
 description: 'Penjelasan jelas tentang perubahan subsidi diesel Malaysia pada 2026. Ketahui siapa yang layak untuk subsidi bersasar, impak kepada perniagaan, dan cara mengurus kos bahan api yang lebih tinggi.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Panduan Pembiayaan
+category: Financing Guides
 tags:
   - Subsidi Diesel
   - Dasar Malaysia

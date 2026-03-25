@@ -3,7 +3,7 @@ title: 'Kesan Harga Diesel Terhadap Operasi Jentolak di Malaysia (2026)'
 description: 'Jentolak menggunakan 50-100 liter diesel sehari. Dengan kenaikan harga bahan api pada 2026, pengendali pembersihan tanah, kuari, dan pembinaan di Malaysia perlu menilai semula kos. Berikut pecahan penuh.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Jentolak

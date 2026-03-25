@@ -3,7 +3,7 @@ title: 'Membiayai Pelbagai Kenderaan dan Peralatan Semasa Kenaikan Harga Diesel 
 description: 'Bagaimana pemilik armada boleh membiayai pelbagai kenderaan dan peralatan semasa kos diesel meningkat di Malaysia 2026. Pengembangan armada, strategi penggantian, dan pilihan pembiayaan berkumpulan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Pembiayaan Armada
   - Pelbagai Kenderaan

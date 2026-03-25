@@ -3,7 +3,7 @@ title: 'Kesan Kenaikan Harga Diesel Terhadap Industri Pembinaan Malaysia 2026'
 description: 'Bagaimana kenaikan harga diesel mempengaruhi industri pembinaan Malaysia pada 2026. Meliputi jengkaut, kren, lori, penjana kuasa, lebihan kos projek, dan strategi harga tender.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Pembinaan

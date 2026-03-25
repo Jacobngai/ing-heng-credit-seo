@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Memberi Kesan kepada Pengendali Penjana 
 description: 'Pengendali penjana kuasa diesel di Malaysia menghadapi kos bahan api yang meningkat pada 2026. Ketahui bagaimana kenaikan harga memberi kesan kepada tapak pembinaan, acara, kilang, dan kuasa sandaran - serta strategi aliran tunai.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Penjana Kuasa

@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menjejaskan Pengendali Bot Nelayan di Ma
 description: 'Bot nelayan menggunakan 100-300 liter diesel setiap perjalanan. Dengan harga diesel Malaysia meningkat, nelayan menghadapi ekonomi yang sukar. Pecahan kos sebenar untuk operasi pesisir dan laut dalam serta pilihan pembiayaan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Bot Nelayan

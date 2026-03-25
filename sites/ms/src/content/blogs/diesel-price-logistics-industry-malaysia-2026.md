@@ -3,7 +3,7 @@ title: 'Kesan Kenaikan Harga Diesel Terhadap Industri Logistik Malaysia 2026'
 description: 'Bagaimana kenaikan harga diesel membentuk semula logistik Malaysia pada 2026. Meliputi penghantaran jarak terakhir, pengangkutan gudang, pengangkutan rentas sempadan, dan strategi aliran tunai untuk pengendali logistik.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Logistik

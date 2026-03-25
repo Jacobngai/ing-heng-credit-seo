@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menekan Industri Perikanan Malaysia pada
 description: 'Kos diesel yang meningkat pada RM3.35/liter bersubsidi dan RM5.52+ tanpa subsidi menghimpit nelayan Malaysia dengan teruk. Ketahui bagaimana pengendali pukat tunda, pukat jerut dan perikanan pesisir boleh menguruskan aliran tunai dengan pembiayaan peralatan.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Perikanan

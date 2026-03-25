@@ -3,7 +3,7 @@ title: 'Bagaimana Kenaikan Harga Diesel Menjejaskan Sektor Pertanian Malaysia 20
 description: 'Kenaikan harga diesel menjejaskan petani dan perniagaan pertanian Malaysia pada 2026. Merangkumi traktor, mesin penuai, pam pengairan, dan pengangkutan ke pasaran - serta nasihat praktikal aliran tunai.'
 author: 'Ing Heng Credit Team'
 publishDate: 2026-03-25
-category: Pembiayaan Peralatan
+category: Equipment Financing
 tags:
   - Harga Diesel
   - Pertanian
