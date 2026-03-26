@@ -3,7 +3,7 @@ title: "Debt Consolidation Malaysia: Combine 3+ Debts Into One Payment (Save Up 
 description: "Stop juggling multiple debts. Consolidate credit cards, personal loans, and overdrafts into ONE payment. Save up to 40% on monthly payments. Fast 24-hour approval."
 author: "Ing Heng Credit Team"
 publishDate: 2026-02-25T00:00:00.000Z
-category: Debt Consolidation
+category: Personal Financing
 tags:
   - Debt Consolidation
   - Financial Tips
