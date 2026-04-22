@@ -82,14 +82,13 @@ const t = translations[locale];
         {relatedPosts.map(post => (
           <BlogCard
             title={post.data.title}
-            description={post.data.description}
-            slug={`/${locale}/blog/${post.slug}`}
-            image={post.data.ogImage}
-            publishDate={post.data.publishDate}
+            excerpt={post.data.description}
+            slug={post.slug}
+            image={post.data.ogImage || post.data.image}
+            date={post.data.publishDate}
             category={post.data.category}
-            readingTime={post.data.readingTime}
             author={post.data.author}
-            locale={locale}
+            lang={locale}
           />
         ))}
       </div>

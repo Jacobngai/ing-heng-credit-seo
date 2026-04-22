@@ -27,7 +27,9 @@ interface Props {
   slug: string;
 }
 
-const { frontmatter, headings, slug } = Astro.props;
+const { frontmatter: fmProps, headings = [], slug = "" } = Astro.props;
+// Use frontmatter prop if it exists, otherwise use all props
+const frontmatter = fmProps || Astro.props;
 
 // Hardcode to English
 const locale: Locale = 'en';

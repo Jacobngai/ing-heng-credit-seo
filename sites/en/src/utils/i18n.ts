@@ -98,8 +98,11 @@ export function isValidLocale(locale: string): locale is Locale {
 /**
  * Format date according to locale
  */
-export function formatDate(date: Date | string, locale: Locale = 'en'): string {
+export function formatDate(date: Date | string | undefined | null, locale: Locale = 'en'): string {
+  if (!date) return '';
   const dateObj = typeof date === 'string' ? new Date(date) : date;
+  
+  if (isNaN(dateObj.getTime())) return '';
 
   return dateObj.toLocaleDateString('en-MY', {
     year: 'numeric',
