@@ -8,61 +8,76 @@ interface Props {
 const { partner } = Astro.props;
 ---
 
-<article class="card flex h-full flex-col bg-white">
-  <a href={`/en/our-partners/${partner.slug}`} class="block">
-    <div class="aspect-[4/3] overflow-hidden border-b-3 border-[#2D1810] bg-[#F5F1EB]">
+<article class="group relative flex h-full flex-col border-4 border-[#1A140D] bg-white shadow-brutal transition-all hover:-translate-y-1 hover:shadow-brutal-lg">
+  <a href={`/en/our-partners/${partner.slug}`} class="block overflow-hidden border-b-4 border-[#1A140D]">
+    <div class="relative aspect-[4/3] bg-[#F5F1EB]">
       {partner.coverImageUrl ? (
         <img
           src={partner.coverImageUrl}
           alt={partner.name}
-          class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
-      ) : partner.logoImageUrl ? (
-        <div class="flex h-full items-center justify-center bg-gradient-to-br from-[#F5F1EB] to-[#E8DFD4] p-8">
-          <img
-            src={partner.logoImageUrl}
-            alt={partner.name}
-            class="h-28 w-28 object-contain"
-            loading="lazy"
-          />
-        </div>
       ) : (
-        <div class="flex h-full items-center justify-center bg-gradient-to-br from-[#F5F1EB] to-[#E8DFD4] px-6 text-center">
-          <span class="font-display text-3xl uppercase tracking-wide text-[#8B6F47]">{partner.name}</span>
+        <div class="flex h-full items-center justify-center bg-gradient-to-br from-[#F5F1EB] to-[#E8DFD4] p-8">
+           <div class="text-center space-y-2 opacity-30">
+              <p class="font-display text-2xl uppercase text-[#8B6F47] m-0">{partner.name}</p>
+              <p class="text-[10px] font-black uppercase tracking-widest text-[#8B6F47]">Premium Partner</p>
+           </div>
+        </div>
+      )}
+      
+      {partner.featured && (
+        <div class="absolute top-4 left-4 z-10">
+           <span class="bg-[#D4A574] px-3 py-1.5 border-2 border-[#1A140D] text-[10px] font-black uppercase tracking-widest text-[#1A140D] shadow-brutal-xs">
+             Featured
+           </span>
         </div>
       )}
     </div>
   </a>
 
-  <div class="card-body flex flex-1 flex-col gap-5">
-    <div class="space-y-3">
-      {partner.featured && <span class="badge badge-secondary">Featured Partner</span>}
-      {partner.logoImageUrl && (
-        <div class="flex h-16 w-16 items-center justify-center overflow-hidden border-3 border-[#2D1810] bg-white shadow-brutal-sm">
-          <img src={partner.logoImageUrl} alt={partner.name} class="h-full w-full object-contain p-2" loading="lazy" />
-        </div>
+  <div class="flex flex-1 flex-col p-8 space-y-6">
+    <div class="space-y-4">
+      <div class="space-y-1">
+         {partner.companyName && (
+           <p class="text-[10px] font-black uppercase tracking-[0.2em] text-[#8B6F47]">
+             {partner.companyName}
+           </p>
+         )}
+         <h2 class="m-0 font-display text-3xl uppercase text-[#1A140D] leading-none">
+           <a href={`/en/our-partners/${partner.slug}`} class="text-inherit no-underline hover:text-[#8B6F47]">
+             {partner.name}
+           </a>
+         </h2>
+      </div>
+      
+      {partner.location && (
+        <p class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#6B5437]">
+          <span class="text-[#D4A574]">✦</span> {partner.location}
+        </p>
       )}
-      {partner.companyName && <p class="text-sm font-bold uppercase tracking-[0.12em] text-[#8B6F47]">{partner.companyName}</p>}
-      <h2 class="text-4xl leading-none text-[#2D1810]">
-        <a href={`/en/our-partners/${partner.slug}`} class="text-inherit no-underline hover:text-[#8B6F47]">
-          {partner.name}
-        </a>
-      </h2>
-      {partner.location && <p class="text-sm font-bold uppercase tracking-[0.1em] text-[#6B5437]">{partner.location}</p>}
-      <p class="text-base leading-relaxed text-[#4F3E29]">{partner.shortDescription}</p>
+      
+      <p class="text-sm leading-relaxed text-[#4F3E29] line-clamp-3 font-sans">
+        {partner.shortDescription}
+      </p>
     </div>
 
-    <div class="mt-auto flex flex-wrap gap-3">
-      <a href={`/en/our-partners/${partner.slug}`} class="btn btn-primary px-5 py-3 text-base">View Profile</a>
+    <div class="mt-auto pt-6 flex flex-wrap gap-4 border-t border-black/5">
+      <a 
+        href={`/en/our-partners/${partner.slug}`} 
+        class="flex-1 text-center bg-[#1A140D] text-white font-display uppercase tracking-widest py-3 text-xs shadow-brutal-sm hover:-translate-y-0.5 transition-all"
+      >
+        View Profile
+      </a>
       {partner.website && (
         <a
           href={partner.website}
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-outline px-5 py-3 text-base"
+          class="px-4 border-2 border-[#1A140D] text-[#1A140D] font-black uppercase text-[10px] flex items-center justify-center hover:bg-black/5"
         >
-          Visit Website
+          Website
         </a>
       )}
     </div>
