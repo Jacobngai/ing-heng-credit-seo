@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PartnerCarousel from '../../../components/partners/PartnerCarousel.astro';
+import { getPartnerBySlug, listPartnerSlugs } from '../../../utils/partners';
+
+export async function getStaticPaths() {
+  const partners = await listPartnerSlugs();
+  return partners.map((partner) => ({
+    params: { slug: partner.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const partner = slug ? await getPartnerBySlug(slug) : null;
+
+if (!partner) {
+  Astro.response.status = 404;
+}
+
+const pageTitle = partner ? `${partner.seoTitle}` : 'Partner Not Found | Ing Heng Credit';
+const pageDescription = partner?.seoDescription || 'This partner profile could not be found.';
+const galleryImages = partner
+  ? [
+      ...(partner.coverImageUrl ? [{ url: partner.coverImageUrl, altText: partner.name }] : []),
+      ...partner.images.filter((image) => image.url).map((image) => ({ url: image.url as string, altText: image.altText })),
+    ]
+  : [];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang="en" image={partner?.coverImageUrl || undefined}>
+  {partner ? (
+    <>
+      {/* Premium Hero Section with Glassmorphism */}
+      <section class="relative min-h-[50vh] overflow-hidden border-b-4 border-[#D4A574] bg-[#1A140D] pt-32 pb-16">
+        {partner.coverImageUrl && (
+          <div class="absolute inset-0 z-0">
+            <img src={partner.coverImageUrl} alt="" class="h-full w-full object-cover opacity-40" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1A140D] via-[#1A140D]/80 to-transparent"></div>
+          </div>
+        )}
+        
+        <div class="container-custom relative z-10">
+          <a href="/en/our-partners" class="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#D4A574] no-underline transition-transform hover:-translate-x-1">
+            <span class="text-xl">←</span> Back to Directory
+          </a>
+
+          <div class="mt-12 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+            <div class="space-y-6">
+              <div class="flex flex-wrap items-center gap-6">
+                {partner.logoImageUrl && (
+                  <div class="flex h-32 w-32 items-center justify-center overflow-hidden border-4 border-white bg-white shadow-brutal-lg transition-transform hover:scale-105">
+                    <img src={partner.logoImageUrl} alt={partner.name} class="h-full w-full object-contain p-3" />
+                  </div>
+                )}
+                <div class="space-y-2">
+                  {partner.companyName && (
+                    <p class="inline-block bg-[#D4A574] px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-[#1A140D]">
+                      {partner.companyName}
+                    </p>
+                  )}
+                  <h1 class="text-4xl md:text-6xl font-display uppercase text-white drop-shadow-md">{partner.name}</h1>
+                  {partner.location && (
+                    <p class="flex items-center gap-2 text-xl font-display uppercase tracking-widest text-[#E8DFD4]">
+                      <span class="text-[#D4A574]">✦</span> {partner.location}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <p class="max-w-3xl text-xl leading-relaxed text-[#E8DFD4] drop-shadow-sm line-clamp-3">
+                {partner.shortDescription}
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+              {partner.website && (
+                <a href={partner.website} target="_blank" rel="noopener noreferrer" class="btn bg-[#8B6F47] text-white px-8 py-4 font-display tracking-widest text-lg uppercase transition-all hover:bg-white hover:text-[#1A140D] shadow-brutal-sm group">
+                  Visit Website <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
+                </a>
+              )}
+              {partner.whatsapp && (
+                <a href={partner.whatsapp} target="_blank" rel="noopener noreferrer" class="btn border-2 border-white text-white px-8 py-4 font-display tracking-widest text-lg uppercase transition-all hover:border-[#D4A574] hover:text-[#D4A574] shadow-brutal-dark-sm">
+                  WhatsApp
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Area */}
+      <section class="py-24 bg-white">
+        <div class="container-custom">
+          <div class="grid gap-16 lg:grid-cols-[1fr_380px]">
+            {/* Left Column: Profile Info */}
+            <div class="space-y-12">
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <h2 class="m-0 text-3xl font-display uppercase text-[#1A140D]">Partner Profile</h2>
+                  <div class="h-1 flex-1 bg-gradient-to-r from-[#D4A574]/50 to-transparent"></div>
+                </div>
+                <div class="prose prose-lg max-w-none">
+                  <p class="whitespace-pre-line text-lg leading-relaxed text-[#4F3E29]">
+                    {partner.fullDescription || partner.shortDescription}
+                  </p>
+                </div>
+              </div>
+
+              {/* Gallery Section */}
+              {galleryImages.length > 0 && (
+                <div class="space-y-6">
+                  <div class="flex items-center gap-4">
+                    <h2 class="m-0 text-3xl font-display uppercase text-[#1A140D]">Showcase Gallery</h2>
+                    <div class="h-1 flex-1 bg-gradient-to-r from-[#D4A574]/50 to-transparent"></div>
+                  </div>
+                  <div class="rounded-sm">
+                    <PartnerCarousel images={galleryImages} fallbackAlt={partner.name} />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Right Column: Contact Sidebar */}
+            <aside class="space-y-8">
+              <div class="border-4 border-[#1A140D] bg-[#F5F1EB] p-8 shadow-brutal-md">
+                <div class="space-y-6">
+                  <h3 class="text-2xl font-display uppercase text-[#1A140D] border-b-2 border-black/10 pb-4">Direct Contact</h3>
+                  
+                  <div class="space-y-5">
+                    {partner.phone && (
+                      <div class="group flex flex-col gap-1 transition-colors hover:text-[#8B6F47]">
+                        <span class="text-xs font-black uppercase tracking-widest text-[#8B6F47]/60">Phone</span>
+                        <a href={`tel:${partner.phone}`} class="text-xl font-bold text-[#1A140D] no-underline group-hover:text-[#8B6F47]">
+                          {partner.phone}
+                        </a>
+                      </div>
+                    )}
+
+                    {partner.email && (
+                      <div class="group flex flex-col gap-1">
+                        <span class="text-xs font-black uppercase tracking-widest text-[#8B6F47]/60">Email Address</span>
+                        <a href={`mailto:${partner.email}`} class="break-all text-lg font-bold text-[#1A140D] no-underline group-hover:text-[#8B6F47]">
+                          {partner.email}
+                        </a>
+                      </div>
+                    )}
+
+                    {partner.website && (
+                      <div class="group flex flex-col gap-1">
+                        <span class="text-xs font-black uppercase tracking-widest text-[#8B6F47]/60">Official Website</span>
+                        <a href={partner.website} target="_blank" rel="noopener noreferrer" class="break-all text-lg font-bold text-[#1A140D] no-underline group-hover:text-[#8B6F47]">
+                          {partner.website.replace(/^https?:\/\//, '')}
+                        </a>
+                      </div>
+                    )}
+
+                    {partner.location && (
+                      <div class="flex flex-col gap-1">
+                        <span class="text-xs font-black uppercase tracking-widest text-[#8B6F47]/60">Headquarters</span>
+                        <p class="text-lg font-bold text-[#1A140D] m-0">
+                          {partner.location}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div class="pt-6">
+                    <a href={`mailto:${partner.email || 'info@ingheng.com'}`} class="block w-full text-center bg-[#1A140D] text-white font-display tracking-widest uppercase py-4 shadow-brutal-sm hover:translate-y-[-2px] transition-transform">
+                      Send Inquiry
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust Badge / Info Card */}
+              <div class="border-2 border-dashed border-black/10 p-6 text-center">
+                <p class="text-sm font-bold uppercase tracking-wider text-black/30 m-0">
+                  Verified Partner of Ing Heng Credit
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </>
+  ) : (
+    <section class="py-32 flex min-h-[60vh] items-center bg-[#FBF9F6]">
+      <div class="container-custom">
+        <div class="mx-auto max-w-2xl text-center">
+          <div class="border-4 border-dashed border-black/20 bg-white p-12 shadow-brutal">
+            <h1 class="text-4xl mb-4 text-[#1A140D] font-display uppercase">Partner Not Found</h1>
+            <p class="text-xl text-[#4F3E29]">The partner profile you requested is not available or may have been moved.</p>
+            <div class="mt-8">
+              <a href="/en/our-partners" class="inline-block bg-[#8B6F47] text-white px-8 py-4 font-display tracking-widest text-lg uppercase shadow-brutal-sm">Return to Directory</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

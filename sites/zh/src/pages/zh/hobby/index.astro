@@ -1,0 +1,199 @@
+---
+/**
+ * Chinese Hobby Hub Page
+ * Revamped with Midnight Luxe design and "Success Partner" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import HobbyCard from '../../../components/HobbyCard.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Data
+const pageTitle = '成就您的非凡热情 | 经典名车、重型机车与游艇融资 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '银行对旧车说“不”，我们说“好”。专业融资经典名车、JDM传奇、重型机车及豪华游艇。不限车龄，基于市场真实价值的专家评估。';
+
+// Category Cards
+const categoryCards = [
+  {
+    title: '经典名车',
+    description: '助您拥有梦寐以求的收藏级名车。我们融资 JDM 传奇、欧系经典以及美式肌肉车，不设车龄限制。',
+    image: '/images/hobby/classic-cars-card.jpg',
+    href: '/zh/hobby/classic-cars',
+    items: ['JDM 传奇', '欧系经典', '美式肌肉车'],
+    badge: '最受欢迎'
+  },
+  {
+    title: '重型机车',
+    description: '经典与复古重型机车融资。Harley-Davidson、日系复古以及欧系超跑机车。',
+    image: '/images/hobby/motorcycles-card.jpg',
+    href: '/zh/hobby/motorcycles',
+    items: ['Harley-Davidson', '日系复古', '欧系超跑']
+  },
+  {
+    title: '游艇与水上设备',
+    description: '开启您的海上人生。豪华游艇、快艇、钓鱼船及水上摩托车——全方位水上资产融资。',
+    image: '/images/hobby/marine-card.jpg',
+    href: '/zh/hobby/marine',
+    items: ['豪华游艇', '快艇', '水上摩托车']
+  },
+  {
+    title: '顶级超跑',
+    description: 'Porsche, Ferrari, Lamborghini, McLaren —— 顶级与稀有超跑融资，专家级价值评估。',
+    image: '/images/hobby/sports-car.jpg',
+    href: '/zh/hobby/sports-car',
+    items: ['法拉利', '保时捷', '兰博基尼']
+  },
+  {
+    title: "特殊收藏品",
+    description: "发现了独特的宝贝？我们融资银行无法理解的特殊收藏品和稀有资产。",
+    image: '/images/hobby/custom-card.jpg',
+    href: 'https://wa.me/60175700889?text=您好！我想咨询特殊收藏品融资。',
+    badge: '专家推荐'
+  }
+];
+
+const benefits = [
+  {
+    icon: '🔍',
+    title: '专家级评估',
+    description: '银行只看“账面价值”，我们看“市场价值”。我们懂得 90 年代原始 GTR 的真实分量。'
+  },
+  {
+    icon: '♾️',
+    title: '不设年龄上限',
+    description: '无论资产多老，只要具备收藏价值，我们都欢迎。50 年前的经典偶像是我们的最爱。'
+  },
+  {
+    icon: '💳',
+    title: '直接资本支持',
+    description: '无中介、不转账。您直接与出资决策者沟通，快速拿下心仪资产。'
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE PASSION (Midnight) -->
+  <section class="relative min-h-[70vh] flex items-center bg-[#0A0A0A] pt-20 overflow-hidden">
+    <div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#8B6F47]/15 blur-[120px] rounded-full"></div>
+    
+    <div class="container-custom relative z-10">
+      <div class="max-w-4xl">
+        <span class="inline-block text-[#D4A574] font-display tracking-[0.4em] uppercase text-sm mb-6 font-bold">收藏资产融资专家</span>
+        <h1 class="text-white leading-[0.9] mb-8 text-7xl md:text-8xl lg:text-9xl uppercase font-display">
+          您的热情<br />
+          <span class="text-[#D4A574]">我们的资本</span>
+        </h1>
+        <p class="text-white/70 text-xl font-light max-w-2xl mb-12 leading-relaxed">
+          银行对旧车说“不”，我们说“好”。我们为经典名车、重型机车和游艇提供不设车龄限制的直接融资。您找到了心仪资产，我们为您提供资金。
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+            <a href={COMPANY_INFO.whatsapp.link} class="bg-[#8B6F47] text-white font-display text-xl tracking-widest px-10 py-5 hover:bg-white hover:text-[#0A0A0A] transition-all uppercase font-bold">获取即时估价 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES: THE COLLECTIONS (Daylight) -->
+  <section class="bg-white py-24 md:py-32 rounded-t-[40px] -mt-10 relative z-20">
+    <div class="container-custom">
+      <div class="text-center mb-16">
+        <span class="text-[#8B6F47] font-display tracking-[0.3em] uppercase text-sm mb-4 block font-bold">我们的馆藏领域</span>
+        <h2 class="text-[#0A0A0A] mb-4 text-5xl md:text-6xl font-display uppercase">成就您的<span class="text-[#8B6F47]">非凡热情</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {categoryCards.map((card) => (
+          <HobbyCard
+            lang={lang}
+            title={card.title}
+            description={card.description}
+            image={card.image}
+            href={card.href}
+            items={card.items}
+            badge={card.badge}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALIST: THE ADVANTAGE (Alloy) -->
+  <section class="bg-[#F5F5F5] py-24 md:py-32">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-3 gap-12">
+        {benefits.map((benefit) => (
+          <div class="flex flex-col items-center text-center group">
+            <div class="w-16 h-16 bg-[#0A0A0A] text-[#D4A574] flex items-center justify-center text-3xl mb-8 group-hover:bg-[#8B6F47] group-hover:text-white transition-all duration-500">
+               {benefit.icon}
+            </div>
+            <h3 class="font-display text-3xl uppercase text-[#0A0A0A] mb-4">{benefit.title}</h3>
+            <p class="text-[#1A140D]/60 font-light leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS: THE PATH (Midnight) -->
+  <section class="bg-[#0A0A0A] py-24 md:py-32 text-white">
+    <div class="container-custom">
+      <div class="text-center mb-20">
+        <h2 class="text-white text-5xl md:text-6xl uppercase tracking-tighter mb-4 font-display">只需 <span class="text-[#D4A574]">4 步</span> 即可拥有</h2>
+        <p class="text-white/40 max-w-xl mx-auto">没有复杂的审核，只有通往热情的直接路径。</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-12 relative">
+        <div class="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-white/10 z-0"></div>
+        
+        <div class="relative z-10 text-center">
+            <div class="w-24 h-24 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 text-[#D4A574] font-display text-4xl hover:border-[#8B6F47] transition-all">01</div>
+            <h4 class="font-display text-xl uppercase mb-3">寻找梦想</h4>
+            <p class="text-white/40 text-sm font-light">在市场上寻找您心仪的名车、机车或船只。</p>
+        </div>
+        <div class="relative z-10 text-center">
+            <div class="w-24 h-24 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 text-[#D4A574] font-display text-4xl hover:border-[#8B6F47] transition-all">02</div>
+            <h4 class="font-display text-xl uppercase mb-3">获取报价</h4>
+            <p class="text-white/40 text-sm font-light">WhatsApp 我们详情，我们立即评估真实市场价值。</p>
+        </div>
+        <div class="relative z-10 text-center">
+            <div class="w-24 h-24 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 text-[#D4A574] font-display text-4xl hover:border-[#8B6F47] transition-all">03</div>
+            <h4 class="font-display text-xl uppercase mb-3">极速审批</h4>
+            <p class="text-white/40 text-sm font-light">直接与决策者沟通。银行说不，我们说好。</p>
+        </div>
+        <div class="relative z-10 text-center">
+            <div class="w-24 h-24 bg-[#1A1A1A] border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 text-[#D4A574] font-display text-4xl hover:border-[#8B6F47] transition-all">04</div>
+            <h4 class="font-display text-xl uppercase mb-3">提车出发</h4>
+            <p class="text-white/40 text-sm font-light">资金即刻到位。带走您的资产，开启新旅程。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA: THE PARTNER (Alloy) -->
+  <section class="bg-[#F5F5F5] py-24 md:py-32">
+    <div class="container-custom text-center">
+        <h2 class="text-[#0A0A0A] mb-8 uppercase font-display tracking-widest text-4xl md:text-5xl">别再等待 <br /><span class="text-[#8B6F47]">拥有您的热情</span></h2>
+        <p class="text-[#1A140D]/60 mb-12 text-xl max-w-2xl mx-auto font-light">加入选择永恒信贷赋能人生里程碑的收藏家行列。</p>
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display text-2xl tracking-[0.1em] px-12 py-6 hover:bg-[#8B6F47] hover:translate-y-[-5px] transition-all duration-500 inline-block uppercase font-bold">
+            咨询收藏资产专家
+        </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>

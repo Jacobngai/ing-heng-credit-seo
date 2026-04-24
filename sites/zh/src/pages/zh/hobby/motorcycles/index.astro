@@ -1,0 +1,134 @@
+---
+/**
+ * Chinese Motorcycles Financing Page
+ * Revamped with Midnight Luxe design and "Success Partner" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Calculator from '../../../components/Calculator.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '重型机车与经典摩托融资 | 哈雷、日系复古、不限车龄 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '银行嫌车老，我们懂它的好。专业融资经典哈雷、日系复古名车及顶级超跑机车。40年经验，基于真实市场价值评估，助您圆梦双轮。';
+
+const collections = [
+  { title: '百年哈雷', desc: '无论是新款巡航还是经典款式，我们为您提供最懂行的哈雷融资方案。' },
+  { title: '日系复古传奇', desc: 'CBX1000, Z1, Katana。我们懂得这些 70-90 年代收藏级机车的真实分量。' },
+  { title: '顶级性能超跑', desc: 'Ducati, BMW S1000RR。为您提供高效、低门槛的极速融资支持。' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE RIDER (Midnight) -->
+  <section class="relative min-h-[70vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-x-0 top-0 h-full bg-gradient-to-tr from-[#D4A574]/20 to-transparent"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">重机资产专家</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          骑行<span class="text-white/20 italic">无界</span><br/>
+          热情<span class="text-[#D4A574]">永恒</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+            别让“车龄”限制了您的骑士精神。我们不只是融资机器，我们是在致敬每一位对双轮的热爱者。只要您的座驾具备真实的收藏或使用价值，我们就敢支持。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MANIFESTO: MECHANICAL SOUL (Daylight) -->
+  <section class="py-32 bg-white text-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div>
+          <h2 class="text-6xl font-display uppercase mb-12 leading-none">懂行的伙伴<br/><span class="text-[#8B6F47]">懂您的座驾</span></h2>
+          <p class="text-[#1A140D]/60 text-lg font-light leading-relaxed mb-8">
+            在传统的银行估值中，旧的摩托车几乎没有贷款价值。但在我们眼中，那些经典的机械构造是时间的礼物。40年来，我们协助无数骑手拿下了他们梦寐以求的经典名车。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {collections.map(c => (
+              <div class="border-l border-black/10 pl-6 py-2">
+                <h4 class="text-xl font-display uppercase mb-2">{c.title}</h4>
+                <p class="text-[#1A140D]/40 text-sm font-light">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+          <a href={COMPANY_INFO.whatsapp.link} class="inline-block bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-12 py-6 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+            向重机专家索取估价
+          </a>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] bg-[#F5F5F5] grayscale overflow-hidden">
+             <img src="/images/hobby/motorcycle-hero.jpg" alt="Classic Harley" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -bottom-12 -left-12 bg-[#D4A574] p-12 text-[#0A0A0A] hidden lg:block shadow-2xl">
+            <span class="text-5xl font-display block leading-none mb-2">成就</span>
+            <span class="text-[10px] uppercase tracking-[0.3em]">Success Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR: RIDER'S PRECISION (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="bg-white/5 p-12 border border-white/10 order-2 lg:order-1">
+          <Calculator lang="zh" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-6xl font-display uppercase text-white mb-8">精准<span class="text-[#D4A574]">预估</span></h2>
+          <p class="text-white/50 text-lg font-light leading-relaxed mb-12">
+            我们的融资方案如同名车调教，精准且充满个性。使用计算器，快速获取您的每月财务安排，开启您的征途。
+          </p>
+          <div class="space-y-6">
+            <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">最高贷款成数</span>
+                <span class="text-white font-display text-2xl">高达 100% (视情况而定)</span>
+             </div>
+             <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">审批周期</span>
+                <span class="text-[#D4A574] font-display text-2xl uppercase italic">24-48 HOURS</span>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE SYNDICATE (Editorial) -->
+  <section class="py-40 bg-white text-center border-t border-black/5">
+    <div class="container-custom relative z-10 text-[#0A0A0A]">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] uppercase mb-12 tracking-tighter">
+        即刻<br/><span class="text-[#8B6F47]">发动引擎</span>
+      </h2>
+      <p class="text-xl text-[#1A140D]/60 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
+        自由的味道就在前方。今天就联系我们，让您的骑行梦想不再受限。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

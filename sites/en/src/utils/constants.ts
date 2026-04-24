@@ -319,6 +319,18 @@ export const EQUIPMENT_NAV_ITEMS = [
     icon: '🚚',
   },
   {
+    label: 'equipment.tipper',
+    href: '/equipment/tipper-truck',
+    description: 'equipment.tipperDesc',
+    icon: '🚛',
+  },
+  {
+    label: 'equipment.backhoe',
+    href: '/equipment/backhoe',
+    description: 'equipment.backhoeDesc',
+    icon: '🚜',
+  },
+  {
     label: 'equipment.bulldozer',
     href: '/equipment/bulldozer',
     description: 'equipment.bulldozerDesc',
@@ -329,6 +341,24 @@ export const EQUIPMENT_NAV_ITEMS = [
     href: '/equipment/refrigerated-truck',
     description: 'equipment.refrigeratedTruckDesc',
     icon: '🧊',
+  },
+  {
+    label: 'equipment.soilCompactor',
+    href: '/equipment/soil-compactor',
+    description: 'equipment.soilCompactorDesc',
+    icon: '🚜',
+  },
+  {
+    label: 'equipment.grab',
+    href: '/equipment/grab',
+    description: 'equipment.grabDesc',
+    icon: '🎮',
+  },
+  {
+    label: 'equipment.jawCrusher',
+    href: '/equipment/jaw-crusher',
+    description: 'equipment.jawCrusherDesc',
+    icon: '🔨',
   },
 ];
 

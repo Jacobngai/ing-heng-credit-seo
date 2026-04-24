@@ -7,10 +7,7 @@
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Hero from '../../../components/Hero.astro';
-import BenefitCard from '../../../components/BenefitCard.astro';
-import StepCard from '../../../components/StepCard.astro';
 import ProductCard from '../../../components/ProductCard.astro';
-import FAQItem from '../../../components/FAQItem.astro';
 import Calculator from '../../../components/Calculator.astro';
 
 import { encodeJSONLD } from '../../../utils/schema';
@@ -18,351 +15,149 @@ import { encodeJSONLD } from '../../../utils/schema';
 const lang = 'en';
 
 // SEO Data
-const pageTitle = 'Equipment Financing Malaysia | 0% Deposit Available | Ing Heng';
-const pageDescription = 'Get fast equipment financing in Malaysia with 0% deposit options. We finance excavators, lorries, forklifts & machinery. 40+ years experience, trusted by 4,000+ companies.';
+const pageTitle = 'Heavy Equipment Catalog | 4,000+ Units Funded | Ing Heng Credit';
+const pageDescription = 'Browse Malaysia\'s most flexible equipment financing catalog. Banks say no to old machine; we say yes. 0% deposit for excavators, prime movers, and industrial machinery.';
 const keywords = ['equipment financing Malaysia', 'heavy equipment financing', 'construction equipment loan', 'machinery financing', 'equipment leasing Malaysia'];
 
-// Breadcrumbs
-const breadcrumbs = [
-  { label: 'Home', url: '/en' },
-  { label: 'Equipment Financing', url: '/en/equipment' },
-];
-
-// Equipment Categories
-const equipmentCategories = [
-  {
-    name: 'Construction Equipment',
-    description: 'Heavy machinery for earthworks, excavation, and building projects',
-    icon: 'construction',
-    items: ['Excavators', 'Bulldozers', 'Cranes', 'Backhoe Loaders', 'Concrete Mixers'],
-    link: '#construction-equipment'
-  },
-  {
-    name: 'Logistics & Transportation',
-    description: 'Commercial vehicles for cargo, freight, and delivery operations',
-    icon: 'truck',
-    items: ['Commercial Lorries', 'Prime Movers', 'Refrigerated Trucks', 'Box Trucks', 'Tankers'],
-    link: '#logistics-equipment'
-  },
-  {
-    name: 'Industrial & Warehouse',
-    description: 'Material handling and manufacturing equipment for factories',
-    icon: 'warehouse',
-    items: ['Forklifts', 'CNC Machines', 'Pallet Jacks', 'Conveyor Systems', 'Industrial Tools'],
-    link: '#industrial-equipment'
-  }
-];
-
-// Featured Equipment Listings
+// Featured Equipment Listings - FULL CATALOG
 const featuredEquipment = [
   {
     name: 'Excavator',
     description: 'Mini to large excavators (1-30 tons) for construction, earthmoving, and demolition projects.',
     image: '/images/equipment/Komatsu PC350 Excavator.JPG',
-    features: [
-      '0% deposit option',
-      'Equipment All equipment accepted based on condition',
-      'All major brands accepted',
-      'Bad credit approved'
-    ],
+    features: ['0% deposit option', 'All equipment accepted', 'High approval rates', 'Bad credit approved'],
     link: '/en/equipment/excavator',
-    badge: 'Most Popular'
+    badge: 'High Value'
   },
   {
     name: 'Commercial Lorry',
     description: 'Light to heavy-duty lorries (1-40 tons) for logistics, delivery, and freight operations.',
     image: '/images/equipment/lorry.jpg',
-    features: [
-      'All tonnage categories',
-      'Fleet financing available',
-      '0% deposit option',
-      'Streamlined Processing'
-    ],
+    features: ['All tonnage categories', 'Fleet financing available', '0% deposit option', '24-hr decision'],
     link: '/en/equipment/lorry',
-    badge: 'Streamlined Processing'
-  },
-  {
-    name: 'Wheel Loader',
-    description: 'Stop renting equipment. Own your wheel loader and build equity with every payment.',
-    image: '/images/equipment/caterpillar-966c.jpg',
-    features: [
-      '0% deposit option',
-      'Equipment All equipment accepted based on condition',
-      'Bad credit approved',
-      'Stop rental trap'
-    ],
-    link: '/en/equipment/wheel-loader'
-  },
-  {
-    name: 'Self-Loader Truck',
-    description: 'Start your towing business. Finance Nissan, Hino self-loaders for vehicle transport services.',
-    image: '/images/equipment/nissan-self-loader.jpg',
-    features: [
-      'Enter RM 2.5B towing industry',
-      '24/7 revenue potential',
-      '0% deposit option',
-      'Business financing specialists'
-    ],
-    link: '/en/equipment/self-loader'
-  },
-  {
-    name: 'Forklift',
-    description: 'Electric and diesel forklifts (1-10 tons) for warehouse, factory, and logistics operations.',
-    image: '/images/equipment/Mitsubishi FD250 Forklift.JPG',
-    features: [
-      'Electric & diesel models',
-      '0% deposit option',
-      'Equipment All equipment accepted based on condition',
-      'Flexible terms'
-    ],
-    link: '/en/equipment/forklift'
-  },
-  {
-    name: 'Mobile Crane',
-    description: 'Hydraulic cranes (5-100 tons) for construction, infrastructure, and heavy lifting projects.',
-    image: '/images/equipment/mobile-crane.jpg',
-    features: [
-      'All tonnage capacity',
-      '0% deposit option',
-      'Equipment All equipment accepted based on condition',
-      'Project-based financing'
-    ],
-    link: '/en/equipment/crane'
+    badge: 'Popular'
   },
   {
     name: 'Prime Mover',
     description: 'Tractor units for trailer hauling, container transport, and long-distance freight.',
     image: '/images/equipment/Volvo Prime Mover.JPG',
-    features: [
-      '4x2, 6x2, 6x4 configurations',
-      'High mileage accepted',
-      '0% deposit option',
-      'Trailer combo financing'
-    ],
+    features: ['4x2, 6x2, 6x4 setup', 'High mileage accepted', '0% deposit option', 'International brands'],
     link: '/en/equipment/prime-mover'
   },
   {
-    name: 'Tipper Truck',
-    description: 'Stop losing RM 15k-20k per project to trucking contractors. Finance your own tipper truck.',
-    image: '/images/equipment/nissan-tipper.jpg',
-    features: [
-      'Equipment All equipment accepted based on condition',
-      'Small contractors welcome',
-      '0% deposit option',
-      'Keep trucking revenue in-house'
-    ],
-    link: '/en/equipment/tipper-truck'
-  },
-  {
-    name: 'Backhoe Loader',
-    description: 'Dual-function construction equipment. CASE, CAT, JCB backhoes for versatile operations.',
-    image: '/images/equipment/case-backhoe.jpg',
-    features: [
-      'Dual-function capability',
-      'Equipment All equipment accepted based on condition',
-      '0% deposit option',
-      'Ultra-niche financing'
-    ],
-    link: '/en/equipment/backhoe'
-  },
-  {
-    name: 'Bulldozer',
-    description: 'Track-type dozers for land clearing, grading, and heavy earthmoving operations.',
-    image: '/images/equipment/bulldozer.jpg',
-    features: [
-      'Track & wheel variants',
-      '0% deposit option',
-      'Equipment All equipment accepted based on condition',
-      'Government project financing'
-    ],
-    link: '/en/equipment/bulldozer'
-  },
-  {
-    name: 'Container Trailer',
-    description: 'Finance container trailers and control both sides of logistics revenue stream.',
-    image: '/images/equipment/40 ft Kontena Trailer.JPG',
-    features: [
-      'Control full logistics revenue',
-      'Equipment All equipment accepted based on condition',
-      '0% deposit option',
-      'Port operations specialists'
-    ],
-    link: '/en/equipment/container-trailer'
-  },
-  {
-    name: 'Refrigerated Truck',
-    description: 'Reefer trucks for cold chain logistics, food delivery, and temperature-controlled transport.',
-    image: '/images/equipment/refrigerated-truck.jpg',
-    features: [
-      '-20°C to +20°C range',
-      'Thermo King/Carrier units',
-      '0% deposit option',
-      'Fleet financing available'
-    ],
-    link: '/en/equipment/refrigerated-truck'
+    name: 'Forklift',
+    description: 'Electric and diesel forklifts (1-10 tons) for warehouse and logistics operations.',
+    image: '/images/equipment/Mitsubishi FD250 Forklift.JPG',
+    features: ['Warehouse specialists', 'Electric & diesel units', '0% deposit option', 'Fast mobilization'],
+    link: '/en/equipment/forklift'
   },
   {
     name: 'CNC Machine',
-    description: 'Computer-controlled machines for precision manufacturing, milling, and industrial production.',
+    description: 'Precision engineering and manufacturing equipment for high-accuracy production.',
     image: '/images/equipment/Takisawa Machine.JPG',
-    features: [
-      'CNC lathes, mills, routers',
-      'Japanese & European brands',
-      '0% deposit option',
-      'Technology upgrade financing'
-    ],
-    link: '/en/equipment/cnc-machine'
-  },
-  {
-    name: 'Soil Compactor',
-    description: 'Ingersoll Rand soil compactors for road construction and infrastructure projects.',
-    image: '/images/equipment/soil-compactor.jpg',
-    features: [
-      'Road construction equipment',
-      'Equipment All equipment accepted based on condition',
-      '0% deposit option',
-      'Infrastructure project financing'
-    ],
-    link: '/en/equipment/compactor'
-  },
-  {
-    name: 'Remote Control Grab',
-    description: '25-ton remote control grabs for scrap yards, recycling centers, and port operations.',
-    image: '/images/equipment/25 Tons Remote Control Grab.jpg',
-    features: [
-      'Zero competition niche',
-      'Remote control operation',
-      '0% deposit option',
-      'Scrap yard specialists'
-    ],
-    link: '/en/equipment/grab'
-  },
-  {
-    name: 'Jaw Crusher',
-    description: 'Demolition jaw crushers for concrete recycling and material processing operations.',
-    image: '/images/equipment/jaw-crusher.jpg',
-    features: [
-      'Concrete recycling revenue',
-      'Demolition specialists',
-      '0% deposit option',
-      'Revenue generation focus'
-    ],
-    link: '/en/equipment/jaw-crusher'
+    features: ['High precision tools', '0% deposit option', 'SME growth capital', 'Any brand accepted'],
+    link: '/en/equipment/cnc-machine',
+    badge: 'Industrial'
   },
   {
     name: 'Chemical Tank',
-    description: 'Stainless steel chemical tanks for pharmaceutical and chemical processing operations.',
-    image: '/images/equipment/chemical-tank.jpg',
-    features: [
-      'High-value financing (RM 50K-1.5M)',
-      'Chemical processing equipment',
-      '0% deposit option',
-      'Pharmaceutical industry financing'
-    ],
+    description: 'Stainless steel (SS316L) processing and storage vessels for pharmaceutical and chemical use.',
+    image: '/images/equipment/Industrial Stainless Steel Chemical Tank.JPG',
+    features: ['GMP compliant', '0% deposit option', 'Stainless steel grade', 'Processing ready'],
     link: '/en/equipment/chemical-tank'
   },
   {
-    name: 'Food Stall Equipment',
-    description: 'Stainless steel food court equipment for hawker vendors and food entrepreneurs.',
+    name: 'Food Stall',
+    description: 'Stainless steel hawker and food court equipment for F&B entrepreneurs.',
     image: '/images/equipment/food-stall.jpg',
-    features: [
-      'Accessible financing from RM 300/month',
-      'Food entrepreneur specialists',
-      '0% deposit option',
-      'Hawker business financing'
-    ],
+    features: ['Small business focus', '0% deposit option', 'Monthly from RM 300', 'Fast setup'],
     link: '/en/equipment/food-stall'
   },
   {
     name: 'Sand Mixer',
-    description: 'Pivotal sand mixers for foundry operations and metal casting businesses.',
-    image: '/images/equipment/sand-mixer.jpg',
-    features: [
-      'Ultra-specialized niche',
-      'Zero competition',
-      '0% deposit option',
-      'Foundry specialists'
-    ],
+    description: 'Continuous sand mixing and foundry automation for metal casting operations.',
+    image: '/images/equipment/Pivotal Continuous Sand Mixer.JPG',
+    features: ['Foundry automation', '0% deposit option', 'Output scaling', 'Industrial grade'],
     link: '/en/equipment/sand-mixer'
   },
   {
-    name: 'Container Side Loader',
-    description: 'Kontena side loaders for specialized container handling and port operations.',
-    image: '/images/equipment/Kontena Side Loader.JPG',
-    features: [
-      'Specialized container handling',
-      'Port operations equipment',
-      '0% deposit option',
-      'Logistics specialists'
-    ],
-    link: '/en/equipment/side-loader'
-  },
-  {
     name: 'Helicopter',
-    description: 'Commercial helicopters for transport, tourism, and specialized aviation services.',
+    description: 'Private and corporate aviation assets including Robinson R66 and offshore helicopters.',
     image: '/images/equipment/Robinson R66 Turbine Marine Helicopter.jpg',
-    features: [
-      'Commercial aviation financing',
-      'Tourism industry specialists',
-      '0% deposit option',
-      'Specialized aircraft financing'
-    ],
-    link: '/en/equipment/helicopter'
+    features: ['Aviation expertise', '0% deposit option', 'Discrete financing', 'CAAM aligned'],
+    link: '/en/equipment/helicopter',
+    badge: 'Elite'
   },
   {
     name: 'Quilting Machine',
-    description: 'Industrial quilting machines for textile manufacturing and garment production.',
+    description: 'Automated quilting and bedding production lines for textile manufacturers.',
     image: '/images/equipment/Quilting Machine.jpg',
-    features: [
-      'Textile industry financing',
-      'Manufacturing equipment',
-      '0% deposit option',
-      'Garment production specialists'
-    ],
+    features: ['Textile specialists', '0% deposit option', 'Output scaling', 'Plant financing'],
     link: '/en/equipment/quilting-machine'
+  },
+  {
+    name: 'Wheel Loader',
+    description: 'Stop renting. Own your wheel loader and build equity for your quarry operations.',
+    image: '/images/equipment/Caterpillar 966C.JPG',
+    features: ['CAT, Komatsu, Volvo', '0% deposit option', 'Stop rental trap', 'Quarry ready'],
+    link: '/en/equipment/wheel-loader'
+  },
+  {
+    name: 'Crane',
+    description: 'Mobile hydraulic cranes (5-100 tons) for infrastructure and heavy lifting projects.',
+    image: '/images/equipment/mobile-crane-hitachi.jpg',
+    features: ['High tonnage', '0% deposit option', 'Project-based', 'All ages accepted'],
+    link: '/en/equipment/crane'
+  },
+  {
+    name: 'Soil Compactor',
+    description: 'Heavy duty road rollers for infrastructure and civil works. Finance BOMAG, Dynapac.',
+    image: '/images/equipment/Ingersoll Rand Compactor.JPG',
+    features: ['Road specialists', 'BOMAG & Dynapac', '0% deposit option', 'Infrastructure ready'],
+    link: '/en/equipment/soil-compactor'
+  },
+  {
+    name: 'Jaw Crusher',
+    description: 'Demolition concrete recycling equipment. Transform waste into profitable aggregate.',
+    image: '/images/equipment/Jaw Crasher.JPG',
+    features: ['Waste to wealth', '0% deposit option', 'Demolition ready', 'Sandvik & Metso'],
+    link: '/en/equipment/jaw-crusher'
+  },
+  {
+    name: 'Tipper Truck',
+    description: 'Finance your own tipper fleet and stop losing project margin to contractors.',
+    image: '/images/equipment/Nissan Tipper Truck.jpg',
+    features: ['Nissan & Hino units', 'Small contractors', '0% deposit option', 'Own your fleet'],
+    link: '/en/equipment/tipper-truck'
+  },
+  {
+    name: 'Bulldozer',
+    description: 'Fleet financing for CIDB G7 contractors. D6-D11 units for major earthworks.',
+    image: '/images/equipment/bulldozer.jpg',
+    features: ['RM 15M capacity', 'G7 Government ready', '0% deposit option', 'Mega project approved'],
+    link: '/en/equipment/bulldozer'
+  },
+  {
+    name: 'Remote Control Grab',
+    description: 'Wireless material handling for scrap yards and port operations. Processing power.',
+    image: '/images/equipment/25 Tons Remote Control Grab.jpg',
+    features: ['25-ton capacity', '0% deposit option', 'Scrap yard profit', 'Safety optimized'],
+    link: '/en/equipment/grab'
+  },
+  {
+    name: 'Side Loader',
+    description: 'Container handling specialized trucks for depot and logistics operations.',
+    image: '/images/equipment/Kontena Side Loader.JPG',
+    features: ['Logistics calculus', '0% deposit option', 'Depot specialized', 'High efficiency'],
+    link: '/en/equipment/side-loader'
+  },
+  {
+    name: 'Backhoe Loader',
+    description: 'Versatile CASE, CAT, and JCB backhoes for construction and landscape work.',
+    image: '/images/equipment/CASE Super M Backhoe.jpeg',
+    features: ['Dual-function power', 'All condition accepted', '0% deposit option', 'Fast approval'],
+    link: '/en/equipment/backhoe'
   }
-];
-
-// Benefits
-const benefits = [
-  { icon: 'clock', title: 'Streamlined Processing', description: 'Get preliminary approval quickly for urgent equipment needs.' },
-  { icon: 'percentage', title: 'Excellent Approval Rate', description: 'Industry-leading approval rate. We approve applications others reject.' },
-  { icon: 'calendar', title: 'Flexible 12-60 Month Terms', description: 'Choose payment terms that match your business cash flow.' },
-  { icon: 'shield', title: 'All Equipment Types', description: 'Finance any equipment from excavators to CNC machines, new or used.' },
-  { icon: 'users', title: 'Low 10% Down Payment', description: 'Minimal upfront investment. Preserve working capital for operations.' },
-  { icon: 'lightning', title: 'Fleet Financing Available', description: 'Finance multiple units with discounted rates and simplified processing.' },
-];
-
-// How It Works Steps
-const steps = [
-  { stepNumber: 1, icon: 'contact', title: 'Choose Equipment', description: 'Browse our catalog or bring your own equipment supplier.' },
-  { stepNumber: 2, icon: 'document', title: 'Submit Application', description: 'Quick online form or WhatsApp application in 5 minutes.' },
-  { stepNumber: 3, icon: 'check', title: 'Get Approved Fast', description: 'Fast preliminary approval, quick final confirmation.' },
-  { stepNumber: 4, icon: 'truck', title: 'Receive Your Equipment', description: 'Funds released directly to supplier. Start operations immediately.' },
-];
-
-// Industries We Serve
-const industries = [
-  { name: 'Construction & Civil Works', icon: 'building', equipment: 'Excavators, bulldozers, cranes, concrete mixers' },
-  { name: 'Logistics & Transportation', icon: 'truck', equipment: 'Lorries, prime movers, trailers, delivery vans' },
-  { name: 'Manufacturing & Production', icon: 'factory', equipment: 'CNC machines, industrial tools, production lines' },
-  { name: 'Warehousing & Distribution', icon: 'warehouse', equipment: 'Forklifts, pallet jacks, material handling' },
-  { name: 'Agriculture & Plantation', icon: 'leaf', equipment: 'Tractors, harvesters, palm oil equipment' },
-  { name: 'Mining & Quarry', icon: 'mountain', equipment: 'Dump trucks, excavators, crushing equipment' },
-];
-
-// FAQs
-const faqs = [
-  { question: 'What equipment types can you finance?', answer: 'We finance ALL types of commercial and industrial equipment including construction machinery (excavators, bulldozers, cranes), logistics vehicles (lorries, prime movers, trucks), industrial equipment (forklifts, CNC machines, manufacturing tools), and specialized equipment. If it generates income for your business, we can finance it.' },
-  { question: 'How long does approval take?', answer: 'Fast preliminary approval. Quick final approval from complete document submission. Urgent cases can be expedited with premium service for critical project deadlines.' },
-  { question: 'Can I finance used equipment?', answer: 'Yes! We finance used equipment All equipment accepted based on condition from any reputable brand. Equipment must be in good working condition and pass our inspection. Used equipment often qualifies for same rates as new.' },
-  { question: 'What is the minimum and maximum loan amount?', answer: 'Minimum: RM 30,000. Maximum: RM 2,000,000 depending on equipment type and your financial profile. We can finance 90% of equipment value with 10% down payment.' },
-  { question: 'Do you finance multiple equipment units?', answer: 'Yes! Fleet financing available with discount rates for 2+ units. Simplified documentation for bulk purchases. Perfect for contractors and logistics companies expanding operations.' },
-  { question: 'What if I have bad credit or loan defaults?', answer: 'We consider each application individually. Bad credit doesn\'t mean automatic rejection. We focus on your current business performance, project contracts, and equipment value. Excellent approval rate includes many clients with credit issues.' },
-  { question: 'Can I trade in my old equipment?', answer: 'Absolutely! Trade-in and upgrade programs available. We can refinance your existing equipment and provide additional funds for newer/larger machines. Free equipment valuation service included.' },
-  { question: 'What documents do I need?', answer: 'For individuals: IC, 6 months bank statements, income proof. For companies: SSM registration, company bank statements, directors\' IC, financial statements (if available). Simple and straightforward process.' },
-  { question: 'Do you serve all Malaysian states?', answer: 'Yes! We serve all states: Selangor, KL, Johor, Penang, Perak, Pahang, Sabah, Sarawak, and more. Remote area applications processed online and via WhatsApp. National coverage with local expertise.' },
-  { question: 'Is there early repayment penalty?', answer: 'No early repayment penalty! Pay off your loan anytime without extra charges. Many clients refinance after 12-18 months when their business grows and they qualify for better rates.' },
 ];
 
 // ItemList Schema for Equipment Categories
@@ -378,7 +173,6 @@ const itemListSchema = {
       '@type': 'Product',
       name: equipment.name,
       description: equipment.description,
-      image: `https://ingheng-credit.vercel.app${equipment.image}`,
       offers: {
         '@type': 'Offer',
         priceCurrency: 'MYR',
@@ -391,66 +185,6 @@ const itemListSchema = {
     }
   }))
 };
-
-// Service Schema
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FinancialService',
-  name: 'Equipment Financing Malaysia',
-  description: 'Comprehensive equipment financing for construction, logistics, and industrial equipment with Streamlined Processing and flexible terms',
-  provider: {
-    '@type': 'Organization',
-    name: 'Ing Heng Credit & Leasing'
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Malaysia'
-  },
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Equipment Financing Options',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Construction Equipment Financing',
-          description: 'Excavators, bulldozers, cranes, and heavy machinery financing'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Logistics Equipment Financing',
-          description: 'Commercial lorries, prime movers, trucks, and delivery vehicles'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Industrial Equipment Financing',
-          description: 'Forklifts, CNC machines, manufacturing equipment, and tools'
-        }
-      }
-    ]
-  }
-};
-
-// FAQ Schema
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-};
 ---
 
 <BaseLayout
@@ -458,125 +192,37 @@ const faqSchema = {
   description={pageDescription}
   lang={lang}
   keywords={keywords}
-  ogType="website"
 >
-  <!-- Structured Data -->
   <Fragment slot="head">
     <script type="application/ld+json" set:html={encodeJSONLD(itemListSchema)} />
-    <script type="application/ld+json" set:html={encodeJSONLD(serviceSchema)} />
-    <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
   </Fragment>
 
-  <!-- Hero Section - Super Dark Background with Light Text -->
-  <section class="hero-section relative overflow-hidden bg-gradient-to-br from-accent to-primary-dark min-h-[80vh] flex items-center">
-    <!-- Strong dark overlay for maximum text contrast -->
-    <div class="absolute inset-0 bg-black/60 z-0"></div>
-    <!-- Additional gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-5"></div>
+  <!-- Hero Section -->
+  <Hero
+    title="Any Machine. Any Age. We Say Yes."
+    subtitle="Banks reject equipment over 5 years old. We don't. Finance excavators, prime movers, and industrial machinery up to 50 years old with 0% deposit."
+    ctaText="Browse Major Fleet"
+    ctaLink="#catalog"
+    ctaSecondaryText="Call Decision Maker"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    variant="luxe"
+    trustSignals={['40 Years Expertise', 'Direct Capital', '0% Deposit Option', 'Bad Credit Approved']}
+  />
 
-    <div class="container-custom relative z-10">
-      <div class="max-w-5xl mx-auto text-center">
-
-
-        <h1 class="text-6xl md:text-7xl lg:text-8xl font-display uppercase leading-none mb-6 text-white font-black" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">
-          Finance Any <span class="text-yellow-400" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 1px 1px 3px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);">Equipment</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-white mb-8 font-medium leading-relaxed max-w-3xl mx-auto" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 1px 1px 2px rgba(0,0,0,0.8), 0px 0px 8px rgba(0,0,0,0.6);">
-          <strong>0% down payment available.</strong> We finance equipment banks reject — including machinery <strong>over 10 years old</strong>. Streamlined Processing, flexible terms.
-        </p>
-
-        <!-- Trust Signals - Updated to match headline USPs -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
-          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
-            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">0%</div>
-            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Down Payment</div>
-          </div>
-          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
-            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">ANY</div>
-            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Equipment Age</div>
-          </div>
-          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
-            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Fast</div>
-            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Approval</div>
-          </div>
-          <div class="bg-black/40 backdrop-blur-sm border-2 border-white/30 p-4">
-            <div class="text-3xl md:text-4xl font-display text-yellow-400 mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">40+</div>
-            <div class="text-sm text-white font-semibold" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Years Experience</div>
-          </div>
-        </div>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20equipment%20financing." class="bg-white text-[#8B6F47] font-black uppercase tracking-tight text-xl px-12 py-5 border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810] hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all inline-block text-center">
-            Get Free Quote via WhatsApp
-          </a>
-          <a href="tel:+60175700889" class="btn btn-outline-white text-xl px-12 py-5">
-            Call: 017-570 0889
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400"></div>
-  </section>
-
-  <!-- Equipment Categories Overview -->
-  <section class="section bg-gray-50">
+  <!-- Equipment Catalog -->
+  <section class="section bg-white text-[#0A0A0A]" id="catalog">
     <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          Equipment Categories We Finance
+      <div class="mb-16 md:mb-24 text-center">
+        <h2 class="text-4xl md:text-7xl font-display uppercase mb-8 tracking-tight leading-[1.1]">
+          The Fleet <br/><span class="text-[#D4A574]">Intelligence</span>
         </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          From construction machinery to logistics vehicles and industrial equipment
+        <p class="text-lg md:text-xl text-[#0A0A0A]/60 font-light max-w-2xl mx-auto leading-relaxed">
+          The banking system is built for brand new machines. Our system is built for entrepreneurs who know that older equipment builds real wealth.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        {equipmentCategories.map((category) => (
-          <div class="bg-white border-3 border-navy-900 shadow-brutal-lg hover:shadow-brutal-xl transition-all hover:-translate-y-1">
-            <div class="bg-secondary border-b-3 border-navy-900 p-6 text-center">
-              <div class="text-5xl mb-3">
-                {category.icon === 'construction' && '🏗️'}
-                {category.icon === 'truck' && '🚛'}
-                {category.icon === 'warehouse' && '🏭'}
-              </div>
-              <h3 class="text-2xl font-display uppercase text-white">{category.name}</h3>
-            </div>
-            <div class="p-8">
-              <p class="text-gray-700 leading-relaxed mb-6">{category.description}</p>
-              <ul class="space-y-3 mb-8">
-                {category.items.map((item) => (
-                  <li class="text-sm text-gray-700 flex items-start space-x-3">
-                    <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900 flex-shrink-0 mt-0.5"></div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href={category.link} class="btn btn-outline w-full block text-center">
-                View Equipment
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Equipment -->
-  <section class="section bg-white" id="construction-equipment">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          Featured Equipment <span class="text-secondary">for Financing</span>
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          Popular equipment choices with competitive monthly rates
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
         {featuredEquipment.map((equipment) => (
           <ProductCard
             name={equipment.name}
@@ -586,262 +232,66 @@ const faqSchema = {
             lang={lang}
             image={equipment.image}
             badge={equipment.badge}
-          />
-        ))}
-      </div>
-
-      <!-- Additional Equipment Note -->
-      <div class="mt-12 bg-gray-50 border-3 border-navy-900 shadow-brutal-lg p-8 text-center">
-        <h3 class="text-2xl font-display uppercase text-navy-900 mb-4">Don't See Your Equipment?</h3>
-        <p class="text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto">
-          We finance ALL types of commercial and industrial equipment. Contact us for custom quotes on specialized machinery, agricultural equipment, mining tools, and more.
-        </p>
-        <a
-          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20inquire%20about%20equipment%20financing."
-          class="btn btn-primary inline-block"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Contact Us for Custom Quote
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Benefits Section -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          Why Choose <span class="text-secondary">Ing Heng Credit</span>?
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          Streamlined Processing, flexible terms, and competitive rates for all equipment types
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {benefits.map((benefit) => (
-          <BenefitCard
-            icon={benefit.icon}
-            title={benefit.title}
-            description={benefit.description}
+            variant="luxe"
           />
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Payment Calculator -->
-  <section class="section bg-white">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          Calculate Your <span class="text-secondary">Monthly Payment</span>
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          See how affordable equipment financing can be for your business
-        </p>
-      </div>
-      <div class="max-w-3xl mx-auto">
-        <Calculator lang={lang} equipmentType="Equipment" defaultPrice={150000} />
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          How Equipment <span class="text-secondary">Financing Works</span>
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          Simple 4-step process from application to equipment delivery
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-8">
-        {steps.map((step) => (
-          <StepCard
-            stepNumber={step.stepNumber}
-            icon={step.icon}
-            title={step.title}
-            description={step.description}
-          />
-        ))}
-      </div>
-
-      <div class="text-center mt-12">
-        <a
-          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-secondary btn-lg inline-block"
-        >
-          Start Your Application Now
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Industries We Serve -->
-  <section class="section bg-white" id="logistics-equipment">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          Industries <span class="text-secondary">We Serve</span>
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          Specialized financing solutions for every business sector
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {industries.map((industry) => (
-          <div class="bg-gray-50 border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1 p-6 text-center">
-            <div class="w-16 h-16 bg-secondary border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-white text-3xl">
-              {industry.icon === 'building' && '🏗️'}
-              {industry.icon === 'truck' && '🚛'}
-              {industry.icon === 'factory' && '🏭'}
-              {industry.icon === 'warehouse' && '📦'}
-              {industry.icon === 'leaf' && '🌾'}
-              {industry.icon === 'mountain' && '⛏️'}
+  <!-- Financial Section -->
+  <section class="section bg-[#0A0A0A] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('/images/texture.png')] mix-blend-overlay pointer-events-none"></div>
+    <div class="container-custom relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div>
+            <h2 class="text-white text-4xl md:text-6xl font-display uppercase  mb-8 tracking-tight leading-[1.1]">
+                Your Strategic <br/><span class="text-[#D4A574]">Calculus</span>
+            </h2>
+            <p class="text-white/50 text-lg font-light leading-relaxed mb-12 max-w-xl">
+                Planning your equipment mobilization requires precise capital management. Identify your monthly commitment instantly via our luxe calculator.
+            </p>
+            <div class="space-y-6">
+                {[
+                    { step: '01', text: 'Select your equipment category.' },
+                    { step: '02', text: 'Define your investment value.' },
+                    { step: '03', text: 'Optimize your down payment structure.' }
+                ].map(item => (
+                    <div class="flex items-center space-x-6 group">
+                        <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-display text-[#D4A574] group-hover:bg-[#D4A574] group-hover:text-[#0A0A0A] transition-all">
+                            {item.step}
+                        </div>
+                        <span class="text-white/60 font-light">{item.text}</span>
+                    </div>
+                ))}
             </div>
-            <h3 class="text-lg font-display uppercase text-navy-900 mb-2">{industry.name}</h3>
-            <p class="text-sm text-gray-600 leading-relaxed">{industry.equipment}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Signals & Stats -->
-  <section class="section bg-black text-white" id="industrial-equipment">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-4 text-white">
-          Trusted by 4,000+ <span class="text-yellow-400">Malaysian Businesses</span>
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-white">
-          40 years of equipment financing excellence
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div class="bg-white/10 border-2 border-white/30 p-8">
-          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">High</div>
-          <div class="text-lg text-white">Approval Rate</div>
         </div>
-        <div class="bg-white/10 border-2 border-white/30 p-8">
-          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">Fast</div>
-          <div class="text-lg text-white">Approval Time</div>
+        
+        <div class="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[40px] border border-white/10">
+            <Calculator lang={lang} equipmentType="General Equipment" defaultPrice={150000} variant="luxe" />
         </div>
-        <div class="bg-white/10 border-2 border-white/30 p-8">
-          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">4,000+</div>
-          <div class="text-lg text-white">Companies Financed</div>
-        </div>
-        <div class="bg-white/10 border-2 border-white/30 p-8">
-          <div class="text-5xl md:text-6xl font-display text-yellow-400 mb-2">40</div>
-          <div class="text-lg text-white">Years Experience</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="section bg-white">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-          Frequently Asked <span class="text-secondary">Questions</span>
-        </h2>
-        <div class="w-24 h-2 bg-yellow-400 mx-auto mb-8"></div>
-        <p class="text-xl text-gray-700">
-          Everything you need to know about equipment financing
-        </p>
-      </div>
-
-      <div class="max-w-4xl mx-auto space-y-4">
-        {faqs.map((faq) => (
-          <FAQItem question={faq.question} answer={faq.answer} />
-        ))}
       </div>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="section bg-gray-50">
-    <div class="container-custom text-center">
-      <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">
-        Ready to Finance Your <span class="text-secondary">Equipment</span>?
+  <section class="section bg-[#D4A574] relative overflow-hidden">
+    <div class="container-custom text-center relative z-10">
+      <h2 class="text-5xl md:text-8xl font-display uppercase text-[#0A0A0A] mb-8 tracking-tight leading-[1.1]">
+        EVOLVE YOUR <br/><span class="opacity-40 text-black/40">INFRASTRUCTURE</span>
       </h2>
-      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
-        Get Streamlined Processing for your equipment. Join 4,000+ businesses who chose Ing Heng Credit for their equipment financing needs.
+      <p class="text-[#0A0A0A]/70 text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+        Stop losing contracts to equipment rental companies. Own your tools. Build your empire. Secure your financing today.
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+ 
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
         <a
-          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20equipment%20financing."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-secondary text-lg px-8 py-4"
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20discuss%20equipment%20financing."
+          class="bg-[#0A0A0A] text-white px-12 py-6 font-display uppercase tracking-widest hover:bg-white hover:text-[#0A0A0A] transition-all shadow-2xl"
         >
-          Apply via WhatsApp
+          Talk to Decision Maker
         </a>
-        <a
-          href="tel:+60175700889"
-          class="btn btn-outline text-lg px-8 py-4"
-        >
-          Call: 017-570 0889
-        </a>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-700 mt-8">
-        <div class="flex items-center space-x-2">
-          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
-          <span class="font-semibold">No Obligation Quote</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
-          <span class="font-semibold">Streamlined Processing</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <div class="w-5 h-5 bg-yellow-400 border-2 border-navy-900"></div>
-          <span class="font-semibold">KPKT Licensed</span>
-        </div>
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero-section {
-    font-family: 'Bebas Neue', sans-serif;
-  }
-
-  .from-accent {
-    --tw-gradient-from: #0F172A;
-  }
-
-  .to-primary-dark {
-    --tw-gradient-to: #1E3A8A;
-  }
-
-  .bg-gradient-to-br {
-    background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to));
-  }
-
-  .text-secondary {
-    color: #8B6F47;
-  }
-
-  .text-navy-900 {
-    color: #2D1810;
-  }
-</style>

@@ -1,0 +1,134 @@
+---
+/**
+ * Chinese Classic Car Financing Page
+ * Revamped with Midnight Luxe design and "Success Partner" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Calculator from '../../../components/Calculator.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '经典名车与超跑融资 | JDM传奇、欧系名车、不限车龄 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '银行嫌它老，我们懂它的宝。专业融资经典名车、JDM传奇与顶级超跑。40年评估经验，基于真实市场价值，无需车龄限制。';
+
+const collections = [
+  { title: 'JDM 传奇', desc: 'GT-R, Supra, RX-7。我们懂得这些 90 年代铁血传奇的真实升值潜力。' },
+  { title: '欧系经典', desc: 'Porsche 911, BMW E30, Ferrari。为您留住跨越时代的机械美学。' },
+  { title: '顶级超跑', desc: '最新的性能怪兽。我们提供高效、隐秘的高额度融资方案。' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE COLLECTOR (Midnight) -->
+  <section class="relative min-h-[70vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-tr from-[#D4A574]/20 to-transparent"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">名车资产专家</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          银行看<span class="text-white/20 italic">折旧</span><br/>
+          我们看<span class="text-[#D4A574]">增值</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+            别让“车龄限制”成为您收藏梦想的绊脚石。我们理解经典名车的真实分量。只要它是好车，我们就说“好”。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES: THE COLLECTOR'S TRUST (Daylight) -->
+  <section class="py-32 bg-white text-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div>
+          <h2 class="text-6xl font-display uppercase mb-12 leading-none">为您留住<br/><span class="text-[#8B6F47]">时代的经典</span></h2>
+          <p class="text-[#1A140D]/60 text-lg font-light leading-relaxed mb-8">
+            在传统的银行报告中，二三十年的车是没有融资价值的。但在我们的专家库里，它们是具备极高投资价值的艺术品。40年来，我们已协助无数收藏家拿下了他们的心头好。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {collections.map(c => (
+              <div class="border-l border-black/10 pl-6 py-2">
+                <h4 class="text-xl font-display uppercase mb-2">{c.title}</h4>
+                <p class="text-[#1A140D]/40 text-sm font-light">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+          <a href={COMPANY_INFO.whatsapp.link} class="inline-block bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-12 py-6 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+            向资产专家索取报价
+          </a>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] bg-[#F5F5F5] grayscale overflow-hidden">
+            <img src="/images/hobby/classic-car-hero.jpg" alt="Classic Porsche" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -bottom-12 -left-12 bg-[#0A0A0A] p-12 text-white hidden lg:block">
+            <h3 class="text-4xl font-display uppercase mb-2 text-[#D4A574]">成就伙伴</h3>
+            <span class="text-[10px] uppercase tracking-[0.3em]">Success Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR: PRECISE FREEDOM (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="bg-white/5 p-12 border border-white/10 order-2 lg:order-1">
+          <Calculator lang="zh" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-6xl font-display uppercase text-white mb-8">精准<span class="text-[#D4A574]">预估</span></h2>
+          <p class="text-white/50 text-lg font-light leading-relaxed mb-12">
+            我们的融资方案与您的品味一样精准。使用下方计算器，快速了解您的每月财务安排。我们提供极具分量的贷款额度支持。
+          </p>
+          <div class="space-y-6">
+            <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">最高贷款额度</span>
+                <span class="text-[#D4A574] font-display text-2xl uppercase">高达 RM 1,000,000</span>
+             </div>
+             <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">车龄限制</span>
+                <span class="text-white font-display text-2xl uppercase italic">NONE</span>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE SYNDICATE (Editorial) -->
+  <section class="py-40 bg-white text-center border-t border-black/5">
+    <div class="container-custom relative z-10 text-[#0A0A0A]">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] uppercase mb-12 tracking-tighter">
+        拿下您的<br/><span class="text-[#8B6F47]">梦想座驾</span>
+      </h2>
+      <p class="text-xl text-[#1A140D]/60 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
+        别让繁琐的程序拖慢您的收藏步伐。今天就联系我们，让梦想加速。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+/**
+ * Chinese Services Hub
+ * Revamped with Midnight Luxe design and "Action Taker" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '融资服务 | 重型机械、商用车及中小企业贷款专家 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '为您量身定制的商业融资方案。专业重型机械融资、罗里/货车贷款、及中小企业现金周转。KPKT执照，无需银行繁琐程序。';
+
+const services = [
+  {
+    title: '重型机械融资',
+    description: '无论新旧，挖泥机、起重机、推土机等重型机械，我们提供极具竞争力的贷款利率。',
+    features: ['接受高达50年的旧机器', '灵活的支付方案', '亲自评估，无需银行繁琐报告', '专业机械价值评估'],
+    cta: '查看详情',
+    url: '/zh/equipment',
+    icon: '🏗️'
+  },
+  {
+    title: '商用车贷款',
+    description: '助您建立运输车队。罗里、货车、客货车等商用车辆融资，让您的生意跑遍全马。',
+    features: ['高成数贷款', '处理大型车队融资', '快速审批，即时取车', '新旧车辆均可申请'],
+    cta: '查看详情',
+    url: '/zh/equipment#trucks',
+    icon: '🚛'
+  },
+  {
+    title: '中小企业营运资金',
+    description: '快速解决现金流难题。无需繁冗的抵押担保，助您把握商业良机，渡过难关。',
+    features: ['无抵押快速审批', '24小时初步答复', '灵活的还款周期', '专业的财务咨询'],
+    cta: '立即咨询',
+    url: '/zh/contact',
+    icon: '💼'
+  },
+  {
+    title: '定制化融资',
+    description: '针对特殊行业或非标准资产的融资需求。只要资产能赚钱，我们就能为您融资。',
+    features: ['特殊设备融资', '一对一专家方案', '跨境资产评估', '长期合作伙伴关系'],
+    cta: '联系我们',
+    url: '/zh/contact',
+    icon: '🤝'
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE SPECIALIST (Midnight) -->
+  <section class="relative min-h-[60vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0A0A]"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">全方位财务赋能</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          不僅是<span class="text-white/20 italic">融资</span><br/>
+          更是<span class="text-[#D4A574]">增长引擎</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+            我们致力于打破传统银行的枷锁。为您提供更懂生意、更重实效的融资方案。在永恒信贷，您的野心值得被投资。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES: THE CATALOG (Editorial) -->
+  <section class="py-32 bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        {services.map(service => (
+          <div class="group p-12 bg-[#F5F5F5] border border-black/5 hover:bg-[#0A0A0A] transition-all duration-700">
+            <span class="text-5xl mb-8 block group-hover:scale-110 transition-transform duration-500">{service.icon}</span>
+            <h3 class="text-4xl font-display uppercase mb-6 text-[#0A0A0A] group-hover:text-[#D4A574] transition-colors">{service.title}</h3>
+            <p class="text-[#1A140D]/60 group-hover:text-white/60 mb-8 font-light leading-relaxed">{service.description}</p>
+            <ul class="space-y-4 mb-10">
+              {service.features.map(feature => (
+                <li class="flex items-center text-sm text-[#1A140D]/60 group-hover:text-white/40 font-light">
+                  <span class="text-[#8B6F47] mr-3">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href={service.url} class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-[#8B6F47] group-hover:border-[#D4A574] group-hover:text-white pb-2 italic transition-colors">
+              {service.cta} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ADVANTAGE: WHY US (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom text-center mb-24">
+      <h2 class="text-6xl font-display uppercase text-white mb-4">为什么<span class="text-[#D4A574]">选择</span>永恒信贷？</h2>
+      <p class="text-white/40 uppercase tracking-[0.3em] text-[10px] font-bold">我们解决银行业无法触及的痛点</p>
+    </div>
+
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center text-white">
+        <div>
+          <h4 class="text-5xl font-display text-[#D4A574] mb-4">40</h4>
+          <h5 class="text-xl font-display uppercase mb-4">载深耕大马</h5>
+          <p class="text-white/40 font-light text-sm">自1985年起，我们见证并助力了数千家大马中小企业的成长。</p>
+        </div>
+        <div class="border-x border-white/10 px-12">
+          <h4 class="text-5xl font-display text-[#D4A574] mb-4">24H</h4>
+          <h5 class="text-xl font-display uppercase mb-4">极速初步答复</h5>
+          <p class="text-white/40 font-light text-sm">时间就是商机。我们的流程简化了繁文缛节，给您最快速的反馈。</p>
+        </div>
+        <div>
+          <h4 class="text-5xl font-display text-[#D4A574] mb-4">50Y</h4>
+          <h5 class="text-xl font-display uppercase mb-4">接受高龄资产</h5>
+          <p class="text-white/40 font-light text-sm">只要资产具备生产力，我们就不设年龄上限。这就是我们的专业信心。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE SYNDICATE (Editorial Mixed) -->
+  <section class="py-40 bg-white relative overflow-hidden text-center border-t border-black/5">
+    <div class="container-custom relative z-10">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-[#0A0A0A] uppercase mb-12 tracking-tighter">
+        准备好<span class="text-[#8B6F47]">发力</span>了吗？
+      </h2>
+      <p class="text-xl text-[#1A140D]/60 mb-16 max-w-2xl mx-auto font-light">
+        别让资金压力成为您发展的绊脚石。联系我们，让您的资产动起来。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

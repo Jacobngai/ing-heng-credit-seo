@@ -1,0 +1,151 @@
+---
+/**
+ * Chinese About Page
+ * Revamped with Midnight Luxe design and "The Master" voice
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { COMPANY_INFO } from '../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '关于我们 | 40载机器融资之道 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '自1985年起，我们深耕大马机械融资。我们不只是融资公司，更是懂机器、懂生产、懂您的业务伙伴。';
+
+const milestones = [
+  { year: '1985', title: '根植巴生', description: '在雪州巴生创立，立志解决小型承包商的融资难题。' },
+  { year: '1995', title: '突破千户', description: '成功协助超过1,000家中小企业获取生产设备。' },
+  { year: '2005', title: '多元化融资', description: '将业务扩展至摩托车及娱乐设备融资领域。' },
+  { year: '2015', title: '全马覆盖', description: '服务网络遍布大马，成为机械融资领域的信誉标杆。' },
+  { year: '2025', title: '40周年庆', description: '深耕40载，已协助超过4,000名客户实现商业梦想。' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE HERITAGE (Midnight) -->
+  <section class="relative min-h-[70vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0A0A]"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20 text-center">
+      <div class="max-w-4xl mx-auto">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">永恒信贷 1985 - 2025</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          40载<span class="text-white/20 italic">机器</span><br/>
+          融资<span class="text-[#D4A574]">之道</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl mx-auto font-light leading-relaxed mb-12">
+            我们不仅仅看数字，我们更看重机器背后的生命力。在永恒信贷，我们相信：机器会变老，但您的生产力不会。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY: THE MASTER'S VIEW (Daylight) -->
+  <section class="py-32 bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="relative">
+          <div class="aspect-square bg-[#F5F5F5] overflow-hidden grayscale border border-black/5">
+             <img src="/images/heritage-shop.jpg" alt="Our Heritage" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -top-12 -left-12 bg-[#8B6F47] p-12 text-white hidden lg:block shadow-2xl">
+            <h3 class="text-4xl font-display uppercase mb-2">实干家</h3>
+            <span class="text-[10px] uppercase tracking-[0.3em]">Action Takers</span>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-6xl font-display uppercase text-[#0A0A0A] mb-8">我们与您<br/><span class="text-[#8B6F47]">并肩作战</span></h2>
+          <div class="prose prose-lg text-[#1A140D]/60 font-light leading-relaxed space-y-6 max-w-none">
+            <p>
+              40年来，我们没有坐在冷气办公室里空谈。我们卷起袖子，走进工厂，踏入工地。我们知道这些机器如何运转，也知道它们如何为您创造财富。
+            </p>
+            <p>
+              当银行因为您的机器“太旧”或“品牌小众”而拒绝您时，我们看到的是它的产能。只要这台机器能运作，它就值得被融资。
+            </p>
+            <p class="text-[#0A0A0A] font-bold">
+              因为我们是实干家，我们用自己的资金挺您的生意。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MILESTONES: THE TIMELINE (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="text-center mb-24">
+        <h2 class="text-6xl font-display uppercase text-white mb-4">40载<span class="text-[#D4A574]">信誉</span>见证</h2>
+        <p class="text-white/40 uppercase tracking-[0.3em] text-[10px] font-bold">自 1985 年起的专业坚持</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-12">
+        {milestones.map(milestone => (
+          <div class="group flex flex-col md:flex-row gap-8 items-start border-l border-white/10 pl-12 relative hover:border-[#D4A574] transition-colors duration-500">
+            <div class="absolute w-3 h-3 bg-[#D4A574] rounded-full -left-[6px] top-2 shadow-[0_0_15px_#D4A574]"></div>
+            <div class="text-[#D4A574] font-display text-4xl leading-none pt-1">{milestone.year}</div>
+            <div>
+              <h3 class="text-2xl font-display uppercase text-white mb-2 group-hover:text-[#D4A574] transition-colors">{milestone.title}</h3>
+              <p class="text-white/40 font-light leading-relaxed">{milestone.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES: THE TRI-TONE FOUNDATION (Editorial) -->
+  <section class="py-32 bg-[#F5F5F5]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="p-12 bg-white border border-black/5 hover:shadow-2xl transition-all duration-500">
+          <span class="text-4xl mb-6 block">🏅</span>
+          <h3 class="text-3xl font-display uppercase mb-4 text-[#0A0A0A]">40年经验</h3>
+          <p class="text-[#1A140D]/60 text-sm font-light">自1985年屹立不倒。我们拥有KPKT合法执照，是您最稳固的财务后盾。</p>
+        </div>
+        <div class="p-12 bg-[#8B6F47] text-white shadow-2xl scale-105 z-10">
+          <span class="text-4xl mb-6 block">🔧</span>
+          <h3 class="text-3xl font-display uppercase mb-4 text-white">懂机器的专家</h3>
+          <p class="text-white/80 text-sm font-light">我们不仅看财报，更看机器。即使是50年的老机器，我们也能评估其融资价值。</p>
+        </div>
+        <div class="p-12 bg-[#0A0A0A] text-white hover:shadow-2xl transition-all duration-500">
+          <span class="text-4xl mb-6 block">🤝</span>
+          <h3 class="text-3xl font-display uppercase mb-4 text-white">4,000+ 客户</h3>
+          <p class="text-white/60 text-sm font-light">数以千计的业者选择了我们。您的信任是我们最宝贵的资产。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION (Midnight) -->
+  <section class="py-40 bg-[#0A0A0A] relative overflow-hidden text-center">
+    <div class="container-custom relative z-10">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-12 tracking-tighter">
+        寻找<span class="text-[#D4A574]">实干的</span><br/>合作伙伴
+      </h2>
+      <p class="text-xl text-[#F5F5F5]/60 mb-16 max-w-2xl mx-auto font-light">
+        让经验丰富的专家为您量身定制融资方案。今天就联系我们。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#D4A574] text-[#0A0A0A] font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-white transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

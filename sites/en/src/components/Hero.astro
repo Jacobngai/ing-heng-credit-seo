@@ -15,9 +15,11 @@ interface Props {
   ctaSecondaryText?: string;
   ctaSecondaryLink?: string;
   backgroundImage?: string;
+  equipmentImage?: string;
   lang: Locale;
   overlay?: boolean;
   trustSignals?: string[];
+  variant?: 'standard' | 'luxe';
 }
 
 const {
@@ -28,88 +30,108 @@ const {
   ctaSecondaryText,
   ctaSecondaryLink,
   backgroundImage,
+  equipmentImage,
   lang,
   overlay = true,
   trustSignals = [],
+  variant = 'standard',
 } = Astro.props;
 ---
 
 <section
-  class="relative hero overflow-hidden bg-gradient-to-br from-accent to-primary-dark min-h-[80vh] flex items-center"
-  style={backgroundImage ? `background-image: url('${backgroundImage}')` : undefined}
+  class={`relative hero overflow-hidden flex items-center ${variant === 'luxe' ? 'bg-[#0A0A0A] py-8 md:py-20 flex-col' : 'bg-gradient-to-br from-accent to-primary-dark min-h-[80vh]'}`}
+  style={backgroundImage && variant === 'standard' ? `background-image: url('${backgroundImage}')` : undefined}
 >
-  <!-- Background Image (if provided) -->
-  {backgroundImage && (
-    <div class="absolute inset-0 z-0">
-      <img
-        src={backgroundImage}
-        alt=""
-        class="w-full h-full object-cover"
-        loading="eager"
-      />
+  {variant === 'luxe' && (
+      <div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#D4A574]/10 blur-[120px] rounded-full pointer-events-none"></div>
+  )}
+
+  {variant === 'luxe' && equipmentImage && (
+    <div class="w-full relative z-10 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto mb-6 md:mb-12">
+      <div class="w-full h-56 md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[50px] shadow-2xl relative border border-white/5">
+        <img src={equipmentImage} alt={title} class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-transparent flex items-end p-8 md:p-16">
+           <h2 class="text-white font-display text-3xl md:text-7xl uppercase tracking-normal leading-[1.2]">{title}</h2>
+        </div>
+      </div>
     </div>
   )}
 
-  <!-- Strong dark overlay for maximum text contrast -->
-  {overlay && (
-    <>
-      <div class="absolute inset-0 bg-black/60 z-5"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 z-10"></div>
-    </>
-  )}
-
-  <!-- Content -->
-  <div class="container-custom relative z-20">
-    <div class="max-w-4xl mx-auto text-center">
-      <!-- Title -->
-      <h1 class="text-white mb-6 animate-fade-in">
-        {title}
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.2s;">
-        {subtitle}
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 animate-fade-in" style="animation-delay: 0.4s;">
-        {ctaText && ctaLink && (
-          <CTAButton
-            text={ctaText}
-            link={ctaLink}
-            variant="accent"
-            size="large"
-          />
-        )}
-
-        {ctaSecondaryText && ctaSecondaryLink && (
-          <CTAButton
-            text={ctaSecondaryText}
-            link={ctaSecondaryLink}
-            variant="outline-white"
-            size="large"
-          />
-        )}
-      </div>
-
-      <!-- Trust Signals -->
-      {trustSignals && trustSignals.length > 0 && (
-        <div class="flex flex-wrap justify-center gap-6 text-white/90 animate-fade-in" style="animation-delay: 0.6s;">
-          {trustSignals.map((signal) => (
-            <div class="flex items-center space-x-2">
-              <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span class="text-sm font-medium">{signal}</span>
-            </div>
-          ))}
+  <div class={`relative z-10 w-full ${variant === 'luxe' ? 'px-4 sm:px-6 md:px-12 max-w-7xl mx-auto' : 'container-custom'}`}>
+    <div class={`${variant === 'luxe' ? 'text-center md:text-left relative py-8 md:py-0' : 'text-center'}`}>
+      
+      {variant === 'luxe' && (
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8 md:mb-12">
+            <span class="inline-block border border-[#D4A574] text-[#D4A574] px-4 py-1 font-display tracking-widest text-xs uppercase font-bold">KPKT Licensed</span>
+            <span class="inline-block border border-white/20 text-white/40 px-4 py-1 font-display tracking-widest text-xs uppercase font-bold">Direct Capital</span>
         </div>
       )}
+
+      <div class={`${variant === 'luxe' ? 'relative z-10 max-w-5xl mx-auto md:mx-0' : ''}`}>
+          <!-- Title Following Homepage CI -->
+          <h1 class={`${variant === 'luxe' ? 'text-white leading-[1.1] mb-8 font-display uppercase text-5xl sm:text-7xl md:text-9xl tracking-tight' : 'text-white mb-6 animate-fade-in text-4xl md:text-6xl font-bold'}`}>
+            {variant === 'luxe' ? (
+                <>
+                    WE SAY <span class="text-[#D4A574]">YES</span><br />
+                    WHEN BANKS SAY NO.
+                </>
+            ) : title}
+          </h1>
+
+          <!-- Subtitle - Redesigned for Homepage Style -->
+          <p class={`${variant === 'luxe' ? 'text-white/60 text-lg md:text-2xl font-light max-w-3xl mb-12 md:mb-16 leading-relaxed mx-auto md:mx-0' : 'text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed animate-fade-in'}`} style={variant === 'standard' ? "animation-delay: 0.2s;" : undefined}>
+            {subtitle.includes('|') ? (
+               <span class="flex flex-col md:block gap-2">
+                  {subtitle.split('|').map((part, index) => (
+                    <>
+                      <span class="inline-block">{part.trim()}</span>
+                      {index < subtitle.split('|').length - 1 && (
+                        <span class="hidden md:inline mx-4 opacity-30 text-[#D4A574]">|</span>
+                      )}
+                    </>
+                  ))}
+               </span>
+            ) : subtitle}
+          </p>
+
+          <!-- CTAs Match Homepage Hierarchy -->
+          <div class={`${variant === 'luxe' ? 'flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-stretch sm:items-center' : 'flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 animate-fade-in'}`} style={variant === 'standard' ? "animation-delay: 0.4s;" : undefined}>
+            {ctaText && ctaLink && (
+              <a href={ctaLink} class="bg-[#8B6F47] text-white font-display text-xl md:text-2xl tracking-[0.1em] px-12 py-6 hover:bg-white hover:text-[#0A0A0A] transition-all duration-500 text-center uppercase">
+                {ctaText}
+              </a>
+            )}
+
+            {ctaSecondaryText && ctaSecondaryLink && (
+              <a href={ctaSecondaryLink} class="border-2 border-white/20 text-white font-display text-xl md:text-2xl tracking-[0.1em] px-12 py-6 hover:border-[#D4A574] hover:text-[#D4A574] transition-all duration-500 text-center uppercase">
+                {ctaSecondaryText}
+              </a>
+            )}
+          </div>
+
+          <!-- Obvious Badges - Homepage CI -->
+          {variant === 'luxe' && (
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mt-20 md:mt-32">
+                {[
+                    { value: '40+', label: 'Years Heritage' },
+                    { value: '0%', label: 'Deposit Option' },
+                    { value: '4K+', label: 'SMEs Funded' },
+                    { value: 'KPKT', label: 'Certified' }
+                ].map((stat) => (
+                    <div class="bg-white/5 border border-white/10 p-6 backdrop-blur-sm text-center md:text-left group hover:border-[#D4A574]/30 transition-all">
+                        <div class="text-[#D4A574] font-display text-4xl mb-1">{stat.value}</div>
+                        <div class="text-white/30 text-[10px] uppercase tracking-widest font-bold group-hover:text-white/60 transition-colors">{stat.label}</div>
+                    </div>
+                ))}
+            </div>
+          )}
+      </div>
     </div>
   </div>
 
-  <!-- Yellow bottom bar -->
-  <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400 z-30"></div>
+  {variant === 'standard' && (
+      <div class="absolute bottom-0 left-0 right-0 h-2 bg-yellow-400 z-30"></div>
+  )}
 </section>
 
 <style>
@@ -120,11 +142,11 @@ const {
   }
 
   .from-accent {
-    --tw-gradient-from: #2D1810;  /* Fixed: Accent Dark Brown */
+    --tw-gradient-from: #2D1810;
   }
 
   .to-primary-dark {
-    --tw-gradient-to: #6B5437;  /* Fixed: Primary Dark Bronze */
+    --tw-gradient-to: #6B5437;
   }
 
   .bg-gradient-to-br {

@@ -3,102 +3,67 @@
  * Used Wheel Loader Financing Landing Page - English
  * Target: Quarry operators tired of renting, contractors wanting to own equipment
  * Keywords: wheel loader financing Malaysia, stop renting equipment, own vs rent wheel loader
- * Focus: Rent vs Own comparison - Build equity instead of rental trap
- * Word Count: ~1,600 words (hyper-specific pain + benefit stacking)
  */
 
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Hero from '../../../components/Hero.astro';
 import BenefitCard from '../../../components/BenefitCard.astro';
 import FAQItem from '../../../components/FAQItem.astro';
-import ContactForm from '../../../components/ContactForm.astro';
+import Calculator from '../../../components/Calculator.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import RelatedEquipment from '../../../components/RelatedEquipment.astro';
-import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 
+import { generateProductSchema, generateFAQSchema, encodeJSONLD } from '../../../utils/schema';
 import { SITE_CONFIG } from '../../../utils/constants';
+
 const lang = 'en';
 
-// SEO Data - Optimized for wheel loader financing Malaysia
-const pageTitle = 'Stop Renting Wheel Loaders | Own Your Equipment | 0% Deposit';
-const pageDescription = 'Tired of RM 16,000/month rental fees? Finance your own wheel loader. All equipment accepted based on condition. Bad credit approved. 0% deposit option. Build equity instead of enriching rental companies.';
-const keywords = ['wheel loader financing Malaysia', 'stop renting wheel loader', 'own vs rent wheel loader', 'used wheel loader loan', 'CAT 966 financing', 'wheel loader hire purchase'];
+// SEO Data
+const pageTitle = 'Stop Renting Wheel Loaders | Own Your Equipment | Ing Heng';
+const pageDescription = 'Tired of RM 16,000/month rental? Finance your own wheel loader with 0% deposit. We finance CAT, Komatsu, Volvo units any age. Build equity, stop rental leakage.';
+const keywords = ['wheel loader financing Malaysia', 'stop renting wheel loader', 'CAT 966 financing', 'used wheel loader loan'];
 
 // Breadcrumbs
 const breadcrumbs = [
   { label: 'Home', url: '/en' },
   { label: 'Equipment', url: '/en/equipment' },
-  { label: 'Wheel Loader Financing', url: '/en/equipment/wheel-loader' },
+  { label: 'Wheel Loader', url: '/en/equipment/wheel-loader' },
 ];
 
-// Benefits - Focus on rent vs own
 const benefits = [
-  { icon: 'clock', title: 'Build Equity With Every Payment', description: 'RM 16,000/month rental = RM 192,000/year = RM 576,000 after 3 years. You own nothing. Finance instead: Similar payments, but you build toward owning a RM 300,000 asset.' },
-  { icon: 'percentage', title: '0% Deposit Option Available', description: 'Finance up to 100% of equipment value. Preserve cash for operations. Start building equity immediately. Keep working capital free for business needs.' },
-  { icon: 'shield', title: 'Equipment All equipment accepted based on condition', description: 'Your rental loader is probably 15 years old anyway. Age doesn\'t matter when equipment works. We approve loaders banks reject. Focus on condition, not age.' },
-  { icon: 'users', title: 'Bad Credit Approved', description: 'Banks say no. We say yes. Past credit issues don\'t stop you from owning equipment. We focus on your business potential and equipment value.' },
-  { icon: 'document', title: 'Your Equipment. Your Schedule. Your Profits.', description: 'Own your loader. Control operations completely. Fix on YOUR timeline. Qualify for tenders requiring equipment ownership. Build your business on your terms.' },
-  { icon: 'shield', title: 'Own A Productive Asset', description: 'Rental = pure expense, 100% loss. Financing = building asset, eventual ownership. After 3-5 years, you OWN a productive machine worth hundreds of thousands.' },
+  { icon: 'clock', title: 'Convert Rent to Equity', description: 'Average rental: RM 16,000. Average HP payment: RM 12,800. Stop losing RM 38,000 per year per machine.' },
+  { icon: 'percentage', title: '0% Deposit Available', description: 'Finance up to 100% of equipment value for established quarry and construction operators. Preserve liquidity.' },
+  { icon: 'shield', title: 'Age-Agnostic Approval', description: 'CAT 966C, 950G—we value mechanical condition over production year. We approve loaders that banks reject.' },
+  { icon: 'lightning', title: 'Streamlined Deployment', description: 'Fast credit decisions within 24 hours. Mobilize your fleet for new tenders without capital delays.' },
 ];
 
-// FAQs - Focused on rent vs own decision
 const faqs = [
-  {
-    question: 'Why should I buy instead of rent?',
-    answer: 'MATH: Rent at RM 16,000/month = RM 192,000/year. After 3 years, you\'ve paid RM 576,000 and own NOTHING. Finance a used CAT 966C instead. After 3 years of payments, you OWN the loader. Build equity with every payment. Control operations completely. Own a productive asset. Even if financing costs similar monthly, you\'re building toward ownership instead of pure expense.'
+  { 
+    question: 'Why should I buy instead of continuing to rent?', 
+    answer: 'Rent is a 100% loss. Over 3 years, you pay for a loader twice but own nothing. Financing builds a tangible asset on your balance sheet while often reducing your monthly operational expense.' 
+  },
+  { 
+    question: 'Do you finance older CAT or Komatsu loaders?', 
+    answer: 'YES. We specialize in financing used heavy assets. If the hydraulics are strong and the machine is productive, we provide the capital regardless of it being 15+ years old.' 
   },
   {
-    question: 'What if I can\'t afford the deposit?',
-    answer: '0% deposit option available! Finance up to 100% of equipment value. You can start owning instead of renting with ZERO upfront payment. This is our major advantage over banks who require 10-30% deposit. We understand contractors need to preserve cash for operations, not tie it up in deposits.'
-  },
-  {
-    question: 'Do you really finance 10+ year-old equipment?',
-    answer: 'YES! Your rental loader is probably 15 years old anyway. Banks reject equipment over 5 years old. We approve 10+ years old, even older if well-maintained. CAT wheel loaders last 20+ years. We assess working condition and business viability, not arbitrary age limits. If it loads trucks, we finance it.'
-  },
-  {
-    question: 'What if I have bad credit?',
-    answer: 'We approve bad credit applications. Banks reject old equipment AND bad credit. We approve both. We focus on: Can you operate the equipment profitably? Is the equipment in working condition? We\'ve helped hundreds of contractors with credit issues own their equipment instead of renting forever. The equipment serves as collateral, reducing our risk.'
-  },
-  {
-    question: 'What equipment brands do you finance?',
-    answer: 'ALL major brands: CAT (966C/D/E, 950G/H/F, 980C/F), Komatsu (WA320, WA380, WA470), Volvo (L120, L150, L180), Chinese brands (XCMG, SDLG, Lonking). Premium brands: All equipment accepted based on condition. Chinese brands: All equipment accepted based on condition. We assess each machine individually based on condition, not just brand and age.'
-  },
-  {
-    question: 'How do monthly payments compare to rental?',
-    answer: 'Rental might seem cheaper monthly, but it\'s 100% expense with zero ownership. Financing might be similar monthly, but you\'re building toward ownership. Key difference: After 3 years of rental, you\'ve paid RM 576,000 and own nothing. After 3 years of financing, you OWN an asset. You build equity. You control operations. You qualify for tenders requiring equipment ownership. Contact us for specific quote based on your equipment and situation.'
-  },
-  {
-    question: 'What if the used loader breaks down?',
-    answer: 'Bring experienced operator to test machine before committing. Check engine, hydraulics, undercarriage. Operate for 30-60 minutes under load. Review maintenance records. We STRONGLY encourage thorough inspection - small investment saves major repair costs. Better to reject questionable equipment than finance problems. Many contractors budget RM 20-30k for initial refurbishment after purchase - still cheaper than years of rental fees.'
-  },
-  {
-    question: 'Can I trade in my current equipment?',
-    answer: 'YES! Trade-in programs available. Own older equipment? Trade it in for credit and finance remaining amount. Currently financing equipment elsewhere? We can pay off your existing loan, apply remaining equity as deposit, and finance the difference. This is how contractors upgrade from old small loaders to better equipment over time.'
-  },
-  {
-    question: 'What documents do I need?',
-    answer: 'IC/Passport copy, 6 months bank statements, equipment details and photos, business proof if available (quarry permit, project contracts). For companies: SSM registration, company bank statements, directors\' IC. Simple documentation. We focus on your business reality, not complex financials. Streamlined Processing compared to banks.'
-  },
-  {
-    question: 'What happens after I pay off the financing?',
-    answer: 'The loader is 100% YOURS. Full ownership. Full control. Full profits. You can: Keep using it for years (CAT loaders last 20+ years), sell it and use equity for next equipment upgrade, trade it in for newer model. You\'ve built an asset. You own productive equipment. You control your business completely. This is the difference between building equity vs pure expense.'
-  },
+    question: 'Can I refinance my existing loader for cash flow?',
+    answer: 'Absolutely. We can provide capital against your current owned fleet, allowing you to unlock equity for project mobilization or operational expansion.'
+  }
 ];
 
-// Product Schema
 const productSchema = generateProductSchema({
-  name: 'Wheel Loader Financing Malaysia - Stop Renting, Own Your Equipment',
-  description: 'Finance your own wheel loader instead of renting forever. All equipment accepted based on condition. Bad credit approved. 0% deposit option available. Build equity instead of rental trap.',
-  imageUrl: `${SITE_CONFIG.url}/images/wheel-loader-financing.jpg`,
-  category: 'Financial Service - Equipment Financing',
+  name: 'Wheel Loader Financing Malaysia',
+  description: 'Specialized financing for used wheel loaders. Stop rental leakage and build quarry equity. CAT, Komatsu, Volvo brands accepted.',
+  imageUrl: `${SITE_CONFIG.url}/images/equipment/wheel-loader.jpg`,
+  category: 'Heavy Equipment Financing',
   offers: {
-    price: '0',
+    price: '185000',
     currency: 'MYR',
     availability: 'https://schema.org/InStock',
   },
 });
 
-// FAQ Schema
 const faqSchema = generateFAQSchema(faqs);
 ---
 
@@ -107,277 +72,151 @@ const faqSchema = generateFAQSchema(faqs);
   description={pageDescription}
   lang={lang}
   keywords={keywords}
-  ogType="website"
 >
-  <!-- Structured Data -->
   <Fragment slot="head">
     <script type="application/ld+json" set:html={encodeJSONLD(productSchema)} />
     <script type="application/ld+json" set:html={encodeJSONLD(faqSchema)} />
   </Fragment>
 
+  <!-- Hero Section -->
+  <Hero
+    title="Wheel Loader Financing"
+    subtitle="Escaping the RM 16,000/month rental trap. 0% deposit available. We finance CAT, Komatsu, Volvo units—any age, any condition."
+    ctaText="Stop Rental Leakage"
+    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20wheel%20loader%20financing."
+    ctaSecondaryText="Call Decision Maker"
+    ctaSecondaryLink="tel:+60175700889"
+    lang={lang}
+    variant="luxe"
+    equipmentImage="/images/equipment/Caterpillar 966C.JPG"
+    trustSignals={['40 Years Expertise', 'Quarry Specialist', '0% Deposit Option', 'Bad Credit Approved']}
+  />
+
   <!-- Breadcrumbs -->
-  <div class="container-custom py-4">
+  <div class="container-custom py-4 font-display text-white">
     <Breadcrumbs items={breadcrumbs} lang={lang} />
   </div>
 
-  <!-- Hero Section -->
-  <Hero
-    title="Stop Renting. Own Your Wheel Loader."
-    subtitle="Tired of RM 16,000/month rental fees? Finance your own equipment. 0% deposit option. All equipment accepted based on condition. Bad credit approved."
-    ctaText="Get Free Quote via WhatsApp"
-    ctaLink="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20wheel%20loader%20financing."
-    ctaSecondaryText="Call Now: 017-570 0889"
-    ctaSecondaryLink="tel:+60175700889"
-    lang={lang}
-    trustSignals={['40 Years in Business', 'KPKT Licensed', '0% Deposit Option', 'Equipment All equipment accepted based on condition']}
-  />
-
-  <!-- Direct Copywriting Section - Hyper-Specific Pain Articulation -->
-  <section class="section bg-[#F5F5DC]">
+  <!-- Economics Section -->
+  <section class="section bg-white text-[#0A0A0A]">
     <div class="container-custom">
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
-          <div class="prose max-w-none text-[#4F3E29]">
-            <p class="text-lg leading-relaxed mb-4">
-              You own a quarry.
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-16 md:mb-20 text-center">
+            <h2 class="text-4xl md:text-7xl font-display uppercase  mb-8 tracking-tight leading-[1.1]">
+                Ownership <br/><span class="text-[#D4A574]">Economics</span>
+            </h2>
+            <p class="text-lg md:text-xl text-[#0A0A0A]/60 font-light max-w-2xl mx-auto leading-relaxed">
+                Profitability is a game of asset control. Renting is a tax on your growth; ownership is a deposit on your project success.
             </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              Every month, you write a RM 16,000 check to the rental company.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              You walk past that rented loader in your yard. It's probably 15 years old. Faded yellow paint. Worn tires.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              And you think: "I've paid RM 192,000 this year. I don't own a single bolt on this machine."
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              <strong>Does your jaw clench when you write that check?</strong>
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              When the rental company calls on a Friday: "We need it back Monday morning" - and you have 3 days of loading scheduled - does your chest tighten knowing you might lose the contract?
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              When you see your competitor with THEIR owned loader - working weekends, no restrictions, building equity - does it sting knowing you're enriching a rental company instead of yourself?
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              <strong>That's the rental trap.</strong>
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              You found a used CAT 966C. 12 years old. Still functional. Still productive.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              Banks reject it. "Too old."
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              But you know that rented loader is 15 years old anyway.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              We approve equipment 10+ years old. Even older if maintained.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              We understand: Age doesn't matter. What matters is escaping the rental trap.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              You get financing. 0% deposit option available.
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              <strong>Your loader. Your schedule. Your equity.</strong>
-            </p>
-
-            <p class="text-lg leading-relaxed mb-4">
-              Every payment builds YOUR asset, not rental company profits.
-            </p>
-
-            <p class="text-lg font-semibold text-primary leading-relaxed">
-              That's ownership.
-            </p>
-          </div>
         </div>
 
-        <div class="text-center mt-8">
-          <a
-            href="https://wa.me/60175700889?text=Hi!%20I%27m%20tired%20of%20renting.%20I%27d%20like%20to%20discuss%20wheel%20loader%20financing."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary btn-lg inline-block"
-          >
-            Own Your Equipment. Talk to Us Now.
-          </a>
+        <div class="grid md:grid-cols-2 gap-8 md:gap-16 mb-16 md:mb-20 items-center">
+            <div class="bg-[#F9F9F9] p-8 md:p-12 rounded-[30px] md:rounded-[40px] border border-[#eee]">
+                <p class="text-xl md:text-2xl font-display uppercase tracking-widest text-[#0A0A0A] mb-8">The Rental Burn</p>
+                <div class="space-y-6">
+                    <div class="flex justify-between border-b border-black/5 pb-4">
+                        <span class="font-light text-[#0A0A0A]/40 text-sm">Monthly Rental Payment</span>
+                        <span class="font-display tracking-widest">RM 16,000</span>
+                    </div>
+                    <div class="flex justify-between border-b border-black/5 pb-4">
+                        <span class="font-light text-[#0A0A0A]/40 text-sm">Typical 4-Year Spend</span>
+                        <span class="font-display tracking-widest">RM 768,000</span>
+                    </div>
+                    <div class="pt-4 border-t-2 border-red-500/20">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-[#0A0A0A] text-sm uppercase">Balance Sheet Value</span>
+                            <span class="font-display text-2xl text-red-600">RM 0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#0A0A0A] p-8 md:p-16 rounded-[40px] md:rounded-[60px] text-white shadow-2xl">
+                <h3 class="text-2xl md:text-4xl font-display uppercase text-[#D4A574] mb-8">Asset <br/>Strategy</h3>
+                <div class="space-y-6 mb-12">
+                   <div class="flex justify-between border-b border-white/10 pb-4">
+                       <span class="font-light text-white/40 text-sm">Financed Installment</span>
+                       <span class="font-display tracking-widest">RM 12,800</span>
+                   </div>
+                   <div class="flex justify-between pb-4">
+                       <span class="font-light text-green-500/80 text-sm italic">Monthly Operational Surplus</span>
+                       <span class="font-display tracking-widest text-green-500">RM 3,200</span>
+                   </div>
+                </div>
+                <Calculator lang={lang} equipmentType="Wheel Loader" defaultPrice={250000} variant="luxe" />
+            </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Benefits Section - Benefit Stacking (Not Negative Stacking) -->
-  <section class="section">
+  <!-- Benefits Section -->
+  <section class="section bg-[#0A0A0A]">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Why Own Instead of Rent?
+      <div class="mb-16">
+        <h2 class="text-4xl md:text-5xl font-display uppercase  text-white mb-4 tracking-tight leading-[1.1]">
+          Uncompromised <span class="text-[#D4A574]">Utility.</span>
         </h2>
-        <p class="text-xl text-[#4F3E29]">
-          Build equity. Keep profits. Control your operations.
+        <p class="text-lg text-white/50 font-light max-w-xl">
+          Secure the heavy assets your quarry depends on with the flexibility the banking sector refuses to offer.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {benefits.map((benefit) => (
           <BenefitCard
             icon={benefit.icon}
             title={benefit.title}
             description={benefit.description}
+            variant="luxe"
           />
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Equipment We Finance -->
-  <section class="section bg-[#F5F5DC]">
+  <!-- FAQ Section -->
+  <section class="section bg-white text-[#0A0A0A]">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Wheel Loader Brands We Finance
+      <div class="mb-16 md:mb-20 text-center">
+        <h2 class="text-4xl md:text-6xl font-display uppercase  mb-4  text-[#0A0A0A] tracking-tight leading-[1.1]">
+          Quarry <br/> <span class="text-[#D4A574]">Intelligence</span>
         </h2>
-        <p class="text-xl text-[#4F3E29]">
-          All major brands accepted based on condition
+        <p class="text-lg md:text-xl text-[#0A0A0A]/40 font-light mx-auto max-w-xl">
+          Everything you need to know about scaling your heavy equipment assets.
         </p>
       </div>
 
       <div class="max-w-4xl mx-auto">
-        <div class="bg-white p-8 rounded-lg shadow-[6px_6px_0_#2D1810]">
-          <div class="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 class="text-xl font-bold text-primary mb-4">Premium Brands:</h3>
-              <ul class="space-y-2 text-[#4F3E29]">
-                <li><strong>CAT:</strong> 966C, 966D, 966E, 950G, 950H, 980C</li>
-                <li><strong>Komatsu:</strong> WA320, WA380, WA470</li>
-                <li><strong>Volvo:</strong> L120, L150, L180</li>
-                <li class="text-sm">All accepted based on condition</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="text-xl font-bold text-primary mb-4">Budget Brands:</h3>
-              <ul class="space-y-2 text-[#4F3E29]">
-                <li><strong>Chinese:</strong> XCMG, SDLG, Lonking, LiuGong</li>
-                <li class="text-sm">All accepted based on condition</li>
-                <li class="text-sm">Lower cost, readily available parts</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-6 border-t border-[#D4A574]">
-            <p class="text-[#4F3E29] text-center">
-              <strong>Don't see your brand?</strong> Contact us anyway. We assess each machine individually.
-            </p>
-          </div>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <FAQItem question={faq.question} answer={faq.answer} variant="luxe" />
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="section">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
-          Common Questions About Financing vs Renting
-        </h2>
-        <p class="text-xl text-[#4F3E29]">
-          Everything you need to know about owning your equipment
-        </p>
-      </div>
+  <RelatedEquipment lang={lang} currentEquipment="wheel-loader" variant="luxe" />
 
-      <div class="max-w-4xl mx-auto space-y-4">
-        {faqs.map((faq) => (
-          <FAQItem question={faq.question} answer={faq.answer} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form Section -->
-  <section class="section bg-[#F5F5DC]">
-    <div class="container-custom">
-      <div class="max-w-2xl mx-auto">
-        <div class="text-center mb-8">
-          <h2 class="text-3xl font-bold text-primary mb-4">
-            Own Your Equipment. Build Your Equity.
-          </h2>
-          <p class="text-[#4F3E29]">
-            Contact us today. We'll respond during business hours (Mon-Fri 9AM-5PM, Sat 9AM-1PM)
-          </p>
-        </div>
-        <ContactForm lang={lang} />
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA Section - Benefit Stacking -->
-  <section class="section bg-[#8B6F47] text-white">
-    <div class="container-custom text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        Ready to Own Your Wheel Loader?
+  <section class="section bg-[#D4A574] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('/images/texture.png')] mix-blend-overlay pointer-events-none"></div>
+    <div class="container-custom text-center relative z-10">
+      <h2 class="text-5xl md:text-8xl font-display uppercase  text-[#0A0A0A] mb-8 tracking-tight leading-[1.1]">
+        EVOLVE TO <br/><span class="opacity-40">FULL OWNERSHIP</span>
       </h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Build equity with every payment. Control operations completely. Own productive assets. 0% deposit option available. All equipment accepted based on condition. Bad credit approved.
+      <p class="text-[#0A0A0A]/70 text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+        Stop enriching rental fleets. Build your own infrastructure empire. Secure your wheel loader financing today.
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+ 
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
         <a
-          href="https://wa.me/60175700889?text=Hi!%20I%27m%20tired%20of%20renting.%20I%27d%20like%20to%20discuss%20wheel%20loader%20financing."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-accent text-lg px-8 py-4"
+          href="https://wa.me/60175700889?text=Hi!%20I%27d%20like%20to%20apply%20for%20wheel%20loader%20financing."
+          class="bg-[#0A0A0A] text-white px-12 py-6 font-display uppercase tracking-widest hover:bg-white hover:text-[#0A0A0A] transition-all shadow-2xl"
         >
-          Get Free Quote via WhatsApp
+          Secure Your Fleet
         </a>
-        <a
-          href="tel:+60175700889"
-          class="btn border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-4"
-        >
-          Call: 017-570 0889
-        </a>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-6 text-sm">
-        <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>0% Deposit Option</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>Equipment 10+ Years Old</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-          <span>40 Years Experience</span>
-        </div>
       </div>
     </div>
   </section>
-
-  <!-- Related Equipment Section -->
-  <RelatedEquipment lang={lang} currentEquipment="wheel-loader" />
 </BaseLayout>

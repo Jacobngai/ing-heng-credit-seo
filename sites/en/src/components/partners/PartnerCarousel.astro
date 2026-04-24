@@ -1,0 +1,116 @@
+---
+interface CarouselImage {
+  url: string;
+  altText: string;
+}
+
+interface Props {
+  images: CarouselImage[];
+  fallbackAlt: string;
+}
+
+const { images, fallbackAlt } = Astro.props;
+const carouselId = `partner-carousel-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+{images.length > 0 && (
+  <section class="space-y-4">
+    <div id={carouselId} class="relative overflow-hidden border-3 border-[#2D1810] bg-[#F5F1EB] shadow-brutal-lg">
+      <div class="relative aspect-[16/10]">
+        {images.map((image, index) => (
+          <img
+            src={image.url}
+            alt={image.altText || fallbackAlt}
+            class={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${index === 0 ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+            data-carousel-slide
+            loading={index === 0 ? 'eager' : 'lazy'}
+          />
+        ))}
+      </div>
+
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            class="absolute left-4 top-1/2 -translate-y-1/2 border-3 border-[#2D1810] bg-white px-4 py-3 font-display text-2xl text-[#2D1810] shadow-brutal-sm"
+            data-carousel-prev
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            class="absolute right-4 top-1/2 -translate-y-1/2 border-3 border-[#2D1810] bg-white px-4 py-3 font-display text-2xl text-[#2D1810] shadow-brutal-sm"
+            data-carousel-next
+            aria-label="Next image"
+          >
+            ›
+          </button>
+        </>
+      )}
+    </div>
+
+    {images.length > 1 && (
+      <div class="grid grid-cols-4 gap-3 md:grid-cols-6">
+        {images.map((image, index) => (
+          <button
+            type="button"
+            class={`overflow-hidden border-3 border-[#2D1810] bg-white ${index === 0 ? 'ring-4 ring-[#D4A574]' : ''}`}
+            data-carousel-thumb
+            data-index={index}
+            aria-label={`Show image ${index + 1}`}
+          >
+            <img src={image.url} alt={image.altText || fallbackAlt} class="aspect-square h-full w-full object-cover" loading="lazy" />
+          </button>
+        ))}
+      </div>
+    )}
+  </section>
+)}
+
+<script is:inline define:vars={{ carouselId }}>
+  (() => {
+    const root = document.getElementById(carouselId);
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll('[data-carousel-slide]'));
+    const thumbs = Array.from(document.querySelectorAll(`[data-carousel-thumb]`))
+      .filter((thumb) => thumb.closest('section')?.querySelector(`#${carouselId}`));
+    const prevButton = root.querySelector('[data-carousel-prev]');
+    const nextButton = root.querySelector('[data-carousel-next]');
+
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+
+    const render = () => {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('opacity-100', index === currentIndex);
+        slide.classList.toggle('opacity-0', index !== currentIndex);
+        slide.classList.toggle('pointer-events-none', index !== currentIndex);
+      });
+
+      thumbs.forEach((thumb, index) => {
+        thumb.classList.toggle('ring-4', index === currentIndex);
+        thumb.classList.toggle('ring-[#D4A574]', index === currentIndex);
+      });
+    };
+
+    prevButton?.addEventListener('click', () => {
+      currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+      render();
+    });
+
+    nextButton?.addEventListener('click', () => {
+      currentIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+      render();
+    });
+
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        currentIndex = index;
+        render();
+      });
+    });
+  })();
+</script>

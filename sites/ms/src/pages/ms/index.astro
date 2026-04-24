@@ -3,398 +3,235 @@
  * Malay Homepage
  * Pembiayaan Peralatan Malaysia - Ing Heng Credit & Leasing
  * Target Audience: Kontraktor Bumiputera, usahawan Melayu, pemilik perniagaan kecil
- * Cultural Adaptations: Respectful, service-oriented, government/authority references
  */
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
-import BenefitCard from '../../components/BenefitCard.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ContactForm from '../../components/ContactForm.astro';
-import CTAButton from '../../components/CTAButton.astro';
 import StructuredData from '../../components/StructuredData.astro';
 import { generateOrganizationSchema } from '../../utils/schema';
 import { COMPANY_INFO } from '../../utils/constants';
 
 const lang = 'ms';
 const organizationSchema = generateOrganizationSchema();
+
+// Equipment showcase for catalog
+const equipment = [
+  {
+    name: 'Excavator (Jengkaut)',
+    description: 'Kami biaya semua model: CAT, Komatsu, Kobelco. Mesin 20 tahun pun kami terima.',
+    image: 'https://images.unsplash.com/photo-1546452204-7407a1600170?auto=format&fit=crop&q=80&w=800',
+    link: '/ms/equipment/excavator'
+  },
+  {
+    name: 'Lorry (Lori)',
+    description: 'Beli lori untuk logistik atau pembinaan. Isuzu, Hino, Mitsubishi. Kelulusan 48 jam.',
+    image: 'https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&q=80&w=800',
+    link: '/ms/equipment/lorry'
+  },
+  {
+    name: 'Forklift',
+    description: 'Untuk gudang atau kilang. Baru atau terpakai. Bayaran pendahuluan rendah.',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad86df68ca10?auto=format&fit=crop&q=80&w=800',
+    link: '/ms/equipment/forklift'
+  }
+];
 ---
 
 <BaseLayout
-  title="Pembiayaan Peralatan Malaysia | Kelulusan Pantas | Ing Heng"
-  description="Pembiayaan peralatan: kelulusan pantas, proses cepat. Jengkaut, lori, forklift dari RM30k. 40+ tahun berkhidmat. WhatsApp untuk sebut harga."
+  title="Pembiayaan Peralatan Malaysia | Kami Kata YA Bila Bank Kata TIDAK"
+  description="Dapatkan modal untuk jengkaut, lori, dan jentera berat. Kami syarikat berlesen KPKT sejak 1985. Proses senang, kelulusan cepat. WhatsApp sekarang."
   lang={lang}
-  keywords={[
-    'pembiayaan peralatan Malaysia',
-    'pembiayaan jengkaut',
-    'pembiayaan lori',
-    'pembiayaan forklift',
-    'pinjaman peralatan pembinaan',
-    'pinjaman perniagaan Malaysia',
-    'beli sewa Malaysia',
-    'pajakan peralatan Klang',
-    'kontraktor Bumiputera',
-    'syarikat kewangan berlesen KPKT'
-  ]}
 >
   <StructuredData schema={organizationSchema} />
 
-  <!-- Hero Section - Bold Industrial Blue/Yellow -->
-  <section class="hero relative overflow-hidden">
-    <div class="container-custom relative z-10">
-      <div class="max-w-5xl mx-auto text-center">
-        <h1 class="text-6xl md:text-7xl lg:text-8xl font-display font-extrabold uppercase leading-none mb-6 text-white">
-          Pembiayaan Peralatan <span class="text-[#D4A574]">Mudah & Pantas</span>
+  <!-- HERO: THE ACTION TAKER -->
+  <section class="relative min-h-[90vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/80 to-[#0A0A0A]"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 mb-8 group hover:bg-white/10 transition-all cursor-default">
+          <div class="w-2 h-2 bg-[#D4A574] rounded-full animate-pulse"></div>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-[#F5F5F5]/60 font-bold">Berlesen KPKT Sejak 1985</span>
+        </div>
+
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          Kami Kata <span class="text-[#D4A574]">YA</span><br/>
+          Bila Bank Kata <span class="text-white/20">TIDAK</span>
         </h1>
-        <p class="text-xl md:text-2xl text-white mb-8 font-light leading-relaxed max-w-3xl mx-auto">
-          Kelulusan Pantas dengan Rakan Pembiayaan Peralatan Paling Dipercayai di Malaysia Sejak 1985
+
+        <p class="text-xl md:text-2xl text-[#F5F5F5]/60 mb-12 max-w-2xl font-light leading-relaxed">
+          Jangan biarkan bank halang bisnes anda. Kami beri modal untuk <span class="text-white font-medium">Mana-mana Mesin, Berapa Saja Usia</span>—dari jengkaut 1980-an hingga lori baru.
         </p>
 
-        <!-- Trust Signals -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
-          <div class="bg-white/10 backdrop-blur-sm border-2 border-white/20 p-4">
-            <div class="text-3xl md:text-4xl font-display text-[#D4A574] mb-1">40+</div>
-            <div class="text-sm text-white">Tahun Pengalaman</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm border-2 border-white/20 p-4">
-            <div class="text-3xl md:text-4xl font-display text-[#D4A574] mb-1">KPKT</div>
-            <div class="text-sm text-white">Berlesen</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm border-2 border-white/20 p-4">
-            <div class="text-3xl md:text-4xl font-display text-[#D4A574] mb-1">⚡</div>
-            <div class="text-sm text-white">Kelulusan Pantas</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm border-2 border-white/20 p-4">
-            <div class="text-3xl md:text-4xl font-display text-[#D4A574] mb-1">4,000+</div>
-            <div class="text-sm text-white">Syarikat Dilayani</div>
-          </div>
-        </div>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/ms/contact" class="bg-white text-[#8B6F47] font-black uppercase tracking-tight text-xl px-12 py-5 border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810] hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-[#8B6F47] hover:text-white transition-all inline-block text-center">
-            Dapatkan Sebut Harga Percuma
+        <div class="flex flex-col sm:flex-row gap-6">
+          <a href={COMPANY_INFO.whatsapp.link} class="group relative bg-[#D4A574] text-[#0A0A0A] font-display uppercase tracking-widest text-sm px-12 py-6 overflow-hidden transition-all duration-500">
+            <span class="relative z-10">WhatsApp Kami Sekarang</span>
+            <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
           </a>
-          <a href={COMPANY_INFO.whatsapp.link} class="btn btn-outline-white text-xl px-12 py-5">
-            WhatsApp Kami
+          <a href="/ms/equipment" class="group border border-white/20 text-white font-display uppercase tracking-widest text-sm px-12 py-6 hover:bg-white hover:text-[#0A0A0A] transition-all duration-500">
+            Lihat Katalog Mesin
           </a>
         </div>
+
+        <!-- Trust Badges -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 border-t border-white/10 pt-12">
+          <div>
+            <span class="block text-3xl font-display text-white mb-1">40 TAHUN</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#F5F5F5]/40 font-bold">Pengalaman Pasaran</span>
+          </div>
+          <div>
+            <span class="block text-3xl font-display text-[#D4A574] mb-1">KPKT</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#F5F5F5]/40 font-bold">Pemberi Pinjam Wang Berlesen</span>
+          </div>
+          <div>
+            <span class="block text-3xl font-display text-white mb-1">RM 30K+</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#F5F5F5]/40 font-bold">Pinjaman Minimum</span>
+          </div>
+          <div>
+            <span class="block text-3xl font-display text-white mb-1">48 JAM</span>
+            <span class="text-[10px] uppercase tracking-widest text-[#F5F5F5]/40 font-bold">Kelulusan Pantas</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="absolute bottom-0 left-0 right-0 h-2 bg-[#D4A574]"></div>
   </section>
 
-  <!-- Services Section -->
-  <section class="section bg-blue-50">
+  <!-- AUTHORITY: THE DIRECT METHOD -->
+  <section class="py-32 bg-white relative">
     <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">Perkhidmatan Kami</h2>
-        <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div>
-        <p class="text-gray-700 max-w-2xl mx-auto text-xl">
-          Penyelesaian pembiayaan menyeluruh yang direka untuk membantu perniagaan anda memperoleh peralatan yang diperlukan untuk berkembang
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Service Card 1 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1">
-          <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6 text-center">
-            <div class="text-6xl mb-3">🚜</div>
-            <h3 class="text-2xl font-display uppercase text-white">Pembiayaan Beli Sewa</h3>
-          </div>
-          <div class="p-8">
-            <p class="text-gray-700 leading-relaxed mb-6">
-              Pembiayaan aset yang membolehkan firma anda memiliki peralatan melalui bayaran bulanan yang fleksibel. Sesuai untuk jengkaut, lori, forklift, dan semua peralatan perniagaan. Miliki aset sambil mengekalkan aliran tunai yang sihat.
-            </p>
-            <a href="/ms/services/hire-purchase" class="btn btn-outline w-full block text-center">Ketahui Lanjut</a>
-          </div>
-        </div>
-
-        <!-- Service Card 2 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1">
-          <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6 text-center">
-            <div class="text-6xl mb-3">💰</div>
-            <h3 class="text-2xl font-display uppercase text-white">Pembiayaan Pinjaman</h3>
-          </div>
-          <div class="p-8">
-            <p class="text-gray-700 leading-relaxed mb-6">
-              Pinjaman perniagaan yang disesuaikan dan dipercayai oleh lebih 4,000 syarikat di seluruh Malaysia. Dapatkan modal kerja yang anda perlukan dengan kadar kompetitif, kelulusan pantas, dan terma bayaran balik fleksibel yang disesuaikan dengan kitaran perniagaan anda.
-            </p>
-            <a href="/ms/services/loan-financing" class="btn btn-outline w-full block text-center">Ketahui Lanjut</a>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div>
+          <span class="text-[#8B6F47] font-display uppercase tracking-[0.3em] text-xs font-bold mb-6 block">Kenapa Pilih Kami?</span>
+          <h2 class="text-6xl md:text-7xl font-display leading-[0.9] text-[#0A0A0A] uppercase mb-10 tracking-tight">
+            Kami Melabur Dalam <span class="text-[#8B6F47]">Masa Depan</span> Anda
+          </h2>
+          <div class="space-y-8">
+            <div class="flex gap-6">
+              <div class="w-12 h-12 bg-[#F5F5F5] flex items-center justify-center font-display text-xl shrink-0">01</div>
+              <div>
+                <h4 class="text-xl font-display uppercase mb-2 tracking-tight">Kami Pembuat Keputusan</h4>
+                <p class="text-[#1A140D]/60 text-sm leading-relaxed">Kami bukan ejen. Kami labur duit kami sendiri. Ini bermakna kelulusan lebih cepat dan kurang karenah birokrasi.</p>
+              </div>
+            </div>
+            <div class="flex gap-6">
+              <div class="w-12 h-12 bg-[#F5F5F5] flex items-center justify-center font-display text-xl shrink-0">02</div>
+              <div>
+                <h4 class="text-xl font-display uppercase mb-2 tracking-tight">Mesin Lama? Tiada Masalah</h4>
+                <p class="text-[#1A140D]/60 text-sm leading-relaxed">Bank benci mesin lama. Kami pula hargai nilai kerjanya. Mesin 50 tahun pun kami boleh bincang jika ia buat duit untuk anda.</p>
+              </div>
+            </div>
+            <div class="flex gap-6">
+              <div class="w-12 h-12 bg-[#F5F5F5] flex items-center justify-center font-display text-xl shrink-0">03</div>
+              <div>
+                <h4 class="text-xl font-display uppercase mb-2 tracking-tight">Syarikat Berlesen (IPW)</h4>
+                <p class="text-[#1A140D]/60 text-sm leading-relaxed">Kami beroperasi di bawah lesen Akta Pemberi Pinjam Wang 1951. Bisnes anda selamat dengan kami.</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- Service Card 3 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-y-1">
-          <div class="bg-[#8B6F47] border-b-3 border-[#2D1810] p-6 text-center">
-            <div class="text-6xl mb-3">🛡️</div>
-            <h3 class="text-2xl font-display uppercase text-white">Perkhidmatan Insurans</h3>
-          </div>
-          <div class="p-8">
-            <p class="text-gray-700 leading-relaxed mb-6">
-              Perlindungan insurans menyeluruh untuk keperluan peribadi, perniagaan, dan kenderaan. Lindungi pelaburan peralatan berharga anda dan operasi perniagaan dengan rakan insurans yang dipercayai dan premium yang kompetitif.
-            </p>
-            <a href="/ms/services/insurance" class="btn btn-outline w-full block text-center">Ketahui Lanjut</a>
-          </div>
+        <div class="relative group">
+          <div class="absolute -inset-4 border border-black/5 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=1200" 
+            alt="Ing Heng Credit Workshop" 
+            class="grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl"
+          />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
-  <section class="section bg-white">
+  <!-- CATALOG: THE TOOLS OF PROFIT -->
+  <section class="py-32 bg-[#F5F5F5]">
     <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">Mengapa Pilih <span class="text-[#8B6F47]">Ing Heng</span>?</h2>
-        <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div>
-        <p class="text-gray-700 text-xl max-w-3xl mx-auto">
-          Kami menjadikan pembiayaan peralatan mudah, pantas, dan berpatutan untuk perniagaan Malaysia
-        </p>
+      <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div class="max-w-2xl">
+          <h2 class="text-6xl md:text-7xl font-display leading-[0.9] text-[#0A0A0A] uppercase mb-6 tracking-tight">
+            Peralatan <span class="text-[#8B6F47]">Pilihan</span>
+          </h2>
+          <p class="text-[#1A140D]/60 uppercase tracking-[0.2em] text-[10px] font-bold">Pilih Alatan Yang Buat Duit Untuk Bisnes Anda</p>
+        </div>
+        <a href="/ms/equipment" class="font-display uppercase tracking-widest text-[#0A0A0A] hover:text-[#8B6F47] transition-colors border-b-2 border-[#0A0A0A] pb-1">
+          Lihat Semua Katalog
+        </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-md p-6 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="w-16 h-16 bg-[#8B6F47] border-3 border-[#2D1810] mx-auto mb-4 flex items-center justify-center text-white text-3xl">✓</div>
-          <h4 class="text-lg font-display uppercase text-navy-900 mb-2">Diluluskan Kerajaan</h4>
-          <p class="text-sm text-gray-600 leading-relaxed">Syarikat kewangan berlesen KPKT yang beroperasi sejak 1985 dengan pematuhan peraturan penuh</p>
-        </div>
-        <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-md p-6 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="w-16 h-16 bg-[#D4A574] border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-navy-900 text-3xl">%</div>
-          <h4 class="text-lg font-display uppercase text-navy-900 mb-2">Kadar Berpatutan</h4>
-          <p class="text-sm text-gray-600 leading-relaxed">Kadar faedah kompetitif bermula dari 6.5% setahun yang disesuaikan dengan keperluan perniagaan anda</p>
-        </div>
-        <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-md p-6 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="w-16 h-16 bg-[#8B6F47] border-3 border-[#2D1810] mx-auto mb-4 flex items-center justify-center text-white text-3xl">📍</div>
-          <h4 class="text-lg font-display uppercase text-navy-900 mb-2">Lokasi Mudah</h4>
-          <p class="text-sm text-gray-600 leading-relaxed">Terletak di Klang, Selangor dengan akses mudah dari KL, Shah Alam, dan Pelabuhan Klang</p>
-        </div>
-        <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-md p-6 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="w-16 h-16 bg-[#D4A574] border-3 border-navy-900 mx-auto mb-4 flex items-center justify-center text-navy-900 text-3xl">📅</div>
-          <h4 class="text-lg font-display uppercase text-navy-900 mb-2">Pembiayaan Fleksibel</h4>
-          <p class="text-sm text-gray-600 leading-relaxed">Pelan bayaran disesuaikan dari 12 hingga 60 bulan dengan bayaran pendahuluan minimum</p>
-        </div>
-        <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-md p-6 text-center hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="w-16 h-16 bg-[#8B6F47] border-3 border-[#2D1810] mx-auto mb-4 flex items-center justify-center text-white text-3xl">💬</div>
-          <h4 class="text-lg font-display uppercase text-navy-900 mb-2">Perundingan Percuma</h4>
-          <p class="text-sm text-gray-600 leading-relaxed">Nasihat kewangan pakar tanpa sebarang kos dalam Bahasa Inggeris, Mandarin, dan Bahasa Malaysia</p>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {equipment.map(item => (
+          <ProductCard 
+            name={item.name}
+            description={item.description}
+            image={item.image}
+            link={item.link}
+            lang={lang}
+          />
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Products Section -->
-  <section class="section bg-blue-50">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">Produk Kami</h2>
-        <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div>
-        <p class="text-gray-700 text-xl">
-          Penyelesaian pembiayaan khusus untuk setiap keperluan perniagaan
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <!-- Product Card 1 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="bg-[#D4A574] border-b-3 border-navy-900 p-4 text-center">
-            <h4 class="font-display text-xl uppercase text-navy-900">Pinjaman Perniagaan</h4>
-          </div>
-          <div class="p-6">
-            <p class="text-gray-700 text-sm mb-4">Modal kerja untuk pertumbuhan dan pengembangan</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Sehingga RM 500K</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Kelulusan pantas dan cekap</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Terma fleksibel 12-60 bulan</span></li>
-            </ul>
-            <a href="/ms/products/business-loan" class="btn btn-outline w-full text-sm py-3">Lihat Butiran</a>
-          </div>
-        </div>
-
-        <!-- Product Card 2 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="bg-[#D4A574] border-b-3 border-navy-900 p-4 text-center">
-            <h4 class="font-display text-xl uppercase text-navy-900">Beli Sewa</h4>
-          </div>
-          <div class="p-6">
-            <p class="text-gray-700 text-sm mb-4">Miliki peralatan dengan bayaran bulanan yang berpatutan</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Peralatan baharu & terpakai</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Tempoh sehingga 60 bulan</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Bayaran pendahuluan rendah dari 10%</span></li>
-            </ul>
-            <a href="/ms/products/hire-purchase" class="btn btn-outline w-full text-sm py-3">Lihat Butiran</a>
-          </div>
-        </div>
-
-        <!-- Product Card 3 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="bg-[#D4A574] border-b-3 border-navy-900 p-4 text-center">
-            <h4 class="font-display text-xl uppercase text-navy-900">Pinjaman Peniaga</h4>
-          </div>
-          <div class="p-6">
-            <p class="text-gray-700 text-sm mb-4">Sokongan untuk usahawan makanan dan peniaga kecil</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Pemprosesan pantas</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Fokus perniagaan kecil</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Kadar kompetitif</span></li>
-            </ul>
-            <a href="/ms/products/hawker-loan" class="btn btn-outline w-full text-sm py-3">Lihat Butiran</a>
-          </div>
-        </div>
-
-        <!-- Product Card 4 -->
-        <div class="bg-white border-3 border-navy-900 shadow-brutal-md hover:shadow-brutal-lg transition-all hover:-translate-y-1">
-          <div class="bg-[#D4A574] border-b-3 border-navy-900 p-4 text-center">
-            <h4 class="font-display text-xl uppercase text-navy-900">Pinjaman PKS</h4>
-          </div>
-          <div class="p-6">
-            <p class="text-gray-700 text-sm mb-4">Memperkasakan perusahaan kecil dan sederhana</p>
-            <ul class="space-y-2 mb-6">
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Penyelesaian disesuaikan</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Sokongan pertumbuhan</span></li>
-              <li class="flex items-start text-sm"><span class="text-secondary mr-2">▸</span><span>Panduan pakar</span></li>
-            </ul>
-            <a href="/ms/products/sme-loan" class="btn btn-outline w-full text-sm py-3">Lihat Butiran</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Equipment We Finance Section -->
-  <section class="section bg-navy-900 text-white relative" style="border-top: 8px solid #D4A574; border-bottom: 8px solid #D4A574;">
-    <div class="container-custom">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-white">Peralatan Yang Kami <span class="text-[#D4A574]">Biayai</span></h2>
-        <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div>
-        <p class="text-xl text-white">
-          Dari pembinaan hingga logistik, kami membiayai semua jenis peralatan perniagaan
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white/10 backdrop-blur-sm border-3 border-white/30 p-8">
-          <h3 class="text-2xl font-display uppercase mb-6 text-[#D4A574]">Peralatan Pembinaan</h3>
-          <ul class="space-y-3 text-white">
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/excavator" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Jengkaut</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/bulldozer" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Jentolak</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/crane" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Kren</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment" class="hover:text-[#D4A574] transition-colors hover:underline">Semua Peralatan Pembinaan</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border-3 border-white/30 p-8">
-          <h3 class="text-2xl font-display uppercase mb-6 text-[#D4A574]">Logistik & Pengangkutan</h3>
-          <ul class="space-y-3 text-white">
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/lorry" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Lori</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/prime-mover" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Prime Mover</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/refrigerated-truck" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Trak Peti Sejuk</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment" class="hover:text-[#D4A574] transition-colors hover:underline">Semua Peralatan Logistik</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-sm border-3 border-white/30 p-8">
-          <h3 class="text-2xl font-display uppercase mb-6 text-[#D4A574]">Peralatan Perindustrian</h3>
-          <ul class="space-y-3 text-white">
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment/forklift" class="hover:text-[#D4A574] transition-colors hover:underline">Pembiayaan Forklift</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment" class="hover:text-[#D4A574] transition-colors hover:underline">Penjana & Pemampat</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment" class="hover:text-[#D4A574] transition-colors hover:underline">Peralatan Pembuatan</a>
-            </li>
-            <li class="flex items-center">
-              <span class="text-[#D4A574] mr-3 text-xl">▸</span>
-              <a href="/ms/equipment" class="hover:text-[#D4A574] transition-colors hover:underline">Semua Peralatan Perindustrian</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="section bg-gradient-to-r from-[#8B6F47] to-[#6B5437] text-white relative border-t-[8px] border-[#D4A574]">
-    <div class="container-custom text-center">
-      <h2 class="text-5xl md:text-6xl font-black uppercase mb-6 text-[#F5F5DC] tracking-tight">Bersedia Dapatkan <span class="text-[#D4A574]">Peralatan Anda?</span></h2>
-      <p class="text-xl mb-12 text-white max-w-3xl mx-auto font-bold">
-        Sertai 4,000+ perniagaan yang mempercayai Ing Heng Credit untuk keperluan pembiayaan mereka.
-        Dapatkan kelulusan pantas dengan proses permohonan kami yang mudah.
+  <!-- CTA: THE ACTION -->
+  <section class="py-40 bg-[#0A0A0A] relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#8B6F47]/5"></div>
+    <div class="container-custom relative z-10 text-center">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-none text-white uppercase mb-12 tracking-tighter">
+        Bisnes Tak Boleh <span class="text-[#D4A574]">Tunggu</span>
+      </h2>
+      <p class="text-xl text-[#F5F5F5]/60 mb-16 max-w-2xl mx-auto font-light">
+        Dapatkan modal kerja atau mesin yang anda perlu hari ini. Cakap terus dengan pakar pembiayaan kami.
       </p>
-      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#D4A574] text-[#2D1810] font-black uppercase tracking-tight text-xl px-12 py-6 border-3 border-[#2D1810] shadow-[6px_6px_0_#2D1810] hover:shadow-[4px_4px_0_#2D1810] hover:translate-x-[2px] hover:translate-y-[2px] transition-all inline-block text-center">
-          Hubungi Kami di WhatsApp
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#D4A574] text-[#0A0A0A] font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-white transition-all duration-500">
+          WhatsApp Sekarang
         </a>
-        <a href="/ms/calculator" class="bg-transparent text-white font-black uppercase tracking-tight text-xl px-12 py-6 border-3 border-white hover:bg-white/10 transition-all inline-block text-center">
-          Kira Bayaran Bulanan
+        <a href="/ms/contact" class="border border-white/20 text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-white hover:text-[#0A0A0A] transition-all duration-500">
+          Hubungi Kami
         </a>
-      </div>
-      <div class="mt-8 text-white">
-        <p class="text-xl font-bold">Atau hubungi kami terus: <a href={`tel:${COMPANY_INFO.phone.international}`} class="text-[#D4A574] font-black hover:underline">{COMPANY_INFO.phone.display}</a></p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form Section -->
-  <section class="section bg-white">
-    <div class="container-custom max-w-4xl">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl md:text-6xl font-display uppercase mb-6 text-navy-900">Dapatkan Sebut Harga <span class="text-[#8B6F47]">Percuma Hari Ini</span></h2>
-        <div class="w-24 h-2 bg-[#D4A574] mx-auto mb-8"></div>
-        <p class="text-gray-700 text-xl">
-          Isi borang di bawah dan pakar pembiayaan kami akan menghubungi anda dengan segera untuk sebut harga yang disesuaikan
-        </p>
-      </div>
-      <div class="bg-blue-50 border-3 border-navy-900 shadow-brutal-xl p-8 md:p-12">
-        <ContactForm lang={lang} />
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Section -->
-  <section class="section bg-blue-50">
+  <!-- FORM: THE DIRECT LINE -->
+  <section class="py-32 bg-white">
     <div class="container-custom">
-      <div class="text-center max-w-4xl mx-auto">
-        <div class="mb-8">
-          <span class="text-sm font-display uppercase tracking-wider text-secondary px-4 py-2 bg-white border-2 border-secondary">Sejak 1985</span>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div>
+            <h2 class="text-6xl font-display leading-[0.9] text-[#0A0A0A] uppercase mb-8 tracking-tight">Dapatkan <span class="text-[#8B6F47]">Sebut Harga</span></h2>
+            <p class="text-[#1A140D]/60 mb-12 leading-relaxed">
+              Kami akan proses permohonan anda dengan pantas. Isikan butiran dan kami hubungi anda dalam masa terdekat.
+            </p>
+            <div class="space-y-6 text-[#1A140D]">
+              <div class="p-6 bg-[#F5F5F5]">
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-[#8B6F47] mb-2">Ibu Pejabat</span>
+                <p class="font-display text-xl uppercase">{COMPANY_INFO.address.city}, {COMPANY_INFO.address.state}</p>
+              </div>
+              <div class="p-6 bg-[#F5F5F5]">
+                <span class="block text-[10px] uppercase tracking-widest font-bold text-[#8B6F47] mb-2">Waktu Operasi</span>
+                <p class="font-display text-xl uppercase">Isnin - Jumaat: 9AM - 5PM</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#F5F5F5] p-10 md:p-16 relative">
+            <div class="absolute -top-4 -left-4 w-12 h-12 bg-[#8B6F47]"></div>
+            <ContactForm lang={lang} />
+          </div>
         </div>
-        <h2 class="text-4xl md:text-5xl font-display uppercase mb-8 text-navy-900">Dipercayai <span class="text-[#8B6F47]">Perniagaan Malaysia</span></h2>
-        <p class="text-gray-700 text-xl leading-relaxed">
-          Dari kontraktor kecil hingga syarikat logistik besar, kami telah membantu beribu-ribu perniagaan
-          memperoleh peralatan yang mereka perlukan untuk berjaya. Komitmen kami terhadap kelulusan pantas,
-          kadar kompetitif, dan perkhidmatan pelanggan yang cemerlang telah menjadikan kami pilihan utama
-          untuk pembiayaan peralatan di Klang dan seluruh Selangor.
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>or.
         </p>
       </div>
     </div>

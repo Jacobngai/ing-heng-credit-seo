@@ -10,6 +10,7 @@ interface Props {
   answer: string;
   id?: string;
   isOpen?: boolean;
+  variant?: 'standard' | 'luxe';
 }
 
 const {
@@ -17,34 +18,35 @@ const {
   answer,
   id = `faq-${Math.random().toString(36).substr(2, 9)}`,
   isOpen = false,
+  variant = 'standard',
 } = Astro.props;
 ---
 
-<div class="bg-white border-3 border-[#2D1810] rounded-lg overflow-hidden shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all" data-faq-item>
+<div class={`overflow-hidden transition-all duration-300 ${variant === 'luxe' ? 'bg-[#F9F9F9] border border-black/5 rounded-2xl mb-4 hover:border-[#D4A574]/30' : 'bg-white border-3 border-[#2D1810] rounded-lg shadow-[4px_4px_0_#2D1810] hover:shadow-[6px_6px_0_#2D1810] hover:translate-x-[-2px] hover:translate-y-[-2px] mb-6'}`} data-faq-item>
   <!-- Question Button -->
   <button
     type="button"
-    class="w-full px-6 py-5 text-left bg-white hover:bg-[#F5F1EC] focus:outline-none focus:ring-3 focus:ring-[#8B6F47] focus:ring-inset transition-colors"
+    class={`w-full px-6 py-6 text-left focus:outline-none transition-all ${variant === 'luxe' ? 'bg-transparent hover:bg-black/[0.02]' : 'bg-white hover:bg-[#F5F1EC]'}`}
     style="min-height: 64px;"
     aria-expanded={isOpen}
     aria-controls={id}
     data-faq-button
   >
-    <div class="flex items-center justify-between gap-4">
-      <h3 class="text-lg md:text-xl font-black uppercase text-[#8B6F47] tracking-tight flex-1">
+    <div class="flex items-center justify-between gap-6">
+      <h3 class={`text-lg md:text-xl font-display uppercase tracking-wide flex-1 transition-colors ${variant === 'luxe' ? 'text-[#0A0A0A] group-hover:text-[#D4A574]' : 'text-[#8B6F47] font-black'}`}>
         {question}
       </h3>
-      <div class="flex-shrink-0 w-10 h-10 bg-[#D4A574] border-2 border-[#2D1810] rounded flex items-center justify-center">
+      <div class={`flex-shrink-0 w-10 h-10 flex items-center justify-center transition-all ${variant === 'luxe' ? 'text-[#D4A574]' : 'bg-[#D4A574] border-2 border-[#2D1810] rounded text-[#2D1810]'}`}>
         <svg
-          class="w-6 h-6 text-[#2D1810] transition-transform duration-300"
+          class="w-6 h-6 transition-transform duration-500"
           data-faq-icon
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          stroke-width="3"
+          stroke-width="2.5"
           aria-hidden="true"
         >
-          <path stroke-linecap="square" stroke-linejoin="miter" d="M19 9l-7 7-7-7" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </div>
     </div>
@@ -53,15 +55,15 @@ const {
   <!-- Answer Content -->
   <div
     id={id}
-    class="overflow-hidden transition-all duration-300 ease-in-out"
+    class="overflow-hidden transition-all duration-500 ease-in-out"
     style={isOpen ? 'max-height: 2000px;' : 'max-height: 0;'}
     data-faq-content
     role="region"
     aria-labelledby={`${id}-button`}
   >
-    <div class="px-6 pb-6 pt-2 border-t-2 border-[#D4A574] bg-[#F5F5DC]">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-base md:text-lg leading-relaxed text-[#4F3E29] font-medium" set:html={answer} />
+    <div class={`px-6 md:px-8 pb-8 pt-2 ${variant === 'luxe' ? 'bg-transparent text-[#0A0A0A]/60 font-light' : 'border-t-2 border-[#D4A574] bg-[#F5F5DC] text-[#4F3E29] font-medium'}`}>
+      <div class="prose max-w-none">
+        <p class="text-base md:text-lg leading-relaxed" set:html={answer} />
       </div>
     </div>
   </div>

@@ -13,7 +13,7 @@
 interface Props {
   text: string;
   link: string;
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'outline-white' | 'outline-yellow' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'outline-white' | 'outline-yellow' | 'ghost' | 'luxe-primary' | 'luxe-outline';
   size?: 'sm' | 'md' | 'lg';
   icon?: string;
   iconPosition?: 'left' | 'right';
@@ -47,6 +47,8 @@ const variantClasses = {
   'outline-white': 'btn btn-outline-white',
   'outline-yellow': 'btn btn-outline-yellow',
   ghost: 'btn btn-ghost',
+  'luxe-primary': 'btn btn-luxe-primary',
+  'luxe-outline': 'btn btn-luxe-outline',
 };
 
 const sizeClasses = {
@@ -226,6 +228,36 @@ const iconHtml = loading ? icons.loading : (icon && icons[icon as keyof typeof i
   .btn-ghost:hover {
     color: #D4A574; /* gold */
     text-decoration: none;
+  }
+
+  /* LUXE VARIANTS */
+  .btn-luxe-primary {
+    background: #D4A574;
+    color: #0A0A0A;
+    border: 1px solid #D4A574;
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.2);
+    font-weight: 600;
+  }
+
+  .btn-luxe-primary:hover {
+    background: white;
+    border-color: white;
+    color: #0A0A0A;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 165, 116, 0.3);
+  }
+
+  .btn-luxe-outline {
+    background: transparent;
+    color: #D4A574;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    font-weight: 500;
+  }
+
+  .btn-luxe-outline:hover {
+    background: rgba(212, 165, 116, 0.1);
+    border-color: #D4A574;
+    transform: translateY(-3px);
   }
 
   /* Size Variants */

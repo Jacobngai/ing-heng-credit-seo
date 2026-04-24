@@ -1,0 +1,154 @@
+---
+/**
+ * Chinese Blog Index Page
+ * Revamped with Midnight Luxe design and "Market Authority" voice
+ */
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// Get blog posts from Content Collections
+const allMdPosts = await getCollection('blogs');
+const allPosts = allMdPosts
+  .filter(post => post.data.locale === lang)
+  .map(post => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    slug: post.slug.includes('/') ? post.slug.split('/').pop() : post.slug,
+    date: typeof post.data.publishDate === 'string' ? post.data.publishDate : post.data.publishDate.toISOString(),
+    category: post.data.category,
+    readTime: post.data.readingTime || 5,
+    featured: post.data.featured,
+    image: post.data.ogImage || `/images/blog/${post.slug}.jpg`,
+  }));
+
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.date).valueOf() - new Date(a.date).valueOf()
+);
+
+const featuredPost = sortedPosts.find(p => p.featured) || sortedPosts[0];
+const recentPosts = sortedPosts.filter(p => p.slug !== featuredPost?.slug).slice(0, 6);
+
+// SEO Configuration
+const pageTitle = '资本睿见与行业洞察 | 永恒信贷 (Ing Heng Credit) 官方博客';
+const pageDescription = '掌握先机，决胜市场。深度解析重型机械融资方案、中小企业现金流管理及大马工程行业趋势。由40年资深金融团队为您打造。';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE AUTHORITY (Midnight) -->
+  <section class="relative min-h-[60vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0A0A]"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">专家洞察</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          资本<span class="text-[#D4A574]">睿见</span><br/>
+          决胜<span class="text-white">商场</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+          我们分享银行不愿告诉您的融资策略。基于40年实战经验，助您在多变的商业环境中精准掌控资本。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED: THE HEADLINER (Daylight) -->
+  {featuredPost && (
+    <section class="py-24 bg-white">
+      <div class="container-custom">
+        <div class="group relative bg-[#0A0A0A] overflow-hidden shadow-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="aspect-video lg:aspect-auto overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-1000">
+              <img 
+                src={featuredPost.image} 
+                alt={featuredPost.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+              />
+              <div class="absolute top-8 left-8">
+                 <span class="bg-[#D4A574] text-[#0A0A0A] font-display uppercase tracking-widest text-[10px] px-4 py-2 font-bold shadow-xl italic">深度专访</span>
+              </div>
+            </div>
+            <div class="p-12 md:p-20 flex flex-col justify-center text-white">
+              <span class="text-[#D4A574] font-display uppercase tracking-widest text-xs mb-6 block">{featuredPost.category}</span>
+              <h2 class="text-5xl md:text-6xl font-display uppercase mb-8 leading-none tracking-tight">{featuredPost.title}</h2>
+              <p class="text-white/60 mb-10 text-lg font-light leading-relaxed line-clamp-3">{featuredPost.excerpt}</p>
+              <div class="flex items-center justify-between">
+                <a href={`/zh/blog/${featuredPost.slug}`} class="text-[10px] font-black uppercase tracking-widest border-b border-[#D4A574] pb-2 hover:text-[#D4A574] transition-colors">阅读全文 →</a>
+                <span class="text-white/20 text-[10px] uppercase tracking-widest">{featuredPost.readTime} 分钟阅读时间</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- RECENT: THE FEED (Editorial) -->
+  <section class="py-32 bg-[#F5F5F5]">
+    <div class="container-custom">
+      <div class="text-center mb-24">
+        <h2 class="text-6xl font-display uppercase text-[#0A0A0A] mb-4">最新<span class="text-[#8B6F47]">洞察</span></h2>
+        <p class="text-[#1A140D]/40 uppercase tracking-[0.3em] text-[10px] font-bold">源自一线的专业分析</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {recentPosts.map((post) => (
+          <div class="group bg-white border border-black/5 flex flex-col hover:shadow-2xl transition-all duration-500">
+            <div class="aspect-video overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-10 flex-grow">
+              <span class="text-[#8B6F47] font-display uppercase tracking-widest text-[10px] mb-4 block">{post.category}</span>
+              <h3 class="text-3xl font-display uppercase mb-6 leading-none group-hover:text-[#8B6F47] transition-colors">{post.title}</h3>
+              <p class="text-[#1A140D]/60 text-sm font-light leading-relaxed mb-8 line-clamp-3">{post.excerpt}</p>
+              <div class="mt-auto pt-6 border-t border-black/5 flex justify-between items-center">
+                <a href={`/zh/blog/${post.slug}`} class="text-[10px] font-black uppercase tracking-widest italic hover:text-[#8B6F47] transition-colors">阅读更多 →</a>
+                <span class="text-gray-300 text-[10px] uppercase">{post.readTime} 分钟</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE SYNDICATE (Midnight) -->
+  <section class="py-40 bg-[#0A0A0A] relative overflow-hidden text-center">
+    <div class="container-custom relative z-10">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-12 tracking-tighter">
+        获取<span class="text-[#D4A574]">实战</span><br/>
+        商业<span class="text-white/20">策略</span>
+      </h2>
+      <p class="text-xl text-[#F5F5F5]/60 mb-16 max-w-2xl mx-auto font-light">
+        加入 4,000+ 位实干家的行列，第一时间掌握市场动态。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#D4A574] text-[#0A0A0A] font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-white transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

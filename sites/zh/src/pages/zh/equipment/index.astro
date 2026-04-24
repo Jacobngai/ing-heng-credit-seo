@@ -1,0 +1,145 @@
+---
+/**
+ * Chinese Equipment Hub
+ * Revamped with Midnight Luxe design and "Mechanical Master" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '机器与设备融资 | 挖掘机、罗里及重型机械融资专家 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '我们懂机器，更懂生产力。不限品牌与工龄，专业融资挖掘机、罗里、起重机。40年经验，为您评估资产最真实的商业价值。';
+
+const categories = [
+  {
+    title: '挖掘机与土方工程',
+    description: '不论是备受赞誉的大牌还是耐用的国产品牌，只要能开工，我们就能融资。',
+    icon: '🏗️',
+    url: '/zh/equipment/excavator',
+    features: ['接受50年旧机械', '无品牌歧视', '极速价值评估']
+  },
+  {
+    title: '商用罗里与运输',
+    description: '助您扩充车队。从小型货车到大型拖挂车，加速您的物流链条。',
+    icon: '🚛',
+    url: '/zh/equipment/truck',
+    features: ['高额贷款成数', '灵活还款方案', '当日初步审核']
+  },
+  {
+    title: '工业起重与仓储',
+    description: '提升您的仓储效率。包括叉车、起重机及各类自动化生产设备。',
+    icon: '🚜',
+    url: '/zh/equipment/forklift',
+    features: ['支持二手设备', '简便文件程序', '专业工业建议']
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE MASTER (Midnight) -->
+  <section class="relative min-h-[60vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0A0A0A]"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">资产价值核心</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          懂您的<span class="text-white/20 italic">机器</span><br/>
+          挺您的<span class="text-[#D4A574]">生意</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+            我们不仅仅是在审核贷款。我们是在评估资产的生产力。只要机器在转，钱就在赚。这就是我们敢于在别人退缩时说“好”的原因。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES: THE WORKHORSES (Editorial) -->
+  <section class="py-32 bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-24">
+        <h2 class="text-6xl font-display uppercase text-[#0A0A0A] mb-4">资产<span class="text-[#8B6F47]">阵容</span></h2>
+        <p class="text-[#1A140D]/40 uppercase tracking-[0.3em] text-[10px] font-bold">针对全马支柱产业量身打造</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {categories.map(cat => (
+          <div class="group relative bg-[#F5F5F5] p-12 border border-black/5 hover:bg-[#0A0A0A] transition-all duration-700">
+            <span class="text-5xl mb-8 block group-hover:scale-110 transition-transform">{cat.icon}</span>
+            <h3 class="text-3xl font-display uppercase mb-6 text-[#0A0A0A] group-hover:text-[#D4A574] transition-colors">{cat.title}</h3>
+            <p class="text-[#1A140D]/60 group-hover:text-white/60 mb-8 font-light leading-relaxed">{cat.description}</p>
+            <div class="flex flex-wrap gap-2 mb-10">
+              {cat.features.map(f => (
+                <span class="text-[9px] uppercase tracking-widest border border-black/10 px-3 py-1 group-hover:border-white/20 group-hover:text-white transition-all">{f}</span>
+              ))}
+            </div>
+            <a href={cat.url} class="text-[10px] font-black uppercase tracking-widest border-b border-[#8B6F47] group-hover:border-[#D4A574] group-hover:text-white pb-2 italic">查看规格 →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ACTION TAKER MANIFESTO (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div>
+           <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">机器不骗人</span>
+           <h2 class="text-6xl font-display uppercase text-white mb-8">不限品牌<br/><span class="text-white/20 italic">不限工龄</span></h2>
+           <p class="text-white/60 text-lg font-light leading-relaxed mb-12">
+            银行可能因为这台机器是“冷门中国品牌”或者“已经开了50年”而拒绝您。
+            <br/><br/>
+            但在我们眼中，这台机器是一份工单，是一份收入，是一家公司的未来。我们深入了解不同品牌的二手机械流通价值，给予您最实际的财务支持。
+           </p>
+           <a href={COMPANY_INFO.whatsapp.link} class="inline-block bg-[#D4A574] text-[#0A0A0A] font-display uppercase tracking-widest text-sm px-12 py-6 hover:bg-white transition-all duration-500 font-bold">
+            向专家索取估价
+           </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="aspect-[3/4] bg-white/5 border border-white/10 hidden md:block mt-12 overflow-hidden grayscale">
+                 <img src="/images/excavator-detail.jpg" alt="Excavator Detail" class="w-full h-full object-cover opacity-50" />
+            </div>
+            <div class="aspect-[3/4] bg-white/5 border border-white/10 overflow-hidden grayscale">
+                <img src="/images/truck-detail.jpg" alt="Truck Detail" class="w-full h-full object-cover opacity-70" />
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE SYNDICATE (Editorial) -->
+  <section class="py-40 bg-[#F5F5F5] text-center border-t border-black/5">
+    <div class="container-custom relative z-10">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-[#0A0A0A] uppercase mb-12 tracking-tighter">
+        让资产<br/><span class="text-[#8B6F47]">流动</span>
+      </h2>
+      <p class="text-xl text-[#1A140D]/60 mb-16 max-w-2xl mx-auto font-light">
+        无论您的机器是今天刚下生产线，还是已经在工地上拼搏了三十年。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

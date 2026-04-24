@@ -2,10 +2,11 @@
 /**
  * ProductCard Component
  * Card for displaying equipment/product information with pricing
+ * Optimized for equipment categories
  */
 
 import type { Locale } from '../utils/i18n';
-import { t, formatCurrency } from '../utils/i18n';
+import { t } from '../utils/i18n';
 
 interface Props {
   name: string;
@@ -28,57 +29,59 @@ const {
 } = Astro.props;
 ---
 
-<div class="card h-full flex flex-col group">
+<a 
+  href={link || '#'} 
+  class="group relative bg-white overflow-hidden border border-black/5 hover:shadow-2xl transition-all duration-700 h-full flex flex-col rounded-2xl cursor-pointer"
+>
   {/* Product Image */}
   {image && (
     <div class="relative aspect-[4/3] overflow-hidden">
       <img
         src={image}
         alt={name}
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
         loading="lazy"
       />
       {badge && (
-        <span class="absolute top-4 right-4 badge badge-accent">
+        <span class="absolute top-4 right-4 bg-[#D4A574] text-[#0A0A0A] px-3 py-1 font-display tracking-widest text-[10px] uppercase font-bold rounded-sm">
           {badge}
         </span>
       )}
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
     </div>
   )}
 
-  <div class="card-body flex flex-col flex-grow">
+  <div class="p-8 flex flex-col flex-grow">
     {/* Product Name */}
-    <h3 class="text-2xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
+    <h3 class="font-display text-2xl uppercase text-[#0A0A0A] mb-3 group-hover:text-[#D4A574] transition-colors leading-tight">
       {name}
     </h3>
 
     {/* Description */}
-    <p class="text-gray-600 mb-4 leading-relaxed">
+    <p class="text-[#0A0A0A]/60 text-sm leading-relaxed mb-6 font-light">
       {description}
     </p>
 
     {/* Features List */}
     {features.length > 0 && (
-      <ul class="space-y-2 mb-6 flex-grow">
+      <ul class="space-y-2 mb-8 flex-grow">
         {features.map((feature) => (
           <li class="flex items-start space-x-2">
-            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-sm text-gray-700">{feature}</span>
+            <span class="text-[#D4A574] text-xs">✓</span>
+            <span class="text-xs text-[#0A0A0A]/80 font-medium">{feature}</span>
           </li>
         ))}
       </ul>
     )}
 
-    {/* CTA Button */}
-    {link && (
-      <a
-        href={link}
-        class="btn btn-primary w-full text-center"
-      >
-        {t('common.getStarted', lang)}
-      </a>
-    )}
+    {/* CTA Indicator */}
+    <div class="flex items-center justify-between pt-6 border-t border-black/5 mt-auto">
+        <span class="text-[#0A0A0A] font-display uppercase tracking-widest text-[10px] font-bold">View Strategy</span>
+        <div class="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#0A0A0A] group-hover:text-white transition-all duration-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+        </div>
+    </div>
   </div>
-</div>
+</a>

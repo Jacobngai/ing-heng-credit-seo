@@ -1,0 +1,134 @@
+---
+/**
+ * Chinese Aircraft Financing Page
+ * Revamped with Midnight Luxe design and "Success Partner" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Calculator from '../../../components/Calculator.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '私人直升机与小型飞机融资 | 开启您的蓝天梦想 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '专业融资私人直升机、小型飞机及旋翼机。我们懂得航空资产的稀缺性与真实价值。40年信贷沉淀，助您翱翔长空，成就非凡。';
+
+const fleet = [
+  { title: '私人直升机', desc: '无论是企业考察还是私人飞行，我们提供灵活的高额度融资方案，助您快速起航。' },
+  { title: '小型固定翼飞机', desc: '针对飞行爱好者与私人收藏家，我们提供最专业的航空资产价值评估与资金支持。' },
+  { title: '特殊旋翼机', desc: '支持各类轻型与特殊用途飞行器融资，化繁为简，让您的梦想不受地面限制。' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE AVIATOR (Midnight) -->
+  <section class="relative min-h-[70vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#D4A574]/30 to-transparent"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">航空资产融资专家</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          直击<span class="text-white/20 italic">长空</span><br/>
+          纵览<span class="text-[#D4A574]">天下</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+            别让复杂的航空金融手续成为您的羁绊。永恒信贷以专业的眼光透视每一架飞行器的资产核心，为您提供最直接、最有力的资金支持。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MANIFESTO: FLIGHT DREAMS (Daylight) -->
+  <section class="py-32 bg-white text-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="order-2 lg:order-1 relative">
+          <div class="aspect-[4/5] bg-[#F5F5F5] grayscale overflow-hidden">
+             <img src="/images/hobby/aircraft-main.jpg" alt="Private Helicopter" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -top-12 -left-12 bg-[#8B6F47] p-12 text-white hidden lg:block shadow-2xl">
+            <span class="text-5xl font-display block leading-none mb-2 text-[#D4A574]">顶尖</span>
+            <span class="text-[10px] uppercase tracking-widest font-black text-white/50">航空价值评估</span>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-6xl font-display uppercase mb-12 leading-none">不仅是飞行<br/><span class="text-[#8B6F47]">更是格局的跨越</span></h2>
+          <p class="text-[#1A140D]/60 text-lg font-light leading-relaxed mb-8">
+            在传统的融资领域，通用航空（GA）资产属于高度专业化的小众市场。永恒信贷凭借 40 年的深厚资产处理经验，为大马的私人机主提供最懂行的资本对接。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {fleet.map(item => (
+              <div class="border-l border-black/10 pl-6 py-2">
+                <h4 class="text-xl font-display uppercase mb-2">{item.title}</h4>
+                <p class="text-[#1A140D]/40 text-sm font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <a href={COMPANY_INFO.whatsapp.link} class="inline-block bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-12 py-6 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+            咨询航空融资专家
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR: FLIGHT PRECISION (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div>
+          <h2 class="text-6xl font-display uppercase text-white mb-8">飞行<span class="text-[#D4A574]">预算</span></h2>
+          <p class="text-white/50 text-lg font-light leading-relaxed mb-12 max-w-md">
+            掌控您的财富高度。使用计算器预估您的每月务安排，让我们为您定制最适合的高净值还款方案。
+          </p>
+          <div class="space-y-6">
+            <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">支持飞行器类型</span>
+                <span class="text-white font-display text-2xl uppercase">HELICOPTERS / FIXED-WING</span>
+             </div>
+             <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">最高额度</span>
+                <span class="text-[#D4A574] font-display text-2xl">根据资产价值定制</span>
+             </div>
+          </div>
+        </div>
+        <div class="bg-white/5 p-12 border border-white/10">
+           <Calculator lang="zh" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE SYNDICATE (Editorial) -->
+  <section class="py-40 bg-white text-center border-t border-black/5">
+    <div class="container-custom relative z-10 text-[#0A0A0A]">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] uppercase mb-12 tracking-tighter">
+        即刻<br/><span class="text-[#8B6F47]">一飞冲天</span>
+      </h2>
+      <p class="text-xl text-[#1A140D]/60 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
+        天空没有极限。今天就联系我们，让您的飞天梦想正式启航。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>

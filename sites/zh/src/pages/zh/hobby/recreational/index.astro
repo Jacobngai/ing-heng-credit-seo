@@ -1,0 +1,134 @@
+---
+/**
+ * Chinese Recreational Vehicle Financing Page
+ * Revamped with Midnight Luxe design and "Success Partner" voice
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Calculator from '../../../components/Calculator.astro';
+import { COMPANY_INFO } from '../../../utils/constants';
+
+const lang = 'zh';
+
+// SEO Configuration
+const pageTitle = '露营车与娱乐设备融资 | 开启您的户外探险之旅 | 永恒信贷 (Ing Heng Credit)';
+const pageDescription = '专业融资豪华露营车 (RV)、全地形车 (ATV) 及高尔夫球车。40年专业评估经验，助您轻松坐拥顶级娱乐设备。';
+
+const fleet = [
+  { title: '豪华露营车 (RV)', desc: '为您和家人提供流动的五星级家园。我们支持各类进口与本地改装露营车融资。' },
+  { title: '全地形车 (ATV/UTV)', desc: '征服丛林与野外。针对越野爱好者，我们提供极速、低门槛的融资支持。' },
+  { title: '高尔夫球车', desc: '提升球场与园区内的通行效率。我们为个人及企业提供批量融资方案。' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang={lang}
+>
+  
+  <!-- HERO: THE EXPLORER (Midnight) -->
+  <section class="relative min-h-[70vh] flex items-center bg-[#0A0A0A] overflow-hidden pt-20">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#8B6F47]/30 to-transparent"></div>
+    </div>
+
+    <div class="container-custom relative z-10 py-20">
+      <div class="max-w-4xl">
+        <span class="text-[#D4A574] font-display uppercase tracking-[0.4em] text-[10px] font-bold mb-6 block">娱乐资产融资专家</span>
+        <h1 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] text-white uppercase mb-8 tracking-tighter">
+          探索<span class="text-white/20 italic">自然</span><br/>
+          奢享<span class="text-[#D4A574]">自由</span>
+        </h1>
+        <p class="text-xl text-[#F5F5F5]/60 max-w-2xl font-light leading-relaxed mb-12">
+            别让紧促的现金流限制了您的探索足迹。从豪华 RV 到强悍的 ATV，我们以最懂行的眼光评估您的娱乐资产，助您即刻出发，探寻未知。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE MANIFESTO: OUTDOOR LIFESTYLE (Daylight) -->
+  <section class="py-32 bg-white text-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div>
+          <h2 class="text-6xl font-display uppercase mb-12 leading-none">不仅是工具<br/><span class="text-[#8B6F47]">更是对生活的投资</span></h2>
+          <p class="text-[#1A140D]/60 text-lg font-light leading-relaxed mb-8">
+            娱乐设备融资往往被传统银行忽视。但永恒信贷深知这些资产在现代生活与商业运营中的独特价值。40年来，我们协助无数热爱生活的朋友实现了他们的户外梦想。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {fleet.map(item => (
+              <div class="border-l border-black/10 pl-6 py-2">
+                <h4 class="text-xl font-display uppercase mb-2">{item.title}</h4>
+                <p class="text-[#1A140D]/40 text-sm font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <a href={COMPANY_INFO.whatsapp.link} class="inline-block bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-12 py-6 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+            咨询娱乐资产专家
+          </a>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] bg-[#F5F5F5] grayscale overflow-hidden">
+             <img src="/images/hobby/rv-main.jpg" alt="Luxury Motorhome" class="w-full h-full object-cover" />
+          </div>
+          <div class="absolute -bottom-12 -right-12 bg-[#D4A574] p-12 text-[#0A0A0A] hidden lg:block shadow-2xl">
+            <span class="text-5xl font-display block leading-none mb-2 italic">成就</span>
+            <span class="text-[10px] uppercase tracking-[0.3em]">Success Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR: EXPLORER'S PRECISION (Alloy) -->
+  <section class="py-32 bg-[#0A0A0A]">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="bg-white/5 p-12 border border-white/10 order-2 lg:order-1">
+          <Calculator lang="zh" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-6xl font-display uppercase text-white mb-8">探索<span class="text-[#D4A574]">预算</span></h2>
+          <p class="text-white/50 text-lg font-light leading-relaxed mb-12">
+            掌控您的悠闲时光。使用计算器预估您的每月安排，让我们为您定制最轻松的财务方案，让您无忧享受每一场旅程。
+          </p>
+          <div class="space-y-6">
+            <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">支持设备类型</span>
+                <span class="text-white font-display text-2xl uppercase">RV / ATV / GOLF CARTS</span>
+             </div>
+             <div class="flex justify-between items-center py-4 border-b border-white/10">
+                <span class="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">审批速度</span>
+                <span class="text-[#D4A574] font-display text-2xl uppercase italic">24 HOURS</span>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA: THE JOURNEY (Editorial) -->
+  <section class="py-40 bg-white text-center border-t border-black/5">
+    <div class="container-custom relative z-10 text-[#0A0A0A]">
+      <h2 class="text-7xl md:text-8xl lg:text-9xl font-display leading-[0.85] uppercase mb-12 tracking-tighter">
+        即刻<br/><span class="text-[#8B6F47]">奔赴旷野</span>
+      </h2>
+      <p class="text-xl text-[#1A140D]/60 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
+        自由的味道在呼唤。今天就联系我们，让您的探险梦想不再等待。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href={COMPANY_INFO.whatsapp.link} class="bg-[#0A0A0A] text-white font-display uppercase tracking-widest text-sm px-16 py-8 hover:bg-[#8B6F47] transition-all duration-500 font-bold">
+          立即通过 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', var(--font-display);
+  }
+</style>
