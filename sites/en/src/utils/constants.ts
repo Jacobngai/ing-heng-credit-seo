@@ -515,8 +515,7 @@ export const NAV_LINKS = [
   { href: '/services', label: 'nav.services' },
   { href: '/equipment', label: 'nav.equipment', hasDropdown: true },
   { href: '/hobby', label: 'nav.hobby', hasDropdown: true },
-  { href: '/blog', label: 'nav.blog' },
-  { href: '/contact', label: 'nav.contact' },
+  { href: '/our-partners', label: 'nav.partners' },
 ];
 
 /**
