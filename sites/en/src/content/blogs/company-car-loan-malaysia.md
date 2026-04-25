@@ -1,0 +1,160 @@
+---
+title: "Company Car Loan Malaysia"
+description: "Expert guide on Company Car Loan Malaysia. Learn how Ing Heng Credit helps Malaysian businesses scale with specialist equipment financing and 0% down payment solutions."
+publishDate: "2026-01-08"
+author: "Ing Heng Credit Team"
+category: "Equipment Financing"
+image: "/images/equipment/komatsu-pc350-excavator.jpg"
+keywords: []
+readingTime: 5
+locale: "en"
+featured: false
+draft: false
+--- 
+
+<bloglayout "business="" "company="" "fleet="" "sme="" author="jacob" car="" category="Vehicle Financing" description="Need a company car loan in Malaysia? Learn how SMEs can finance fleet vehicles for executives, sales teams, and employee transport—without draining working capital." financing="" loan",="" loan"]="" locale="en" malaysia",="" publishdate="2026-03-26" readingtime="" tags='["Company' title="Company Car Loan Malaysia: How SMEs Can Finance Fleet Vehicles" vehicle="" vehicle",="">
+# Company Car Loan Malaysia: How SMEs Can Finance Fleet Vehicles
+Your sales manager needs a reliable car to visit clients across Klang Valley. Your operations director travels between factories in different states. Maybe you want to provide company cars as part of your executive package to attract talent.
+The challenge? A decent Toyota Camry costs around RM200,000. A Proton X50 still runs RM90,000+. Multiply that by five or ten employees, and you're looking at serious capital locked up in vehicles—money that could be funding inventory, marketing, or expansion.
+That's why **company car loans** make sense for Malaysian SMEs. Finance the vehicles, spread costs over time, and keep your working capital free for what actually grows your business.
+At Ing Heng Credit, we've helped thousands of Malaysian businesses acquire fleet vehicles over our 40+ years. From construction companies needing pickup trucks for site supervisors, to tech startups providing sedans for their sales team—we've seen every scenario.
+Let's break down how company car financing works in Malaysia.
+---
+## What Is a Company Car Loan?
+A company car loan is financing for passenger vehicles purchased and registered under your business entity. Unlike commercial vehicle loans (for lorries and trucks), company car loans cover:
+**Common company cars SMEs finance:**
+- **Sedans** — Toyota Camry, Honda Accord, Proton S70 for executives
+- **SUVs** — Toyota Fortuner, Honda CR-V, Proton X70 for managers who travel
+- **MPVs** — Toyota Veloz, Perodua Alza for employee transport or client pickup
+- **Pickup trucks** — Toyota Hilux, Ford Ranger for site supervisors and field staff
+- **Compact cars** — Proton Saga, Perodua Myvi for sales reps covering territories
+The key distinction from personal car loans: these vehicles are registered under your company (Sdn Bhd or Enterprise) and used for business purposes. This has tax implications we'll cover later.
+---
+## Why Finance Company Cars Instead of Paying Cash?
+We talk to business owners every day who say, "I have the cash, why should I borrow?"
+Here's why smart SME owners still finance:
+### 1. Preserve Working Capital
+RM500,000 in your bank account can:
+- Fund three months of operations during slow seasons
+- Take advantage of bulk purchase discounts from suppliers
+- Handle unexpected emergencies without scrambling
+That same RM500,000 locked up in five company cars? It sits there depreciating. Cars don't generate revenue—your business does.
+### 2. Tax Deductions
+When you finance, the **interest payments are tax-deductible** as a business expense. You also get to claim **capital allowances** on the vehicle over time.
+This effectively means the government subsidizes part of your car cost through reduced taxes.
+### 3. Better Cash Flow Planning
+Fixed monthly payments mean predictable expenses. You know exactly what your vehicle costs will be for the next 5 years. Compare that to the unpredictability of paying cash—one big hit to your account.
+### 4. Access Multiple Vehicles at Once
+Need 10 cars for your sales team? With financing, you can acquire all 10 now and start generating revenue immediately. With cash? You'd need to buy one at a time, or drain your reserves.
+---
+## How Company Car Loans Work in Malaysia
+The process is straightforward:
+### Step 1: Determine Your Needs
+- How many vehicles?
+- New or used?
+- What class of vehicle? (Sedan, SUV, pickup)
+- Estimated budget per vehicle
+### Step 2: Check Eligibility
+Most lenders look at:
+- **Company registration** — At least 1-2 years in operation preferred
+- **Financial statements** — SSM registration, bank statements, sometimes audited accounts
+- **Director's profile** — CCRIS and CTOS check on signatories
+- **Existing commitments** — Other loans and their repayment history
+### Step 3: Get Quotations
+Compare offers from:
+- Banks (typically stricter requirements)
+- Private financiers like Ing Heng Credit (more flexible)
+- Manufacturer financing (sometimes promotional rates)
+### Step 4: Submit Application
+Documents typically needed:
+- Company SSM registration
+- Business bank statements (6 months)
+- Director's IC copy
+- Vehicle quotation or invoice
+- Existing loan statements (if any)
+### Step 5: Approval and Disbursement
+Once approved, the financier pays the car dealer directly. You take delivery and start making monthly payments.
+---
+## Ing Heng Credit vs. Banks: What's Different?
+This is where it gets interesting. Banks aren't your only option—and often not your best one.
+| Feature | Ing Heng Credit | Banks |
+|---------|-----------------|-------|
+| **Down Payment** | As low as 0% | Usually 10-20% required |
+| **Company Age** | Younger companies considered | Often require 2+ years |
+| **CCRIS Flexibility** | We look at the full picture | Automated rejection on marks |
+| **Vehicle Age** | Finance used cars any age | Often reject vehicles &gt;10 years |
+| **Processing Time** | Fast approval | Can take weeks |
+| **Documentation** | Practical requirements | Extensive paperwork |
+### Why This Matters for SMEs
+Let's say you're a 1-year-old company. Your director had a late credit card payment 3 years ago. You want to buy a 2019 Honda City for your sales team.
+At a bank? Automatic rejection. The company is "too new." The CCRIS mark triggers a flag. The car is "too old" for their guidelines.
+At Ing Heng Credit? We look at your actual business performance, your real ability to repay, and the practical value of your request. That 2019 Honda City with low mileage is perfectly good transport for your sales rep.
+---
+## Company Car vs. Personal Car Loan: Which Is Better?
+Some business owners ask: "Should I just buy the car personally and claim mileage?"
+Here's the comparison:
+### Company Car (Company Name Registration)
+**Pros:**
+- Interest payments are tax-deductible
+- Capital allowance reduces taxable income
+- Insurance, maintenance, and road tax are business expenses
+- Clearer separation between personal and business assets
+- Easier to manage for fleets
+**Cons:**
+- Subject to benefit-in-kind (BIK) tax if used privately
+- More paperwork for record-keeping
+### Personal Car (Director's Name)
+**Pros:**
+- Simpler ownership structure
+- No BIK considerations
+- Easier to sell later
+**Cons:**
+- Interest payments not deductible
+- No capital allowances for the company
+- Blurred line between personal and business use
+**Our Recommendation:** For genuine business use (sales visits, client meetings, site supervision), company registration makes more sense. The tax benefits usually outweigh the complexity.
+---
+## Tax Benefits of Company Cars in Malaysia
+Let's talk numbers.
+### Capital Allowances
+You can claim capital allowances on vehicles:
+- **Initial allowance:** 20% of the purchase price in Year 1
+- **Annual allowance:** 20% of remaining value each year
+For a RM100,000 company car:
+- Year 1: Claim RM20,000 (initial allowance)
+- Year 2-5: Claim RM20,000 per year
+Over 5 years, you've claimed the full RM100,000 against taxable income.
+### Interest Deduction
+If you borrowed RM100,000 at 5% interest for 5 years, you pay roughly RM13,000 in interest over the loan term. All of this is deductible as a business expense.
+### Operating Expenses
+Everything related to the company car is deductible:
+- Petrol (for business use)
+- Insurance premiums
+- Road tax
+- Maintenance and repairs
+- Parking for business purposes
+**Important Note:** Keep proper records. LHDN expects documentation linking car usage to business activities. A simple log book showing client visits is usually sufficient.
+---
+## Frequently Asked Questions
+### Can a new company get a company car loan?
+Yes, though requirements may be stricter. At Ing Heng Credit, we consider companies from 6 months onwards, depending on the nature of business and financial standing.
+### What's the maximum loan tenure?
+Most financiers offer up to 9 years for new cars and 7 years for used cars. Longer tenure means lower monthly payments but more interest paid overall.
+### Can I finance multiple cars at once?
+Absolutely. We regularly help businesses finance fleets of 5, 10, even 20+ vehicles. For large fleets, we can discuss bulk financing arrangements.
+### What happens if I want to sell the car before the loan ends?
+You'll need to settle the remaining loan balance first. Some financiers allow early settlement without penalty; check your terms.
+### Is insurance included in the loan?
+Typically no. You'll need separate motor insurance, though comprehensive coverage is usually required as part of the financing terms.
+### Can I claim back GST on company cars?
+Generally no. Under Malaysian GST rules (when applicable), motor cars used for non-commercial purposes don't qualify for input tax credit. Check with your accountant for current regulations.
+---
+## Ready to Finance Your Company Vehicles?
+If you're looking to:
+- Expand your fleet without draining cash reserves
+- Finance cars for your sales team or executives
+- Get approval even with a younger company or less-than-perfect CCRIS
+We can help. At Ing Heng Credit, we've been financing Malaysian businesses for over 40 years. We understand that your company car isn't just transport—it's a business tool that helps you serve clients and grow revenue.
+**Get a free consultation today.** No obligation, no pressure. Just honest advice on your best financing options.
+[WhatsApp us](https://wa.me/60175032281) or call to discuss your company car financing needs.
+</bloglayout>

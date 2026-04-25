@@ -1,0 +1,240 @@
+---
+title: "0% Deposit Before CNY - Cash Preservation 2026"
+description: "0% down payment before Chinese New Year 2026. Preserve cash for festive season operations."
+publishDate: "2026-01-05"
+author: "Ing Heng Credit Team"
+category: "Equipment Financing"
+image: "/images/equipment/komatsu-pc350-excavator.jpg"
+keywords: []
+readingTime: 5
+locale: "en"
+featured: false
+draft: false
+--- 
+
+# 0% Deposit Before CNY - Cash Preservation 2026
+Need equipment before CNY but want to preserve cash? 0% down payment financing available for January 2026.
+## Why 0% Deposit Before CNY Matters
+**Pre-CNY Cash Needs:**
+**Business Operations:**
+- Staff bonuses (CNY mandatory)
+- Increased inventory purchases
+- Advance payments to suppliers
+- Additional hiring and training
+**Personal Needs:**
+- Family expenses
+- Travel costs
+- Festival preparations
+- Ang pow distribution
+**Equipment Need:**
+- Still must acquire equipment
+- Can't afford large deposit
+- Need to preserve working capital
+- 0% deposit solves this
+## 2026 CNY 0% Deposit vs Bank Deposit
+| Requirement | Bank (10-20%) | 0% Deposit (Ing Heng) |
+|-------------|---------------|----------------------|
+| **Upfront Cash** | RM 20,000-40,000 | RM 0 |
+| **Loan Amount** | RM 160,000-180,000 | RM 200,000 |
+| **Cash Preserved** | RM 0 | RM 20,000-40,000 |
+| **CNY Flexibility** | Limited | High |
+## Real 0% Deposit CNY Cases
+**Case 1: Excavator 0% Deposit**
+**Need:** Komatsu PC200 (RM 180,000)
+**Bank:** Requires 10% (RM 18,000)
+**Contractor:** Needs cash for staff bonus + operations
+**0% Deposit Solution:**
+- Down payment: RM 0
+- Loan: RM 180,000
+- Monthly: RM 3,600
+- Cash saved: RM 18,000
+- **Used for CNY business operations**
+**Case 2: Lorry Fleet 0% Deposit**
+**Need:** 3 ISUZU lorries (RM 360,000)
+**Bank:** Requires 20% (RM 72,000)
+**Logistics:** Needs cash for driver hiring + fuel
+**0% Deposit Solution:**
+- Down payment: RM 0
+- Loan: RM 360,000
+- Monthly: RM 7,200
+- Cash saved: RM 72,000
+- **Used for CNY preparation costs**
+## CNY Cash Allocation with 0% Deposit
+**Smart Cash Use:**
+**Instead of Deposit (RM 30,000):**
+- Staff bonuses: RM 15,000
+- Inventory advance: RM 10,000
+- Driver hiring: RM 5,000
+- **Total: RM 30,000 well spent**
+**With Deposit Required:**
+- Equipment deposit: RM 30,000
+- Cash for CNY: RM 0
+- **Business strained**
+## 0% Deposit Equipment for CNY
+**Available Equipment:**
+**Construction:**
+- Komatsu excavators (0% down)
+- CAT excavators (0% down)
+- Any brand (0% down)
+- **All new and used**
+**Logistics:**
+- ISUZU, FUSO, HINO (0% down)
+- Prime movers (0% down)
+- Any lorry type (0% down)
+**Warehouse:**
+- Toyota forklifts (0% down)
+- TCM forklifts (0% down)
+- Any capacity (0% down)
+## 0% Deposit vs 10% Deposit Comparison
+**Example: RM 150,000 Excavator**
+**10% Deposit:**
+- Down payment: RM 15,000 upfront
+- Loan: RM 135,000
+- Monthly: RM 2,700
+- Cash available for CNY: Reduced
+**0% Deposit:**
+- Down payment: RM 0
+- Loan: RM 150,000
+- Monthly: RM 3,000
+- Cash available for CNY: RM 15,000 more
+**Trade-off:** RM 300/month extra for RM 15k cash preservation
+## 2026 0% Deposit Requirements
+**What We Need:**
+1. **Equipment Choice**
+- Popular brands preferred
+- Fair market price
+- Good condition
+- Resale value
+2. **Business Viability**
+- Strong CNY demand
+- Repayment capacity
+- Stable operations
+- Future potential
+3. **Documentation**
+- SSM registration
+- 6 months bank statements
+- CNY orders/contracts
+- Basic business docs
+## CNY 0% Deposit Benefits
+**Pre-Festive Advantages:**
+1. **Preserve Working Capital**
+- Keep RM 20k-50k in business
+- Use for CNY operations
+- Maintain flexibility
+- Emergency buffer
+2. **Full Equipment Acquisition**
+- 100% equipment cost covered
+- Including accessories
+- Registration/insurance
+- Complete package
+3. **Start CNY Prepared**
+- Equipment ready before CNY
+- No cash strain
+- Operations smooth
+- Revenue maximized
+4. **Post-CNY Cash Available**
+- Working capital maintained
+- Operations continue smoothly
+- No cash flow problem
+- Business growth supported
+## 0% Deposit Interest Rates
+**CNY Period Rates:**
+| Equipment Value | 0% Deposit Rate | 10% Deposit Rate |
+|-----------------|-----------------|------------------|
+| RM 100,000 | 5.5% | 5.0% |
+| RM 200,000 | 5.0% | 4.5% |
+| RM 500,000 | 4.5% | 4.0% |
+**Difference:** 0.3-0.5% higher for 0% deposit
+## Cash Flow Comparison
+**RM 180,000 Excavator - 5 Years**
+**10% Deposit:**
+- Deposit: RM 18,000
+- Loan: RM 162,000
+- Monthly: RM 3,240
+- Total interest: RM 32,400
+**0% Deposit:**
+- Deposit: RM 0
+- Loan: RM 180,000
+- Monthly: RM 3,600
+- Total interest: RM 36,000
+**Trade-off Analysis:**
+- Extra interest: RM 3,600 over 5 years
+- Extra monthly: RM 360
+- Cash preserved: RM 18,000
+- **RM 18k earns >RM 3.6k in business use**
+## CNY Business Cash Strategy
+**Smart Allocation:**
+**With RM 30,000 Preserved:**
+- Pre-CNY inventory: RM 12,000
+- Staff bonuses: RM 10,000
+- Driver hiring/training: RM 5,000
+- Emergency buffer: RM 3,000
+- **Total: RM 30,000 productive use**
+**Without Preservation:**
+- Equipment deposit: RM 30,000
+- Struggle for CNY cash needs
+- Business operations stressed
+- Opportunities missed
+## 0% Deposit Documentation
+**Required:**
+1. **Business Basics**
+- SSM registration
+- Business license
+- 6 months bank statements
+2. **Equipment Details**
+- Quotation
+- Equipment choice
+- Seller information
+3. **CNY Preparation**
+- Business plan for CNY
+- Revenue projections
+- Cash flow needs
+- Staff requirements
+## Bad Credit 0% Deposit
+**Challenge:**
+- Need 0% deposit
+- CCRIS issues
+- CNY deadline
+**Still Possible:**
+- Equipment-focused approval
+- Business viability primary
+- Credit secondary
+- 0% deposit available
+- **Streamlined Processing**
+## New Business 0% Deposit
+**Challenge:**
+- New company
+- First equipment
+- Need 0% deposit
+- CNY preparation
+**Approved If:**
+- 6+ months operation
+- Good CNY orders
+- Strong business plan
+- Owner experienced
+- **0% deposit possible**
+## 2026 0% Deposit Tips
+**Tip 1: Apply Early**
+- Before January 15 ideal
+- Equipment selection better
+- Standard rates
+- No rush
+**Tip 2: Show CNY Demand**
+- Client orders for CNY period
+- Historical CNY performance
+- Revenue projections
+- Cash flow planning
+**Tip 3: Choose Popular Brands**
+- Komatsu, CAT, ISUZU, Toyota
+- Easier approval
+- Better terms
+- Fast processing
+**Tip 4: Plan Cash Usage**
+- Know exactly how deposit savings used
+- Show productive allocation
+- Demonstrate business benefit
+- Strengthen approval case
+## Get 0% Deposit Before CNY
+Need equipment before CNY but want to preserve cash? Apply for 0% down payment financing.
+---
+**Not urgent?** See [CNY Equipment Preparation](/blog/cny-equipment-financing-pre-festive-preparation-2026).
